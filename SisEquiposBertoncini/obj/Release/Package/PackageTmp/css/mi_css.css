@@ -1,0 +1,53 @@
+﻿body {
+    padding-top: 70px;
+}
+
+/**************input file****************/
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+/* ----- Validation and error messages class starts -----*/
+.validationsummary
+{
+    background: #FFECEC url(../img/error403.png) no-repeat 10px 50px;
+    padding: 0px 0px 13px 0px;
+    font-size: 12px;
+    min-height:130px;
+}
+
+.validationsummary ul
+{
+    padding-top: 5px;
+    padding-left: 100px;
+    list-style: none;
+    font-size: 11px;
+    color: #DF0000;
+    font-style: italic;
+}
+.validationsummary ul li {
+	padding: 2px 0px 0px 15px;
+	background-image:url(../img/Warning.gif);
+	background-position:0px 3px;
+	background-repeat:no-repeat;
+}
+

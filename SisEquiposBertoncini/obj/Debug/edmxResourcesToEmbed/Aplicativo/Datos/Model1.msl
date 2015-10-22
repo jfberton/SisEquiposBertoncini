@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Equipos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Equipo)">
+        <MappingFragment StoreEntitySet="Equipos">
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="notas" ColumnName="notas" />
+          <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
+          <ScalarProperty Name="OUT" ColumnName="OUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorias_equipos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Categoria_equipo)">
+        <MappingFragment StoreEntitySet="Categorias_equipos">
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Empleado)">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorias_empleados">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Categoria_empleado)">
+        <MappingFragment StoreEntitySet="Categorias_empleados">
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="perfil" ColumnName="perfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dias">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Dia)">
+        <MappingFragment StoreEntitySet="Dias">
+          <ScalarProperty Name="id_dia" ColumnName="id_dia" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="horas_normales" ColumnName="horas_normales" />
+          <ScalarProperty Name="horas_extra_50" ColumnName="horas_extra_50" />
+          <ScalarProperty Name="horas_extra_100" ColumnName="horas_extra_100" />
+          <ScalarProperty Name="estado_tm" ColumnName="estado_tm" />
+          <ScalarProperty Name="estado_tt" ColumnName="estado_tt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalles_dias">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Detalle_dia)">
+        <MappingFragment StoreEntitySet="Detalles_dias">
+          <ScalarProperty Name="id_detalle_dia" ColumnName="id_detalle_dia" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="hora_desde" ColumnName="hora_desde" />
+          <ScalarProperty Name="hora_hasta" ColumnName="hora_hasta" />
+          <ScalarProperty Name="id_dia" ColumnName="id_dia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Area)">
+        <MappingFragment StoreEntitySet="Areas">
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items_por_amortizar">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Item_por_amortizar)">
+        <MappingFragment StoreEntitySet="Items_por_amortizar">
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="costo_cero_km_uss" ColumnName="costo_cero_km_uss" />
+          <ScalarProperty Name="porcentaje_usado" ColumnName="porcentaje_usado" />
+          <ScalarProperty Name="porcentaje_valor_recidual" ColumnName="porcentaje_valor_recidual" />
+          <ScalarProperty Name="meses_por_amortizar" ColumnName="meses_por_amortizar" />
+          <ScalarProperty Name="periodo_alta_mes" ColumnName="periodo_alta_mes" />
+          <ScalarProperty Name="periodo_alta_anio" ColumnName="periodo_alta_anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Valores_dolar">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Valor_dolar)">
+        <MappingFragment StoreEntitySet="Valores_dolar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingresos_egresos_mensuales_equipos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Ingreso_egreso_mensual_equipo)">
+        <MappingFragment StoreEntitySet="Ingresos_egresos_mensuales_equipos">
+          <ScalarProperty Name="id_ingreso_egreso_mensual" ColumnName="id_ingreso_egreso_mensual" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items_ingresos_egresos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Item_ingreso_egreso)">
+        <MappingFragment StoreEntitySet="Items_ingresos_egresos">
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_item_padre" ColumnName="id_item_padre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Valores_meses">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Valor_mes)">
+        <MappingFragment StoreEntitySet="Valores_meses">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_ingreso_egreso_mensual" ColumnName="id_ingreso_egreso_mensual" />
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

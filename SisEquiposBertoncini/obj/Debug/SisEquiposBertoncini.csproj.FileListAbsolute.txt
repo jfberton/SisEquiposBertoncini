@@ -1,0 +1,32 @@
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+D:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache

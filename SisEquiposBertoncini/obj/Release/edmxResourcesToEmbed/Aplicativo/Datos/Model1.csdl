@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Equipos" EntityType="Model1.Equipo" />
+    <EntitySet Name="Categorias_equipos" EntityType="Model1.Categoria_equipo" />
+    <AssociationSet Name="CategoriaEquipo" Association="Model1.CategoriaEquipo">
+      <End Role="Categoria" EntitySet="Categorias_equipos" />
+      <End Role="Equipo" EntitySet="Equipos" />
+    </AssociationSet>
+    <EntitySet Name="Empleados" EntityType="Model1.Empleado" />
+    <EntitySet Name="Categorias_empleados" EntityType="Model1.Categoria_empleado" />
+    <AssociationSet Name="Categoria_empleadoEmpleado" Association="Model1.Categoria_empleadoEmpleado">
+      <End Role="Categoria_empleado" EntitySet="Categorias_empleados" />
+      <End Role="Empleado" EntitySet="Empleados" />
+    </AssociationSet>
+    <EntitySet Name="Usuarios" EntityType="Model1.Usuario" />
+    <EntitySet Name="Dias" EntityType="Model1.Dia" />
+    <AssociationSet Name="EmpleadoDia" Association="Model1.EmpleadoDia">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="Dia" EntitySet="Dias" />
+    </AssociationSet>
+    <EntitySet Name="Detalles_dias" EntityType="Model1.Detalle_dia" />
+    <AssociationSet Name="EquipoDetalle_dia" Association="Model1.EquipoDetalle_dia">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Detalle_dia" EntitySet="Detalles_dias" />
+    </AssociationSet>
+    <AssociationSet Name="DiaDetalle_dia" Association="Model1.DiaDetalle_dia">
+      <End Role="Dia" EntitySet="Dias" />
+      <End Role="Detalle_dia" EntitySet="Detalles_dias" />
+    </AssociationSet>
+    <EntitySet Name="Areas" EntityType="Model1.Area" />
+    <AssociationSet Name="AreaEmpleado" Association="Model1.AreaEmpleado">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="Empleado" EntitySet="Empleados" />
+    </AssociationSet>
+    <EntitySet Name="Items_por_amortizar" EntityType="Model1.Item_por_amortizar" />
+    <AssociationSet Name="EquipoItem_por_amortizar" Association="Model1.EquipoItem_por_amortizar">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Item_por_amortizar" EntitySet="Items_por_amortizar" />
+    </AssociationSet>
+    <EntitySet Name="Valores_dolar" EntityType="Model1.Valor_dolar" />
+    <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Model1.Ingreso_egreso_mensual_equipo" />
+    <AssociationSet Name="EquipoIngreso_egreso_mensual_equipo" Association="Model1.EquipoIngreso_egreso_mensual_equipo">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Ingreso_egreso_mensual_equipo" EntitySet="Ingresos_egresos_mensuales_equipos" />
+    </AssociationSet>
+    <EntitySet Name="Items_ingresos_egresos" EntityType="Model1.Item_ingreso_egreso" />
+    <EntitySet Name="Valores_meses" EntityType="Model1.Valor_mes" />
+    <AssociationSet Name="Ingreso_egreso_mensual_equipoValor_mes" Association="Model1.Ingreso_egreso_mensual_equipoValor_mes">
+      <End Role="Ingreso_egreso_mensual_equipo" EntitySet="Ingresos_egresos_mensuales_equipos" />
+      <End Role="Valor_mes" EntitySet="Valores_meses" />
+    </AssociationSet>
+    <AssociationSet Name="Item_ingreso_egresoValor_mes" Association="Model1.Item_ingreso_egresoValor_mes">
+      <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
+      <End Role="Valor_mes" EntitySet="Valores_meses" />
+    </AssociationSet>
+    <AssociationSet Name="Item_ingreso_egresoItem_ingreso_egreso" Association="Model1.Item_ingreso_egresoItem_ingreso_egreso">
+      <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
+      <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Equipo">
+    <Key>
+      <PropertyRef Name="id_equipo" />
+    </Key>
+    <Property Name="id_equipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="Model1.CategoriaEquipo" FromRole="Equipo" ToRole="Categoria" />
+    <Property Name="id_categoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Detalles_dias" Relationship="Model1.EquipoDetalle_dia" FromRole="Equipo" ToRole="Detalle_dia" />
+    <Property Name="notas" Type="String" Nullable="false" />
+    <NavigationProperty Name="Items_por_amortizar" Relationship="Model1.EquipoItem_por_amortizar" FromRole="Equipo" ToRole="Item_por_amortizar" />
+    <NavigationProperty Name="Ingresos_egresos_mensuales" Relationship="Model1.EquipoIngreso_egreso_mensual_equipo" FromRole="Equipo" ToRole="Ingreso_egreso_mensual_equipo" />
+    <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Categoria_equipo">
+    <Documentation>
+      <Summary>Categoria de equipo</Summary>
+      <LongDescription>Agrupación de equipos</LongDescription>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <NavigationProperty Name="Equipos" Relationship="Model1.CategoriaEquipo" FromRole="Categoria" ToRole="Equipo" />
+    <Property Name="descripcion" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoriaEquipo">
+    <End Type="Model1.Categoria_equipo" Role="Categoria" Multiplicity="1" />
+    <End Type="Model1.Equipo" Role="Equipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="Equipo">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="Model1.Categoria_empleadoEmpleado" FromRole="Empleado" ToRole="Categoria_empleado" />
+    <Property Name="id_categoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dias" Relationship="Model1.EmpleadoDia" FromRole="Empleado" ToRole="Dia" />
+    <NavigationProperty Name="Area" Relationship="Model1.AreaEmpleado" FromRole="Empleado" ToRole="Area" />
+    <Property Name="id_area" Type="Int32" Nullable="false" />
+    <Property Name="dni" Type="String" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
+    <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Categoria_empleado">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <NavigationProperty Name="Empleados" Relationship="Model1.Categoria_empleadoEmpleado" FromRole="Categoria_empleado" ToRole="Empleado" />
+    <Property Name="descripcion" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="Categoria_empleadoEmpleado">
+    <End Type="Model1.Categoria_empleado" Role="Categoria_empleado" Multiplicity="1" />
+    <End Type="Model1.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria_empleado">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="user" Type="String" Nullable="false" />
+    <Property Name="pass" Type="String" Nullable="false" />
+    <Property Name="perfil" Type="Model1.perfil_usuario" Nullable="false" />
+  </EntityType>
+  <EnumType Name="perfil_usuario">
+    <Member Name="Admin" Value="1" />
+    <Member Name="Jefe" Value="2" />
+    <Member Name="Supervidor" Value="3" />
+    <Member Name="Usuario" Value="4" />
+    <Member Name="Seleccionar" Value="0" />
+  </EnumType>
+  <EntityType Name="Dia">
+    <Key>
+      <PropertyRef Name="id_dia" />
+    </Key>
+    <Property Name="id_dia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Model1.EmpleadoDia" FromRole="Dia" ToRole="Empleado" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="horas_normales" Type="String" Nullable="false" />
+    <Property Name="horas_extra_50" Type="String" Nullable="false" />
+    <Property Name="horas_extra_100" Type="String" Nullable="false" />
+    <NavigationProperty Name="Detalles" Relationship="Model1.DiaDetalle_dia" FromRole="Dia" ToRole="Detalle_dia" />
+  </EntityType>
+  <Association Name="EmpleadoDia">
+    <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="Model1.Dia" Role="Dia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Dia">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Detalle_dia">
+    <Key>
+      <PropertyRef Name="id_detalle_dia" />
+    </Key>
+    <Property Name="id_detalle_dia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Equipo" Relationship="Model1.EquipoDetalle_dia" FromRole="Detalle_dia" ToRole="Equipo" />
+    <Property Name="id_equipo" Type="Int32" Nullable="false" />
+    <Property Name="hora_desde" Type="String" Nullable="false" />
+    <Property Name="hora_hasta" Type="String" Nullable="false" />
+    <NavigationProperty Name="Dia" Relationship="Model1.DiaDetalle_dia" FromRole="Detalle_dia" ToRole="Dia" />
+    <Property Name="id_dia" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="EquipoDetalle_dia">
+    <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
+    <End Type="Model1.Detalle_dia" Role="Detalle_dia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Detalle_dia">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiaDetalle_dia">
+    <End Type="Model1.Dia" Role="Dia" Multiplicity="1" />
+    <End Type="Model1.Detalle_dia" Role="Detalle_dia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dia">
+        <PropertyRef Name="id_dia" />
+      </Principal>
+      <Dependent Role="Detalle_dia">
+        <PropertyRef Name="id_dia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="id_area" />
+    </Key>
+    <Property Name="id_area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <NavigationProperty Name="Empleados" Relationship="Model1.AreaEmpleado" FromRole="Area" ToRole="Empleado" />
+  </EntityType>
+  <Association Name="AreaEmpleado">
+    <End Type="Model1.Area" Role="Area" Multiplicity="1" />
+    <End Type="Model1.Empleado" Role="Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Item_por_amortizar">
+    <Key>
+      <PropertyRef Name="id_item" />
+    </Key>
+    <Property Name="id_item" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Equipo" Relationship="Model1.EquipoItem_por_amortizar" FromRole="Item_por_amortizar" ToRole="Equipo" />
+    <Property Name="id_equipo" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="costo_cero_km_uss" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="porcentaje_usado" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+    <Property Name="porcentaje_valor_recidual" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+    <Property Name="meses_por_amortizar" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="EquipoItem_por_amortizar">
+    <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
+    <End Type="Model1.Item_por_amortizar" Role="Item_por_amortizar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Item_por_amortizar">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Valor_dolar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+    <Property Name="valor" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Ingreso_egreso_mensual_equipo">
+    <Key>
+      <PropertyRef Name="id_ingreso_egreso_mensual" />
+    </Key>
+    <Property Name="id_ingreso_egreso_mensual" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Equipo" Relationship="Model1.EquipoIngreso_egreso_mensual_equipo" FromRole="Ingreso_egreso_mensual_equipo" ToRole="Equipo" />
+    <Property Name="id_equipo" Type="Int32" Nullable="false" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Valores_meses" Relationship="Model1.Ingreso_egreso_mensual_equipoValor_mes" FromRole="Ingreso_egreso_mensual_equipo" ToRole="Valor_mes" />
+  </EntityType>
+  <Association Name="EquipoIngreso_egreso_mensual_equipo">
+    <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
+    <End Type="Model1.Ingreso_egreso_mensual_equipo" Role="Ingreso_egreso_mensual_equipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Ingreso_egreso_mensual_equipo">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Item_ingreso_egreso">
+    <Key>
+      <PropertyRef Name="id_item" />
+    </Key>
+    <Property Name="id_item" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" />
+    <NavigationProperty Name="Valores_mes" Relationship="Model1.Item_ingreso_egresoValor_mes" FromRole="Item_ingreso_egreso" ToRole="Valor_mes" />
+    <NavigationProperty Name="Hijos" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso" ToRole="Item_ingreso_egreso1" />
+    <NavigationProperty Name="Padre" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso1" ToRole="Item_ingreso_egreso" />
+    <Property Name="id_item_padre" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Valor_mes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_ingreso_egreso_mensual" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Model1.Item_ingreso_egresoValor_mes" FromRole="Valor_mes" ToRole="Item_ingreso_egreso" />
+    <Property Name="id_item" Type="Int32" Nullable="false" />
+    <Property Name="valor" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <Association Name="Ingreso_egreso_mensual_equipoValor_mes">
+    <End Type="Model1.Ingreso_egreso_mensual_equipo" Role="Ingreso_egreso_mensual_equipo" Multiplicity="1" />
+    <End Type="Model1.Valor_mes" Role="Valor_mes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingreso_egreso_mensual_equipo">
+        <PropertyRef Name="id_ingreso_egreso_mensual" />
+      </Principal>
+      <Dependent Role="Valor_mes">
+        <PropertyRef Name="id_ingreso_egreso_mensual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Item_ingreso_egresoValor_mes">
+    <End Type="Model1.Item_ingreso_egreso" Role="Item_ingreso_egreso" Multiplicity="1" />
+    <End Type="Model1.Valor_mes" Role="Valor_mes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item_ingreso_egreso">
+        <PropertyRef Name="id_item" />
+      </Principal>
+      <Dependent Role="Valor_mes">
+        <PropertyRef Name="id_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Item_ingreso_egresoItem_ingreso_egreso">
+    <End Type="Model1.Item_ingreso_egreso" Role="Item_ingreso_egreso" Multiplicity="0..1" />
+    <End Type="Model1.Item_ingreso_egreso" Role="Item_ingreso_egreso1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item_ingreso_egreso">
+        <PropertyRef Name="id_item" />
+      </Principal>
+      <Dependent Role="Item_ingreso_egreso1">
+        <PropertyRef Name="id_item_padre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

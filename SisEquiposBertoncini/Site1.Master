@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SisEquiposBertoncini.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sistema bertoncini</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="css/mi_css.css" rel="stylesheet" />
+
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/moment-with-locales.min.js"></script>
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+        window.history.forward();
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <asp:ContentPlaceHolder ID="cph_menu" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <asp:ContentPlaceHolder ID="cph_body" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <asp:ContentPlaceHolder ID="cph_scripts" runat="server">
+    </asp:ContentPlaceHolder>
+
+</body>
+</html>

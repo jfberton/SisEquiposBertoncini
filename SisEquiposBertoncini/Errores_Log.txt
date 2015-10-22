@@ -1,0 +1,3091 @@
+ 
+
+******************************************************************
+
+ERRORID: 635779185022087081
+
+DATE: 15/09/2015 12:55:02 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/main_admin.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/main_admin.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635779185223951254
+
+DATE: 15/09/2015 12:55:22 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/main_admin.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/main_admin.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635779985592650332
+
+DATE: 16/09/2015 11:09:19 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/default.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/default.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780018484972823
+
+DATE: 16/09/2015 12:04:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx(36): error CS1061: 'ASP.aplicativo_admin_empleados_aspx' no contiene una definición de 'btn_eliminar_area_Click' ni se encontró ningún método de extensión 'btn_eliminar_area_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_empleados_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780019574545890
+
+DATE: 16/09/2015 12:05:57 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx(36): error CS1061: 'ASP.aplicativo_admin_empleados_aspx' no contiene una definición de 'btn_eliminar_area_Click' ni se encontró ningún método de extensión 'btn_eliminar_area_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_empleados_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780021185526752
+
+DATE: 16/09/2015 12:08:38 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Ésta es una solicitud de recursos Web no válida.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/WebResource.axd?d=z6znKh8C1k-e4yRDUnFuzaw1NqYHkaKc6w7Q_q0YgkqOrA0T0KVsLVeCV5hYJ3l2T5YWk8ZAu0_QkBIUNMB_fg3bPHNwcqX-rZ-NeJiZblCQEkJX51f4n2rowNadrlCJQvMszk4S1eH4jz11_JBt1Q2&t=635307240717380833
+
+TARGETSITE: Void System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+
+STACKTRACE:    en System.Web.Handlers.AssemblyResourceLoader.System.Web.IHttpHandler.ProcessRequest(HttpContext context)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780021567754124
+
+DATE: 16/09/2015 12:09:16 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: UnobtrusiveValidationMode de WebForms requiere un ScriptResourceMapping para 'jquery'. Agregue un ScriptResourceMapping con nombre jquery(distinguir mayúsculas de minúsculas).
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: Void EnsureJqueryRegistered()
+
+STACKTRACE:    en System.Web.UI.ClientScriptManager.EnsureJqueryRegistered()
+   en System.Web.UI.WebControls.BaseValidator.RegisterUnobtrusiveScript()
+   en System.Web.UI.WebControls.BaseValidator.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780021742032952
+
+DATE: 16/09/2015 12:09:34 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: UnobtrusiveValidationMode de WebForms requiere un ScriptResourceMapping para 'jquery'. Agregue un ScriptResourceMapping con nombre jquery(distinguir mayúsculas de minúsculas).
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: Void EnsureJqueryRegistered()
+
+STACKTRACE:    en System.Web.UI.ClientScriptManager.EnsureJqueryRegistered()
+   en System.Web.UI.WebControls.BaseValidator.RegisterUnobtrusiveScript()
+   en System.Web.UI.WebControls.BaseValidator.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780022653886344
+
+DATE: 16/09/2015 12:11:05 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Ésta es una solicitud de recursos Web no válida.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/WebResource.axd?d=z6znKh8C1k-e4yRDUnFuzaw1NqYHkaKc6w7Q_q0YgkqOrA0T0KVsLVeCV5hYJ3l2T5YWk8ZAu0_QkBIUNMB_fg3bPHNwcqX-rZ-NeJiZblCQEkJX51f4n2rowNadrlCJQvMszk4S1eH4jz11_JBt1Q2&t=635307240717380833
+
+TARGETSITE: Void System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+
+STACKTRACE:    en System.Web.Handlers.AssemblyResourceLoader.System.Web.IHttpHandler.ProcessRequest(HttpContext context)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780022715208471
+
+DATE: 16/09/2015 12:11:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: UnobtrusiveValidationMode de WebForms requiere un ScriptResourceMapping para 'jquery'. Agregue un ScriptResourceMapping con nombre jquery(distinguir mayúsculas de minúsculas).
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: Void EnsureJqueryRegistered()
+
+STACKTRACE:    en System.Web.UI.ClientScriptManager.EnsureJqueryRegistered()
+   en System.Web.UI.WebControls.BaseValidator.RegisterUnobtrusiveScript()
+   en System.Web.UI.WebControls.BaseValidator.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780026154126101
+
+DATE: 16/09/2015 12:16:55 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Ésta es una solicitud de recursos Web no válida.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/WebResource.axd?d=z6znKh8C1k-e4yRDUnFuzaw1NqYHkaKc6w7Q_q0YgkqOrA0T0KVsLVeCV5hYJ3l2T5YWk8ZAu0_QkBIUNMB_fg3bPHNwcqX-rZ-NeJiZblCQEkJX51f4n2rowNadrlCJQvMszk4S1eH4jz11_JBt1Q2&t=635307240717380833
+
+TARGETSITE: Void System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+
+STACKTRACE:    en System.Web.Handlers.AssemblyResourceLoader.System.Web.IHttpHandler.ProcessRequest(HttpContext context)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780026204675845
+
+DATE: 16/09/2015 12:17:00 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: UnobtrusiveValidationMode de WebForms requiere un ScriptResourceMapping para 'jquery'. Agregue un ScriptResourceMapping con nombre jquery(distinguir mayúsculas de minúsculas).
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: Void EnsureJqueryRegistered()
+
+STACKTRACE:    en System.Web.UI.ClientScriptManager.EnsureJqueryRegistered()
+   en System.Web.UI.WebControls.BaseValidator.RegisterUnobtrusiveScript()
+   en System.Web.UI.WebControls.BaseValidator.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780026675063170
+
+DATE: 16/09/2015 12:17:47 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Ésta es una solicitud de recursos Web no válida.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/WebResource.axd?d=z6znKh8C1k-e4yRDUnFuzaw1NqYHkaKc6w7Q_q0YgkqOrA0T0KVsLVeCV5hYJ3l2T5YWk8ZAu0_QkBIUNMB_fg3bPHNwcqX-rZ-NeJiZblCQEkJX51f4n2rowNadrlCJQvMszk4S1eH4jz11_JBt1Q2&t=635307240717380833
+
+TARGETSITE: Void System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+
+STACKTRACE:    en System.Web.Handlers.AssemblyResourceLoader.System.Web.IHttpHandler.ProcessRequest(HttpContext context)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780829700129091
+
+DATE: 17/09/2015 10:36:10 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_areas.aspx(46): error CS0123: Ninguna sobrecarga correspondiente a 'btn_ver_Click' coincide con el 'System.EventHandler' delegado
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_areas.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780841772139054
+
+DATE: 17/09/2015 10:56:17 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_areas.aspx(70): error CS1061: 'ASP.aplicativo_admin_areas_aspx' no contiene una definición de 'btn_aceptar_eliminacion_Click' ni se encontró ningún método de extensión 'btn_aceptar_eliminacion_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_areas_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_areas.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780887494893782
+
+DATE: 17/09/2015 12:12:29 p.m.
+
+MESSAGE: El control 'mi_treeview' de tipo 'TreeView' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/default.aspx
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.WebControls.TreeView.AddAttributesToRender(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.WebControl.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.TreeView.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.WebControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780888018087707
+
+DATE: 17/09/2015 12:13:21 p.m.
+
+MESSAGE: El control 'mi_treeview' de tipo 'TreeView' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/default.aspx
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.WebControls.TreeView.AddAttributesToRender(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.WebControl.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.TreeView.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.WebControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635780888990207211
+
+DATE: 17/09/2015 12:14:59 p.m.
+
+MESSAGE: El control 'SampleTreeView' de tipo 'TreeView' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/default.aspx
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.WebControls.TreeView.AddAttributesToRender(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.WebControl.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.TreeView.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.WebControls.WebControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635781762011771676
+
+DATE: 18/09/2015 12:30:01 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_equipos.aspx(70): error CS1061: 'ASP.aplicativo_admin_equipos_aspx' no contiene una definición de 'btn_aceptar_eliminacion_Click' ni se encontró ningún método de extensión 'btn_aceptar_eliminacion_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_equipos_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_equipos.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635781762431952571
+
+DATE: 18/09/2015 12:30:43 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/admin_equipo_detalle.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/admin_equipo_detalle.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635781773041182039
+
+DATE: 18/09/2015 12:48:24 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/~/Aplicativo/admin_equipos.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/~/Aplicativo/admin_equipos.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635791102200408289
+
+DATE: 29/09/2015 07:57:00 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_equipos.aspx(123): error CS1061: 'ASP.aplicativo_admin_equipos_aspx' no contiene una definición de 'gv_partes_RowDataBound' ni se encontró ningún método de extensión 'gv_partes_RowDataBound' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_equipos_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_equipos.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635791189828982950
+
+DATE: 29/09/2015 10:23:02 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx(245): error CS1061: 'ASP.aplicativo_admin_empleados_aspx' no contiene una definición de 'btn_aceptar_empleado_Click' ni se encontró ningún método de extensión 'btn_aceptar_empleado_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_empleados_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635791198880196567
+
+DATE: 29/09/2015 10:38:08 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_tipo_empleado.aspx(132): error CS1061: 'ASP.aplicativo_admin_tipo_empleado_aspx' no contiene una definición de 'btn_aceptar_categoria_Click' ni se encontró ningún método de extensión 'btn_aceptar_categoria_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_tipo_empleado_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_tipo_empleado.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635791268414491239
+
+DATE: 29/09/2015 12:34:01 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se pudo cargar los archivos de metadatos especificados.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/default.aspx
+
+TARGETSITE: System.Collections.Generic.List`1[System.Data.Metadata.Edm.MetadataArtifactLoaderResource] LoadResources(System.String, System.String, System.Collections.Generic.ICollection`1[System.String], System.Data.Metadata.Edm.MetadataArtifactAssemblyResolver)
+
+STACKTRACE:    en System.Data.Metadata.Edm.MetadataArtifactLoaderCompositeResource.LoadResources(String assemblyName, String resourceName, ICollection`1 uriRegistry, MetadataArtifactAssemblyResolver resolver)
+   en System.Data.Metadata.Edm.MetadataArtifactLoaderCompositeResource..ctor(String originalPath, String assemblyName, String resourceName, ICollection`1 uriRegistry, MetadataArtifactAssemblyResolver resolver)
+   en System.Data.Metadata.Edm.MetadataArtifactLoaderCompositeResource.CreateResourceLoader(String path, ExtensionCheck extensionCheck, String validExtension, ICollection`1 uriRegistry, MetadataArtifactAssemblyResolver resolver)
+   en System.Data.Metadata.Edm.MetadataArtifactLoader.Create(String path, ExtensionCheck extensionCheck, String validExtension, ICollection`1 uriRegistry, MetadataArtifactAssemblyResolver resolver)
+   en System.Data.Metadata.Edm.MetadataArtifactLoader.Create(String path, ExtensionCheck extensionCheck, String validExtension, ICollection`1 uriRegistry)
+   en System.Data.Metadata.Edm.MetadataCache.SplitPaths(String paths)
+   en System.Data.Common.Utils.Memoizer`2.<>c__DisplayClass2.<Evaluate>b__0()
+   en System.Data.Common.Utils.Memoizer`2.Result.GetValue()
+   en System.Data.Common.Utils.Memoizer`2.Evaluate(TArg arg)
+   en System.Data.Metadata.Edm.MetadataCache.GetOrCreateMetdataArtifactLoader(String paths)
+   en System.Data.EntityClient.EntityConnection.GetMetadataWorkspace(Boolean initializeAllCollections)
+   en System.Data.Objects.ObjectContext.RetrieveMetadataWorkspaceFromConnection()
+   en System.Data.Objects.ObjectContext..ctor(EntityConnection connection, Boolean isConnectionConstructor)
+   en System.Data.Objects.ObjectContext..ctor(EntityConnection connection)
+   en System.Data.Entity.Internal.InternalConnection.CreateObjectContextFromConnectionModel()
+   en System.Data.Entity.Internal.LazyInternalConnection.CreateObjectContextFromConnectionModel()
+   en System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   en System.Data.Entity.Internal.InternalContext.Initialize()
+   en System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   en System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   en System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   en System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   en System.Linq.Queryable.Count[TSource](IQueryable`1 source)
+   en SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635792069706897501
+
+DATE: 30/09/2015 10:49:30 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La conversión especificada no es válida.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_conceptos_mensuales.aspx
+
+TARGETSITE: Boolean get_CausesValidation()
+
+STACKTRACE:    en System.Web.UI.HtmlControls.HtmlButton.get_CausesValidation()
+   en System.Web.UI.HtmlControls.HtmlButton.RenderAttributes(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlControl.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlForm.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlForm.Render(HtmlTextWriter output)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlForm.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635794635083721895
+
+DATE: 03/10/2015 10:05:08
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/..Aplicativo/admin_valores_mes_equipo.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/..Aplicativo/admin_valores_mes_equipo.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635794964469982528
+
+DATE: 03/10/2015 19:14:06
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Referencia a objeto no establecida como instancia de un objeto.
+
+SOURCE: SisEquiposBertoncini
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo.aspx
+
+TARGETSITE: System.Decimal ObtenerTotal(SisEquiposBertoncini.Aplicativo.Datos.Valor_mes)
+
+STACKTRACE:    en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo.ObtenerTotal(Valor_mes item_valor) en d:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo.aspx.cs:línea 127
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo.ObtenerTotal(Valor_mes item_valor) en d:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo.aspx.cs:línea 120
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo.Recalcular_subtotales() en d:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo.aspx.cs:línea 96
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo.Unnamed_Click(Object sender, EventArgs e) en d:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo.aspx.cs:línea 265
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457281176090
+
+DATE: 05/10/2015 12:42:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/main_admin.aspx
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457284343988
+
+DATE: 05/10/2015 12:42:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457281176090
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457285294040
+
+DATE: 05/10/2015 12:42:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457284343988
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457286084237
+
+DATE: 05/10/2015 12:42:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457285294040
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457286934218
+
+DATE: 05/10/2015 12:42:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457286084237
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457289487228
+
+DATE: 05/10/2015 12:42:08 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457286934218
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457290357376
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457289487228
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457291347423
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457290357376
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457292277371
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457291347423
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457293087417
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457292277371
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457293847450
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457293087417
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457294797501
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457293847450
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457295647638
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457294797501
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457296527679
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457295647638
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457297535479
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457296527679
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457298468423
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457297535479
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457299486798
+
+DATE: 05/10/2015 12:42:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457298468423
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457300426801
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457299486798
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457301756098
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457300426801
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457303646219
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457301756098
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457304826581
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457303646219
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457305776325
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457304826581
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457306798543
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457305776325
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457307838594
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457306798543
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457308838643
+
+DATE: 05/10/2015 12:42:10 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457307838594
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457310078732
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457308838643
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457311008435
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457310078732
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457312110763
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457311008435
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457313361013
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457312110763
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457314251065
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457313361013
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457315251111
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457314251065
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457316101152
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457315251111
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457317121202
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457316101152
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457317961254
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457317121202
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457319221304
+
+DATE: 05/10/2015 12:42:11 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457317961254
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457320091346
+
+DATE: 05/10/2015 12:42:12 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457319221304
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457321011438
+
+DATE: 05/10/2015 12:42:12 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457320091346
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457321961599
+
+DATE: 05/10/2015 12:42:12 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457321011438
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457322931619
+
+DATE: 05/10/2015 12:42:12 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457321961599
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635796457323881538
+
+DATE: 05/10/2015 12:42:12 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El control 'ScriptManager1' de tipo 'ScriptManager' debe colocarse dentro de una etiqueta de formulario con runat=server.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Error.aspx?id=635796457322931619
+
+TARGETSITE: Void VerifyRenderingInServerForm(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.Page.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageWrapper.System.Web.UI.IPage.VerifyRenderingInServerForm(Control control)
+   en System.Web.UI.PageRequestManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.ScriptManager.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635797470043133675
+
+DATE: 06/10/2015 16:50:04
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: c:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx(46): error CS1061: 'ASP.aplicativo_ver_valores_cargados_equipo_aspx' no contiene una definición de 'btn_buscar_Click' ni se encontró ningún método de extensión 'btn_buscar_Click' que acepte un primer argumento de tipo 'ASP.aplicativo_ver_valores_cargados_equipo_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635798916998603331
+
+DATE: 08/10/2015 09:01:39 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/localhost/admin_valor_dolar.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/localhost/admin_valor_dolar.aspx?aa=2013
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635798918174669810
+
+DATE: 08/10/2015 09:03:37 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/admin_valor_dolar.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/admin_valor_dolar.aspx?aa=2013
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635809234961901257
+
+DATE: 20/10/2015 7:38:16
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/horas_mes.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/horas_mes.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635810399049723680
+
+DATE: 21/10/2015 15:58:24
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún campo o propiedad 'total' en el origen de datos seleccionado.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_horas_mes.aspx
+
+TARGETSITE: Boolean TryGetSimplePropertyValue(System.Object, System.Object ByRef)
+
+STACKTRACE:    en System.Web.UI.WebControls.BoundField.TryGetSimplePropertyValue(Object dataItem, Object& data)
+   en System.Web.UI.WebControls.BoundField.GetValue(Control controlContainer)
+   en System.Web.UI.WebControls.BoundField.OnDataBindField(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en SisEquiposBertoncini.Aplicativo.admin_horas_mes.btn_ver_ServerClick(Object sender, EventArgs e) en d:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_horas_mes.aspx.cs:línea 254
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635810408929853289
+
+DATE: 21/10/2015 16:14:52
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: 'lbl_días por cargar' no es un identificador válido.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_horas_mes.aspx
+
+TARGETSITE: Void ProcessError(System.String)
+
+STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
+   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+
+
+******************************************************************

@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BDC9718-7275-4933-A7F3-A2A19D96D7DE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SisEquiposBertoncini</RootNamespace>
+    <AssemblyName>SisEquiposBertoncini</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Aplicativo\Datos\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Aplicativo\admin_areas.aspx" />
+    <Content Include="Aplicativo\admin_conceptos_mensuales.aspx" />
+    <Content Include="Aplicativo\admin_empleados.aspx" />
+    <Content Include="Aplicativo\admin_equipos.aspx" />
+    <Content Include="Aplicativo\admin_equipo_detalle.aspx" />
+    <Content Include="Aplicativo\admin_horas_mes.aspx" />
+    <Content Include="Aplicativo\admin_tipo_empleado.aspx" />
+    <Content Include="Aplicativo\admin_tipo_equipo.aspx" />
+    <Content Include="Aplicativo\admin_valores_mes_equipo.aspx" />
+    <Content Include="Aplicativo\admin_valor_dolar.aspx" />
+    <Content Include="Aplicativo\Controles\imagen_empleado.ascx" />
+    <Content Include="Aplicativo\Controles\imagen_usuario.ascx" />
+    <Content Include="Aplicativo\Datos\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Aplicativo\Datos\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Aplicativo\Datos\Model1.edmx.sql" />
+    <Content Include="Aplicativo\Datos\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Aplicativo\main_admin.aspx" />
+    <Content Include="Aplicativo\Menues\menu_admin.ascx" />
+    <Content Include="Aplicativo\usr_modifica_datos.aspx" />
+    <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
+    <Content Include="App_Data\db_sis_equipo.mdf" />
+    <Content Include="App_Data\db_sis_equipo_log.ldf">
+      <DependentUpon>db_sis_equipo.mdf</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap-datetimepicker.min.css" />
+    <Content Include="css\jquery.treegrid.css" />
+    <Content Include="css\jumbotron-narrow.css" />
+    <Content Include="css\mi_css.css" />
+    <Content Include="css\signin.css" />
+    <Content Include="default.aspx" />
+    <Content Include="dispatcher.aspx" />
+    <Content Include="error.aspx" />
+    <Content Include="img\accept.png" />
+    <Content Include="img\add.png" />
+    <Content Include="img\bullet_go.png" />
+    <Content Include="img\cancel.png" />
+    <Content Include="img\collapse.png" />
+    <Content Include="img\cross.png" />
+    <Content Include="img\Error.jpg" />
+    <Content Include="img\error403.png" />
+    <Content Include="img\Exclamation.gif" />
+    <Content Include="img\expand.png" />
+    <Content Include="img\file.png" />
+    <Content Include="img\folder.png" />
+    <Content Include="img\FrameCumple.png" />
+    <Content Include="img\UsrDefault.jpg" />
+    <Content Include="img\Warning.gif" />
+    <Content Include="js\bootstrap-datetimepicker.min.js" />
+    <Content Include="js\jquery-1.11.3.min.js" />
+    <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.treegrid.bootstrap2.js" />
+    <Content Include="js\jquery.treegrid.bootstrap3.js" />
+    <Content Include="js\jquery.treegrid.js" />
+    <Content Include="js\jquery.treegrid.min.js" />
+    <Content Include="js\moment-with-locales.min.js" />
+    <Content Include="js\moment.min.js" />
+    <Content Include="packages.config" />
+    <Content Include="Site1.Master" />
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\localhost.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\npm.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aplicativo\admin_areas.aspx.cs">
+      <DependentUpon>admin_areas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_areas.aspx.designer.cs">
+      <DependentUpon>admin_areas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_conceptos_mensuales.aspx.cs">
+      <DependentUpon>admin_conceptos_mensuales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_conceptos_mensuales.aspx.designer.cs">
+      <DependentUpon>admin_conceptos_mensuales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_empleados.aspx.cs">
+      <DependentUpon>admin_empleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_empleados.aspx.designer.cs">
+      <DependentUpon>admin_empleados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_equipos.aspx.cs">
+      <DependentUpon>admin_equipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_equipos.aspx.designer.cs">
+      <DependentUpon>admin_equipos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_equipo_detalle.aspx.cs">
+      <DependentUpon>admin_equipo_detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_equipo_detalle.aspx.designer.cs">
+      <DependentUpon>admin_equipo_detalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_horas_mes.aspx.cs">
+      <DependentUpon>admin_horas_mes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_horas_mes.aspx.designer.cs">
+      <DependentUpon>admin_horas_mes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_tipo_empleado.aspx.cs">
+      <DependentUpon>admin_tipo_empleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_tipo_empleado.aspx.designer.cs">
+      <DependentUpon>admin_tipo_empleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_tipo_equipo.aspx.cs">
+      <DependentUpon>admin_tipo_equipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_tipo_equipo.aspx.designer.cs">
+      <DependentUpon>admin_tipo_equipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_valores_mes_equipo.aspx.cs">
+      <DependentUpon>admin_valores_mes_equipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_valores_mes_equipo.aspx.designer.cs">
+      <DependentUpon>admin_valores_mes_equipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_valor_dolar.aspx.cs">
+      <DependentUpon>admin_valor_dolar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_valor_dolar.aspx.designer.cs">
+      <DependentUpon>admin_valor_dolar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\Cadena.cs" />
+    <Compile Include="Aplicativo\Controles\Horas_string.cs" />
+    <Compile Include="Aplicativo\Controles\imagen_empleado.ascx.cs">
+      <DependentUpon>imagen_empleado.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\imagen_empleado.ascx.designer.cs">
+      <DependentUpon>imagen_empleado.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\imagen_usuario.ascx.cs">
+      <DependentUpon>imagen_usuario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\imagen_usuario.ascx.designer.cs">
+      <DependentUpon>imagen_usuario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\MessageBox.cs" />
+    <Compile Include="Aplicativo\Controles\ValorDolarMes.cs" />
+    <Compile Include="Aplicativo\Datos\Area.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Categoria_empleado.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Categoria_equipo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Detalle_dia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Dia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Empleado.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Equipo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Estado_turno_dia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Ingreso_egreso_mensual_equipo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Item_ingreso_egreso.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Item_por_amortizar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\partial_Equipo.cs" />
+    <Compile Include="Aplicativo\Datos\partial_Item_por_amortizar.cs" />
+    <Compile Include="Aplicativo\Datos\perfil_usuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\resumen_equipo_anio.cs" />
+    <Compile Include="Aplicativo\Datos\Usuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Valor_dolar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Valor_mes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\main_admin.aspx.cs">
+      <DependentUpon>main_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\main_admin.aspx.designer.cs">
+      <DependentUpon>main_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Seguridad\Cripto.cs" />
+    <Compile Include="Aplicativo\Menues\menu_admin.ascx.cs">
+      <DependentUpon>menu_admin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Menues\menu_admin.ascx.designer.cs">
+      <DependentUpon>menu_admin.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\usr_modifica_datos.aspx.cs">
+      <DependentUpon>usr_modifica_datos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\usr_modifica_datos.aspx.designer.cs">
+      <DependentUpon>usr_modifica_datos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\ver_valores_cargados_equipo.aspx.cs">
+      <DependentUpon>ver_valores_cargados_equipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\ver_valores_cargados_equipo.aspx.designer.cs">
+      <DependentUpon>ver_valores_cargados_equipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dispatcher.aspx.cs">
+      <DependentUpon>dispatcher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dispatcher.aspx.designer.cs">
+      <DependentUpon>dispatcher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56181</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55789/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
