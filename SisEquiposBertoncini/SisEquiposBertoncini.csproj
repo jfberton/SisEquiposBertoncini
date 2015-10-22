@@ -318,6 +318,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Datos\resumen_equipo_anio.cs" />
+    <Compile Include="Aplicativo\Datos\Resumen_mes_empleado.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Datos\Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

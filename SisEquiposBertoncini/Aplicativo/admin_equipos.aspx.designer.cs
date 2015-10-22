@@ -76,6 +76,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Label lbl_categoria;
         
         /// <summary>
+        /// Control lbl_out.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_out;
+        
+        /// <summary>
         /// Control lbl_notas_equipo.
         /// </summary>
         /// <remarks>

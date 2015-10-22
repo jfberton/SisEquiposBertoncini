@@ -43,7 +43,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                    {
                                        area_id = aa.area_id,
                                        area_nombre = aa.area_nombre,
-                                       area_empleados = cxt.Empleados.Count(ee => ee.id_area == aa.area_id)
+                                       area_empleados = cxt.Empleados.Count(ee => ee.id_area == aa.area_id && ee.fecha_baja == null)
                                    });
 
                 gv_areas.DataSource = items_areas;
@@ -76,6 +76,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_nombre_area.Text = area.nombre;
 
                 var empleados = (from ee in area.Empleados
+                                 where ee.fecha_baja == null
                                  select new
                                  {
                                      empleado_nombre = ee.nombre,
@@ -105,7 +106,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 Area area = cxt.Areas.First(aa => aa.id_area == id_area);
 
-                if (area.Empleados.Count > 0)
+                if (area.Empleados.Where(ee=>ee.fecha_baja== null).Count() > 0)
                 {
                     MessageBox.Show(this, "No se puede eliminar el área ya que la misma aún tiene empleados", MessageBox.Tipo_MessageBox.Danger, "Imposible eliminar!");
                 }

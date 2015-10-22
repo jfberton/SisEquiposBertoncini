@@ -114,6 +114,11 @@
                         <asp:GridView ID="gv_valores_mes" runat="server" EmptyDataText="no hay valores por mostrar." OnRowDataBound="gv_valores_mes_RowDataBound"
                             AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                             <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <span class='<%#Eval("icon_alerta")%>' aria-hidden="true" title='<%#Eval("tooltip_alerta")%>'></span>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:BoundField DataField="dia" HeaderText="Día" ReadOnly="true" DataFormatString="{0:dddd', ' dd 'de' MMMM 'del' yyyy}" />
                                 <asp:BoundField DataField="estado_tm" HeaderText="T. M." ReadOnly="true" />
                                 <asp:BoundField DataField="estado_tt" HeaderText="T. T." ReadOnly="true" />
@@ -255,13 +260,18 @@
                                         <br />
                                         <div class="row" style="height: 200px; overflow-y: scroll;">
                                             <div class="col-md-12">
-                                                <asp:GridView ID="gv_detalle_dia" runat="server" EmptyDataText="no hay valores por mostrar." OnRowDataBound="gv_valores_mes_RowDataBound"
+                                                <asp:GridView ID="gv_detalle_dia" runat="server" EmptyDataText="no hay valores por mostrar." OnRowDataBound="gv_detalle_dia_RowDataBound"
                                                     AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                                                     <Columns>
                                                         <asp:BoundField DataField="equipo" HeaderText="Equipo" ReadOnly="true" />
                                                         <asp:BoundField DataField="desde" HeaderText="Desde" ReadOnly="true" />
                                                         <asp:BoundField DataField="hasta" HeaderText="Hasta" ReadOnly="true" />
                                                         <asp:BoundField DataField="total_movimiento" HeaderText="Total movimiento" ReadOnly="true" />
+                                                        <asp:TemplateField HeaderText="OUT">
+                                                            <ItemTemplate>
+                                                                <asp:CheckBox ID="cbSelect" Checked='<%#Eval("_out")%>' runat="server"></asp:CheckBox>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
                                                         <asp:TemplateField>
                                                             <ItemTemplate>
                                                                 <button

@@ -64,6 +64,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_categoria.Text = equipo.Categoria.nombre;
                 lbl_nombre.Text = equipo.nombre;
                 lbl_notas_equipo.Text = equipo.notas;
+                lbl_out.Text = equipo.OUT ? "-[ OUT ]-" : "";
                 var items = (from ii in equipo.Items_por_amortizar
                              select new
                              {

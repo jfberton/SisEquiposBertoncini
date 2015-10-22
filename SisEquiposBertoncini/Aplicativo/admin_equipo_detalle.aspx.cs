@@ -68,14 +68,10 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    //if (equipo.id_equipo > 0)
-                    //{
-                    //    equipo = cxt.Equipos.First(ee => ee.id_equipo == equipo.id_equipo);
-                    //}
-
                     tb_nombre.Value = equipo.nombre;
                     ddl_categorias.SelectedValue = equipo.id_categoria.ToString();
                     tb_notas_equipo.Value = equipo.notas;
+                    chk_out.Checked = equipo.OUT;
 
                     int mes = DateTime.Today.Month;
                     int anio = DateTime.Today.Year;

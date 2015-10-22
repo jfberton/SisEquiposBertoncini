@@ -153,5 +153,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Resumenes_meses_empleados">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Resumen_mes_empleado)">
+        <MappingFragment StoreEntitySet="Resumenes_meses_empleados">
+          <ScalarProperty Name="id_resumen_mes" ColumnName="id_resumen_mes" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="dias_laborables" ColumnName="dias_laborables" />
+          <ScalarProperty Name="dias_ausente" ColumnName="dias_ausente" />
+          <ScalarProperty Name="dias_presente" ColumnName="dias_presente" />
+          <ScalarProperty Name="dias_por_cargar" ColumnName="dias_por_cargar" />
+          <ScalarProperty Name="dias_out" ColumnName="dias_out" />
+          <ScalarProperty Name="dias_presentes_en_dias_no_laborables" ColumnName="dias_presentes_en_dias_no_laborables" />
+          <ScalarProperty Name="total_horas_normales" ColumnName="total_horas_normales" />
+          <ScalarProperty Name="total_horas_extra_50" ColumnName="total_horas_extra_50" />
+          <ScalarProperty Name="total_horas_extra_100" ColumnName="total_horas_extra_100" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

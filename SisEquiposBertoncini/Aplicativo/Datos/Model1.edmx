@@ -20,6 +20,7 @@
     <EntitySet Name="Items_ingresos_egresos" EntityType="Model1.Store.Items_ingresos_egresos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Valores_meses" EntityType="Model1.Store.Valores_meses" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Store.Resumenes_meses_empleados" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -63,6 +64,10 @@
     <AssociationSet Name="Item_ingreso_egresoItem_ingreso_egreso" Association="Model1.Store.Item_ingreso_egresoItem_ingreso_egreso">
       <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
       <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoResumen_mes_empleado" Association="Model1.Store.EmpleadoResumen_mes_empleado">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="Resumen_mes_empleado" EntitySet="Resumenes_meses_empleados" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Equipos">
@@ -203,6 +208,24 @@
     <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Resumenes_meses_empleados">
+    <Key>
+      <PropertyRef Name="id_resumen_mes" />
+    </Key>
+    <Property Name="id_resumen_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="dias_laborables" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_ausente" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_presente" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_por_cargar" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_out" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_presentes_en_dias_no_laborables" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="total_horas_normales" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
     <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="*" />
@@ -335,6 +358,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="EmpleadoResumen_mes_empleado">
+    <End Role="Empleado" Type="Model1.Store.Empleados" Multiplicity="1" />
+    <End Role="Resumen_mes_empleado" Type="Model1.Store.Resumenes_meses_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Resumen_mes_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -398,6 +433,11 @@
             <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
           </AssociationSet>
           <EntitySet Name="Feriados" EntityType="Model1.Feriado" />
+          <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Resumen_mes_empleado" />
+          <AssociationSet Name="EmpleadoResumen_mes_empleado" Association="Model1.EmpleadoResumen_mes_empleado">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="Resumen_mes_empleado" EntitySet="Resumenes_meses_empleados" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Equipo">
           <Key>
@@ -453,6 +493,7 @@
           <Property Name="dni" Type="String" Nullable="false" />
           <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
           <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Resumenes_meses_empleado" Relationship="Model1.EmpleadoResumen_mes_empleado" FromRole="Empleado" ToRole="Resumen_mes_empleado" />
         </EntityType>
         <EntityType Name="Categoria_empleado">
           <Key>
@@ -708,6 +749,37 @@
           <Property Name="fecha" Type="DateTime" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" />
         </EntityType>
+        <EntityType Name="Resumen_mes_empleado">
+          <Key>
+            <PropertyRef Name="id_resumen_mes" />
+          </Key>
+          <Property Name="id_resumen_mes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Empleado" Relationship="Model1.EmpleadoResumen_mes_empleado" FromRole="Resumen_mes_empleado" ToRole="Empleado" />
+          <Property Name="id_empleado" Type="Int32" Nullable="false" />
+          <Property Name="mes" Type="Int32" Nullable="false" />
+          <Property Name="anio" Type="Int32" Nullable="false" />
+          <Property Name="dias_laborables" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+          <Property Name="dias_ausente" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+          <Property Name="dias_presente" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+          <Property Name="dias_por_cargar" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+          <Property Name="dias_out" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+          <Property Name="dias_presentes_en_dias_no_laborables" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
+          <Property Name="total_horas_normales" Type="String" Nullable="false" />
+          <Property Name="total_horas_extra_50" Type="String" Nullable="false" />
+          <Property Name="total_horas_extra_100" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="EmpleadoResumen_mes_empleado">
+          <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="Model1.Resumen_mes_empleado" Role="Resumen_mes_empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="Resumen_mes_empleado">
+              <PropertyRef Name="id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -863,6 +935,25 @@
           <ScalarProperty Name="id_feriado" ColumnName="id_feriado" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resumenes_meses_empleados">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Resumen_mes_empleado)">
+        <MappingFragment StoreEntitySet="Resumenes_meses_empleados">
+          <ScalarProperty Name="id_resumen_mes" ColumnName="id_resumen_mes" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="dias_laborables" ColumnName="dias_laborables" />
+          <ScalarProperty Name="dias_ausente" ColumnName="dias_ausente" />
+          <ScalarProperty Name="dias_presente" ColumnName="dias_presente" />
+          <ScalarProperty Name="dias_por_cargar" ColumnName="dias_por_cargar" />
+          <ScalarProperty Name="dias_out" ColumnName="dias_out" />
+          <ScalarProperty Name="dias_presentes_en_dias_no_laborables" ColumnName="dias_presentes_en_dias_no_laborables" />
+          <ScalarProperty Name="total_horas_normales" ColumnName="total_horas_normales" />
+          <ScalarProperty Name="total_horas_extra_50" ColumnName="total_horas_extra_50" />
+          <ScalarProperty Name="total_horas_extra_100" ColumnName="total_horas_extra_100" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

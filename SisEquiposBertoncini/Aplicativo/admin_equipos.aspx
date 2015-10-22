@@ -95,6 +95,7 @@
                                     <small>
                                         <label>Categoría</label>
                                         <asp:Label Text="" ID="lbl_categoria" runat="server" /></small></h2>
+                                <asp:Label Text="" ID="lbl_out" runat="server" />
                             </div>
                         </div>
                         <div class="row">

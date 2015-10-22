@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SisEquiposBertoncini.Aplicativo.Datos;
 using SisEquiposBertoncini.Aplicativo.Controles;
 using System.Drawing;
+using System.Web.UI.HtmlControls;
 
 namespace SisEquiposBertoncini.Aplicativo
 {
@@ -16,6 +17,8 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             public string id_dia { get; set; }
             public DateTime dia { get; set; }
+            public string icon_alerta { get; set; }
+            public string tooltip_alerta { get; set; }
             public Estado_turno_dia estado_tm { get; set; }
             public Estado_turno_dia estado_tt { get; set; }
             public string horas_normales { get; set; }
@@ -33,6 +36,7 @@ namespace SisEquiposBertoncini.Aplicativo
             public string equipo { get; set; }
             public string desde { get; set; }
             public string hasta { get; set; }
+            public bool _out { get; set; }
             public string total_movimiento { get; set; }
         }
 
@@ -137,6 +141,14 @@ namespace SisEquiposBertoncini.Aplicativo
             }
         }
 
+        protected void gv_detalle_dia_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.ControlStyle.BackColor = Color.LightGray;
+            }
+        }
+
         protected void gv_valores_mes_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)
@@ -147,22 +159,24 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    if (e.Row.Cells[1].Text == "Ninguno")
+                    string imagen_feriado = ((System.Web.UI.DataBoundLiteralControl)e.Row.Cells[0].Controls[0]).Text;
+
+                    if (imagen_feriado.Contains("glyphicon-exclamation-sign"))
                     {
-                        e.Row.Cells[1].BackColor = System.Drawing.Color.LightGray;
-                        e.Row.Cells[1].ForeColor = System.Drawing.Color.DarkGray;
+                        e.Row.ControlStyle.BackColor = Color.WhiteSmoke;
+                        e.Row.ForeColor = Color.Black;
                     }
 
                     if (e.Row.Cells[2].Text == "Ninguno")
                     {
-                        e.Row.Cells[2].BackColor = System.Drawing.Color.LightGray;
-                        e.Row.Cells[2].ForeColor = System.Drawing.Color.DarkGray;
+                        e.Row.Cells[2].BackColor = Color.WhiteSmoke;
+                        e.Row.Cells[2].ForeColor = Color.Black;
                     }
 
-                    if (e.Row.Cells[1].Text == "Vacaciones")
+                    if (e.Row.Cells[3].Text == "Ninguno")
                     {
-                        e.Row.Cells[1].BackColor = System.Drawing.Color.LightYellow;
-                        e.Row.Cells[1].ForeColor = System.Drawing.Color.DarkGoldenrod;
+                        e.Row.Cells[3].BackColor = Color.WhiteSmoke;
+                        e.Row.Cells[3].ForeColor = Color.Black;
                     }
 
                     if (e.Row.Cells[2].Text == "Vacaciones")
@@ -171,10 +185,10 @@ namespace SisEquiposBertoncini.Aplicativo
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.DarkGoldenrod;
                     }
 
-                    if (e.Row.Cells[1].Text == "Presente")
+                    if (e.Row.Cells[3].Text == "Vacaciones")
                     {
-                        e.Row.Cells[1].BackColor = System.Drawing.Color.LightGreen;
-                        e.Row.Cells[1].ForeColor = System.Drawing.Color.DarkGreen;
+                        e.Row.Cells[3].BackColor = System.Drawing.Color.LightYellow;
+                        e.Row.Cells[3].ForeColor = System.Drawing.Color.DarkGoldenrod;
                     }
 
                     if (e.Row.Cells[2].Text == "Presente")
@@ -183,16 +197,22 @@ namespace SisEquiposBertoncini.Aplicativo
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.DarkGreen;
                     }
 
-                    if (e.Row.Cells[1].Text == "Ausente" || e.Row.Cells[1].Text == "Ausente_injust")
+                    if (e.Row.Cells[3].Text == "Presente")
                     {
-                        e.Row.Cells[1].BackColor = System.Drawing.Color.LightPink;
-                        e.Row.Cells[1].ForeColor = System.Drawing.Color.DarkRed;
+                        e.Row.Cells[3].BackColor = System.Drawing.Color.LightGreen;
+                        e.Row.Cells[3].ForeColor = System.Drawing.Color.DarkGreen;
                     }
 
-                    if (e.Row.Cells[2].Text == "Ausente" || e.Row.Cells[2].Text == "Ausente_injust")
+                    if (e.Row.Cells[2].Text == "Ausente" || e.Row.Cells[1].Text == "Ausente_injust")
                     {
                         e.Row.Cells[2].BackColor = System.Drawing.Color.LightPink;
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.DarkRed;
+                    }
+
+                    if (e.Row.Cells[3].Text == "Ausente" || e.Row.Cells[2].Text == "Ausente_injust")
+                    {
+                        e.Row.Cells[3].BackColor = System.Drawing.Color.LightPink;
+                        e.Row.Cells[3].ForeColor = System.Drawing.Color.DarkRed;
                     }
                 }
             }
@@ -216,7 +236,7 @@ namespace SisEquiposBertoncini.Aplicativo
             List<fila_valor_dia_mes> valores_mes = new List<fila_valor_dia_mes>();
 
             decimal dias_laborables = 0;
-            decimal dias_ausentes= 0;
+            decimal dias_ausentes = 0;
             decimal dias_presentes = 0;
             decimal dias_por_cargar = 0;
             decimal dias_out = 0;
@@ -232,6 +252,10 @@ namespace SisEquiposBertoncini.Aplicativo
                     DateTime fecha_buscada = new DateTime(anio, mes, i);
                     fila_valor_dia_mes ret = new fila_valor_dia_mes();
                     Dia dia = cxt.Dias.FirstOrDefault(d => d.fecha == fecha_buscada && d.id_empleado == id_empleado);
+                    Feriado feriado = cxt.Feriados.FirstOrDefault(ff => ff.fecha == fecha_buscada);
+                    ret.icon_alerta = feriado != null ? "glyphicon glyphicon-exclamation-sign" : "";
+                    ret.tooltip_alerta = feriado != null ? feriado.descripcion : "";
+
                     if (dia != null)
                     {
                         ret.id_dia = "id_" + dia.id_dia.ToString();
@@ -253,16 +277,24 @@ namespace SisEquiposBertoncini.Aplicativo
                         total_horas_extra_50 = Horas_string.SumarHoras(new string[] { total_horas_extra_50, dia.horas_extra_50 });
                         total_horas_extra_100 = Horas_string.SumarHoras(new string[] { total_horas_extra_100, dia.horas_extra_100 });
 
-                        dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Saturday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                        if (feriado == null)
+                        {
+                            dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Saturday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
 
-                        dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
-                        dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                        }
+                        else
+                        {
+                            dias_presentes_en_dias_no_laborables = (ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            dias_presentes_en_dias_no_laborables = (ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                        }
 
                         foreach (Detalle_dia detalle in dia.Detalles)
                         {
-                            if(detalle.Equipo.OUT)
+                            if (detalle.Equipo.OUT)
                             {
-                                dias_out = dias_out + Horas_string.HorasADecimales(Horas_string.RestarHoras(detalle.hora_hasta, detalle.hora_desde));
+                                dias_out = dias_out + (Horas_string.HorasADecimales(Horas_string.RestarHoras(detalle.hora_hasta, detalle.hora_desde))/Convert.ToDecimal(8));
                             }
                         }
                     }
@@ -280,30 +312,66 @@ namespace SisEquiposBertoncini.Aplicativo
                         switch (ret.dia.DayOfWeek)
                         {
                             case DayOfWeek.Saturday:
+                                 if (feriado == null)
+                                {
                                 dias_por_cargar += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
+                                     }
                                 break;
                             case DayOfWeek.Sunday:
                                 break;
                             default:
-                                dias_por_cargar++;
+                                if (feriado == null)
+                                {
+                                    dias_por_cargar++;
+                                }
                                 break;
                         }
 
                     }
+
                     valores_mes.Add(ret);
 
                     switch (ret.dia.DayOfWeek)
                     {
                         case DayOfWeek.Saturday:
-                            dias_laborables += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
+                            if (feriado == null)
+                            {
+                                dias_laborables += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
+                            }
                             break;
                         case DayOfWeek.Sunday:
                             break;
                         default:
-                            dias_laborables++;
+                            if (feriado == null)
+                            {
+                                dias_laborables++;
+                            }
                             break;
                     }
                 }
+
+                Resumen_mes_empleado rme = cxt.Resumenes_meses_empleados.FirstOrDefault(rr => rr.id_empleado == id_empleado && rr.mes == mes && rr.anio == anio);
+                if (rme == null)
+                {
+                    rme = new Resumen_mes_empleado();
+                    rme.id_empleado = id_empleado;
+                    rme.mes = mes;
+                    rme.anio = anio;
+                    cxt.Resumenes_meses_empleados.Add(rme);
+                }
+
+                rme.dias_ausente = dias_ausentes;
+                rme.dias_laborables = dias_laborables;
+                rme.dias_out = dias_out;
+                rme.dias_por_cargar = dias_por_cargar;
+                rme.dias_presente = dias_presentes;
+                rme.dias_presentes_en_dias_no_laborables = dias_presentes_en_dias_no_laborables;
+                rme.total_horas_normales = total_horas_normales;
+                rme.total_horas_extra_50 = total_horas_extra_50;
+                rme.total_horas_extra_100 = total_horas_extra_100;
+
+                cxt.SaveChanges();
+                
             }
 
             gv_valores_mes.DataSource = valores_mes;
@@ -347,6 +415,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     {
                         fila_detalle_dia fila_detalle = new fila_detalle_dia();
                         fila_detalle.id_equipo = item_detalle.Equipo.id_equipo;
+                        fila_detalle._out = item_detalle.Equipo.OUT;
                         fila_detalle.fecha = item_detalle.Dia.fecha;
                         fila_detalle.id_dia = item_detalle.id_dia;
                         fila_detalle.id_detalle_dia = item_detalle.id_detalle_dia;
@@ -379,7 +448,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             gv_detalle_dia.DataSource = detalle;
             gv_detalle_dia.DataBind();
-            
+
             lbl_fecha.Text = dia.fecha.ToString("dddd', ' dd 'de' MMMM 'del' yyyy");
             ddl_estado_turno_m.SelectedValue = dia.estado_tm.ToString();
             ddl_estado_turno_t.SelectedValue = dia.estado_tt.ToString();
@@ -390,7 +459,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             Session["DiaSeleccionado"] = dia;
             Session["Detalle"] = detalle;
-            
+
             MostrarPopUpValoresDia();
         }
 
@@ -401,7 +470,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 int id_tipo_empleado = Convert.ToInt32(ddl_tipo_empleado.SelectedValue);
 
                 var empleados = (from ee in cxt.Empleados
-                                 where ee.id_categoria == id_tipo_empleado
+                                 where ee.id_categoria == id_tipo_empleado && ee.fecha_baja == null
                                  select new
                                  {
                                      value = ee.id_empleado,
@@ -450,13 +519,21 @@ namespace SisEquiposBertoncini.Aplicativo
 
             if (!tiene_error)
             {
+                Equipo equipo = null;
+                using (var cxt = new Model1Container())
+                {
+                    int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
+                    equipo = cxt.Equipos.FirstOrDefault(ee => ee.id_equipo == id_equipo);
+                }
+
                 div_error_detalle.Visible = false;
                 Dia dia = Session["DiaSeleccionado"] as Dia;
                 List<fila_detalle_dia> filas = Session["Detalle"] as List<fila_detalle_dia>;
                 fila_detalle_dia detalle = new fila_detalle_dia();
-                detalle.id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
+                detalle._out = equipo.OUT;
+                detalle.id_equipo = equipo.id_equipo;
                 detalle.fecha = dia.fecha;
-                detalle.equipo = ddl_equipo.SelectedItem.Text;
+                detalle.equipo = equipo.nombre;
                 detalle.desde = tb_hora_desde.Value;
                 detalle.hasta = tb_hora_hasta.Value;
                 detalle.total_movimiento = Horas_string.RestarHoras(tb_hora_hasta.Value, tb_hora_desde.Value);
@@ -466,11 +543,14 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (fila_detalle_dia item_detalle in filas)
                 {
-                    horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                    if (!item_detalle._out)
+                    {
+                        horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                    }
                 }
 
                 dia.horas_normales = ObtenerHoras(horasTotales, dia.fecha, TipoHora.Normales);
-                dia.horas_extra_50= ObtenerHoras(horasTotales, dia.fecha, TipoHora.Extra50);
+                dia.horas_extra_50 = ObtenerHoras(horasTotales, dia.fecha, TipoHora.Extra50);
                 dia.horas_extra_100 = ObtenerHoras(horasTotales, dia.fecha, TipoHora.Extra100);
 
                 gv_detalle_dia.DataSource = filas;
@@ -502,19 +582,24 @@ namespace SisEquiposBertoncini.Aplicativo
 
             string errores = string.Empty;
             bool tiene_error = false;
+            Feriado feriado = null;
 
+            using (var cxt = new Model1Container())
+            {
+               feriado  = cxt.Feriados.FirstOrDefault(ff => ff.fecha == dia.fecha);
+            }
 
             Estado_turno_dia estadotm = (Estado_turno_dia)Enum.Parse(typeof(Estado_turno_dia), ddl_estado_turno_m.SelectedValue);
             Estado_turno_dia estadott = (Estado_turno_dia)Enum.Parse(typeof(Estado_turno_dia), ddl_estado_turno_t.SelectedValue);
 
-            if (dia.fecha.DayOfWeek != DayOfWeek.Sunday)
+            if (dia.fecha.DayOfWeek != DayOfWeek.Sunday && feriado == null)
             {
                 tiene_error = estadotm != Estado_turno_dia.Ninguno ? false : true;
                 errores = !tiene_error ? string.Empty : errores + "• Debe agendar estado para el turno mañana <br/>";
             }
             if (!tiene_error)
             {
-                if (dia.fecha.DayOfWeek != DayOfWeek.Saturday && dia.fecha.DayOfWeek != DayOfWeek.Sunday)
+                if (dia.fecha.DayOfWeek != DayOfWeek.Saturday && dia.fecha.DayOfWeek != DayOfWeek.Sunday && feriado == null)
                 {
                     tiene_error = estadott != Estado_turno_dia.Ninguno ? false : true;
                     errores = !tiene_error ? string.Empty : errores + "• Debe agendar estado para el turno tarde <br/>";
@@ -529,7 +614,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     {
                         Dia dia_cxt = new Dia();
                         dia_cxt.id_empleado = Convert.ToInt32(ddl_empleado.SelectedItem.Value);
-                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday)
+                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || feriado != null)
                         {
                             if (estadotm != Estado_turno_dia.Ausente && estadotm != Estado_turno_dia.Ausente_injust)
                             {
@@ -545,7 +630,7 @@ namespace SisEquiposBertoncini.Aplicativo
                             dia_cxt.estado_tm = estadotm;
                         }
 
-                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || dia.fecha.DayOfWeek == DayOfWeek.Saturday)
+                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || dia.fecha.DayOfWeek == DayOfWeek.Saturday || feriado != null)
                         {
                             if (estadott != Estado_turno_dia.Ausente && estadott != Estado_turno_dia.Ausente_injust)
                             {
@@ -583,15 +668,15 @@ namespace SisEquiposBertoncini.Aplicativo
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(this, "CHANN!!! LPM<br/>Error: " + ex.Message + "<br/>Inner: " + ex.InnerException, MessageBox.Tipo_MessageBox.Danger);
+                            MessageBox.Show(this, "Error!!!!!!<br/>Error: " + ex.Message + "<br/>Inner: " + ex.InnerException, MessageBox.Tipo_MessageBox.Danger);
                         }
 
                     }
                     else
-                    { 
+                    {
                         //ya existe el dia, hay que agregar los cambios
                         Dia dia_cxt = cxt.Dias.First(d => d.id_dia == dia.id_dia);
-                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday)
+                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || feriado != null)
                         {
                             if (estadotm != Estado_turno_dia.Ausente && estadotm != Estado_turno_dia.Ausente_injust)
                             {
@@ -607,7 +692,7 @@ namespace SisEquiposBertoncini.Aplicativo
                             dia_cxt.estado_tm = estadotm;
                         }
 
-                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || dia.fecha.DayOfWeek == DayOfWeek.Saturday)
+                        if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || dia.fecha.DayOfWeek == DayOfWeek.Saturday || feriado != null)
                         {
                             if (estadott != Estado_turno_dia.Ausente && estadott != Estado_turno_dia.Ausente_injust)
                             {
@@ -679,7 +764,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     cxt.Detalles_dias.Remove(detalle);
 
                     int index = -1;
-                    
+
                     foreach (fila_detalle_dia item in filas)
                     {
                         if (item.id_detalle_dia == detalle.id_detalle_dia)
@@ -737,12 +822,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_horas_extra_cien.Text = dia.horas_extra_100;
             }
 
-            
+
 
             gv_detalle_dia.DataSource = filas;
             gv_detalle_dia.DataBind();
 
-            
+
 
             Session["Detalle"] = filas;
 

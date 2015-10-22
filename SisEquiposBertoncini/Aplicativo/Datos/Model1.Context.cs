@@ -39,5 +39,6 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public DbSet<Item_ingreso_egreso> Items_ingresos_egresos { get; set; }
         public DbSet<Valor_mes> Valores_meses { get; set; }
         public DbSet<Feriado> Feriados { get; set; }
+        public DbSet<Resumen_mes_empleado> Resumenes_meses_empleados { get; set; }
     }
 }

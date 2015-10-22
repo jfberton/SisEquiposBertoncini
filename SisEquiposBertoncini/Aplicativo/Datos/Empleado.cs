@@ -17,6 +17,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public Empleado()
         {
             this.Dias = new HashSet<Dia>();
+            this.Resumenes_meses_empleado = new HashSet<Resumen_mes_empleado>();
         }
     
         public int id_empleado { get; set; }
@@ -30,5 +31,6 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public virtual Categoria_empleado Categoria { get; set; }
         public virtual ICollection<Dia> Dias { get; set; }
         public virtual Area Area { get; set; }
+        public virtual ICollection<Resumen_mes_empleado> Resumenes_meses_empleado { get; set; }
     }
 }

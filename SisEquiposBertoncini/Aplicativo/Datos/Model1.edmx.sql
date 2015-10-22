@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/22/2015 08:13:05
+-- Date Created: 10/22/2015 12:09:16
 -- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
@@ -240,6 +240,24 @@ CREATE TABLE [dbo].[Feriados] (
 );
 GO
 
+-- Creating table 'Resumenes_meses_empleados'
+CREATE TABLE [dbo].[Resumenes_meses_empleados] (
+    [id_resumen_mes] int IDENTITY(1,1) NOT NULL,
+    [id_empleado] int  NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL,
+    [dias_laborables] decimal(5,2)  NOT NULL,
+    [dias_ausente] decimal(5,2)  NOT NULL,
+    [dias_presente] decimal(5,2)  NOT NULL,
+    [dias_por_cargar] decimal(5,2)  NOT NULL,
+    [dias_out] decimal(5,2)  NOT NULL,
+    [dias_presentes_en_dias_no_laborables] decimal(5,2)  NOT NULL,
+    [total_horas_normales] nvarchar(max)  NOT NULL,
+    [total_horas_extra_50] nvarchar(max)  NOT NULL,
+    [total_horas_extra_100] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -326,6 +344,12 @@ GO
 ALTER TABLE [dbo].[Feriados]
 ADD CONSTRAINT [PK_Feriados]
     PRIMARY KEY CLUSTERED ([id_feriado] ASC);
+GO
+
+-- Creating primary key on [id_resumen_mes] in table 'Resumenes_meses_empleados'
+ALTER TABLE [dbo].[Resumenes_meses_empleados]
+ADD CONSTRAINT [PK_Resumenes_meses_empleados]
+    PRIMARY KEY CLUSTERED ([id_resumen_mes] ASC);
 GO
 
 -- --------------------------------------------------
@@ -495,6 +519,21 @@ GO
 CREATE INDEX [IX_FK_Item_ingreso_egresoItem_ingreso_egreso]
 ON [dbo].[Items_ingresos_egresos]
     ([id_item_padre]);
+GO
+
+-- Creating foreign key on [id_empleado] in table 'Resumenes_meses_empleados'
+ALTER TABLE [dbo].[Resumenes_meses_empleados]
+ADD CONSTRAINT [FK_EmpleadoResumen_mes_empleado]
+    FOREIGN KEY ([id_empleado])
+    REFERENCES [dbo].[Empleados]
+        ([id_empleado])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmpleadoResumen_mes_empleado'
+CREATE INDEX [IX_FK_EmpleadoResumen_mes_empleado]
+ON [dbo].[Resumenes_meses_empleados]
+    ([id_empleado]);
 GO
 
 -- --------------------------------------------------
