@@ -29,6 +29,7 @@
         <AssociationConnector Association="Model1.Ingreso_egreso_mensual_equipoValor_mes" />
         <AssociationConnector Association="Model1.Item_ingreso_egresoValor_mes" />
         <AssociationConnector Association="Model1.Item_ingreso_egresoItem_ingreso_egreso" />
+        <EntityTypeShape EntityType="Model1.Feriado" Width="1.5" PointX="10.25" PointY="0.875" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

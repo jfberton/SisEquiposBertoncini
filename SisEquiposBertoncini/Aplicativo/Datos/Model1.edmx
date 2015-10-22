@@ -19,6 +19,7 @@
     <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Model1.Store.Ingresos_egresos_mensuales_equipos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Items_ingresos_egresos" EntityType="Model1.Store.Items_ingresos_egresos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Valores_meses" EntityType="Model1.Store.Valores_meses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -193,6 +194,14 @@
     <Property Name="id_ingreso_egreso_mensual" Type="int" Nullable="false" />
     <Property Name="id_item" Type="int" Nullable="false" />
     <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Feriados">
+    <Key>
+      <PropertyRef Name="id_feriado" />
+    </Key>
+    <Property Name="id_feriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
@@ -388,6 +397,7 @@
             <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
             <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
           </AssociationSet>
+          <EntitySet Name="Feriados" EntityType="Model1.Feriado" />
           </EntityContainer>
         <EntityType Name="Equipo">
           <Key>
@@ -690,6 +700,14 @@
           <Member Name="Ausente" Value="3" />
           <Member Name="Ausente_injust" Value="4" />
         </EnumType>
+        <EntityType Name="Feriado">
+          <Key>
+            <PropertyRef Name="id_feriado" />
+          </Key>
+          <Property Name="id_feriado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -836,6 +854,15 @@
           <ScalarProperty Name="id_ingreso_egreso_mensual" ColumnName="id_ingreso_egreso_mensual" />
           <ScalarProperty Name="id_item" ColumnName="id_item" />
           <ScalarProperty Name="valor" ColumnName="valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feriados">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Feriado)">
+        <MappingFragment StoreEntitySet="Feriados">
+          <ScalarProperty Name="id_feriado" ColumnName="id_feriado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

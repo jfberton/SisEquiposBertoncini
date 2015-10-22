@@ -27,8 +27,8 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-10">
-                    <table class="table-condensed">
+                <div class="col-md-6">
+                    <table class="table-condensed" style="width: 100%">
                         <tr>
                             <td>
                                 <input type="text" runat="server" id="tb_nombre" class="form-control" /></td>
@@ -37,6 +37,14 @@
                                     ID="rv_nombre" runat="server" ErrorMessage="Debe ingresar el nombre del equipo" ValidationGroup="equipo">
                                 </asp:RequiredFieldValidator>
                             </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table-condensed">
+                        <tr>
+                            <td>
+                                <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
                         </tr>
                     </table>
                 </div>

@@ -19,22 +19,44 @@
                         <div class="col-md-5">
                             <div class="row">
                                 <div class="col-md-2">
-                                    Tipo
+                                    <table class="table-condensed">
+                                        <tr>
+                                            <td>Tipo</td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                                 <div class="col-md-10">
-                                    <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_tipo_empleado" AutoPostBack="true" OnSelectedIndexChanged="ddl_tipo_empleado_SelectedIndexChanged">
-                                    </asp:DropDownList>
+                                    <table class="table-condensed">
+                                        <tr>
+                                            <td>
+                                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_tipo_empleado" AutoPostBack="true" OnSelectedIndexChanged="ddl_tipo_empleado_SelectedIndexChanged">
+                                                </asp:DropDownList></td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7">
                             <div class="row">
                                 <div class="col-md-3">
-                                    Empleado
+                                    <table class="table-condensed">
+                                        <tr>
+                                            <td>Empleado</td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                                 <div class="col-md-9">
-                                    <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_empleado">
-                                    </asp:DropDownList>
+                                    <table class="table-condensed">
+                                        <tr>
+                                            <td>
+                                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_empleado">
+                                                </asp:DropDownList></td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>
@@ -43,18 +65,40 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-1">
-                            Mes
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>Mes</td>
+                                </tr>
+                            </table>
+
                         </div>
                         <div class="col-md-6">
-                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_mes">
-                            </asp:DropDownList>
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>
+                                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_mes">
+                                        </asp:DropDownList></td>
+                                </tr>
+                            </table>
+
                         </div>
                         <div class="col-md-1">
-                            Año
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>Año</td>
+                                </tr>
+                            </table>
+
                         </div>
                         <div class="col-md-4">
-                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_anio">
-                            </asp:DropDownList>
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>
+                                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_anio">
+                                        </asp:DropDownList></td>
+                                </tr>
+                            </table>
+
                         </div>
                     </div>
                 </div>
@@ -103,18 +147,40 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2">
-                                                Turno mañana
+                                                <table class="table-condensed">
+                                                    <tr>
+                                                        <td>Turno mañana</td>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                             <div class="col-md-4">
-                                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_m">
-                                                </asp:DropDownList>
+                                                <table class="table-condensed">
+                                                    <tr>
+                                                        <td>
+                                                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_m">
+                                                            </asp:DropDownList></td>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                             <div class="col-md-2">
-                                                Turno Tarde
+                                                <table class="table-condensed">
+                                                    <tr>
+                                                        <td>Turno Tarde</td>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                             <div class="col-md-4">
-                                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_t">
-                                                </asp:DropDownList>
+                                                <table class="table-condensed">
+                                                    <tr>
+                                                        <td>
+                                                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_t">
+                                                            </asp:DropDownList></td>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                         </div>
                                         <h4><small>Detalle de horas trabajadas</small></h4>
@@ -122,18 +188,34 @@
                                             <div class="col-md-4">
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        Equipo
+                                                        <table class="table-condensed">
+                                                            <tr>
+                                                                <td>Equipo</td>
+                                                            </tr>
+                                                        </table>
+
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_equipo">
-                                                        </asp:DropDownList>
+                                                        <table class="table-condensed">
+                                                            <tr>
+                                                                <td>
+                                                                    <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_equipo">
+                                                                    </asp:DropDownList></td>
+                                                            </tr>
+                                                        </table>
+
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        Desde
+                                                        <table class="table-condensed">
+                                                            <tr>
+                                                                <td>Desde</td>
+                                                            </tr>
+                                                        </table>
+
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
@@ -146,7 +228,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        Hasta
+                                                        <table class="table-condensed">
+                                                            <tr>
+                                                                <td>Hasta</td>
+                                                            </tr>
+                                                        </table>
+
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
@@ -183,13 +270,13 @@
                                                                     data-target="#advertencia_eliminacion"
                                                                     data-introduccion="el movimiento"
                                                                     data-nombre='<%#String.Concat(Eval("equipo")," desde: ",Eval("desde"), " hasta: ", Eval("hasta"))%>'
-                                                                    data-id='<%#Eval("id_detalle_dia")%>' 
-                                                                    data-id_equipo='<%#Eval("id_equipo")%>' 
-                                                                    data-desde='<%#Eval("desde")%>' 
-                                                                    data-hasta='<%#Eval("hasta")%>'
-                                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
+                                                                    data-id='<%#Eval("id_detalle_dia")%>'
+                                                                    data-id_equipo='<%#Eval("id_equipo")%>'
+                                                                    data-desde='<%#Eval("desde")%>'
+                                                                    data-hasta='<%#Eval("hasta")%>'>
+                                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                                                                 </button>
-                                                               
+
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
                                                     </Columns>
@@ -214,7 +301,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                 <button runat="server" class="btn btn-danger" id="btn_eliminar_detalle" causesvalidation="false" onserverclick="btn_eliminar_detalle_ServerClick">
+                                                                <button runat="server" class="btn btn-danger" id="btn_eliminar_detalle" causesvalidation="false" onserverclick="btn_eliminar_detalle_ServerClick">
                                                                     Aceptar
                                                                 </button>
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -261,44 +348,62 @@
                 <h3><small>Valores mes empleado</small></h3>
                 <div class="row">
                     <div class="col-md-12">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td><label>Días laborables</label></td>
-                                    <td><asp:Label Text="" ID="lbl_dias_laborables" runat="server" /></td>
-                                    <td><label>Total horas normales</label></td>
-                                    <td><asp:Label Text="" ID="lbl_total_horas_normales" runat="server" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label>Días ausentes</label></td>
-                                    <td><asp:Label Text="" ID="lbl_dias_ausentes" runat="server" /></td>
-                                    <td><label>Total horas extra 50%</label></td>
-                                    <td><asp:Label Text="" ID="lbl_total_horas_extra_50" runat="server" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label>Días presentes/vacaciones</label></td>
-                                    <td><asp:Label Text="" ID="lbl_dias_presentes_vacaciones" runat="server" /></td>
-                                    <td><label>Total horas extra 100%</label></td>
-                                    <td><asp:Label Text="" ID="lbl_total_horas_extra_100" runat="server" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label>Días por cargar</label></td>
-                                    <td><asp:Label Text="" ID="lbl_días_por_cargar" runat="server" /></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><label>Días OUT</label></td>
-                                    <td><asp:Label Text="" ID="lbl_dias_out" runat="server" /></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><label>Días presentes en días no laborables</label></td>
-                                    <td><asp:Label Text="" ID="lbl_dias_presentes_en_dias_no_laborables" runat="server" /></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <label>Días laborables</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_dias_laborables" runat="server" /></td>
+                                <td>
+                                    <label>Total horas normales</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_total_horas_normales" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Días ausentes</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_dias_ausentes" runat="server" /></td>
+                                <td>
+                                    <label>Total horas extra 50%</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_total_horas_extra_50" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Días presentes/vacaciones</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_dias_presentes_vacaciones" runat="server" /></td>
+                                <td>
+                                    <label>Total horas extra 100%</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_total_horas_extra_100" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Días por cargar</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_días_por_cargar" runat="server" /></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Días OUT</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_dias_out" runat="server" /></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Días presentes en días no laborables</label></td>
+                                <td>
+                                    <asp:Label Text="" ID="lbl_dias_presentes_en_dias_no_laborables" runat="server" /></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

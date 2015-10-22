@@ -249,6 +249,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     equipo.notas = tb_notas_equipo.Value;
                     equipo.nombre = tb_nombre.Value;
                     equipo.id_categoria = Convert.ToInt32(ddl_categorias.SelectedItem.Value);
+                    equipo.OUT = chk_out.Checked;
 
                     foreach (Item_por_amortizar parte in session_equipo.Items_por_amortizar)
                     {

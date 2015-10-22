@@ -57,7 +57,6 @@ namespace SisEquiposBertoncini.Aplicativo
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
         }
 
-
         protected void gv_areas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)

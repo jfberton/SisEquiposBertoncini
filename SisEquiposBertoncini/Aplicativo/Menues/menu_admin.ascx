@@ -23,7 +23,7 @@
                         <li><a href="../Aplicativo/admin_tipo_empleado.aspx">Categorías</a></li>
                     </ul>
                 </li>
-                
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -48,8 +48,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Horas trabajadas<span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="../Aplicativo/admin_feriados.aspx">Editar feriados</a></li>
                         <li><a href="../Aplicativo/admin_horas_mes.aspx">Cargar horas mes</a></li>
-                         <li class="divider"></li>
+                        <li class="divider"></li>
                         <li class="dropdown-header">Informes mensuales</li>
                         <li><a href="#">Principal</a></li>
                         <li><a href="#">Planilla cálculos</a></li>

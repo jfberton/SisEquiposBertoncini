@@ -144,5 +144,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Feriados">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Feriado)">
+        <MappingFragment StoreEntitySet="Feriados">
+          <ScalarProperty Name="id_feriado" ColumnName="id_feriado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

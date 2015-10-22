@@ -14,6 +14,7 @@
     <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Model1.Store.Ingresos_egresos_mensuales_equipos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Items_ingresos_egresos" EntityType="Model1.Store.Items_ingresos_egresos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Valores_meses" EntityType="Model1.Store.Valores_meses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -188,6 +189,14 @@
     <Property Name="id_ingreso_egreso_mensual" Type="int" Nullable="false" />
     <Property Name="id_item" Type="int" Nullable="false" />
     <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Feriados">
+    <Key>
+      <PropertyRef Name="id_feriado" />
+    </Key>
+    <Property Name="id_feriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />

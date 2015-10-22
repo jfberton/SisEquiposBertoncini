@@ -58,6 +58,7 @@
       <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
       <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
     </AssociationSet>
+    <EntitySet Name="Feriados" EntityType="Model1.Feriado" />
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>
@@ -360,4 +361,12 @@
     <Member Name="Ausente" Value="3" />
     <Member Name="Ausente_injust" Value="4" />
   </EnumType>
+  <EntityType Name="Feriado">
+    <Key>
+      <PropertyRef Name="id_feriado" />
+    </Key>
+    <Property Name="id_feriado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" />
+  </EntityType>
 </Schema>

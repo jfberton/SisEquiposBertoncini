@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/21/2015 16:57:43
+-- Date Created: 10/22/2015 08:13:05
 -- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
@@ -93,6 +93,9 @@ IF OBJECT_ID(N'[dbo].[Items_ingresos_egresos]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Valores_meses]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Valores_meses];
+GO
+IF OBJECT_ID(N'[dbo].[Feriados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Feriados];
 GO
 
 -- --------------------------------------------------
@@ -229,6 +232,14 @@ CREATE TABLE [dbo].[Valores_meses] (
 );
 GO
 
+-- Creating table 'Feriados'
+CREATE TABLE [dbo].[Feriados] (
+    [id_feriado] int IDENTITY(1,1) NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -309,6 +320,12 @@ GO
 ALTER TABLE [dbo].[Valores_meses]
 ADD CONSTRAINT [PK_Valores_meses]
     PRIMARY KEY CLUSTERED ([id] ASC);
+GO
+
+-- Creating primary key on [id_feriado] in table 'Feriados'
+ALTER TABLE [dbo].[Feriados]
+ADD CONSTRAINT [PK_Feriados]
+    PRIMARY KEY CLUSTERED ([id_feriado] ASC);
 GO
 
 -- --------------------------------------------------

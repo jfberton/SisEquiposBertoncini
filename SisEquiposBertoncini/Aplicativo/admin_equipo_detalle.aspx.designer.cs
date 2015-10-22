@@ -49,6 +49,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rv_nombre;
         
         /// <summary>
+        /// Control chk_out.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chk_out;
+        
+        /// <summary>
         /// Control ddl_categorias.
         /// </summary>
         /// <remarks>

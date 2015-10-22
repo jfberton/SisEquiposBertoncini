@@ -118,7 +118,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             using (var cxt = new Model1Container())
             {
-                int id_empleado = Convert.ToInt32(id_empleado_por_eliminar);
+                int id_empleado = Convert.ToInt32(id_empleado_por_eliminar.Value);
                 
                 Empleado empleado = cxt.Empleados.First(ee => ee.id_empleado == id_empleado);
                 empleado.fecha_baja = DateTime.Today;
