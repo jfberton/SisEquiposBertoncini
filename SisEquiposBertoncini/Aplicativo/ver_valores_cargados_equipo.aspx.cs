@@ -50,7 +50,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             using (var cxt = new Model1Container())
             {
-                var equipos_habilitados = cxt.Equipos.Where(ee => ee.fecha_baja == null);
+                var equipos_habilitados = cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico);
                 foreach (Equipo equipo in equipos_habilitados)
                 {
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });

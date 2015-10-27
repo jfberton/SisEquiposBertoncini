@@ -80,6 +80,7 @@
     <Property Name="notas" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha_baja" Type="datetime" Nullable="true" />
     <Property Name="OUT" Type="bit" Nullable="false" />
+    <Property Name="Generico" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias_equipos">
     <Key>
@@ -131,6 +132,9 @@
     <Property Name="horas_extra_100" Type="nvarchar(max)" Nullable="false" />
     <Property Name="estado_tm" Type="int" Nullable="false" />
     <Property Name="estado_tt" Type="int" Nullable="false" />
+    <Property Name="ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="varios_taller" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Detalles_dias">
     <Key>
@@ -225,6 +229,7 @@
     <Property Name="total_horas_normales" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sueldo" Type="decimal" Nullable="false" DefaultValue="0" Precision="11" Scale="2" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
@@ -395,8 +400,8 @@
           </AssociationSet>
           <EntitySet Name="Detalles_dias" EntityType="Model1.Detalle_dia" />
           <AssociationSet Name="EquipoDetalle_dia" Association="Model1.EquipoDetalle_dia">
-            <End Role="Equipo" EntitySet="Equipos" />
-            <End Role="Detalle_dia" EntitySet="Detalles_dias" />
+            <End EntitySet="Equipos" Role="Equipo" />
+            <End EntitySet="Detalles_dias" Role="Detalle_dia" />
           </AssociationSet>
           <AssociationSet Name="DiaDetalle_dia" Association="Model1.DiaDetalle_dia">
             <End Role="Dia" EntitySet="Dias" />
@@ -453,6 +458,7 @@
           <NavigationProperty Name="Ingresos_egresos_mensuales" Relationship="Model1.EquipoIngreso_egreso_mensual_equipo" FromRole="Equipo" ToRole="Ingreso_egreso_mensual_equipo" />
           <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
           <Property Name="OUT" Type="Boolean" Nullable="false" />
+          <Property Name="Generico" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Categoria_equipo">
           <Documentation>
@@ -547,6 +553,9 @@
           <NavigationProperty Name="Detalles" Relationship="Model1.DiaDetalle_dia" FromRole="Dia" ToRole="Detalle_dia" />
           <Property Name="estado_tm" Type="Model1.Estado_turno_dia" Nullable="false" />
           <Property Name="estado_tt" Type="Model1.Estado_turno_dia" Nullable="false" />
+          <Property Name="ausente" Type="String" Nullable="false" />
+          <Property Name="guardia" Type="String" Nullable="false" />
+          <Property Name="varios_taller" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="EmpleadoDia">
           <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
@@ -573,8 +582,8 @@
           <Property Name="id_dia" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="EquipoDetalle_dia">
-          <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
-          <End Type="Model1.Detalle_dia" Role="Detalle_dia" Multiplicity="*" />
+          <End Type="Model1.Equipo" Multiplicity="1" Role="Equipo" />
+          <End Type="Model1.Detalle_dia" Multiplicity="*" Role="Detalle_dia" />
           <ReferentialConstraint>
             <Principal Role="Equipo">
               <PropertyRef Name="id_equipo" />
@@ -767,6 +776,7 @@
           <Property Name="total_horas_normales" Type="String" Nullable="false" />
           <Property Name="total_horas_extra_50" Type="String" Nullable="false" />
           <Property Name="total_horas_extra_100" Type="String" Nullable="false" />
+          <Property Name="Sueldo" Type="Decimal" Nullable="false" Scale="2" Precision="11" DefaultValue="0" />
         </EntityType>
         <Association Name="EmpleadoResumen_mes_empleado">
           <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
@@ -795,6 +805,7 @@
           <ScalarProperty Name="notas" ColumnName="notas" />
           <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
           <ScalarProperty Name="OUT" ColumnName="OUT" />
+          <ScalarProperty Name="Generico" ColumnName="Generico" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -851,6 +862,9 @@
           <ScalarProperty Name="horas_extra_100" ColumnName="horas_extra_100" />
           <ScalarProperty Name="estado_tm" ColumnName="estado_tm" />
           <ScalarProperty Name="estado_tt" ColumnName="estado_tt" />
+          <ScalarProperty Name="ausente" ColumnName="ausente" />
+          <ScalarProperty Name="guardia" ColumnName="guardia" />
+          <ScalarProperty Name="varios_taller" ColumnName="varios_taller" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -954,6 +968,7 @@
           <ScalarProperty Name="total_horas_normales" ColumnName="total_horas_normales" />
           <ScalarProperty Name="total_horas_extra_50" ColumnName="total_horas_extra_50" />
           <ScalarProperty Name="total_horas_extra_100" ColumnName="total_horas_extra_100" />
+          <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -52,9 +52,7 @@
                         <li><a href="../Aplicativo/admin_horas_mes.aspx">Cargar horas mes</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Informes mensuales</li>
-                        <li><a href="#">Principal</a></li>
-                        <li><a href="#">Planilla cálculos</a></li>
-                        <li><a href="#">Gastos en función horas hombre</a></li>
+                        <li><a href="admin_horas_planilla_principal.aspx">Principal</a></li>
                     </ul>
                 </li>
 

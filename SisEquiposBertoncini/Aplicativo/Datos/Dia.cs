@@ -27,6 +27,9 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public string horas_extra_100 { get; set; }
         public Estado_turno_dia estado_tm { get; set; }
         public Estado_turno_dia estado_tt { get; set; }
+        public string ausente { get; set; }
+        public string guardia { get; set; }
+        public string varios_taller { get; set; }
     
         public virtual Empleado Empleado { get; set; }
         public virtual ICollection<Detalle_dia> Detalles { get; set; }

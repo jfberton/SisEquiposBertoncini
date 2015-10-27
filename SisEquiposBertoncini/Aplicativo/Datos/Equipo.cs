@@ -27,6 +27,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public string notas { get; set; }
         public Nullable<System.DateTime> fecha_baja { get; set; }
         public bool OUT { get; set; }
+        public bool Generico { get; set; }
     
         public virtual Categoria_equipo Categoria { get; set; }
         public virtual ICollection<Detalle_dia> Detalles_dias { get; set; }

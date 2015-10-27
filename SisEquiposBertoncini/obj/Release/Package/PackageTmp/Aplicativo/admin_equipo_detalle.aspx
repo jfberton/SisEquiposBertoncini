@@ -27,8 +27,8 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-10">
-                    <table class="table-condensed">
+                <div class="col-md-6">
+                    <table class="table-condensed" style="width: 100%">
                         <tr>
                             <td>
                                 <input type="text" runat="server" id="tb_nombre" class="form-control" /></td>
@@ -37,6 +37,14 @@
                                     ID="rv_nombre" runat="server" ErrorMessage="Debe ingresar el nombre del equipo" ValidationGroup="equipo">
                                 </asp:RequiredFieldValidator>
                             </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table-condensed">
+                        <tr>
+                            <td>
+                                <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
                         </tr>
                     </table>
                 </div>
@@ -73,7 +81,7 @@
                     </table>
                 </div>
                 <div class="col-md-10">
-                    <table class="table-condensed" style="width:100%">
+                    <table class="table-condensed" style="width: 100%">
                         <tr>
                             <td>
                                 <textarea rows="5" class="form-control" runat="server" id="tb_notas_equipo" placeholder="Notas del equipo (no obligatorio)"></textarea></td>
@@ -101,7 +109,7 @@
                                         <tr>
                                             <td>
                                                 <button type="button" class="btn btn-default btn-xs pull-right" id="btn_agregar_parte" data-toggle="modal" data-target="#agregar_parte">
-                                                   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar parte
+                                                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar parte
                                                 </button>
                                                 <div class="modal fade" id="agregar_parte" role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -221,6 +229,37 @@
                                                                     <div class="col-md-6">
                                                                         <table class="table-condensed" style="width: 100%">
                                                                             <tr>
+                                                                                <td>Periodo alta</td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <table class="table-condensed" style="width: 100%">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="form-group">
+                                                                                        <div id="dtp_periodo_alta" class="input-group date">
+                                                                                            <input type="text" runat="server" id="tb_periodo_alta" class="form-control" />
+                                                                                            <span class="input-group-addon">
+                                                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <asp:CustomValidator ID="cv_periodo_alta" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha de nacimiento válida' />"
+                                                                                        ErrorMessage="Debe ingresar una fecha de nacimiento válida" OnServerValidate="cv_periodo_alta_ServerValidate">
+                                                                                    </asp:CustomValidator></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <table class="table-condensed" style="width: 100%">
+                                                                            <tr>
                                                                                 <td>Meses por amortizar</td>
                                                                             </tr>
                                                                         </table>
@@ -264,13 +303,16 @@
                                     <asp:GridView ID="gv_partes" runat="server" EmptyDataText="No existen partes del equipo por mostrar." OnRowDataBound="gv_partes_RowDataBound"
                                         AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                                         <Columns>
-                                            <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" />
-                                            <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" />
-                                            <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado (%)" ReadOnly="true" />
-                                            <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual (%)" ReadOnly="true" />
-                                            <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar ($)" ReadOnly="true" />
-                                            <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" />
-                                            <asp:BoundField DataField="costo_mensual" HeaderText="Costo mensual" ReadOnly="true" />
+                                            <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" ItemStyle-Width="100px" />
+                                            <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" ItemStyle-Width="130px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" ItemStyle-Width="130px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="periodo_alta" HeaderText="Periodo alta" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="meses_amortizados" HeaderText="Meses amortizados" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="restan_amortizar" HeaderText="Restan amortizar" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="costo_mensual" HeaderText="Costo mensual" ReadOnly="true" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Right" />
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <button
@@ -344,7 +386,7 @@
         </div>
         <div class="panel-footer text-right">
             <button id="btn_guardar_equipo" runat="server" onserverclick="btn_guardar_equipo_ServerClick" class="btn btn-success" validationgroup="equipo">
-                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar!
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
             </button>
             <asp:Button Text="Cancelar" CssClass="btn btn-default" ID="btn_cancelar" OnClick="btn_cancelar_Click" runat="server" />
         </div>
@@ -366,5 +408,14 @@
             modal.find('.modal-body #' + '<%= id_item_por_eliminar.ClientID %>').val(id + '-' + nombre)
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
+    </script>
+
+    <script>
+        $(function () {
+            $('#dtp_periodo_alta').datetimepicker({
+                locale: 'es',
+                format: 'MM/YYYY'
+            });
+        });
     </script>
 </asp:Content>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_areas.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_areas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_feriados.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_feriados" %>
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 
@@ -8,40 +8,39 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-5">
-                    <h4 class="panel-title">Áreas</h4>
+                    <h4 class="panel-title">Feriados</h4>
                 </div>
                 <div class="col-md-7">
                     <div class="input-group">
                         <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_areas.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
+                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_feriados.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="panel-body" style="height: 300px; overflow-y: scroll;">
-            <asp:GridView ID="gv_areas" runat="server" EmptyDataText="No existen áreas para mostrar." OnRowDataBound="gv_areas_RowDataBound"
+            <asp:GridView ID="gv_feriados" runat="server" EmptyDataText="No existen feriados para mostrar." OnRowDataBound="gv_feriados_RowDataBound"
                 AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                 <Columns>
-                    <asp:BoundField DataField="area_nombre" HeaderText="Nombre" ReadOnly="true" />
-                    <asp:BoundField DataField="area_empleados" HeaderText="Cantidad de empleados" ReadOnly="true" />
+                    <asp:BoundField DataField="feriado_fecha" HeaderText="Fecha" DataFormatString="{0:D}" ReadOnly="true" />
+                    <asp:BoundField DataField="feriado_descripcion" HeaderText="Descripción" ReadOnly="true" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <button
                                 type="button" class="btn btn-sm btn-danger"
                                 data-toggle="modal"
                                 data-target="#advertencia_eliminacion"
-                                data-id='<%#Eval("area_id")%>'
-                                data-introduccion="el área"
-                                data-nombre='<%#Eval("area_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
+                                data-id='<%#Eval("feriado_id")%>'
+                                data-introduccion="el feriado de fecha"
+                                data-nombre='<%#String.Concat(Eval("feriado_fecha"), " \"", Eval("feriado_descripcion"),"\"") %>'>
+                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                             </button>
-                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("area_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
+                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("feriado_id")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -75,15 +74,15 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_area" data-toggle="modal" data-target="#agregar_area">
-                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar nuevo
+                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_feriado" data-toggle="modal" data-target="#agregar_feriado">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
                     </button>
-                    <div class="modal fade" id="agregar_area" role="dialog" aria-hidden="true">
+                    <div class="modal fade" id="agregar_feriado" role="dialog" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Agregar area</h4>
+                                    <h4 class="modal-title">Agregar feriado - asueto</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
@@ -96,12 +95,36 @@
                                         <div class="col-md-12">
                                             <table class="table-condensed" style="width: 100%">
                                                 <tr>
-                                                    <td>Nombre área</td>
+                                                    <td>Fecha</td>
                                                     <td style="width: auto">
-                                                        <input type="text" id="tb_nombre_area" class="form-control" runat="server" placeholder="Nombre del área por agregar" /></td>
+                                                        <div id="dtp_fecha_feriado" class="input-group date">
+                                                            <input type="text" runat="server" id="tb_fecha_feriado" class="form-control" />
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                    </td>
                                                     <td>
-                                                        <asp:RequiredFieldValidator ControlToValidate="tb_nombre_area" Text="<img src='../img/exclamation.gif' title='Debe ingresar su mail' />"
-                                                            ID="rv_nombre_area" runat="server" ErrorMessage="Debe ingresar el nombre del área">
+                                                        <asp:RequiredFieldValidator ControlToValidate="tb_fecha_feriado" Text="<img src='../img/exclamation.gif' title='Debe ingresar la fecha del feriado - asueto' />"
+                                                            ID="rv_fecha" runat="server" ErrorMessage="Debe ingresar la fecha del feriado - asueto">
+                                                        </asp:RequiredFieldValidator>
+                                                        <asp:CustomValidator ErrorMessage="Debe ingresar una fecha válida"  Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha válida' />" OnServerValidate="c_fecha_ServerValidate" ID="c_fecha" runat="server" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table-condensed" style="width: 100%">
+                                                <tr>
+                                                    <td>Descripción</td>
+                                                    <td style="width: auto">
+                                                        <input type="text" id="tb_descripcion" class="form-control" runat="server" placeholder="Descripcion del feriado - asueto" /></td>
+                                                    <td>
+                                                        <asp:RequiredFieldValidator ControlToValidate="tb_descripcion" Text="<img src='../img/exclamation.gif' title='Debe ingresar la descripción del feriado - asueto' />"
+                                                            ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar la descripción del feriado - asueto">
                                                         </asp:RequiredFieldValidator></td>
                                                 </tr>
                                             </table>
@@ -111,7 +134,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button id="btn_guardar" runat="server" onserverclick="btn_guardar_ServerClick" class="btn btn-success" validationgroup="equipo">
-                                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar!
+                                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
                                     </button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                 </div>
@@ -122,38 +145,29 @@
             </div>
         </div>
 
-        <div class="modal fade" id="ver_area" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="ver_feriado" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Datos del área seleccionada</h4>
+                        <h4 class="modal-title">Datos Feriado</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <p>
-                                    <label>Nombre del area</label>
-                                    <asp:Label Text="" ID="lbl_nombre_area" runat="server" />
+                                    <label>Fecha</label>
+                                    <asp:Label Text="" ID="lbl_fecha" runat="server" />
                                 </p>
                             </div>
                         </div>
                         <br />
                         <div class="row">
                             <div class="col-md-12">
-                                <label>Empleados</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12" style="height: 300px; overflow-y: scroll;">
-                                <asp:GridView ID="gv_empleado" runat="server" OnRowDataBound="gv_empleado_RowDataBound" EmptyDataText="No existen empleados en el área."
-                                    AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
-                                    <Columns>
-                                        <asp:BoundField DataField="empleado_nombre" HeaderText="Nombre" ReadOnly="true" />
-                                        <asp:BoundField DataField="empleado_tipo" HeaderText="Tipo" ReadOnly="true" />
-                                    </Columns>
-                                </asp:GridView>
+                                <p>
+                                    <label>Descripción</label>
+                                    <asp:Label Text="" ID="lbl_descripcion" runat="server" />
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -179,6 +193,13 @@
             modal.find('.modal-body #' + '<%= id_item_por_eliminar.ClientID %>').val(id)
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
+
+        $(function () {
+            $('#dtp_fecha_feriado').datetimepicker({
+                locale: 'es',
+                format: 'dddd D [de] MMMM [de] YYYY'
+            });
+        });
 
     </script>
     <script>

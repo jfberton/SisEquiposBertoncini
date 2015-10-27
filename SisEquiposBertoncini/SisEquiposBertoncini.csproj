@@ -75,6 +75,7 @@
     <Content Include="Aplicativo\admin_equipo_detalle.aspx" />
     <Content Include="Aplicativo\admin_feriados.aspx" />
     <Content Include="Aplicativo\admin_horas_mes.aspx" />
+    <Content Include="Aplicativo\admin_horas_planilla_principal.aspx" />
     <Content Include="Aplicativo\admin_tipo_empleado.aspx" />
     <Content Include="Aplicativo\admin_tipo_equipo.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_equipo.aspx" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="Aplicativo\admin_horas_mes.aspx.designer.cs">
       <DependentUpon>admin_horas_mes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_horas_planilla_principal.aspx.cs">
+      <DependentUpon>admin_horas_planilla_principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_horas_planilla_principal.aspx.designer.cs">
+      <DependentUpon>admin_horas_planilla_principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\admin_tipo_empleado.aspx.cs">
       <DependentUpon>admin_tipo_empleado.aspx</DependentUpon>

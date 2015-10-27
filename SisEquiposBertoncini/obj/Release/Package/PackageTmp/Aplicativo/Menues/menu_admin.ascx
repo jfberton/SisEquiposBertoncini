@@ -23,27 +23,39 @@
                         <li><a href="../Aplicativo/admin_tipo_empleado.aspx">Categorías</a></li>
                     </ul>
                 </li>
-                
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="../Aplicativo/admin_equipos.aspx">Equipos</a></li>
                         <li><a href="../Aplicativo/admin_tipo_equipo.aspx">Categorias</a></li>
-                        <%--<li class="divider"></li>
-                        <li class="dropdown-header">Ingresos - Egresos</li>
-                        <li><a href="../Aplicativo/admin_conceptos_mensuales.aspx">Administrar items</a></li>
-                        <li><a href="../Aplicativo/admin_valores_mes_equipo.aspx">Valores mensuales</a></li>--%>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresos - Egresos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../Aplicativo/admin_conceptos_mensuales.aspx">Administrar conceptos</a></li>
-                        <li><a href="../Aplicativo/admin_valores_mes_equipo.aspx">Editar valores mens</a></li>
+                        <li class="dropdown-header">I/E por equipo</li>
+                        <li><a href="../Aplicativo/admin_conceptos_mensuales.aspx">Editar conceptos</a></li>
+                        <li><a href="../Aplicativo/admin_valores_mes_equipo.aspx">Editar valores mensuales</a></li>
                         <li><a href="../Aplicativo/ver_valores_cargados_equipo.aspx">Resumen año equipo</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Administrar valores dolar</li>
+                        <li><a href="../Aplicativo/admin_valor_dolar.aspx">Editar valores dolar</a></li>
                     </ul>
                 </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Horas trabajadas<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Aplicativo/admin_feriados.aspx">Editar feriados</a></li>
+                        <li><a href="../Aplicativo/admin_horas_mes.aspx">Cargar horas mes</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Informes mensuales</li>
+                        <li><a href="admin_horas_planilla_principal.aspx">Principal</a></li>
+                    </ul>
+                </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

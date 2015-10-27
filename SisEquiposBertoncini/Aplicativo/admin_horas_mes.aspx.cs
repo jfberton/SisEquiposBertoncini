@@ -126,18 +126,15 @@ namespace SisEquiposBertoncini.Aplicativo
                 ddl_estado_turno_t.DataSource = Enum.GetNames(typeof(Estado_turno_dia));
                 ddl_estado_turno_t.DataBind();
 
-                var equipos = (from ee in cxt.Equipos
-                               where ee.fecha_baja == null
-                               select new
-                               {
-                                   value = ee.id_equipo,
-                                   text = ee.nombre
-                               }).ToList();
+                foreach (Equipo equipo in cxt.Equipos.Where(ee => ee.Generico))
+                {
+                    ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                }
 
-                ddl_equipo.DataTextField = "text";
-                ddl_equipo.DataValueField = "value";
-                ddl_equipo.DataSource = equipos;
-                ddl_equipo.DataBind();
+                foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico))
+                {
+                    ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                }
             }
         }
 
@@ -357,6 +354,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     rme.id_empleado = id_empleado;
                     rme.mes = mes;
                     rme.anio = anio;
+                    rme.Sueldo = 0;
                     cxt.Resumenes_meses_empleados.Add(rme);
                 }
 
@@ -530,10 +528,10 @@ namespace SisEquiposBertoncini.Aplicativo
                 Dia dia = Session["DiaSeleccionado"] as Dia;
                 List<fila_detalle_dia> filas = Session["Detalle"] as List<fila_detalle_dia>;
                 fila_detalle_dia detalle = new fila_detalle_dia();
-                detalle._out = equipo.OUT;
-                detalle.id_equipo = equipo.id_equipo;
+                detalle._out = equipo != null ? equipo.OUT : false;
+                detalle.id_equipo = equipo != null ? equipo.id_equipo : 0;
                 detalle.fecha = dia.fecha;
-                detalle.equipo = equipo.nombre;
+                detalle.equipo = equipo != null ? equipo.nombre : ddl_equipo.SelectedItem.Text;
                 detalle.desde = tb_hora_desde.Value;
                 detalle.hasta = tb_hora_hasta.Value;
                 detalle.total_movimiento = Horas_string.RestarHoras(tb_hora_hasta.Value, tb_hora_desde.Value);
@@ -543,7 +541,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (fila_detalle_dia item_detalle in filas)
                 {
-                    if (!item_detalle._out)
+                    if (!item_detalle._out && item_detalle.equipo != "Ausencia")
                     {
                         horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
                     }
@@ -613,6 +611,10 @@ namespace SisEquiposBertoncini.Aplicativo
                     if (dia.id_dia == 0)
                     {
                         Dia dia_cxt = new Dia();
+                        dia_cxt.ausente = "00:00";
+                        dia_cxt.guardia = "00:00";
+                        dia_cxt.varios_taller = "00:00";
+                        
                         dia_cxt.id_empleado = Convert.ToInt32(ddl_empleado.SelectedItem.Value);
                         if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || feriado != null)
                         {
@@ -656,6 +658,18 @@ namespace SisEquiposBertoncini.Aplicativo
                             if (item_detalle.id_detalle_dia == 0)
                             {
                                 dia_cxt.Detalles.Add(new Detalle_dia() { id_equipo = item_detalle.id_equipo, hora_desde = item_detalle.desde, hora_hasta = item_detalle.hasta });
+                                if (item_detalle.equipo == "Ausencia")
+                                {
+                                    dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
+                                }
+                                if (item_detalle.equipo == "Guardia")
+                                {
+                                    dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                                }
+                                if (item_detalle.equipo == "Varios Taller")
+                                {
+                                    dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
+                                }
                             }
                         }
 
@@ -718,6 +732,18 @@ namespace SisEquiposBertoncini.Aplicativo
                             if (item_detalle.id_detalle_dia == 0)
                             {
                                 dia_cxt.Detalles.Add(new Detalle_dia() { id_equipo = item_detalle.id_equipo, hora_desde = item_detalle.desde, hora_hasta = item_detalle.hasta });
+                                if (item_detalle.equipo == "Ausencia")
+                                {
+                                    dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
+                                }
+                                if (item_detalle.equipo == "Guardia")
+                                {
+                                    dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                                }
+                                if (item_detalle.equipo == "Varios Taller")
+                                {
+                                    dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
+                                }
                             }
                         }
 

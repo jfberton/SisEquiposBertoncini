@@ -78,19 +78,28 @@ namespace SisEquiposBertoncini
 
                 cxt.Usuarios.Add(usr);
 
+                cxt.Areas.Add(new Area() { nombre = "Taller" });
+
+                
+
                 cxt.Categorias_empleados.Add(new Categoria_empleado() { nombre = "Administrativo", descripcion = "" });
                 cxt.Categorias_empleados.Add(new Categoria_empleado() { nombre = "Mecánico", descripcion = "" });
                 cxt.Categorias_empleados.Add(new Categoria_empleado() { nombre = "Soldador", descripcion = "" });
                 cxt.Categorias_empleados.Add(new Categoria_empleado() { nombre = "Pintor", descripcion = "" });
 
+                
                 cxt.Categorias_equipos.Add(new Categoria_equipo() { nombre = "Gruas", descripcion = "" });
                 cxt.Categorias_equipos.Add(new Categoria_equipo() { nombre = "Camiones y carretones", descripcion = "" });
                 cxt.Categorias_equipos.Add(new Categoria_equipo() { nombre = "Vehículos menores", descripcion = "" });
                 cxt.Categorias_equipos.Add(new Categoria_equipo() { nombre = "Ventas", descripcion = "Equipos dedicados a la venta" });
                 cxt.Categorias_equipos.Add(new Categoria_equipo() { nombre = "Trabajos particulares", descripcion = "Agrupa trabajos particulares" });
-                cxt.Categorias_equipos.Add(new Categoria_equipo() { nombre = "Trabajos OUT", descripcion = "Agrupa trabajos que los empleados realizan fuera" });
+                Categoria_equipo ce = new Categoria_equipo() { nombre = "Otros", descripcion = "Agrupa otros equipos - conceptos" };
+                cxt.Categorias_equipos.Add(ce);
+                cxt.SaveChanges();
 
-
+                cxt.Equipos.Add(new Equipo() { Categoria = ce, Generico = true, nombre = "Ausencia", fecha_baja = null, OUT = false, notas = "" });
+                cxt.Equipos.Add(new Equipo() { Categoria = ce, Generico = true, nombre = "Guardia", fecha_baja = null, OUT = false, notas = "" });
+                cxt.Equipos.Add(new Equipo() { Categoria = ce, Generico = true, nombre = "Varios Taller", fecha_baja = null, OUT = false, notas = "" });
                 cxt.SaveChanges();
             }
         }

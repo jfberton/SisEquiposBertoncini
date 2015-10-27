@@ -75,6 +75,7 @@
     <Property Name="notas" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha_baja" Type="datetime" Nullable="true" />
     <Property Name="OUT" Type="bit" Nullable="false" />
+    <Property Name="Generico" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias_equipos">
     <Key>
@@ -126,6 +127,9 @@
     <Property Name="horas_extra_100" Type="nvarchar(max)" Nullable="false" />
     <Property Name="estado_tm" Type="int" Nullable="false" />
     <Property Name="estado_tt" Type="int" Nullable="false" />
+    <Property Name="ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="varios_taller" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Detalles_dias">
     <Key>
@@ -220,6 +224,7 @@
     <Property Name="total_horas_normales" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sueldo" Type="decimal" Nullable="false" DefaultValue="0" Precision="11" Scale="2" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />

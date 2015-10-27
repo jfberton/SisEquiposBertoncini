@@ -232,7 +232,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 using (var cxt = new Model1Container())
                 {
                     Equipo equipo = new Equipo();
-
+                    
                     if (session_equipo.id_equipo > 0)
                     {
                         equipo = cxt.Equipos.First(ee => ee.id_equipo == session_equipo.id_equipo);
@@ -242,6 +242,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         cxt.Equipos.Add(equipo);
                     }
 
+                    equipo.Generico = false;
                     equipo.notas = tb_notas_equipo.Value;
                     equipo.nombre = tb_nombre.Value;
                     equipo.id_categoria = Convert.ToInt32(ddl_categorias.SelectedItem.Value);

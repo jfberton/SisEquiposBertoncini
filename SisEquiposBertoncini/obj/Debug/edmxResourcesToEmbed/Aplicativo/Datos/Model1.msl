@@ -10,6 +10,7 @@
           <ScalarProperty Name="notas" ColumnName="notas" />
           <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
           <ScalarProperty Name="OUT" ColumnName="OUT" />
+          <ScalarProperty Name="Generico" ColumnName="Generico" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -66,6 +67,9 @@
           <ScalarProperty Name="horas_extra_100" ColumnName="horas_extra_100" />
           <ScalarProperty Name="estado_tm" ColumnName="estado_tm" />
           <ScalarProperty Name="estado_tt" ColumnName="estado_tt" />
+          <ScalarProperty Name="ausente" ColumnName="ausente" />
+          <ScalarProperty Name="guardia" ColumnName="guardia" />
+          <ScalarProperty Name="varios_taller" ColumnName="varios_taller" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -169,6 +173,7 @@
           <ScalarProperty Name="total_horas_normales" ColumnName="total_horas_normales" />
           <ScalarProperty Name="total_horas_extra_50" ColumnName="total_horas_extra_50" />
           <ScalarProperty Name="total_horas_extra_100" ColumnName="total_horas_extra_100" />
+          <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

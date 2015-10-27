@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/22/2015 12:09:16
+-- Date Created: 10/27/2015 18:51:44
 -- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\App_Data\db_sis_equipo.mdf];
+USE [D:\DESARROLLO\MIOS\TIO\SISEQUIPOSBERTONCINI\SISEQUIPOSBERTONCINI\APP_DATA\DB_SIS_EQUIPO.MDF];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -49,6 +49,9 @@ IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoItem_ingreso_egreso]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Items_ingresos_egresos] DROP CONSTRAINT [FK_Item_ingreso_egresoItem_ingreso_egreso];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoResumen_mes_empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Resumenes_meses_empleados] DROP CONSTRAINT [FK_EmpleadoResumen_mes_empleado];
 GO
 
 -- --------------------------------------------------
@@ -97,6 +100,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Feriados]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Feriados];
 GO
+IF OBJECT_ID(N'[dbo].[Resumenes_meses_empleados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Resumenes_meses_empleados];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -109,7 +115,8 @@ CREATE TABLE [dbo].[Equipos] (
     [id_categoria] int  NOT NULL,
     [notas] nvarchar(max)  NOT NULL,
     [fecha_baja] datetime  NULL,
-    [OUT] bit  NOT NULL
+    [OUT] bit  NOT NULL,
+    [Generico] bit  NOT NULL
 );
 GO
 
@@ -160,7 +167,10 @@ CREATE TABLE [dbo].[Dias] (
     [horas_extra_50] nvarchar(max)  NOT NULL,
     [horas_extra_100] nvarchar(max)  NOT NULL,
     [estado_tm] int  NOT NULL,
-    [estado_tt] int  NOT NULL
+    [estado_tt] int  NOT NULL,
+    [ausente] nvarchar(max)  NOT NULL,
+    [guardia] nvarchar(max)  NOT NULL,
+    [varios_taller] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -254,7 +264,8 @@ CREATE TABLE [dbo].[Resumenes_meses_empleados] (
     [dias_presentes_en_dias_no_laborables] decimal(5,2)  NOT NULL,
     [total_horas_normales] nvarchar(max)  NOT NULL,
     [total_horas_extra_50] nvarchar(max)  NOT NULL,
-    [total_horas_extra_100] nvarchar(max)  NOT NULL
+    [total_horas_extra_100] nvarchar(max)  NOT NULL,
+    [Sueldo] decimal(11,2)  NOT NULL
 );
 GO
 

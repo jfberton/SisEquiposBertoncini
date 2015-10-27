@@ -6,3 +6,11 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncin
 d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
 d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.pdb
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.pdb

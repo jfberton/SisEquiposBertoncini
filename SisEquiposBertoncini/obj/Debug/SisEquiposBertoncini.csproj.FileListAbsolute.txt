@@ -1,11 +1,3 @@
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
-D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
 F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 F:\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
@@ -30,3 +22,10 @@ C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisE
 C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 C:\Users\Berton\Desktop\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 D:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb

@@ -14,6 +14,8 @@
     <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Model1.Store.Ingresos_egresos_mensuales_equipos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Items_ingresos_egresos" EntityType="Model1.Store.Items_ingresos_egresos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Valores_meses" EntityType="Model1.Store.Valores_meses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Store.Resumenes_meses_empleados" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -58,6 +60,10 @@
       <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
       <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
     </AssociationSet>
+    <AssociationSet Name="EmpleadoResumen_mes_empleado" Association="Model1.Store.EmpleadoResumen_mes_empleado">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="Resumen_mes_empleado" EntitySet="Resumenes_meses_empleados" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Equipos">
     <Key>
@@ -68,6 +74,8 @@
     <Property Name="id_categoria" Type="int" Nullable="false" />
     <Property Name="notas" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha_baja" Type="datetime" Nullable="true" />
+    <Property Name="OUT" Type="bit" Nullable="false" />
+    <Property Name="Generico" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias_equipos">
     <Key>
@@ -117,6 +125,11 @@
     <Property Name="horas_normales" Type="nvarchar(max)" Nullable="false" />
     <Property Name="horas_extra_50" Type="nvarchar(max)" Nullable="false" />
     <Property Name="horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="estado_tm" Type="int" Nullable="false" />
+    <Property Name="estado_tt" Type="int" Nullable="false" />
+    <Property Name="ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="varios_taller" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Detalles_dias">
     <Key>
@@ -146,6 +159,8 @@
     <Property Name="porcentaje_usado" Type="decimal" Nullable="false" Precision="5" Scale="2" />
     <Property Name="porcentaje_valor_recidual" Type="decimal" Nullable="false" Precision="5" Scale="2" />
     <Property Name="meses_por_amortizar" Type="int" Nullable="false" />
+    <Property Name="periodo_alta_mes" Type="int" Nullable="false" />
+    <Property Name="periodo_alta_anio" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Valores_dolar">
     <Key>
@@ -183,6 +198,33 @@
     <Property Name="id_ingreso_egreso_mensual" Type="int" Nullable="false" />
     <Property Name="id_item" Type="int" Nullable="false" />
     <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Feriados">
+    <Key>
+      <PropertyRef Name="id_feriado" />
+    </Key>
+    <Property Name="id_feriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Resumenes_meses_empleados">
+    <Key>
+      <PropertyRef Name="id_resumen_mes" />
+    </Key>
+    <Property Name="id_resumen_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="dias_laborables" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_ausente" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_presente" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_por_cargar" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_out" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_presentes_en_dias_no_laborables" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="total_horas_normales" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sueldo" Type="decimal" Nullable="false" DefaultValue="0" Precision="11" Scale="2" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
@@ -313,6 +355,18 @@
       </Principal>
       <Dependent Role="Item_ingreso_egreso1">
         <PropertyRef Name="id_item_padre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoResumen_mes_empleado">
+    <End Role="Empleado" Type="Model1.Store.Empleados" Multiplicity="1" />
+    <End Role="Resumen_mes_empleado" Type="Model1.Store.Resumenes_meses_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Resumen_mes_empleado">
+        <PropertyRef Name="id_empleado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

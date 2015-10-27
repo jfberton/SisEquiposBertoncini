@@ -14,6 +14,11 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
     
     public partial class Resumen_mes_empleado
     {
+        public Resumen_mes_empleado()
+        {
+            this.Sueldo = 0m;
+        }
+    
         public int id_resumen_mes { get; set; }
         public int id_empleado { get; set; }
         public int mes { get; set; }
@@ -27,6 +32,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public string total_horas_normales { get; set; }
         public string total_horas_extra_50 { get; set; }
         public string total_horas_extra_100 { get; set; }
+        public decimal Sueldo { get; set; }
     
         public virtual Empleado Empleado { get; set; }
     }

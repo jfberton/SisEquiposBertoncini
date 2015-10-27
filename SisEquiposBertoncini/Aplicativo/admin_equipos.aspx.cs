@@ -31,7 +31,7 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 var equipos = (from ee in cxt.Equipos
-                               where ee.fecha_baja == null
+                               where ee.fecha_baja == null && !ee.Generico
                                select new
                                {
                                    equipo_id = ee.id_equipo,

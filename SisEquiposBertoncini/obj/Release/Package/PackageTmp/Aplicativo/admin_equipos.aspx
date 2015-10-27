@@ -37,15 +37,15 @@
                                 data-id='<%#Eval("equipo_id")%>'
                                 data-introduccion="el equipo"
                                 data-nombre='<%#Eval("equipo_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
+                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                             </button>
 
                             <button runat="server" class="btn btn-sm btn-warning" id="btn_editar" causesvalidation="false" onserverclick="btn_editar_ServerClick" data-id='<%#Eval("equipo_id")%>'>
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Editar
                             </button>
 
                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -79,7 +79,7 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <button runat="server" id="btn_agregar" onserverclick="btn_agregar_ServerClick" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar nuevo</button>
+                    <button runat="server" id="btn_agregar" onserverclick="btn_agregar_ServerClick" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo</button>
                 </div>
             </div>
         </div>
@@ -87,10 +87,6 @@
         <div class="modal fade" id="ver_equipo" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <%--<div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Detalle de equipo seleccionado</h4>
-                    </div>--%>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -99,6 +95,7 @@
                                     <small>
                                         <label>Categoría</label>
                                         <asp:Label Text="" ID="lbl_categoria" runat="server" /></small></h2>
+                                <asp:Label Text="" ID="lbl_out" runat="server" />
                             </div>
                         </div>
                         <div class="row">
@@ -118,17 +115,20 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="table-responsive">
                                 <asp:GridView ID="gv_partes" runat="server" EmptyDataText="No existen partes del equipo por mostrar." OnRowDataBound="gv_equipos_RowDataBound"
                                     AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                                     <Columns>
-                                        <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" />
-                                        <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" />
-                                        <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado (%)" ReadOnly="true" />
-                                        <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual (%)" ReadOnly="true" />
-                                        <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" />
-                                        <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" />
-                                        <asp:BoundField DataField="costo_mensual" HeaderText="Costo mensual" ReadOnly="true" />
+                                        <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" ItemStyle-Width="110px" />
+                                        <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" ItemStyle-Width="110px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right"  />
+                                        <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right"  />
+                                        <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="periodo_alta" HeaderText="Periodo alta" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="meses_amortizados" HeaderText="Meses amortizados" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="restan_amortizar" HeaderText="Restan amortizar" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="costo_mensual" HeaderText="Costo mensual" ReadOnly="true" ItemStyle-Width="90px" ItemStyle-HorizontalAlign="Right" />
                                     </Columns>
                                 </asp:GridView>
                             </div>

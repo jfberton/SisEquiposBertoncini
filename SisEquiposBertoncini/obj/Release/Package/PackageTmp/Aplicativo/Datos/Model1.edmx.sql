@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/29/2015 12:38:30
--- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
+-- Date Created: 10/24/2015 11:29:11
+-- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [D:\Usuarios\jfberton\Mis Documentos\Tio\SisEquiposBertoncini\SisEquiposBertoncini\App_Data\db_sis_equipo.mdf];;
+USE [D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\App_Data\db_sis_equipo.mdf];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -41,14 +41,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_EquipoIngreso_egreso_mensual_equipo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Ingresos_egresos_mensuales_equipos] DROP CONSTRAINT [FK_EquipoIngreso_egreso_mensual_equipo];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoItem_ingreso_egreso]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Items_ingresos_egresos] DROP CONSTRAINT [FK_Item_ingreso_egresoItem_ingreso_egreso];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Ingreso_egreso_mensual_equipoValor_mes]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Valores_meses] DROP CONSTRAINT [FK_Ingreso_egreso_mensual_equipoValor_mes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Valores_meses] DROP CONSTRAINT [FK_Item_ingreso_egresoValor_mes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoItem_ingreso_egreso]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Items_ingresos_egresos] DROP CONSTRAINT [FK_Item_ingreso_egresoItem_ingreso_egreso];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoResumen_mes_empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Resumenes_meses_empleados] DROP CONSTRAINT [FK_EmpleadoResumen_mes_empleado];
 GO
 
 -- --------------------------------------------------
@@ -94,6 +97,12 @@ GO
 IF OBJECT_ID(N'[dbo].[Valores_meses]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Valores_meses];
 GO
+IF OBJECT_ID(N'[dbo].[Feriados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Feriados];
+GO
+IF OBJECT_ID(N'[dbo].[Resumenes_meses_empleados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Resumenes_meses_empleados];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -105,7 +114,9 @@ CREATE TABLE [dbo].[Equipos] (
     [nombre] nvarchar(max)  NOT NULL,
     [id_categoria] int  NOT NULL,
     [notas] nvarchar(max)  NOT NULL,
-    [fecha_baja] datetime  NULL
+    [fecha_baja] datetime  NULL,
+    [OUT] bit  NOT NULL,
+    [Generico] bit  NOT NULL
 );
 GO
 
@@ -154,7 +165,12 @@ CREATE TABLE [dbo].[Dias] (
     [id_empleado] int  NOT NULL,
     [horas_normales] nvarchar(max)  NOT NULL,
     [horas_extra_50] nvarchar(max)  NOT NULL,
-    [horas_extra_100] nvarchar(max)  NOT NULL
+    [horas_extra_100] nvarchar(max)  NOT NULL,
+    [estado_tm] int  NOT NULL,
+    [estado_tt] int  NOT NULL,
+    [ausente] nvarchar(max)  NOT NULL,
+    [guardia] nvarchar(max)  NOT NULL,
+    [varios_taller] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -183,7 +199,9 @@ CREATE TABLE [dbo].[Items_por_amortizar] (
     [costo_cero_km_uss] decimal(11,2)  NOT NULL,
     [porcentaje_usado] decimal(5,2)  NOT NULL,
     [porcentaje_valor_recidual] decimal(5,2)  NOT NULL,
-    [meses_por_amortizar] int  NOT NULL
+    [meses_por_amortizar] int  NOT NULL,
+    [periodo_alta_mes] int  NOT NULL,
+    [periodo_alta_anio] int  NOT NULL
 );
 GO
 
@@ -221,6 +239,33 @@ CREATE TABLE [dbo].[Valores_meses] (
     [id_ingreso_egreso_mensual] int  NOT NULL,
     [id_item] int  NOT NULL,
     [valor] decimal(11,2)  NOT NULL
+);
+GO
+
+-- Creating table 'Feriados'
+CREATE TABLE [dbo].[Feriados] (
+    [id_feriado] int IDENTITY(1,1) NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Resumenes_meses_empleados'
+CREATE TABLE [dbo].[Resumenes_meses_empleados] (
+    [id_resumen_mes] int IDENTITY(1,1) NOT NULL,
+    [id_empleado] int  NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL,
+    [dias_laborables] decimal(5,2)  NOT NULL,
+    [dias_ausente] decimal(5,2)  NOT NULL,
+    [dias_presente] decimal(5,2)  NOT NULL,
+    [dias_por_cargar] decimal(5,2)  NOT NULL,
+    [dias_out] decimal(5,2)  NOT NULL,
+    [dias_presentes_en_dias_no_laborables] decimal(5,2)  NOT NULL,
+    [total_horas_normales] nvarchar(max)  NOT NULL,
+    [total_horas_extra_50] nvarchar(max)  NOT NULL,
+    [total_horas_extra_100] nvarchar(max)  NOT NULL,
+    [Sueldo] decimal(11,2)  NOT NULL
 );
 GO
 
@@ -304,6 +349,18 @@ GO
 ALTER TABLE [dbo].[Valores_meses]
 ADD CONSTRAINT [PK_Valores_meses]
     PRIMARY KEY CLUSTERED ([id] ASC);
+GO
+
+-- Creating primary key on [id_feriado] in table 'Feriados'
+ALTER TABLE [dbo].[Feriados]
+ADD CONSTRAINT [PK_Feriados]
+    PRIMARY KEY CLUSTERED ([id_feriado] ASC);
+GO
+
+-- Creating primary key on [id_resumen_mes] in table 'Resumenes_meses_empleados'
+ALTER TABLE [dbo].[Resumenes_meses_empleados]
+ADD CONSTRAINT [PK_Resumenes_meses_empleados]
+    PRIMARY KEY CLUSTERED ([id_resumen_mes] ASC);
 GO
 
 -- --------------------------------------------------
@@ -473,6 +530,21 @@ GO
 CREATE INDEX [IX_FK_Item_ingreso_egresoItem_ingreso_egreso]
 ON [dbo].[Items_ingresos_egresos]
     ([id_item_padre]);
+GO
+
+-- Creating foreign key on [id_empleado] in table 'Resumenes_meses_empleados'
+ALTER TABLE [dbo].[Resumenes_meses_empleados]
+ADD CONSTRAINT [FK_EmpleadoResumen_mes_empleado]
+    FOREIGN KEY ([id_empleado])
+    REFERENCES [dbo].[Empleados]
+        ([id_empleado])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmpleadoResumen_mes_empleado'
+CREATE INDEX [IX_FK_EmpleadoResumen_mes_empleado]
+ON [dbo].[Resumenes_meses_empleados]
+    ([id_empleado]);
 GO
 
 -- --------------------------------------------------
