@@ -100,10 +100,6 @@
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
-    <Content Include="App_Data\db_sis_equipo.mdf" />
-    <Content Include="App_Data\db_sis_equipo_log.ldf">
-      <DependentUpon>db_sis_equipo.mdf</DependentUpon>
-    </Content>
     <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\jquery.treegrid.css" />
     <Content Include="css\jumbotron-narrow.css" />
@@ -130,6 +126,7 @@
     <Content Include="js\bootstrap-datetimepicker.min.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.mask.min.js" />
     <Content Include="js\jquery.treegrid.bootstrap2.js" />
     <Content Include="js\jquery.treegrid.bootstrap3.js" />
     <Content Include="js\jquery.treegrid.js" />
@@ -403,7 +400,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -225,6 +225,9 @@
     <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Sueldo" Type="decimal" Nullable="false" DefaultValue="0" Precision="11" Scale="2" />
+    <Property Name="total_horas_ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_varios_taller" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />

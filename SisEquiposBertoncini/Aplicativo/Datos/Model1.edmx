@@ -230,6 +230,9 @@
     <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Sueldo" Type="decimal" Nullable="false" DefaultValue="0" Precision="11" Scale="2" />
+    <Property Name="total_horas_ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_varios_taller" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
@@ -777,6 +780,9 @@
           <Property Name="total_horas_extra_50" Type="String" Nullable="false" />
           <Property Name="total_horas_extra_100" Type="String" Nullable="false" />
           <Property Name="Sueldo" Type="Decimal" Nullable="false" Scale="2" Precision="11" DefaultValue="0" />
+          <Property Name="total_horas_ausente" Type="String" Nullable="false" />
+          <Property Name="total_horas_guardia" Type="String" Nullable="false" />
+          <Property Name="total_horas_varios_taller" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="EmpleadoResumen_mes_empleado">
           <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
@@ -969,6 +975,9 @@
           <ScalarProperty Name="total_horas_extra_50" ColumnName="total_horas_extra_50" />
           <ScalarProperty Name="total_horas_extra_100" ColumnName="total_horas_extra_100" />
           <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+          <ScalarProperty Name="total_horas_ausente" ColumnName="total_horas_ausente" />
+          <ScalarProperty Name="total_horas_guardia" ColumnName="total_horas_guardia" />
+          <ScalarProperty Name="total_horas_varios_taller" ColumnName="total_horas_varios_taller" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

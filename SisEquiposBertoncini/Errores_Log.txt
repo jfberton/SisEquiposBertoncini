@@ -3125,3 +3125,63 @@ STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResul
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635820541722256378
+
+DATE: 02/11/2015 9:42:52
+
+MESSAGE: 
+Aplicativo.Datos.Model1.msl(162,10) : error 3004: Hay un problema con los fragmentos de asignación a partir de la línea 162:No se especificó ninguna asignación para las propiedades Resumen_mes_empleado.total_horas_ausente en Establecer Resumenes_meses_empleados.
+Una entidad con clave (PK) no será de ida y vuelta cuando:
+  Entidad is type [Model1.Resumen_mes_empleado]
+
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/default.aspx
+
+TARGETSITE: Void SerializedGenerateViews(System.Data.Mapping.StorageEntityContainerMapping, System.Collections.Generic.Dictionary`2[System.Data.Metadata.Edm.EntitySetBase,System.Data.Mapping.ViewGeneration.GeneratedView])
+
+STACKTRACE:    en System.Data.Mapping.StorageMappingItemCollection.ViewDictionary.SerializedGenerateViews(StorageEntityContainerMapping entityContainerMap, Dictionary`2 resultDictionary)
+   en System.Data.Mapping.StorageMappingItemCollection.ViewDictionary.SerializedGetGeneratedViews(EntityContainer container)
+   en System.Data.Common.Utils.Memoizer`2.<>c__DisplayClass0.<Evaluate>b__1()
+   en System.Data.Common.Utils.Memoizer`2.Result.GetValue()
+   en System.Data.Common.Utils.Memoizer`2.Evaluate(TArg arg)
+   en System.Data.Mapping.StorageMappingItemCollection.ViewDictionary.GetGeneratedView(EntitySetBase extent, MetadataWorkspace workspace, StorageMappingItemCollection storageMappingItemCollection)
+   en System.Data.Metadata.Edm.MetadataWorkspace.GetGeneratedView(EntitySetBase extent)
+   en System.Data.Query.PlanCompiler.PreProcessor.ExpandView(Node node, ScanTableOp scanTableOp, IsOfOp& typeFilter)
+   en System.Data.Query.PlanCompiler.PreProcessor.ProcessScanTable(Node scanTableNode, ScanTableOp scanTableOp, IsOfOp& typeFilter)
+   en System.Data.Query.PlanCompiler.PreProcessor.Visit(ScanTableOp op, Node n)
+   en System.Data.Query.InternalTrees.ScanTableOp.Accept[TResultType](BasicOpVisitorOfT`1 v, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.VisitNode(Node n)
+   en System.Data.Query.PlanCompiler.SubqueryTrackingVisitor.VisitChildren(Node n)
+   en System.Data.Query.PlanCompiler.SubqueryTrackingVisitor.VisitRelOpDefault(RelOp op, Node n)
+   en System.Data.Query.PlanCompiler.PreProcessor.Visit(FilterOp op, Node n)
+   en System.Data.Query.InternalTrees.FilterOp.Accept[TResultType](BasicOpVisitorOfT`1 v, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.VisitNode(Node n)
+   en System.Data.Query.PlanCompiler.SubqueryTrackingVisitor.VisitChildren(Node n)
+   en System.Data.Query.PlanCompiler.SubqueryTrackingVisitor.VisitRelOpDefault(RelOp op, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.VisitSortOp(SortBaseOp op, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.Visit(ConstrainedSortOp op, Node n)
+   en System.Data.Query.InternalTrees.ConstrainedSortOp.Accept[TResultType](BasicOpVisitorOfT`1 v, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.VisitNode(Node n)
+   en System.Data.Query.PlanCompiler.SubqueryTrackingVisitor.VisitChildren(Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfNode.VisitDefault(Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfNode.VisitPhysicalOpDefault(PhysicalOp op, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.Visit(PhysicalProjectOp op, Node n)
+   en System.Data.Query.InternalTrees.PhysicalProjectOp.Accept[TResultType](BasicOpVisitorOfT`1 v, Node n)
+   en System.Data.Query.InternalTrees.BasicOpVisitorOfT`1.VisitNode(Node n)
+   en System.Data.Query.PlanCompiler.PreProcessor.Process(Dictionary`2& tvfResultKeys)
+   en System.Data.Query.PlanCompiler.PreProcessor.Process(PlanCompiler planCompilerState, StructuredTypeInfo& typeInfo, Dictionary`2& tvfResultKeys)
+   en System.Data.Query.PlanCompiler.PlanCompiler.Compile(List`1& providerCommands, ColumnMap& resultColumnMap, Int32& columnCount, Set`1& entitySets)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************

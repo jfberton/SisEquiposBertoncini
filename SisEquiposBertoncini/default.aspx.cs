@@ -42,7 +42,7 @@ namespace SisEquiposBertoncini
         {
             using (var cxt = new Model1Container())
             {
-                if (cxt.Usuarios.Count() == 0)
+                if (cxt.Database.CreateIfNotExists())
                 {
                     InicializarDB();
                 }

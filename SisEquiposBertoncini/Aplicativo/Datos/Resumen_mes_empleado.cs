@@ -33,6 +33,9 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public string total_horas_extra_50 { get; set; }
         public string total_horas_extra_100 { get; set; }
         public decimal Sueldo { get; set; }
+        public string total_horas_ausente { get; set; }
+        public string total_horas_guardia { get; set; }
+        public string total_horas_varios_taller { get; set; }
     
         public virtual Empleado Empleado { get; set; }
     }
