@@ -597,6 +597,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 string horasVariosTaller = "00:00";
                 foreach (fila_detalle_dia item_detalle in filas)
                 {
+<<<<<<< HEAD
                     if (!item_detalle._out)
                     {
                         if (item_detalle.equipo != "Ausencia")
@@ -618,6 +619,26 @@ namespace SisEquiposBertoncini.Aplicativo
                         {
                             horasAusente = Horas_string.SumarHoras(new string[] { horasAusente, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
                         }
+=======
+                    if (item_detalle.equipo != "Ausencia")
+                    {
+                        horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+
+                        if (item_detalle.equipo == "Guardia")
+                        {
+                            horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                        }
+
+                        if (item_detalle.equipo == "Varios Taller")
+                        {
+                            horasVariosTaller = Horas_string.SumarHoras(new string[] { horasVariosTaller, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                        }
+
+                    }
+                    else
+                    {
+                        horasAusente = Horas_string.SumarHoras(new string[] { horasAusente, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+>>>>>>> origin/master
                     }
                 }
 
