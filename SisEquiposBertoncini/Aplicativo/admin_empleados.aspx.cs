@@ -145,6 +145,11 @@ namespace SisEquiposBertoncini.Aplicativo
                         nombre = tb_nombre_empleado.Value
                     };
 
+                    tb_dni_empleado.Value = string.Empty;
+                    tb_fecha_nacimiento_empleado.Value = string.Empty;
+                    ddl_areas.SelectedIndex = 0;
+                    ddl_categorias.SelectedIndex = 0;
+                    tb_nombre_empleado.Value = string.Empty;
 
                     cxt.Empleados.Add(empleado);
 

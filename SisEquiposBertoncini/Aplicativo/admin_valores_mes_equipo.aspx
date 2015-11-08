@@ -101,13 +101,19 @@
         $(document).ready(function () {
             $('.tree').treegrid();
         });
+
+        $(document).ready(function () {
+            $('.money').mask('000.000.000,00', { reverse: true });
+        });
+
     </script>
 
     <script type="text/javascript">
         function Modifica_valor(obj, e) {
             if (e.keyCode == 13) {
                 var id = parseInt(obj.id.split('_')[obj.id.split('_').length - 1]);
-                var valor = parseFloat(obj.value).toFixed(2);
+                var valorstr = obj.value.replace('.', '').replace(',', '.');
+                var valor = parseFloat(valorstr).toFixed(2);
                 PageMethods.ActualizarValor(id, valor, OnSuccessCallback, OnFailureCallback);
             }
         }
@@ -120,6 +126,7 @@
         function OnFailureCallback() {
             alert('Error');
         }
+
 
     </script>
 

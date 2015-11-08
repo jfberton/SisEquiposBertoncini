@@ -398,6 +398,9 @@
     <Property Name="total_horas_extra_50" Type="String" Nullable="false" />
     <Property Name="total_horas_extra_100" Type="String" Nullable="false" />
     <Property Name="Sueldo" Type="Decimal" Nullable="false" Scale="2" Precision="11" DefaultValue="0" />
+    <Property Name="total_horas_ausente" Type="String" Nullable="false" />
+    <Property Name="total_horas_guardia" Type="String" Nullable="false" />
+    <Property Name="total_horas_varios_taller" Type="String" Nullable="false" />
   </EntityType>
   <Association Name="EmpleadoResumen_mes_empleado">
     <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />

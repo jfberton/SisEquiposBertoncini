@@ -192,7 +192,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 HtmlInputText valor = new HtmlInputText();
                 valor.ID = "valor_id_valor_" + vm.id;
-                valor.Attributes.Add("class", "form-control");
+                valor.Attributes.Add("class", "form-control money");
                 valor.Attributes.Add("onkeypress", "Modifica_valor(this, event)");
                 valor.Value = vm.valor.ToString();
                 column_valor.Controls.Add(valor);

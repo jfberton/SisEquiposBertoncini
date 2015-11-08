@@ -176,6 +176,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 parte.periodo_alta_mes = mes;
                 equipo.Items_por_amortizar.Add(parte);
 
+                tb_costo_cero_km.Value = string.Empty;
+                tb_meses_por_amortizar.Value = string.Empty;
+                tb_nombre_parte.Value = string.Empty;
+                tb_porcentaje_usado.Value = string.Empty;
+                tb_porcentaje_valor_residual.Value = string.Empty;
+                tb_periodo_alta.Value = string.Empty;
+
                 Session["equipo"] = equipo;
 
                 CargarValoresEquipo();

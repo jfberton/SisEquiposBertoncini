@@ -132,6 +132,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     cxt.Areas.Add(area);
 
                     cxt.SaveChanges();
+
+                    tb_nombre_area.Value = string.Empty;
                 }
 
                 CargarAreas();

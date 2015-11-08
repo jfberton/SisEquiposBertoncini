@@ -159,7 +159,7 @@
                                                                         <table class="table-condensed" style="width: 100%">
                                                                             <tr>
                                                                                 <td style="width: auto">
-                                                                                    <input type="text" id="tb_costo_cero_km" class="form-control" runat="server" placeholder="Costo 0Km" /></td>
+                                                                                    <input type="text" id="tb_costo_cero_km" class="form-control moneda" runat="server" placeholder="Costo 0Km" /></td>
                                                                                 <td>
                                                                                     <asp:RequiredFieldValidator ControlToValidate="tb_costo_cero_km" Text="<img src='../img/exclamation.gif' title='Debe ingresar el costo de la parte' />"
                                                                                         ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar el costo de la parte" ValidationGroup="parte">
@@ -185,7 +185,7 @@
                                                                         <table class="table-condensed" style="width: 100%">
                                                                             <tr>
                                                                                 <td style="width: auto">
-                                                                                    <input type="text" id="tb_porcentaje_usado" class="form-control" runat="server" placeholder="Porcentaje usado" /></td>
+                                                                                    <input type="text" id="tb_porcentaje_usado" class="form-control porcentaje" runat="server" placeholder="Porcentaje usado" /></td>
                                                                                 <td>
                                                                                     <asp:RequiredFieldValidator ControlToValidate="tb_porcentaje_usado" Text="<img src='../img/exclamation.gif' title='Debe ingresar el porcentaje de usado' />"
                                                                                         ID="RequiredFieldValidator2" runat="server" ErrorMessage="Debe ingresar el porcentaje de usado" ValidationGroup="parte">
@@ -211,7 +211,7 @@
                                                                         <table class="table-condensed" style="width: 100%">
                                                                             <tr>
                                                                                 <td style="width: auto">
-                                                                                    <input type="text" id="tb_porcentaje_valor_residual" class="form-control" runat="server" placeholder="Valor recidual " /></td>
+                                                                                    <input type="text" id="tb_porcentaje_valor_residual" class="form-control porcentaje" runat="server" placeholder="Valor recidual " /></td>
                                                                                 <td>
                                                                                     <asp:RequiredFieldValidator ControlToValidate="tb_porcentaje_valor_residual" Text="<img src='../img/exclamation.gif' title='Debe ingresar el porcentaje de valor residual' />"
                                                                                         ID="RequiredFieldValidator3" runat="server" ErrorMessage="Debe ingresar el porcentaje de valor residual" ValidationGroup="parte">
@@ -239,7 +239,7 @@
                                                                                 <td>
                                                                                     <div class="form-group">
                                                                                         <div id="dtp_periodo_alta" class="input-group date">
-                                                                                            <input type="text" runat="server" id="tb_periodo_alta" class="form-control" />
+                                                                                            <input type="text" runat="server" id="tb_periodo_alta" class="form-control mmaaaa" />
                                                                                             <span class="input-group-addon">
                                                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                                                             </span>
@@ -268,7 +268,7 @@
                                                                         <table class="table-condensed" style="width: 100%">
                                                                             <tr>
                                                                                 <td style="width: auto">
-                                                                                    <input type="text" id="tb_meses_por_amortizar" class="form-control" runat="server" placeholder="Meses por amortizar" /></td>
+                                                                                    <input type="text" id="tb_meses_por_amortizar" class="form-control entero" runat="server" placeholder="Meses por amortizar" /></td>
                                                                                 <td>
                                                                                     <asp:RequiredFieldValidator ControlToValidate="tb_meses_por_amortizar" Text="<img src='../img/exclamation.gif' title='Debe ingresar los meses por amortizar' />"
                                                                                         ID="RequiredFieldValidator4" runat="server" ErrorMessage="Debe ingresar los meses por amortizar" ValidationGroup="parte">
@@ -411,6 +411,13 @@
     </script>
 
     <script>
+        $(document).ready(function () {
+            $('.porcentaje').mask('##0', { reverse: true });
+            $('.moneda').mask('000.000.000,00', { reverse: true });
+            $('.entero').mask('000');
+            $('.mmaaaa').mask('00/0000');
+        });
+
         $(function () {
             $('#dtp_periodo_alta').datetimepicker({
                 locale: 'es',

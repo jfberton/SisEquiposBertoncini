@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/27/2015 18:51:44
+-- Date Created: 11/02/2015 10:13:43
 -- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [D:\DESARROLLO\MIOS\TIO\SISEQUIPOSBERTONCINI\SISEQUIPOSBERTONCINI\APP_DATA\DB_SIS_EQUIPO.MDF];
+USE [D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\App_Data\db_sis_equipo];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -265,7 +265,10 @@ CREATE TABLE [dbo].[Resumenes_meses_empleados] (
     [total_horas_normales] nvarchar(max)  NOT NULL,
     [total_horas_extra_50] nvarchar(max)  NOT NULL,
     [total_horas_extra_100] nvarchar(max)  NOT NULL,
-    [Sueldo] decimal(11,2)  NOT NULL
+    [Sueldo] decimal(11,2)  NOT NULL,
+    [total_horas_ausente] nvarchar(max)  NOT NULL,
+    [total_horas_guardia] nvarchar(max)  NOT NULL,
+    [total_horas_varios_taller] nvarchar(max)  NOT NULL
 );
 GO
 

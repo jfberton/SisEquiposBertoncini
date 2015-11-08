@@ -104,6 +104,9 @@ namespace SisEquiposBertoncini.Aplicativo
                         cxt.Feriados.Add(feriado);
 
                         cxt.SaveChanges();
+
+                        tb_descripcion.Value = string.Empty;
+                        tb_fecha_feriado.Value = string.Empty;
                     }
                 }
 

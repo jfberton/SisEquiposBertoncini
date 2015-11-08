@@ -191,7 +191,7 @@
                                                     <table class="table-condensed" style="width: 100%">
                                                         <tr>
                                                             <td>
-                                                                <input type="text" runat="server" id="tb_dni_empleado" class="form-control" /></td>
+                                                                <input type="text" runat="server" id="tb_dni_empleado" class="form-control dni" /></td>
                                                             <td>
                                                                 <asp:RequiredFieldValidator ControlToValidate="tb_dni_empleado" Text="<img src='../img/exclamation.gif' title='Debe ingresar el D.N.I. del empleado' />"
                                                                     ID="rv_dni_empleado" runat="server" ErrorMessage="Debe ingresar el D.N.I. del empleado">
@@ -220,7 +220,7 @@
                                                             <td>
                                                                 <div class="form-group">
                                                                     <div id="dtp_fecha_nacimiento_empleado" class="input-group date">
-                                                                        <input type="text" runat="server" id="tb_fecha_nacimiento_empleado" class="form-control" />
+                                                                        <input type="text" runat="server" id="tb_fecha_nacimiento_empleado" class="form-control ddmmaaaa" />
                                                                         <span class="input-group-addon">
                                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                                         </span>
@@ -347,6 +347,11 @@
                 locale: 'es',
                 format: 'DD/MM/YYYY'
             });
+        });
+
+        $(document).ready(function () {
+            $('.dni').mask('00.000.000');
+            $('.ddmmaaaa').mask('00/00/0000');
         });
 
         function filtrar(phrase, _id) {

@@ -31,6 +31,7 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 var categorias = (from aa in cxt.Categorias_equipos
+                                  where aa.nombre != "Otros"
                                   select new
                                   {
                                       categoria_id = aa.id_categoria,
@@ -43,7 +44,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                         {
                                             categoria_id = cc.categoria_id,
                                             categoria_nombre = cc.categoria_nombre,
-                                            categoria_cantidad_equipos = cxt.Equipos.Count(ee => ee.id_categoria == cc.categoria_id)
+                                            categoria_cantidad_equipos = cxt.Equipos.Count(ee => ee.id_categoria == cc.categoria_id && ee.fecha_baja == null)
                                         }
                                         ).ToList();
 
@@ -127,13 +128,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_descripcion.Text = categoria.descripcion;
 
                 var equipos = (from ee in cxt.Equipos
-                                 where
-                                     ee.fecha_baja == null &&
-                                     ee.id_categoria == categoria.id_categoria
-                                 select new
-                                 {
-                                     nombre_equipo = ee.nombre
-                                 }).ToList();
+                               where
+                                   ee.fecha_baja == null &&
+                                   ee.id_categoria == categoria.id_categoria
+                               select new
+                               {
+                                   nombre_equipo = ee.nombre
+                               }).ToList();
 
                 gv_equipos.DataSource = equipos;
                 gv_equipos.DataBind();

@@ -43,7 +43,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                         {
                                             categoria_id = cc.categoria_id,
                                             categoria_nombre = cc.categoria_nombre,
-                                            categoria_cantidad_empleados = cxt.Empleados.Count(ee => ee.id_categoria == cc.categoria_id)
+                                            categoria_cantidad_empleados = cxt.Empleados.Count(ee => ee.id_categoria == cc.categoria_id && ee.fecha_baja == null)
                                         }
                                         ).ToList();
 
@@ -128,6 +128,9 @@ namespace SisEquiposBertoncini.Aplicativo
                     Categoria_empleado categoria = new Categoria_empleado() { nombre = tb_nombre_categoria.Value, descripcion = tb_descripcion_categoria.Value };
 
                     cxt.Categorias_empleados.Add(categoria);
+
+                    tb_nombre_categoria.Value = string.Empty;
+                    tb_descripcion_categoria.Value = string.Empty;
 
                     cxt.SaveChanges();
                 }

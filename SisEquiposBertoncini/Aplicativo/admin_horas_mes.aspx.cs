@@ -52,12 +52,45 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 Cargar_ddls();
 
-                var valores = Session["valores_horas"];
+                List<string> valores = Session["valores_horas"] as List<string>;
+               
                 if (valores != null)
                 {
-                    btn_buscar.Visible = false;
-                    btn_nueva_busqueda.Visible = true;
-                    div_valores_mes.Visible = true;
+                    int id_empleado = Convert.ToInt32(valores[0]);
+                    int mes = Convert.ToInt32(valores[1]);
+                    int anio = Convert.ToInt32(valores[2]);
+
+
+                    using (var cxt = new Model1Container())
+                    {
+                        Empleado empleado = cxt.Empleados.First(ee => ee.id_empleado == id_empleado);
+                        ddl_tipo_empleado.SelectedValue = empleado.Categoria.id_categoria.ToString();
+
+
+                        int id_tipo_empleado = empleado.Categoria.id_categoria;
+
+                        var empleados = (from ee in cxt.Empleados
+                                         where ee.id_categoria == id_tipo_empleado && ee.fecha_baja == null
+                                         select new
+                                         {
+                                             value = ee.id_empleado,
+                                             text = ee.nombre
+                                         }).ToList();
+
+                        ddl_empleado.DataTextField = "text";
+                        ddl_empleado.DataValueField = "value";
+                        ddl_empleado.DataSource = empleados;
+                        ddl_empleado.DataBind();
+
+                        ddl_empleado.SelectedValue = id_empleado.ToString();
+
+                        ddl_mes.SelectedValue = mes.ToString();
+
+                        ddl_anio.SelectedValue = anio.ToString();
+                    }
+
+                    CargarValoresMes();
+                   
                 }
                 else
                 {
@@ -67,6 +100,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
             }
 
+            Session["valores_horas"] = null;
         }
 
         private void Cargar_ddls()
@@ -88,7 +122,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 int id_tipo_empleado = Convert.ToInt32(ddl_tipo_empleado.SelectedValue);
 
                 var empleados = (from e in cxt.Empleados
-                                 where e.id_categoria == id_tipo_empleado
+                                 where e.id_categoria == id_tipo_empleado && e.fecha_baja == null
                                  select new
                                  {
                                      value = e.id_empleado,
@@ -241,6 +275,9 @@ namespace SisEquiposBertoncini.Aplicativo
             string total_horas_normales = "00:00";
             string total_horas_extra_50 = "00:00";
             string total_horas_extra_100 = "00:00";
+            string total_horas_ausente = "00:00";
+            string total_horas_guardia = "00:00";
+            string total_horas_varios_taller = "00:00";
 
             using (var cxt = new Model1Container())
             {
@@ -273,6 +310,9 @@ namespace SisEquiposBertoncini.Aplicativo
                         total_horas_normales = Horas_string.SumarHoras(new string[] { total_horas_normales, dia.horas_normales });
                         total_horas_extra_50 = Horas_string.SumarHoras(new string[] { total_horas_extra_50, dia.horas_extra_50 });
                         total_horas_extra_100 = Horas_string.SumarHoras(new string[] { total_horas_extra_100, dia.horas_extra_100 });
+                        total_horas_ausente = Horas_string.SumarHoras(new string[] { total_horas_ausente, dia.ausente });
+                        total_horas_guardia = Horas_string.SumarHoras(new string[] { total_horas_guardia, dia.guardia });
+                        total_horas_varios_taller = Horas_string.SumarHoras(new string[] { total_horas_varios_taller, dia.varios_taller });
 
                         if (feriado == null)
                         {
@@ -367,6 +407,9 @@ namespace SisEquiposBertoncini.Aplicativo
                 rme.total_horas_normales = total_horas_normales;
                 rme.total_horas_extra_50 = total_horas_extra_50;
                 rme.total_horas_extra_100 = total_horas_extra_100;
+                rme.total_horas_ausente = total_horas_ausente;
+                rme.total_horas_guardia = total_horas_guardia;
+                rme.total_horas_varios_taller = total_horas_varios_taller;
 
                 cxt.SaveChanges();
                 
@@ -386,7 +429,14 @@ namespace SisEquiposBertoncini.Aplicativo
             lbl_total_horas_extra_50.Text = total_horas_extra_50;
             lbl_total_horas_extra_100.Text = total_horas_extra_100;
 
-            Session["valores_horas"] = valores_mes;
+            btn_buscar.Visible = false;
+            btn_nueva_busqueda.Visible = true;
+            div_valores_mes.Visible = true;
+            ddl_tipo_empleado.Enabled = false;
+            ddl_empleado.Enabled = false;
+            ddl_mes.Enabled = false;
+            ddl_anio.Enabled = false;
+
         }
 
         protected void btn_nueva_busqueda_Click(object sender, EventArgs e)
@@ -395,6 +445,10 @@ namespace SisEquiposBertoncini.Aplicativo
             btn_nueva_busqueda.Visible = false;
             btn_buscar.Visible = true;
             div_valores_mes.Visible = false;
+            ddl_tipo_empleado.Enabled = true;
+            ddl_empleado.Enabled = true;
+            ddl_mes.Enabled = true;
+            ddl_anio.Enabled = true;
         }
 
         protected void btn_ver_ServerClick(object sender, EventArgs e)
@@ -538,18 +592,41 @@ namespace SisEquiposBertoncini.Aplicativo
                 filas.Add(detalle);
 
                 string horasTotales = "00:00";
-
+                string horasAusente = "00:00";
+                string horasGuardia = "00:00";
+                string horasVariosTaller = "00:00";
                 foreach (fila_detalle_dia item_detalle in filas)
                 {
-                    if (!item_detalle._out && item_detalle.equipo != "Ausencia")
+                    if (!item_detalle._out)
                     {
-                        horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                        if (item_detalle.equipo != "Ausencia")
+                        {
+                            horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+
+                            if (item_detalle.equipo == "Guardia")
+                            {
+                                horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                            }
+
+                            if (item_detalle.equipo == "Varios Taller")
+                            {
+                                horasVariosTaller = Horas_string.SumarHoras(new string[] { horasVariosTaller, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                            }
+
+                        }
+                        else
+                        {
+                            horasAusente = Horas_string.SumarHoras(new string[] { horasAusente, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                        }
                     }
                 }
 
                 dia.horas_normales = ObtenerHoras(horasTotales, dia.fecha, TipoHora.Normales);
                 dia.horas_extra_50 = ObtenerHoras(horasTotales, dia.fecha, TipoHora.Extra50);
                 dia.horas_extra_100 = ObtenerHoras(horasTotales, dia.fecha, TipoHora.Extra100);
+                dia.ausente = horasAusente;
+                dia.guardia = horasGuardia;
+                dia.varios_taller = horasVariosTaller;
 
                 gv_detalle_dia.DataSource = filas;
                 gv_detalle_dia.DataBind();
@@ -726,6 +803,9 @@ namespace SisEquiposBertoncini.Aplicativo
                         dia_cxt.horas_normales = dia.horas_normales;
                         dia_cxt.horas_extra_50 = dia.horas_extra_50;
                         dia_cxt.horas_extra_100 = dia.horas_extra_100;
+                        dia_cxt.ausente = "00:00";
+                        dia_cxt.guardia = "00:00";
+                        dia_cxt.varios_taller = "00:00";
 
                         foreach (fila_detalle_dia item_detalle in filas)
                         {
@@ -755,7 +835,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(this, "CHANN!!! LPM<br/>Error: " + ex.Message + "<br/>Inner: " + ex.InnerException, MessageBox.Tipo_MessageBox.Danger);
+                            MessageBox.Show(this, "CHANN!!! <br/>Error: " + ex.Message + "<br/>Inner: " + ex.InnerException, MessageBox.Tipo_MessageBox.Danger);
                         }
                     }
                 }
@@ -803,14 +883,38 @@ namespace SisEquiposBertoncini.Aplicativo
                     filas.RemoveAt(index);
 
                     string horasTotales = "00:00";
+                    string horasAusente = "00:00";
+                    string horasGuardia = "00:00";
+                    string horasVariosTaller = "00:00";
                     foreach (fila_detalle_dia item_detalle in filas)
                     {
-                        horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                        if (item_detalle.equipo != "Ausencia")
+                        {
+                            horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+
+                            if (item_detalle.equipo == "Guardia")
+                            {
+                                horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                            }
+
+                            if (item_detalle.equipo == "Varios Taller")
+                            {
+                                horasVariosTaller = Horas_string.SumarHoras(new string[] { horasVariosTaller, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                            }
+
+                        }
+                        else 
+                        {
+                            horasAusente = Horas_string.SumarHoras(new string[] { horasAusente, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                        }
                     }
 
                     dia_cxt.horas_normales = ObtenerHoras(horasTotales, dia_cxt.fecha, TipoHora.Normales);
                     dia_cxt.horas_extra_50 = ObtenerHoras(horasTotales, dia_cxt.fecha, TipoHora.Extra50);
                     dia_cxt.horas_extra_100 = ObtenerHoras(horasTotales, dia_cxt.fecha, TipoHora.Extra100);
+                    dia_cxt.ausente = horasAusente;
+                    dia_cxt.guardia = horasGuardia;
+                    dia_cxt.varios_taller = horasVariosTaller;
 
                     cxt.SaveChanges();
                     Session["DiaSeleccionado"] = dia_cxt;
@@ -874,43 +978,57 @@ namespace SisEquiposBertoncini.Aplicativo
             string horas_normales = "00:00";
             string horas_extra_50 = "00:00";
             string horas_extra_100 = "00:00";
-
-            switch (dia.DayOfWeek)
+            Feriado feriado = null;
+            using (var cxt = new Model1Container())
             {
-                case DayOfWeek.Saturday:
-                    if (Horas_string.AMayorQueB("04:00", horas_totales))
-                    {
-                        horas_normales = horas_totales;
-                        horas_totales = "00:00";
-                    }
-                    else
-                    {
-                        horas_normales = "04:00";
-                        horas_totales = Horas_string.RestarHoras(horas_totales, "04:00");
-                    }
+                feriado = cxt.Feriados.FirstOrDefault(ff => ff.fecha == dia);
+            }
 
-                    horas_extra_50 = horas_totales;
-                    horas_extra_100 = "00:00";
-                    break;
-                case DayOfWeek.Sunday:
-                    horas_normales = "00:00";
-                    horas_extra_50 = "00:00";
-                    horas_extra_100 = horas_totales;
-                    break;
-                default:
-                    if (Horas_string.AMayorQueB("08:00", horas_totales))
-                    {
-                        horas_normales = horas_totales;
-                        horas_totales = "00:00";
-                    }
-                    else
-                    {
-                        horas_normales = "08:00";
-                        horas_totales = Horas_string.RestarHoras(horas_totales, "08:00");
-                    }
-                    horas_extra_50 = horas_totales;
-                    horas_extra_100 = "00:00";
-                    break;
+            if (feriado == null)
+            {
+                switch (dia.DayOfWeek)
+                {
+                    case DayOfWeek.Saturday:
+                        if (Horas_string.AMayorQueB("04:00", horas_totales))
+                        {
+                            horas_normales = horas_totales;
+                            horas_totales = "00:00";
+                        }
+                        else
+                        {
+                            horas_normales = "04:00";
+                            horas_totales = Horas_string.RestarHoras(horas_totales, "04:00");
+                        }
+
+                        horas_extra_50 = horas_totales;
+                        horas_extra_100 = "00:00";
+                        break;
+                    case DayOfWeek.Sunday:
+                        horas_normales = "00:00";
+                        horas_extra_50 = "00:00";
+                        horas_extra_100 = horas_totales;
+                        break;
+                    default:
+                        if (Horas_string.AMayorQueB("08:00", horas_totales))
+                        {
+                            horas_normales = horas_totales;
+                            horas_totales = "00:00";
+                        }
+                        else
+                        {
+                            horas_normales = "08:00";
+                            horas_totales = Horas_string.RestarHoras(horas_totales, "08:00");
+                        }
+                        horas_extra_50 = horas_totales;
+                        horas_extra_100 = "00:00";
+                        break;
+                }
+            }
+            else
+            {
+                horas_normales = "00:00";
+                horas_extra_50 = "00:00";
+                horas_extra_100 = horas_totales;
             }
 
             switch (tipo_buscado)
@@ -924,6 +1042,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 default:
                     return "00:00";
             }
+
         }
     }
 }

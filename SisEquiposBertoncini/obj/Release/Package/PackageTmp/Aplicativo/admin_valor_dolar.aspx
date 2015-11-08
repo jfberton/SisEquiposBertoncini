@@ -32,7 +32,7 @@
                             <td>
                                 <label>Enero</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_1" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_1" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -137,6 +137,11 @@
             //alert(res);
             location.reload();
         }
+
+        $(document).ready(function () {
+            $('.money').mask('000.000.000,00', { reverse: true });
+        });
+
 
         function OnFailureCallback() {
             alert('Error');

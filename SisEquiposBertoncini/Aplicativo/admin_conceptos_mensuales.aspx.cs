@@ -195,6 +195,9 @@ namespace SisEquiposBertoncini.Aplicativo
                             Item_ingreso_egreso concepto_ingreso = new Item_ingreso_egreso() {id_item_padre=id_item_padre, tipo = padre.tipo, nombre = tb_nombre.Value, descripcion = tb_descripcion.Value };
                             cxt.Items_ingresos_egresos.Add(concepto_ingreso);
                             cxt.SaveChanges();
+
+                            tb_descripcion.Value = string.Empty;
+                            tb_nombre.Value = string.Empty;
                         }
                     }
                 }

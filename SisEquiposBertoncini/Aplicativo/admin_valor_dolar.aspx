@@ -32,73 +32,73 @@
                             <td>
                                 <label>Enero</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_1" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_1" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Febrero</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_2" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_2" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Marzo</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_3" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_3" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Abril</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_4" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_4" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Mayo</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_5" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_5" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Junio</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_6" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_6" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Julio</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_7" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_7" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Agosto</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_8" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_8" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Septiembre</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_9" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_9" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Octubre</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_10" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_10" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Noviembre</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_11" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_11" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Diciembre</label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="valor_mes_12" onkeypress="Modifica_valor(this, event)" CssClass="form-control" /></td>
+                                <asp:TextBox runat="server" ID="valor_mes_12" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
                         </tr>
                     </table>
                 </div>
@@ -127,7 +127,8 @@
         function Modifica_valor(obj, e) {
             if (e.keyCode == 13) {
                 var mes = parseInt(obj.id.split('_')[obj.id.split('_').length - 1]);
-                var valor = parseFloat(obj.value).toFixed(2);
+                var valorstr = obj.value.replace('.', '').replace(',', '.');
+                var valor = parseFloat(valorstr).toFixed(2);
                 var anio = parseInt(document.getElementById("<%= ddl_anio.ClientID %>").value);
                 PageMethods.ActualizarValor(mes, anio, valor, OnSuccessCallback, OnFailureCallback);
             }
@@ -137,6 +138,11 @@
             //alert(res);
             location.reload();
         }
+
+        $(document).ready(function () {
+            $('.money').mask('000.000.000,00', { reverse: true });
+        });
+
 
         function OnFailureCallback() {
             alert('Error');
