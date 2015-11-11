@@ -119,8 +119,6 @@ namespace SisEquiposBertoncini
             sr.Close();
         }
 
-
-
         protected void btn_VolverAEmpezar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/default.aspx");

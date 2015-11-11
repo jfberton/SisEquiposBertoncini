@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_valores_mes_equipo.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo" %>
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
+<%@ Register Src="~/Aplicativo/Menues/menu_usuario.ascx" TagPrefix="uc1" TagName="menu_usuario" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <link href="../css/jquery.treegrid.css" rel="stylesheet" />
@@ -8,6 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_menu" runat="server">
     <uc1:menu_admin runat="server" ID="menu_admin" />
+    <uc1:menu_usuario runat="server" ID="menu_usuario" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
     <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server"></asp:ScriptManager>
@@ -59,9 +62,6 @@
                                     <td>Año</td>
                                     <td>
                                         <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control">
-                                            <asp:ListItem Text="2015" />
-                                            <asp:ListItem Text="2015" />
-                                            <asp:ListItem Text="2015" />
                                         </asp:DropDownList></td>
                                 </tr>
                             </table>

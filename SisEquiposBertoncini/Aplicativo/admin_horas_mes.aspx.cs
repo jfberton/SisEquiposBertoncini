@@ -50,6 +50,26 @@ namespace SisEquiposBertoncini.Aplicativo
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
 
+                switch (usuariologueado.perfil)
+                {
+                    case perfil_usuario.Admin:
+                        menu_admin.Visible = true;
+                        menu_usuario.Visible = false;
+                        break;
+                    case perfil_usuario.Jefe:
+                        break;
+                    case perfil_usuario.Supervisor:
+                        break;
+                    case perfil_usuario.Usuario:
+                        menu_admin.Visible = false;
+                        menu_usuario.Visible = true;
+                        break;
+                    case perfil_usuario.Seleccionar:
+                        break;
+                    default:
+                        break;
+                }
+
                 Cargar_ddls();
 
                 List<string> valores = Session["valores_horas"] as List<string>;

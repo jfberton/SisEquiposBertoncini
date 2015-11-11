@@ -15,7 +15,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
     {
         Admin = 1,
         Jefe = 2,
-        Supervidor = 3,
+        Supervisor = 3,
         Usuario = 4,
         Seleccionar = 0
     }

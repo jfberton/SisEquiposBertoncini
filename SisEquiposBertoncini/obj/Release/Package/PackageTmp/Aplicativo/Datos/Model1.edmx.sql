@@ -2,21 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
-<<<<<<< HEAD
 -- Date Created: 11/02/2015 10:13:43
-=======
--- Date Created: 10/27/2015 18:51:44
->>>>>>> origin/master
 -- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-<<<<<<< HEAD
 USE [D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\App_Data\db_sis_equipo];
-=======
-USE [D:\DESARROLLO\MIOS\TIO\SISEQUIPOSBERTONCINI\SISEQUIPOSBERTONCINI\APP_DATA\DB_SIS_EQUIPO.MDF];
->>>>>>> origin/master
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO

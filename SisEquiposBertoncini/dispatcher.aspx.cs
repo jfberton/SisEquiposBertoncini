@@ -27,9 +27,10 @@ namespace SisEquiposBertoncini
                     break;
                 case perfil_usuario.Jefe:
                     break;
-                case perfil_usuario.Supervidor:
+                case perfil_usuario.Supervisor:
                     break;
                 case perfil_usuario.Usuario:
+                    Response.Redirect("~/Aplicativo/main_usuario.aspx");
                     break;
                 case perfil_usuario.Seleccionar:
                     break;

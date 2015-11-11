@@ -156,7 +156,7 @@
   <EnumType Name="perfil_usuario">
     <Member Name="Admin" Value="1" />
     <Member Name="Jefe" Value="2" />
-    <Member Name="Supervidor" Value="3" />
+    <Member Name="Supervisor" Value="3" />
     <Member Name="Usuario" Value="4" />
     <Member Name="Seleccionar" Value="0" />
   </EnumType>
