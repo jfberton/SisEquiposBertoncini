@@ -37,7 +37,7 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">I/E por equipo</li>
                         <li><a href="../Aplicativo/admin_conceptos_mensuales.aspx">Editar conceptos</a></li>
-                        <li><a href="../Aplicativo/admin_valores_mes_equipo.aspx">Editar valores mensuales</a></li>
+                        <li><a href="../Aplicativo/admin_valores_mes_equipo_v2.aspx">Editar valores mensuales</a></li>
                         <li><a href="../Aplicativo/ver_valores_cargados_equipo.aspx">Resumen año equipo</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Administrar valores dolar</li>

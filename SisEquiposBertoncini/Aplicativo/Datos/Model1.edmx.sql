@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/02/2015 10:13:43
+-- Date Created: 11/14/2015 09:05:12
 -- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\App_Data\db_sis_equipo];
+USE [equipos_berton_v2];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -272,6 +272,16 @@ CREATE TABLE [dbo].[Resumenes_meses_empleados] (
 );
 GO
 
+-- Creating table 'Detalle_valores_items_mes'
+CREATE TABLE [dbo].[Detalle_valores_items_mes] (
+    [id_detalle_valor_item_mes] int IDENTITY(1,1) NOT NULL,
+    [id_valor_mes] int  NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [monto] decimal(11,2)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -364,6 +374,12 @@ GO
 ALTER TABLE [dbo].[Resumenes_meses_empleados]
 ADD CONSTRAINT [PK_Resumenes_meses_empleados]
     PRIMARY KEY CLUSTERED ([id_resumen_mes] ASC);
+GO
+
+-- Creating primary key on [id_detalle_valor_item_mes] in table 'Detalle_valores_items_mes'
+ALTER TABLE [dbo].[Detalle_valores_items_mes]
+ADD CONSTRAINT [PK_Detalle_valores_items_mes]
+    PRIMARY KEY CLUSTERED ([id_detalle_valor_item_mes] ASC);
 GO
 
 -- --------------------------------------------------
@@ -548,6 +564,21 @@ GO
 CREATE INDEX [IX_FK_EmpleadoResumen_mes_empleado]
 ON [dbo].[Resumenes_meses_empleados]
     ([id_empleado]);
+GO
+
+-- Creating foreign key on [id_valor_mes] in table 'Detalle_valores_items_mes'
+ALTER TABLE [dbo].[Detalle_valores_items_mes]
+ADD CONSTRAINT [FK_Valor_mesDetalle_valor_item_mes]
+    FOREIGN KEY ([id_valor_mes])
+    REFERENCES [dbo].[Valores_meses]
+        ([id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Valor_mesDetalle_valor_item_mes'
+CREATE INDEX [IX_FK_Valor_mesDetalle_valor_item_mes]
+ON [dbo].[Detalle_valores_items_mes]
+    ([id_valor_mes]);
 GO
 
 -- --------------------------------------------------

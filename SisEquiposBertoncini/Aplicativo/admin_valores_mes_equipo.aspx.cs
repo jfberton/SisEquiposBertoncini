@@ -8,11 +8,13 @@ using SisEquiposBertoncini.Aplicativo.Datos;
 using System.Web.UI.HtmlControls;
 using SisEquiposBertoncini.Aplicativo.Controles;
 using System.Web.Services;
+using System.Drawing;
 
 namespace SisEquiposBertoncini.Aplicativo
 {
     public partial class admin_valores_mes_equipo : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,7 +36,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     case perfil_usuario.Supervisor:
                         break;
                     case perfil_usuario.Usuario:
-                         menu_admin.Visible = false;
+                        menu_admin.Visible = false;
                         menu_usuario.Visible = true;
                         break;
                     case perfil_usuario.Seleccionar:
@@ -201,27 +203,40 @@ namespace SisEquiposBertoncini.Aplicativo
             row.Attributes.Add("class", "treegrid-" + item.id_item + (item.id_item_padre != null ? " treegrid-parent-" + item.id_item_padre : "") + (item.id_item_padre == null ? " h4" : "") + (item.tipo == "Ingreso" ? " alert-success" : " alert-danger"));
             row.Attributes.Add("title", item.descripcion);
 
-            HtmlGenericControl column = new HtmlGenericControl("td");
-            column.InnerHtml = (item.Hijos.Count > 0 ? "<strong>" : "") + item.nombre + (item.Hijos.Count > 0 ? "</strong>" : "");
-            row.Controls.Add(column);
+            HtmlGenericControl column_nombre = new HtmlGenericControl("td");
+            column_nombre.InnerHtml = (item.Hijos.Count > 0 ? "<strong>" : "") + item.nombre + (item.Hijos.Count > 0 ? "</strong>" : "");
+            row.Controls.Add(column_nombre);
             tree.Controls.Add(row);
 
 
             HtmlGenericControl column_valor = new HtmlGenericControl("td");
             if (item.Hijos.Count == 0 && !(item.nombre == "Impuestos" && item.Padre.nombre == "INGRESOS") && !(item.nombre == "Accesorios Hs Extra 24% (1/12x2)" && item.Padre.nombre == "Costos Variables") && !(item.nombre == "Amortización" && item.Padre.nombre == "Costos Fijos No Erogables"))
             {
-                HtmlInputText valor = new HtmlInputText();
-                valor.ID = "valor_id_valor_" + vm.id;
-                valor.Attributes.Add("class", "form-control money");
-                valor.Attributes.Add("onkeypress", "Modifica_valor(this, event)");
-                valor.Value = vm.valor.ToString();
+                //HtmlInputText valor = new HtmlInputText();
+                //valor.ID = "valor_id_valor_" + vm.id;
+                //valor.Attributes.Add("class", "form-control money");
+                //valor.Attributes.Add("onkeypress", "Modifica_valor(this, event)");
+                //valor.Value = vm.valor.ToString();
+
+                Label valor = new Label();
+                valor.Enabled = false;
+                valor.ID = "valor_id_valor_" + vm.id.ToString();
+                valor.Attributes.Add("class", "form-control");
+                valor.Text = Cadena.Formato_moneda(vm.valor, Cadena.Moneda.pesos);
+                Button boton = new Button();
+                boton.Click += edita_valores_detalle_Click;
+                boton.ID = "edita_detalle_valores_item_" + vm.id.ToString();
+                boton.CssClass = "btn btn-sm btn-default";
+                boton.Text = "...";
+
                 column_valor.Controls.Add(valor);
+                column_valor.Controls.Add(boton);
             }
             else
             {
                 Label valor = new Label();
                 valor.Enabled = false;
-                valor.ID = "valor_id_valor_" + vm.id;
+                valor.ID = "valor_id_valor_" + vm.id.ToString();
                 valor.Attributes.Add("class", "form-control");
                 valor.Text = Cadena.Formato_moneda(vm.valor, Cadena.Moneda.pesos);
                 column_valor.Controls.Add(valor);
@@ -233,6 +248,13 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 AgregarNodo(hijo, tree, cxt, io_equipo);
             }
+        }
+
+        
+
+        private void edita_valores_detalle_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         [WebMethod]
@@ -349,5 +371,34 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             Estado_busqueda(true);
         }
+
+        protected void cv_monto_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+
+        }
+
+        protected void cv_fecha_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+
+        }
+
+        protected void gv_detalle_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.ControlStyle.BackColor = Color.LightGray;
+            }
+        }
+
+        protected void btn_aceptar_eliminacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_editar_detalle_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

@@ -10,7 +10,7 @@
 namespace SisEquiposBertoncini.Aplicativo {
     
     
-    public partial class admin_valores_mes_equipo {
+    public partial class admin_valores_mes_equipo_v2 {
         
         /// <summary>
         /// Control menu_admin.
@@ -29,15 +29,6 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::SisEquiposBertoncini.Aplicativo.Menues.menu_usuario menu_usuario;
-        
-        /// <summary>
-        /// Control ScriptManager1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// Control row_busqueda.
@@ -110,6 +101,24 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_tree;
+        
+        /// <summary>
+        /// Control gv_items.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_items;
+        
+        /// <summary>
+        /// Control hidden_id_valor_mes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_id_valor_mes;
         
         /// <summary>
         /// Control lbl_item.
@@ -193,6 +202,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.TextBox tb_detalle_descripcion;
         
         /// <summary>
+        /// Control btn_agregar_detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_agregar_detalle;
+        
+        /// <summary>
         /// Control gv_detalle.
         /// </summary>
         /// <remarks>
@@ -218,5 +236,23 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_aceptar_eliminacion;
+        
+        /// <summary>
+        /// Control bt_cancelar_eliminacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bt_cancelar_eliminacion;
+        
+        /// <summary>
+        /// Control lbl_total_item_mes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_total_item_mes;
     }
 }

@@ -103,9 +103,15 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
     <script src="../js/jquery.treegrid.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.tree').treegrid();
+            $('.tree').treegrid({
+                'initialState': 'collapsed',
+                'saveState': true,
+            });
         });
+
+        
     </script>
 </asp:Content>

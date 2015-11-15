@@ -180,5 +180,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_valores_items_mes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Detalle_valor_item_mes)">
+        <MappingFragment StoreEntitySet="Detalle_valores_items_mes">
+          <ScalarProperty Name="id_detalle_valor_item_mes" ColumnName="id_detalle_valor_item_mes" />
+          <ScalarProperty Name="id_valor_mes" ColumnName="id_valor_mes" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

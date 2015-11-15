@@ -12,19 +12,14 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class Valor_mes
+    public partial class Detalle_valor_item_mes
     {
-        public Valor_mes()
-        {
-            this.Detalle = new HashSet<Detalle_valor_item_mes>();
-        }
+        public int id_detalle_valor_item_mes { get; set; }
+        public int id_valor_mes { get; set; }
+        public System.DateTime fecha { get; set; }
+        public decimal monto { get; set; }
+        public string descripcion { get; set; }
     
-        public int id { get; set; }
-        public int id_ingreso_egreso_mensual { get; set; }
-        public int id_item { get; set; }
-        public decimal valor { get; set; }
-    
-        public virtual Item_ingreso_egreso Item { get; set; }
-        public virtual ICollection<Detalle_valor_item_mes> Detalle { get; set; }
+        public virtual Valor_mes Valor_item_mes { get; set; }
     }
 }

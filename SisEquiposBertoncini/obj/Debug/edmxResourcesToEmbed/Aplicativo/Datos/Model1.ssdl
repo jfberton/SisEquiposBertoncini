@@ -16,6 +16,7 @@
     <EntitySet Name="Valores_meses" EntityType="Model1.Store.Valores_meses" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Store.Resumenes_meses_empleados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detalle_valores_items_mes" EntityType="Model1.Store.Detalle_valores_items_mes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -63,6 +64,10 @@
     <AssociationSet Name="EmpleadoResumen_mes_empleado" Association="Model1.Store.EmpleadoResumen_mes_empleado">
       <End Role="Empleado" EntitySet="Empleados" />
       <End Role="Resumen_mes_empleado" EntitySet="Resumenes_meses_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="Valor_mesDetalle_valor_item_mes" Association="Model1.Store.Valor_mesDetalle_valor_item_mes">
+      <End Role="Valor_mes" EntitySet="Valores_meses" />
+      <End Role="Detalle_valor_item_mes" EntitySet="Detalle_valores_items_mes" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Equipos">
@@ -229,6 +234,16 @@
     <Property Name="total_horas_guardia" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_varios_taller" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Detalle_valores_items_mes">
+    <Key>
+      <PropertyRef Name="id_detalle_valor_item_mes" />
+    </Key>
+    <Property Name="id_detalle_valor_item_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_valor_mes" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="monto" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
     <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="*" />
@@ -370,6 +385,18 @@
       </Principal>
       <Dependent Role="Resumen_mes_empleado">
         <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Valor_mesDetalle_valor_item_mes">
+    <End Role="Valor_mes" Type="Model1.Store.Valores_meses" Multiplicity="1" />
+    <End Role="Detalle_valor_item_mes" Type="Model1.Store.Detalle_valores_items_mes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valor_mes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Detalle_valor_item_mes">
+        <PropertyRef Name="id_valor_mes" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

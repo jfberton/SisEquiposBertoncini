@@ -79,6 +79,7 @@
     <Content Include="Aplicativo\admin_tipo_empleado.aspx" />
     <Content Include="Aplicativo\admin_tipo_equipo.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_equipo.aspx" />
+    <Content Include="Aplicativo\admin_valores_mes_equipo_v2.aspx" />
     <Content Include="Aplicativo\admin_valor_dolar.aspx" />
     <Content Include="Aplicativo\Controles\imagen_empleado.ascx" />
     <Content Include="Aplicativo\Controles\imagen_usuario.ascx" />
@@ -243,6 +244,13 @@
     <Compile Include="Aplicativo\admin_valores_mes_equipo.aspx.designer.cs">
       <DependentUpon>admin_valores_mes_equipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\admin_valores_mes_equipo_v2.aspx.cs">
+      <DependentUpon>admin_valores_mes_equipo_v2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_valores_mes_equipo_v2.aspx.designer.cs">
+      <DependentUpon>admin_valores_mes_equipo_v2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\admin_valor_dolar.aspx.cs">
       <DependentUpon>admin_valor_dolar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -278,6 +286,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Datos\Detalle_dia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Detalle_valor_item_mes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Datos\Dia.cs">
