@@ -136,7 +136,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 ddl_tipo_empleado.DataTextField = "text";
                 ddl_tipo_empleado.DataValueField = "value";
-                ddl_tipo_empleado.DataSource = tipos_empleados;
+                ddl_tipo_empleado.DataSource = tipos_empleados.OrderBy(x=>x.text);
                 ddl_tipo_empleado.DataBind();
 
                 int id_tipo_empleado = Convert.ToInt32(ddl_tipo_empleado.SelectedValue);
@@ -151,7 +151,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 ddl_empleado.DataTextField = "text";
                 ddl_empleado.DataValueField = "value";
-                ddl_empleado.DataSource = empleados;
+                ddl_empleado.DataSource = empleados.OrderBy(x=>x.text);
                 ddl_empleado.DataBind();
 
                 for (int i = 0; i < 12; i++)
@@ -185,10 +185,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
 
-                foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico))
+                foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico).OrderBy(x=>x.nombre))
                 {
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
+
             }
         }
 

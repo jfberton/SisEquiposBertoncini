@@ -116,7 +116,7 @@
                                                                 <label>Área</label>
                                                             </td>
                                                             <td>
-                                                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_areas">
+                                                                <asp:DropDownList runat="server" Width="100%" CssClass="form-control" ID="ddl_areas">
                                                                 </asp:DropDownList></td>
                                                             <td>
                                                                 <asp:CustomValidator ID="cv_area" runat="server" Text="<img src='../img/exclamation.gif' title='Debe seleccionar un área' />"
@@ -135,8 +135,8 @@
                                                         <tr>
                                                             <td>
                                                                 <label>Categoría</label></td>
-                                                            <td>
-                                                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_categorias">
+                                                             <td>
+                                                                <asp:DropDownList runat="server" Width="100%" CssClass="form-control" ID="ddl_categorias">
                                                                 </asp:DropDownList></td>
                                                             <td>
                                                                 <asp:CustomValidator ID="cv_categoria" runat="server" Text="<img src='../img/exclamation.gif' title='Debe seleccionar una categoría' />"

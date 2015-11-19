@@ -104,9 +104,11 @@
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
+    <Content Include="css\bootstrap.min-original.css" />
     <Content Include="css\jquery.treegrid.css" />
     <Content Include="css\jumbotron-narrow.css" />
     <Content Include="css\mi_css.css" />
+    <Content Include="css\select2.min.css" />
     <Content Include="css\signin.css" />
     <Content Include="default.aspx" />
     <Content Include="dispatcher.aspx" />
@@ -126,6 +128,7 @@
     <Content Include="img\FrameCumple.png" />
     <Content Include="img\UsrDefault.jpg" />
     <Content Include="img\Warning.gif" />
+    <Content Include="js\app.js" />
     <Content Include="js\bootstrap-datetimepicker.min.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery.cookie.js" />
@@ -136,6 +139,7 @@
     <Content Include="js\jquery.treegrid.min.js" />
     <Content Include="js\moment-with-locales.min.js" />
     <Content Include="js\moment.min.js" />
+    <Content Include="js\select2.full.min.js" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="css\bootstrap-theme.css.map" />

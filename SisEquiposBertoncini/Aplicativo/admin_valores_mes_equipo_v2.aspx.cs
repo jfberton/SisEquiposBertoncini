@@ -89,7 +89,7 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 var equipos_habilitados = cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico);
-                foreach (Equipo equipo in equipos_habilitados)
+                foreach (Equipo equipo in equipos_habilitados.OrderBy(x=>x.nombre))
                 {
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
@@ -538,7 +538,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     Valor_mes vm = cxt.Valores_meses.First(x => x.id == id_valo_item_mes);
                     Ingreso_egreso_mensual_equipo ioequipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual);
                     Detalle_valor_item_mes detalle = new Detalle_valor_item_mes();
-                    detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text);
+                    detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text.Replace(".",","));
                     detalle.descripcion = tb_detalle_descripcion.Text;
                     detalle.fecha = Convert.ToDateTime(tb_detalle_fecha.Value);
                     vm.Detalle.Add(detalle);
