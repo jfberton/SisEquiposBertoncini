@@ -73,7 +73,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 Cargar_ddls();
 
                 List<string> valores = Session["valores_horas"] as List<string>;
-               
+
                 if (valores != null)
                 {
                     int id_empleado = Convert.ToInt32(valores[0]);
@@ -110,7 +110,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
 
                     CargarValoresMes();
-                   
+
                 }
                 else
                 {
@@ -136,7 +136,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 ddl_tipo_empleado.DataTextField = "text";
                 ddl_tipo_empleado.DataValueField = "value";
-                ddl_tipo_empleado.DataSource = tipos_empleados.OrderBy(x=>x.text);
+                ddl_tipo_empleado.DataSource = tipos_empleados.OrderBy(x => x.text);
                 ddl_tipo_empleado.DataBind();
 
                 int id_tipo_empleado = Convert.ToInt32(ddl_tipo_empleado.SelectedValue);
@@ -151,7 +151,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 ddl_empleado.DataTextField = "text";
                 ddl_empleado.DataValueField = "value";
-                ddl_empleado.DataSource = empleados.OrderBy(x=>x.text);
+                ddl_empleado.DataSource = empleados.OrderBy(x => x.text);
                 ddl_empleado.DataBind();
 
                 for (int i = 0; i < 12; i++)
@@ -164,7 +164,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         });
                 }
 
-                for (int i = 2015; i <= DateTime.Today.Year; i++)
+                for (int i = 2015; i <= DateTime.Today.Year + 1; i++)
                 {
                     ddl_anio.Items.Add(
                         new ListItem()
@@ -185,7 +185,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
 
-                foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico).OrderBy(x=>x.nombre))
+                foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico).OrderBy(x => x.nombre))
                 {
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
@@ -277,187 +277,217 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void CargarValoresMes()
         {
-            int id_empleado = Convert.ToInt32(ddl_empleado.SelectedValue);
-            int mes = Convert.ToInt32(ddl_mes.SelectedValue);
-            int anio = Convert.ToInt32(ddl_anio.SelectedValue);
-            int dias_mes = DateTime.DaysInMonth(anio, mes);
-            btn_nueva_busqueda.Visible = true;
-            btn_buscar.Visible = false;
-            div_valores_mes.Visible = true;
-
-            List<fila_valor_dia_mes> valores_mes = new List<fila_valor_dia_mes>();
-
-            decimal dias_laborables = 0;
-            decimal dias_ausentes = 0;
-            decimal dias_presentes = 0;
-            decimal dias_por_cargar = 0;
-            decimal dias_out = 0;
-            decimal dias_presentes_en_dias_no_laborables = 0;
-            string total_horas_normales = "00:00";
-            string total_horas_extra_50 = "00:00";
-            string total_horas_extra_100 = "00:00";
-            string total_horas_ausente = "00:00";
-            string total_horas_guardia = "00:00";
-            string total_horas_varios_taller = "00:00";
-
-            using (var cxt = new Model1Container())
+            if (ddl_empleado.Items.Count > 0)
             {
-                for (int i = 1; i < dias_mes; i++)
+                int id_empleado = Convert.ToInt32(ddl_empleado.SelectedValue);
+                int mes = Convert.ToInt32(ddl_mes.SelectedValue);
+                int anio = Convert.ToInt32(ddl_anio.SelectedValue);
+                int dias_mes = DateTime.DaysInMonth(anio, mes);
+                btn_nueva_busqueda.Visible = true;
+                btn_buscar.Visible = false;
+                div_valores_mes.Visible = true;
+
+                List<fila_valor_dia_mes> valores_mes = new List<fila_valor_dia_mes>();
+
+                decimal dias_laborables = 0;
+                decimal dias_ausentes = 0;
+                decimal dias_presentes = 0;
+                decimal dias_por_cargar = 0;
+                decimal dias_out = 0;
+                decimal dias_presentes_en_dias_no_laborables = 0;
+                string total_horas_normales = "00:00";
+                string total_horas_extra_50 = "00:00";
+                string total_horas_extra_100 = "00:00";
+                string total_horas_ausente = "00:00";
+                string total_horas_guardia = "00:00";
+                string total_horas_varios_taller = "00:00";
+
+                using (var cxt = new Model1Container())
                 {
-                    DateTime fecha_buscada = new DateTime(anio, mes, i);
-                    fila_valor_dia_mes ret = new fila_valor_dia_mes();
-                    Dia dia = cxt.Dias.FirstOrDefault(d => d.fecha == fecha_buscada && d.id_empleado == id_empleado);
-                    Feriado feriado = cxt.Feriados.FirstOrDefault(ff => ff.fecha == fecha_buscada);
-                    ret.icon_alerta = feriado != null ? "glyphicon glyphicon-exclamation-sign" : "";
-                    ret.tooltip_alerta = feriado != null ? feriado.descripcion : "";
-
-                    if (dia != null)
+                    for (int i = 1; i <= dias_mes; i++)
                     {
-                        ret.id_dia = "id_" + dia.id_dia.ToString();
-                        ret.dia = dia.fecha;
-                        ret.estado_tm = dia.estado_tm;
-                        ret.estado_tt = dia.estado_tt;
-                        ret.horas_normales = dia.horas_normales;
-                        ret.horas_extra_cincuenta = dia.horas_extra_50;
-                        ret.horas_extra_cien = dia.horas_extra_100;
-                        ret.horas_totales_dia = Horas_string.SumarHoras(new string[] { dia.horas_normales, dia.horas_extra_50, dia.horas_extra_100 });
+                        DateTime fecha_buscada = new DateTime(anio, mes, i);
+                        fila_valor_dia_mes ret = new fila_valor_dia_mes();
+                        Dia dia = cxt.Dias.FirstOrDefault(d => d.fecha == fecha_buscada && d.id_empleado == id_empleado);
+                        Feriado feriado = cxt.Feriados.FirstOrDefault(ff => ff.fecha == fecha_buscada);
+                        ret.icon_alerta = feriado != null ? "glyphicon glyphicon-exclamation-sign" : "";
+                        ret.tooltip_alerta = feriado != null ? feriado.descripcion : "";
 
-                        dias_ausentes = (ret.estado_tm == Estado_turno_dia.Ausente || ret.estado_tm == Estado_turno_dia.Ausente_injust) ? dias_ausentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_ausentes;
-                        dias_ausentes = (ret.estado_tt == Estado_turno_dia.Ausente || ret.estado_tt == Estado_turno_dia.Ausente_injust) ? dias_ausentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_ausentes;
-
-                        dias_presentes = (ret.estado_tm == Estado_turno_dia.Presente || ret.estado_tm == Estado_turno_dia.Vacaciones) ? dias_presentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes;
-                        dias_presentes = (ret.estado_tt == Estado_turno_dia.Presente || ret.estado_tt == Estado_turno_dia.Vacaciones) ? dias_presentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes;
-
-                        total_horas_normales = Horas_string.SumarHoras(new string[] { total_horas_normales, dia.horas_normales });
-                        total_horas_extra_50 = Horas_string.SumarHoras(new string[] { total_horas_extra_50, dia.horas_extra_50 });
-                        total_horas_extra_100 = Horas_string.SumarHoras(new string[] { total_horas_extra_100, dia.horas_extra_100 });
-                        total_horas_ausente = Horas_string.SumarHoras(new string[] { total_horas_ausente, dia.ausente });
-                        total_horas_guardia = Horas_string.SumarHoras(new string[] { total_horas_guardia, dia.guardia });
-                        total_horas_varios_taller = Horas_string.SumarHoras(new string[] { total_horas_varios_taller, dia.varios_taller });
-
-                        if (feriado == null)
+                        if (dia != null)
                         {
-                            dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Saturday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            ret.id_dia = "id_" + dia.id_dia.ToString();
+                            ret.dia = dia.fecha;
+                            ret.estado_tm = dia.estado_tm;
+                            ret.estado_tt = dia.estado_tt;
+                            ret.horas_normales = dia.horas_normales;
+                            ret.horas_extra_cincuenta = dia.horas_extra_50;
+                            ret.horas_extra_cien = dia.horas_extra_100;
+                            ret.horas_totales_dia = Horas_string.SumarHoras(new string[] { dia.horas_normales, dia.horas_extra_50, dia.horas_extra_100 });
 
-                            dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
-                            dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            dia.ausente = "00:00";
+                            dia.guardia = "00:00";
+                            dia.varios_taller = "00:00";
+
+                            foreach (Detalle_dia item_detalle in dia.Detalles)
+                            {
+                                if (item_detalle.Equipo.nombre == "Ausencia")
+                                {
+                                    dia.ausente = Horas_string.SumarHoras(new string[] { dia.ausente, item_detalle.total_movimiento });
+                                }
+
+                                if (item_detalle.Equipo.nombre == "Guardia")
+                                {
+                                    dia.guardia = Horas_string.SumarHoras(new string[] { dia.guardia, item_detalle.total_movimiento });
+                                }
+
+                                if (item_detalle.Equipo.nombre == "Varios Taller")
+                                {
+                                    dia.varios_taller = Horas_string.SumarHoras(new string[] { dia.varios_taller, item_detalle.total_movimiento });
+                                }
+
+                            }
+
+
+                            dias_ausentes = (ret.estado_tm == Estado_turno_dia.Ausente || ret.estado_tm == Estado_turno_dia.Ausente_injust) ? dias_ausentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_ausentes;
+                            dias_ausentes = (ret.estado_tt == Estado_turno_dia.Ausente || ret.estado_tt == Estado_turno_dia.Ausente_injust) ? dias_ausentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_ausentes;
+
+                            dias_presentes = (ret.estado_tm == Estado_turno_dia.Presente || ret.estado_tm == Estado_turno_dia.Vacaciones) ? dias_presentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes;
+                            dias_presentes = (ret.estado_tt == Estado_turno_dia.Presente || ret.estado_tt == Estado_turno_dia.Vacaciones) ? dias_presentes + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes;
+
+                            total_horas_normales = Horas_string.SumarHoras(new string[] { total_horas_normales, dia.horas_normales });
+                            total_horas_extra_50 = Horas_string.SumarHoras(new string[] { total_horas_extra_50, dia.horas_extra_50 });
+                            total_horas_extra_100 = Horas_string.SumarHoras(new string[] { total_horas_extra_100, dia.horas_extra_100 });
+                            total_horas_ausente = Horas_string.SumarHoras(new string[] { total_horas_ausente, dia.ausente });
+                            total_horas_guardia = Horas_string.SumarHoras(new string[] { total_horas_guardia, dia.guardia });
+                            total_horas_varios_taller = Horas_string.SumarHoras(new string[] { total_horas_varios_taller, dia.varios_taller });
+
+                            if (feriado == null)
+                            {
+                                dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Saturday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+
+                                dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                                dias_presentes_en_dias_no_laborables = (dia.fecha.DayOfWeek == DayOfWeek.Sunday && ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            }
+                            else
+                            {
+                                dias_presentes_en_dias_no_laborables = (ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                                dias_presentes_en_dias_no_laborables = (ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            }
+
+                            foreach (Detalle_dia detalle in dia.Detalles)
+                            {
+                                if (detalle.Equipo.OUT)
+                                {
+                                    dias_out = dias_out + (Horas_string.HorasADecimales(Horas_string.RestarHoras(detalle.hora_hasta, detalle.hora_desde)) / Convert.ToDecimal(8));
+                                }
+                            }
                         }
                         else
                         {
-                            dias_presentes_en_dias_no_laborables = (ret.estado_tm == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
-                            dias_presentes_en_dias_no_laborables = (ret.estado_tt == Estado_turno_dia.Presente) ? dias_presentes_en_dias_no_laborables + (Convert.ToDecimal(5) / Convert.ToDecimal(10)) : dias_presentes_en_dias_no_laborables;
+                            ret.id_dia = "fecha_" + anio.ToString() + "_" + mes.ToString() + "_" + i;
+                            ret.dia = fecha_buscada;
+                            ret.estado_tm = Estado_turno_dia.Ninguno;
+                            ret.estado_tt = Estado_turno_dia.Ninguno;
+                            ret.horas_normales = "00:00";
+                            ret.horas_extra_cincuenta = "00:00";
+                            ret.horas_extra_cien = "00:00";
+                            ret.horas_totales_dia = "00:00";
+
+                            switch (ret.dia.DayOfWeek)
+                            {
+                                case DayOfWeek.Saturday:
+                                    if (feriado == null)
+                                    {
+                                        dias_por_cargar += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
+                                    }
+                                    break;
+                                case DayOfWeek.Sunday:
+                                    break;
+                                default:
+                                    if (feriado == null)
+                                    {
+                                        dias_por_cargar++;
+                                    }
+                                    break;
+                            }
+
                         }
 
-                        foreach (Detalle_dia detalle in dia.Detalles)
-                        {
-                            if (detalle.Equipo.OUT)
-                            {
-                                dias_out = dias_out + (Horas_string.HorasADecimales(Horas_string.RestarHoras(detalle.hora_hasta, detalle.hora_desde))/Convert.ToDecimal(8));
-                            }
-                        }
-                    }
-                    else
-                    {
-                        ret.id_dia = "fecha_" + anio.ToString() + "_" + mes.ToString() + "_" + i;
-                        ret.dia = fecha_buscada;
-                        ret.estado_tm = Estado_turno_dia.Ninguno;
-                        ret.estado_tt = Estado_turno_dia.Ninguno;
-                        ret.horas_normales = "00:00";
-                        ret.horas_extra_cincuenta = "00:00";
-                        ret.horas_extra_cien = "00:00";
-                        ret.horas_totales_dia = "00:00";
+                        valores_mes.Add(ret);
 
                         switch (ret.dia.DayOfWeek)
                         {
                             case DayOfWeek.Saturday:
-                                 if (feriado == null)
+                                if (feriado == null)
                                 {
-                                dias_por_cargar += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
-                                     }
+                                    dias_laborables += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
+                                }
                                 break;
                             case DayOfWeek.Sunday:
                                 break;
                             default:
                                 if (feriado == null)
                                 {
-                                    dias_por_cargar++;
+                                    dias_laborables++;
                                 }
                                 break;
                         }
-
                     }
 
-                    valores_mes.Add(ret);
-
-                    switch (ret.dia.DayOfWeek)
+                    Resumen_mes_empleado rme = cxt.Resumenes_meses_empleados.FirstOrDefault(rr => rr.id_empleado == id_empleado && rr.mes == mes && rr.anio == anio);
+                    if (rme == null)
                     {
-                        case DayOfWeek.Saturday:
-                            if (feriado == null)
-                            {
-                                dias_laborables += (Convert.ToDecimal(5) / Convert.ToDecimal(10));
-                            }
-                            break;
-                        case DayOfWeek.Sunday:
-                            break;
-                        default:
-                            if (feriado == null)
-                            {
-                                dias_laborables++;
-                            }
-                            break;
+                        rme = new Resumen_mes_empleado();
+                        rme.id_empleado = id_empleado;
+                        rme.mes = mes;
+                        rme.anio = anio;
+                        rme.Sueldo = 0;
+                        cxt.Resumenes_meses_empleados.Add(rme);
                     }
+
+                    rme.dias_ausente = dias_ausentes;
+                    rme.dias_laborables = dias_laborables;
+                    rme.dias_out = dias_out;
+                    rme.dias_por_cargar = dias_por_cargar;
+                    rme.dias_presente = dias_presentes;
+                    rme.dias_presentes_en_dias_no_laborables = dias_presentes_en_dias_no_laborables;
+                    rme.total_horas_normales = total_horas_normales;
+                    rme.total_horas_extra_50 = total_horas_extra_50;
+                    rme.total_horas_extra_100 = total_horas_extra_100;
+                    rme.total_horas_ausente = total_horas_ausente;
+                    rme.total_horas_guardia = total_horas_guardia;
+                    rme.total_horas_varios_taller = total_horas_varios_taller;
+
+                    cxt.SaveChanges();
+
                 }
 
-                Resumen_mes_empleado rme = cxt.Resumenes_meses_empleados.FirstOrDefault(rr => rr.id_empleado == id_empleado && rr.mes == mes && rr.anio == anio);
-                if (rme == null)
-                {
-                    rme = new Resumen_mes_empleado();
-                    rme.id_empleado = id_empleado;
-                    rme.mes = mes;
-                    rme.anio = anio;
-                    rme.Sueldo = 0;
-                    cxt.Resumenes_meses_empleados.Add(rme);
-                }
+                gv_valores_mes.DataSource = valores_mes;
+                gv_valores_mes.DataBind();
 
-                rme.dias_ausente = dias_ausentes;
-                rme.dias_laborables = dias_laborables;
-                rme.dias_out = dias_out;
-                rme.dias_por_cargar = dias_por_cargar;
-                rme.dias_presente = dias_presentes;
-                rme.dias_presentes_en_dias_no_laborables = dias_presentes_en_dias_no_laborables;
-                rme.total_horas_normales = total_horas_normales;
-                rme.total_horas_extra_50 = total_horas_extra_50;
-                rme.total_horas_extra_100 = total_horas_extra_100;
-                rme.total_horas_ausente = total_horas_ausente;
-                rme.total_horas_guardia = total_horas_guardia;
-                rme.total_horas_varios_taller = total_horas_varios_taller;
 
-                cxt.SaveChanges();
-                
+                lbl_dias_ausentes.Text = dias_ausentes.ToString();
+                lbl_dias_laborables.Text = dias_laborables.ToString();
+                lbl_dias_out.Text = dias_out.ToString();
+                lbl_días_por_cargar.Text = dias_por_cargar.ToString();
+                lbl_dias_presentes_en_dias_no_laborables.Text = dias_presentes_en_dias_no_laborables.ToString();
+                lbl_dias_presentes_vacaciones.Text = dias_presentes.ToString();
+                lbl_total_horas_normales.Text = total_horas_normales;
+                lbl_total_horas_extra_50.Text = total_horas_extra_50;
+                lbl_total_horas_extra_100.Text = total_horas_extra_100;
+
+                btn_buscar.Visible = false;
+                btn_nueva_busqueda.Visible = true;
+                div_valores_mes.Visible = true;
+                ddl_tipo_empleado.Enabled = false;
+                ddl_empleado.Enabled = false;
+                ddl_mes.Enabled = false;
+                ddl_anio.Enabled = false;
             }
-
-            gv_valores_mes.DataSource = valores_mes;
-            gv_valores_mes.DataBind();
-
-
-            lbl_dias_ausentes.Text = dias_ausentes.ToString();
-            lbl_dias_laborables.Text = dias_laborables.ToString();
-            lbl_dias_out.Text = dias_out.ToString();
-            lbl_días_por_cargar.Text = dias_por_cargar.ToString();
-            lbl_dias_presentes_en_dias_no_laborables.Text = dias_presentes_en_dias_no_laborables.ToString();
-            lbl_dias_presentes_vacaciones.Text = dias_presentes.ToString();
-            lbl_total_horas_normales.Text = total_horas_normales;
-            lbl_total_horas_extra_50.Text = total_horas_extra_50;
-            lbl_total_horas_extra_100.Text = total_horas_extra_100;
-
-            btn_buscar.Visible = false;
-            btn_nueva_busqueda.Visible = true;
-            div_valores_mes.Visible = true;
-            ddl_tipo_empleado.Enabled = false;
-            ddl_empleado.Enabled = false;
-            ddl_mes.Enabled = false;
-            ddl_anio.Enabled = false;
-
+            else
+            {
+                MessageBox.Show(this,"El área seleccionada no tiene empleados");
+            }
         }
 
         protected void btn_nueva_busqueda_Click(object sender, EventArgs e)
@@ -483,6 +513,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 if (str_id_dia.Contains("id"))
                 {
                     int id_dia = Convert.ToInt32(str_id_dia.Replace("id_", ""));
+
                     dia = cxt.Dias.FirstOrDefault(d => d.id_dia == id_dia);
                     foreach (Detalle_dia item_detalle in dia.Detalles)
                     {
@@ -511,6 +542,9 @@ namespace SisEquiposBertoncini.Aplicativo
                     dia.horas_normales = "00:00";
                     dia.horas_extra_50 = "00:00";
                     dia.horas_extra_100 = "00:00";
+                    dia.ausente = "00:00";
+                    dia.guardia = "00:00";
+                    dia.varios_taller = "00:00";
                     dia.estado_tm = Estado_turno_dia.Ninguno;
                     dia.estado_tt = Estado_turno_dia.Ninguno;
                     dia.id_empleado = Convert.ToInt32(ddl_empleado.SelectedValue);
@@ -682,7 +716,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             using (var cxt = new Model1Container())
             {
-               feriado  = cxt.Feriados.FirstOrDefault(ff => ff.fecha == dia.fecha);
+                feriado = cxt.Feriados.FirstOrDefault(ff => ff.fecha == dia.fecha);
             }
 
             Estado_turno_dia estadotm = (Estado_turno_dia)Enum.Parse(typeof(Estado_turno_dia), ddl_estado_turno_m.SelectedValue);
@@ -712,7 +746,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         dia_cxt.ausente = "00:00";
                         dia_cxt.guardia = "00:00";
                         dia_cxt.varios_taller = "00:00";
-                        
+
                         dia_cxt.id_empleado = Convert.ToInt32(ddl_empleado.SelectedItem.Value);
                         if (dia.fecha.DayOfWeek == DayOfWeek.Sunday || feriado != null)
                         {
@@ -756,19 +790,23 @@ namespace SisEquiposBertoncini.Aplicativo
                             if (item_detalle.id_detalle_dia == 0)
                             {
                                 dia_cxt.Detalles.Add(new Detalle_dia() { id_equipo = item_detalle.id_equipo, hora_desde = item_detalle.desde, hora_hasta = item_detalle.hasta });
-                                if (item_detalle.equipo == "Ausencia")
-                                {
-                                    dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
-                                }
-                                if (item_detalle.equipo == "Guardia")
-                                {
-                                    dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
-                                }
-                                if (item_detalle.equipo == "Varios Taller")
-                                {
-                                    dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
-                                }
                             }
+                        
+                            if (item_detalle.equipo == "Ausencia")
+                            {
+                                dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
+                            }
+                            
+                            if (item_detalle.equipo == "Guardia")
+                            {
+                                dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                            }
+                            
+                            if (item_detalle.equipo == "Varios Taller")
+                            {
+                                dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
+                            }
+
                         }
 
                         try
@@ -833,18 +871,21 @@ namespace SisEquiposBertoncini.Aplicativo
                             if (item_detalle.id_detalle_dia == 0)
                             {
                                 dia_cxt.Detalles.Add(new Detalle_dia() { id_equipo = item_detalle.id_equipo, hora_desde = item_detalle.desde, hora_hasta = item_detalle.hasta });
-                                if (item_detalle.equipo == "Ausencia")
-                                {
-                                    dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
-                                }
-                                if (item_detalle.equipo == "Guardia")
-                                {
-                                    dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
-                                }
-                                if (item_detalle.equipo == "Varios Taller")
-                                {
-                                    dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
-                                }
+                            }
+
+                            if (item_detalle.equipo == "Ausencia")
+                            {
+                                dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
+                            }
+
+                            if (item_detalle.equipo == "Guardia")
+                            {
+                                dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                            }
+
+                            if (item_detalle.equipo == "Varios Taller")
+                            {
+                                dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
                             }
                         }
 
@@ -924,7 +965,7 @@ namespace SisEquiposBertoncini.Aplicativo
                             }
 
                         }
-                        else 
+                        else
                         {
                             horasAusente = Horas_string.SumarHoras(new string[] { horasAusente, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
                         }

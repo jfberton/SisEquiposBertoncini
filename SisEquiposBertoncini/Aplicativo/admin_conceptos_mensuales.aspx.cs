@@ -19,6 +19,13 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 Response.Redirect("~/Default.aspx?mode=session_end");
             }
+            else
+            {
+                if (usuariologueado.perfil != perfil_usuario.Admin)
+                {
+                    Response.Redirect("~/Default.aspx?mode=trucho");
+                }
+            }
 
             CargarConceptos();
         }
@@ -88,7 +95,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             row.Controls.Add(column_agregar_eliminar);
 
-            foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x=>x.id_item))
+            foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x => x.id_item))
             {
                 AgregarNodo(hijo, tree);
             }
@@ -124,7 +131,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     if (item_a_eliminar.Hijos.Count > 0)
                     {
-                        MessageBox.Show(this, "Debe eliminar primero los conceptos que dependen del que quiere eliminar.-",MessageBox.Tipo_MessageBox.Danger);
+                        MessageBox.Show(this, "Debe eliminar primero los conceptos que dependen del que quiere eliminar.-", MessageBox.Tipo_MessageBox.Danger);
                     }
                     else
                     {
@@ -141,9 +148,9 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
             }
-            
-            
-            
+
+
+
         }
 
         protected void btn_agregar_rubro_ingreso_ServerClick(object sender, EventArgs e)
@@ -192,7 +199,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         Item_ingreso_egreso padre = cxt.Items_ingresos_egresos.FirstOrDefault(ii => ii.id_item == id_item_padre);
                         if (padre != null)
                         {
-                            Item_ingreso_egreso concepto_ingreso = new Item_ingreso_egreso() {id_item_padre=id_item_padre, tipo = padre.tipo, nombre = tb_nombre.Value, descripcion = tb_descripcion.Value };
+                            Item_ingreso_egreso concepto_ingreso = new Item_ingreso_egreso() { id_item_padre = id_item_padre, tipo = padre.tipo, nombre = tb_nombre.Value, descripcion = tb_descripcion.Value };
                             cxt.Items_ingresos_egresos.Add(concepto_ingreso);
                             cxt.SaveChanges();
 

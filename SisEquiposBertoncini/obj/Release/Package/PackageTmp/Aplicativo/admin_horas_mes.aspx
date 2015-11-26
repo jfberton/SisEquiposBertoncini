@@ -272,7 +272,7 @@
                                                         <asp:BoundField DataField="total_movimiento" HeaderText="Total movimiento" ReadOnly="true" />
                                                         <asp:TemplateField HeaderText="OUT">
                                                             <ItemTemplate>
-                                                                <asp:CheckBox ID="cbSelect" Checked='<%#Eval("_out")%>' runat="server"></asp:CheckBox>
+                                                                <asp:CheckBox ID="cbSelect" Checked='<%#Eval("_out")%>' runat="server" Enabled="false"></asp:CheckBox>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
                                                         <asp:TemplateField>

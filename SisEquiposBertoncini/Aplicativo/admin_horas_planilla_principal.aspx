@@ -191,9 +191,10 @@
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td style="width:82%">- COSTO DE LA MASA SALARIAL AJUSTADA (MENOS DIAS OUT)</td>
-                                    <td style="width:9%"><asp:Label Text="" ID="lbl_costo_mensual_ponderado_total_2" runat="server" /></td>
-                                    <td style="width:9%"></td>
+                                    <td style="width: 82%">- COSTO DE LA MASA SALARIAL AJUSTADA (MENOS DIAS OUT)</td>
+                                    <td style="width: 9%" class="text-right">
+                                        <asp:Label Text="" ID="lbl_costo_mensual_ponderado_total_2" runat="server" /></td>
+                                    <td style="width: 9%"></td>
                                 </tr>
                             </table>
                         </div>
@@ -203,27 +204,34 @@
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td colspan="5" style="width:82%">- AUSENTES</td>
-                                    <td style="width:9%"><asp:Label Text="$ 00,0" ID="lbl_costo_ausentes" runat="server" /></td>
-                                    <td style="width:9%" class="alert-info"><asp:Label Text="$ 00,0" ID="lbl_costo_ausentes_prueba" runat="server" /></td>
+                                    <td colspan="5" style="width: 82%">- AUSENTES</td>
+                                    <td style="width: 9%" class="text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_costo_ausentes" runat="server" /></td>
+                                    <td style="width: 9%" class="alert-info text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_costo_ausentes_prueba" runat="server" /></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:14%"></td>
-                                    <td style="width:27%">Horas ausentes totales</td>
-                                    <td style="width:13%"><asp:Label Text="00,00" ID="lbl_horas_ausentes_totales" runat="server" /></td>
-                                    <td style="width:7%"><asp:TextBox runat="server" Width="100%" ID="txt_horas_ausentes_totales_prueba" /></td>
-                                    <td style="width:21%">% Ausentismo</td>
-                                    <td style="width:9%"><asp:Label Text="0,00 %" CssClass="alert-danger" ID="lbl_ausentismo_porcentaje" runat="server" /></td>
-                                    <td style="width:9%"><asp:Label Text="0,00 %" ID="lbl_ausentismo_porcentaje_prueba" runat="server" /></td>
+                                    <td style="width: 14%"></td>
+                                    <td style="width: 27%">Horas ausentes totales</td>
+                                    <td style="width: 13%">
+                                        <asp:Label Text="00,00" ID="lbl_horas_ausentes_totales" runat="server" /></td>
+                                    <td style="width: 7%">
+                                        <asp:TextBox runat="server" OnTextChanged="txt_prueba_TextChanged" AutoPostBack="true" Width="100%" ID="txt_horas_ausentes_totales_prueba" /></td>
+                                    <td style="width: 21%" class="text-right">% Ausentismo</td>
+                                    <td style="width: 9%" class="alert-danger">
+                                        <asp:Label Text="0,00 %" ID="lbl_ausentismo_porcentaje" runat="server" /></td>
+                                    <td style="width: 9%">
+                                        <asp:Label Text="0,00 %" ID="lbl_ausentismo_porcentaje_prueba" runat="server" /></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:14%"></td>
-                                    <td style="width:27%">Costo horas hombre</td>
-                                    <td style="width:13%"><asp:Label Text="$ 00,00" ID="lbl_costo_horas_hombre_teorico_ajustado_1" runat="server" /></td>
-                                    <td style="width:7%"></td>
-                                    <td style="width:21%"></td>
-                                    <td style="width:9%"></td>
-                                    <td style="width:9%"></td>
+                                    <td style="width: 14%"></td>
+                                    <td style="width: 27%">Costo horas hombre</td>
+                                    <td style="width: 13%">
+                                        <asp:Label Text="$ 00,00" ID="lbl_costo_horas_hombre_teorico_ajustado_1" runat="server" /></td>
+                                    <td style="width: 7%"></td>
+                                    <td style="width: 21%"></td>
+                                    <td style="width: 9%"></td>
+                                    <td style="width: 9%"></td>
                                 </tr>
                             </table>
                         </div>
@@ -233,27 +241,32 @@
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td colspan="5" style="width:82%">- HORAS EXTRAS AL 50%</td>
-                                    <td style="width:9%"><asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_50" runat="server" /></td>
-                                    <td style="width:9%" class="alert-info"><asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_50_prueba" runat="server" /></td>
+                                    <td colspan="5" style="width: 82%">- HORAS EXTRAS AL 50%</td>
+                                    <td style="width: 9%" class="text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_50" runat="server" /></td>
+                                    <td style="width: 9%" class="alert-info text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_50_prueba" runat="server" /></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:14%"></td>
-                                    <td style="width:27%">Hs extras al 50% totales</td>
-                                    <td style="width:13%"><asp:Label Text="00,00" ID="lbl_horas_extra_totales_50" runat="server" /></td>
-                                    <td style="width:7%"><asp:TextBox runat="server" Width="100%" ID="txt_horas_extra_totales_50_prueba" /></td>
-                                    <td style="width:21%"></td>
-                                    <td style="width:9%"></td>
-                                    <td style="width:9%"></td>
+                                    <td style="width: 14%"></td>
+                                    <td style="width: 27%">Hs extras al 50% totales</td>
+                                    <td style="width: 13%" class="text-right">
+                                        <asp:Label Text="00,00" ID="lbl_horas_extra_totales_50" runat="server" /></td>
+                                    <td style="width: 7%" class="text-right">
+                                        <asp:TextBox runat="server" Width="100%" ID="txt_horas_extra_totales_50_prueba" OnTextChanged="txt_prueba_TextChanged" AutoPostBack="true" /></td>
+                                    <td style="width: 21%"></td>
+                                    <td style="width: 9%"></td>
+                                    <td style="width: 9%"></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:14%"></td>
-                                    <td style="width:27%">Costo horas hombre</td>
-                                    <td style="width:13%"><asp:Label Text="$ 00,00" ID="lbl_costo_horas_hombre_teorico_ajustado_2" runat="server" /></td>
-                                    <td style="width:7%"></td>
-                                    <td style="width:21%"></td>
-                                    <td style="width:9%"></td>
-                                    <td style="width:9%"></td>
+                                    <td style="width: 14%"></td>
+                                    <td style="width: 27%">Costo horas hombre</td>
+                                    <td style="width: 13%" class="text-right">
+                                        <asp:Label Text="$ 00,00" ID="lbl_costo_horas_hombre_teorico_ajustado_2" runat="server" /></td>
+                                    <td style="width: 7%"></td>
+                                    <td style="width: 21%"></td>
+                                    <td style="width: 9%"></td>
+                                    <td style="width: 9%"></td>
                                 </tr>
                             </table>
                         </div>
@@ -263,27 +276,32 @@
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td colspan="5" style="width:82%">- HORAS EXTRAS AL 100%</td>
-                                    <td style="width:9%"><asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_100" runat="server" /></td>
-                                    <td style="width:9%" class="alert-info"><asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_100_prueba" runat="server" /></td>
+                                    <td colspan="5" style="width: 82%">- HORAS EXTRAS AL 100%</td>
+                                    <td style="width: 9%" class="text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_100" runat="server" /></td>
+                                    <td style="width: 9%" class="alert-info text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_costo_horas_extra_100_prueba" runat="server" /></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:14%"></td>
-                                    <td style="width:27%">Hs extras al 100% totales</td>
-                                    <td style="width:13%"><asp:Label Text="00,00" ID="lbl_horas_extra_totales_100" runat="server" /></td>
-                                    <td style="width:7%"><asp:TextBox runat="server" Width="100%" ID="txt_horas_extra_totales_100_prueba" /></td>
-                                    <td style="width:21%"></td>
-                                    <td style="width:9%"></td>
-                                    <td style="width:9%"></td>
+                                    <td style="width: 14%"></td>
+                                    <td style="width: 27%">Hs extras al 100% totales</td>
+                                    <td style="width: 13%" class="text-right">
+                                        <asp:Label Text="00,00" ID="lbl_horas_extra_totales_100" runat="server" /></td>
+                                    <td style="width: 7%" class="text-right">
+                                        <asp:TextBox runat="server" Width="100%" ID="txt_horas_extra_totales_100_prueba" OnTextChanged="txt_prueba_TextChanged" AutoPostBack="true" /></td>
+                                    <td style="width: 21%"></td>
+                                    <td style="width: 9%"></td>
+                                    <td style="width: 9%"></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:14%"></td>
-                                    <td style="width:27%">Costo horas hombre</td>
-                                    <td style="width:13%"><asp:Label Text="$ 00,00" ID="lbl_costo_horas_hombre_teorico_ajustado_3" runat="server" /></td>
-                                    <td style="width:7%"></td>
-                                    <td style="width:21%"></td>
-                                    <td style="width:9%"></td>
-                                    <td style="width:9%"></td>
+                                    <td style="width: 14%"></td>
+                                    <td style="width: 27%">Costo horas hombre</td>
+                                    <td style="width: 13%" class="text-right">
+                                        <asp:Label Text="$ 00,00" ID="lbl_costo_horas_hombre_teorico_ajustado_3" runat="server" /></td>
+                                    <td style="width: 7%"></td>
+                                    <td style="width: 21%"></td>
+                                    <td style="width: 9%"></td>
+                                    <td style="width: 9%"></td>
                                 </tr>
                             </table>
                         </div>
@@ -293,16 +311,73 @@
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td style="width:82%">- NUEVA MASA SALARIAL</td>
-                                    <td style="width:9%"><asp:Label Text="" ID="lbl_nueva_masa_salarial" runat="server" /></td>
-                                    <td style="width:9%" class="alert-info"><asp:Label Text="$ 00,0" ID="lbl_nueva_masa_salarial_prueba" runat="server" /></td>
+                                    <td style="width: 82%">- NUEVA MASA SALARIAL</td>
+                                    <td style="width: 9%" class="text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_nueva_masa_salarial" runat="server" /></td>
+                                    <td style="width: 9%" class="alert-info text-right">
+                                        <asp:Label Text="$ 00,0" ID="lbl_nueva_masa_salarial_prueba" runat="server" /></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
 
-
-
+                    <div class="row" id="resultado_mensual_final_planilla">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td colspan="2" style="background-color: gray" class="text-center">
+                                        <asp:Label Text="" ID="lbl_titulo_mes_fin_planilla" runat="server" ForeColor="Black" Font-Bold="true" /></td>
+                                    <td class="alert-info">
+                                        <label>Monto Prueba</label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Nueva masa salarial</label></td>
+                                    <td>
+                                        <asp:Label Text="" ID="lbl_nueva_masa_salarial_1" runat="server" /></td>
+                                    <td>
+                                        <asp:Label Text="" ID="lbl_nueva_masa_salarial_prueba_1" runat="server" /></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Hs realmente trabajadas</label></td>
+                                    <td>
+                                        <asp:Label Text="" ID="lbl_horas_realmente_trabajadas" runat="server" /></td>
+                                    <td>
+                                        <asp:Label Text="" ID="lbl_horas_trabajadas_segun_datos_prueba" runat="server" /></td>
+                                </tr>
+                                <tr class="alert-success">
+                                    <td>
+                                        <h4>Costo horas hombre real ($)</h4>
+                                    </td>
+                                    <td><h4>
+                                        <asp:Label Text="" ID="lbl_costo_horas_hombre_real" runat="server" /></h4></td>
+                                    <td><h4><asp:Label Text="" ID="lbl_costo_horas_hombre_real_prueba" runat="server" /></h4></td>
+                                </tr>
+                                <tr class="alert-success">
+                                    <td>
+                                        <h4>Valor dolar</h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            <asp:Label Text="" ID="lbl_valor_dolar_mes" runat="server" /></h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox runat="server" Width="100%" ID="txt_valor_dolar_mes_prueba" OnTextChanged="txt_prueba_TextChanged" AutoPostBack="true" /></h4>
+                                    </td>
+                                </tr>
+                                <tr class="alert-success">
+                                    <td>
+                                        <h4>Costo horas hombre real (USS)</h4>
+                                    </td>
+                                    <td><h4>
+                                        <asp:Label Text="" ID="lbl_costo_horas_hombre_real_dolar" runat="server" /></h4></td>
+                                    <td><h4><asp:Label Text="" ID="lbl_costo_horas_hombre_real_prueba_dolar" runat="server" /></h4></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
             </div>

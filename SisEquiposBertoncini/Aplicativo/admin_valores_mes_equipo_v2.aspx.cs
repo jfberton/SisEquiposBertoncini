@@ -32,6 +32,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
+                else
+                {
+                    if (usuariologueado.perfil != perfil_usuario.Admin)
+                    {
+                        Response.Redirect("~/Default.aspx?mode=trucho");
+                    }
+                }
 
                 switch (usuariologueado.perfil)
                 {
@@ -94,7 +101,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
 
-                for (int anio = 2015; anio <= DateTime.Today.Year; anio++)
+                for (int anio = 2015; anio <= DateTime.Today.Year + 1; anio++)
                 {
                     ddl_anio.Items.Add(new ListItem() { Value = anio.ToString(), Text = anio.ToString() });
                 }

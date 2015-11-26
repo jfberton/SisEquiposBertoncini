@@ -334,6 +334,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Datos\partial_Detalle_dia.cs" />
     <Compile Include="Aplicativo\Datos\partial_Equipo.cs" />
     <Compile Include="Aplicativo\Datos\partial_Item_por_amortizar.cs" />
     <Compile Include="Aplicativo\Datos\perfil_usuario.cs">

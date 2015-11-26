@@ -19,6 +19,13 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 Response.Redirect("~/Default.aspx?mode=session_end");
             }
+            else
+            {
+                if (usuariologueado.perfil != perfil_usuario.Admin)
+                {
+                    Response.Redirect("~/Default.aspx?mode=trucho");
+                }
+            }
 
             Cargar_ddls();
 

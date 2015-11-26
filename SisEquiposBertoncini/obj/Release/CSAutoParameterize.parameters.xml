@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="Model1Container-Web.config Connection String" description="Model1Container Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Aplicativo.Datos.Model1.csdl|res://*/Aplicativo.Datos.Model1.ssdl|res://*/Aplicativo.Datos.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=LOCALHOST\SQLEXPRESS;Initial Catalog=equipos_berton;User ID=SA;Password=berton123;MultipleActiveResultSets=True&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\Desarrollo\\Mios\\Tio\\SisEquiposBertoncini\\SisEquiposBertoncini\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Model1Container']/@connectionString" />
+  <parameter name="Model1Container-Web.config Connection String" description="Model1Container Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Aplicativo.Datos.Model1.csdl|res://*/Aplicativo.Datos.Model1.ssdl|res://*/Aplicativo.Datos.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=LOCALHOST;Initial Catalog=equipos_berton;User ID=SA;Password=berton123;MultipleActiveResultSets=True&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="d:\\Usuarios\\jfberton\\Mis\ Documentos\\Tio\\Repositorio\ github\\SisEquiposBertoncini\\SisEquiposBertoncini\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Model1Container']/@connectionString" />
   </parameter>
 </parameters>
