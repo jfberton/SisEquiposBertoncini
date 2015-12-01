@@ -191,5 +191,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Aux_planilla_calculos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Aux_planilla_calculo)">
+        <MappingFragment StoreEntitySet="Aux_planilla_calculos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="considera_guardia" ColumnName="considera_guardia" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

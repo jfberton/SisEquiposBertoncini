@@ -101,6 +101,7 @@
     <Content Include="Aplicativo\main_usuario.aspx" />
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\Menues\menu_usuario.ascx" />
+    <Content Include="Aplicativo\planilla_calculos.aspx" />
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
@@ -283,6 +284,9 @@
     <Compile Include="Aplicativo\Datos\Area.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Datos\Aux_planilla_calculo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Datos\Categoria_empleado.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -373,6 +377,13 @@
     </Compile>
     <Compile Include="Aplicativo\Menues\menu_usuario.ascx.designer.cs">
       <DependentUpon>menu_usuario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_calculos.aspx.cs">
+      <DependentUpon>planilla_calculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_calculos.aspx.designer.cs">
+      <DependentUpon>planilla_calculos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Seguridad\Cripto.cs" />
     <Compile Include="Aplicativo\Menues\menu_admin.ascx.cs">

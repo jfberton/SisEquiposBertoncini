@@ -69,6 +69,7 @@
       <End Role="Valor_mes" EntitySet="Valores_meses" />
       <End Role="Detalle_valor_item_mes" EntitySet="Detalle_valores_items_mes" />
     </AssociationSet>
+    <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Aux_planilla_calculo" />
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>
@@ -443,4 +444,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Aux_planilla_calculo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_equipo" Type="Int32" Nullable="false" />
+    <Property Name="considera_guardia" Type="Boolean" Nullable="false" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

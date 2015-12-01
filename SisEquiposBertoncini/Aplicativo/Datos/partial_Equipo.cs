@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SisEquiposBertoncini.Aplicativo.Controles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,6 +66,18 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
 
                 return ret;
             }
+        }
+
+        public string Horas_mes(int mes, int anio)
+        {
+            string ret = "00:00";
+            
+            foreach (Detalle_dia item in Detalles_dias.Where(x=>x.Dia.fecha.Month == mes && x.Dia.fecha.Year==anio))
+            {
+                Horas_string.SumarHoras(new string[] { ret, item.total_movimiento });
+            }
+
+            return ret;
         }
     }
 }
