@@ -219,6 +219,18 @@ namespace SisEquiposBertoncini.Aplicativo
                 ddl_anio.Enabled = false;
                 ddl_mes.Enabled = false;
                 ddl_tipo_empleado.Enabled = false;
+
+                Session["planilla_calculos_mes"] = mes;
+                Session["planilla_calculos_anio"] = anio;
+
+                Session["planilla_calculos_horas_normales"] = total_horas_normales;
+                Session["planilla_calculos_horas_extra_50"] = total_horas_extra_50;
+                Session["planilla_calculos_horas_extra_100"] = total_horas_extra_100;
+
+                Session["planilla_calculos_costo_hora_teorico"] = (total_sueldos / dias_mes / cantidad_empleados / horas_dia);
+                Session["planilla_calculos_costo_hora_teorico_ajustado"] = costo_hora_teorico_ajustado;
+                Session["planilla_calculos_costo_hora_real"] = horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas) : 0;
+
             }
         }
 
@@ -289,8 +301,10 @@ namespace SisEquiposBertoncini.Aplicativo
                         total_horas_guardia = "00:00",
                         total_horas_varios_taller = "00:00"
                     };
+
                     cxt.Resumenes_meses_empleados.Add(rme);
                 }
+
                 cxt.SaveChanges();
             }
 
@@ -301,6 +315,13 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void txt_prueba_TextChanged(object sender, EventArgs e)
         {
             Cargar_busqueda();
+        }
+
+        protected void btn_ver_planilla_calculos_ServerClick(object sender, EventArgs e)
+        {
+            //ya estan cargados en variables de session los datos necesarios.
+            //se cargan en la funcion Cargar_busqueda
+            Response.Redirect("~/Aplicativo/planilla_calculos.aspx");
         }
     }
 }

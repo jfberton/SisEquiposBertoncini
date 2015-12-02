@@ -380,6 +380,11 @@
                     </div>
 
                 </div>
+                <div class="col-md-12">
+                    <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
+                        <span class="glyphicon glyphicon-blackboard"></span>&nbsp;Ver planilla de cálculos
+                    </button>
+                </div>
             </div>
         </div>
     </div>

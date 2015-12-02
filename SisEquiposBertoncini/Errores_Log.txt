@@ -61,3 +61,40 @@ STACKTRACE:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635845540155711732
+
+DATE: 01/12/2015 08:06:55 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Se encontraron varios controles con el mismo identificador 'chk_5'. FindControl requiere que los controles tengan identificadores únicos.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/planilla_calculos.aspx
+
+TARGETSITE: Void FillNamedControlsTable(System.Web.UI.Control, System.Web.UI.ControlCollection)
+
+STACKTRACE:    en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.EnsureNamedControlsTable()
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Page.FindControl(String id)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
