@@ -231,6 +231,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 Session["planilla_calculos_costo_hora_teorico_ajustado"] = costo_hora_teorico_ajustado;
                 Session["planilla_calculos_costo_hora_real"] = horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas) : 0;
 
+                Session["planilla_calculos_categoria_empleado"] = ddl_tipo_empleado.SelectedItem.Text;
+
             }
         }
 

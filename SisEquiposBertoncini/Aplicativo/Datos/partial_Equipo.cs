@@ -68,14 +68,24 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             }
         }
 
-        public string Horas_mes(int mes, int anio)
+        public string Horas_mes(int mes, int anio, string categoria_empleado)
         {
             string ret = "00:00";
-            
-            foreach (Detalle_dia item in Detalles_dias.Where(x=>x.Dia.fecha.Month == mes && x.Dia.fecha.Year==anio))
+            if (categoria_empleado == "Mecánicos - Pintores")
             {
-                ret = Horas_string.SumarHoras(new string[] { ret, item.total_movimiento });
+                foreach (Detalle_dia item in Detalles_dias.Where(x => x.Dia.fecha.Month == mes && x.Dia.fecha.Year == anio && (x.Dia.Empleado.Categoria.nombre == "Mecánico" || x.Dia.Empleado.Categoria.nombre == "Pintor")))
+                {
+                    ret = Horas_string.SumarHoras(new string[] { ret, item.total_movimiento });
+                }
             }
+            else
+            {
+                foreach (Detalle_dia item in Detalles_dias.Where(x => x.Dia.fecha.Month == mes && x.Dia.fecha.Year == anio && x.Dia.Empleado.Categoria.nombre == "Soldador"))
+                {
+                    ret = Horas_string.SumarHoras(new string[] { ret, item.total_movimiento });
+                }
+            }
+            
 
             return ret;
         }
