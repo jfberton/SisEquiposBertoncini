@@ -42,6 +42,21 @@ namespace SisEquiposBertoncini.Aplicativo
             Cargar_busqueda();
         }
 
+        private int ObtenerColumna(string p)
+        {
+            int id = 0;
+            foreach (DataControlField item in gv_planilla_empleados.Columns)
+            {
+                if (item.HeaderText == p)
+                {
+                    id = gv_planilla_empleados.Columns.IndexOf(item);
+                    break;
+                }
+            }
+
+            return id;
+        }
+
         private void Cargar_busqueda()
         {
             btn_buscar.Visible = false;
@@ -92,9 +107,21 @@ namespace SisEquiposBertoncini.Aplicativo
                                         horas_extra_100 = Convert.ToDecimal(ie.horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(ie.horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60)),
                                         sueldo = ie.sueldo,
                                         dias_mes = ie.dias_mes,
-                                        dias_out = ie.dias_out,
-                                        costo_mensual_ponderado = ie.dias_mes > 0 ? ie.sueldo - (ie.sueldo / ie.dias_mes) * ie.dias_out : 0
+                                        dias_out = (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? ie.dias_out : Convert.ToDecimal(0)),
+                                        costo_mensual_ponderado = ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? (ie.dias_mes > 0 ? ie.sueldo - (ie.sueldo / ie.dias_mes) * ie.dias_out : 0) : (ie.sueldo )
                                     }).ToList();
+
+                if (ddl_tipo_empleado.SelectedItem.Text != "Mecánicos - Pintores")
+                {
+                    //gv_planilla_empleados.Columns[ObtenerColumna("Días mes")].Visible = false;
+                    gv_planilla_empleados.Columns[ObtenerColumna("Días OUT")].Visible = false;
+                    gv_planilla_empleados.Columns[ObtenerColumna("Costo mensual ponderado")].Visible = false;
+
+                    div_costo_mensual_ponderado_total.Visible = false;
+                    tabla_masa_salarial_ajustada_menos_dias_OUT.Visible = false;
+                    lbl_texto_masa_salarial.Text = "- COSTO HORAS HOMBRE TEÓRICO";
+
+                }
 
                 decimal total_sueldos = 0;
                 decimal costo_mensual_ponderado_total = 0;

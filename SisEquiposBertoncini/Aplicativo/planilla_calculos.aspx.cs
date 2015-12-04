@@ -348,8 +348,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             decimal horas_categoria = 0;
 
-            List<total_categoria_tabla> filas_tabla_total_categoria = Session["filas_tabla_total_categoria"] as List<total_categoria_tabla>;
-
+            
 
             using (var cxt = new Model1Container())
             {
@@ -374,9 +373,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
             }
 
-            filas_tabla_total_categoria.Add(new total_categoria_tabla() { categoria = categoria.nombre, horas = horas_categoria, monto = horas_categoria * costo_hora });
-
-            Session["filas_tabla_total_categoria"] = filas_tabla_total_categoria;
+            
 
             Session["totales_equipos_guardia"] = equipos_guardia;
             Session["totales_horas_totales_equipos"] = horas_totales_equipos;
@@ -387,6 +384,11 @@ namespace SisEquiposBertoncini.Aplicativo
         private void Agregar_a_tabla(HtmlTable tabla, List<equipo_tabla> listado, decimal horas_totales_equipos, decimal horas_varios_taller, decimal horas_guardia, int equipos_guardia, decimal costo_hora)
         {
             bool primerfila = true;
+            List<total_categoria_tabla> filas_tabla_total_categoria = Session["filas_tabla_total_categoria"] as List<total_categoria_tabla>;
+
+            string categoria = "";
+            decimal horas = 0;
+            decimal monto = 0;
 
             foreach (equipo_tabla item in listado)
             {
@@ -423,10 +425,19 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = horas_guardia_equipo.ToString("#,##0.00") });
                 fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo).ToString("#,##0.00") });
+                
                 fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora).ToString("$ #,##0.00") });
+
+                horas = horas + (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo);
+                monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
+                
 
                 tabla.Controls.Add(fila_equipo);
             }
+
+            filas_tabla_total_categoria.Add(new total_categoria_tabla() { categoria = categoria, horas = horas, monto = monto});   
+
+            Session["filas_tabla_total_categoria"] = filas_tabla_total_categoria;
         }
 
         void chk_equipo_guardia_CheckedChanged(object sender, EventArgs e)

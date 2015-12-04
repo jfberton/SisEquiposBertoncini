@@ -121,6 +121,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Label lbl_sueldos_totales;
         
         /// <summary>
+        /// Control div_costo_mensual_ponderado_total.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_costo_mensual_ponderado_total;
+        
+        /// <summary>
         /// Control lbl_costo_mensual_ponderado_total.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Label lbl_costo_horas_hombre_teorico;
         
         /// <summary>
+        /// Control tabla_masa_salarial_ajustada_menos_dias_OUT.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tabla_masa_salarial_ajustada_menos_dias_OUT;
+        
+        /// <summary>
         /// Control lbl_costo_mensual_ponderado_total_1.
         /// </summary>
         /// <remarks>
@@ -200,6 +218,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_costo_horas_hombre_teorico_ajustado;
+        
+        /// <summary>
+        /// Control lbl_texto_masa_salarial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_texto_masa_salarial;
         
         /// <summary>
         /// Control lbl_costo_mensual_ponderado_total_2.
