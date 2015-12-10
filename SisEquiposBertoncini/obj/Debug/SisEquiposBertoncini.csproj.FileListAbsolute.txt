@@ -36,4 +36,3 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
-d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache

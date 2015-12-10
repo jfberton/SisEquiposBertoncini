@@ -192,7 +192,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_herramientas.ToString("$ #,##0.00") });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos.ToString("$ #,##0.00") });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos_presupuestados.ToString("$ #,##0.00") });
-                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("C2") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("$ #,##0.00") });
 
                     tabla.Controls.Add(fila);
                 }
@@ -201,7 +201,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     primera_fila_categoria = true;
                     HtmlTableRow fila = new HtmlTableRow();
                     fila.Controls.Add(new HtmlTableCell("td") { ColSpan = 8 });
-                    fila.Controls.Add(new HtmlTableCell("th") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("C2"), BgColor = "lightgray" });
+                    fila.Controls.Add(new HtmlTableCell("th") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("$ #,##0.00"), BgColor = "lightgray" });
 
                     tabla.Controls.Add(fila);
                 }
