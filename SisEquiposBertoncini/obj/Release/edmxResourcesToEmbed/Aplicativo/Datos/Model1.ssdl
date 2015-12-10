@@ -17,6 +17,8 @@
     <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Store.Resumenes_meses_empleados" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Detalle_valores_items_mes" EntityType="Model1.Store.Detalle_valores_items_mes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Store.Aux_planilla_calculos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Store.Aux_planilla_gastos_horas_hombres" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -243,6 +245,29 @@
     <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="monto" Type="decimal" Nullable="false" Precision="11" Scale="2" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aux_planilla_calculos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="considera_guardia" Type="bit" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aux_planilla_gastos_horas_hombres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="insumos_taller" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="herramientas" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="viaticos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="viaticos_presupuestados" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="tipo_empleado" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />

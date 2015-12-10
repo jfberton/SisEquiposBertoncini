@@ -20,8 +20,8 @@
                             <td>Categoría de empleado</td>
                             <td>
                                 <asp:DropDownList runat="server" ID="ddl_tipo_empleado" CssClass="form-control">
-                                    <asp:ListItem Text="Mecánicos - Pintores" />
-                                    <asp:ListItem Text="Soldadores" />
+                                    <asp:ListItem Text="Mecánicos - Pintores" Value="Mecánicos - Pintores" />
+                                    <asp:ListItem Text="Soldadores" Value="Soldadores" />
                                 </asp:DropDownList></td>
                             <td>Mes</td>
                             <td>
@@ -121,9 +121,11 @@
                                     <div class="col-md-3">
                                         <asp:Label Text="$ 000.000,00" ID="lbl_sueldos_totales" runat="server" />
                                     </div>
-                                    <div class="col-md-3">Costo mensual ponderado total</div>
-                                    <div class="col-md-3">
-                                        <asp:Label Text="$ 000.000,00" ID="lbl_costo_mensual_ponderado_total" runat="server" />
+                                    <div runat="server" id="div_costo_mensual_ponderado_total">
+                                        <div class="col-md-3">Costo mensual ponderado total</div>
+                                        <div class="col-md-3">
+                                            <asp:Label Text="$ 000.000,00" ID="lbl_costo_mensual_ponderado_total" runat="server" />
+                                        </div>
                                     </div>
                                 </div>
                                 <br />
@@ -159,7 +161,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" runat="server" id="tabla_masa_salarial_ajustada_menos_dias_OUT">
                             <table class="table table-bordered">
                                 <tr>
                                     <td>Masa salarial ajustada (menos días OUT)</td>
@@ -191,7 +193,8 @@
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td style="width: 82%">- COSTO DE LA MASA SALARIAL AJUSTADA (MENOS DIAS OUT)</td>
+                                    <td style="width: 82%">
+                                        <asp:Label Text="- COSTO DE LA MASA SALARIAL AJUSTADA (MENOS DIAS OUT)" ID="lbl_texto_masa_salarial" runat="server" /></td>
                                     <td style="width: 9%" class="text-right">
                                         <asp:Label Text="" ID="lbl_costo_mensual_ponderado_total_2" runat="server" /></td>
                                     <td style="width: 9%"></td>
@@ -350,9 +353,14 @@
                                     <td>
                                         <h4>Costo horas hombre real ($)</h4>
                                     </td>
-                                    <td><h4>
-                                        <asp:Label Text="" ID="lbl_costo_horas_hombre_real" runat="server" /></h4></td>
-                                    <td><h4><asp:Label Text="" ID="lbl_costo_horas_hombre_real_prueba" runat="server" /></h4></td>
+                                    <td>
+                                        <h4>
+                                            <asp:Label Text="" ID="lbl_costo_horas_hombre_real" runat="server" /></h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            <asp:Label Text="" ID="lbl_costo_horas_hombre_real_prueba" runat="server" /></h4>
+                                    </td>
                                 </tr>
                                 <tr class="alert-success">
                                     <td>
@@ -371,14 +379,24 @@
                                     <td>
                                         <h4>Costo horas hombre real (USS)</h4>
                                     </td>
-                                    <td><h4>
-                                        <asp:Label Text="" ID="lbl_costo_horas_hombre_real_dolar" runat="server" /></h4></td>
-                                    <td><h4><asp:Label Text="" ID="lbl_costo_horas_hombre_real_prueba_dolar" runat="server" /></h4></td>
+                                    <td>
+                                        <h4>
+                                            <asp:Label Text="" ID="lbl_costo_horas_hombre_real_dolar" runat="server" /></h4>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                            <asp:Label Text="" ID="lbl_costo_horas_hombre_real_prueba_dolar" runat="server" /></h4>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
 
+                </div>
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
+                        <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Planilla de cálculos
+                    </button>
                 </div>
             </div>
         </div>

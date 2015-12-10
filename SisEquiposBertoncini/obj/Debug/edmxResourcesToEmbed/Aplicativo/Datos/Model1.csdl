@@ -70,6 +70,7 @@
       <End Role="Detalle_valor_item_mes" EntitySet="Detalle_valores_items_mes" />
     </AssociationSet>
     <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Aux_planilla_calculo" />
+    <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Aux_planilla_gastos_horas_hombre" />
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>
@@ -453,5 +454,18 @@
     <Property Name="considera_guardia" Type="Boolean" Nullable="false" />
     <Property Name="mes" Type="Int32" Nullable="false" />
     <Property Name="anio" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aux_planilla_gastos_horas_hombre">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="insumos_taller" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="herramientas" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="viaticos" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="viaticos_presupuestados" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+    <Property Name="tipo_empleado" Type="String" Nullable="false" />
   </EntityType>
 </Schema>

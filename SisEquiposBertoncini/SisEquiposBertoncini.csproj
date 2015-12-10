@@ -102,6 +102,7 @@
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\Menues\menu_usuario.ascx" />
     <Content Include="Aplicativo\planilla_calculos.aspx" />
+    <Content Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx" />
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
@@ -287,6 +288,9 @@
     <Compile Include="Aplicativo\Datos\Aux_planilla_calculo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Datos\Aux_planilla_gastos_horas_hombre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Datos\Categoria_empleado.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -384,6 +388,13 @@
     </Compile>
     <Compile Include="Aplicativo\planilla_calculos.aspx.designer.cs">
       <DependentUpon>planilla_calculos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx.cs">
+      <DependentUpon>planilla_gastos_en _funcion_horas_hombre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx.designer.cs">
+      <DependentUpon>planilla_gastos_en _funcion_horas_hombre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Seguridad\Cripto.cs" />
     <Compile Include="Aplicativo\Menues\menu_admin.ascx.cs">

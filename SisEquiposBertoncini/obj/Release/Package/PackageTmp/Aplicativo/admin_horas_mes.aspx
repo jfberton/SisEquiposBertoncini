@@ -207,7 +207,7 @@
                                                         <table class="table-condensed">
                                                             <tr>
                                                                 <td>
-                                                                    <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_equipo">
+                                                                    <asp:DropDownList runat="server" CssClass="form-control" Width="100%" ID="ddl_equipo">
                                                                     </asp:DropDownList></td>
                                                             </tr>
                                                         </table>

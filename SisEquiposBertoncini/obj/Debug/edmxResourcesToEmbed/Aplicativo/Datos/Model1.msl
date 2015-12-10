@@ -202,5 +202,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Aux_planilla_gastos_horas_hombres">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Aux_planilla_gastos_horas_hombre)">
+        <MappingFragment StoreEntitySet="Aux_planilla_gastos_horas_hombres">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="insumos_taller" ColumnName="insumos_taller" />
+          <ScalarProperty Name="herramientas" ColumnName="herramientas" />
+          <ScalarProperty Name="viaticos" ColumnName="viaticos" />
+          <ScalarProperty Name="viaticos_presupuestados" ColumnName="viaticos_presupuestados" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="tipo_empleado" ColumnName="tipo_empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

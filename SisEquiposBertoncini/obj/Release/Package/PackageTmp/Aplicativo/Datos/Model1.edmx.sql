@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/14/2015 09:05:12
--- Generated from EDMX file: D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
+-- Date Created: 12/10/2015 08:08:54
+-- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton_v2];
+USE [equipos_berton];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -52,6 +52,9 @@ IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoItem_ingreso_egreso]', 'F') IS NOT N
 GO
 IF OBJECT_ID(N'[dbo].[FK_EmpleadoResumen_mes_empleado]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Resumenes_meses_empleados] DROP CONSTRAINT [FK_EmpleadoResumen_mes_empleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Valor_mesDetalle_valor_item_mes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Detalle_valores_items_mes] DROP CONSTRAINT [FK_Valor_mesDetalle_valor_item_mes];
 GO
 
 -- --------------------------------------------------
@@ -102,6 +105,15 @@ IF OBJECT_ID(N'[dbo].[Feriados]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Resumenes_meses_empleados]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Resumenes_meses_empleados];
+GO
+IF OBJECT_ID(N'[dbo].[Detalle_valores_items_mes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Detalle_valores_items_mes];
+GO
+IF OBJECT_ID(N'[dbo].[Aux_planilla_calculos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_calculos];
+GO
+IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_horas_hombres]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_gastos_horas_hombres];
 GO
 
 -- --------------------------------------------------
@@ -282,6 +294,29 @@ CREATE TABLE [dbo].[Detalle_valores_items_mes] (
 );
 GO
 
+-- Creating table 'Aux_planilla_calculos'
+CREATE TABLE [dbo].[Aux_planilla_calculos] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [id_equipo] int  NOT NULL,
+    [considera_guardia] bit  NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL
+);
+GO
+
+-- Creating table 'Aux_planilla_gastos_horas_hombres'
+CREATE TABLE [dbo].[Aux_planilla_gastos_horas_hombres] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [insumos_taller] decimal(11,2)  NOT NULL,
+    [herramientas] decimal(11,2)  NOT NULL,
+    [viaticos] decimal(11,2)  NOT NULL,
+    [viaticos_presupuestados] decimal(11,2)  NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL,
+    [tipo_empleado] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -380,6 +415,18 @@ GO
 ALTER TABLE [dbo].[Detalle_valores_items_mes]
 ADD CONSTRAINT [PK_Detalle_valores_items_mes]
     PRIMARY KEY CLUSTERED ([id_detalle_valor_item_mes] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Aux_planilla_calculos'
+ALTER TABLE [dbo].[Aux_planilla_calculos]
+ADD CONSTRAINT [PK_Aux_planilla_calculos]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Aux_planilla_gastos_horas_hombres'
+ALTER TABLE [dbo].[Aux_planilla_gastos_horas_hombres]
+ADD CONSTRAINT [PK_Aux_planilla_gastos_horas_hombres]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------

@@ -28,10 +28,48 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_horas_extra_100.Text = Convert.ToDecimal(Session["planilla_calculos_horas_extra_100"]).ToString("#,##0.00");
                 lbl_horas_totales.Text = (Convert.ToDecimal(Session["planilla_calculos_horas_normales"]) + Convert.ToDecimal(Session["planilla_calculos_horas_extra_50"]) + Convert.ToDecimal(Session["planilla_calculos_horas_extra_100"])).ToString("#,##0.00");
 
+                lbl_mes.Text = ObtenerMes(Session["planilla_calculos_mes"].ToString());
+                lbl_anio.Text = Session["planilla_calculos_anio"].ToString();
+                lbl_tipo_empleado.Text = Session["planilla_calculos_categoria_empleado"].ToString();
+
                 lbl_costo_hora_seleccionado.Text = Convert.ToDecimal(Session["planilla_calculos_costo_hora_teorico"]).ToString("$ #,##0.00");
             }
 
             CrearCargarTabla();
+        }
+
+        private string ObtenerMes(string p)
+        {
+            switch (p)
+            {
+                case "1":
+                    return "enero";
+                case "2":
+                    return "febrero";
+                case "3":
+                    return "marzo";
+                case "4":
+                    return "abril";
+                case "5":
+                    return "mayo";
+                case "6":
+                    return "junio";
+                case "7":
+                    return "julio";
+                case "8":
+                    return "agosto";
+                case "9":
+                    return "septiembre";
+                case "10":
+                    return "octubre";
+                case "11":
+                    return "noviembre";
+                case "12":
+                    return "diciembre";
+
+                default:
+                    return "";
+            }
         }
 
         private struct equipo_tabla
@@ -155,6 +193,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 fila_totales.Controls.Add(new HtmlTableCell("th") { InnerHtml = (horas_totales_equipos + horas_varios_taller_decimal + horas_guardia_decimal).ToString("#,##0.00") });
                 tabla.Controls.Add(fila_totales);
 
+
+                Session["planilla_gastos_en_funcion_horas_hombre_categorias"] = new List<categoria_paraPlanillaGastosenFuncionHorasHombre>();
+                Session["planilla_gastos_en_funcion_horas_hombre_mes"] =mes;
+                Session["planilla_gastos_en_funcion_horas_hombre_anio"] = anio; 
+                Session["planilla_gastos_en_funcion_horas_hombre_tipo_empleado"] = categoria_empleado;
+
                 Agregar_a_tabla(tabla, filas_camiones_y_carretones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_vehiculos_menores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
@@ -162,7 +206,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
-                Cargar_tabla_resumen(horas_totales_equipos);
+                Cargar_tabla_resumen(horas_totales_equipos + horas_guardia_decimal + horas_varios_taller_decimal);
             }
 
             div_tabla.Controls.Clear();
@@ -198,10 +242,10 @@ namespace SisEquiposBertoncini.Aplicativo
                 foreach (Equipo equipo in equipos)
                 {
                     HtmlTableRow fila_trabajo_out = new HtmlTableRow();
-                   
+
                     string horas_mes_equipo = equipo.Horas_mes(mes, anio, categoria_empleado);
                     decimal horas_out = Convert.ToDecimal(horas_mes_equipo.Split(':')[0]) + (Convert.ToDecimal(horas_mes_equipo.Split(':')[1]) / Convert.ToDecimal(60));
-                    decimal dias_out = horas_out/8;
+                    decimal dias_out = horas_out / 8;
                     dias_totales_out = dias_out + dias_totales_out;
 
                     fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = equipo.nombre, BgColor = "lightgray" });
@@ -223,6 +267,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void Cargar_tabla_resumen(decimal horas_totales_equipos)
         {
+            if (horas_totales_equipos == 0) { horas_totales_equipos = 1; }
             HtmlTable tabla = new HtmlTable();
             tabla.Attributes.Add("class", "table table-bordered");
             HtmlTableRow fila_encabezado = new HtmlTableRow();
@@ -235,7 +280,7 @@ namespace SisEquiposBertoncini.Aplicativo
             List<total_categoria_tabla> filas_tabla_total_categoria = Session["filas_tabla_total_categoria"] as List<total_categoria_tabla>;
 
 
-            foreach (total_categoria_tabla item in filas_tabla_total_categoria.OrderByDescending(x => x.horas))
+            foreach (total_categoria_tabla item in filas_tabla_total_categoria.Where(x => x.categoria != "").OrderByDescending(x => x.horas))
             {
                 HtmlTableRow fila_categoria = new HtmlTableRow();
                 fila_categoria.Controls.Add(new HtmlTableCell("th") { InnerHtml = item.categoria, BgColor = "lightgray" });
@@ -244,6 +289,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 fila_categoria.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto.ToString("$ #,##0.00") });
                 tabla.Controls.Add(fila_categoria);
             }
+
+            HtmlTableRow fila_total = new HtmlTableRow();
+            fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = "TOTALES", BgColor = "lightgray" });
+            fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = filas_tabla_total_categoria.Sum(x => x.horas).ToString("#,##0.00") });
+            fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = "100 %" });
+            fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = filas_tabla_total_categoria.Sum(x => x.monto).ToString("$ #,##0.00") });
+            tabla.Controls.Add(fila_total);
 
             div_tabla_resumen.Controls.Clear();
             div_tabla_resumen.Controls.Add(tabla);
@@ -312,10 +364,10 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Empleado item in empleados)
                 {
-                    Resumen_mes_empleado rme = item.Resumenes_meses_empleado.FirstOrDefault(x=>x.anio == anio && x.mes == mes);
+                    Resumen_mes_empleado rme = item.Resumenes_meses_empleado.FirstOrDefault(x => x.anio == anio && x.mes == mes);
 
                     HtmlTableRow tr = new HtmlTableRow();
-                    tr.Controls.Add(new HtmlTableCell() { InnerHtml = item.nombre, BgColor = "lightgray" }); 
+                    tr.Controls.Add(new HtmlTableCell() { InnerHtml = item.nombre, BgColor = "lightgray" });
                     tr.Controls.Add(new HtmlTableCell() { InnerHtml = rme != null ? (Convert.ToDecimal(rme.total_horas_normales.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_normales.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00") });
                     tr.Controls.Add(new HtmlTableCell() { InnerHtml = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00") });
                     tr.Controls.Add(new HtmlTableCell() { InnerHtml = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00") });
@@ -348,7 +400,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             decimal horas_categoria = 0;
 
-            
+
 
             using (var cxt = new Model1Container())
             {
@@ -373,7 +425,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
             }
 
-            
+
 
             Session["totales_equipos_guardia"] = equipos_guardia;
             Session["totales_horas_totales_equipos"] = horas_totales_equipos;
@@ -381,10 +433,26 @@ namespace SisEquiposBertoncini.Aplicativo
             Session["totales_horas_varios_taller_decimal"] = horas_varios_taller_decimal;
         }
 
+        public struct equipo_paraPlanillaGastosenFuncionHorasHombre
+        {
+            public string equipo { get; set; }
+            public decimal horas { get; set; }
+        }
+        public struct categoria_paraPlanillaGastosenFuncionHorasHombre
+        {
+            public string categoria { get; set; }
+            public decimal total_horas_categoria { get; set; }
+            public List<equipo_paraPlanillaGastosenFuncionHorasHombre> equipos { get; set; }
+        }
+
         private void Agregar_a_tabla(HtmlTable tabla, List<equipo_tabla> listado, decimal horas_totales_equipos, decimal horas_varios_taller, decimal horas_guardia, int equipos_guardia, decimal costo_hora)
         {
             bool primerfila = true;
+            
             List<total_categoria_tabla> filas_tabla_total_categoria = Session["filas_tabla_total_categoria"] as List<total_categoria_tabla>;
+            
+            List<categoria_paraPlanillaGastosenFuncionHorasHombre> categorias_para_grilla_gastos_en_funcion_de_horas_hombre = Session["planilla_gastos_en_funcion_horas_hombre_categorias"] as List<categoria_paraPlanillaGastosenFuncionHorasHombre>;
+            categoria_paraPlanillaGastosenFuncionHorasHombre categoria_gastos_horas_hombre = new categoria_paraPlanillaGastosenFuncionHorasHombre();
 
             string categoria = "";
             decimal horas = 0;
@@ -402,6 +470,10 @@ namespace SisEquiposBertoncini.Aplicativo
                     label.Text = item.categoria;
                     columna_categoria.Controls.Add(label);
                     fila_equipo.Controls.Add(columna_categoria);
+                    categoria = item.categoria;
+                    categoria_gastos_horas_hombre.categoria = item.categoria;
+                    categoria_gastos_horas_hombre.equipos = new List<equipo_paraPlanillaGastosenFuncionHorasHombre>();
+                    
                 }
 
                 decimal porcentaje_equipo_sobre_total = horas_totales_equipos > 0 ? (item.horas_mes / horas_totales_equipos) : 0;
@@ -425,18 +497,21 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = horas_guardia_equipo.ToString("#,##0.00") });
                 fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo).ToString("#,##0.00") });
-                
+
                 fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora).ToString("$ #,##0.00") });
 
                 horas = horas + (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo);
+                categoria_gastos_horas_hombre.equipos.Add(new equipo_paraPlanillaGastosenFuncionHorasHombre() { equipo = item.nombre, horas = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) });
                 monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
-                
 
                 tabla.Controls.Add(fila_equipo);
             }
 
-            filas_tabla_total_categoria.Add(new total_categoria_tabla() { categoria = categoria, horas = horas, monto = monto});   
+            filas_tabla_total_categoria.Add(new total_categoria_tabla() { categoria = categoria, horas = horas, monto = monto });
+            categoria_gastos_horas_hombre.total_horas_categoria = horas;
 
+            categorias_para_grilla_gastos_en_funcion_de_horas_hombre.Add(categoria_gastos_horas_hombre);
+            Session["planilla_gastos_en_funcion_horas_hombre_categorias"] = categorias_para_grilla_gastos_en_funcion_de_horas_hombre;
             Session["filas_tabla_total_categoria"] = filas_tabla_total_categoria;
         }
 
@@ -486,6 +561,20 @@ namespace SisEquiposBertoncini.Aplicativo
                 default:
                     break;
             }
+        }
+
+        protected void btn_ver_planilla_principal_ServerClick(object sender, EventArgs e)
+        {
+            Session["planilla_principal_mes"] = Convert.ToInt32(Session["planilla_calculos_mes"]);
+            Session["planilla_principal_anio"] = Convert.ToInt32(Session["planilla_calculos_anio"]);
+            Session["planilla_principal_tipo_empleado"] = Session["planilla_calculos_categoria_empleado"].ToString();
+
+            Response.Redirect("~/Aplicativo/admin_horas_planilla_principal.aspx");
+        }
+
+        protected void btn_ver_planilla_gastos_horas_hombre_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Aplicativo/planilla_gastos_en _funcion_horas_hombre.aspx");
         }
     }
 }

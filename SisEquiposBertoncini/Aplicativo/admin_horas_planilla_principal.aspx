@@ -20,8 +20,8 @@
                             <td>Categoría de empleado</td>
                             <td>
                                 <asp:DropDownList runat="server" ID="ddl_tipo_empleado" CssClass="form-control">
-                                    <asp:ListItem Text="Mecánicos - Pintores" />
-                                    <asp:ListItem Text="Soldadores" />
+                                    <asp:ListItem Text="Mecánicos - Pintores" Value="Mecánicos - Pintores" />
+                                    <asp:ListItem Text="Soldadores" Value="Soldadores" />
                                 </asp:DropDownList></td>
                             <td>Mes</td>
                             <td>
@@ -393,9 +393,9 @@
                     </div>
 
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 text-right">
                     <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
-                        <span class="glyphicon glyphicon-blackboard"></span>&nbsp;Ver planilla de cálculos
+                        <span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Planilla de cálculos
                     </button>
                 </div>
             </div>

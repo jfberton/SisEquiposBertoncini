@@ -10,7 +10,7 @@
 namespace SisEquiposBertoncini.Aplicativo {
     
     
-    public partial class planilla_calculos {
+    public partial class planilla_gastos_en__funcion_horas_hombre {
         
         /// <summary>
         /// Control menu_admin.
@@ -49,94 +49,58 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Label lbl_anio;
         
         /// <summary>
-        /// Control lbl_horas_totales.
+        /// Control tb_insumos_taller.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_horas_totales;
+        protected global::System.Web.UI.WebControls.TextBox tb_insumos_taller;
         
         /// <summary>
-        /// Control lbl_horas_normales.
+        /// Control tb_herramientas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_horas_normales;
+        protected global::System.Web.UI.WebControls.TextBox tb_herramientas;
         
         /// <summary>
-        /// Control lbl_horas_extra_50.
+        /// Control tb_viaticos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_horas_extra_50;
+        protected global::System.Web.UI.WebControls.TextBox tb_viaticos;
         
         /// <summary>
-        /// Control lbl_horas_extra_100.
+        /// Control tb_viaticos_presupuestados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_horas_extra_100;
+        protected global::System.Web.UI.WebControls.TextBox tb_viaticos_presupuestados;
         
         /// <summary>
-        /// Control ddl_costo_hora.
+        /// Control btn_guardar_modificaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_costo_hora;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_guardar_modificaciones;
         
         /// <summary>
-        /// Control lbl_costo_hora_seleccionado.
+        /// Control divTabla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_costo_hora_seleccionado;
-        
-        /// <summary>
-        /// Control div_tabla.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_tabla;
-        
-        /// <summary>
-        /// Control div_tabla_OUT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_tabla_OUT;
-        
-        /// <summary>
-        /// Control div_tabla_resumen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_tabla_resumen;
-        
-        /// <summary>
-        /// Control div_tabla_resumen_ausentismo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_tabla_resumen_ausentismo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTabla;
         
         /// <summary>
         /// Control btn_ver_planilla_principal.
@@ -148,12 +112,12 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_ver_planilla_principal;
         
         /// <summary>
-        /// Control btn_ver_planilla_gastos_horas_hombre.
+        /// Control btn_ver_planilla_calculos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btn_ver_planilla_gastos_horas_hombre;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_ver_planilla_calculos;
     }
 }

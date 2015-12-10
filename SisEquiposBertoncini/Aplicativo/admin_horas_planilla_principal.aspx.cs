@@ -24,8 +24,30 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 Cargar_ddls();
 
-                btn_nueva_busqueda.Visible = false;
-                div_resultados_busqueda.Visible = false;
+                if (Session["planilla_principal_tipo_empleado"] != null)
+                {
+                    int mes = 0;
+                    int anio = 0;
+                    string tipo_empleado = Session["planilla_principal_tipo_empleado"].ToString();
+
+                    int.TryParse(Session["planilla_principal_mes"].ToString(), out mes);
+                    int.TryParse(Session["planilla_principal_anio"].ToString(), out anio);
+
+                    ddl_anio.SelectedValue = anio.ToString();
+                    ddl_mes.SelectedValue = mes.ToString();
+                    ddl_tipo_empleado.SelectedValue = tipo_empleado;
+
+                    Session["planilla_principal_mes"] = null;
+                    Session["planilla_principal_anio"] = null;
+                    Session["planilla_principal_tipo_empleado"] = null;
+
+                    Cargar_busqueda(mes, anio, tipo_empleado);
+                }
+                else
+                {
+                    btn_nueva_busqueda.Visible = false;
+                    div_resultados_busqueda.Visible = false;
+                }
             }
         }
 
@@ -57,7 +79,7 @@ namespace SisEquiposBertoncini.Aplicativo
             return id;
         }
 
-        private void Cargar_busqueda()
+        private void Cargar_busqueda(int pmes = 0, int panio = 0, string ptipo_empleado = "")
         {
             btn_buscar.Visible = false;
             btn_nueva_busqueda.Visible = true;
@@ -65,15 +87,17 @@ namespace SisEquiposBertoncini.Aplicativo
 
             using (var cxt = new Model1Container())
             {
-                int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
-                int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
+                int mes = pmes != 0 ? pmes : Convert.ToInt32(ddl_mes.SelectedItem.Value);
+                int anio = panio != 0 ? panio : Convert.ToInt32(ddl_anio.SelectedItem.Value);
                 Categoria_empleado mecanicos = cxt.Categorias_empleados.First(cc => cc.nombre == "Mecánico");
                 Categoria_empleado soldadores = cxt.Categorias_empleados.First(cc => cc.nombre == "Soldador");
                 Categoria_empleado pintores = cxt.Categorias_empleados.First(cc => cc.nombre == "Pintor");
 
                 List<Empleado> empleados = new List<Empleado>();
 
-                if (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores")
+                string tipo_empleado = ptipo_empleado != "" ? ptipo_empleado : ddl_tipo_empleado.SelectedItem.Text;
+
+                if (tipo_empleado == "Mecánicos - Pintores")
                 {
                     empleados = cxt.Empleados.Where(ee => (ee.id_categoria == mecanicos.id_categoria || ee.id_categoria == pintores.id_categoria) && ee.fecha_baja == null).ToList();
                 }
@@ -126,7 +150,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal total_sueldos = 0;
                 decimal costo_mensual_ponderado_total = 0;
                 decimal costo_hora_teorico_ajustado = 0;
-                decimal dias_mes = 0;
+                decimal dias_mes = 1;
                 decimal cantidad_empleados = Convert.ToDecimal(items_grilla.Count);
                 decimal horas_dia = Convert.ToDecimal(8);
                 decimal total_horas_normales = 0;
@@ -259,7 +283,6 @@ namespace SisEquiposBertoncini.Aplicativo
                 Session["planilla_calculos_costo_hora_real"] = horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas) : 0;
 
                 Session["planilla_calculos_categoria_empleado"] = ddl_tipo_empleado.SelectedItem.Text;
-
             }
         }
 

@@ -23,6 +23,7 @@
     <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Store.Resumenes_meses_empleados" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Detalle_valores_items_mes" EntityType="Model1.Store.Detalle_valores_items_mes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Store.Aux_planilla_calculos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Store.Aux_planilla_gastos_horas_hombres" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -260,6 +261,19 @@
     <Property Name="mes" Type="int" Nullable="false" />
     <Property Name="anio" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Aux_planilla_gastos_horas_hombres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="insumos_taller" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="herramientas" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="viaticos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="viaticos_presupuestados" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="tipo_empleado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
     <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="*" />
@@ -490,6 +504,7 @@
             <End Role="Detalle_valor_item_mes" EntitySet="Detalle_valores_items_mes" />
           </AssociationSet>
           <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Aux_planilla_calculo" />
+          <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Aux_planilla_gastos_horas_hombre" />
           </EntityContainer>
         <EntityType Name="Equipo">
           <Key>
@@ -874,6 +889,19 @@
           <Property Name="mes" Type="Int32" Nullable="false" />
           <Property Name="anio" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Aux_planilla_gastos_horas_hombre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="insumos_taller" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="herramientas" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="viaticos" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="viaticos_presupuestados" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+          <Property Name="mes" Type="Int32" Nullable="false" />
+          <Property Name="anio" Type="Int32" Nullable="false" />
+          <Property Name="tipo_empleado" Type="String" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1078,6 +1106,20 @@
           <ScalarProperty Name="considera_guardia" ColumnName="considera_guardia" />
           <ScalarProperty Name="mes" ColumnName="mes" />
           <ScalarProperty Name="anio" ColumnName="anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aux_planilla_gastos_horas_hombres">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Aux_planilla_gastos_horas_hombre)">
+        <MappingFragment StoreEntitySet="Aux_planilla_gastos_horas_hombres">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="insumos_taller" ColumnName="insumos_taller" />
+          <ScalarProperty Name="herramientas" ColumnName="herramientas" />
+          <ScalarProperty Name="viaticos" ColumnName="viaticos" />
+          <ScalarProperty Name="viaticos_presupuestados" ColumnName="viaticos_presupuestados" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="tipo_empleado" ColumnName="tipo_empleado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

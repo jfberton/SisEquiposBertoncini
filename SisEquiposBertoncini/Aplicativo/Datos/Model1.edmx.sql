@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/30/2015 12:20:36
+-- Date Created: 12/10/2015 08:08:54
 -- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
@@ -111,6 +111,9 @@ IF OBJECT_ID(N'[dbo].[Detalle_valores_items_mes]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Aux_planilla_calculos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Aux_planilla_calculos];
+GO
+IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_horas_hombres]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_gastos_horas_hombres];
 GO
 
 -- --------------------------------------------------
@@ -301,6 +304,19 @@ CREATE TABLE [dbo].[Aux_planilla_calculos] (
 );
 GO
 
+-- Creating table 'Aux_planilla_gastos_horas_hombres'
+CREATE TABLE [dbo].[Aux_planilla_gastos_horas_hombres] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [insumos_taller] decimal(11,2)  NOT NULL,
+    [herramientas] decimal(11,2)  NOT NULL,
+    [viaticos] decimal(11,2)  NOT NULL,
+    [viaticos_presupuestados] decimal(11,2)  NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL,
+    [tipo_empleado] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -404,6 +420,12 @@ GO
 -- Creating primary key on [Id] in table 'Aux_planilla_calculos'
 ALTER TABLE [dbo].[Aux_planilla_calculos]
 ADD CONSTRAINT [PK_Aux_planilla_calculos]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Aux_planilla_gastos_horas_hombres'
+ALTER TABLE [dbo].[Aux_planilla_gastos_horas_hombres]
+ADD CONSTRAINT [PK_Aux_planilla_gastos_horas_hombres]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
