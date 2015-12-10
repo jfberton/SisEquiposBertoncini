@@ -165,7 +165,7 @@ namespace SisEquiposBertoncini.Aplicativo
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.herramientas.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos_presupuestados.ToString("$ #,##0.00") });
-            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = (aux.insumos_taller + aux.herramientas + aux.viaticos + aux.viaticos_presupuestados).ToString("C2") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = (aux.insumos_taller + aux.herramientas + aux.viaticos + aux.viaticos_presupuestados).ToString("$ #,##0.00") });
 
             tabla.Controls.Add(fila_encabezado);
             tabla.Controls.Add(fila_encabezado1);
