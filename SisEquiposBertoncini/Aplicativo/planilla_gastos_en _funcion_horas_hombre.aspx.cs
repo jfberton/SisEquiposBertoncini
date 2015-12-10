@@ -161,10 +161,10 @@ namespace SisEquiposBertoncini.Aplicativo
             HtmlTableRow fila_encabezado1 = new HtmlTableRow();
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = total_horas_categorias.ToString("#,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = "100 %" });
-            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.insumos_taller.ToString("C2") });
-            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.herramientas.ToString("C2") });
-            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos.ToString("C2") });
-            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos_presupuestados.ToString("C2") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.insumos_taller.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.herramientas.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos_presupuestados.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = (aux.insumos_taller + aux.herramientas + aux.viaticos + aux.viaticos_presupuestados).ToString("C2") });
 
             tabla.Controls.Add(fila_encabezado);
@@ -188,10 +188,10 @@ namespace SisEquiposBertoncini.Aplicativo
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.equipo, BgColor = "lightgray" });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.horas.ToString("#,##0.00") });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.porcentaje.ToString("P2") });
-                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_insumos_taller.ToString("C2") });
-                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_herramientas.ToString("C2") });
-                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos.ToString("C2") });
-                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos_presupuestados.ToString("C2") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_insumos_taller.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_herramientas.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos_presupuestados.ToString("$ #,##0.00") });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("C2") });
 
                     tabla.Controls.Add(fila);
