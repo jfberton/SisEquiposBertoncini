@@ -37,31 +37,60 @@
                     <td>
                         <asp:TextBox runat="server" CssClass="form-control" ID="tb_viaticos" /></td>
                     <td>
-                        <label>Viaticos presupuestados</label></td>
+                        <label>Viaticos PP</label></td>
                     <td>
                         <asp:TextBox runat="server" CssClass="form-control" ID="tb_viaticos_presupuestados" /></td>
-                    <td>
-                        <button runat="server" id="btn_guardar_modificaciones" class="btn btn-default" onserverclick="btn_guardar_modificaciones_ServerClick"><span class="glyphicon glyphicon-save"></span>&nbsp;Aplicar</button></td>
+
                 </tr>
             </table>
         </div>
-    </div>
-    <div class="row">
-        <div runat="server" id="divTabla">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <table class="table table-condensed" style="width: 100%">
+                    <tr>
+                        <td>
+                            <label>Indumentaria</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_indumentaria" /></td>
+                        <td>
+                            <label>Repuestos</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_repuestos" /></td>
+                        <td>
+                            <label>Repuestos PP</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_repuestos_pp" /></td>
+                        <td>
+                            <label>Gastos varios</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_gastos_varios" /></td>
+                        <td>
+                            <label>Otros</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_otros" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <button runat="server" id="btn_guardar_modificaciones" class="btn btn-default" onserverclick="btn_guardar_modificaciones_ServerClick"><span class="glyphicon glyphicon-save"></span>&nbsp;Aplicar</button>
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
-                <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla Principal
-            </button>
-            <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
-                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla de cálculos
-            </button>
+        <div class="row">
+            <div runat="server" id="divTabla">
+            </div>
         </div>
-    </div>
-    <br />
+        <br />
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
+                    <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla Principal
+                </button>
+                <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
+                    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla de cálculos
+                </button>
+            </div>
+        </div>
+        <br />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
 </asp:Content>

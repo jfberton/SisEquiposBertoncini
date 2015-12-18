@@ -30,7 +30,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         /// Devuelve el monto total por amortizar de las partes que componen el equipo que todavia tienen meses por amortizar
         /// </summary>
         public decimal Total_por_amortizar
-        { 
+        {
             get
             {
                 decimal ret = 0;
@@ -85,7 +85,255 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     ret = Horas_string.SumarHoras(new string[] { ret, item.total_movimiento });
                 }
             }
-            
+
+
+            return ret;
+        }
+
+
+        public enum Valor_mensual
+        {
+            Mano_obra,
+            Insumos,
+            Herramientas,
+            Viaticos,
+            ViaticosPP,
+            Indumentaria,
+            Repuestos,
+            Repuestos_pp,
+            Gastos_varios,
+            Otros
+        }
+
+        public enum Tipo_empleado
+        {
+            Mecanicos_pintores,
+            Soldadores
+        }
+
+        public void Agregar_detalle_en_valor_mensual(Tipo_empleado tipo, Valor_mensual item_valor, int mes, int anio, decimal monto)
+        {
+            using (var cxt = new Model1Container())
+            {
+                Ingreso_egreso_mensual_equipo iemensual = Ingresos_egresos_mensuales.FirstOrDefault(x => x.anio == anio && x.mes == mes);
+
+                if (iemensual == null)
+                {
+                    iemensual = new Ingreso_egreso_mensual_equipo();
+                    iemensual.id_equipo = this.id_equipo;
+                    iemensual.mes = mes;
+                    iemensual.anio = anio;
+                    cxt.Ingresos_egresos_mensuales_equipos.Add(iemensual);
+                    cxt.SaveChanges();
+                }
+
+                string nombre_item = ObtenerNombreItem(tipo, item_valor);
+
+                if (nombre_item != "")
+                {
+                    Item_ingreso_egreso item = cxt.Items_ingresos_egresos.FirstOrDefault(x => x.nombre == nombre_item);
+                    if (item != null)
+                    {
+                        Valor_mes valor_mes = iemensual.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
+                        if (valor_mes == null)
+                        {
+                            valor_mes = new Valor_mes();
+                            valor_mes.id_ingreso_egreso_mensual = iemensual.id_ingreso_egreso_mensual;
+                            valor_mes.id_item = item.id_item;
+                            valor_mes.valor = 0;
+                            cxt.Valores_meses.Add(valor_mes);
+                            cxt.SaveChanges();
+                        }
+
+                        //aca tengo el item valor mes del 
+                        string descripcion_detalle = "";
+
+                        if (tipo == Tipo_empleado.Mecanicos_pintores)
+                        {
+                            switch (item_valor)
+                            {
+                                case Valor_mensual.Mano_obra:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de cálculos Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Insumos:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Herramientas:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Viaticos:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.ViaticosPP:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Indumentaria:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Repuestos:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Repuestos_pp:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Gastos_varios:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+                                case Valor_mensual.Otros:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                    break;
+
+                                default:
+                                    break;
+                            }
+
+                        }
+                        else
+                        {
+                            switch (item_valor)
+                            {
+                                case Valor_mensual.Mano_obra:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de cálculos Soldadores";
+                                    break;
+                                case Valor_mensual.Insumos:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Herramientas:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Viaticos:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.ViaticosPP:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Indumentaria:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Repuestos:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Repuestos_pp:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Gastos_varios:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                case Valor_mensual.Otros:
+                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                        Detalle_valor_item_mes detalle = valor_mes.Detalle.FirstOrDefault(x => x.descripcion == descripcion_detalle);
+
+                        if (detalle == null)
+                        {
+                            detalle = new Detalle_valor_item_mes();
+                            detalle.id_valor_mes = valor_mes.id;
+                            detalle.fecha = new DateTime(anio, mes, 1);
+                            detalle.descripcion = descripcion_detalle;
+                            detalle.monto = monto;
+                            cxt.Detalle_valores_items_mes.Add(detalle);
+                        }
+                        else
+                        {
+                            detalle = cxt.Detalle_valores_items_mes.First(x => x.id_detalle_valor_item_mes == detalle.id_detalle_valor_item_mes);
+                            detalle.monto = monto;
+                        }
+
+                        cxt.SaveChanges();
+                    }
+                }
+
+            }
+        }
+
+        private string ObtenerNombreItem(Tipo_empleado tipo, Valor_mensual item_valor)
+        {
+            string ret = "";
+
+            switch (tipo)
+            {
+                case Tipo_empleado.Mecanicos_pintores:
+                    switch (item_valor)
+                    {
+                        case Valor_mensual.Mano_obra:
+                            ret = "Mano Obra Taller";
+                            break;
+                        case Valor_mensual.Insumos:
+                            ret = "Insumos Taller";
+                            break;
+                        case Valor_mensual.Herramientas:
+                            ret = "Herramientas Taller";
+                            break;
+                        case Valor_mensual.Viaticos:
+                            ret = "Viaticos Taller";
+                            break;
+                        case Valor_mensual.ViaticosPP:
+                            ret = "Viaticos Presup Taller";
+                            break;
+                        case Valor_mensual.Indumentaria:
+                            ret = "Indumentaria p personal(incluye elem de protección personal)";
+                            break;
+                        case Valor_mensual.Repuestos:
+                            ret = "Repuestos Taller";
+                            break;
+                        case Valor_mensual.Repuestos_pp:
+                            ret = "Repuestos PP Taller";
+                            break;
+                        case Valor_mensual.Gastos_varios:
+                            ret = "Gastos varios Taller";
+                            break;
+                        case Valor_mensual.Otros:
+                            ret = "Otros";
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case Tipo_empleado.Soldadores:
+                    switch (item_valor)
+                    {
+                        case Valor_mensual.Mano_obra:
+                            ret = "Mano Obra Soldadores";
+                            break;
+                        case Valor_mensual.Insumos:
+                            ret = "Insumos Soldadores";
+                            break;
+                        case Valor_mensual.Herramientas:
+                            ret = "Herramientas Soldadores";
+                            break;
+                        case Valor_mensual.Viaticos:
+                            ret = "Viaticos Soldadores";
+                            break;
+                        case Valor_mensual.ViaticosPP:
+                            ret = "Viaticos Presup Soldadores";
+                            break;
+                        case Valor_mensual.Indumentaria:
+                            ret = "Indumentaria p personal(incluye elem de protección personal)";
+                            break;
+                        case Valor_mensual.Repuestos:
+                            ret = "Repuestos Soldadores";
+                            break;
+                        case Valor_mensual.Repuestos_pp:
+                            ret = "Repuestos PP Soldadores";
+                            break;
+                        case Valor_mensual.Gastos_varios:
+                            ret = "Gastos varios Soldadores";
+                            break;
+                        case Valor_mensual.Otros:
+                            ret = "Otros";
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
 
             return ret;
         }

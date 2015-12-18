@@ -98,6 +98,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Aplicativo\main_admin.aspx" />
+    <Content Include="Aplicativo\main_sistema.aspx" />
     <Content Include="Aplicativo\main_usuario.aspx" />
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\Menues\menu_usuario.ascx" />
@@ -281,6 +282,7 @@
       <DependentUpon>imagen_usuario.ascx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Controles\MessageBox.cs" />
+    <Compile Include="Aplicativo\Controles\Procesos_Globales.cs" />
     <Compile Include="Aplicativo\Controles\ValorDolarMes.cs" />
     <Compile Include="Aplicativo\Datos\Area.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -367,6 +369,13 @@
     </Compile>
     <Compile Include="Aplicativo\main_admin.aspx.designer.cs">
       <DependentUpon>main_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\main_sistema.aspx.cs">
+      <DependentUpon>main_sistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\main_sistema.aspx.designer.cs">
+      <DependentUpon>main_sistema.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\main_usuario.aspx.cs">
       <DependentUpon>main_usuario.aspx</DependentUpon>

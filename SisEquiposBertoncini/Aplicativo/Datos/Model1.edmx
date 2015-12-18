@@ -273,6 +273,11 @@
     <Property Name="mes" Type="int" Nullable="false" />
     <Property Name="anio" Type="int" Nullable="false" />
     <Property Name="tipo_empleado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="indumentaria" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="repuestos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="gastos_varios" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="otros" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="repuestos_presupuestados" Type="decimal" Nullable="false" Precision="11" Scale="2" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
@@ -600,6 +605,7 @@
           <Member Name="Supervisor" Value="3" />
           <Member Name="Usuario" Value="4" />
           <Member Name="Seleccionar" Value="0" />
+          <Member Name="Sistema" Value="5" />
         </EnumType>
         <EntityType Name="Dia">
           <Key>
@@ -901,6 +907,11 @@
           <Property Name="mes" Type="Int32" Nullable="false" />
           <Property Name="anio" Type="Int32" Nullable="false" />
           <Property Name="tipo_empleado" Type="String" Nullable="false" />
+          <Property Name="indumentaria" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="repuestos" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="gastos_varios" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="otros" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="repuestos_presupuestados" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1120,6 +1131,11 @@
           <ScalarProperty Name="mes" ColumnName="mes" />
           <ScalarProperty Name="anio" ColumnName="anio" />
           <ScalarProperty Name="tipo_empleado" ColumnName="tipo_empleado" />
+          <ScalarProperty Name="indumentaria" ColumnName="indumentaria" />
+          <ScalarProperty Name="repuestos" ColumnName="repuestos" />
+          <ScalarProperty Name="gastos_varios" ColumnName="gastos_varios" />
+          <ScalarProperty Name="otros" ColumnName="otros" />
+          <ScalarProperty Name="repuestos_presupuestados" ColumnName="repuestos_presupuestados" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

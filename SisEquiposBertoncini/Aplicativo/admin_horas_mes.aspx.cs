@@ -182,7 +182,10 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Equipo equipo in cxt.Equipos.Where(ee => ee.Generico))
                 {
-                    ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                    if (!(ddl_tipo_empleado.SelectedItem.Text == "Soldador" && equipo.nombre == "Guardia"))
+                    {
+                        ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                    }
                 }
 
                 foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico).OrderBy(x => x.nombre))
@@ -304,6 +307,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 using (var cxt = new Model1Container())
                 {
+                    bool soldador = cxt.Empleados.First(x => x.id_empleado == id_empleado).Categoria.nombre == "Soldador";
+
                     for (int i = 1; i <= dias_mes; i++)
                     {
                         DateTime fecha_buscada = new DateTime(anio, mes, i);
@@ -337,7 +342,15 @@ namespace SisEquiposBertoncini.Aplicativo
 
                                 if (item_detalle.Equipo.nombre == "Guardia")
                                 {
-                                    dia.guardia = Horas_string.SumarHoras(new string[] { dia.guardia, item_detalle.total_movimiento });
+                                    if (!soldador)
+                                    {
+                                        dia.guardia = Horas_string.SumarHoras(new string[] { dia.guardia, item_detalle.total_movimiento });
+                                    }
+                                    else
+                                    {
+                                        dia.guardia = "00:00";
+                                        dia.varios_taller = Horas_string.SumarHoras(new string[] { dia.varios_taller, item_detalle.total_movimiento });
+                                    }
                                 }
 
                                 if (item_detalle.Equipo.nombre == "Varios Taller")
@@ -376,7 +389,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                             foreach (Detalle_dia detalle in dia.Detalles)
                             {
-                                if (detalle.Equipo.OUT)
+                                if (detalle.Equipo.OUT && !soldador)
                                 {
                                     dias_out = dias_out + (Horas_string.HorasADecimales(Horas_string.RestarHoras(detalle.hora_hasta, detalle.hora_desde)) / Convert.ToDecimal(8));
                                 }
@@ -486,7 +499,7 @@ namespace SisEquiposBertoncini.Aplicativo
             }
             else
             {
-                MessageBox.Show(this,"El área seleccionada no tiene empleados");
+                MessageBox.Show(this, "El área seleccionada no tiene empleados");
             }
         }
 
@@ -508,6 +521,7 @@ namespace SisEquiposBertoncini.Aplicativo
             Dia dia;
             List<fila_detalle_dia> detalle = new List<fila_detalle_dia>();
             div_error_detalle.Visible = false;
+            bool soldador = false;
             using (var cxt = new Model1Container())
             {
                 if (str_id_dia.Contains("id"))
@@ -515,6 +529,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     int id_dia = Convert.ToInt32(str_id_dia.Replace("id_", ""));
 
                     dia = cxt.Dias.FirstOrDefault(d => d.id_dia == id_dia);
+                    soldador = dia.Empleado.Categoria.nombre == "Soldador";
                     foreach (Detalle_dia item_detalle in dia.Detalles)
                     {
                         fila_detalle_dia fila_detalle = new fila_detalle_dia();
@@ -551,8 +566,14 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     cxt.Dias.Add(dia);
                 }
+
+
             }
 
+            if (soldador)
+            {
+                QuitarColumnaOUT();
+            }
             gv_detalle_dia.DataSource = detalle;
             gv_detalle_dia.DataBind();
 
@@ -588,6 +609,21 @@ namespace SisEquiposBertoncini.Aplicativo
                 ddl_empleado.DataValueField = "value";
                 ddl_empleado.DataSource = empleados;
                 ddl_empleado.DataBind();
+
+                ddl_equipo.Items.Clear();
+
+                foreach (Equipo equipo in cxt.Equipos.Where(ee => ee.Generico))
+                {
+                    if (!(ddl_tipo_empleado.SelectedItem.Text == "Soldador" && equipo.nombre == "Guardia"))
+                    {
+                        ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                    }
+                }
+
+                foreach (var equipo in cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico).OrderBy(x => x.nombre))
+                {
+                    ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                }
             }
 
         }
@@ -626,15 +662,19 @@ namespace SisEquiposBertoncini.Aplicativo
 
             if (!tiene_error)
             {
+                Dia dia = Session["DiaSeleccionado"] as Dia;
                 Equipo equipo = null;
+                bool soldador = false;
                 using (var cxt = new Model1Container())
                 {
                     int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
                     equipo = cxt.Equipos.FirstOrDefault(ee => ee.id_equipo == id_equipo);
+                    soldador = cxt.Empleados.First(x => x.id_empleado == dia.id_empleado).Categoria.nombre == "Soldador";
+                    equipo.OUT = soldador ? false : equipo != null ? equipo.OUT : false;
                 }
 
                 div_error_detalle.Visible = false;
-                Dia dia = Session["DiaSeleccionado"] as Dia;
+
                 List<fila_detalle_dia> filas = Session["Detalle"] as List<fila_detalle_dia>;
                 fila_detalle_dia detalle = new fila_detalle_dia();
                 detalle._out = equipo != null ? equipo.OUT : false;
@@ -650,6 +690,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 string horasAusente = "00:00";
                 string horasGuardia = "00:00";
                 string horasVariosTaller = "00:00";
+
                 foreach (fila_detalle_dia item_detalle in filas)
                 {
                     if (!item_detalle._out)
@@ -660,7 +701,14 @@ namespace SisEquiposBertoncini.Aplicativo
 
                             if (item_detalle.equipo == "Guardia")
                             {
-                                horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                                if (!soldador)
+                                {
+                                    horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                                }
+                                else
+                                {
+                                    horasVariosTaller = Horas_string.SumarHoras(new string[] { horasVariosTaller, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                                }
                             }
 
                             if (item_detalle.equipo == "Varios Taller")
@@ -683,6 +731,11 @@ namespace SisEquiposBertoncini.Aplicativo
                 dia.guardia = horasGuardia;
                 dia.varios_taller = horasVariosTaller;
 
+                if (soldador)
+                {
+                    QuitarColumnaOUT();
+                }
+
                 gv_detalle_dia.DataSource = filas;
                 gv_detalle_dia.DataBind();
 
@@ -704,6 +757,11 @@ namespace SisEquiposBertoncini.Aplicativo
             MostrarPopUpValoresDia();
         }
 
+        private void QuitarColumnaOUT()
+        {
+            gv_detalle_dia.Columns[4].Visible = false;
+        }
+
         protected void btn_guardar_detalle_dia_ServerClick(object sender, EventArgs e)
         {
             //guardar
@@ -713,10 +771,11 @@ namespace SisEquiposBertoncini.Aplicativo
             string errores = string.Empty;
             bool tiene_error = false;
             Feriado feriado = null;
-
+            bool soldador = false;
             using (var cxt = new Model1Container())
             {
                 feriado = cxt.Feriados.FirstOrDefault(ff => ff.fecha == dia.fecha);
+                soldador = cxt.Empleados.First(x => x.id_empleado == dia.id_empleado).Categoria.nombre == "Soldador";
             }
 
             Estado_turno_dia estadotm = (Estado_turno_dia)Enum.Parse(typeof(Estado_turno_dia), ddl_estado_turno_m.SelectedValue);
@@ -791,17 +850,25 @@ namespace SisEquiposBertoncini.Aplicativo
                             {
                                 dia_cxt.Detalles.Add(new Detalle_dia() { id_equipo = item_detalle.id_equipo, hora_desde = item_detalle.desde, hora_hasta = item_detalle.hasta });
                             }
-                        
+
                             if (item_detalle.equipo == "Ausencia")
                             {
                                 dia_cxt.ausente = Horas_string.SumarHoras(new string[] { dia_cxt.ausente, item_detalle.total_movimiento });
                             }
-                            
+
                             if (item_detalle.equipo == "Guardia")
                             {
-                                dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                                if (!soldador)
+                                {
+                                    dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                                }
+                                else
+                                {
+                                    dia_cxt.guardia = "00:00";
+                                    dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
+                                }
                             }
-                            
+
                             if (item_detalle.equipo == "Varios Taller")
                             {
                                 dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
@@ -880,7 +947,15 @@ namespace SisEquiposBertoncini.Aplicativo
 
                             if (item_detalle.equipo == "Guardia")
                             {
-                                dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                                if (!soldador)
+                                {
+                                    dia_cxt.guardia = Horas_string.SumarHoras(new string[] { dia_cxt.guardia, item_detalle.total_movimiento });
+                                }
+                                else
+                                {
+                                    dia_cxt.guardia = "00:00";
+                                    dia_cxt.varios_taller = Horas_string.SumarHoras(new string[] { dia_cxt.varios_taller, item_detalle.total_movimiento });
+                                }
                             }
 
                             if (item_detalle.equipo == "Varios Taller")
@@ -922,6 +997,12 @@ namespace SisEquiposBertoncini.Aplicativo
             Dia dia = Session["DiaSeleccionado"] as Dia;
             List<fila_detalle_dia> filas = Session["Detalle"] as List<fila_detalle_dia>;
 
+            bool soldador = false;
+            using (var cxt = new Model1Container())
+            {
+                soldador = cxt.Empleados.First(x => x.id_empleado == dia.id_empleado).Categoria.nombre == "Soldador";
+            }
+
             if (str_id_detalle_dia != "0")
             {
                 int id_detalle_dia = Convert.ToInt32(str_id_detalle_dia);
@@ -956,7 +1037,15 @@ namespace SisEquiposBertoncini.Aplicativo
 
                             if (item_detalle.equipo == "Guardia")
                             {
-                                horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                                if (!soldador)
+                                {
+                                    horasGuardia = Horas_string.SumarHoras(new string[] { horasGuardia, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                                }
+                                else
+                                {
+                                    horasGuardia = "00:00";
+                                    horasVariosTaller = Horas_string.SumarHoras(new string[] { horasVariosTaller, Horas_string.RestarHoras(item_detalle.hasta, item_detalle.desde) });
+                                }
                             }
 
                             if (item_detalle.equipo == "Varios Taller")
@@ -1014,7 +1103,10 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_horas_extra_cien.Text = dia.horas_extra_100;
             }
 
-
+            if (soldador)
+            {
+                QuitarColumnaOUT();
+            }
 
             gv_detalle_dia.DataSource = filas;
             gv_detalle_dia.DataBind();

@@ -22,5 +22,10 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public int mes { get; set; }
         public int anio { get; set; }
         public string tipo_empleado { get; set; }
+        public decimal indumentaria { get; set; }
+        public decimal repuestos { get; set; }
+        public decimal gastos_varios { get; set; }
+        public decimal otros { get; set; }
+        public decimal repuestos_presupuestados { get; set; }
     }
 }

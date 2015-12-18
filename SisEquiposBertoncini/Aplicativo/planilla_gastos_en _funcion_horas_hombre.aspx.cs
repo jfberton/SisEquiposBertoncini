@@ -74,9 +74,7 @@ namespace SisEquiposBertoncini.Aplicativo
             lbl_mes.Text = ObtenerMes(Session["planilla_calculos_mes"].ToString());
             lbl_anio.Text = Session["planilla_calculos_anio"].ToString();
             lbl_tipo_empleado.Text = Session["planilla_calculos_categoria_empleado"].ToString();
-
-
-
+            
             using (var cxt = new Model1Container())
             {
                 Aux_planilla_gastos_horas_hombre aux = cxt.Aux_planilla_gastos_horas_hombres.FirstOrDefault(x => x.anio == anio && x.mes == mes && x.tipo_empleado == categoria_empleado);
@@ -100,6 +98,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     tb_herramientas.Text = aux.herramientas.ToString();
                     tb_viaticos.Text = aux.viaticos.ToString();
                     tb_viaticos_presupuestados.Text = aux.viaticos_presupuestados.ToString();
+                    tb_indumentaria.Text = aux.indumentaria.ToString();
+                    tb_repuestos.Text = aux.repuestos.ToString();
+                    tb_repuestos_pp.Text = aux.repuestos_presupuestados.ToString();
+                    tb_gastos_varios.Text = aux.gastos_varios.ToString();
+                    tb_otros.Text = aux.otros.ToString();
                 }
 
                 decimal total_horas_categorias = categorias.Sum(x => x.total_horas_categoria);
@@ -112,7 +115,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     foreach (SisEquiposBertoncini.Aplicativo.planilla_calculos.equipo_paraPlanillaGastosenFuncionHorasHombre equipo in categoria.equipos)
                     {
-                        items.Add(new Itemtabla()
+                        Itemtabla item_equipo = new Itemtabla()
                         {
                             categoria = categoria.categoria,
                             equipo = equipo.equipo,
@@ -121,8 +124,42 @@ namespace SisEquiposBertoncini.Aplicativo
                             monto_insumos_taller = aux.insumos_taller * (equipo.horas / total_horas_categorias),
                             monto_herramientas = aux.herramientas * (equipo.horas / total_horas_categorias),
                             monto_viaticos = aux.viaticos * (equipo.horas / total_horas_categorias),
-                            monto_viaticos_presupuestados = aux.viaticos_presupuestados * (equipo.horas / total_horas_categorias)
-                        });
+                            monto_viaticos_presupuestados = aux.viaticos_presupuestados * (equipo.horas / total_horas_categorias),
+                            monto_indumentaria = aux.indumentaria * (equipo.horas / total_horas_categorias),
+                            monto_repuestos = aux.repuestos * (equipo.horas / total_horas_categorias),
+                            monto_repuestos_pp = aux.repuestos_presupuestados * (equipo.horas / total_horas_categorias),
+                            monto_gastos_varios = aux.gastos_varios * (equipo.horas / total_horas_categorias),
+                            monto_otros = aux.otros * (equipo.horas / total_horas_categorias)
+                        };
+
+                        items.Add(item_equipo);
+
+                        Equipo equipo_cxt = cxt.Equipos.First(x => x.id_equipo == equipo.id_equipo);
+
+                        if (categoria_empleado == "Mecánicos - Pintores")
+                        {
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios); 
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros); 
+                        }
+                        else
+                        {
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios);
+                            equipo_cxt.Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros); 
+                        }
                     }
 
                     items.Add(new Itemtabla
@@ -155,7 +192,12 @@ namespace SisEquiposBertoncini.Aplicativo
             fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Insumos taller", BgColor = "lightgray" });
             fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Herramientas", BgColor = "lightgray" });
             fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Viaticos", BgColor = "lightgray" });
-            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Viaticos presupuestados", BgColor = "lightgray" });
+            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Viaticos PP", BgColor = "lightgray" });
+            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Indumentaria", BgColor = "lightgray" });
+            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Repuestos", BgColor = "lightgray" });
+            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Repuestos PP", BgColor = "lightgray" });
+            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Gastos Varios", BgColor = "lightgray" });
+            fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Otros", BgColor = "lightgray" });
             fila_encabezado.Controls.Add(new HtmlTableCell("th") { InnerHtml = "TOTAL GASTOS", BgColor = "lightgray" });
 
             HtmlTableRow fila_encabezado1 = new HtmlTableRow();
@@ -165,6 +207,11 @@ namespace SisEquiposBertoncini.Aplicativo
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.herramientas.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.viaticos_presupuestados.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.indumentaria.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.repuestos.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.repuestos_presupuestados.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.gastos_varios.ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.otros.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = (aux.insumos_taller + aux.herramientas + aux.viaticos + aux.viaticos_presupuestados).ToString("$ #,##0.00") });
 
             tabla.Controls.Add(fila_encabezado);
@@ -192,7 +239,13 @@ namespace SisEquiposBertoncini.Aplicativo
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_herramientas.ToString("$ #,##0.00") });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos.ToString("$ #,##0.00") });
                     fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_viaticos_presupuestados.ToString("$ #,##0.00") });
-                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_indumentaria.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_repuestos.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_repuestos_pp.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_gastos_varios.ToString("$ #,##0.00") });
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.monto_otros.ToString("$ #,##0.00") });
+
+                    fila.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados + item.monto_indumentaria + item.monto_repuestos + item.monto_repuestos_pp + item.monto_gastos_varios + item.monto_otros).ToString("$ #,##0.00") });
 
                     tabla.Controls.Add(fila);
                 }
@@ -200,7 +253,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     primera_fila_categoria = true;
                     HtmlTableRow fila = new HtmlTableRow();
-                    fila.Controls.Add(new HtmlTableCell("td") { ColSpan = 8 });
+                    fila.Controls.Add(new HtmlTableCell("td") { ColSpan = 13 });
                     fila.Controls.Add(new HtmlTableCell("th") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("$ #,##0.00"), BgColor = "lightgray" });
 
                     tabla.Controls.Add(fila);
@@ -221,6 +274,12 @@ namespace SisEquiposBertoncini.Aplicativo
             public decimal monto_herramientas { get; set; }
             public decimal monto_viaticos { get; set; }
             public decimal monto_viaticos_presupuestados { get; set; }
+            public decimal monto_indumentaria { get; set; }
+            public decimal monto_repuestos { get; set; }
+            public decimal monto_repuestos_pp { get; set; }
+            public decimal monto_gastos_varios { get; set; }
+            public decimal monto_otros { get; set; }
+
         }
 
         protected void btn_guardar_modificaciones_ServerClick(object sender, EventArgs e)
@@ -242,6 +301,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     aux.herramientas = 0;
                     aux.viaticos = 0;
                     aux.viaticos_presupuestados = 0;
+                    aux.indumentaria = 0;
+                    aux.repuestos = 0;
+                    aux.gastos_varios = 0;
+                    aux.otros = 0;
+                    aux.repuestos_presupuestados = 0;
                     cxt.Aux_planilla_gastos_horas_hombres.Add(aux);
                 }
 
@@ -249,16 +313,32 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal herramientas = 0;
                 decimal viaticos = 0;
                 decimal viaticos_presupuestados = 0;
+                decimal indumentaria = 0;
+                decimal repuestos = 0;
+                decimal repuestos_pp = 0;
+                decimal gastos_varios = 0;
+                decimal otros = 0;
+
 
                 decimal.TryParse(tb_insumos_taller.Text, out insumos_taller);
                 decimal.TryParse(tb_herramientas.Text, out herramientas);
                 decimal.TryParse(tb_viaticos.Text, out viaticos);
                 decimal.TryParse(tb_viaticos_presupuestados.Text, out viaticos_presupuestados);
+                decimal.TryParse(tb_indumentaria.Text, out indumentaria);
+                decimal.TryParse(tb_repuestos.Text, out repuestos);
+                decimal.TryParse(tb_repuestos_pp.Text, out repuestos_pp);
+                decimal.TryParse(tb_gastos_varios.Text, out gastos_varios);
+                decimal.TryParse(tb_otros.Text, out otros);
 
                 aux.insumos_taller = insumos_taller;
                 aux.herramientas = herramientas;
                 aux.viaticos = viaticos;
                 aux.viaticos_presupuestados = viaticos_presupuestados;
+                aux.indumentaria = indumentaria;
+                aux.repuestos = repuestos;
+                aux.repuestos_presupuestados = repuestos_pp;
+                aux.gastos_varios = gastos_varios;
+                aux.otros = otros;
 
                 cxt.SaveChanges();
 

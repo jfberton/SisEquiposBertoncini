@@ -32,6 +32,9 @@ namespace SisEquiposBertoncini
                 case perfil_usuario.Usuario:
                     Response.Redirect("~/Aplicativo/main_usuario.aspx");
                     break;
+                case perfil_usuario.Sistema:
+                    Response.Redirect("~/Aplicativo/main_sistema.aspx");
+                    break;
                 case perfil_usuario.Seleccionar:
                     break;
                 default:

@@ -98,3 +98,31 @@ STACKTRACE:    en System.Web.UI.Control.FillNamedControlsTable(Control namingCon
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635860313315323343
+
+DATE: 18/12/2015 10:28:51 a.m.
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: La etiqueta contiene atributos 'Width' duplicados.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_horas_mes.aspx
+
+TARGETSITE: Void ProcessError(System.String)
+
+STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
+   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+
+
+******************************************************************
