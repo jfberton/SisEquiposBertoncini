@@ -83,6 +83,7 @@
     <Content Include="Aplicativo\admin_valor_dolar.aspx" />
     <Content Include="Aplicativo\Controles\imagen_empleado.ascx" />
     <Content Include="Aplicativo\Controles\imagen_usuario.ascx" />
+    <Content Include="Aplicativo\Controles\valor_decimal.ascx" />
     <Content Include="Aplicativo\Datos\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
@@ -103,6 +104,7 @@
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\Menues\menu_usuario.ascx" />
     <Content Include="Aplicativo\planilla_calculos.aspx" />
+    <Content Include="Aplicativo\planilla_gastos_administrativos.aspx" />
     <Content Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx" />
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
@@ -284,6 +286,13 @@
     <Compile Include="Aplicativo\Controles\MessageBox.cs" />
     <Compile Include="Aplicativo\Controles\Procesos_Globales.cs" />
     <Compile Include="Aplicativo\Controles\ValorDolarMes.cs" />
+    <Compile Include="Aplicativo\Controles\valor_decimal.ascx.cs">
+      <DependentUpon>valor_decimal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\valor_decimal.ascx.designer.cs">
+      <DependentUpon>valor_decimal.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Datos\Area.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -291,6 +300,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Datos\Aux_planilla_gastos_horas_hombre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\Aux_planilla_gasto_administracion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Datos\Categoria_empleado.cs">
@@ -350,6 +362,9 @@
     <Compile Include="Aplicativo\Datos\perfil_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Datos\Planilla_gasto_administrativo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Datos\resumen_equipo_anio.cs" />
     <Compile Include="Aplicativo\Datos\Resumen_mes_empleado.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -397,6 +412,13 @@
     </Compile>
     <Compile Include="Aplicativo\planilla_calculos.aspx.designer.cs">
       <DependentUpon>planilla_calculos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_gastos_administrativos.aspx.cs">
+      <DependentUpon>planilla_gastos_administrativos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_gastos_administrativos.aspx.designer.cs">
+      <DependentUpon>planilla_gastos_administrativos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx.cs">
       <DependentUpon>planilla_gastos_en _funcion_horas_hombre.aspx</DependentUpon>

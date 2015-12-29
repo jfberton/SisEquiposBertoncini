@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/15/2015 10:20:22
+-- Date Created: 12/29/2015 08:51:44
 -- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton];
+USE [equipos_berton1];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -55,6 +55,9 @@ IF OBJECT_ID(N'[dbo].[FK_EmpleadoResumen_mes_empleado]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Valor_mesDetalle_valor_item_mes]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Detalle_valores_items_mes] DROP CONSTRAINT [FK_Valor_mesDetalle_valor_item_mes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Aux_planilla_gastos_administracion] DROP CONSTRAINT [FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion];
 GO
 
 -- --------------------------------------------------
@@ -114,6 +117,12 @@ IF OBJECT_ID(N'[dbo].[Aux_planilla_calculos]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_horas_hombres]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Aux_planilla_gastos_horas_hombres];
+GO
+IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_administracion]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_gastos_administracion];
+GO
+IF OBJECT_ID(N'[dbo].[Planilla_gastos_administrativo]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Planilla_gastos_administrativo];
 GO
 
 -- --------------------------------------------------
@@ -322,6 +331,29 @@ CREATE TABLE [dbo].[Aux_planilla_gastos_horas_hombres] (
 );
 GO
 
+-- Creating table 'Aux_planilla_gastos_administracion'
+CREATE TABLE [dbo].[Aux_planilla_gastos_administracion] (
+    [id_detalle_gastos_administrativos] int IDENTITY(1,1) NOT NULL,
+    [id_equipo] int  NOT NULL,
+    [porcentaje] decimal(11,2)  NOT NULL,
+    [id_planilla_gastos_administartivos] int  NOT NULL
+);
+GO
+
+-- Creating table 'Planilla_gastos_administrativo'
+CREATE TABLE [dbo].[Planilla_gastos_administrativo] (
+    [id_planilla_gastos_administartivos] int IDENTITY(1,1) NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL,
+    [monto_telefonia_celular] decimal(11,2)  NOT NULL,
+    [monto_sueldos] decimal(11,2)  NOT NULL,
+    [monto_honorarios_sistema] decimal(11,2)  NOT NULL,
+    [monto_honorarios_contables] decimal(11,2)  NOT NULL,
+    [monto_papeleria] decimal(11,2)  NOT NULL,
+    [monto_otros] decimal(11,2)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -432,6 +464,18 @@ GO
 ALTER TABLE [dbo].[Aux_planilla_gastos_horas_hombres]
 ADD CONSTRAINT [PK_Aux_planilla_gastos_horas_hombres]
     PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [id_detalle_gastos_administrativos] in table 'Aux_planilla_gastos_administracion'
+ALTER TABLE [dbo].[Aux_planilla_gastos_administracion]
+ADD CONSTRAINT [PK_Aux_planilla_gastos_administracion]
+    PRIMARY KEY CLUSTERED ([id_detalle_gastos_administrativos] ASC);
+GO
+
+-- Creating primary key on [id_planilla_gastos_administartivos] in table 'Planilla_gastos_administrativo'
+ALTER TABLE [dbo].[Planilla_gastos_administrativo]
+ADD CONSTRAINT [PK_Planilla_gastos_administrativo]
+    PRIMARY KEY CLUSTERED ([id_planilla_gastos_administartivos] ASC);
 GO
 
 -- --------------------------------------------------
@@ -631,6 +675,21 @@ GO
 CREATE INDEX [IX_FK_Valor_mesDetalle_valor_item_mes]
 ON [dbo].[Detalle_valores_items_mes]
     ([id_valor_mes]);
+GO
+
+-- Creating foreign key on [id_planilla_gastos_administartivos] in table 'Aux_planilla_gastos_administracion'
+ALTER TABLE [dbo].[Aux_planilla_gastos_administracion]
+ADD CONSTRAINT [FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]
+    FOREIGN KEY ([id_planilla_gastos_administartivos])
+    REFERENCES [dbo].[Planilla_gastos_administrativo]
+        ([id_planilla_gastos_administartivos])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion'
+CREATE INDEX [IX_FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]
+ON [dbo].[Aux_planilla_gastos_administracion]
+    ([id_planilla_gastos_administartivos]);
 GO
 
 -- --------------------------------------------------

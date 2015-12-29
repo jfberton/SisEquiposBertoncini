@@ -221,5 +221,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Aux_planilla_gastos_administracion">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Aux_planilla_gasto_administracion)">
+        <MappingFragment StoreEntitySet="Aux_planilla_gastos_administracion">
+          <ScalarProperty Name="id_detalle_gastos_administrativos" ColumnName="id_detalle_gastos_administrativos" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+          <ScalarProperty Name="id_planilla_gastos_administartivos" ColumnName="id_planilla_gastos_administartivos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planilla_gastos_administrativo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Planilla_gasto_administrativo)">
+        <MappingFragment StoreEntitySet="Planilla_gastos_administrativo">
+          <ScalarProperty Name="id_planilla_gastos_administartivos" ColumnName="id_planilla_gastos_administartivos" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="monto_telefonia_celular" ColumnName="monto_telefonia_celular" />
+          <ScalarProperty Name="monto_sueldos" ColumnName="monto_sueldos" />
+          <ScalarProperty Name="monto_honorarios_sistema" ColumnName="monto_honorarios_sistema" />
+          <ScalarProperty Name="monto_honorarios_contables" ColumnName="monto_honorarios_contables" />
+          <ScalarProperty Name="monto_papeleria" ColumnName="monto_papeleria" />
+          <ScalarProperty Name="monto_otros" ColumnName="monto_otros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

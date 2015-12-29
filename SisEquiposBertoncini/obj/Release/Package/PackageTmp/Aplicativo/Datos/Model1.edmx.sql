@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/10/2015 08:08:54
+-- Date Created: 12/15/2015 10:20:22
 -- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
@@ -313,7 +313,12 @@ CREATE TABLE [dbo].[Aux_planilla_gastos_horas_hombres] (
     [viaticos_presupuestados] decimal(11,2)  NOT NULL,
     [mes] int  NOT NULL,
     [anio] int  NOT NULL,
-    [tipo_empleado] nvarchar(max)  NOT NULL
+    [tipo_empleado] nvarchar(max)  NOT NULL,
+    [indumentaria] decimal(11,2)  NOT NULL,
+    [repuestos] decimal(11,2)  NOT NULL,
+    [gastos_varios] decimal(11,2)  NOT NULL,
+    [otros] decimal(11,2)  NOT NULL,
+    [repuestos_presupuestados] decimal(11,2)  NOT NULL
 );
 GO
 

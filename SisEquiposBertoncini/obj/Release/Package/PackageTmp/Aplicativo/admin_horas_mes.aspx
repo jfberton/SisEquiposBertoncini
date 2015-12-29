@@ -163,10 +163,10 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                <table class="table-condensed">
+                                                <table class="table-condensed" style="width:100%">
                                                     <tr>
                                                         <td>
-                                                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_m">
+                                                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_m" Width="100%">
                                                             </asp:DropDownList></td>
                                                     </tr>
                                                 </table>
@@ -181,10 +181,10 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                <table class="table-condensed">
+                                                <table class="table-condensed" style="width:100%">
                                                     <tr>
                                                         <td>
-                                                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_t">
+                                                            <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_t" Width="100%">
                                                             </asp:DropDownList></td>
                                                     </tr>
                                                 </table>
@@ -204,10 +204,10 @@
 
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <table class="table-condensed">
+                                                        <table class="table-condensed" style="width:100%">
                                                             <tr>
                                                                 <td>
-                                                                    <asp:DropDownList runat="server" CssClass="form-control" Width="100%" ID="ddl_equipo">
+                                                                    <asp:DropDownList runat="server" CssClass="form-control" Width="100%" ID="ddl_equipo" >
                                                                     </asp:DropDownList></td>
                                                             </tr>
                                                         </table>

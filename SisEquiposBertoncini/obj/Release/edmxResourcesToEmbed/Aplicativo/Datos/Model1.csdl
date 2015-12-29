@@ -166,6 +166,7 @@
     <Member Name="Supervisor" Value="3" />
     <Member Name="Usuario" Value="4" />
     <Member Name="Seleccionar" Value="0" />
+    <Member Name="Sistema" Value="5" />
   </EnumType>
   <EntityType Name="Dia">
     <Key>
@@ -467,5 +468,10 @@
     <Property Name="mes" Type="Int32" Nullable="false" />
     <Property Name="anio" Type="Int32" Nullable="false" />
     <Property Name="tipo_empleado" Type="String" Nullable="false" />
+    <Property Name="indumentaria" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="repuestos" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="gastos_varios" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="otros" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="repuestos_presupuestados" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
   </EntityType>
 </Schema>

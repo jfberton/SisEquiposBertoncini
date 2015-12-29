@@ -213,6 +213,11 @@
           <ScalarProperty Name="mes" ColumnName="mes" />
           <ScalarProperty Name="anio" ColumnName="anio" />
           <ScalarProperty Name="tipo_empleado" ColumnName="tipo_empleado" />
+          <ScalarProperty Name="indumentaria" ColumnName="indumentaria" />
+          <ScalarProperty Name="repuestos" ColumnName="repuestos" />
+          <ScalarProperty Name="gastos_varios" ColumnName="gastos_varios" />
+          <ScalarProperty Name="otros" ColumnName="otros" />
+          <ScalarProperty Name="repuestos_presupuestados" ColumnName="repuestos_presupuestados" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

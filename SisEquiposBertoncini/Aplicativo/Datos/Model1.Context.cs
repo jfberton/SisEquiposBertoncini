@@ -43,5 +43,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public DbSet<Detalle_valor_item_mes> Detalle_valores_items_mes { get; set; }
         public DbSet<Aux_planilla_calculo> Aux_planilla_calculos { get; set; }
         public DbSet<Aux_planilla_gastos_horas_hombre> Aux_planilla_gastos_horas_hombres { get; set; }
+        public DbSet<Aux_planilla_gasto_administracion> Aux_planilla_gastos_administracion { get; set; }
+        public DbSet<Planilla_gasto_administrativo> Planilla_gastos_administrativo { get; set; }
     }
 }
