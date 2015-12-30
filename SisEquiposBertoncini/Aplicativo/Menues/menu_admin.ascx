@@ -51,8 +51,9 @@
                         <li><a href="../Aplicativo/admin_feriados.aspx">Editar feriados</a></li>
                         <li><a href="../Aplicativo/admin_horas_mes.aspx">Cargar horas mes</a></li>
                         <li class="divider"></li>
-                        <li class="dropdown-header">Informes mensuales</li>
+                        <li class="dropdown-header">Planillas</li>
                         <li><a href="admin_horas_planilla_principal.aspx">Principal</a></li>
+                        <li><a href="planilla_gastos_administrativos.aspx">Planilla gastos administ.</a></li>
                     </ul>
                 </li>
 

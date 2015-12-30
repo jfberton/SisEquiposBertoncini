@@ -17,7 +17,7 @@ namespace SisEquiposBertoncini.Aplicativo
             if (!IsPostBack)
             {
                 Cargar_ddls();
-                
+
             }
             CargarDatos();
         }
@@ -57,30 +57,30 @@ namespace SisEquiposBertoncini.Aplicativo
                 tabla.Attributes.Add("class", "table table-bordered");
                 HtmlTableRow encabezado = new HtmlTableRow();
                 encabezado.Cells.Add(new HtmlTableCell("th") { RowSpan = 2, InnerHtml = "Equipos" });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "%" });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Teléfono" });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Sueldos" });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Honorario Sist." });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Honorario Cont." });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Papel. - Libre." });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Otros" });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Total sin telefonia" });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "%" });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Teléfono" });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Sueldos" });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Honorario Sist." });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Honorario Cont." });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Papel. - Libre." });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Otros" });
+                encabezado.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = "Total sin telefonia" });
 
                 HtmlTableRow encabezado1 = new HtmlTableRow();
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.Detalle.Sum(x=>x.porcentaje).ToString("P2") });
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.monto_telefonia_celular.ToString("$ #,##0.00") });
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.monto_sueldos.ToString("$ #,##0.00") });
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.monto_honorarios_sistema.ToString("$ #,##0.00") });
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.monto_honorarios_contables.ToString("$ #,##0.00") });
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.monto_papeleria.ToString("$ #,##0.00") });
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = datos_planilla.monto_otros.ToString("$ #,##0.00") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.Detalle.Sum(x => x.porcentaje).ToString("P2") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.monto_telefonia_celular.ToString("$ #,##0.00") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.monto_sueldos.ToString("$ #,##0.00") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.monto_honorarios_sistema.ToString("$ #,##0.00") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.monto_honorarios_contables.ToString("$ #,##0.00") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.monto_papeleria.ToString("$ #,##0.00") });
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = datos_planilla.monto_otros.ToString("$ #,##0.00") });
 
                 decimal montoTotal = datos_planilla.monto_sueldos + datos_planilla.monto_honorarios_sistema + datos_planilla.monto_honorarios_contables + datos_planilla.monto_papeleria + datos_planilla.monto_otros;
-                encabezado1.Cells.Add(new HtmlTableCell("th") { InnerHtml = montoTotal.ToString("$ #,##0.00") });
-                
+                encabezado1.Cells.Add(new HtmlTableCell("th") { Width = "100%", InnerHtml = montoTotal.ToString("$ #,##0.00") });
+
                 tabla.Rows.Add(encabezado);
                 tabla.Rows.Add(encabezado1);
-   
+
 
                 foreach (Equipo equipo in equipos)
                 {
@@ -98,13 +98,14 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     HtmlTableCell columna_porcentaje = new HtmlTableCell("td");
                     columna_porcentaje.Controls.Add(tb_equipo);
+                    columna_porcentaje.Width = "100%";
                     fila_equipo.Cells.Add(columna_porcentaje);
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_telefonia_celular * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_sueldos * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_honorarios_sistema * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_honorarios_contables * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_papeleria * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_otros * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
+                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Width="100%", InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_telefonia_celular * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
+                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Width = "100%", InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_sueldos * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
+                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Width = "100%", InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_honorarios_sistema * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
+                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Width = "100%", InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_honorarios_contables * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
+                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Width = "100%", InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_papeleria * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
+                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Width = "100%", InnerHtml = detalle_equipo_planilla != null ? (datos_planilla.monto_otros * detalle_equipo_planilla.porcentaje).ToString("$ #,##0.00") : " - " });
 
                     decimal monto = detalle_equipo_planilla != null ?
                         (datos_planilla.monto_sueldos * detalle_equipo_planilla.porcentaje) +
@@ -117,7 +118,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     tabla.Rows.Add(fila_equipo);
                 }
-                
+
                 div_detalle.Controls.Clear();
 
                 div_detalle.Controls.Add(tabla);
@@ -163,13 +164,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal monto_papeleria = 0;
                 decimal monto_otros = 0;
 
-                datos_planilla.monto_telefonia_celular = decimal.TryParse(tb_telefonia_celular.Text.Replace("$",""), out monto_telefonia) ? monto_telefonia : 0;
+                datos_planilla.monto_telefonia_celular = decimal.TryParse(tb_telefonia_celular.Text.Replace("$", ""), out monto_telefonia) ? monto_telefonia : 0;
                 datos_planilla.monto_sueldos = decimal.TryParse(tb_sueldos_administracion.Text.Replace("$", ""), out monto_sueldo) ? monto_sueldo : 0;
                 datos_planilla.monto_honorarios_sistema = decimal.TryParse(tb_honorarios_sistema.Text.Replace("$", ""), out monto_honorario_sistema) ? monto_honorario_sistema : 0;
                 datos_planilla.monto_honorarios_contables = decimal.TryParse(tb_honorarios_contables.Text.Replace("$", ""), out monto_honorario_contable) ? monto_honorario_contable : 0;
                 datos_planilla.monto_papeleria = decimal.TryParse(tb_papeleria_libreria.Text.Replace("$", ""), out monto_papeleria) ? monto_papeleria : 0;
                 datos_planilla.monto_otros = decimal.TryParse(tb_otros.Text.Replace("$", ""), out monto_otros) ? monto_otros : 0;
-                
+
                 cxt.SaveChanges();
             }
 
@@ -188,55 +189,51 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal porcentaje = tb_equipo.Valor;
                 //decimal.TryParse(tb_equipo.Text, out porcentaje);
 
-                if (porcentaje > 0)
+                porcentaje = porcentaje / Convert.ToDecimal(100);
+
+                int anio = Convert.ToInt32(ddl_anio.SelectedItem.Text);
+                int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
+                var datos_planilla = cxt.Planilla_gastos_administrativo.FirstOrDefault(x => x.anio == anio && x.mes == mes);
+
+                decimal porcentaje_restante = Convert.ToDecimal(1) - datos_planilla.Detalle.Sum(x => x.porcentaje);
+
+                if (porcentaje > porcentaje_restante)
                 {
-                    porcentaje = porcentaje / Convert.ToDecimal(100);
+                    porcentaje = porcentaje_restante;
 
-                    int anio = Convert.ToInt32(ddl_anio.SelectedItem.Text);
-                    int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
-                    var datos_planilla = cxt.Planilla_gastos_administrativo.FirstOrDefault(x => x.anio == anio && x.mes == mes);
+                    var detalle_equipo_planilla = datos_planilla.Detalle.FirstOrDefault(x => x.id_equipo == id_equipo);
 
-                    decimal porcentaje_restante = Convert.ToDecimal(1) - datos_planilla.Detalle.Sum(x => x.porcentaje);
-
-                    if (porcentaje > porcentaje_restante)
+                    if (detalle_equipo_planilla == null)
                     {
-                        porcentaje = porcentaje_restante;
-
-                        var detalle_equipo_planilla = datos_planilla.Detalle.FirstOrDefault(x => x.id_equipo == id_equipo);
-
-                        if (detalle_equipo_planilla == null)
-                        {
-                            datos_planilla.Detalle.Add(new Aux_planilla_gasto_administracion() { id_equipo = id_equipo, porcentaje = porcentaje });
-                        }
-                        else
-                        {
-                            detalle_equipo_planilla.porcentaje = porcentaje;
-                        }
-
-                        cxt.SaveChanges();
-
-                        MessageBox.Show(this, "El porcentaje exede lo que resta para llegar a 100%, se asignará " + porcentaje_restante.ToString("P2"), MessageBox.Tipo_MessageBox.Warning);
+                        datos_planilla.Detalle.Add(new Aux_planilla_gasto_administracion() { id_equipo = id_equipo, porcentaje = porcentaje });
                     }
                     else
                     {
-                        var detalle_equipo_planilla = datos_planilla.Detalle.FirstOrDefault(x => x.id_equipo == id_equipo);
-
-                        if (detalle_equipo_planilla == null)
-                        {
-                            datos_planilla.Detalle.Add(new Aux_planilla_gasto_administracion() { id_equipo = id_equipo, porcentaje = porcentaje });
-                        }
-                        else
-                        {
-                            detalle_equipo_planilla.porcentaje = porcentaje;
-                        }
-
-                        cxt.SaveChanges();
+                        detalle_equipo_planilla.porcentaje = porcentaje;
                     }
-                }
 
-                CargarDatos();
+                    cxt.SaveChanges();
+
+                    MessageBox.Show(this, "El porcentaje exede lo que resta para llegar a 100%, se asignará " + porcentaje_restante.ToString("P2"), MessageBox.Tipo_MessageBox.Warning);
+                }
+                else
+                {
+                    var detalle_equipo_planilla = datos_planilla.Detalle.FirstOrDefault(x => x.id_equipo == id_equipo);
+
+                    if (detalle_equipo_planilla == null)
+                    {
+                        datos_planilla.Detalle.Add(new Aux_planilla_gasto_administracion() { id_equipo = id_equipo, porcentaje = porcentaje });
+                    }
+                    else
+                    {
+                        detalle_equipo_planilla.porcentaje = porcentaje;
+                    }
+
+                    cxt.SaveChanges();
+                }
             }
 
+            CargarDatos();
 
         }
     }
