@@ -586,11 +586,11 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     if (Session["planilla_calculos_categoria_empleado"].ToString() == "Mecánicos - Pintores")
                     {
-                        cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                        cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
                     }
                     else
                     {
-                        cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                        cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
                     }
 
                 }

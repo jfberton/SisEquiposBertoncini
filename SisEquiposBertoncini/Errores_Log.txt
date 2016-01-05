@@ -195,3 +195,66 @@ STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635874923616007192
+
+DATE: 04/01/2016 08:19:21 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Etiqueta de servidor 'uc2:valor_decimal' desconocida.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
+
+TARGETSITE: Void ProcessError(System.String)
+
+STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
+   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635874956310344935
+
+DATE: 04/01/2016 09:13:51 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_gastos_administrativos.aspx(47): error CS0123: Ninguna sobrecarga correspondiente a 'tb_telefonia_celular_Modifico_valor' coincide con el 'System.EventHandler' delegado
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************

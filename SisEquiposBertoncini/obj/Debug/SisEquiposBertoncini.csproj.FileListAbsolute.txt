@@ -29,11 +29,11 @@ D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFrame
 D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
 D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
-d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache

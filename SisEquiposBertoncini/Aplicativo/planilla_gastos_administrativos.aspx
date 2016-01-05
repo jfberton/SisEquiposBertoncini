@@ -5,6 +5,8 @@
 
 
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_menu" runat="server">
@@ -38,34 +40,32 @@
     </table>
     <h4><u>Montos por distribuir</u></h4>
     <table class="table table-bordered">
-       
         <tr>
             <td>Telefonía celular</td>
             <td>
-                <asp:TextBox runat="server" ID="tb_telefonia_celular" CssClass="form-control" /></td>
+                <uc1:valor_decimal runat="server" ID="tb_telefonia_celular" OnModifico_valor="tb_telefonia_celular_Modifico_valor" Formato_valor="pesos" />
+            </td>
             <td>Sueldos administración</td>
             <td>
-                <asp:TextBox runat="server" ID="tb_sueldos_administracion" CssClass="form-control" /></td>
+                <uc1:valor_decimal runat="server" ID="tb_sueldos_administracion" OnModifico_valor="tb_sueldos_administracion_Modifico_valor" Formato_valor="pesos" />
+            </td>
         </tr>
         <tr>
             <td>Honorarios de sistema</td>
             <td>
-                <asp:TextBox runat="server" ID="tb_honorarios_sistema" CssClass="form-control" /></td>
+                <uc1:valor_decimal runat="server" ID="tb_honorarios_sistema" OnModifico_valor="tb_honorarios_sistema_Modifico_valor" Formato_valor="pesos" />
+            </td>
             <td>Honorarios contable</td>
             <td>
-                <asp:TextBox runat="server" ID="tb_honorarios_contables" CssClass="form-control" /></td>
+                <uc1:valor_decimal runat="server" ID="tb_honorarios_contables" OnModifico_valor="tb_honorarios_contables_Modifico_valor" Formato_valor="pesos" /></td>
         </tr>
         <tr>
             <td>Papelería - Librería</td>
             <td>
-                <asp:TextBox runat="server" ID="tb_papeleria_libreria" CssClass="form-control" /></td>
+                <uc1:valor_decimal runat="server" ID="tb_papeleria_libreria" OnModifico_valor="tb_papeleria_libreria_Modifico_valor" Formato_valor="pesos" /></td>
             <td>Otros</td>
             <td>
-                <asp:TextBox runat="server" ID="tb_otros" CssClass="form-control" /></td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <asp:Button Text="Aplicar" ID="btn_aplicar_cambios" CssClass="btn btn-default" OnClick="btn_aplicar_cambios_Click" runat="server" /></td>
+                <uc1:valor_decimal runat="server" ID="tb_otros" OnModifico_valor="tb_otros_Modifico_valor" Formato_valor="pesos" /></td>
         </tr>
     </table>
     <div class="row">

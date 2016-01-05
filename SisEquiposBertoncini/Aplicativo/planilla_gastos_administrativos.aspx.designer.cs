@@ -46,7 +46,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_telefonia_celular;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.valor_decimal tb_telefonia_celular;
         
         /// <summary>
         /// Control tb_sueldos_administracion.
@@ -55,7 +55,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_sueldos_administracion;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.valor_decimal tb_sueldos_administracion;
         
         /// <summary>
         /// Control tb_honorarios_sistema.
@@ -64,7 +64,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_honorarios_sistema;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.valor_decimal tb_honorarios_sistema;
         
         /// <summary>
         /// Control tb_honorarios_contables.
@@ -73,7 +73,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_honorarios_contables;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.valor_decimal tb_honorarios_contables;
         
         /// <summary>
         /// Control tb_papeleria_libreria.
@@ -82,7 +82,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_papeleria_libreria;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.valor_decimal tb_papeleria_libreria;
         
         /// <summary>
         /// Control tb_otros.
@@ -91,16 +91,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_otros;
-        
-        /// <summary>
-        /// Control btn_aplicar_cambios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_aplicar_cambios;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.valor_decimal tb_otros;
         
         /// <summary>
         /// Control div_detalle.

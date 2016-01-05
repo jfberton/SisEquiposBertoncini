@@ -43,13 +43,13 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
                 switch (Formato_valor)
                 {
                     case Formato.ninguno:
-                        tb_valor.Text = valor.ToString("#,##0.00");
+                        tb_valor.Value = valor.ToString("#,##0.00");
                         break;
                     case Formato.pesos:
-                        tb_valor.Text = valor.ToString("$ #,##0.00");
+                        tb_valor.Value = valor.ToString("$ #,##0.00");
                         break;
                     case Formato.porcentaje:
-                        tb_valor.Text = valor.ToString("P2");
+                        tb_valor.Value = valor.ToString("P2");
                         break;
                     default:
                         break;
@@ -66,13 +66,13 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
                 switch (Formato_valor)
                 {
                     case Formato.ninguno:
-                        decimal.TryParse(tb_valor.Text, out valor);
+                        decimal.TryParse(tb_valor.Value, out valor);
                         break;
                     case Formato.pesos:
-                        decimal.TryParse(tb_valor.Text.Replace("$", ""), out valor);
+                        decimal.TryParse(tb_valor.Value.Replace("$", ""), out valor);
                         break;
                     case Formato.porcentaje:
-                        decimal.TryParse(tb_valor.Text.Replace("%", ""), out valor);
+                        decimal.TryParse(tb_valor.Value.Replace("%", ""), out valor);
                         break;
                     default:
                         break;
@@ -85,13 +85,13 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
                 switch (Formato_valor)
                 {
                     case Formato.ninguno:
-                        tb_valor.Text = value.ToString("#,##0.00");
+                        tb_valor.Value = value.ToString("#,##0.00");
                         break;
                     case Formato.pesos:
-                        tb_valor.Text = value.ToString("$ #,##0.00");
+                        tb_valor.Value = value.ToString("$ #,##0.00");
                         break;
                     case Formato.porcentaje:
-                        tb_valor.Text = value.ToString("P2");
+                        tb_valor.Value = value.ToString("P2");
                         break;
                     default:
                         break;
@@ -117,13 +117,13 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
             if (Formato_valor == Formato.porcentaje)
             {
                 decimal valor = 0;
-                decimal.TryParse(tb_valor.Text, out valor);
+                decimal.TryParse(tb_valor.Value, out valor);
                 valor = valor / Convert.ToDecimal(100);
                 Valor = valor;
             }
             else
             {
-                Valor_str = tb_valor.Text;
+                Valor_str = tb_valor.Value;
             }
 
             if (this.Modifico_valor != null)
@@ -133,6 +133,22 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
         protected void btn_cancel_ServerClick(object sender, EventArgs e)
         {
             Editando = false;
+
+            switch (Formato_valor)
+            {
+                case Formato.ninguno:
+                    tb_valor.Value = Valor.ToString("#,##0.00");
+                    break;
+                case Formato.pesos:
+                    tb_valor.Value = Valor.ToString("$ #,##0.00");
+                    break;
+                case Formato.porcentaje:
+                    tb_valor.Value = Valor.ToString("P2");
+                    break;
+                default:
+                    break;
+            }
+
             HabilitaEditar();
         }
 
@@ -141,9 +157,8 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
             btn_edit.Visible = !Editando;
             btn_cancel.Visible = Editando;
             btn_ok.Visible = Editando;
-            tb_valor.Enabled = Editando;
+            tb_valor.Disabled = !Editando;
         }
-
 
     }
 }
