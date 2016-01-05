@@ -90,6 +90,26 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             return ret;
         }
 
+        public string Horas_mes(int mes, int anio, List<Empleado> empleados)
+        {
+            string ret = "00:00";
+
+            foreach (Detalle_dia item in Detalles_dias.Where(x => x.Dia.fecha.Month == mes && x.Dia.fecha.Year == anio))
+            {
+                if (ExisteEnElListado(item.Dia.Empleado, empleados))
+                {
+                    ret = Horas_string.SumarHoras(new string[] { ret, item.total_movimiento });
+                }
+            }
+
+            return ret;
+        }
+
+        private bool ExisteEnElListado(Empleado empleado, List<Empleado> empleados)
+        {
+            return empleados.FirstOrDefault(ee => ee.id_empleado == empleado.id_empleado) != null;
+        }
+
 
         public enum Valor_mensual
         {
@@ -414,7 +434,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                 case Valor_mensual.admin_telefonia:
                     ret = "Teléfono celular (abono)";
                     break;
-                
+
                 default:
                     break;
             }
