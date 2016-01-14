@@ -19,6 +19,8 @@
     <EntitySet Name="Detalle_valores_items_mes" EntityType="Model1.Store.Detalle_valores_items_mes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Store.Aux_planilla_calculos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Store.Aux_planilla_gastos_horas_hombres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_gastos_administracion" EntityType="Model1.Store.Aux_planilla_gastos_administracion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Planilla_gastos_administrativo" EntityType="Model1.Store.Planilla_gastos_administrativo" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
       <End Role="Categoria" EntitySet="Categorias_equipos" />
       <End Role="Equipo" EntitySet="Equipos" />
@@ -70,6 +72,10 @@
     <AssociationSet Name="Valor_mesDetalle_valor_item_mes" Association="Model1.Store.Valor_mesDetalle_valor_item_mes">
       <End Role="Valor_mes" EntitySet="Valores_meses" />
       <End Role="Detalle_valor_item_mes" EntitySet="Detalle_valores_items_mes" />
+    </AssociationSet>
+    <AssociationSet Name="Planilla_gasto_administrativoAux_planilla_gasto_administracion" Association="Model1.Store.Planilla_gasto_administrativoAux_planilla_gasto_administracion">
+      <End Role="Planilla_gasto_administrativo" EntitySet="Planilla_gastos_administrativo" />
+      <End Role="Aux_planilla_gasto_administracion" EntitySet="Aux_planilla_gastos_administracion" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Equipos">
@@ -274,6 +280,29 @@
     <Property Name="otros" Type="decimal" Nullable="false" Precision="11" Scale="2" />
     <Property Name="repuestos_presupuestados" Type="decimal" Nullable="false" Precision="11" Scale="2" />
   </EntityType>
+  <EntityType Name="Aux_planilla_gastos_administracion">
+    <Key>
+      <PropertyRef Name="id_detalle_gastos_administrativos" />
+    </Key>
+    <Property Name="id_detalle_gastos_administrativos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="porcentaje" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="id_planilla_gastos_administartivos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Planilla_gastos_administrativo">
+    <Key>
+      <PropertyRef Name="id_planilla_gastos_administartivos" />
+    </Key>
+    <Property Name="id_planilla_gastos_administartivos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="monto_telefonia_celular" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_sueldos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_honorarios_sistema" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_honorarios_contables" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_papeleria" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_otros" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
   <Association Name="CategoriaEquipo">
     <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
     <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="*" />
@@ -427,6 +456,18 @@
       </Principal>
       <Dependent Role="Detalle_valor_item_mes">
         <PropertyRef Name="id_valor_mes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Planilla_gasto_administrativoAux_planilla_gasto_administracion">
+    <End Role="Planilla_gasto_administrativo" Type="Model1.Store.Planilla_gastos_administrativo" Multiplicity="1" />
+    <End Role="Aux_planilla_gasto_administracion" Type="Model1.Store.Aux_planilla_gastos_administracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planilla_gasto_administrativo">
+        <PropertyRef Name="id_planilla_gastos_administartivos" />
+      </Principal>
+      <Dependent Role="Aux_planilla_gasto_administracion">
+        <PropertyRef Name="id_planilla_gastos_administartivos" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

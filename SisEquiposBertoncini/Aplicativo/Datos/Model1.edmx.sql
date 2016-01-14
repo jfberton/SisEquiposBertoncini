@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/29/2015 08:51:44
+-- Date Created: 01/11/2016 08:21:25
 -- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton1];
+USE [equipos_berton2];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -137,7 +137,8 @@ CREATE TABLE [dbo].[Equipos] (
     [notas] nvarchar(max)  NOT NULL,
     [fecha_baja] datetime  NULL,
     [OUT] bit  NOT NULL,
-    [Generico] bit  NOT NULL
+    [Generico] bit  NOT NULL,
+    [EsTrabajo] bit  NULL
 );
 GO
 
@@ -250,7 +251,9 @@ CREATE TABLE [dbo].[Items_ingresos_egresos] (
     [tipo] nvarchar(max)  NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(max)  NOT NULL,
-    [id_item_padre] int  NULL
+    [id_item_padre] int  NULL,
+    [mostrar_en_equipo] bit  NULL,
+    [mostrar_en_trabajo] bit  NULL
 );
 GO
 

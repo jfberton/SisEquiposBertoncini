@@ -89,6 +89,7 @@
     <Property Name="fecha_baja" Type="datetime" Nullable="true" />
     <Property Name="OUT" Type="bit" Nullable="false" />
     <Property Name="Generico" Type="bit" Nullable="false" />
+    <Property Name="EsTrabajo" Type="bit" Nullable="true" />
   </EntityType>
   <EntityType Name="Categorias_equipos">
     <Key>
@@ -202,6 +203,8 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="id_item_padre" Type="int" Nullable="true" />
+    <Property Name="mostrar_en_equipo" Type="bit" Nullable="true" />
+    <Property Name="mostrar_en_trabajo" Type="bit" Nullable="true" />
   </EntityType>
   <EntityType Name="Valores_meses">
     <Key>

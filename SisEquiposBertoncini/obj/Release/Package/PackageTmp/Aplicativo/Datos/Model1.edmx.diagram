@@ -36,6 +36,9 @@
         <AssociationConnector Association="Model1.Valor_mesDetalle_valor_item_mes" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_calculo" Width="2.875" PointX="10" PointY="4.625" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_gastos_horas_hombre" Width="2.25" PointX="13.375" PointY="3.625" />
+        <EntityTypeShape EntityType="Model1.Aux_planilla_gasto_administracion" Width="3.25" PointX="15.625" PointY="12.75" />
+        <EntityTypeShape EntityType="Model1.Planilla_gasto_administrativo" Width="3.5" PointX="15.625" PointY="9" />
+        <AssociationConnector Association="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

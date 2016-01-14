@@ -94,6 +94,7 @@
     <Property Name="fecha_baja" Type="datetime" Nullable="true" />
     <Property Name="OUT" Type="bit" Nullable="false" />
     <Property Name="Generico" Type="bit" Nullable="false" />
+    <Property Name="EsTrabajo" Type="bit" Nullable="true" />
   </EntityType>
   <EntityType Name="Categorias_equipos">
     <Key>
@@ -207,6 +208,8 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="id_item_padre" Type="int" Nullable="true" />
+    <Property Name="mostrar_en_equipo" Type="bit" Nullable="true" />
+    <Property Name="mostrar_en_trabajo" Type="bit" Nullable="true" />
   </EntityType>
   <EntityType Name="Valores_meses">
     <Key>
@@ -573,6 +576,7 @@
           <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
           <Property Name="OUT" Type="Boolean" Nullable="false" />
           <Property Name="Generico" Type="Boolean" Nullable="false" />
+          <Property Name="EsTrabajo" Type="Boolean" Nullable="true" />
         </EntityType>
         <EntityType Name="Categoria_equipo">
           <Documentation>
@@ -811,6 +815,8 @@
           <NavigationProperty Name="Hijos" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso" ToRole="Item_ingreso_egreso1" />
           <NavigationProperty Name="Padre" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso1" ToRole="Item_ingreso_egreso" />
           <Property Name="id_item_padre" Type="Int32" Nullable="true" />
+          <Property Name="mostrar_en_equipo" Type="Boolean" Nullable="true" />
+          <Property Name="mostrar_en_trabajo" Type="Boolean" Nullable="true" />
           </EntityType>
         <EntityType Name="Valor_mes">
           <Key>
@@ -1013,6 +1019,7 @@
           <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
           <ScalarProperty Name="OUT" ColumnName="OUT" />
           <ScalarProperty Name="Generico" ColumnName="Generico" />
+          <ScalarProperty Name="EsTrabajo" ColumnName="EsTrabajo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1137,6 +1144,8 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="id_item_padre" ColumnName="id_item_padre" />
+          <ScalarProperty Name="mostrar_en_equipo" ColumnName="mostrar_en_equipo" />
+          <ScalarProperty Name="mostrar_en_trabajo" ColumnName="mostrar_en_trabajo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

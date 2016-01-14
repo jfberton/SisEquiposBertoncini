@@ -71,6 +71,12 @@
     </AssociationSet>
     <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Aux_planilla_calculo" />
     <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Aux_planilla_gastos_horas_hombre" />
+    <EntitySet Name="Aux_planilla_gastos_administracion" EntityType="Model1.Aux_planilla_gasto_administracion" />
+    <EntitySet Name="Planilla_gastos_administrativo" EntityType="Model1.Planilla_gasto_administrativo" />
+    <AssociationSet Name="Planilla_gasto_administrativoAux_planilla_gasto_administracion" Association="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion">
+      <End Role="Planilla_gasto_administrativo" EntitySet="Planilla_gastos_administrativo" />
+      <End Role="Aux_planilla_gasto_administracion" EntitySet="Aux_planilla_gastos_administracion" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>
@@ -474,4 +480,41 @@
     <Property Name="otros" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
     <Property Name="repuestos_presupuestados" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
   </EntityType>
+  <EntityType Name="Aux_planilla_gasto_administracion">
+    <Key>
+      <PropertyRef Name="id_detalle_gastos_administrativos" />
+    </Key>
+    <Property Name="id_detalle_gastos_administrativos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_equipo" Type="Int32" Nullable="false" />
+    <Property Name="porcentaje" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <NavigationProperty Name="Planilla" Relationship="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" FromRole="Aux_planilla_gasto_administracion" ToRole="Planilla_gasto_administrativo" />
+    <Property Name="id_planilla_gastos_administartivos" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Planilla_gasto_administrativo">
+    <Key>
+      <PropertyRef Name="id_planilla_gastos_administartivos" />
+    </Key>
+    <Property Name="id_planilla_gastos_administartivos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+    <Property Name="monto_telefonia_celular" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="monto_sueldos" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="monto_honorarios_sistema" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="monto_honorarios_contables" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="monto_papeleria" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="monto_otros" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <NavigationProperty Name="Detalle" Relationship="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" FromRole="Planilla_gasto_administrativo" ToRole="Aux_planilla_gasto_administracion" />
+  </EntityType>
+  <Association Name="Planilla_gasto_administrativoAux_planilla_gasto_administracion">
+    <End Type="Model1.Planilla_gasto_administrativo" Role="Planilla_gasto_administrativo" Multiplicity="1" />
+    <End Type="Model1.Aux_planilla_gasto_administracion" Role="Aux_planilla_gasto_administracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planilla_gasto_administrativo">
+        <PropertyRef Name="id_planilla_gastos_administartivos" />
+      </Principal>
+      <Dependent Role="Aux_planilla_gasto_administracion">
+        <PropertyRef Name="id_planilla_gastos_administartivos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -25,6 +25,8 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public Nullable<int> id_item_padre { get; set; }
+        public Nullable<bool> mostrar_en_equipo { get; set; }
+        public Nullable<bool> mostrar_en_trabajo { get; set; }
     
         public virtual ICollection<Valor_mes> Valores_mes { get; set; }
         public virtual ICollection<Item_ingreso_egreso> Hijos { get; set; }

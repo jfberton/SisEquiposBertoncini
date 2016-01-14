@@ -11,6 +11,7 @@
           <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
           <ScalarProperty Name="OUT" ColumnName="OUT" />
           <ScalarProperty Name="Generico" ColumnName="Generico" />
+          <ScalarProperty Name="EsTrabajo" ColumnName="EsTrabajo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -135,6 +136,8 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="id_item_padre" ColumnName="id_item_padre" />
+          <ScalarProperty Name="mostrar_en_equipo" ColumnName="mostrar_en_equipo" />
+          <ScalarProperty Name="mostrar_en_trabajo" ColumnName="mostrar_en_trabajo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

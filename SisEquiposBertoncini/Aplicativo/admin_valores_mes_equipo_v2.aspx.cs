@@ -96,7 +96,7 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 var equipos_habilitados = cxt.Equipos.Where(ee => ee.fecha_baja == null && !ee.Generico);
-                foreach (Equipo equipo in equipos_habilitados.OrderBy(x=>x.nombre))
+                foreach (Equipo equipo in equipos_habilitados.OrderBy(x => x.nombre))
                 {
                     ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
                 }
@@ -200,33 +200,37 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 ioEquipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == ioEquipo.id_ingreso_egreso_mensual);
                 Valor_mes valor_mes = ioEquipo.Valores_meses.FirstOrDefault(ii => ii.id_item == item.id_item);
-                if (valor_mes == null)
+                if ((ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == true && item.mostrar_en_trabajo.HasValue  && item.mostrar_en_trabajo.Value == true) ||
+                    (ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == false && item.mostrar_en_equipo.HasValue && item.mostrar_en_equipo.Value == true))
                 {
-                    valor_mes = new Valor_mes()
+                    if (valor_mes == null)
                     {
-                        id_item = item.id_item,
-                        valor = 0
-                    };
+                        valor_mes = new Valor_mes()
+                        {
+                            id_item = item.id_item,
+                            valor = 0
+                        };
 
-                    ioEquipo.Valores_meses.Add(valor_mes);
-                    cxt.SaveChanges();
-                }
+                        ioEquipo.Valores_meses.Add(valor_mes);
+                        cxt.SaveChanges();
+                    }
 
-                decimal _valor = ObtenerValor(ioEquipo, item);
-                bool _visible = (item.Hijos.Count == 0 && !(item.nombre == "Impuestos" && item.Padre.nombre == "INGRESOS") && !(item.nombre == "Accesorios Hs Extra 24% (1/12x2)" && item.Padre.nombre == "Otros costos variables") && !(item.nombre == "Amortización" && item.Padre.nombre == "Costos Fijos No Erogables"));
-                items_grilla.Add(new fila_item_ingreso_egreso_equipo()
-                {
-                    id_valor_mes = valor_mes.id,
-                    concepto = item.nombre,
-                    valor = _valor,
-                    valorstr = _valor.ToString("$ #,##0.00"),
-                    visible = _visible,
-                    row_class = "treegrid-" + item.id_item + (item.id_item_padre != null ? " treegrid-parent-" + item.id_item_padre : "") + (item.id_item_padre == null ? " h4" : "") + (item.tipo == "Ingreso" ? " alert-success" : " alert-danger")
-                });
+                    decimal _valor = ObtenerValor(ioEquipo, item);
+                    bool _visible = (item.Hijos.Count == 0 && !(item.nombre == "Impuestos" && item.Padre.nombre == "INGRESOS") && !(item.nombre == "Accesorios Hs Extra 24% (1/12x2)" && item.Padre.nombre == "Otros costos variables") && !(item.nombre == "Amortización" && item.Padre.nombre == "Costos Fijos No Erogables"));
+                    items_grilla.Add(new fila_item_ingreso_egreso_equipo()
+                    {
+                        id_valor_mes = valor_mes.id,
+                        concepto = item.nombre,
+                        valor = _valor,
+                        valorstr = _valor.ToString("$ #,##0.00"),
+                        visible = _visible,
+                        row_class = "treegrid-" + item.id_item + (item.id_item_padre != null ? " treegrid-parent-" + item.id_item_padre : "") + (item.id_item_padre == null ? " h4" : "") + (item.tipo == "Ingreso" ? " alert-success" : " alert-danger")
+                    });
 
-                foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x => x.id_item))
-                {
-                    AgregarItem(items_grilla, hijo, ioEquipo);
+                    foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x => x.id_item))
+                    {
+                        AgregarItem(items_grilla, hijo, ioEquipo);
+                    }
                 }
             }
 
@@ -246,50 +250,54 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 ioEquipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == ioEquipo.id_ingreso_egreso_mensual);
 
-                if (item.Hijos.Count > 0)
+                if ((ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == true && item.mostrar_en_trabajo.HasValue && item.mostrar_en_trabajo.Value == true) ||
+                    (ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == false && item.mostrar_en_equipo.HasValue && item.mostrar_en_equipo.Value == true))
                 {
-                    foreach (Item_ingreso_egreso hijo in item.Hijos)
+                    if (item.Hijos.Count > 0)
                     {
-                        ret = ret + ObtenerValor(ioEquipo, hijo);
-                    }
+                        foreach (Item_ingreso_egreso hijo in item.Hijos)
+                        {
+                            ret = ret + ObtenerValor(ioEquipo, hijo);
+                        }
 
-                    Valor_mes valor_mes_item = ioEquipo.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
-                    if (valor_mes_item != null)
-                    {
-                        valor_mes_item.valor = ret;
+                        Valor_mes valor_mes_item = ioEquipo.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
+                        if (valor_mes_item != null)
+                        {
+                            valor_mes_item.valor = ret;
+                        }
+                        else
+                        {
+                            valor_mes_item = new Valor_mes()
+                            {
+                                id_item = item.id_item,
+                                valor = 0
+                            };
+
+                            ioEquipo.Valores_meses.Add(valor_mes_item);
+                        }
+                        cxt.SaveChanges();
                     }
                     else
                     {
-                        valor_mes_item = new Valor_mes()
+                        Valor_mes valor_mes_item = ioEquipo.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
+                        if (valor_mes_item != null)
                         {
-                            id_item = item.id_item,
-                            valor = 0
-                        };
-
-                        ioEquipo.Valores_meses.Add(valor_mes_item);
-                    }
-                    cxt.SaveChanges();
-                }
-                else
-                {
-                    Valor_mes valor_mes_item = ioEquipo.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
-                    if (valor_mes_item != null)
-                    {
-                        valor_mes_item.valor = valor_mes_item.Detalle.Sum(x => x.monto);
-                    }
-                    else
-                    {
-                        valor_mes_item = new Valor_mes()
+                            valor_mes_item.valor = valor_mes_item.Detalle.Sum(x => x.monto);
+                        }
+                        else
                         {
-                            id_item = item.id_item,
-                            valor = 0
-                        };
+                            valor_mes_item = new Valor_mes()
+                            {
+                                id_item = item.id_item,
+                                valor = 0
+                            };
 
-                        ioEquipo.Valores_meses.Add(valor_mes_item);
+                            ioEquipo.Valores_meses.Add(valor_mes_item);
+                        }
+
+                        cxt.SaveChanges();
+                        ret = valor_mes_item.valor;
                     }
-
-                    cxt.SaveChanges();
-                    ret = valor_mes_item.valor;
                 }
             }
 
@@ -389,7 +397,7 @@ namespace SisEquiposBertoncini.Aplicativo
             }
 
 
-            MostrarPopUpDetalle(mes,anio);
+            MostrarPopUpDetalle(mes, anio);
         }
 
         private void MostrarPopUpDetalle(int mes, int anio)
@@ -436,7 +444,7 @@ namespace SisEquiposBertoncini.Aplicativo
             int id_valor_item_mes = 0;
             using (var cxt = new Model1Container())
             {
-                
+
                 Detalle_valor_item_mes detalle = cxt.Detalle_valores_items_mes.First(x => x.id_detalle_valor_item_mes == id_detalle);
                 Valor_mes vm = detalle.Valor_item_mes;
                 id_valor_item_mes = vm.id;
@@ -452,33 +460,33 @@ namespace SisEquiposBertoncini.Aplicativo
                 //controlar campos calculados
 
                 //impuesto sobre los ingresos en blanco
-                if (vm.Item.nombre == "Trabajado" && vm.Item.Padre.nombre == "INGRESOS")
-                {
-                    int id_item_impuesto = cxt.Items_ingresos_egresos.First(x => x.nombre == "Impuestos" && x.Padre.nombre == "INGRESOS").id_item;
-                    Valor_mes vm_impuesto = cxt.Valores_meses.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual && ii.id_item == id_item_impuesto);
+                //if (vm.Item.nombre == "Trabajado" && vm.Item.Padre.nombre == "INGRESOS")
+                //{
+                //    int id_item_impuesto = cxt.Items_ingresos_egresos.First(x => x.nombre == "Impuestos" && x.Padre.nombre == "INGRESOS").id_item;
+                //    Valor_mes vm_impuesto = cxt.Valores_meses.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual && ii.id_item == id_item_impuesto);
 
-                    Detalle_valor_item_mes detalle_impuesto = new Detalle_valor_item_mes();
-                    detalle_impuesto.fecha = new DateTime(ioequipo.anio, ioequipo.mes, 1);
-                    detalle_impuesto.descripcion = "Calculado automáticamente";
-                    detalle_impuesto.monto = valor * (Convert.ToDecimal(-5) / Convert.ToDecimal(100));
+                //    Detalle_valor_item_mes detalle_impuesto = new Detalle_valor_item_mes();
+                //    detalle_impuesto.fecha = new DateTime(ioequipo.anio, ioequipo.mes, 1);
+                //    detalle_impuesto.descripcion = "Calculado automáticamente";
+                //    detalle_impuesto.monto = valor * (Convert.ToDecimal(-5) / Convert.ToDecimal(100));
 
-                    if (vm_impuesto.Detalle.Count > 1)
-                    {
-                        vm_impuesto.Detalle.Clear();
-                        cxt.SaveChanges();
-                    }
+                //    if (vm_impuesto.Detalle.Count > 1)
+                //    {
+                //        vm_impuesto.Detalle.Clear();
+                //        cxt.SaveChanges();
+                //    }
 
-                    if (vm_impuesto.Detalle.Count == 0)
-                    {
-                        vm_impuesto.Detalle.Add(detalle_impuesto);
-                        cxt.SaveChanges();
-                    }
-                    else
-                    {
-                        vm_impuesto.Detalle.First().monto = detalle_impuesto.monto;
-                        cxt.SaveChanges();
-                    }
-                }
+                //    if (vm_impuesto.Detalle.Count == 0)
+                //    {
+                //        vm_impuesto.Detalle.Add(detalle_impuesto);
+                //        cxt.SaveChanges();
+                //    }
+                //    else
+                //    {
+                //        vm_impuesto.Detalle.First().monto = detalle_impuesto.monto;
+                //        cxt.SaveChanges();
+                //    }
+                //}
 
                 //Accesorios hs extra
                 if (vm.Item.nombre == "Horas Extra Chofer" && vm.Item.Padre.nombre == "Costos Variables")
@@ -545,7 +553,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     Valor_mes vm = cxt.Valores_meses.First(x => x.id == id_valo_item_mes);
                     Ingreso_egreso_mensual_equipo ioequipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual);
                     Detalle_valor_item_mes detalle = new Detalle_valor_item_mes();
-                    detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text.Replace(".",","));
+                    detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text.Replace(".", ","));
                     detalle.descripcion = tb_detalle_descripcion.Text;
                     detalle.fecha = Convert.ToDateTime(tb_detalle_fecha.Value);
                     vm.Detalle.Add(detalle);
@@ -556,33 +564,34 @@ namespace SisEquiposBertoncini.Aplicativo
                     //controlar campos calculados
 
                     //impuesto sobre los ingresos en blanco
-                    if (vm.Item.nombre == "Trabajado" && vm.Item.Padre.nombre == "INGRESOS")
-                    {
-                        int id_item_impuesto = cxt.Items_ingresos_egresos.First(x => x.nombre == "Impuestos" && x.Padre.nombre == "INGRESOS").id_item;
-                        Valor_mes vm_impuesto = cxt.Valores_meses.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual && ii.id_item == id_item_impuesto);
+                    //if (vm.Item.nombre == "Trabajado" && vm.Item.Padre.nombre == "INGRESOS")
+                    //{
+                    //    int id_item_impuesto = cxt.Items_ingresos_egresos.First(x => x.nombre == "Impuestos" && x.Padre.nombre == "INGRESOS").id_item;
+                    //    Valor_mes vm_impuesto = cxt.Valores_meses.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual && ii.id_item == id_item_impuesto);
 
-                        Detalle_valor_item_mes detalle_impuesto = new Detalle_valor_item_mes();
-                        detalle_impuesto.fecha = new DateTime(ioequipo.anio, ioequipo.mes, 1);
-                        detalle_impuesto.descripcion = "Calculado automáticamente";
-                        detalle_impuesto.monto = valor * (Convert.ToDecimal(-5) / Convert.ToDecimal(100));
+                    //    Detalle_valor_item_mes detalle_impuesto = new Detalle_valor_item_mes();
+                    //    detalle_impuesto.fecha = new DateTime(ioequipo.anio, ioequipo.mes, 1);
+                    //    detalle_impuesto.descripcion = "Calculado automáticamente";
+                    //    detalle_impuesto.monto = valor * (Convert.ToDecimal(-5) / Convert.ToDecimal(100));
 
-                        if (vm_impuesto.Detalle.Count > 1)
-                        {
-                            vm_impuesto.Detalle.Clear();
-                            cxt.SaveChanges();
-                        }
 
-                        if (vm_impuesto.Detalle.Count == 0)
-                        {
-                            vm_impuesto.Detalle.Add(detalle_impuesto);
-                            cxt.SaveChanges();
-                        }
-                        else
-                        {
-                            vm_impuesto.Detalle.First().monto = detalle_impuesto.monto;
-                            cxt.SaveChanges();
-                        }
-                    }
+                    //    if (vm_impuesto.Detalle.Count > 1)
+                    //    {
+                    //        vm_impuesto.Detalle.Clear();
+                    //        cxt.SaveChanges();
+                    //    }
+
+                    //    if (vm_impuesto.Detalle.Count == 0)
+                    //    {
+                    //        vm_impuesto.Detalle.Add(detalle_impuesto);
+                    //        cxt.SaveChanges();
+                    //    }
+                    //    else
+                    //    {
+                    //        vm_impuesto.Detalle.First().monto = detalle_impuesto.monto;
+                    //        cxt.SaveChanges();
+                    //    }
+                    //}
 
                     //Accesorios hs extra
                     if (vm.Item.nombre == "Horas Extra Chofer" && vm.Item.Padre.nombre == "Costos Variables")
