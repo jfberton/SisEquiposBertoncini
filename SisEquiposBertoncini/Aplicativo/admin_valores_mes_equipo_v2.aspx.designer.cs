@@ -202,6 +202,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.TextBox tb_detalle_descripcion;
         
         /// <summary>
+        /// Control hidden_id_detalle_01.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_id_detalle_01;
+        
+        /// <summary>
         /// Control btn_agregar_detalle.
         /// </summary>
         /// <remarks>

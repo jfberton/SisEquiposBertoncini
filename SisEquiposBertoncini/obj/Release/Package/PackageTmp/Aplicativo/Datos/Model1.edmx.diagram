@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="Model1.Valor_dolar" Width="1.5" PointX="8.75" PointY="7.75" />
         <EntityTypeShape EntityType="Model1.Ingreso_egreso_mensual_equipo" Width="3" PointX="5.125" PointY="14" />
         <AssociationConnector Association="Model1.EquipoIngreso_egreso_mensual_equipo" />
-        <EntityTypeShape EntityType="Model1.Item_ingreso_egreso" Width="2.75" PointX="12.125" PointY="12.875" />
+        <EntityTypeShape EntityType="Model1.Item_ingreso_egreso" Width="2.75" PointX="12.25" PointY="14.25" />
         <EntityTypeShape EntityType="Model1.Valor_mes" Width="2.125" PointX="9.25" PointY="14.25" />
         <AssociationConnector Association="Model1.Ingreso_egreso_mensual_equipoValor_mes" />
         <AssociationConnector Association="Model1.Item_ingreso_egresoValor_mes" />
@@ -32,7 +32,7 @@
         <EntityTypeShape EntityType="Model1.Feriado" Width="1.5" PointX="10.125" PointY="0.875" />
         <EntityTypeShape EntityType="Model1.Resumen_mes_empleado" Width="3.875" PointX="2.875" PointY="5" />
         <AssociationConnector Association="Model1.EmpleadoResumen_mes_empleado" />
-        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes" Width="3.875" PointX="9.25" PointY="17.5" />
+        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes" Width="3.875" PointX="8.25" PointY="17.875" />
         <AssociationConnector Association="Model1.Valor_mesDetalle_valor_item_mes" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_calculo" Width="2.875" PointX="10" PointY="4.625" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_gastos_horas_hombre" Width="2.25" PointX="13.375" PointY="3.625" />

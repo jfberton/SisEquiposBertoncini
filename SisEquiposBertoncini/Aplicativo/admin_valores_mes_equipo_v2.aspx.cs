@@ -200,7 +200,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 ioEquipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == ioEquipo.id_ingreso_egreso_mensual);
                 Valor_mes valor_mes = ioEquipo.Valores_meses.FirstOrDefault(ii => ii.id_item == item.id_item);
-                if ((ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == true && item.mostrar_en_trabajo.HasValue  && item.mostrar_en_trabajo.Value == true) ||
+                if ((ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == true && item.mostrar_en_trabajo.HasValue && item.mostrar_en_trabajo.Value == true) ||
                     (ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == false && item.mostrar_en_equipo.HasValue && item.mostrar_en_equipo.Value == true))
                 {
                     if (valor_mes == null)
@@ -526,6 +526,22 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void btn_editar_detalle_ServerClick(object sender, EventArgs e)
         {
             int id_detalle = Convert.ToInt32(((System.Web.UI.HtmlControls.HtmlButton)sender).Attributes["data-id"]);
+            hidden_id_detalle_01.Value = id_detalle.ToString();
+            DateTime minDate;
+            DateTime maxDate;
+            using (var cxt = new Model1Container())
+            {
+                Detalle_valor_item_mes detalle_por_editar = cxt.Detalle_valores_items_mes.First(dd => dd.id_detalle_valor_item_mes == id_detalle);
+                tb_detalle_monto.Text = Cadena.Formato_moneda(detalle_por_editar.monto, Cadena.Moneda.pesos);
+                tb_detalle_fecha.Value = detalle_por_editar.fecha.ToShortDateString();
+                tb_detalle_descripcion.Text = detalle_por_editar.descripcion;
+
+                minDate = new DateTime(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month, 1);
+                maxDate = new DateTime(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month, DateTime.DaysInMonth(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month));
+            }
+
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes').modal('show')}); $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '" + minDate.ToString("MM/dd/yyyy") + "', maxDate: '" + maxDate.ToString("MM/dd/yyyy") + "' }); });</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
         }
 
         protected void bt_cancelar_eliminacion_Click(object sender, EventArgs e)
@@ -545,6 +561,8 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void btn_agregar_detalle_ServerClick(object sender, EventArgs e)
         {
             int id_valo_item_mes = Convert.ToInt32(hidden_id_valor_mes.Value);
+            int id_detalle = Convert.ToInt32(hidden_id_detalle_01.Value);
+            hidden_id_detalle_01.Value = "0";
             Validate();
             if (IsValid)
             {
@@ -552,46 +570,25 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     Valor_mes vm = cxt.Valores_meses.First(x => x.id == id_valo_item_mes);
                     Ingreso_egreso_mensual_equipo ioequipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual);
-                    Detalle_valor_item_mes detalle = new Detalle_valor_item_mes();
-                    detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text.Replace(".", ","));
-                    detalle.descripcion = tb_detalle_descripcion.Text;
-                    detalle.fecha = Convert.ToDateTime(tb_detalle_fecha.Value);
-                    vm.Detalle.Add(detalle);
+
+                    if (id_detalle > 0)
+                    {
+                        Detalle_valor_item_mes detalle = cxt.Detalle_valores_items_mes.First(x => x.id_detalle_valor_item_mes == id_detalle);
+                        detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text.Replace(".", ",").Replace("$", ""));
+                        detalle.descripcion = tb_detalle_descripcion.Text;
+                        detalle.fecha = Convert.ToDateTime(tb_detalle_fecha.Value);
+                    }
+                    else
+                    {
+                        Detalle_valor_item_mes detalle = new Detalle_valor_item_mes();
+                        detalle.monto = Convert.ToDecimal(tb_detalle_monto.Text.Replace(".", ","));
+                        detalle.descripcion = tb_detalle_descripcion.Text;
+                        detalle.fecha = Convert.ToDateTime(tb_detalle_fecha.Value);
+                        vm.Detalle.Add(detalle);
+                    }
 
                     decimal valor = vm.Detalle.Sum(x => x.monto);
                     vm.valor = valor;
-
-                    //controlar campos calculados
-
-                    //impuesto sobre los ingresos en blanco
-                    //if (vm.Item.nombre == "Trabajado" && vm.Item.Padre.nombre == "INGRESOS")
-                    //{
-                    //    int id_item_impuesto = cxt.Items_ingresos_egresos.First(x => x.nombre == "Impuestos" && x.Padre.nombre == "INGRESOS").id_item;
-                    //    Valor_mes vm_impuesto = cxt.Valores_meses.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual && ii.id_item == id_item_impuesto);
-
-                    //    Detalle_valor_item_mes detalle_impuesto = new Detalle_valor_item_mes();
-                    //    detalle_impuesto.fecha = new DateTime(ioequipo.anio, ioequipo.mes, 1);
-                    //    detalle_impuesto.descripcion = "Calculado automáticamente";
-                    //    detalle_impuesto.monto = valor * (Convert.ToDecimal(-5) / Convert.ToDecimal(100));
-
-
-                    //    if (vm_impuesto.Detalle.Count > 1)
-                    //    {
-                    //        vm_impuesto.Detalle.Clear();
-                    //        cxt.SaveChanges();
-                    //    }
-
-                    //    if (vm_impuesto.Detalle.Count == 0)
-                    //    {
-                    //        vm_impuesto.Detalle.Add(detalle_impuesto);
-                    //        cxt.SaveChanges();
-                    //    }
-                    //    else
-                    //    {
-                    //        vm_impuesto.Detalle.First().monto = detalle_impuesto.monto;
-                    //        cxt.SaveChanges();
-                    //    }
-                    //}
 
                     //Accesorios hs extra
                     if (vm.Item.nombre == "Horas Extra Chofer" && vm.Item.Padre.nombre == "Costos Variables")

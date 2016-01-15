@@ -44,6 +44,7 @@
                         <tr>
                             <td>
                                 <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
+                                <asp:Button Text="Imprimir" ID="btn_imprimir" OnClick="btn_imprimir_Click" runat="server" />
                                 <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
                             </td>
                         </tr>
@@ -66,6 +67,7 @@
     </div>
 
     <div runat="server" id="div_tree" style="width: 2800px; overflow-x: scroll">
+        
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">

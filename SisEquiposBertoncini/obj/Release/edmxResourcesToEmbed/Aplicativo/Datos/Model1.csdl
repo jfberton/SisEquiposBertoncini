@@ -93,6 +93,7 @@
     <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
     <Property Name="OUT" Type="Boolean" Nullable="false" />
     <Property Name="Generico" Type="Boolean" Nullable="false" />
+    <Property Name="EsTrabajo" Type="Boolean" Nullable="true" />
   </EntityType>
   <EntityType Name="Categoria_equipo">
     <Documentation>
@@ -331,6 +332,8 @@
     <NavigationProperty Name="Hijos" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso" ToRole="Item_ingreso_egreso1" />
     <NavigationProperty Name="Padre" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso1" ToRole="Item_ingreso_egreso" />
     <Property Name="id_item_padre" Type="Int32" Nullable="true" />
+    <Property Name="mostrar_en_equipo" Type="Boolean" Nullable="true" />
+    <Property Name="mostrar_en_trabajo" Type="Boolean" Nullable="true" />
   </EntityType>
   <EntityType Name="Valor_mes">
     <Key>
