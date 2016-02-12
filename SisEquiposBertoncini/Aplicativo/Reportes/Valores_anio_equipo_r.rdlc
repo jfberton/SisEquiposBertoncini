@@ -1147,7 +1147,7 @@
   <Width>13.48196in</Width>
   <Page>
     <PageHeader>
-      <Height>1.28833cm</Height>
+      <Height>1.12958cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1178,6 +1178,60 @@
             </Border>
           </Style>
         </Image>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Label>Equipo</Label>
+                  <Value>=First(Fields!Nombre.Value, "Equipo")</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>Gold</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value> - </Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>Gold</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Label>Año</Label>
+                  <Value>=First(Fields!Año.Value, "Equipo")</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>Gold</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.17504cm</Top>
+          <Left>17.62246cm</Left>
+          <Height>0.73229cm</Height>
+          <Width>16.5cm</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -1221,6 +1275,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox64</rd:DefaultName>
+          <Top>0cm</Top>
           <Left>0.0635cm</Left>
           <Height>0.6cm</Height>
           <Width>34.05896cm</Width>

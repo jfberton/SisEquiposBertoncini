@@ -38,3 +38,30 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.cache
 D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.compiled
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SqlServerTypes\x64\msvcr100.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SqlServerTypes\x64\SqlServerSpatial110.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SqlServerTypes\x86\msvcr100.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\SqlServerTypes\x86\SqlServerSpatial110.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.SqlServer.Types.dll
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.cache
+D:\Usuarios\Berton\Mis Documentos\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.compiled
