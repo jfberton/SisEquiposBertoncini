@@ -136,29 +136,43 @@ namespace SisEquiposBertoncini.Aplicativo
 
                         Equipo equipo_cxt = cxt.Equipos.First(x => x.id_equipo == equipo.id_equipo);
 
-                        if (categoria_empleado == "Mecánicos - Pintores")
+                        switch (categoria_empleado)
                         {
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros); 
-                        }
-                        else
-                        {
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios);
-                            equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros); 
+                            case "Mecánicos - Pintores":
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros);
+                                break;
+                            case "Soldadores":
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros);
+                                break;
+                            case "Grueros":
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.ViaticosPP, mes, anio, item_equipo.monto_viaticos_presupuestados);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Indumentaria, mes, anio, item_equipo.monto_indumentaria);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Repuestos, mes, anio, item_equipo.monto_repuestos);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Repuestos_pp, mes, anio, item_equipo.monto_repuestos_pp);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Gastos_varios, mes, anio, item_equipo.monto_gastos_varios);
+                                equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Otros, mes, anio, item_equipo.monto_otros);
+                                break;
+                            default:
+                                break;
                         }
                     }
 
@@ -320,15 +334,15 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal otros = 0;
 
 
-                decimal.TryParse(tb_insumos_taller.Text, out insumos_taller);
-                decimal.TryParse(tb_herramientas.Text, out herramientas);
-                decimal.TryParse(tb_viaticos.Text, out viaticos);
-                decimal.TryParse(tb_viaticos_presupuestados.Text, out viaticos_presupuestados);
-                decimal.TryParse(tb_indumentaria.Text, out indumentaria);
-                decimal.TryParse(tb_repuestos.Text, out repuestos);
-                decimal.TryParse(tb_repuestos_pp.Text, out repuestos_pp);
-                decimal.TryParse(tb_gastos_varios.Text, out gastos_varios);
-                decimal.TryParse(tb_otros.Text, out otros);
+                decimal.TryParse(tb_insumos_taller.Text.Replace(".",","), out insumos_taller);
+                decimal.TryParse(tb_herramientas.Text.Replace(".", ","), out herramientas);
+                decimal.TryParse(tb_viaticos.Text.Replace(".", ","), out viaticos);
+                decimal.TryParse(tb_viaticos_presupuestados.Text.Replace(".", ","), out viaticos_presupuestados);
+                decimal.TryParse(tb_indumentaria.Text.Replace(".", ","), out indumentaria);
+                decimal.TryParse(tb_repuestos.Text.Replace(".", ","), out repuestos);
+                decimal.TryParse(tb_repuestos_pp.Text.Replace(".", ","), out repuestos_pp);
+                decimal.TryParse(tb_gastos_varios.Text.Replace(".", ","), out gastos_varios);
+                decimal.TryParse(tb_otros.Text.Replace(".", ","), out otros);
 
                 aux.insumos_taller = insumos_taller;
                 aux.herramientas = herramientas;

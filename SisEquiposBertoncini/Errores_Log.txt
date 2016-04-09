@@ -258,3 +258,96 @@ STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635953561542449474
+
+DATE: 04/04/2016 08:42:34 a.m.
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: El archivo '/Aplicativo/admin_valores_categoria.aspx' no existe.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_categoria.aspx
+
+TARGETSITE: Void CheckVirtualFileExists(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635955344863298068
+
+DATE: 06/04/2016 10:14:46 a.m.
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Etiqueta de servidor incorrecta.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_categoria.aspx
+
+TARGETSITE: Void ProcessError(System.String)
+
+STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
+   en System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635955345372527314
+
+DATE: 06/04/2016 10:15:37 a.m.
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Etiqueta de servidor incorrecta.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_categoria.aspx
+
+TARGETSITE: Void ProcessError(System.String)
+
+STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
+   en System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+
+
+******************************************************************

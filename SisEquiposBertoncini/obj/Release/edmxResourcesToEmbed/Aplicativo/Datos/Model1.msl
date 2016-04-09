@@ -34,6 +34,7 @@
           <ScalarProperty Name="dni" ColumnName="dni" />
           <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
           <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
+          <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

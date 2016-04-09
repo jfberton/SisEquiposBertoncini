@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_valores_mes_equipo_v2.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_valores_mes_categoria.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_valores_mes_categoria" %>
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 <%@ Register Src="~/Aplicativo/Menues/menu_usuario.ascx" TagPrefix="uc1" TagName="menu_usuario" %>
@@ -10,7 +10,9 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
     <uc1:menu_usuario runat="server" ID="menu_usuario" />
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Cargar - editar valores mensuales del equipo
@@ -21,9 +23,9 @@
                 <div class="col-md-5">
                     <table class="table-condensed" style="width: 100%">
                         <tr>
-                            <td>Equipo</td>
+                            <td>Categoria</td>
                             <td>
-                                <asp:DropDownList runat="server" ID="ddl_equipo" CssClass="form-control">
+                                <asp:DropDownList runat="server" ID="ddl_categoria" CssClass="form-control">
                                 </asp:DropDownList></td>
                         </tr>
                     </table>
@@ -78,6 +80,13 @@
 
             </div>
             <br />
+            <div class="col-md-12">
+                <div class="alert alert-warning" runat="server" id="div_alert" visible="false">
+                    <b>ATENCION!!!</b> Se han modificado los montos debe <b>refrescar</b> para ver los valores actualizados! &nbsp;&nbsp;
+                    <button class="btn btn-sm btn-warning" runat="server" id="btn_refrescar" onserverclick="btn_refrescar_ServerClick">Refrescar</button>
+                </div>
+            </div>
+            <br />
             <div class="row">
 
                 <div class="col-md-12" runat="server" id="div_buscar_primero">
@@ -105,7 +114,7 @@
                                     <button runat="server" class="btn btn-sm btn-warning" id="btn_ver_editar_detalle"
                                         causesvalidation="false" onserverclick="btn_ver_editar_detalle_ServerClick"
                                         title='<%#String.Concat("Ver, editar detalle ","\"",Eval("concepto"),"\"")%>'
-                                        data-id='<%#Eval("id_valor_mes")%>' visible='<%#Eval("visible")%>'>
+                                        data-id='<%#Eval("id_item")%>' visible='<%#Eval("visible")%>'>
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Ver
                                     </button>
                                 </ItemTemplate>
@@ -122,7 +131,8 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="row">
-                        <input type="hidden" id="hidden_id_valor_mes" runat="server" />
+                        <input type="hidden" id="hidden_id_item_01" value="0" runat="server" />
+                        <input type="hidden" id="hidden_id_valor_mes" value="0" runat="server" />
                         <div class="col-md-12">
                             <h4>
                                 <asp:Label Text="" ID="lbl_item" runat="server" />
@@ -131,7 +141,6 @@
                                     <asp:Label Text="" ID="lbl_categoria" runat="server" />
                                     - 
                                         <asp:Label Text="" ID="lbl_mes" runat="server" /></small>
-
                             </h4>
 
                         </div>
@@ -143,7 +152,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class=" col-md-6">
+                        <div class="col-md-4">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="vertical-align: text-top">Equipo&nbsp;</td>
+                                    <td style="width: 100%">
+                                        <asp:DropDownList runat="server" ID="ddl_equipo" CssClass="form-control" Width="200">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td>
+                                        <asp:CustomValidator ID="CustomValidator1" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha válida dentro del mes en cuestión' />"
+                                            ErrorMessage="Debe ingresar una fecha válida dentro del mes en cuestión" OnServerValidate="cv_fecha_ServerValidate">
+                                        </asp:CustomValidator></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class=" col-md-4">
                             <table style="width: 100%">
                                 <tr>
                                     <td style="vertical-align: text-top">Fecha&nbsp;</td>
@@ -164,12 +188,12 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <table style="width: 100%">
                                 <tr>
                                     <td style="vertical-align: text-top">Monto&nbsp;</td>
                                     <td style="width: 100%">
-                                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_detalle_monto" />
+                                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_detalle_monto" />
                                     </td>
                                     <td>
                                         <asp:CustomValidator ID="cv_monto" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un monto válido' />"
@@ -185,13 +209,13 @@
                                 <tr>
                                     <td style="vertical-align: text-top">Descripción&nbsp;
                                     </td>
-                                    <td style="width:100%">
+                                    <td style="width: 100%">
                                         <asp:TextBox runat="server" CssClass="form-control" ID="tb_detalle_descripcion" /></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="col-md-2">
-                            <input type="hidden" value ="0" runat="server" id="hidden_id_detalle_01" />
+                            <input type="hidden" value="0" runat="server" id="hidden_id_detalle_01" />
                             <button runat="server" id="btn_agregar_detalle" class="btn btn-success " onserverclick="btn_agregar_detalle_ServerClick">
                                 <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<asp:Label Text="Agregar" ID="lbl_texto_boton_agregar_editar" runat="server" />
                             </button>
@@ -208,21 +232,24 @@
                             <asp:GridView ID="gv_detalle" runat="server" Font-Size="Small" OnRowDataBound="gv_detalle_RowDataBound" EmptyDataText="No existen valores cargados."
                                 AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                                 <Columns>
-                                    <asp:BoundField DataField="detalle_fecha" HeaderText="Fecha" DataFormatString="{0:d}" ReadOnly="true" />
-                                    <asp:BoundField DataField="detalle_monto" DataFormatString="{0:$ #,##0.00}" HeaderText="Monto" ReadOnly="true" />
-                                    <asp:BoundField DataField="detalle_descripcion" HeaderText="Descripción" ReadOnly="true" />
+                                    <asp:BoundField DataField="equipo" HeaderText="Fecha" ReadOnly="true" />
+                                    <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:d}" ReadOnly="true" />
+                                    <asp:BoundField DataField="monto" DataFormatString="{0:$ #,##0.00}" HeaderText="Monto" ReadOnly="true" />
+                                    <asp:BoundField DataField="descripcion" HeaderText="Descripción" ReadOnly="true" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <button
                                                 type="button" class="btn btn-sm btn-danger"
                                                 data-toggle="modal"
                                                 data-target="#advertencia_eliminacion"
-                                                data-id='<%#Eval("detalle_id")%>'
-                                                data-introduccion="el detalle de fecha"
-                                                data-nombre='<%#String.Concat(Eval("detalle_fecha"), " por un monto de $ ", Eval("detalle_monto"))%>'>
+                                                data-id='<%#Eval("id_item_detalle")%>'
+                                                data-iditemio ='<%#Eval("id_item_io")%>'
+                                                data-equipo ="<%#Eval("equipo")%>"
+                                                data-introduccion='<%#String.Concat("El detalle del equipo ", Eval("equipo"), " de la fecha ")%>'
+                                                data-nombre='<%#String.Concat(Eval("fecha"), " por un monto de $ ", Eval("monto"))%>'>
                                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;Eliminar
                                             </button>
-                                             <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("detalle_id")%>'>
+                                            <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("id_item_detalle")%>' data-equipo ='<%#Eval("equipo")%>'>
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Editar
                                             </button>
                                         </ItemTemplate>
@@ -240,7 +267,9 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="hidden" runat="server" id="id_item_por_eliminar" />
+                                                    <input type="hidden" runat="server" id="hidden_id_item_por_eliminar" />
+                                                    <input type="hidden" runat="server" id="hidden_id_item_io" />
+                                                    <input type="hidden" runat="server" id="hidden_equipo" />
                                                     <p id="texto_a_mostrar"></p>
                                                 </div>
                                             </div>
@@ -271,10 +300,14 @@
             </div>
         </div>
     </div>
+
 </asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
     <script src="../js/jquery.treegrid.js"></script>
     <script src="../js/jquery.cookie.js"></script>
+
     <script>
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
@@ -284,17 +317,22 @@
             var id = button.data('id')
             var introduccion = button.data('introduccion')
             var nombre = button.data('nombre')
+            var equipo = button.data('equipo')
+            var id_item_io = button.data('iditemio')
 
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
             var modal = $(this)
-            modal.find('.modal-body #' + '<%= id_item_por_eliminar.ClientID %>').val(id)
+            modal.find('.modal-body #' + '<%= hidden_id_item_por_eliminar.ClientID %>').val(id)
+            modal.find('.modal-body #' + '<%= hidden_id_item_io.ClientID %>').val(id_item_io)
+            modal.find('.modal-body #' + '<%= hidden_equipo.ClientID %>').val(equipo)
+
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
 
     </script>
 
     <script type="text/javascript">
-       
+
 
         $(document).ready(function () {
             $('.tree_valores').treegrid({

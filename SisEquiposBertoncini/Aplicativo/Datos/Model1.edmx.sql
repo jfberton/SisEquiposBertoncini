@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/11/2016 08:21:25
+-- Date Created: 04/05/2016 11:30:52
 -- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton2];
+USE [equipos_berton];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -58,6 +58,15 @@ IF OBJECT_ID(N'[dbo].[FK_Valor_mesDetalle_valor_item_mes]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Aux_planilla_gastos_administracion] DROP CONSTRAINT [FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Aux_total_categoria_mesValor_mes_categoria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Valor_mes_categorias] DROP CONSTRAINT [FK_Aux_total_categoria_mesValor_mes_categoria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes_categoria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Valor_mes_categorias] DROP CONSTRAINT [FK_Item_ingreso_egresoValor_mes_categoria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Detalle_valor_item_mes_categoriaSet] DROP CONSTRAINT [FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria];
 GO
 
 -- --------------------------------------------------
@@ -124,6 +133,15 @@ GO
 IF OBJECT_ID(N'[dbo].[Planilla_gastos_administrativo]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Planilla_gastos_administrativo];
 GO
+IF OBJECT_ID(N'[dbo].[Aux_total_categoria_meses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_total_categoria_meses];
+GO
+IF OBJECT_ID(N'[dbo].[Valor_mes_categorias]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Valor_mes_categorias];
+GO
+IF OBJECT_ID(N'[dbo].[Detalle_valor_item_mes_categoriaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Detalle_valor_item_mes_categoriaSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -158,7 +176,8 @@ CREATE TABLE [dbo].[Empleados] (
     [id_area] int  NOT NULL,
     [dni] nvarchar(max)  NOT NULL,
     [fecha_nacimiento] datetime  NOT NULL,
-    [fecha_baja] datetime  NULL
+    [fecha_baja] datetime  NULL,
+    [fecha_alta] datetime  NULL
 );
 GO
 
@@ -357,6 +376,34 @@ CREATE TABLE [dbo].[Planilla_gastos_administrativo] (
 );
 GO
 
+-- Creating table 'Aux_total_categoria_meses'
+CREATE TABLE [dbo].[Aux_total_categoria_meses] (
+    [id_aux_total_categoria_mes] int IDENTITY(1,1) NOT NULL,
+    [id_categoria_equipo] int  NOT NULL,
+    [mes] int  NOT NULL,
+    [anio] int  NOT NULL
+);
+GO
+
+-- Creating table 'Valor_mes_categorias'
+CREATE TABLE [dbo].[Valor_mes_categorias] (
+    [id_valor_mes_categoria_item] int IDENTITY(1,1) NOT NULL,
+    [id_aux_total_categoria_mes] int  NOT NULL,
+    [id_item] int  NOT NULL,
+    [valor] decimal(11,2)  NOT NULL
+);
+GO
+
+-- Creating table 'Detalle_valor_item_meses_categoria'
+CREATE TABLE [dbo].[Detalle_valor_item_meses_categoria] (
+    [id_detalle_valor_item_mes_categoria] int IDENTITY(1,1) NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [monto] decimal(11,2)  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL,
+    [id_valor_mes_categoria_item] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -479,6 +526,24 @@ GO
 ALTER TABLE [dbo].[Planilla_gastos_administrativo]
 ADD CONSTRAINT [PK_Planilla_gastos_administrativo]
     PRIMARY KEY CLUSTERED ([id_planilla_gastos_administartivos] ASC);
+GO
+
+-- Creating primary key on [id_aux_total_categoria_mes] in table 'Aux_total_categoria_meses'
+ALTER TABLE [dbo].[Aux_total_categoria_meses]
+ADD CONSTRAINT [PK_Aux_total_categoria_meses]
+    PRIMARY KEY CLUSTERED ([id_aux_total_categoria_mes] ASC);
+GO
+
+-- Creating primary key on [id_valor_mes_categoria_item] in table 'Valor_mes_categorias'
+ALTER TABLE [dbo].[Valor_mes_categorias]
+ADD CONSTRAINT [PK_Valor_mes_categorias]
+    PRIMARY KEY CLUSTERED ([id_valor_mes_categoria_item] ASC);
+GO
+
+-- Creating primary key on [id_detalle_valor_item_mes_categoria] in table 'Detalle_valor_item_meses_categoria'
+ALTER TABLE [dbo].[Detalle_valor_item_meses_categoria]
+ADD CONSTRAINT [PK_Detalle_valor_item_meses_categoria]
+    PRIMARY KEY CLUSTERED ([id_detalle_valor_item_mes_categoria] ASC);
 GO
 
 -- --------------------------------------------------
@@ -693,6 +758,51 @@ GO
 CREATE INDEX [IX_FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]
 ON [dbo].[Aux_planilla_gastos_administracion]
     ([id_planilla_gastos_administartivos]);
+GO
+
+-- Creating foreign key on [id_aux_total_categoria_mes] in table 'Valor_mes_categorias'
+ALTER TABLE [dbo].[Valor_mes_categorias]
+ADD CONSTRAINT [FK_Aux_total_categoria_mesValor_mes_categoria]
+    FOREIGN KEY ([id_aux_total_categoria_mes])
+    REFERENCES [dbo].[Aux_total_categoria_meses]
+        ([id_aux_total_categoria_mes])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Aux_total_categoria_mesValor_mes_categoria'
+CREATE INDEX [IX_FK_Aux_total_categoria_mesValor_mes_categoria]
+ON [dbo].[Valor_mes_categorias]
+    ([id_aux_total_categoria_mes]);
+GO
+
+-- Creating foreign key on [id_item] in table 'Valor_mes_categorias'
+ALTER TABLE [dbo].[Valor_mes_categorias]
+ADD CONSTRAINT [FK_Item_ingreso_egresoValor_mes_categoria]
+    FOREIGN KEY ([id_item])
+    REFERENCES [dbo].[Items_ingresos_egresos]
+        ([id_item])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Item_ingreso_egresoValor_mes_categoria'
+CREATE INDEX [IX_FK_Item_ingreso_egresoValor_mes_categoria]
+ON [dbo].[Valor_mes_categorias]
+    ([id_item]);
+GO
+
+-- Creating foreign key on [id_valor_mes_categoria_item] in table 'Detalle_valor_item_meses_categoria'
+ALTER TABLE [dbo].[Detalle_valor_item_meses_categoria]
+ADD CONSTRAINT [FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria]
+    FOREIGN KEY ([id_valor_mes_categoria_item])
+    REFERENCES [dbo].[Valor_mes_categorias]
+        ([id_valor_mes_categoria_item])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria'
+CREATE INDEX [IX_FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria]
+ON [dbo].[Detalle_valor_item_meses_categoria]
+    ([id_valor_mes_categoria_item]);
 GO
 
 -- --------------------------------------------------

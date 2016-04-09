@@ -135,6 +135,7 @@
     <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
     <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
     <NavigationProperty Name="Resumenes_meses_empleado" Relationship="Model1.EmpleadoResumen_mes_empleado" FromRole="Empleado" ToRole="Resumen_mes_empleado" />
+    <Property Name="fecha_alta" Type="DateTime" Nullable="true" />
   </EntityType>
   <EntityType Name="Categoria_empleado">
     <Key>

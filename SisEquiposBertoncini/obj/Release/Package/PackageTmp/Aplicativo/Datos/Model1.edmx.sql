@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/11/2016 08:21:25
+-- Date Created: 03/15/2016 08:10:30
 -- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
@@ -158,7 +158,8 @@ CREATE TABLE [dbo].[Empleados] (
     [id_area] int  NOT NULL,
     [dni] nvarchar(max)  NOT NULL,
     [fecha_nacimiento] datetime  NOT NULL,
-    [fecha_baja] datetime  NULL
+    [fecha_baja] datetime  NULL,
+    [fecha_alta] datetime  NULL
 );
 GO
 

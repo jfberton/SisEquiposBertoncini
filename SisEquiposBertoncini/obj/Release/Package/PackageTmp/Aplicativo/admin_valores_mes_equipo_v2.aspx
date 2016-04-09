@@ -191,8 +191,9 @@
                             </table>
                         </div>
                         <div class="col-md-2">
+                            <input type="hidden" value ="0" runat="server" id="hidden_id_detalle_01" />
                             <button runat="server" id="btn_agregar_detalle" class="btn btn-success " onserverclick="btn_agregar_detalle_ServerClick">
-                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Agregar
+                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<asp:Label Text="Agregar" ID="lbl_texto_boton_agregar_editar" runat="server" />
                             </button>
                         </div>
                     </div>
@@ -221,9 +222,9 @@
                                                 data-nombre='<%#String.Concat(Eval("detalle_fecha"), " por un monto de $ ", Eval("detalle_monto"))%>'>
                                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;Eliminar
                                             </button>
-                                            <%-- <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("detalle_id")%>'>
-                                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Ver
-                                            </button>--%>
+                                             <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("detalle_id")%>'>
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Editar
+                                            </button>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

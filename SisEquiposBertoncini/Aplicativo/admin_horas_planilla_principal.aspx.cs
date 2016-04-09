@@ -79,6 +79,19 @@ namespace SisEquiposBertoncini.Aplicativo
             return id;
         }
 
+        struct itemTablaEmpleado
+        {
+            public int id_empleado { get; set; }
+            public string empleado { get; set; }
+            public string horas_normales { get; set; }
+            public string horas_ausente { get; set; }
+            public string horas_extra_50 { get; set; }
+            public string horas_extra_100 { get; set; }
+            public decimal sueldo { get; set; }
+            public decimal dias_mes { get; set; }
+            public decimal dias_out { get; set; }
+        }
+
         private void Cargar_busqueda(int pmes = 0, int panio = 0, string ptipo_empleado = "")
         {
             btn_buscar.Visible = false;
@@ -89,41 +102,62 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 int mes = pmes != 0 ? pmes : Convert.ToInt32(ddl_mes.SelectedItem.Value);
                 int anio = panio != 0 ? panio : Convert.ToInt32(ddl_anio.SelectedItem.Value);
+                int mesAnterior = new DateTime(anio, mes, 1).AddMonths(-1).Month;
+                int anioAnterior = new DateTime(anio, mes, 1).AddMonths(-1).Year;
+
                 Categoria_empleado mecanicos = cxt.Categorias_empleados.First(cc => cc.nombre == "Mecánico");
                 Categoria_empleado soldadores = cxt.Categorias_empleados.First(cc => cc.nombre == "Soldador");
                 Categoria_empleado pintores = cxt.Categorias_empleados.First(cc => cc.nombre == "Pintor");
+                Categoria_empleado grueros = cxt.Categorias_empleados.First(cc => cc.nombre == "Gruero");
+
 
                 List<Empleado> empleados = new List<Empleado>();
 
                 string tipo_empleado = ptipo_empleado != "" ? ptipo_empleado : ddl_tipo_empleado.SelectedItem.Text;
 
-                if (tipo_empleado == "Mecánicos - Pintores")
+                switch (tipo_empleado)
                 {
-                    empleados = cxt.Empleados.Where(ee => (ee.id_categoria == mecanicos.id_categoria || ee.id_categoria == pintores.id_categoria) && ee.fecha_baja == null).ToList();
-                }
-                else
-                {
-                    empleados = cxt.Empleados.Where(ee => ee.id_categoria == soldadores.id_categoria && ee.fecha_baja == null).ToList();
+                    case "Mecánicos - Pintores":
+                        empleados = cxt.Empleados.Where(ee => (ee.id_categoria == mecanicos.id_categoria || ee.id_categoria == pintores.id_categoria) && ee.fecha_baja == null).ToList();
+                        break;
+                    case "Soldadores":
+                        empleados = cxt.Empleados.Where(ee => ee.id_categoria == soldadores.id_categoria && ee.fecha_baja == null).ToList();
+                        break;
+                    case "Grueros":
+                        empleados = cxt.Empleados.Where(ee => ee.id_categoria == grueros.id_categoria && ee.fecha_baja == null).ToList();
+                        break;
+                    default:
+                        break;
                 }
 
-                var items_empleados = (from e in empleados
-                                       select new
-                                       {
-                                           empleado_id = e.id_empleado,
-                                           empleado = e.nombre,
-                                           horas_normales = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).total_horas_normales : "00:00"),
-                                           horas_ausente = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).total_horas_ausente : "00:00"),
-                                           horas_extra_50 = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).total_horas_extra_50 : "00:00"),
-                                           horas_extra_100 = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).total_horas_extra_100 : "00:00"),
-                                           sueldo = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).Sueldo : 0),
-                                           dias_mes = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).dias_laborables : 0),
-                                           dias_out = (cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio) != null ? cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio).dias_out : 0),
-                                       }).ToList();
+                List<itemTablaEmpleado> filas = new List<itemTablaEmpleado>();
+
+                foreach (Empleado e in empleados)
+                {
+                    Resumen_mes_empleado rme_mes_actual = cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mes && rme.anio == anio);
+                    Resumen_mes_empleado rme_mes_anterior = cxt.Resumenes_meses_empleados.FirstOrDefault(rme => rme.id_empleado == e.id_empleado && rme.mes == mesAnterior && rme.anio == anioAnterior);
+
+                    itemTablaEmpleado item = new itemTablaEmpleado();
+                    item.id_empleado = e.id_empleado;
+                    item.empleado = e.nombre;
+                    item.horas_normales = rme_mes_actual!= null ? rme_mes_actual.total_horas_normales : "00:00";
+                    item.horas_ausente = rme_mes_actual!= null ? rme_mes_actual.total_horas_ausente : "00:00";
+                    item.horas_extra_50 = rme_mes_actual != null ? rme_mes_actual.total_horas_extra_50 : "00:00";
+                    item.horas_extra_100 = rme_mes_actual != null ? rme_mes_actual.total_horas_extra_100 : "00:00";
+
+                    item.sueldo = rme_mes_actual != null ? rme_mes_actual.Sueldo : rme_mes_anterior != null ? rme_mes_anterior.Sueldo : 0;
+                    item.dias_mes = rme_mes_actual != null ? rme_mes_actual.dias_laborables : 0;
+                    item.dias_out = rme_mes_actual != null ? rme_mes_actual.dias_out : 0;
+                    
+                    filas.Add(item);
+                }
+
+                var items_empleados = filas;
 
                 var items_grilla = (from ie in items_empleados
                                     select new
                                     {
-                                        empleado_id = ie.empleado_id,
+                                        empleado_id = ie.id_empleado,
                                         empleado = ie.empleado,
                                         horas_normales = Convert.ToDecimal(ie.horas_normales.Split(':')[0]) + (Convert.ToDecimal(ie.horas_normales.Split(':')[1]) / Convert.ToDecimal(60)),
                                         horas_ausente = Convert.ToDecimal(ie.horas_ausente.Split(':')[0]) + (Convert.ToDecimal(ie.horas_ausente.Split(':')[1]) / Convert.ToDecimal(60)),
@@ -132,7 +166,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                         sueldo = ie.sueldo,
                                         dias_mes = ie.dias_mes,
                                         dias_out = (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? ie.dias_out : Convert.ToDecimal(0)),
-                                        costo_mensual_ponderado = ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? (ie.dias_mes > 0 ? ie.sueldo - (ie.sueldo / ie.dias_mes) * ie.dias_out : 0) : (ie.sueldo )
+                                        costo_mensual_ponderado = ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? (ie.dias_mes > 0 ? ie.sueldo - (ie.sueldo / ie.dias_mes) * ie.dias_out : 0) : (ie.sueldo)
                                     }).ToList();
 
                 if (ddl_tipo_empleado.SelectedItem.Text != "Mecánicos - Pintores")
@@ -225,22 +259,22 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_costo_horas_extra_100_prueba.Text = (costo_hora_teorico_ajustado * prueba_100).ToString("$ #,##0.00");
 
                 //div nueva masa salarial
-                decimal nueva_masa_salarial = costo_mensual_ponderado_total + 
-                                                    (costo_hora_teorico_ajustado * total_horas_ausente) + 
-                                                    (costo_hora_teorico_ajustado * total_horas_extra_50) + 
+                decimal nueva_masa_salarial = costo_mensual_ponderado_total +
+                                                    (costo_hora_teorico_ajustado * total_horas_ausente) +
+                                                    (costo_hora_teorico_ajustado * total_horas_extra_50) +
                                                     (costo_hora_teorico_ajustado * total_horas_extra_100);
 
                 lbl_nueva_masa_salarial.Text = nueva_masa_salarial.ToString("$ #,##0.00");
-                
+
                 decimal nueva_masa_salarial_prueba = costo_mensual_ponderado_total +
                                                         (costo_hora_teorico_ajustado * prueba_ausente) +
                                                         (costo_hora_teorico_ajustado * prueba_50) +
                                                         (costo_hora_teorico_ajustado * prueba_100);
 
-                lbl_nueva_masa_salarial_prueba.Text =nueva_masa_salarial_prueba.ToString("$ #,##0.00");
+                lbl_nueva_masa_salarial_prueba.Text = nueva_masa_salarial_prueba.ToString("$ #,##0.00");
 
-                
-                
+
+
 
                 //div resumen final planilla
                 lbl_titulo_mes_fin_planilla.Text = ddl_mes.SelectedItem.Text + " - " + ddl_anio.SelectedItem.Text;
@@ -264,7 +298,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_costo_horas_hombre_real.Text = horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
                 lbl_costo_horas_hombre_real_prueba.Text = horas_trabajadas_segun_datos_prueba > 0 ? (nueva_masa_salarial_prueba / horas_trabajadas_segun_datos_prueba).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
 
-                lbl_costo_horas_hombre_real_dolar.Text = ((horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas): 0) * valor_dolar_mes).ToString("$ #,##0.00");
+                lbl_costo_horas_hombre_real_dolar.Text = ((horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas) : 0) * valor_dolar_mes).ToString("$ #,##0.00");
                 lbl_costo_horas_hombre_real_prueba_dolar.Text = ((horas_trabajadas_segun_datos_prueba > 0 ? (nueva_masa_salarial_prueba / horas_trabajadas_segun_datos_prueba) : 0) * prueba_dolar).ToString("$ #,##0.00");
 
                 ddl_anio.Enabled = false;

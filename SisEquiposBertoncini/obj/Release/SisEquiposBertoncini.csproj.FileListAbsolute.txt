@@ -24,3 +24,16 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.pdb
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\RdlCompile.cache
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\RdlCompile.compiled
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.SqlServer.Types.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\RdlCompile.cache
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\RdlCompile.compiled
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.pdb
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL

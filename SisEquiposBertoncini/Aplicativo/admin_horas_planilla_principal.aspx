@@ -22,6 +22,7 @@
                                 <asp:DropDownList runat="server" ID="ddl_tipo_empleado" CssClass="form-control">
                                     <asp:ListItem Text="Mecánicos - Pintores" Value="Mecánicos - Pintores" />
                                     <asp:ListItem Text="Soldadores" Value="Soldadores" />
+                                    <asp:ListItem Text="Grueros" Value="Grueros" />
                                 </asp:DropDownList></td>
                             <td>Mes</td>
                             <td>
@@ -101,7 +102,7 @@
                                                         <tr>
                                                             <td>Sueldo</td>
                                                             <td>
-                                                                <input type="text" runat="server" id="tb_sueldo_empleado" class="form-control money" /></td>
+                                                                <input type="text" runat="server" id="tb_sueldo_empleado" class="form-control" /></td>
                                                         </tr>
                                                     </table>
                                                 </div>

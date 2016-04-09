@@ -10,7 +10,7 @@
 namespace SisEquiposBertoncini.Aplicativo {
     
     
-    public partial class admin_valores_mes_equipo_v2 {
+    public partial class admin_valores_mes_categoria {
         
         /// <summary>
         /// Control menu_admin.
@@ -40,13 +40,13 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl row_busqueda;
         
         /// <summary>
-        /// Control ddl_equipo.
+        /// Control ddl_categoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_equipo;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_categoria;
         
         /// <summary>
         /// Control ddl_mes.
@@ -85,6 +85,24 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Button btn_nueva_busqueda;
         
         /// <summary>
+        /// Control div_alert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_alert;
+        
+        /// <summary>
+        /// Control btn_refrescar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_refrescar;
+        
+        /// <summary>
         /// Control div_buscar_primero.
         /// </summary>
         /// <remarks>
@@ -110,6 +128,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gv_items;
+        
+        /// <summary>
+        /// Control hidden_id_item_01.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_id_item_01;
         
         /// <summary>
         /// Control hidden_id_valor_mes.
@@ -155,6 +182,24 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary validation_summary;
+        
+        /// <summary>
+        /// Control ddl_equipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_equipo;
+        
+        /// <summary>
+        /// Control CustomValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
         /// Control tb_detalle_fecha.
@@ -238,13 +283,31 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.GridView gv_detalle;
         
         /// <summary>
-        /// Control id_item_por_eliminar.
+        /// Control hidden_id_item_por_eliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden id_item_por_eliminar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_id_item_por_eliminar;
+        
+        /// <summary>
+        /// Control hidden_id_item_io.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_id_item_io;
+        
+        /// <summary>
+        /// Control hidden_equipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_equipo;
         
         /// <summary>
         /// Control btn_aceptar_eliminacion.

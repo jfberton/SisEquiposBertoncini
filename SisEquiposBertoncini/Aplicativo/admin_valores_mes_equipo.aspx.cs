@@ -147,7 +147,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     vm = new Valor_mes()
                     {
                         id_item = amortizacion.id_item,
-                        valor = decimal.Round((equipo.Costo_amortizacion_mensual * ValorDolarMes.Obtener(mes, anio)), 2)
+                        valor = decimal.Round((equipo.Costo_amortizacion_mensual() * ValorDolarMes.Obtener(mes, anio)), 2)
                     };
 
                     valores_equipo_mes_cxt.Valores_meses.Add(vm);
@@ -155,7 +155,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    vm.valor = decimal.Round((equipo.Costo_amortizacion_mensual * ValorDolarMes.Obtener(mes, anio)), 2);
+                    vm.valor = decimal.Round((equipo.Costo_amortizacion_mensual() * ValorDolarMes.Obtener(mes, anio)), 2);
                 }
                 
                 cxt.SaveChanges();

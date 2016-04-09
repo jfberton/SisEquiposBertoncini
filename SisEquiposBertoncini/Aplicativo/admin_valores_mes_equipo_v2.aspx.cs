@@ -162,7 +162,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     vm = new Valor_mes()
                     {
                         id_item = amortizacion.id_item,
-                        valor = decimal.Round((equipo.Costo_amortizacion_mensual * ValorDolarMes.Obtener(mes, anio)), 2)
+                        valor = decimal.Round((equipo.Costo_amortizacion_mensual() * ValorDolarMes.Obtener(mes, anio)), 2)
                     };
 
                     valores_equipo_mes_cxt.Valores_meses.Add(vm);
@@ -170,7 +170,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    vm.valor = decimal.Round((equipo.Costo_amortizacion_mensual * ValorDolarMes.Obtener(mes, anio)), 2);
+                    vm.valor = decimal.Round((equipo.Costo_amortizacion_mensual() * ValorDolarMes.Obtener(mes, anio)), 2);
                 }
 
                 cxt.SaveChanges();
@@ -532,9 +532,10 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 Detalle_valor_item_mes detalle_por_editar = cxt.Detalle_valores_items_mes.First(dd => dd.id_detalle_valor_item_mes == id_detalle);
-                tb_detalle_monto.Text = Cadena.Formato_moneda(detalle_por_editar.monto, Cadena.Moneda.pesos);
+                tb_detalle_monto.Text = detalle_por_editar.monto.ToString();
                 tb_detalle_fecha.Value = detalle_por_editar.fecha.ToShortDateString();
                 tb_detalle_descripcion.Text = detalle_por_editar.descripcion;
+                lbl_texto_boton_agregar_editar.Text = "Modificar";
 
                 minDate = new DateTime(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month, 1);
                 maxDate = new DateTime(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month, DateTime.DaysInMonth(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month));
@@ -626,6 +627,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             }
 
+            lbl_texto_boton_agregar_editar.Text = "Agregar";
             Ver_editar_valores_mes(id_valo_item_mes);
         }
     }

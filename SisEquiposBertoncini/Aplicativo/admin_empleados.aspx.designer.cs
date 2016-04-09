@@ -58,6 +58,24 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_agregar_empleado;
         
         /// <summary>
+        /// Control lbl_agregar_empleado_titulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_agregar_empleado_titulo;
+        
+        /// <summary>
+        /// Control id_empleado_hidden.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden id_empleado_hidden;
+        
+        /// <summary>
         /// Control validation_summary.
         /// </summary>
         /// <remarks>
@@ -157,6 +175,42 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.CustomValidator cv_fecha_nacimiento;
         
         /// <summary>
+        /// Control tb_fecha_alta_empleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_fecha_alta_empleado;
+        
+        /// <summary>
+        /// Control cv_fecha_alta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cv_fecha_alta;
+        
+        /// <summary>
+        /// Control tb_fecha_baja_empleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_fecha_baja_empleado;
+        
+        /// <summary>
+        /// Control cv_fecha_baja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cv_fecha_baja;
+        
+        /// <summary>
         /// Control btn_guardar.
         /// </summary>
         /// <remarks>
@@ -209,5 +263,23 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_fecha_nacimiento_empleado;
+        
+        /// <summary>
+        /// Control lbl_fecha_alta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_fecha_alta;
+        
+        /// <summary>
+        /// Control lbl_fecha_baja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_fecha_baja;
     }
 }

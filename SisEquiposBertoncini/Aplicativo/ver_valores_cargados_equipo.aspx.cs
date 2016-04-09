@@ -84,6 +84,7 @@ namespace SisEquiposBertoncini.Aplicativo
             ddl_anio.Enabled = habilitado;
 
             btn_nueva_busqueda.Visible = !habilitado;
+            btn_imprimir_resumen.Visible = !habilitado;
             btn_buscar.Visible = habilitado;
             btn_imprimir.Visible = !habilitado;
         }
@@ -444,13 +445,12 @@ namespace SisEquiposBertoncini.Aplicativo
 
         protected void btn_imprimir_Click(object sender, EventArgs e)
         {
-            RenderReport();
+            Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
+            RenderReport(ds);
         }
 
-        private void RenderReport()
+        private void RenderReport(Reportes.Valores_anio_equipo ds)
         {
-            Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
-
             ReportViewer viewer = new ReportViewer();
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.LocalReport.EnableExternalImages = true;
@@ -479,6 +479,45 @@ namespace SisEquiposBertoncini.Aplicativo
 
             string script = "<script type='text/javascript'>window.open('Reportes/Report.aspx');</script>";
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "VentanaPadre", script);
+        }
+
+        protected void btn_imprimir_resumen_Click(object sender, EventArgs e)
+        {
+            Reportes.Valores_anio_equipo dsresumen = new Reportes.Valores_anio_equipo();
+            Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
+
+            foreach (Reportes.Valores_anio_equipo.Datos_equipoRow dr in ds.Datos_equipo)
+            {
+                Reportes.Valores_anio_equipo.Datos_equipoRow dir = dsresumen.Datos_equipo.NewDatos_equipoRow();
+
+                for (int i = 0; i < ds.Tables["Datos_equipo"].Columns.Count; i++)
+                {
+                    dir[i] = dr[i];
+                }
+
+                dsresumen.Datos_equipo.Rows.Add(dir);
+            }
+
+            foreach (System.Data.DataRow dr in ds.Detalle_item.Rows)
+            {
+                if (dr["Nombre_item"].ToString() == "INGRESOS" || 
+                    dr["Nombre_item"].ToString() == "EGRESOS" || 
+                    dr["Nombre_item"].ToString() == "Resultado Financiero" || 
+                    dr["Nombre_item"].ToString() == "Porcentaje de ganancias" || 
+                    dr["Nombre_item"].ToString() == "Velocidad de recupero")
+                {
+                    Reportes.Valores_anio_equipo.Detalle_itemRow dir = dsresumen.Detalle_item.NewDetalle_itemRow();
+
+                    for (int i = 0; i < ds.Tables["Detalle_item"].Columns.Count; i++)
+                    {
+                        dir[i] = dr[i];
+                    }
+
+                    dsresumen.Detalle_item.Rows.Add(dir);
+                }
+            }
+
+            RenderReport(dsresumen);
         }
     }
 }

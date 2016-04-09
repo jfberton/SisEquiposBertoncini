@@ -185,7 +185,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 CargarFilasCategoria(trabajos_particulares, filas_trabajos_particulares, mes, anio, costo_hora);
                 CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
 
-                if(categoria_empleado == "Soldadores")
+                if(categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     List<Equipo> equipos = cxt.Equipos.Where(x => x.OUT).ToList();
                     CargarFilasCategoria_OUT(equipos, filas_out_soldadores, mes, anio, costo_hora);
@@ -222,7 +222,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
-                if (categoria_empleado == "Soldadores")
+                if (categoria_empleado == "Soldadores" || categoria_empleado=="Grueros")
                 {
                     //tengo que agregar los trabajos outs como trabajos dentro de la misma tabla
                     //Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
@@ -583,14 +583,20 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     int mes = Convert.ToInt32(Session["planilla_calculos_mes"]);
                     int anio = Convert.ToInt32(Session["planilla_calculos_anio"]);
-
-                    if (Session["planilla_calculos_categoria_empleado"].ToString() == "Mecánicos - Pintores")
+                    string tipo_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
+                    switch (tipo_empleado)
                     {
-                        cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
-                    }
-                    else
-                    {
-                        cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                        case "Mecánicos - Pintores":
+                            cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                            break;
+                        case "Soldadores":
+                            cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                            break;
+                        case "Grueros":
+                            cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                            break;
+                        default:
+                            break;
                     }
 
                 }

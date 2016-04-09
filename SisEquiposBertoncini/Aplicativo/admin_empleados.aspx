@@ -32,16 +32,26 @@
                     <asp:BoundField DataField="empleado_nombre" HeaderText="Nombre y apellido" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_dni" HeaderText="D.N.I." ReadOnly="true" />
                     <asp:BoundField DataField="empleado_fecha_nacimiento" HeaderText="Fecha de nacimiento" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_alta" HeaderText="Fecha de alta" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_baja" HeaderText="Fecha de baja" ItemStyle-Font-Italic="true" ItemStyle-ForeColor="DeepPink" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <button
+                           <%-- <button
                                 type="button" class="btn btn-sm btn-danger"
                                 data-toggle="modal"
                                 data-target="#advertencia_eliminacion"
                                 data-id='<%#Eval("empleado_id")%>'
                                 data-introduccion="al empleado"
                                 data-nombre='<%#Eval("empleado_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
+                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
+                            </button>--%>
+
+                            <button
+                                type="button" class="btn btn-sm btn-warning" id="btn_editar_empleado"
+                                runat="server" onserverclick="btn_editar_empleado_ServerClick"
+                                data-id='<%#Eval("empleado_id")%>'
+                                causesvalidation="false">
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Editar
                             </button>
 
                             <button
@@ -54,8 +64,9 @@
                                 data-dni='<%#Eval("empleado_dni")%>'
                                 data-nacimiento='<%#Eval("empleado_fecha_nacimiento")%>'
                                 data-nombre='<%#Eval("empleado_nombre")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
+
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -88,8 +99,8 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_empleado" runat="server" data-toggle="modal" data-target="#agregar_empleado">
-                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar nuevo
+                    <button type="button" class="btn btn-default pull-right" causesvalidation="false" id="btn_agregar_empleado" runat="server" onserverclick="btn_agregar_empleado_ServerClick">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
                     </button>
 
                     <div class="modal fade" id="agregar_empleado" role="dialog" aria-hidden="true">
@@ -97,7 +108,9 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Agregar empleado</h4>
+                                    <h4 class="modal-title">
+                                        <asp:Label Text="Agregar empleado" ID="lbl_agregar_empleado_titulo" runat="server" /></h4>
+                                    <input type="hidden" runat="server" id="id_empleado_hidden"  value="0" />
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
@@ -135,7 +148,7 @@
                                                         <tr>
                                                             <td>
                                                                 <label>Categoría</label></td>
-                                                             <td>
+                                                            <td>
                                                                 <asp:DropDownList runat="server" Width="100%" CssClass="form-control" ID="ddl_categorias">
                                                                 </asp:DropDownList></td>
                                                             <td>
@@ -237,10 +250,76 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <table class="table-condensed" style="width: 100%">
+                                                        <tr>
+                                                            <td>Fecha de alta</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <table class="table-condensed" style="width: 100%">
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-group">
+                                                                    <div id="dtp_fecha_alta_empleado" class="input-group date">
+                                                                        <input type="text" runat="server" id="tb_fecha_alta_empleado" class="form-control ddmmaaaa" />
+                                                                        <span class="input-group-addon">
+                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <asp:CustomValidator ID="cv_fecha_alta" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha de alta válida' />"
+                                                                    ErrorMessage="Debe ingresar una fecha de alta válida" OnServerValidate="cv_fecha_alta_ServerValidate">
+                                                                </asp:CustomValidator></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div><div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <table class="table-condensed" style="width: 100%">
+                                                        <tr>
+                                                            <td>Fecha de baja</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <table class="table-condensed" style="width: 100%">
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-group alert-danger">
+                                                                    <div id="dtp_fecha_baja_empleado" class="input-group date">
+                                                                        <input type="text" runat="server" id="tb_fecha_baja_empleado" class="form-control alert-danger ddmmaaaa" />
+                                                                        <span class="input-group-addon">
+                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <asp:CustomValidator ID="cv_fecha_baja" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha de alta válida' />"
+                                                                    ErrorMessage="Debe ingresar una fecha de alta válida" OnServerValidate="cv_fecha_baja_ServerValidate">
+                                                                </asp:CustomValidator></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button id="btn_guardar" runat="server" onserverclick="btn_guardar_ServerClick" class="btn btn-success" validationgroup="equipo">
-                                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar!
+                                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
                                     </button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                 </div>
@@ -295,10 +374,26 @@
                                 </p>
                             </div>
                         </div>
+                         <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    <label>Fecha alta</label>
+                                    <asp:Label Text="" ID="lbl_fecha_alta" runat="server" />
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label>Fecha baja</label>
+                                    <asp:Label Text="" ID="lbl_fecha_baja" runat="server" />
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 </asp:Content>
 
@@ -344,6 +439,16 @@
     <script>
         $(function () {
             $('#dtp_fecha_nacimiento_empleado').datetimepicker({
+                locale: 'es',
+                format: 'DD/MM/YYYY'
+            });
+
+            $('#dtp_fecha_alta_empleado').datetimepicker({
+                locale: 'es',
+                format: 'DD/MM/YYYY'
+            });
+
+            $('#dtp_fecha_baja_empleado').datetimepicker({
                 locale: 'es',
                 format: 'DD/MM/YYYY'
             });

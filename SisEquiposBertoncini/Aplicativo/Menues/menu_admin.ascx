@@ -40,6 +40,9 @@
                         <li><a href="../Aplicativo/admin_valores_mes_equipo_v2.aspx">Editar valores mensuales</a></li>
                         <li><a href="../Aplicativo/ver_valores_cargados_equipo.aspx">Resumen año equipo</a></li>
                         <li class="divider"></li>
+                        <li class="dropdown-header">I/E por categoria</li>
+                        <li><a href="../Aplicativo/admin_valores_mes_categoria.aspx">Editar valores mensuales</a></li>
+                        <li class="divider"></li>
                         <li class="dropdown-header">Administrar valores dolar</li>
                         <li><a href="../Aplicativo/admin_valor_dolar.aspx">Editar valores dolar</a></li>
                     </ul>
@@ -89,3 +92,4 @@
         </div>
     </div>
 </nav>
+

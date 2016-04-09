@@ -29,6 +29,8 @@ D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFrame
 D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
 D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 D:\Desarrollo\Mios\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.cache
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.compiled
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
@@ -36,5 +38,26 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
-D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.cache
-D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.compiled
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.cache
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.compiled
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.SqlServer.Types.dll
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll

@@ -77,6 +77,21 @@
       <End Role="Planilla_gasto_administrativo" EntitySet="Planilla_gastos_administrativo" />
       <End Role="Aux_planilla_gasto_administracion" EntitySet="Aux_planilla_gastos_administracion" />
     </AssociationSet>
+    <EntitySet Name="Aux_total_categoria_meses" EntityType="Model1.Aux_total_categoria_mes" />
+    <EntitySet Name="Valor_mes_categorias" EntityType="Model1.Valor_mes_categoria" />
+    <AssociationSet Name="Aux_total_categoria_mesValor_mes_categoria" Association="Model1.Aux_total_categoria_mesValor_mes_categoria">
+      <End Role="Aux_total_categoria_mes" EntitySet="Aux_total_categoria_meses" />
+      <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
+    </AssociationSet>
+    <AssociationSet Name="Item_ingreso_egresoValor_mes_categoria" Association="Model1.Item_ingreso_egresoValor_mes_categoria">
+      <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
+      <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
+    </AssociationSet>
+    <EntitySet Name="Detalle_valor_item_meses_categoria" EntityType="Model1.Detalle_valor_item_mes_categoria" />
+    <AssociationSet Name="Valor_mes_categoriaDetalle_valor_item_mes_categoria" Association="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria">
+      <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
+      <End Role="Detalle_valor_item_mes_categoria" EntitySet="Detalle_valor_item_meses_categoria" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>
@@ -135,6 +150,7 @@
     <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
     <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
     <NavigationProperty Name="Resumenes_meses_empleado" Relationship="Model1.EmpleadoResumen_mes_empleado" FromRole="Empleado" ToRole="Resumen_mes_empleado" />
+    <Property Name="fecha_alta" Type="DateTime" Nullable="true" />
   </EntityType>
   <EntityType Name="Categoria_empleado">
     <Key>
@@ -334,6 +350,7 @@
     <Property Name="id_item_padre" Type="Int32" Nullable="true" />
     <Property Name="mostrar_en_equipo" Type="Boolean" Nullable="true" />
     <Property Name="mostrar_en_trabajo" Type="Boolean" Nullable="true" />
+    <NavigationProperty Name="Valor_mes_categorias" Relationship="Model1.Item_ingreso_egresoValor_mes_categoria" FromRole="Item_ingreso_egreso" ToRole="Valor_mes_categoria" />
   </EntityType>
   <EntityType Name="Valor_mes">
     <Key>
@@ -517,6 +534,75 @@
       </Principal>
       <Dependent Role="Aux_planilla_gasto_administracion">
         <PropertyRef Name="id_planilla_gastos_administartivos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Aux_total_categoria_mes">
+    <Key>
+      <PropertyRef Name="id_aux_total_categoria_mes" />
+    </Key>
+    <Property Name="id_aux_total_categoria_mes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_categoria_equipo" Type="Int32" Nullable="false" />
+    <Property Name="mes" Type="Int32" Nullable="false" />
+    <Property Name="anio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Valores_mes" Relationship="Model1.Aux_total_categoria_mesValor_mes_categoria" FromRole="Aux_total_categoria_mes" ToRole="Valor_mes_categoria" />
+  </EntityType>
+  <EntityType Name="Valor_mes_categoria">
+    <Key>
+      <PropertyRef Name="id_valor_mes_categoria_item" />
+    </Key>
+    <Property Name="id_valor_mes_categoria_item" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Aux_total_categoria_mes" Relationship="Model1.Aux_total_categoria_mesValor_mes_categoria" FromRole="Valor_mes_categoria" ToRole="Aux_total_categoria_mes" />
+    <Property Name="id_aux_total_categoria_mes" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item_ingreso_egreso" Relationship="Model1.Item_ingreso_egresoValor_mes_categoria" FromRole="Valor_mes_categoria" ToRole="Item_ingreso_egreso" />
+    <Property Name="id_item" Type="Int32" Nullable="false" />
+    <Property Name="valor" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <NavigationProperty Name="Detalle" Relationship="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" FromRole="Valor_mes_categoria" ToRole="Detalle_valor_item_mes_categoria" />
+  </EntityType>
+  <Association Name="Aux_total_categoria_mesValor_mes_categoria">
+    <End Type="Model1.Aux_total_categoria_mes" Role="Aux_total_categoria_mes" Multiplicity="1" />
+    <End Type="Model1.Valor_mes_categoria" Role="Valor_mes_categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aux_total_categoria_mes">
+        <PropertyRef Name="id_aux_total_categoria_mes" />
+      </Principal>
+      <Dependent Role="Valor_mes_categoria">
+        <PropertyRef Name="id_aux_total_categoria_mes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Item_ingreso_egresoValor_mes_categoria">
+    <End Type="Model1.Item_ingreso_egreso" Role="Item_ingreso_egreso" Multiplicity="1" />
+    <End Type="Model1.Valor_mes_categoria" Role="Valor_mes_categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item_ingreso_egreso">
+        <PropertyRef Name="id_item" />
+      </Principal>
+      <Dependent Role="Valor_mes_categoria">
+        <PropertyRef Name="id_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Detalle_valor_item_mes_categoria">
+    <Key>
+      <PropertyRef Name="id_detalle_valor_item_mes_categoria" />
+    </Key>
+    <Property Name="id_detalle_valor_item_mes_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <Property Name="monto" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="descripcion" Type="String" Nullable="false" />
+    <NavigationProperty Name="Valor_mes_categoria" Relationship="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" FromRole="Detalle_valor_item_mes_categoria" ToRole="Valor_mes_categoria" />
+    <Property Name="id_valor_mes_categoria_item" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="Valor_mes_categoriaDetalle_valor_item_mes_categoria">
+    <End Type="Model1.Valor_mes_categoria" Role="Valor_mes_categoria" Multiplicity="1" />
+    <End Type="Model1.Detalle_valor_item_mes_categoria" Role="Detalle_valor_item_mes_categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valor_mes_categoria">
+        <PropertyRef Name="id_valor_mes_categoria_item" />
+      </Principal>
+      <Dependent Role="Detalle_valor_item_mes_categoria">
+        <PropertyRef Name="id_valor_mes_categoria_item" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

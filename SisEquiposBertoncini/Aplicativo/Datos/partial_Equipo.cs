@@ -50,10 +50,8 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         /// <summary>
         /// Devuelve el monto total mensual por amortizar de las partes que componen el equipo que todavia tienen meses por amortizar
         /// </summary>
-        public decimal Costo_amortizacion_mensual
+        public decimal Costo_amortizacion_mensual()
         {
-            get
-            {
                 decimal ret = 0;
 
                 foreach (Item_por_amortizar parte in this.Items_por_amortizar)
@@ -65,7 +63,21 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                 }
 
                 return ret;
+        }
+
+        public decimal Costo_amortizacion_mensual(int mes, int anio)
+        {
+            decimal ret = 0;
+
+            foreach (Item_por_amortizar parte in this.Items_por_amortizar)
+            {
+                if (parte.Restan_por_amortizar(mes, anio) > 0)
+                {
+                    ret = ret + parte.costo_mensual;
+                }
             }
+
+            return ret;
         }
 
         public string Horas_mes(int mes, int anio, string categoria_empleado)
@@ -132,7 +144,8 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public enum Tipo_empleado
         {
             Mecanicos_pintores,
-            Soldadores
+            Soldadores,
+            Grueros
         }
 
         public void Agregar_detalle_en_valor_mensual_segun_empleado(Tipo_empleado tipo, Valor_mensual item_valor, int mes, int anio, decimal monto)
@@ -172,83 +185,122 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                         //aca tengo el item valor mes del 
                         string descripcion_detalle = "";
 
-                        if (tipo == Tipo_empleado.Mecanicos_pintores)
+                        switch (tipo)
                         {
-                            switch (item_valor)
-                            {
-                                case Valor_mensual.Mano_obra:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de cálculos Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Insumos:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Herramientas:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Viaticos:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.ViaticosPP:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Indumentaria:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Repuestos:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Repuestos_pp:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Gastos_varios:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
-                                case Valor_mensual.Otros:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
-                                    break;
+                            case Tipo_empleado.Mecanicos_pintores:
+                                switch (item_valor)
+                                {
+                                    case Valor_mensual.Mano_obra:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de cálculos Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Insumos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Herramientas:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Viaticos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.ViaticosPP:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Indumentaria:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Repuestos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Repuestos_pp:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Gastos_varios:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
+                                    case Valor_mensual.Otros:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Mecánicos-Pintores";
+                                        break;
 
-                                default:
-                                    break;
-                            }
-
-                        }
-                        else
-                        {
-                            switch (item_valor)
-                            {
-                                case Valor_mensual.Mano_obra:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de cálculos Soldadores";
-                                    break;
-                                case Valor_mensual.Insumos:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Herramientas:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Viaticos:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.ViaticosPP:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Indumentaria:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Repuestos:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Repuestos_pp:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Gastos_varios:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                case Valor_mensual.Otros:
-                                    descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
-                                    break;
-                                default:
-                                    break;
-                            }
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case Tipo_empleado.Soldadores:
+                                switch (item_valor)
+                                {
+                                    case Valor_mensual.Mano_obra:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de cálculos Soldadores";
+                                        break;
+                                    case Valor_mensual.Insumos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Herramientas:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Viaticos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.ViaticosPP:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Indumentaria:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Repuestos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Repuestos_pp:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Gastos_varios:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    case Valor_mensual.Otros:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Soldadores";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case Tipo_empleado.Grueros:
+                                switch (item_valor)
+                                {
+                                    case Valor_mensual.Mano_obra:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de cálculos Grueros";
+                                        break;
+                                    case Valor_mensual.Insumos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Herramientas:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Viaticos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.ViaticosPP:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Indumentaria:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Repuestos:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Repuestos_pp:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Gastos_varios:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    case Valor_mensual.Otros:
+                                        descripcion_detalle = "Gastos obtenidos de planilla de gastos en función horas hombre Grueros";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            default:
+                                break;
                         }
 
                         Detalle_valor_item_mes detalle = valor_mes.Detalle.FirstOrDefault(x => x.descripcion == descripcion_detalle);

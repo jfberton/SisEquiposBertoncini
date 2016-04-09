@@ -33,14 +33,16 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 var empleados = (from ee in cxt.Empleados
-                                 where ee.fecha_baja == null
-                                 select new {
+                                 select new
+                                 {
                                      empleado_id = ee.id_empleado,
                                      empleado_area = ee.Area.nombre,
                                      empleado_categoria = ee.Categoria.nombre,
                                      empleado_nombre = ee.nombre,
                                      empleado_dni = ee.dni,
-                                     empleado_fecha_nacimiento = ee.fecha_nacimiento
+                                     empleado_fecha_nacimiento = ee.fecha_nacimiento,
+                                     empleado_fecha_alta = ee.fecha_alta,
+                                     empleado_fecha_baja = ee.fecha_baja
                                  }).ToList();
                 gv_empleados.DataSource = empleados;
                 gv_empleados.DataBind();
@@ -71,6 +73,16 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 e.Row.ControlStyle.BackColor = Color.LightGray;
             }
+            else
+            {
+                var emp = e.Row.Cells[6].Text;
+                if (emp != "&nbsp;")
+                {
+                    e.Row.ControlStyle.ForeColor = Color.Gray;
+                    e.Row.ControlStyle.Font.Strikeout = true;
+                    e.Row.ControlStyle.Font.Italic = true;
+                }
+            }
         }
 
         protected void cv_area_ServerValidate(object source, ServerValidateEventArgs args)
@@ -78,7 +90,7 @@ namespace SisEquiposBertoncini.Aplicativo
             args.IsValid = ddl_areas.SelectedItem.Value != "0";
         }
 
-       
+
         protected void btn_ver_empleado_Click(object sender, ImageClickEventArgs e)
         {
             int id_empleado = Convert.ToInt32(((ImageButton)sender).CommandArgument);
@@ -92,6 +104,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_dni_empleado.Text = empleado.dni;
                 lbl_fecha_nacimiento_empleado.Text = empleado.fecha_nacimiento.ToShortDateString();
                 lbl_nombre_empleado.Text = empleado.nombre;
+                lbl_fecha_alta.Text = empleado.fecha_alta.Value.ToShortDateString();
+                lbl_fecha_baja.Text = empleado.fecha_baja != null ? empleado.fecha_baja.Value.ToShortDateString() : "-";
             }
 
             MostrarPopUpEmpleado();
@@ -119,10 +133,10 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 int id_empleado = Convert.ToInt32(id_empleado_por_eliminar.Value);
-                
+
                 Empleado empleado = cxt.Empleados.First(ee => ee.id_empleado == id_empleado);
                 empleado.fecha_baja = DateTime.Today;
-                
+
                 cxt.SaveChanges();
                 CargarEmpleados();
             }
@@ -133,25 +147,64 @@ namespace SisEquiposBertoncini.Aplicativo
             this.Validate();
             if (IsValid)
             {
+
                 using (var cxt = new Model1Container())
                 {
-                    Empleado empleado = new Empleado()
+                    Empleado empleado = null;
+
+                    if (id_empleado_hidden.Value != "0")
+                    {//existe empleado
+                        int id_empleado = Convert.ToInt32(id_empleado_hidden.Value);
+                        empleado = cxt.Empleados.FirstOrDefault(ee => ee.id_empleado == id_empleado);
+                        empleado.dni = tb_dni_empleado.Value;
+                        empleado.fecha_alta = Convert.ToDateTime(tb_fecha_alta_empleado.Value);
+                        if (tb_fecha_baja_empleado.Value != "")
+                        {
+                            empleado.fecha_baja = Convert.ToDateTime(tb_fecha_baja_empleado.Value);
+                        }
+                        else
+                        {
+                            empleado.fecha_baja = null;
+                        }
+                        empleado.fecha_nacimiento = Convert.ToDateTime(tb_fecha_nacimiento_empleado.Value);
+                        empleado.id_area = Convert.ToInt32(ddl_areas.SelectedItem.Value);
+                        empleado.id_categoria = Convert.ToInt32(ddl_categorias.SelectedItem.Value);
+
+                        empleado.nombre = tb_nombre_empleado.Value;
+                    }
+                    else
                     {
-                        dni = tb_dni_empleado.Value,
-                        fecha_baja = null,
-                        fecha_nacimiento = Convert.ToDateTime(tb_fecha_nacimiento_empleado.Value),
-                        id_area = Convert.ToInt32(ddl_areas.SelectedItem.Value),
-                        id_categoria = Convert.ToInt32(ddl_categorias.SelectedItem.Value),
-                        nombre = tb_nombre_empleado.Value
-                    };
+                        empleado = new Empleado()
+                        {
+                            dni = tb_dni_empleado.Value,
+                            fecha_baja = null,
+                            fecha_alta = Convert.ToDateTime(tb_fecha_alta_empleado.Value),
+                            fecha_nacimiento = Convert.ToDateTime(tb_fecha_nacimiento_empleado.Value),
+                            id_area = Convert.ToInt32(ddl_areas.SelectedItem.Value),
+                            id_categoria = Convert.ToInt32(ddl_categorias.SelectedItem.Value),
+                            nombre = tb_nombre_empleado.Value
+                        };
+
+                        if (tb_fecha_baja_empleado.Value != "")
+                        {
+                            empleado.fecha_baja = Convert.ToDateTime(tb_fecha_baja_empleado.Value);
+                        }
+                        else
+                        {
+                            empleado.fecha_baja = null;
+                        }
+
+                        cxt.Empleados.Add(empleado);
+                    }
 
                     tb_dni_empleado.Value = string.Empty;
                     tb_fecha_nacimiento_empleado.Value = string.Empty;
+                    tb_fecha_alta_empleado.Value = string.Empty;
+                    tb_fecha_baja_empleado.Value = string.Empty;
                     ddl_areas.SelectedIndex = 0;
                     ddl_categorias.SelectedIndex = 0;
                     tb_nombre_empleado.Value = string.Empty;
-
-                    cxt.Empleados.Add(empleado);
+                    id_empleado_hidden.Value = "0";
 
                     cxt.SaveChanges();
                 }
@@ -166,6 +219,61 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowPopUpError", script, false);
             }
+        }
+
+        protected void btn_editar_empleado_ServerClick(object sender, EventArgs e)
+        {
+            int id_empleado = Convert.ToInt32(((System.Web.UI.HtmlControls.HtmlButton)sender).Attributes["data-id"]);
+
+            using (var cxt = new Model1Container())
+            {
+                Empleado empleado = cxt.Empleados.FirstOrDefault(emp => emp.id_empleado == id_empleado);
+                if (empleado != null)
+                {
+                    id_empleado_hidden.Value = id_empleado.ToString();
+                    lbl_agregar_empleado_titulo.Text = "Editar empleado";
+                    ddl_areas.SelectedValue = empleado.Area.id_area.ToString();
+                    ddl_categorias.SelectedValue = empleado.Categoria.id_categoria.ToString();
+                    tb_nombre_empleado.Value = empleado.nombre;
+                    tb_dni_empleado.Value = empleado.dni;
+                    tb_fecha_nacimiento_empleado.Value = empleado.fecha_nacimiento.ToShortDateString();
+                    tb_fecha_alta_empleado.Value = empleado.fecha_alta != null ? empleado.fecha_alta.Value.ToShortDateString() : "";
+                    tb_fecha_baja_empleado.Value = empleado.fecha_baja != null ? empleado.fecha_baja.Value.ToShortDateString() : "";
+                }
+
+            }
+
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#agregar_empleado').modal('show')});</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+
+        }
+
+        protected void btn_agregar_empleado_ServerClick(object sender, EventArgs e)
+        {
+            lbl_agregar_empleado_titulo.Text = "Agregar empleado";
+            tb_dni_empleado.Value = string.Empty;
+            tb_fecha_nacimiento_empleado.Value = string.Empty;
+            tb_fecha_alta_empleado.Value = string.Empty;
+            tb_fecha_baja_empleado.Value = string.Empty;
+            ddl_areas.SelectedIndex = 0;
+            ddl_categorias.SelectedIndex = 0;
+            tb_nombre_empleado.Value = string.Empty;
+            id_empleado_hidden.Value = "0";
+
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#agregar_empleado').modal('show')});</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+        }
+
+        protected void cv_fecha_alta_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            DateTime fecha;
+            args.IsValid = DateTime.TryParse(tb_fecha_alta_empleado.Value, out fecha);
+        }
+
+        protected void cv_fecha_baja_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            DateTime fecha;
+            args.IsValid = tb_fecha_baja_empleado.Value == "" || DateTime.TryParse(tb_fecha_alta_empleado.Value, out fecha);
         }
     }
 }

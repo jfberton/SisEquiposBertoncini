@@ -27,6 +27,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public string dni { get; set; }
         public System.DateTime fecha_nacimiento { get; set; }
         public Nullable<System.DateTime> fecha_baja { get; set; }
+        public Nullable<System.DateTime> fecha_alta { get; set; }
     
         public virtual Categoria_empleado Categoria { get; set; }
         public virtual ICollection<Dia> Dias { get; set; }

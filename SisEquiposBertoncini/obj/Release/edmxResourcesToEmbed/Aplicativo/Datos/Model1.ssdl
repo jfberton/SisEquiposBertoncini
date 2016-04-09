@@ -110,6 +110,7 @@
     <Property Name="dni" Type="nvarchar(max)" Nullable="false" />
     <Property Name="fecha_nacimiento" Type="datetime" Nullable="false" />
     <Property Name="fecha_baja" Type="datetime" Nullable="true" />
+    <Property Name="fecha_alta" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="Categorias_empleados">
     <Key>

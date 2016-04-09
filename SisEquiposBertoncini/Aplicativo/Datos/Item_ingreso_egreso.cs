@@ -18,6 +18,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         {
             this.Valores_mes = new HashSet<Valor_mes>();
             this.Hijos = new HashSet<Item_ingreso_egreso>();
+            this.Valor_mes_categorias = new HashSet<Valor_mes_categoria>();
         }
     
         public int id_item { get; set; }
@@ -31,5 +32,6 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public virtual ICollection<Valor_mes> Valores_mes { get; set; }
         public virtual ICollection<Item_ingreso_egreso> Hijos { get; set; }
         public virtual Item_ingreso_egreso Padre { get; set; }
+        public virtual ICollection<Valor_mes_categoria> Valor_mes_categorias { get; set; }
     }
 }

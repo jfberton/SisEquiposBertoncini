@@ -44,7 +44,8 @@
                         <tr>
                             <td>
                                 <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                                <asp:Button Text="Imprimir" ID="btn_imprimir" OnClick="btn_imprimir_Click" runat="server" />
+                                <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
+                                <asp:Button Text="Imprimir Resumen" ID="btn_imprimir_resumen" CssClass="btn btn-default" OnClick="btn_imprimir_resumen_Click" runat="server" />
                                 <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
                             </td>
                         </tr>
