@@ -152,6 +152,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 Categoria_equipo vehiculos_menores = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Vehículos menores");
                 Categoria_equipo ventas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Ventas");
                 Categoria_equipo trabajos_particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos particulares");
+                Categoria_equipo trabajos_especiales = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos especiales");
                 Categoria_equipo otros = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Otros");
 
                 List<equipo_tabla> filas_camiones_y_carretones = new List<equipo_tabla>();
@@ -160,6 +161,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 List<equipo_tabla> filas_ventas = new List<equipo_tabla>();
                 List<equipo_tabla> filas_trabajos_particulares = new List<equipo_tabla>();
                 List<equipo_tabla> filas_otros = new List<equipo_tabla>();
+                List<equipo_tabla> filas_trabajos_especiales = new List<equipo_tabla>();
                 List<equipo_tabla> filas_out_soldadores = new List<equipo_tabla>();
 
                 List<total_categoria_tabla> filas_tabla_total_categoria = new List<total_categoria_tabla>();
@@ -183,6 +185,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 CargarFilasCategoria(vehiculos_menores, filas_vehiculos_menores, mes, anio, costo_hora);
                 CargarFilasCategoria(ventas, filas_ventas, mes, anio, costo_hora);
                 CargarFilasCategoria(trabajos_particulares, filas_trabajos_particulares, mes, anio, costo_hora);
+                CargarFilasCategoria(trabajos_especiales, filas_trabajos_especiales, mes, anio, costo_hora);
                 CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
 
                 if(categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
@@ -220,6 +223,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 Agregar_a_tabla(tabla, filas_vehiculos_menores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_ventas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                Agregar_a_tabla(tabla, filas_trabajos_especiales, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
                 if (categoria_empleado == "Soldadores" || categoria_empleado=="Grueros")

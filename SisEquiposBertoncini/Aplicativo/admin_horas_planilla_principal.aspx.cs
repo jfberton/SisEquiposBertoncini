@@ -145,7 +145,9 @@ namespace SisEquiposBertoncini.Aplicativo
                     item.horas_extra_50 = rme_mes_actual != null ? rme_mes_actual.total_horas_extra_50 : "00:00";
                     item.horas_extra_100 = rme_mes_actual != null ? rme_mes_actual.total_horas_extra_100 : "00:00";
 
-                    item.sueldo = rme_mes_actual != null ? rme_mes_actual.Sueldo : rme_mes_anterior != null ? rme_mes_anterior.Sueldo : 0;
+                    item.sueldo = rme_mes_actual != null ? 
+                        ((rme_mes_actual.Sueldo == 0 && rme_mes_anterior != null) ? rme_mes_anterior.Sueldo : rme_mes_actual.Sueldo) : 
+                        rme_mes_anterior != null ? rme_mes_anterior.Sueldo : 0;
                     item.dias_mes = rme_mes_actual != null ? rme_mes_actual.dias_laborables : 0;
                     item.dias_out = rme_mes_actual != null ? rme_mes_actual.dias_out : 0;
                     

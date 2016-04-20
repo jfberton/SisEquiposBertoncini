@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/05/2016 11:30:52
--- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
+-- Date Created: 04/14/2016 17:21:30
+-- Generated from EDMX file: D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton];
+USE [equipos_berton_01];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -66,7 +66,7 @@ IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes_categoria]', 'F') IS NOT N
     ALTER TABLE [dbo].[Valor_mes_categorias] DROP CONSTRAINT [FK_Item_ingreso_egresoValor_mes_categoria];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Detalle_valor_item_mes_categoriaSet] DROP CONSTRAINT [FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria];
+    ALTER TABLE [dbo].[Detalle_valor_item_meses_categoria] DROP CONSTRAINT [FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria];
 GO
 
 -- --------------------------------------------------
@@ -139,8 +139,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Valor_mes_categorias]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Valor_mes_categorias];
 GO
-IF OBJECT_ID(N'[dbo].[Detalle_valor_item_mes_categoriaSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Detalle_valor_item_mes_categoriaSet];
+IF OBJECT_ID(N'[dbo].[Detalle_valor_item_meses_categoria]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Detalle_valor_item_meses_categoria];
 GO
 
 -- --------------------------------------------------

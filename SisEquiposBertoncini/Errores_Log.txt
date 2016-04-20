@@ -2,97 +2,35 @@
 
 ******************************************************************
 
-ERRORID: 635831725120322857
+ERRORID: 635908185471500628
 
-DATE: 15/11/2015 8:21:52
+DATE: 11/02/2016 20:15:47
 
-AGENTE: José Federico Bertoncini
+AGENTE: Ernesto Bertoncini
 
-MESSAGE: Etiqueta de servidor incorrecta.
+MESSAGE: No se puede cargar el archivo o ensamblado 'Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' ni una de sus dependencias. El sistema no puede encontrar el archivo especificado.
 
-SOURCE: System.Web
-
-INSTANCE: 
-
-DATA: System.Collections.ListDictionaryInternal
-
-URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo_v2.aspx
-
-TARGETSITE: Void ProcessError(System.String)
-
-STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
-   en System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
-   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
-
-
-******************************************************************
- 
-
-******************************************************************
-
-ERRORID: 635844788604124180
-
-DATE: 30/11/2015 11:14:20 a.m.
-
-AGENTE: José Federico Bertoncini
-
-MESSAGE: Intento de dividir por cero.
-
-SOURCE: mscorlib
+SOURCE: Microsoft.ReportViewer.WebForms
 
 INSTANCE: 
 
 DATA: System.Collections.ListDictionaryInternal
 
-URL: http://localhost:55789/Aplicativo/planilla_calculos.aspx
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=7&a=2015
 
-TARGETSITE: Void FCallDivide(System.Decimal ByRef, System.Decimal ByRef)
+TARGETSITE: Void .ctor()
 
-STACKTRACE:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
-   en System.Decimal.op_Division(Decimal d1, Decimal d2)
-   en SisEquiposBertoncini.Aplicativo.planilla_calculos.Agregar_a_tabla(HtmlTable tabla, List`1 listado, Decimal horas_totales_equipos, Decimal horas_varios_taller, Decimal horas_guardia, Int32 equipos_guardia) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_calculos.aspx.cs:línea 231
-   en SisEquiposBertoncini.Aplicativo.planilla_calculos.CrearCargarTabla() en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_calculos.aspx.cs:línea 204
-   en SisEquiposBertoncini.Aplicativo.planilla_calculos.Page_Load(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_calculos.aspx.cs:línea 29
-   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
-   en System.Web.UI.Control.OnLoad(EventArgs e)
-   en System.Web.UI.Control.LoadRecursive()
-   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
-
-
-******************************************************************
- 
-
-******************************************************************
-
-ERRORID: 635845540155711732
-
-DATE: 01/12/2015 08:06:55 a.m.
-
-AGENTE: José Federico Bertoncini
-
-MESSAGE: Se encontraron varios controles con el mismo identificador 'chk_5'. FindControl requiere que los controles tengan identificadores únicos.
-
-SOURCE: System.Web
-
-INSTANCE: 
-
-DATA: System.Collections.ListDictionaryInternal
-
-URL: http://localhost:55789/Aplicativo/planilla_calculos.aspx
-
-TARGETSITE: Void FillNamedControlsTable(System.Web.UI.Control, System.Web.UI.ControlCollection)
-
-STACKTRACE:    en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
-   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
-   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
-   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
-   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
-   en System.Web.UI.Control.EnsureNamedControlsTable()
-   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
-   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
-   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
-   en System.Web.UI.Page.FindControl(String id)
+STACKTRACE:    en Microsoft.Reporting.WebForms.LocalReport..ctor()
+   en Microsoft.Reporting.WebForms.LocalModeSession..ctor()
+   en Microsoft.Reporting.WebForms.ReportHierarchy..ctor(ServerReport serverReport)
+   en Microsoft.Reporting.WebForms.ReportViewer.CreateReportHierarchy()
+   en Microsoft.Reporting.WebForms.ReportViewer..ctor()
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.RenderReport() en C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 454
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.btn_imprimir_Click(Object sender, EventArgs e) en C:\Users\BERTON\Documents\Desarrollo\Tio\Repositorio Sistema Web\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 447
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
    en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
    en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 
@@ -102,159 +40,32 @@ STACKTRACE:    en System.Web.UI.Control.FillNamedControlsTable(Control namingCon
 
 ******************************************************************
 
-ERRORID: 635860313315323343
+ERRORID: 635908215347820367
 
-DATE: 18/12/2015 10:28:51 a.m.
+DATE: 11/02/2016 21:05:34
 
 AGENTE: Ernesto Bertoncini
 
-MESSAGE: La etiqueta contiene atributos 'Width' duplicados.
+MESSAGE: No se puede cargar el archivo o ensamblado 'Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' ni una de sus dependencias. El sistema no puede encontrar el archivo especificado.
 
-SOURCE: System.Web
-
-INSTANCE: 
-
-DATA: System.Collections.ListDictionaryInternal
-
-URL: http://localhost:55789/Aplicativo/admin_horas_mes.aspx
-
-TARGETSITE: Void ProcessError(System.String)
-
-STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
-   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
-   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-
-
-******************************************************************
- 
-
-******************************************************************
-
-ERRORID: 635869871233521634
-
-DATE: 29/12/2015 11:58:43 a.m.
-
-AGENTE: José Federico Bertoncini
-
-MESSAGE: No se puede crear un objeto de tipo 'System.Decimal' a partir de su representación de cadena '10,50' para la propiedad 'Valor'.
-
-SOURCE: System.Web
+SOURCE: Microsoft.ReportViewer.Common
 
 INSTANCE: 
 
 DATA: System.Collections.ListDictionaryInternal
 
-URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=7&a=2015
 
-TARGETSITE: System.Object ObjectFromString(System.Type, System.Reflection.MemberInfo, System.String)
+TARGETSITE: Boolean Write(System.Object, Boolean, Boolean)
 
-STACKTRACE:    en System.Web.UI.PropertyConverter.ObjectFromString(Type objType, MemberInfo propertyInfo, String value)
-   en System.Web.UI.ControlBuilder.AddProperty(String filter, String name, String value, Boolean mainDirectiveMode)
-   en System.Web.UI.ControlBuilder.PreprocessAttribute(String filter, String attribname, String attribvalue, Boolean mainDirectiveMode, Int32 line, Int32 column)
-   en System.Web.UI.ControlBuilder.PreprocessAttributes(ParsedAttributeCollection attribs)
-   en System.Web.UI.ControlBuilder.Init(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs)
-   en System.Web.UI.ControlBuilder.CreateBuilderFromType(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs, Int32 line, String sourceFileName)
-   en System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
-   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
-   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-
-
-******************************************************************
- 
-
-******************************************************************
-
-ERRORID: 635869874405095392
-
-DATE: 29/12/2015 12:04:00 p.m.
-
-AGENTE: José Federico Bertoncini
-
-MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_gastos_administrativos.aspx(40): error CS0123: Ninguna sobrecarga correspondiente a 'valor_decimal_Modifico_valor' coincide con el 'System.EventHandler' delegado
-
-SOURCE: System.Web
-
-INSTANCE: 
-
-DATA: System.Collections.ListDictionaryInternal
-
-URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
-
-TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
-
-STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
-   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
-   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
-   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
-   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
-   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
-   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
-   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
-
-
-******************************************************************
- 
-
-******************************************************************
-
-ERRORID: 635874923616007192
-
-DATE: 04/01/2016 08:19:21 a.m.
-
-AGENTE: José Federico Bertoncini
-
-MESSAGE: Etiqueta de servidor 'uc2:valor_decimal' desconocida.
-
-SOURCE: System.Web
-
-INSTANCE: 
-
-DATA: System.Collections.ListDictionaryInternal
-
-URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
-
-TARGETSITE: Void ProcessError(System.String)
-
-STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
-   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
-   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-
-
-******************************************************************
- 
-
-******************************************************************
-
-ERRORID: 635874956310344935
-
-DATE: 04/01/2016 09:13:51 a.m.
-
-AGENTE: José Federico Bertoncini
-
-MESSAGE: d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_gastos_administrativos.aspx(47): error CS0123: Ninguna sobrecarga correspondiente a 'tb_telefonia_celular_Modifico_valor' coincide con el 'System.EventHandler' delegado
-
-SOURCE: System.Web
-
-INSTANCE: 
-
-DATA: System.Collections.ListDictionaryInternal
-
-URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
-
-TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
-
-STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
-   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
-   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp)
-   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
-   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
-   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
-   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
-   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+STACKTRACE:    en Microsoft.ReportingServices.ReportIntermediateFormat.Persistence.IntermediateFormatWriter.Write(Object obj, Boolean verify, Boolean assertOnInvalidType)
+   en Microsoft.ReportingServices.ReportIntermediateFormat.Persistence.IntermediateFormatWriter.Write(Object obj)
+   en Microsoft.ReportingServices.ReportIntermediateFormat.Persistence.IntermediateFormatWriter.WriteVariantOrPersistable(Object obj)
+   en Microsoft.ReportingServices.ReportPublishing.ReportPublishing.CreateHashForCachedDataSets()
+   en Microsoft.ReportingServices.ReportPublishing.ReportPublishing.InternalCreateIntermediateFormat(Stream definitionStream, String& description, String& language, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, DataSetInfoCollection& sharedDataSetReferences, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks, Byte[]& dataSetsHash)
+   en Microsoft.ReportingServices.ReportPublishing.ReportPublishing.CreateIntermediateFormat(Byte[] definition, String& description, String& language, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, DataSetInfoCollection& sharedDataSetReferences, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks, Byte[]& dataSetsHash)
+   en Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CompileOdpReport(PublishingContext reportPublishingContext, IDataProtection dataProtection, PublishingErrorContext errorContext, String& reportDescription, String& reportLanguage, ParameterInfoCollection& parameters, DataSourceInfoCollection& dataSources, DataSetInfoCollection& sharedDataSetReferences, UserLocationFlags& userReferenceLocation, ArrayList& dataSetsName, Boolean& hasExternalImages, Boolean& hasHyperlinks, Byte[]& dataSetsHash)
+   en Microsoft.ReportingServices.ReportProcessing.ReportProcessing.CreateIntermediateFormat(PublishingContext reportPublishingContext, IDataProtection dataProtection)
 
 
 ******************************************************************
@@ -348,6 +159,72 @@ STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
    en System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
    en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
    en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635966088131281332
+
+DATE: 18/04/2016 20:40:13
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Sequence contains no matching element
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=91&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:line 410
+   at SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:line 166
+   at SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:line 50
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635966092744776890
+
+DATE: 18/04/2016 20:47:54
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Sequence contains no matching element
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=91&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:line 410
+   at SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:line 166
+   at SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:line 50
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 
 
 ******************************************************************

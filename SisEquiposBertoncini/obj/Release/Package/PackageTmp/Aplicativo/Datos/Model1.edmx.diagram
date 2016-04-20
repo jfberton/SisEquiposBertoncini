@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f7cb0f986c74447fbd5ed7997dcff802" Name="Diagram1" ZoomLevel="33" >
+      <Diagram DiagramId="f7cb0f986c74447fbd5ed7997dcff802" Name="Diagram1" ZoomLevel="67" >
         <EntityTypeShape EntityType="Model1.Equipo" Width="2.125" PointX="5.25" PointY="10.25" />
         <EntityTypeShape EntityType="Model1.Categoria_equipo" Width="1.5" PointX="3" PointY="9.875" />
         <AssociationConnector Association="Model1.CategoriaEquipo" />
@@ -39,6 +39,12 @@
         <EntityTypeShape EntityType="Model1.Aux_planilla_gasto_administracion" Width="3.25" PointX="15.625" PointY="12.75" />
         <EntityTypeShape EntityType="Model1.Planilla_gasto_administrativo" Width="3.5" PointX="15.625" PointY="9" />
         <AssociationConnector Association="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" />
+        <EntityTypeShape EntityType="Model1.Aux_total_categoria_mes" Width="3.25" PointX="16.25" PointY="20.25" />
+        <EntityTypeShape EntityType="Model1.Valor_mes_categoria" Width="2.375" PointX="17.125" PointY="17.375" />
+        <AssociationConnector Association="Model1.Aux_total_categoria_mesValor_mes_categoria" />
+        <AssociationConnector Association="Model1.Item_ingreso_egresoValor_mes_categoria" />
+        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes_categoria" Width="3.875" PointX="8.25" PointY="20.375" />
+        <AssociationConnector Association="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
