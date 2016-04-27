@@ -112,6 +112,7 @@
     <Content Include="Aplicativo\planilla_resumen_horas_trabajadas.aspx" />
     <Content Include="Aplicativo\Reportes\Report.aspx" />
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
+    <Content Include="Aplicativo\ver_valores_cargados_categoria.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\bootstrap.min-original.css" />
@@ -492,6 +493,13 @@
     </Compile>
     <Compile Include="Aplicativo\usr_modifica_datos.aspx.designer.cs">
       <DependentUpon>usr_modifica_datos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\ver_valores_cargados_categoria.aspx.cs">
+      <DependentUpon>ver_valores_cargados_categoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\ver_valores_cargados_categoria.aspx.designer.cs">
+      <DependentUpon>ver_valores_cargados_categoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\ver_valores_cargados_equipo.aspx.cs">
       <DependentUpon>ver_valores_cargados_equipo.aspx</DependentUpon>
