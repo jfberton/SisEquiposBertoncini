@@ -49,7 +49,6 @@ C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBerton
 C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
 C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.SqlServer.Types.dll
-d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
@@ -57,7 +56,6 @@ D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBerton
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
-D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll

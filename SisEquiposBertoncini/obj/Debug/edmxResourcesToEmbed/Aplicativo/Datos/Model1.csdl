@@ -92,20 +92,26 @@
       <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
       <End Role="Detalle_valor_item_mes_categoria" EntitySet="Detalle_valor_item_meses_categoria" />
     </AssociationSet>
+    <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Model1.temp_table_filas_items_mes_equipo" />
+    <FunctionImport Name="Obtener_listado_items_ingreso_egreso_mensual">
+      <Parameter Name="mes" Mode="In" Type="Int32" />
+      <Parameter Name="anio" Mode="In" Type="Int32" />
+      <Parameter Name="id_equipo" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>
       <PropertyRef Name="id_equipo" />
     </Key>
     <Property Name="id_equipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Categoria" Relationship="Model1.CategoriaEquipo" FromRole="Equipo" ToRole="Categoria" />
     <Property Name="id_categoria" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Detalles_dias" Relationship="Model1.EquipoDetalle_dia" FromRole="Equipo" ToRole="Detalle_dia" />
-    <Property Name="notas" Type="String" Nullable="false" />
+    <Property Name="notas" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Items_por_amortizar" Relationship="Model1.EquipoItem_por_amortizar" FromRole="Equipo" ToRole="Item_por_amortizar" />
     <NavigationProperty Name="Ingresos_egresos_mensuales" Relationship="Model1.EquipoIngreso_egreso_mensual_equipo" FromRole="Equipo" ToRole="Ingreso_egreso_mensual_equipo" />
-    <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
+    <Property Name="fecha_baja" Type="DateTime" Nullable="true" Precision="3" />
     <Property Name="OUT" Type="Boolean" Nullable="false" />
     <Property Name="Generico" Type="Boolean" Nullable="false" />
     <Property Name="EsTrabajo" Type="Boolean" Nullable="true" />
@@ -119,9 +125,9 @@
       <PropertyRef Name="id_categoria" />
     </Key>
     <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Equipos" Relationship="Model1.CategoriaEquipo" FromRole="Categoria" ToRole="Equipo" />
-    <Property Name="descripcion" Type="String" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Type="Model1.Categoria_equipo" Role="Categoria" Multiplicity="1" />
@@ -140,26 +146,26 @@
       <PropertyRef Name="id_empleado" />
     </Key>
     <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Categoria" Relationship="Model1.Categoria_empleadoEmpleado" FromRole="Empleado" ToRole="Categoria_empleado" />
     <Property Name="id_categoria" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Dias" Relationship="Model1.EmpleadoDia" FromRole="Empleado" ToRole="Dia" />
     <NavigationProperty Name="Area" Relationship="Model1.AreaEmpleado" FromRole="Empleado" ToRole="Area" />
     <Property Name="id_area" Type="Int32" Nullable="false" />
-    <Property Name="dni" Type="String" Nullable="false" />
-    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
-    <Property Name="fecha_baja" Type="DateTime" Nullable="true" />
+    <Property Name="dni" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fecha_baja" Type="DateTime" Nullable="true" Precision="3" />
     <NavigationProperty Name="Resumenes_meses_empleado" Relationship="Model1.EmpleadoResumen_mes_empleado" FromRole="Empleado" ToRole="Resumen_mes_empleado" />
-    <Property Name="fecha_alta" Type="DateTime" Nullable="true" />
+    <Property Name="fecha_alta" Type="DateTime" Nullable="true" Precision="3" />
   </EntityType>
   <EntityType Name="Categoria_empleado">
     <Key>
       <PropertyRef Name="id_categoria" />
     </Key>
     <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Empleados" Relationship="Model1.Categoria_empleadoEmpleado" FromRole="Categoria_empleado" ToRole="Empleado" />
-    <Property Name="descripcion" Type="String" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <Association Name="Categoria_empleadoEmpleado">
     <End Type="Model1.Categoria_empleado" Role="Categoria_empleado" Multiplicity="1" />
@@ -178,9 +184,9 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" />
-    <Property Name="user" Type="String" Nullable="false" />
-    <Property Name="pass" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="user" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="pass" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="perfil" Type="Model1.perfil_usuario" Nullable="false" />
   </EntityType>
   <EnumType Name="perfil_usuario">
@@ -196,18 +202,18 @@
       <PropertyRef Name="id_dia" />
     </Key>
     <Property Name="id_dia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Empleado" Relationship="Model1.EmpleadoDia" FromRole="Dia" ToRole="Empleado" />
     <Property Name="id_empleado" Type="Int32" Nullable="false" />
-    <Property Name="horas_normales" Type="String" Nullable="false" />
-    <Property Name="horas_extra_50" Type="String" Nullable="false" />
-    <Property Name="horas_extra_100" Type="String" Nullable="false" />
+    <Property Name="horas_normales" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="horas_extra_50" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="horas_extra_100" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Detalles" Relationship="Model1.DiaDetalle_dia" FromRole="Dia" ToRole="Detalle_dia" />
     <Property Name="estado_tm" Type="Model1.Estado_turno_dia" Nullable="false" />
     <Property Name="estado_tt" Type="Model1.Estado_turno_dia" Nullable="false" />
-    <Property Name="ausente" Type="String" Nullable="false" />
-    <Property Name="guardia" Type="String" Nullable="false" />
-    <Property Name="varios_taller" Type="String" Nullable="false" />
+    <Property Name="ausente" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="guardia" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="varios_taller" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <Association Name="EmpleadoDia">
     <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
@@ -228,8 +234,8 @@
     <Property Name="id_detalle_dia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Equipo" Relationship="Model1.EquipoDetalle_dia" FromRole="Detalle_dia" ToRole="Equipo" />
     <Property Name="id_equipo" Type="Int32" Nullable="false" />
-    <Property Name="hora_desde" Type="String" Nullable="false" />
-    <Property Name="hora_hasta" Type="String" Nullable="false" />
+    <Property Name="hora_desde" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="hora_hasta" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Dia" Relationship="Model1.DiaDetalle_dia" FromRole="Detalle_dia" ToRole="Dia" />
     <Property Name="id_dia" Type="Int32" Nullable="false" />
   </EntityType>
@@ -262,7 +268,7 @@
       <PropertyRef Name="id_area" />
     </Key>
     <Property Name="id_area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Empleados" Relationship="Model1.AreaEmpleado" FromRole="Area" ToRole="Empleado" />
   </EntityType>
   <Association Name="AreaEmpleado">
@@ -284,7 +290,7 @@
     <Property Name="id_item" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Equipo" Relationship="Model1.EquipoItem_por_amortizar" FromRole="Item_por_amortizar" ToRole="Equipo" />
     <Property Name="id_equipo" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="costo_cero_km_uss" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
     <Property Name="porcentaje_usado" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
     <Property Name="porcentaje_valor_recidual" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
@@ -341,9 +347,9 @@
       <PropertyRef Name="id_item" />
     </Key>
     <Property Name="id_item" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tipo" Type="String" Nullable="false" />
-    <Property Name="nombre" Type="String" Nullable="false" />
-    <Property Name="descripcion" Type="String" Nullable="false" />
+    <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Valores_mes" Relationship="Model1.Item_ingreso_egresoValor_mes" FromRole="Item_ingreso_egreso" ToRole="Valor_mes" />
     <NavigationProperty Name="Hijos" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso" ToRole="Item_ingreso_egreso1" />
     <NavigationProperty Name="Padre" Relationship="Model1.Item_ingreso_egresoItem_ingreso_egreso" FromRole="Item_ingreso_egreso1" ToRole="Item_ingreso_egreso" />
@@ -411,8 +417,8 @@
       <PropertyRef Name="id_feriado" />
     </Key>
     <Property Name="id_feriado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fecha" Type="DateTime" Nullable="false" />
-    <Property Name="descripcion" Type="String" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="Resumen_mes_empleado">
     <Key>
@@ -429,13 +435,13 @@
     <Property Name="dias_por_cargar" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
     <Property Name="dias_out" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
     <Property Name="dias_presentes_en_dias_no_laborables" Type="Decimal" Nullable="false" Scale="2" Precision="5" />
-    <Property Name="total_horas_normales" Type="String" Nullable="false" />
-    <Property Name="total_horas_extra_50" Type="String" Nullable="false" />
-    <Property Name="total_horas_extra_100" Type="String" Nullable="false" />
+    <Property Name="total_horas_normales" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="total_horas_extra_50" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="total_horas_extra_100" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Sueldo" Type="Decimal" Nullable="false" Scale="2" Precision="11" DefaultValue="0" />
-    <Property Name="total_horas_ausente" Type="String" Nullable="false" />
-    <Property Name="total_horas_guardia" Type="String" Nullable="false" />
-    <Property Name="total_horas_varios_taller" Type="String" Nullable="false" />
+    <Property Name="total_horas_ausente" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="total_horas_guardia" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="total_horas_varios_taller" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <Association Name="EmpleadoResumen_mes_empleado">
     <End Type="Model1.Empleado" Role="Empleado" Multiplicity="1" />
@@ -456,9 +462,9 @@
     <Property Name="id_detalle_valor_item_mes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Valor_item_mes" Relationship="Model1.Valor_mesDetalle_valor_item_mes" FromRole="Detalle_valor_item_mes" ToRole="Valor_mes" />
     <Property Name="id_valor_mes" Type="Int32" Nullable="false" />
-    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="monto" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
-    <Property Name="descripcion" Type="String" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <Association Name="Valor_mesDetalle_valor_item_mes">
     <End Type="Model1.Valor_mes" Role="Valor_mes" Multiplicity="1" />
@@ -493,7 +499,7 @@
     <Property Name="viaticos_presupuestados" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
     <Property Name="mes" Type="Int32" Nullable="false" />
     <Property Name="anio" Type="Int32" Nullable="false" />
-    <Property Name="tipo_empleado" Type="String" Nullable="false" />
+    <Property Name="tipo_empleado" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="indumentaria" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
     <Property Name="repuestos" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
     <Property Name="gastos_varios" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
@@ -588,9 +594,9 @@
       <PropertyRef Name="id_detalle_valor_item_mes_categoria" />
     </Key>
     <Property Name="id_detalle_valor_item_mes_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="monto" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
-    <Property Name="descripcion" Type="String" Nullable="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Valor_mes_categoria" Relationship="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" FromRole="Detalle_valor_item_mes_categoria" ToRole="Valor_mes_categoria" />
     <Property Name="id_valor_mes_categoria_item" Type="Int32" Nullable="false" />
   </EntityType>
@@ -606,4 +612,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="temp_table_filas_items_mes_equipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_valor_mes" Type="Int32" Nullable="false" />
+    <Property Name="concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="valor" Type="Decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="row_class" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="visible" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

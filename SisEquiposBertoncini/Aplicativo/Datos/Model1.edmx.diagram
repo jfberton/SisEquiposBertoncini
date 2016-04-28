@@ -45,6 +45,7 @@
         <AssociationConnector Association="Model1.Item_ingreso_egresoValor_mes_categoria" />
         <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes_categoria" Width="3.875" PointX="8.25" PointY="20.375" />
         <AssociationConnector Association="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" />
+        <EntityTypeShape EntityType="Model1.temp_table_filas_items_mes_equipo" Width="1.5" PointX="11.375" PointY="8.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

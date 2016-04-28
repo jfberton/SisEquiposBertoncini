@@ -228,3 +228,71 @@ STACKTRACE:    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Fu
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635973897127461501
+
+DATE: 27/04/2016 21:35:12
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=5&ed=1&m=9&a=2015
+
+TARGETSITE: Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+
+STACKTRACE:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.EntityClient.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+
+
+******************************************************************

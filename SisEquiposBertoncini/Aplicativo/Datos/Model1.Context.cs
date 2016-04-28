@@ -12,6 +12,9 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class Model1Container : DbContext
     {
@@ -48,5 +51,23 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public DbSet<Aux_total_categoria_mes> Aux_total_categoria_meses { get; set; }
         public DbSet<Valor_mes_categoria> Valor_mes_categorias { get; set; }
         public DbSet<Detalle_valor_item_mes_categoria> Detalle_valor_item_meses_categoria { get; set; }
+        public DbSet<temp_table_filas_items_mes_equipo> temp_table_filas_items_mes_equipo { get; set; }
+    
+        public virtual int Obtener_listado_items_ingreso_egreso_mensual(Nullable<int> mes, Nullable<int> anio, Nullable<int> id_equipo)
+        {
+            var mesParameter = mes.HasValue ?
+                new ObjectParameter("mes", mes) :
+                new ObjectParameter("mes", typeof(int));
+    
+            var anioParameter = anio.HasValue ?
+                new ObjectParameter("anio", anio) :
+                new ObjectParameter("anio", typeof(int));
+    
+            var id_equipoParameter = id_equipo.HasValue ?
+                new ObjectParameter("id_equipo", id_equipo) :
+                new ObjectParameter("id_equipo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Obtener_listado_items_ingreso_egreso_mensual", mesParameter, anioParameter, id_equipoParameter);
+        }
     }
 }
