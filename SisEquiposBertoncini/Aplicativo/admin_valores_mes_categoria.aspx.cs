@@ -134,199 +134,42 @@ namespace SisEquiposBertoncini.Aplicativo
 
             using (var cxt = new Model1Container())
             {
-                List<fila_item_ingreso_egreso_equipo> items_grilla = new List<fila_item_ingreso_egreso_equipo>();
+                //List<Item_ingreso_egreso> conceptos;
+                //conceptos = cxt.Items_ingresos_egresos.ToList();
+                //var roots = conceptos.Where(ii => ii.id_item_padre == null);
 
-                List<Item_ingreso_egreso> conceptos;
-                conceptos = cxt.Items_ingresos_egresos.ToList();
-                var roots = conceptos.Where(ii => ii.id_item_padre == null);
+                //foreach (Item_ingreso_egreso item in roots)
+                //{
+                //    AgregarItem(items_grilla, item);
+                //}
 
-                foreach (Item_ingreso_egreso item in roots)
-                {
-                    AgregarItem(items_grilla, item);
-                }
+                int mes = Convert.ToInt32(ddl_mes.SelectedValue);
+                int anio = Convert.ToInt32(ddl_anio.SelectedValue);
+                int categoria = Convert.ToInt32(ddl_categoria.SelectedValue);
 
-                Session["items_grilla"] = items_grilla;
 
-                gv_items.DataSource = items_grilla;
+                var ejecutar_procedimiento = cxt.Obtener_listado_items_ingreso_egreso_mensual_categoria(categoria, mes, anio);
+
+                var items_grilla = (from item in cxt.temp_table_filas_items_mes_equipo
+                                    select item).ToList();
+                var items_grilla_formateados = (from item in items_grilla
+                                                select new fila_item_ingreso_egreso_equipo()
+                                                {
+                                                    id_item = item.id_valor_mes,
+                                                    concepto = item.concepto,
+                                                    valor = item.valor,
+                                                    valorstr = item.valor.ToString("C"),
+                                                    visible = item.visible,
+                                                    row_class = item.row_class
+                                                }).ToList();
+
+                //Session["items_grilla"] = items_grilla;
+
+                gv_items.DataSource = items_grilla_formateados;
                 gv_items.DataBind();
                 div_alert.Visible = false;
             }
 
-        }
-
-        private void AgregarItem(List<fila_item_ingreso_egreso_equipo> items_grilla, Item_ingreso_egreso item)
-        {
-            using (var cxt = new Model1Container())
-            {
-                string str_id_categoria = Request.QueryString["cat"];
-                string str_mes = Request.QueryString["m"];
-                string str_anio = Request.QueryString["a"];
-
-                int id_categoria = Convert.ToInt32(str_id_categoria);
-                int mes = Convert.ToInt32(str_mes);
-                int anio = Convert.ToInt32(str_anio);
-                List<Ingreso_egreso_mensual_equipo> io_equipos_categoria = (
-                                                                            from io in cxt.Ingresos_egresos_mensuales_equipos
-                                                                            where io.Equipo.id_categoria == id_categoria &&
-                                                                            io.mes == mes &&
-                                                                            io.anio == anio
-                                                                            select io
-                                                                            ).ToList();
-
-                decimal valor_mes_equipos = (from io_mes in io_equipos_categoria
-                                             select new
-                                             {
-                                                 Valor = ObtenerValor(io_mes, item)
-                                             }).Sum(s => s.Valor);
-
-                Aux_total_categoria_mes auxcategoria = cxt.Aux_total_categoria_meses.FirstOrDefault(x => x.mes == mes && x.anio == anio && x.id_categoria_equipo == id_categoria);
-                decimal valor_mes_categoria = auxcategoria != null ? ObtenerValorCategoria(auxcategoria, item) : 0;
-
-                decimal valor_mes = valor_mes_equipos + valor_mes_categoria;
-
-                bool _visible = (item.Hijos.Count == 0 && !(item.nombre == "Impuestos" && item.Padre.nombre == "INGRESOS") && !(item.nombre == "Accesorios Hs Extra 24% (1/12x2)" && item.Padre.nombre == "Otros costos variables") && !(item.nombre == "Amortización" && item.Padre.nombre == "Costos Fijos No Erogables"));
-                items_grilla.Add(new fila_item_ingreso_egreso_equipo()
-                {
-                    id_item = item.id_item,
-                    concepto = item.nombre,
-                    valor = valor_mes,
-                    valorstr = valor_mes.ToString("$ #,##0.00"),
-                    visible = _visible,
-                    row_class = "treegrid-" + item.id_item + (item.id_item_padre != null ? " treegrid-parent-" + item.id_item_padre : "") + (item.id_item_padre == null ? " h4" : "") + (item.tipo == "Ingreso" ? " alert-success" : " alert-danger")
-                });
-
-                foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x => x.id_item))
-                {
-                    AgregarItem(items_grilla, hijo);
-                }
-            }
-
-        }
-
-        private decimal ObtenerValorCategoria(Aux_total_categoria_mes auxcategoria, Item_ingreso_egreso item)
-        {
-            decimal ret = 0;
-
-            using (var cxt = new Model1Container())
-            {
-                auxcategoria = cxt.Aux_total_categoria_meses.First(x => x.id_aux_total_categoria_mes == auxcategoria.id_aux_total_categoria_mes);
-
-                if (item.Hijos.Count > 0)
-                {
-                    foreach (Item_ingreso_egreso hijo in item.Hijos)
-                    {
-                        ret = ret + ObtenerValorCategoria(auxcategoria, hijo);
-                    }
-
-                    Valor_mes_categoria valor_mes_item = auxcategoria.Valores_mes.FirstOrDefault(x => x.id_item == item.id_item);
-                    if (valor_mes_item != null)
-                    {
-                        valor_mes_item.valor = ret;
-                    }
-                    else
-                    {
-                        valor_mes_item = new Valor_mes_categoria()
-                        {
-                            id_item = item.id_item,
-                            valor = 0
-                        };
-
-                        auxcategoria.Valores_mes.Add(valor_mes_item);
-                    }
-                    cxt.SaveChanges();
-                }
-                else
-                {
-                    Valor_mes_categoria valor_mes_item = auxcategoria.Valores_mes.FirstOrDefault(x => x.id_item == item.id_item);
-                    if (valor_mes_item != null)
-                    {
-                        valor_mes_item.valor = valor_mes_item.Detalle.Sum(x => x.monto);
-                    }
-                    else
-                    {
-                        valor_mes_item = new Valor_mes_categoria()
-                        {
-                            id_item = item.id_item,
-                            valor = 0
-                        };
-
-                        auxcategoria.Valores_mes.Add(valor_mes_item);
-                    }
-
-                    cxt.SaveChanges();
-                    ret = valor_mes_item.valor;
-                }
-            }
-
-            return ret;
-        }
-
-        /// <summary>
-        /// Crea, actualiza y obtiene el valor del item en el mes y el equipo
-        /// </summary>
-        /// <param name="ioEquipo"></param>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        private decimal ObtenerValor(Ingreso_egreso_mensual_equipo ioEquipo, Item_ingreso_egreso item)
-        {
-            decimal ret = 0;
-
-            using (var cxt = new Model1Container())
-            {
-                ioEquipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == ioEquipo.id_ingreso_egreso_mensual);
-
-                if ((ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == true && item.mostrar_en_trabajo.HasValue && item.mostrar_en_trabajo.Value == true) ||
-                    (ioEquipo.Equipo.EsTrabajo.HasValue && ioEquipo.Equipo.EsTrabajo.Value == false && item.mostrar_en_equipo.HasValue && item.mostrar_en_equipo.Value == true))
-                {
-                    if (item.Hijos.Count > 0)
-                    {
-                        foreach (Item_ingreso_egreso hijo in item.Hijos)
-                        {
-                            ret = ret + ObtenerValor(ioEquipo, hijo);
-                        }
-
-                        Valor_mes valor_mes_item = ioEquipo.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
-                        if (valor_mes_item != null)
-                        {
-                            valor_mes_item.valor = ret;
-                        }
-                        else
-                        {
-                            valor_mes_item = new Valor_mes()
-                            {
-                                id_item = item.id_item,
-                                valor = 0
-                            };
-
-                            ioEquipo.Valores_meses.Add(valor_mes_item);
-                        }
-                        cxt.SaveChanges();
-                    }
-                    else
-                    {
-                        Valor_mes valor_mes_item = ioEquipo.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
-                        if (valor_mes_item != null)
-                        {
-                            valor_mes_item.valor = valor_mes_item.Detalle.Sum(x => x.monto);
-                        }
-                        else
-                        {
-                            valor_mes_item = new Valor_mes()
-                            {
-                                id_item = item.id_item,
-                                valor = 0
-                            };
-
-                            ioEquipo.Valores_meses.Add(valor_mes_item);
-                        }
-
-                        cxt.SaveChanges();
-                        ret = valor_mes_item.valor;
-                    }
-                }
-            }
-
-            return ret;
         }
 
         protected void gv_items_RowDataBound(object sender, GridViewRowEventArgs e)

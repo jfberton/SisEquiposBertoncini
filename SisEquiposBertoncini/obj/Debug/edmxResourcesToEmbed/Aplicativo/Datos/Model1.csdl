@@ -98,6 +98,11 @@
       <Parameter Name="anio" Mode="In" Type="Int32" />
       <Parameter Name="id_equipo" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="Obtener_listado_items_ingreso_egreso_mensual_categoria">
+      <Parameter Name="ID_CATEGORIA" Mode="In" Type="Int32" />
+      <Parameter Name="MES" Mode="In" Type="Int32" />
+      <Parameter Name="ANIO" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Equipo">
     <Key>

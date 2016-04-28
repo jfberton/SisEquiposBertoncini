@@ -477,6 +477,11 @@
     <Parameter Name="anio" Type="int" Mode="In" />
     <Parameter Name="id_equipo" Type="int" Mode="In" />
   </Function>
+  <Function Name="Obtener_listado_items_ingreso_egreso_mensual_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_CATEGORIA" Type="int" Mode="In" />
+    <Parameter Name="MES" Type="int" Mode="In" />
+    <Parameter Name="ANIO" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Aux_planilla_calculos" EntityType="Self.Aux_planilla_calculos" Schema="dbo" store:Type="Tables" />

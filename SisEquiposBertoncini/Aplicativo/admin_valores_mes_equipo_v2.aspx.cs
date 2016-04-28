@@ -134,23 +134,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             using (var cxt = new Model1Container())
             {
-                //Ingreso_egreso_mensual_equipo valores_equipo_mes_cxt;
-
-                //if (ioEquipo != null)
-                //{
-                //    valores_equipo_mes_cxt = cxt.Ingresos_egresos_mensuales_equipos.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == ioEquipo.id_ingreso_egreso_mensual);
-                //}
-                //else
-                //{
-                //    valores_equipo_mes_cxt = new Ingreso_egreso_mensual_equipo();
-                //    valores_equipo_mes_cxt.id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
-                //    valores_equipo_mes_cxt.mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
-                //    valores_equipo_mes_cxt.anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
-                //    cxt.Ingresos_egresos_mensuales_equipos.Add(valores_equipo_mes_cxt);
-                //    cxt.SaveChanges();
-                //}
-
-                //Seteo el valor del concepto amortizacion es el costo del equipo por amortizar por el valor del dolar del mes
+                
                 int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
                 int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
                 int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
