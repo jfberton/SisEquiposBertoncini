@@ -282,14 +282,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="temp_table_filas_items_mes_equipo">
-      <EntityTypeMapping TypeName="Model1.temp_table_filas_items_mes_equipo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.temp_table_filas_items_mes_equipo)">
         <MappingFragment StoreEntitySet="temp_table_filas_items_mes_equipo">
-          <ScalarProperty Name="visible" ColumnName="visible" />
-          <ScalarProperty Name="row_class" ColumnName="row_class" />
-          <ScalarProperty Name="valor" ColumnName="valor" />
-          <ScalarProperty Name="concepto" ColumnName="concepto" />
-          <ScalarProperty Name="id_valor_mes" ColumnName="id_valor_mes" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_valor_mes" ColumnName="id_valor_mes" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="row_class" ColumnName="row_class" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

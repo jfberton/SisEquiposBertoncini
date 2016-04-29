@@ -54,8 +54,8 @@ D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBerton
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
-D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
-D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll

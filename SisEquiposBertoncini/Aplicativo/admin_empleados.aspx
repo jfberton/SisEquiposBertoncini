@@ -66,7 +66,6 @@
                                 data-nombre='<%#Eval("empleado_nombre")%>'>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
-
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

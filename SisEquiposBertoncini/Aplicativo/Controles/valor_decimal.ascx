@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="valor_decimal.ascx.cs" Inherits="SisEquiposBertoncini.Aplicativo.Controles.valor_decimal" %>
 <link href="../../css/bootstrap.css" rel="stylesheet" />
-<div class="input-group" style="width:150px">
+<div class="input-group" style="width:100%">
     <input type="text" id="tb_valor" class="form-control text-right" runat="server"  />
     <span class="input-group-btn">
         <button class="btn btn-warning" runat="server" id="btn_edit" onserverclick="btn_edit_ServerClick"><span class="glyphicon glyphicon-edit"></span></button>

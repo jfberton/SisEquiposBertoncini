@@ -23,7 +23,7 @@
     </Key>
     <Property Name="id_detalle_gastos_administrativos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_equipo" Type="int" Nullable="false" />
-    <Property Name="porcentaje" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="porcentaje" Type="decimal" Precision="11" Scale="4" Nullable="false" />
     <Property Name="id_planilla_gastos_administartivos" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Aux_planilla_gastos_horas_hombres">

@@ -517,7 +517,7 @@
     </Key>
     <Property Name="id_detalle_gastos_administrativos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_equipo" Type="Int32" Nullable="false" />
-    <Property Name="porcentaje" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+    <Property Name="porcentaje" Type="Decimal" Nullable="false" Scale="4" Precision="11" />
     <NavigationProperty Name="Planilla" Relationship="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" FromRole="Aux_planilla_gasto_administracion" ToRole="Planilla_gasto_administrativo" />
     <Property Name="id_planilla_gastos_administartivos" Type="Int32" Nullable="false" />
   </EntityType>

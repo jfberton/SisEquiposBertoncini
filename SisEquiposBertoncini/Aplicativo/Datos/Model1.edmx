@@ -28,7 +28,7 @@
           </Key>
           <Property Name="id_detalle_gastos_administrativos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="porcentaje" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="porcentaje" Type="decimal" Precision="11" Scale="4" Nullable="false" />
           <Property Name="id_planilla_gastos_administartivos" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Aux_planilla_gastos_horas_hombres">
@@ -1102,7 +1102,7 @@
           </Key>
           <Property Name="id_detalle_gastos_administrativos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_equipo" Type="Int32" Nullable="false" />
-          <Property Name="porcentaje" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="porcentaje" Type="Decimal" Nullable="false" Scale="4" Precision="11" />
           <NavigationProperty Name="Planilla" Relationship="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" FromRole="Aux_planilla_gasto_administracion" ToRole="Planilla_gasto_administrativo" />
           <Property Name="id_planilla_gastos_administartivos" Type="Int32" Nullable="false" />
         </EntityType>
@@ -1499,18 +1499,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="temp_table_filas_items_mes_equipo">
-            <EntityTypeMapping TypeName="Model1.temp_table_filas_items_mes_equipo">
-              <MappingFragment StoreEntitySet="temp_table_filas_items_mes_equipo">
-                <ScalarProperty Name="visible" ColumnName="visible" />
-                <ScalarProperty Name="row_class" ColumnName="row_class" />
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="concepto" ColumnName="concepto" />
-                <ScalarProperty Name="id_valor_mes" ColumnName="id_valor_mes" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <EntitySetMapping Name="temp_table_filas_items_mes_equipo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.temp_table_filas_items_mes_equipo)">
+        <MappingFragment StoreEntitySet="temp_table_filas_items_mes_equipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_valor_mes" ColumnName="id_valor_mes" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="row_class" ColumnName="row_class" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual" />
           <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_categoria" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_categoria" />
   </EntityContainerMapping>

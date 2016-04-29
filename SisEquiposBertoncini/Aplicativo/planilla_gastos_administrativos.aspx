@@ -3,22 +3,19 @@
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 <%@ Register Src="~/Aplicativo/Controles/valor_decimal.ascx" TagPrefix="uc1" TagName="valor_decimal" %>
 
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_menu" runat="server">
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
-    <h3>Planilla de gastos administrativos</h3><br />
+    <h3>Planilla de gastos administrativos</h3>
+    <br />
     <table class="table table-bordered">
         <tr>
             <td>Mes</td>
             <td>
-                <asp:DropDownList runat="server" ID="ddl_mes" AutoPostBack="true" CssClass="form-control" Width="100%">
+                <asp:DropDownList runat="server" ID="ddl_mes" CssClass="form-control" Width="100%">
                     <asp:ListItem Text="Enero" Value="1" />
                     <asp:ListItem Text="Febrero" Value="2" />
                     <asp:ListItem Text="Marzo" Value="3" />
@@ -34,8 +31,13 @@
                 </asp:DropDownList></td>
             <td>Año</td>
             <td>
-                <asp:DropDownList runat="server" ID="ddl_anio" AutoPostBack="true" CssClass="form-control" Width="100%">
+                <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control" Width="100%">
                 </asp:DropDownList></td>
+            <td>
+                <asp:Button Text="buscar" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" runat="server" />
+                <asp:Button Text="Nueva busqueda" ID="btn_nueva_busqueda" Visible="false" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" runat="server" />
+            </td>
+
         </tr>
     </table>
     <h4><u>Montos por distribuir</u></h4>
@@ -43,35 +45,66 @@
         <tr>
             <td>Telefonía celular</td>
             <td>
-                <uc1:valor_decimal runat="server" ID="tb_telefonia_celular" OnModifico_valor="tb_telefonia_celular_Modifico_valor" Formato_valor="pesos" />
+                <asp:TextBox runat="server" id="tb_telefonia_celular" CssClass="form-control"/>
             </td>
             <td>Sueldos administración</td>
             <td>
-                <uc1:valor_decimal runat="server" ID="tb_sueldos_administracion" OnModifico_valor="tb_sueldos_administracion_Modifico_valor" Formato_valor="pesos" />
+                <asp:TextBox runat="server" id="tb_sueldos_administracion" CssClass="form-control"/>
             </td>
         </tr>
         <tr>
-            <td>Honorarios de sistema</td>
+            <td>Honorarios varios</td>
             <td>
-                <uc1:valor_decimal runat="server" ID="tb_honorarios_sistema" OnModifico_valor="tb_honorarios_sistema_Modifico_valor" Formato_valor="pesos" />
+                <asp:TextBox runat="server" id="tb_honorarios_sistema" CssClass="form-control"/>
             </td>
             <td>Honorarios contable</td>
             <td>
-                <uc1:valor_decimal runat="server" ID="tb_honorarios_contables" OnModifico_valor="tb_honorarios_contables_Modifico_valor" Formato_valor="pesos" /></td>
+                <asp:TextBox runat="server" id="tb_honorarios_contables" CssClass="form-control"/>
+            </td>
         </tr>
         <tr>
             <td>Papelería - Librería</td>
             <td>
-                <uc1:valor_decimal runat="server" ID="tb_papeleria_libreria" OnModifico_valor="tb_papeleria_libreria_Modifico_valor" Formato_valor="pesos" /></td>
+                <asp:TextBox runat="server" id="tb_papeleria_libreria" CssClass="form-control"/>
+            </td>
             <td>Otros</td>
             <td>
-                <uc1:valor_decimal runat="server" ID="tb_otros" OnModifico_valor="tb_otros_Modifico_valor" Formato_valor="pesos" /></td>
+                <asp:TextBox runat="server" id="tb_otros" CssClass="form-control"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <asp:Button Text="Aplicar cambios" ID="btn_aplicar" CssClass="btn btn-default" OnClick="btn_aplicar_Click" runat="server" /></td>
         </tr>
     </table>
+
+    <h4><u>Equipos</u></h4>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <td>Seleccione equipo a agregar</td>
+                    <td>
+                        <asp:DropDownList runat="server" ID="ddl_equipos" CssClass="form-control" Width="100%">
+                        </asp:DropDownList>
+                    </td>
+                    <td>Porcentaje de participación (max <asp:Label Text="" ID="lbl_maximo_nivel_porcentaje_participacion" runat="server"></asp:Label> )</td>
+                    <td>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_porcentaje" />
+                    </td>
+                    <td>
+                        <asp:Button Text="Agregar" runat="server" ID="btn_agregar_equipo" CssClass="btn btn-default" OnClick="btn_agregar_equipo_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div runat="server" id="div_detalle">
-
             </div>
         </div>
     </div>

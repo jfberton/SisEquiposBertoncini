@@ -158,6 +158,7 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
             btn_cancel.Visible = Editando;
             btn_ok.Visible = Editando;
             tb_valor.Disabled = !Editando;
+            
         }
 
     }

@@ -296,3 +296,340 @@ STACKTRACE:    at System.Data.SqlClient.SqlConnection.OnError(SqlException excep
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635974621450812873
+
+DATE: 28/04/2016 17:42:25
+
+MESSAGE: La base de datos 'equipos_berton' ya existe. Elija un nombre diferente para la base de datos.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/default.aspx
+
+TARGETSITE: Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+
+STACKTRACE:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at System.Data.SqlClient.SqlProviderServices.<>c__DisplayClass30_0.<DbCreateDatabase>b__0(SqlConnection conn)
+   at System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)
+   at System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)
+   at System.Data.SqlClient.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Objects.ObjectContext.CreateDatabase()
+   at System.Data.Entity.Internal.DatabaseOperations.Create(ObjectContext objectContext)
+   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext)
+   at System.Data.Entity.Database.CreateIfNotExists()
+   at SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) in D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:line 45
+   at System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635974622742566757
+
+DATE: 28/04/2016 17:44:34
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+Ya existe un cursor con el nombre 'RECORRER'.
+El cursor ya está abierto.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+No existe un cursor con el nombre 'RECORRER'.
+Comprobación de información de identidad: valor de identidad actual '76'.
+Ejecución de DBCC completada. Si hay mensajes de error, consulte al administrador del sistema.
+Comprobación de información de identidad: valor de identidad actual '8'.
+Ejecución de DBCC completada. Si hay mensajes de error, consulte al administrador del sistema.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_categoria.aspx?cat=1&ed=1&m=9&a=2015
+
+TARGETSITE: Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+
+STACKTRACE:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.EntityClient.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635974663181979760
+
+DATE: 28/04/2016 18:51:58
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: Could not load file or assembly 'Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+
+SOURCE: mscorlib
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/Reportes/Report.aspx
+
+TARGETSITE: System.Reflection.RuntimeAssembly _nLoad(System.Reflection.AssemblyName, System.String, System.Security.Policy.Evidence, System.Reflection.RuntimeAssembly, System.Threading.StackCrawlMark ByRef, IntPtr, Boolean, Boolean, Boolean)
+
+STACKTRACE:    at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at System.Web.Configuration.CompilationSection.LoadAssembly(String assemblyName, Boolean throwOnFail)
+   at System.Web.UI.TemplateParser.LoadAssembly(String assemblyName, Boolean throwOnFail)
+   at System.Web.UI.TemplateParser.AddAssemblyDependency(String assemblyName, Boolean addDependentAssemblies)
+   at System.Web.UI.MainTagNameToTypeMapper.ProcessTagNamespaceRegistrationCore(TagNamespaceRegisterEntry nsRegisterEntry)
+   at System.Web.UI.MainTagNameToTypeMapper.ProcessTagNamespaceRegistration(TagNamespaceRegisterEntry nsRegisterEntry)
+   at System.Web.UI.BaseTemplateParser.ProcessDirective(String directiveName, IDictionary directive)
+   at System.Web.UI.TemplateControlParser.ProcessDirective(String directiveName, IDictionary directive)
+   at System.Web.UI.PageParser.ProcessDirective(String directiveName, IDictionary directive)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635974683868802978
+
+DATE: 28/04/2016 19:26:26
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: d:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_gastos_administrativos.aspx(48): error CS1061: 'ASP.aplicativo_planilla_gastos_administrativos_aspx' does not contain a definition for 'tb_telefonia_celular_Modifico_valor' and no extension method 'tb_telefonia_celular_Modifico_valor' accepting a first argument of type 'ASP.aplicativo_planilla_gastos_administrativos_aspx' could be found (are you missing a using directive or an assembly reference?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/planilla_gastos_administrativos.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635975111542825187
+
+DATE: 29/04/2016 7:19:14
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: The function import 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual' cannot be executed because it is not mapped to a store function.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=5&ed=1&m=1&a=2015
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    at System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   at System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635975112068650594
+
+DATE: 29/04/2016 7:20:06
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: The function import 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual' cannot be executed because it is not mapped to a store function.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=5&ed=1&m=1&a=2015
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    at System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   at System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635975112914599137
+
+DATE: 29/04/2016 7:21:31
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: The function import 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual' cannot be executed because it is not mapped to a store function.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=5&ed=1&m=1&a=2015
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    at System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   at System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 635975114876636915
+
+DATE: 29/04/2016 7:24:47
+
+AGENTE: Ernesto Bertoncini
+
+MESSAGE: The function import 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual' cannot be executed because it is not mapped to a store function.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=24&ed=1&m=1&a=2015
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    at System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   at System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
