@@ -86,6 +86,13 @@ namespace SisEquiposBertoncini.Aplicativo
             public decimal monto_horas_acumuladas { get; set; }
         }
 
+        private struct equipo_tabla_out
+        {
+            public int id_equipo { get; set; }
+            public string nombre { get; set; }
+            public decimal dias_out { get; set; }
+        }
+
         private struct total_categoria_tabla
         {
             public string categoria { get; set; }
@@ -188,7 +195,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 CargarFilasCategoria(trabajos_especiales, filas_trabajos_especiales, mes, anio, costo_hora);
                 CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
 
-                if(categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
+                if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     List<Equipo> equipos = cxt.Equipos.Where(x => x.OUT).ToList();
                     CargarFilasCategoria_OUT(equipos, filas_out_soldadores, mes, anio, costo_hora);
@@ -199,6 +206,19 @@ namespace SisEquiposBertoncini.Aplicativo
                 horas_totales_equipos = Convert.ToDecimal(Session["totales_horas_totales_equipos"]);
                 horas_guardia_decimal = Convert.ToDecimal(Session["totales_horas_guardia_decimal"]);
                 horas_varios_taller_decimal = Convert.ToDecimal(Session["totales_horas_varios_taller_decimal"]);
+
+                //Ahora que tengo los totales del mes, elimino las filas cuyos equipos no tienen valor y las ordeno de mayor a menor por categoria
+                CorregirFilas(filas_camiones_y_carretones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_vehiculos_menores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_ventas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_trabajos_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_trabajos_especiales, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_otros, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
+                {
+                    CorregirFilas(filas_out_soldadores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                }
 
                 HtmlTableRow fila_totales = new HtmlTableRow();
                 fila_totales.Controls.Add(new HtmlTableCell("th") { InnerHtml = horas_totales_equipos.ToString("#,##0.00") });
@@ -226,11 +246,11 @@ namespace SisEquiposBertoncini.Aplicativo
                 Agregar_a_tabla(tabla, filas_trabajos_especiales, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
-                if (categoria_empleado == "Soldadores" || categoria_empleado=="Grueros")
+                if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     //tengo que agregar los trabajos outs como trabajos dentro de la misma tabla
                     //Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-       
+
                     Agregar_a_tabla(tabla, filas_out_soldadores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 }
 
@@ -247,6 +267,53 @@ namespace SisEquiposBertoncini.Aplicativo
             }
 
             Cargar_tabla_final_planilla_calculos();
+        }
+
+        private void CorregirFilas(List<equipo_tabla> filas_otros, decimal horas_totales_equipos, decimal horas_guardia, decimal horas_varios_taller, int equipos_guardia)
+        {
+            List<equipo_tabla> ret = new List<equipo_tabla>();
+
+            foreach (equipo_tabla item in filas_otros)
+            {
+                decimal porcentaje_equipo_sobre_total = horas_totales_equipos > 0 ? (item.horas_mes / horas_totales_equipos) : 0;
+                decimal horas_guardia_equipo = item.reparte_guardia ? horas_guardia / Convert.ToDecimal(equipos_guardia) : 0;
+                if ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) > 0)
+                {
+                    ret.Add(new equipo_tabla()
+                    {
+                        categoria = item.categoria,
+                        horas_acumuladas = item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo,
+                        horas_guardia = item.horas_guardia,
+                        horas_mes = item.horas_mes,
+                        horas_taller = item.horas_taller,
+                        id_equipo = item.id_equipo,
+                        monto_horas_acumuladas = item.monto_horas_acumuladas,
+                        nombre = item.nombre,
+                        porcentaje = item.porcentaje,
+                        reparte_guardia = item.reparte_guardia
+                    });
+                }
+            }
+
+            filas_otros.Clear();
+
+            foreach (equipo_tabla item in ret.OrderByDescending(x => x.horas_acumuladas))
+            {
+                filas_otros.Add(new equipo_tabla()
+                {
+                    categoria = item.categoria,
+                    horas_acumuladas = item.horas_acumuladas,
+                    horas_guardia = item.horas_guardia,
+                    horas_mes = item.horas_mes,
+                    horas_taller = item.horas_taller,
+                    id_equipo = item.id_equipo,
+                    monto_horas_acumuladas = item.monto_horas_acumuladas,
+                    nombre = item.nombre,
+                    porcentaje = item.porcentaje,
+                    reparte_guardia = item.reparte_guardia
+                });
+            }
+
         }
 
         private void Cargar_tabla_trabajos_out()
@@ -267,18 +334,35 @@ namespace SisEquiposBertoncini.Aplicativo
                 table.Controls.Add(fila_encabezado);
                 decimal dias_totales_out = 0;
 
+                List<equipo_tabla_out> outs = new List<equipo_tabla_out>();
+
                 foreach (Equipo equipo in equipos)
                 {
-                    HtmlTableRow fila_trabajo_out = new HtmlTableRow();
+
 
                     string horas_mes_equipo = equipo.Horas_mes(mes, anio, categoria_empleado);
-                    decimal horas_out = Convert.ToDecimal(horas_mes_equipo.Split(':')[0]) + (Convert.ToDecimal(horas_mes_equipo.Split(':')[1]) / Convert.ToDecimal(60));
-                    decimal dias_out = horas_out / 8;
-                    dias_totales_out = dias_out + dias_totales_out;
+                    if (Horas_string.HoraNoNula(horas_mes_equipo))
+                    {
+                        decimal horas_out = Convert.ToDecimal(horas_mes_equipo.Split(':')[0]) + (Convert.ToDecimal(horas_mes_equipo.Split(':')[1]) / Convert.ToDecimal(60));
+                        decimal dias_out = horas_out / 8;
+                        dias_totales_out = dias_out + dias_totales_out;
 
-                    fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = equipo.nombre, BgColor = "lightgray" });
-                    fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = dias_out.ToString("#,##0.00 'días.'") });
 
+                        outs.Add(new equipo_tabla_out()
+                        {
+                            id_equipo = equipo.id_equipo,
+                            nombre = equipo.nombre,
+                            dias_out = dias_out
+                        });
+                    }
+
+                }
+
+                foreach (equipo_tabla_out item in outs.OrderByDescending(x => x.dias_out))
+                {
+                    HtmlTableRow fila_trabajo_out = new HtmlTableRow();
+                    fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = item.nombre, BgColor = "lightgray" });
+                    fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = item.dias_out.ToString("#,##0.00 'días.'") });
                     table.Controls.Add(fila_trabajo_out);
                 }
 
@@ -441,7 +525,6 @@ namespace SisEquiposBertoncini.Aplicativo
                     et.nombre = equipo.nombre;
                     et.horas_mes = Convert.ToDecimal(horas_mes_equipo.Split(':')[0]) + (Convert.ToDecimal(horas_mes_equipo.Split(':')[1]) / Convert.ToDecimal(60));
                     et.reparte_guardia = cxt.Aux_planilla_calculos.FirstOrDefault(x => x.id_equipo == equipo.id_equipo && x.mes == mes && x.anio == anio) != null ? cxt.Aux_planilla_calculos.FirstOrDefault(x => x.id_equipo == equipo.id_equipo && x.mes == mes && x.anio == anio).considera_guardia : false;
-
                     horas_categoria = horas_categoria + et.horas_mes;
 
                     equipos_guardia = et.reparte_guardia ? equipos_guardia + 1 : equipos_guardia;
@@ -472,19 +555,22 @@ namespace SisEquiposBertoncini.Aplicativo
                 foreach (Equipo equipo in equipos)
                 {
                     string horas_mes_equipo = equipo.Horas_mes(mes, anio, categoria_empleado);
-                    equipo_tabla et = new equipo_tabla();
-                    et.categoria = "Trabajos OUT";
-                    et.id_equipo = equipo.id_equipo;
-                    et.nombre = equipo.nombre;
-                    et.horas_mes = Convert.ToDecimal(horas_mes_equipo.Split(':')[0]) + (Convert.ToDecimal(horas_mes_equipo.Split(':')[1]) / Convert.ToDecimal(60));
-                    et.reparte_guardia = cxt.Aux_planilla_calculos.FirstOrDefault(x => x.id_equipo == equipo.id_equipo && x.mes == mes && x.anio == anio) != null ? cxt.Aux_planilla_calculos.FirstOrDefault(x => x.id_equipo == equipo.id_equipo && x.mes == mes && x.anio == anio).considera_guardia : false;
+                    if (Horas_string.HoraNoNula(horas_mes_equipo))
+                    {
+                        equipo_tabla et = new equipo_tabla();
+                        et.categoria = "Trabajos OUT";
+                        et.id_equipo = equipo.id_equipo;
+                        et.nombre = equipo.nombre;
+                        et.horas_mes = Convert.ToDecimal(horas_mes_equipo.Split(':')[0]) + (Convert.ToDecimal(horas_mes_equipo.Split(':')[1]) / Convert.ToDecimal(60));
+                        et.reparte_guardia = cxt.Aux_planilla_calculos.FirstOrDefault(x => x.id_equipo == equipo.id_equipo && x.mes == mes && x.anio == anio) != null ? cxt.Aux_planilla_calculos.FirstOrDefault(x => x.id_equipo == equipo.id_equipo && x.mes == mes && x.anio == anio).considera_guardia : false;
 
-                    horas_categoria = horas_categoria + et.horas_mes;
+                        horas_categoria = horas_categoria + et.horas_mes;
 
-                    equipos_guardia = et.reparte_guardia ? equipos_guardia + 1 : equipos_guardia;
-                    horas_totales_equipos = horas_totales_equipos + et.horas_mes;
+                        equipos_guardia = et.reparte_guardia ? equipos_guardia + 1 : equipos_guardia;
+                        horas_totales_equipos = horas_totales_equipos + et.horas_mes;
 
-                    filas_categoria.Add(et);
+                        filas_categoria.Add(et);
+                    }
                 }
             }
 
@@ -522,90 +608,94 @@ namespace SisEquiposBertoncini.Aplicativo
 
             foreach (equipo_tabla item in listado)
             {
-                HtmlTableRow fila_equipo = new HtmlTableRow();
-                if (primerfila)
-                {
-                    primerfila = false;
-                    HtmlTableCell columna_categoria = new HtmlTableCell("td") { RowSpan = listado.Count, BgColor = "lightgray" };
-                    Label label = new Label();
-                    label.CssClass = "rotar";
-                    label.Text = item.categoria;
-                    columna_categoria.Controls.Add(label);
-                    fila_equipo.Controls.Add(columna_categoria);
-                    categoria = item.categoria;
-                    categoria_gastos_horas_hombre.categoria = item.categoria;
-                    categoria_gastos_horas_hombre.equipos = new List<equipo_paraPlanillaGastosenFuncionHorasHombre>();
-
-                }
 
                 decimal porcentaje_equipo_sobre_total = horas_totales_equipos > 0 ? (item.horas_mes / horas_totales_equipos) : 0;
                 decimal horas_guardia_equipo = item.reparte_guardia ? horas_guardia / Convert.ToDecimal(equipos_guardia) : 0;
 
-                fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.nombre, BgColor = "lightgray" });
-                fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.horas_mes.ToString("#,##0.00") });
-                fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = porcentaje_equipo_sobre_total.ToString("P2") });
-                fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (horas_varios_taller * porcentaje_equipo_sobre_total).ToString("#,##0.00") });
-
-
-                if (categoria_empleado != "Soldadores")
+                if ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) > 0)
                 {
-                    CheckBox chk_equipo_guardia = new CheckBox();
-                    chk_equipo_guardia.Checked = item.reparte_guardia;
-                    chk_equipo_guardia.ID = "chk_" + item.id_equipo.ToString();
-                    chk_equipo_guardia.AutoPostBack = true;
-                    chk_equipo_guardia.CheckedChanged += chk_equipo_guardia_CheckedChanged;
-
-                    HtmlTableCell reparte_guardia = new HtmlTableCell("td");
-                    reparte_guardia.Controls.Add(chk_equipo_guardia);
-
-                    fila_equipo.Controls.Add(reparte_guardia);
-
-                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = horas_guardia_equipo.ToString("#,##0.00") });
-
-                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo).ToString("#,##0.00") });
-
-                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora).ToString("$ #,##0.00") });
-
-                    horas = horas + (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo);
-                    categoria_gastos_horas_hombre.equipos.Add(new equipo_paraPlanillaGastosenFuncionHorasHombre() { id_equipo = item.id_equipo, equipo = item.nombre, horas = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) });
-                    monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
-
-                }
-                else
-                {
-                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total)).ToString("#,##0.00") });
-
-                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total)) * costo_hora).ToString("$ #,##0.00") });
-
-                    horas = horas + (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total));
-                    categoria_gastos_horas_hombre.equipos.Add(new equipo_paraPlanillaGastosenFuncionHorasHombre() { id_equipo = item.id_equipo, equipo = item.nombre, horas = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total)) });
-                    monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
-                }
-
-                //Guardar este monto como mano de obra en items mensuales
-                using (var cxt = new Model1Container())
-                {
-                    int mes = Convert.ToInt32(Session["planilla_calculos_mes"]);
-                    int anio = Convert.ToInt32(Session["planilla_calculos_anio"]);
-                    string tipo_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
-                    switch (tipo_empleado)
+                    HtmlTableRow fila_equipo = new HtmlTableRow();
+                    if (primerfila)
                     {
-                        case "Mecánicos - Pintores":
-                            cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
-                            break;
-                        case "Soldadores":
-                            cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
-                            break;
-                        case "Grueros":
-                            cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
-                            break;
-                        default:
-                            break;
+                        primerfila = false;
+                        HtmlTableCell columna_categoria = new HtmlTableCell("td") { RowSpan = listado.Count, BgColor = "lightgray" };
+                        Label label = new Label();
+                        label.CssClass = "rotar";
+                        label.Text = item.categoria;
+                        columna_categoria.Controls.Add(label);
+                        fila_equipo.Controls.Add(columna_categoria);
+                        categoria = item.categoria;
+                        categoria_gastos_horas_hombre.categoria = item.categoria;
+                        categoria_gastos_horas_hombre.equipos = new List<equipo_paraPlanillaGastosenFuncionHorasHombre>();
+
                     }
 
-                }
+                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.nombre, BgColor = "lightgray" });
+                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.horas_mes.ToString("#,##0.00") });
+                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = porcentaje_equipo_sobre_total.ToString("P2") });
+                    fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (horas_varios_taller * porcentaje_equipo_sobre_total).ToString("#,##0.00") });
 
-                tabla.Controls.Add(fila_equipo);
+
+                    if (categoria_empleado != "Soldadores")
+                    {
+                        CheckBox chk_equipo_guardia = new CheckBox();
+                        chk_equipo_guardia.Checked = item.reparte_guardia;
+                        chk_equipo_guardia.ID = "chk_" + item.id_equipo.ToString();
+                        chk_equipo_guardia.AutoPostBack = true;
+                        chk_equipo_guardia.CheckedChanged += chk_equipo_guardia_CheckedChanged;
+
+                        HtmlTableCell reparte_guardia = new HtmlTableCell("td");
+                        reparte_guardia.Controls.Add(chk_equipo_guardia);
+
+                        fila_equipo.Controls.Add(reparte_guardia);
+
+                        fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = horas_guardia_equipo.ToString("#,##0.00") });
+
+                        fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo).ToString("#,##0.00") });
+
+                        fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora).ToString("$ #,##0.00") });
+
+                        horas = horas + (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo);
+                        categoria_gastos_horas_hombre.equipos.Add(new equipo_paraPlanillaGastosenFuncionHorasHombre() { id_equipo = item.id_equipo, equipo = item.nombre, horas = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) });
+                        monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
+
+                    }
+                    else
+                    {
+                        fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total)).ToString("#,##0.00") });
+
+                        fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total)) * costo_hora).ToString("$ #,##0.00") });
+
+                        horas = horas + (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total));
+                        categoria_gastos_horas_hombre.equipos.Add(new equipo_paraPlanillaGastosenFuncionHorasHombre() { id_equipo = item.id_equipo, equipo = item.nombre, horas = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total)) });
+                        monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
+                    }
+
+                    //Guardar este monto como mano de obra en items mensuales
+                    using (var cxt = new Model1Container())
+                    {
+                        int mes = Convert.ToInt32(Session["planilla_calculos_mes"]);
+                        int anio = Convert.ToInt32(Session["planilla_calculos_anio"]);
+                        string tipo_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
+                        switch (tipo_empleado)
+                        {
+                            case "Mecánicos - Pintores":
+                                cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                                break;
+                            case "Soldadores":
+                                cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Soldadores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                                break;
+                            case "Grueros":
+                                cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Grueros, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
+                                break;
+                            default:
+                                break;
+                        }
+
+                    }
+
+                    tabla.Controls.Add(fila_equipo);
+                }
             }
 
             filas_tabla_total_categoria.Add(new total_categoria_tabla() { categoria = categoria, horas = horas, monto = monto });

@@ -59,3 +59,4 @@ D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.Report
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
