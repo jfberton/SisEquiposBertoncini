@@ -52,17 +52,17 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         /// </summary>
         public decimal Costo_amortizacion_mensual()
         {
-                decimal ret = 0;
+            decimal ret = 0;
 
-                foreach (Item_por_amortizar parte in this.Items_por_amortizar)
+            foreach (Item_por_amortizar parte in this.Items_por_amortizar)
+            {
+                if (parte.Restan_por_amortizar(DateTime.Today.Month, DateTime.Today.Year) > 0)
                 {
-                    if (parte.Restan_por_amortizar(DateTime.Today.Month, DateTime.Today.Year) > 0)
-                    {
-                        ret = ret + parte.costo_mensual;
-                    }
+                    ret = ret + parte.costo_mensual;
                 }
+            }
 
-                return ret;
+            return ret;
         }
 
         public decimal Costo_amortizacion_mensual(int mes, int anio)
@@ -492,6 +492,66 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             }
 
             return ret;
+        }
+
+        public void Agregar_detalle(DateTime dia, decimal monto, string item_informado, string descripcion)
+        {
+            using (var cxt = new Model1Container())
+            {
+                int mes = dia.Month;
+                int anio = dia.Year;
+
+                Ingreso_egreso_mensual_equipo iemensual = Ingresos_egresos_mensuales.FirstOrDefault(x => x.anio == anio && x.mes == mes);
+
+                if (iemensual == null)
+                {
+                    iemensual = new Ingreso_egreso_mensual_equipo();
+                    iemensual.id_equipo = this.id_equipo;
+                    iemensual.mes = mes;
+                    iemensual.anio = anio;
+                    cxt.Ingresos_egresos_mensuales_equipos.Add(iemensual);
+                    cxt.SaveChanges();
+                }
+
+                
+                Item_ingreso_egreso item = cxt.Items_ingresos_egresos.FirstOrDefault(x => x.nombre == item_informado);
+
+                if (item != null)
+                {
+                    Valor_mes valor_mes = iemensual.Valores_meses.FirstOrDefault(x => x.id_item == item.id_item);
+                    if (valor_mes == null)
+                    {
+                        valor_mes = new Valor_mes();
+                        valor_mes.id_ingreso_egreso_mensual = iemensual.id_ingreso_egreso_mensual;
+                        valor_mes.id_item = item.id_item;
+                        valor_mes.valor = 0;
+                        cxt.Valores_meses.Add(valor_mes);
+                        cxt.SaveChanges();
+                    }
+
+                    //aca tengo el item valor mes del 
+                    string descripcion_detalle = "[Importado automaticamente]" + descripcion;
+
+                    Detalle_valor_item_mes detalle = valor_mes.Detalle.FirstOrDefault(x => x.descripcion == descripcion_detalle && x.fecha == dia && x.monto == monto);
+
+                    if (detalle == null)
+                    {
+                        detalle = new Detalle_valor_item_mes();
+                        detalle.id_valor_mes = valor_mes.id;
+                        detalle.fecha = dia;
+                        detalle.descripcion = descripcion_detalle;
+                        detalle.monto = monto;
+                        cxt.Detalle_valores_items_mes.Add(detalle);
+                        cxt.SaveChanges();
+                    }
+                    else
+                    { 
+                    //nada, ya existe;
+                    }
+
+                    
+                }
+            }
         }
     }
 }

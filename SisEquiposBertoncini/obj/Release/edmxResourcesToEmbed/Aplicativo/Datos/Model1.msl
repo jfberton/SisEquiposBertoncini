@@ -281,5 +281,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="temp_table_filas_items_mes_equipo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.temp_table_filas_items_mes_equipo)">
+        <MappingFragment StoreEntitySet="temp_table_filas_items_mes_equipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_valor_mes" ColumnName="id_valor_mes" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="row_class" ColumnName="row_class" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual" />
+    <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_categoria" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_categoria" />
   </EntityContainerMapping>
 </Mapping>

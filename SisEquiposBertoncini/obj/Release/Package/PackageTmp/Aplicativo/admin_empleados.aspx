@@ -36,16 +36,6 @@
                     <asp:BoundField DataField="empleado_fecha_baja" HeaderText="Fecha de baja" ItemStyle-Font-Italic="true" ItemStyle-ForeColor="DeepPink" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                           <%-- <button
-                                type="button" class="btn btn-sm btn-danger"
-                                data-toggle="modal"
-                                data-target="#advertencia_eliminacion"
-                                data-id='<%#Eval("empleado_id")%>'
-                                data-introduccion="al empleado"
-                                data-nombre='<%#Eval("empleado_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
-                            </button>--%>
-
                             <button
                                 type="button" class="btn btn-sm btn-warning" id="btn_editar_empleado"
                                 runat="server" onserverclick="btn_editar_empleado_ServerClick"
@@ -66,7 +56,6 @@
                                 data-nombre='<%#Eval("empleado_nombre")%>'>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
-
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -161,6 +161,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 Categoria_equipo trabajos_particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos particulares");
                 Categoria_equipo trabajos_especiales = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos especiales");
                 Categoria_equipo otros = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Otros");
+                Categoria_equipo particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "PARTICULAR");
+                Categoria_equipo mantenimiento_instalaciones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "MANTENIMIENTO DE INSTALACIONES");
 
                 List<equipo_tabla> filas_camiones_y_carretones = new List<equipo_tabla>();
                 List<equipo_tabla> filas_gruas = new List<equipo_tabla>();
@@ -169,7 +171,11 @@ namespace SisEquiposBertoncini.Aplicativo
                 List<equipo_tabla> filas_trabajos_particulares = new List<equipo_tabla>();
                 List<equipo_tabla> filas_otros = new List<equipo_tabla>();
                 List<equipo_tabla> filas_trabajos_especiales = new List<equipo_tabla>();
+                List<equipo_tabla> filas_particulares = new List<equipo_tabla>();
+                List<equipo_tabla> filas_mantenimiento_instalaciones = new List<equipo_tabla>();
                 List<equipo_tabla> filas_out_soldadores = new List<equipo_tabla>();
+
+
 
                 List<total_categoria_tabla> filas_tabla_total_categoria = new List<total_categoria_tabla>();
                 Session["filas_tabla_total_categoria"] = filas_tabla_total_categoria;
@@ -194,6 +200,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 CargarFilasCategoria(trabajos_particulares, filas_trabajos_particulares, mes, anio, costo_hora);
                 CargarFilasCategoria(trabajos_especiales, filas_trabajos_especiales, mes, anio, costo_hora);
                 CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
+                CargarFilasCategoria(particulares, filas_particulares, mes, anio, costo_hora);
+                CargarFilasCategoria(mantenimiento_instalaciones, filas_mantenimiento_instalaciones, mes, anio, costo_hora);
 
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
@@ -208,13 +216,16 @@ namespace SisEquiposBertoncini.Aplicativo
                 horas_varios_taller_decimal = Convert.ToDecimal(Session["totales_horas_varios_taller_decimal"]);
 
                 //Ahora que tengo los totales del mes, elimino las filas cuyos equipos no tienen valor y las ordeno de mayor a menor por categoria
-                CorregirFilas(filas_camiones_y_carretones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_vehiculos_menores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_ventas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_trabajos_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_trabajos_especiales, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_otros, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_camiones_y_carretones,          horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_gruas,                          horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_vehiculos_menores,              horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_ventas,                         horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_trabajos_particulares,          horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_trabajos_especiales,            horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_otros,                          horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_particulares,                   horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                CorregirFilas(filas_mantenimiento_instalaciones,    horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     CorregirFilas(filas_out_soldadores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
@@ -245,6 +256,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_trabajos_especiales, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                Agregar_a_tabla(tabla, filas_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                Agregar_a_tabla(tabla, filas_mantenimiento_instalaciones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {

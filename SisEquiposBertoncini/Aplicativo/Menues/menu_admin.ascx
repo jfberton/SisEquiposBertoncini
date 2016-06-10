@@ -65,6 +65,12 @@
                         <li><a href="planilla_resumen_horas_trabajadas.aspx">Resumen horas trabajadas equipo</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Importar<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="admin_importar_blanco.aspx">Blancos sistema gestión</a></li>
+                    </ul>
+                </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">

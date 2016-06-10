@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Lista de cross ids-->
+<Valores>
+	<Equipos valor_database="BOGGUIE HAG 015" valor_excel="Bogguie HAG 015" />
+	<Equipos valor_database="BOGGUIE HMK 106" valor_excel="Bogguie HMK 106" />
+	<Equipos valor_database="BOGGUIE HMK 108" valor_excel="Bogguie HMK 108" />
+	<Equipos valor_database="CLIO" valor_excel="Clio" />
+	<Equipos valor_database="FORD F100" valor_excel="F-100" />
+	<Equipos valor_database="FIAT STRADA" valor_excel="Fiat Strada" />
+	<Equipos valor_database="FLUENCE" valor_excel="Fluence" />
+	<Equipos valor_database="Ford Fiesta" valor_excel="Ford Fiesta Kinetic" />
+	<Equipos valor_database="GRUA 10" valor_excel="Grúa 10" />
+	<Equipos valor_database="GRUA 11" valor_excel="Grúa 11" />
+	<Equipos valor_database="GRUA 12" valor_excel="Grúa 12" />
+	<Equipos valor_database="GRUA 13" valor_excel="Grúa 13" />
+	<Equipos valor_database="GRUA 14" valor_excel="Grúa 14" />
+	<Equipos valor_database="GRUA 16" valor_excel="Grúa 16 - TM35100" />
+	<Equipos valor_database="GRUA 3" valor_excel="Grúa 3" />
+	<Equipos valor_database="GRUA 5" valor_excel="Grúa 5" />
+	<Equipos valor_database="GRUA 6" valor_excel="Grúa 6" />
+	<Equipos valor_database="GRUA 7" valor_excel="Grúa 7" />
+	<Equipos valor_database="GRUA 8" valor_excel="Grúa 8" />
+	<Equipos valor_database="GRUA 9" valor_excel="Grúa 9" />
+	<Equipos valor_database="HIDRO 2 - SCANIA" valor_excel="Hidro2 PM/Scania" />
+	<Equipos valor_database="HIDRO 1 - VOLVO" valor_excel="Hidrogrúa/Volvito" />
+	<Equipos valor_database="IVECO 420" valor_excel="IVECO" />
+	<Equipos valor_database="KANGOO" valor_excel="Kangoo" />
+	<Equipos valor_database="LEO COR BXU 346" valor_excel="Leo-Cor BXU 346" />
+	<Equipos valor_database="LEONCINI HAG 014" valor_excel="Leoncini HAG 014" />
+	<Equipos valor_database="MASTER" valor_excel="Master" />
+	<Equipos valor_database="MERCEDES" valor_excel="Mercedes" />
+	<Equipos valor_database="GRUA 15 TADANO" valor_excel="Tadano / grùa 15" />
+	<Equipos valor_database="Toyota Hilux" valor_excel="Toyota" />
+	<Equipos valor_database="VOLVO 460" valor_excel="Volvo" />
+	<Equipos valor_database="CARRETON VULCANO ATI 758" valor_excel="Vulcano ATI 758" />
+	<Items valor_database="Combustible" valor_excel="Combustibles" />
+	<Items valor_database="Fletes" valor_excel="Fletes de Envío" />
+	<Items valor_database="Fletes" valor_excel="Fletes" />
+	<Items valor_database="Varios " valor_excel="Gastos Varios" />
+	<Items valor_database="Herramientas" valor_excel="Herramientas" />
+	<Items valor_database="Indumentaria p personal(incluye elem de protección personal)" valor_excel="Indumentaria P/personal" />
+	<Items valor_database="Insumos Taller" valor_excel="Insumos p/ Taller de Mantenimiento" />
+	<Items valor_database="Insumos Soldadores" valor_excel="Insumos p/ Taller de Soldadura" />
+	<Items valor_database="Multas y comisiones" valor_excel="Multas" />
+	<Items valor_database="Neumáticos" valor_excel="Neumáticos" />
+	<Items valor_database="Patente (bimestral)" valor_excel="Patentes de Automotores" />
+	<Items valor_database="PEAJE" valor_excel="Peaje" />
+	<Items valor_database="Pintura" valor_excel="Pintura" />
+	<Items valor_database="Repuestos y Reparac. Facturados" valor_excel="Repuestos y Reparaciones" />
+	<Items valor_database="Seguro Compartido" valor_excel="Seguros" />
+	<Items valor_database="Teléfono celular (abono)" valor_excel="Teléfono Celular" />
+	<Items valor_database="Viaticos FC" valor_excel="Viaticos, Movilidad y Traslados" />
+</Valores>
+

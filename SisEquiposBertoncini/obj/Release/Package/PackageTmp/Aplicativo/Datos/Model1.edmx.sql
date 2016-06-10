@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/14/2016 17:21:30
+-- Date Created: 04/28/2016 20:19:27
 -- Generated from EDMX file: D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton_01];
+USE [equipos_berton];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,91 +17,103 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_CategoriaEquipo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Equipos] DROP CONSTRAINT [FK_CategoriaEquipo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Categoria_empleadoEmpleado]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK_Categoria_empleadoEmpleado];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoDia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Dias] DROP CONSTRAINT [FK_EmpleadoDia];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EquipoDetalle_dia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Detalles_dias] DROP CONSTRAINT [FK_EquipoDetalle_dia];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DiaDetalle_dia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Detalles_dias] DROP CONSTRAINT [FK_DiaDetalle_dia];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AreaEmpleado]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK_AreaEmpleado];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EquipoItem_por_amortizar]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Items_por_amortizar] DROP CONSTRAINT [FK_EquipoItem_por_amortizar];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EquipoIngreso_egreso_mensual_equipo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Ingresos_egresos_mensuales_equipos] DROP CONSTRAINT [FK_EquipoIngreso_egreso_mensual_equipo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Ingreso_egreso_mensual_equipoValor_mes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Valores_meses] DROP CONSTRAINT [FK_Ingreso_egreso_mensual_equipoValor_mes];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Valores_meses] DROP CONSTRAINT [FK_Item_ingreso_egresoValor_mes];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoItem_ingreso_egreso]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Items_ingresos_egresos] DROP CONSTRAINT [FK_Item_ingreso_egresoItem_ingreso_egreso];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoResumen_mes_empleado]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Resumenes_meses_empleados] DROP CONSTRAINT [FK_EmpleadoResumen_mes_empleado];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Valor_mesDetalle_valor_item_mes]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Detalle_valores_items_mes] DROP CONSTRAINT [FK_Valor_mesDetalle_valor_item_mes];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Aux_planilla_gastos_administracion] DROP CONSTRAINT [FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Aux_total_categoria_mesValor_mes_categoria]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Valor_mes_categorias] DROP CONSTRAINT [FK_Aux_total_categoria_mesValor_mes_categoria];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Categoria_empleadoEmpleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK_Categoria_empleadoEmpleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CategoriaEquipo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Equipos] DROP CONSTRAINT [FK_CategoriaEquipo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DiaDetalle_dia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Detalles_dias] DROP CONSTRAINT [FK_DiaDetalle_dia];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoDia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Dias] DROP CONSTRAINT [FK_EmpleadoDia];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoResumen_mes_empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Resumenes_meses_empleados] DROP CONSTRAINT [FK_EmpleadoResumen_mes_empleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EquipoDetalle_dia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Detalles_dias] DROP CONSTRAINT [FK_EquipoDetalle_dia];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EquipoIngreso_egreso_mensual_equipo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Ingresos_egresos_mensuales_equipos] DROP CONSTRAINT [FK_EquipoIngreso_egreso_mensual_equipo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EquipoItem_por_amortizar]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Items_por_amortizar] DROP CONSTRAINT [FK_EquipoItem_por_amortizar];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Ingreso_egreso_mensual_equipoValor_mes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Valores_meses] DROP CONSTRAINT [FK_Ingreso_egreso_mensual_equipoValor_mes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoItem_ingreso_egreso]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Items_ingresos_egresos] DROP CONSTRAINT [FK_Item_ingreso_egresoItem_ingreso_egreso];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Valores_meses] DROP CONSTRAINT [FK_Item_ingreso_egresoValor_mes];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Item_ingreso_egresoValor_mes_categoria]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Valor_mes_categorias] DROP CONSTRAINT [FK_Item_ingreso_egresoValor_mes_categoria];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Aux_planilla_gastos_administracion] DROP CONSTRAINT [FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Detalle_valor_item_meses_categoria] DROP CONSTRAINT [FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Valor_mesDetalle_valor_item_mes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Detalle_valores_items_mes] DROP CONSTRAINT [FK_Valor_mesDetalle_valor_item_mes];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Equipos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Equipos];
+IF OBJECT_ID(N'[dbo].[Areas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Areas];
 GO
-IF OBJECT_ID(N'[dbo].[Categorias_equipos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Categorias_equipos];
+IF OBJECT_ID(N'[dbo].[Aux_planilla_calculos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_calculos];
 GO
-IF OBJECT_ID(N'[dbo].[Empleados]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Empleados];
+IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_administracion]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_gastos_administracion];
+GO
+IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_horas_hombres]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_planilla_gastos_horas_hombres];
+GO
+IF OBJECT_ID(N'[dbo].[Aux_total_categoria_meses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aux_total_categoria_meses];
 GO
 IF OBJECT_ID(N'[dbo].[Categorias_empleados]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Categorias_empleados];
 GO
-IF OBJECT_ID(N'[dbo].[Usuarios]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Usuarios];
+IF OBJECT_ID(N'[dbo].[Categorias_equipos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categorias_equipos];
 GO
-IF OBJECT_ID(N'[dbo].[Dias]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Dias];
+IF OBJECT_ID(N'[dbo].[Detalle_valor_item_meses_categoria]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Detalle_valor_item_meses_categoria];
+GO
+IF OBJECT_ID(N'[dbo].[Detalle_valores_items_mes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Detalle_valores_items_mes];
 GO
 IF OBJECT_ID(N'[dbo].[Detalles_dias]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Detalles_dias];
 GO
-IF OBJECT_ID(N'[dbo].[Areas]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Areas];
+IF OBJECT_ID(N'[dbo].[Dias]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Dias];
 GO
-IF OBJECT_ID(N'[dbo].[Items_por_amortizar]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Items_por_amortizar];
+IF OBJECT_ID(N'[dbo].[Empleados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Empleados];
 GO
-IF OBJECT_ID(N'[dbo].[Valores_dolar]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Valores_dolar];
+IF OBJECT_ID(N'[dbo].[Equipos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Equipos];
+GO
+IF OBJECT_ID(N'[dbo].[Feriados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Feriados];
 GO
 IF OBJECT_ID(N'[dbo].[Ingresos_egresos_mensuales_equipos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Ingresos_egresos_mensuales_equipos];
@@ -109,38 +121,29 @@ GO
 IF OBJECT_ID(N'[dbo].[Items_ingresos_egresos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Items_ingresos_egresos];
 GO
-IF OBJECT_ID(N'[dbo].[Valores_meses]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Valores_meses];
-GO
-IF OBJECT_ID(N'[dbo].[Feriados]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Feriados];
-GO
-IF OBJECT_ID(N'[dbo].[Resumenes_meses_empleados]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Resumenes_meses_empleados];
-GO
-IF OBJECT_ID(N'[dbo].[Detalle_valores_items_mes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Detalle_valores_items_mes];
-GO
-IF OBJECT_ID(N'[dbo].[Aux_planilla_calculos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Aux_planilla_calculos];
-GO
-IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_horas_hombres]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Aux_planilla_gastos_horas_hombres];
-GO
-IF OBJECT_ID(N'[dbo].[Aux_planilla_gastos_administracion]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Aux_planilla_gastos_administracion];
+IF OBJECT_ID(N'[dbo].[Items_por_amortizar]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Items_por_amortizar];
 GO
 IF OBJECT_ID(N'[dbo].[Planilla_gastos_administrativo]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Planilla_gastos_administrativo];
 GO
-IF OBJECT_ID(N'[dbo].[Aux_total_categoria_meses]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Aux_total_categoria_meses];
+IF OBJECT_ID(N'[dbo].[Resumenes_meses_empleados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Resumenes_meses_empleados];
+GO
+IF OBJECT_ID(N'[dbo].[temp_table_filas_items_mes_equipo]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[temp_table_filas_items_mes_equipo];
+GO
+IF OBJECT_ID(N'[dbo].[Usuarios]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Usuarios];
 GO
 IF OBJECT_ID(N'[dbo].[Valor_mes_categorias]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Valor_mes_categorias];
 GO
-IF OBJECT_ID(N'[dbo].[Detalle_valor_item_meses_categoria]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Detalle_valor_item_meses_categoria];
+IF OBJECT_ID(N'[dbo].[Valores_dolar]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Valores_dolar];
+GO
+IF OBJECT_ID(N'[dbo].[Valores_meses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Valores_meses];
 GO
 
 -- --------------------------------------------------
@@ -357,7 +360,7 @@ GO
 CREATE TABLE [dbo].[Aux_planilla_gastos_administracion] (
     [id_detalle_gastos_administrativos] int IDENTITY(1,1) NOT NULL,
     [id_equipo] int  NOT NULL,
-    [porcentaje] decimal(11,2)  NOT NULL,
+    [porcentaje] decimal(11,4)  NOT NULL,
     [id_planilla_gastos_administartivos] int  NOT NULL
 );
 GO
@@ -401,6 +404,17 @@ CREATE TABLE [dbo].[Detalle_valor_item_meses_categoria] (
     [monto] decimal(11,2)  NOT NULL,
     [descripcion] nvarchar(max)  NOT NULL,
     [id_valor_mes_categoria_item] int  NOT NULL
+);
+GO
+
+-- Creating table 'temp_table_filas_items_mes_equipo'
+CREATE TABLE [dbo].[temp_table_filas_items_mes_equipo] (
+    [id] int IDENTITY(1,1) NOT NULL,
+    [id_valor_mes] int  NOT NULL,
+    [concepto] nvarchar(max)  NOT NULL,
+    [valor] decimal(11,2)  NOT NULL,
+    [row_class] nvarchar(max)  NOT NULL,
+    [visible] bit  NOT NULL
 );
 GO
 
@@ -544,6 +558,12 @@ GO
 ALTER TABLE [dbo].[Detalle_valor_item_meses_categoria]
 ADD CONSTRAINT [PK_Detalle_valor_item_meses_categoria]
     PRIMARY KEY CLUSTERED ([id_detalle_valor_item_mes_categoria] ASC);
+GO
+
+-- Creating primary key on [id] in table 'temp_table_filas_items_mes_equipo'
+ALTER TABLE [dbo].[temp_table_filas_items_mes_equipo]
+ADD CONSTRAINT [PK_temp_table_filas_items_mes_equipo]
+    PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
 -- --------------------------------------------------
