@@ -31,7 +31,6 @@
                             <td>Año</td>
                             <td>
                                 <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control">
-                                    <asp:ListItem Text="2015" />
                                 </asp:DropDownList></td>
                         </tr>
                     </table>

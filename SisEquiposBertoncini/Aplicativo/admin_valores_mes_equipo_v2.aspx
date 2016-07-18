@@ -271,6 +271,62 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="ver_detalle_item_mes_view" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>
+                                <asp:Label Text="" ID="lbl_item_view" runat="server" />
+                                <small>
+                                    <label>Categoría</label>
+                                    <asp:Label Text="" ID="lbl_categoria_view" runat="server" />
+                                    - 
+                                        <asp:Label Text="" ID="lbl_mes_view" runat="server" /></small>
+
+                            </h4>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Detalle mes</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="height: 200px; overflow-y: scroll;">
+                            <asp:GridView ID="gv_detalle_view" runat="server" Font-Size="Small" OnRowDataBound="gv_detalle_RowDataBound" EmptyDataText="No existen valores cargados."
+                                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                                <Columns>
+                                    <asp:BoundField DataField="detalle_fecha" HeaderText="Fecha" DataFormatString="{0:d}" ReadOnly="true" />
+                                    <asp:BoundField DataField="detalle_monto" DataFormatString="{0:$ #,##0.00}" HeaderText="Monto" ReadOnly="true" />
+                                    <asp:BoundField DataField="detalle_descripcion" HeaderText="Descripción" ReadOnly="true" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <table style="width: 100%">
+                        <tr>
+                            <td>
+                                <label>
+                                    Total
+                                    <asp:Label Text="" ID="lbl_total_item_mes_view" runat="server" /></label></td>
+                            <td>
+                                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cerrar</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
     <script src="../js/jquery.treegrid.js"></script>

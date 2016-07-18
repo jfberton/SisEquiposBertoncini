@@ -18,9 +18,13 @@
                     <h4 class="panel-title">Feriados</h4>
                 </div>
                 <div class="col-md-7">
-                    <div class="input-group">
+                    <div class="input-group" id="div_buscar" runat="server">
                         <span class="input-group-addon">Buscar</span>
                         <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_feriados.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
+                    </div>
+                    <div class="input-group" id="div_buscar_view" runat="server">
+                        <span class="input-group-addon">Buscar</span>
+                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_feriados_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
                     </div>
                 </div>
             </div>
@@ -42,6 +46,21 @@
                                 data-nombre='<%#String.Concat(Eval("feriado_fecha"), " \"", Eval("feriado_descripcion"),"\"") %>'>
                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                             </button>
+                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("feriado_id")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                            </button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+
+            <asp:GridView ID="gv_feriados_view" runat="server" EmptyDataText="No existen feriados para mostrar." OnRowDataBound="gv_feriados_RowDataBound"
+                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                <Columns>
+                    <asp:BoundField DataField="feriado_fecha" HeaderText="Fecha" DataFormatString="{0:D}" ReadOnly="true" />
+                    <asp:BoundField DataField="feriado_descripcion" HeaderText="Descripción" ReadOnly="true" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("feriado_id")%>'>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
@@ -77,7 +96,7 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_feriado" data-toggle="modal" data-target="#agregar_feriado">
+                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_feriado" runat="server" data-toggle="modal" data-target="#agregar_feriado">
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
                     </button>
                     <div class="modal fade" id="agregar_feriado" role="dialog" aria-hidden="true">

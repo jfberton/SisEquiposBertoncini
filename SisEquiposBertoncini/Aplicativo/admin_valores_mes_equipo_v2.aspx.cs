@@ -34,7 +34,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    if (usuariologueado.perfil != perfil_usuario.Admin)
+                    if (usuariologueado.perfil != perfil_usuario.Admin && usuariologueado.perfil != perfil_usuario.Jefe)
                     {
                         Response.Redirect("~/Default.aspx?mode=trucho");
                     }
@@ -47,6 +47,8 @@ namespace SisEquiposBertoncini.Aplicativo
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
+                        menu_admin.Visible = true;
+                        menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:
                         break;
@@ -134,7 +136,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             using (var cxt = new Model1Container())
             {
-                
+
                 int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
                 int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
                 int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
@@ -182,6 +184,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void Ver_editar_valores_mes(int id_valor_item_mes)
         {
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+
             int mes = 0; int anio = 0;
             using (var cxt = new Model1Container())
             {
@@ -189,45 +193,46 @@ namespace SisEquiposBertoncini.Aplicativo
                 Ingreso_egreso_mensual_equipo ioequipo = cxt.Ingresos_egresos_mensuales_equipos.First(x => x.id_ingreso_egreso_mensual == item_valor_mes.id_ingreso_egreso_mensual);
                 mes = ioequipo.mes; anio = ioequipo.anio;
                 hidden_id_valor_mes.Value = id_valor_item_mes.ToString();
-                lbl_item.Text = item_valor_mes.Item.nombre;
-                lbl_categoria.Text = item_valor_mes.Item.tipo;
+                lbl_item.Text = lbl_item_view.Text = item_valor_mes.Item.nombre;
+                
+                lbl_categoria.Text = lbl_categoria_view.Text = item_valor_mes.Item.tipo;
                 switch (ioequipo.mes)
                 {
                     case 1:
-                        lbl_mes.Text = "Enero " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Enero " + ioequipo.anio.ToString();
                         break;
                     case 2:
-                        lbl_mes.Text = "Febrero " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Febrero " + ioequipo.anio.ToString();
                         break;
                     case 3:
-                        lbl_mes.Text = "Marzo " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Marzo " + ioequipo.anio.ToString();
                         break;
                     case 4:
-                        lbl_mes.Text = "Abril " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Abril " + ioequipo.anio.ToString();
                         break;
                     case 5:
-                        lbl_mes.Text = "Mayo " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Mayo " + ioequipo.anio.ToString();
                         break;
                     case 6:
-                        lbl_mes.Text = "Junio " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Junio " + ioequipo.anio.ToString();
                         break;
                     case 7:
-                        lbl_mes.Text = "Julio " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Julio " + ioequipo.anio.ToString();
                         break;
                     case 8:
-                        lbl_mes.Text = "Agosto " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Agosto " + ioequipo.anio.ToString();
                         break;
                     case 9:
-                        lbl_mes.Text = "Septiembre " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Septiembre " + ioequipo.anio.ToString();
                         break;
                     case 10:
-                        lbl_mes.Text = "Octubre " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Octubre " + ioequipo.anio.ToString();
                         break;
                     case 11:
-                        lbl_mes.Text = "Noviembre " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Noviembre " + ioequipo.anio.ToString();
                         break;
                     case 12:
-                        lbl_mes.Text = "Diciembre " + ioequipo.anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Diciembre " + ioequipo.anio.ToString();
                         break;
                     default:
                         break;
@@ -246,27 +251,43 @@ namespace SisEquiposBertoncini.Aplicativo
                                    detalle_descripcion = x.descripcion
                                }).ToList();
 
-                gv_detalle.DataSource = detalle;
-                gv_detalle.DataBind();
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_detalle_view.DataSource = detalle;
+                    gv_detalle_view.DataBind();
+                }
+                else
+                {
+                    gv_detalle.DataSource = detalle;
+                    gv_detalle.DataBind();
+                }
 
-                lbl_total_item_mes.Text = item_valor_mes.Detalle.Sum(x => x.monto).ToString("$ #,##0.00");
+                lbl_total_item_mes.Text = lbl_total_item_mes_view.Text = item_valor_mes.Detalle.Sum(x => x.monto).ToString("$ #,##0.00");
             }
 
-
-            MostrarPopUpDetalle(mes, anio);
+            if (usuariologueado.perfil == perfil_usuario.Jefe)
+            {
+                MostrarPopUpDetalle_view();
+            }
+            else
+            {
+                MostrarPopUpDetalle(mes, anio);
+            }
         }
 
         private void MostrarPopUpDetalle(int mes, int anio)
         {
             DateTime minDate = new DateTime(anio, mes, 1);
             DateTime maxDate = new DateTime(anio, mes, DateTime.DaysInMonth(anio, mes));
-            /*
-              $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '01/01/2015', maxDate: '01/31/2015' }); });
-             */
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes').modal('show')}); $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '" + minDate.ToString("MM/dd/yyyy") + "', maxDate: '" + maxDate.ToString("MM/dd/yyyy") + "' }); });</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
         }
 
+        private void MostrarPopUpDetalle_view()
+        {
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes_view').modal('show')});</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+        }
         protected void btn_nueva_busqueda_Click(object sender, EventArgs e)
         {
             Estado_busqueda(true);
@@ -294,7 +315,6 @@ namespace SisEquiposBertoncini.Aplicativo
 
         protected void btn_aceptar_eliminacion_Click(object sender, EventArgs e)
         {
-            //int id_detalle = Convert.ToInt32(((System.Web.UI.HtmlControls.HtmlButton)sender).Attributes["data-id"]);
             int mes = 0; int anio = 0;
             int id_detalle = Convert.ToInt32(id_item_por_eliminar.Value);
             int id_valor_item_mes = 0;
@@ -312,37 +332,6 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 decimal valor = vm.Detalle.Sum(x => x.monto);
                 vm.valor = valor;
-
-                //controlar campos calculados
-
-                //impuesto sobre los ingresos en blanco
-                //if (vm.Item.nombre == "Trabajado" && vm.Item.Padre.nombre == "INGRESOS")
-                //{
-                //    int id_item_impuesto = cxt.Items_ingresos_egresos.First(x => x.nombre == "Impuestos" && x.Padre.nombre == "INGRESOS").id_item;
-                //    Valor_mes vm_impuesto = cxt.Valores_meses.FirstOrDefault(ii => ii.id_ingreso_egreso_mensual == vm.id_ingreso_egreso_mensual && ii.id_item == id_item_impuesto);
-
-                //    Detalle_valor_item_mes detalle_impuesto = new Detalle_valor_item_mes();
-                //    detalle_impuesto.fecha = new DateTime(ioequipo.anio, ioequipo.mes, 1);
-                //    detalle_impuesto.descripcion = "Calculado automáticamente";
-                //    detalle_impuesto.monto = valor * (Convert.ToDecimal(-5) / Convert.ToDecimal(100));
-
-                //    if (vm_impuesto.Detalle.Count > 1)
-                //    {
-                //        vm_impuesto.Detalle.Clear();
-                //        cxt.SaveChanges();
-                //    }
-
-                //    if (vm_impuesto.Detalle.Count == 0)
-                //    {
-                //        vm_impuesto.Detalle.Add(detalle_impuesto);
-                //        cxt.SaveChanges();
-                //    }
-                //    else
-                //    {
-                //        vm_impuesto.Detalle.First().monto = detalle_impuesto.monto;
-                //        cxt.SaveChanges();
-                //    }
-                //}
 
                 //Accesorios hs extra
                 if (vm.Item.nombre == "Horas Extra Chofer" && vm.Item.Padre.nombre == "Costos Variables")
@@ -397,8 +386,10 @@ namespace SisEquiposBertoncini.Aplicativo
                 maxDate = new DateTime(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month, DateTime.DaysInMonth(detalle_por_editar.fecha.Year, detalle_por_editar.fecha.Month));
             }
 
+
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes').modal('show')}); $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '" + minDate.ToString("MM/dd/yyyy") + "', maxDate: '" + maxDate.ToString("MM/dd/yyyy") + "' }); });</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+
         }
 
         protected void bt_cancelar_eliminacion_Click(object sender, EventArgs e)

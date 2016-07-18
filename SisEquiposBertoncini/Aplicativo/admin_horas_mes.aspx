@@ -356,6 +356,65 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade" id="div_valores_dia_view" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4>Detalle del
+                                            <asp:Label Text="" ID="lbl_fecha_view" runat="server" /></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4><small>Detalle de horas trabajadas</small></h4>
+                                        <br />
+                                        <div class="row" style="height: 200px; overflow-y: scroll;">
+                                            <div class="col-md-12">
+                                                <asp:GridView ID="gv_detalle_dia_view" runat="server" EmptyDataText="no hay valores por mostrar." OnRowDataBound="gv_detalle_dia_RowDataBound"
+                                                    AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="equipo" HeaderText="Equipo" ReadOnly="true" />
+                                                        <asp:BoundField DataField="desde" HeaderText="Desde" ReadOnly="true" />
+                                                        <asp:BoundField DataField="hasta" HeaderText="Hasta" ReadOnly="true" />
+                                                        <asp:BoundField DataField="total_movimiento" HeaderText="Total movimiento" ReadOnly="true" />
+                                                        <asp:TemplateField HeaderText="OUT">
+                                                            <ItemTemplate>
+                                                                <asp:CheckBox ID="cbSelect" Checked='<%#Eval("_out")%>' runat="server" Enabled="false"></asp:CheckBox>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                </asp:GridView>
+                                            </div>
+                                        </div>
+                                        <h4><small>Horas totales del día</small></h4>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>Horas normales</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:Label Text="" ID="lbl_horas_normales_view" runat="server" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Horas extra 50%</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:Label Text="" ID="lbl_horas_extra_cincuenta_view" runat="server" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Horas extra 100%</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <asp:Label Text="" ID="lbl_horas_extra_cien_view" runat="server" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <h3><small>Valores mes empleado</small></h3>

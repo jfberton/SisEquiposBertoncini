@@ -41,7 +41,7 @@
         </tr>
     </table>
     <h4><u>Montos por distribuir</u></h4>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="table_edit" runat="server">
         <tr>
             <td>Telefonía celular</td>
             <td>
@@ -81,8 +81,40 @@
         </tr>
     </table>
 
+    <table class="table table-bordered" id="table_view" runat="server">
+        <tr>
+            <td>Telefonía celular</td>
+            <td>
+                <asp:Label id="lbl_telefonia_celular" runat="server" />
+            </td>
+            <td>Sueldos administración</td>
+            <td>
+               <asp:Label id="lbl_sueldos_administracion" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td>Honorarios varios</td>
+            <td>
+               <asp:Label id="lbl_honorarios_varios" runat="server" />
+            </td>
+            <td>Honorarios contable</td>
+            <td>
+                <asp:Label id="lbl_honorarios_contables" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td>Papelería - Librería</td>
+            <td>
+                <asp:Label id="lbl_papeleria" runat="server" />
+            </td>
+            <td>Otros</td>
+            <td>
+               <asp:Label id="lbl_otros" runat="server" />
+            </td>
+        </tr>
+    </table>
     <h4><u>Equipos</u></h4>
-    <div class="row">
+    <div class="row" id="div_agregar_equipo" runat="server">
         <div class="col-md-12">
             <table class="table table-bordered">
                 <tr>

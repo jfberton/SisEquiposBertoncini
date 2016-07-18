@@ -274,6 +274,51 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_guardar_detalle_dia;
         
         /// <summary>
+        /// Control lbl_fecha_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_fecha_view;
+        
+        /// <summary>
+        /// Control gv_detalle_dia_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_detalle_dia_view;
+        
+        /// <summary>
+        /// Control lbl_horas_normales_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_horas_normales_view;
+        
+        /// <summary>
+        /// Control lbl_horas_extra_cincuenta_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_horas_extra_cincuenta_view;
+        
+        /// <summary>
+        /// Control lbl_horas_extra_cien_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_horas_extra_cien_view;
+        
+        /// <summary>
         /// Control lbl_dias_laborables.
         /// </summary>
         /// <remarks>

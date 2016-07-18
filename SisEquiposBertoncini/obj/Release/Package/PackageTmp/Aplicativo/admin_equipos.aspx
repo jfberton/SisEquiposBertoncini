@@ -15,9 +15,13 @@
                     <h4 class="panel-title">Equipos</h4>
                 </div>
                 <div class="col-md-7">
-                    <div class="input-group">
+                    <div class="input-group" id="div_buscar" runat="server">
                         <span class="input-group-addon">Buscar</span>
                         <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_equipos.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
+                    </div>
+                    <div class="input-group" id="div_buscar_view" runat="server">
+                        <span class="input-group-addon">Buscar</span>
+                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_equipos_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
                     </div>
                 </div>
             </div>
@@ -44,6 +48,21 @@
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Editar
                             </button>
 
+                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                            </button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+
+            <asp:GridView ID="gv_equipos_view" runat="server" EmptyDataText="No existen equipos por mostrar." OnRowDataBound="gv_equipos_RowDataBound"
+                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                <Columns>
+                    <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
+                    <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>

@@ -21,6 +21,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
 
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    btn_guardar_modificaciones.Visible = false;
+                }
+
                 CargarTodosLosDatos(true);
             }
             else
@@ -66,6 +71,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void CargarTodosLosDatos( bool actualiza_textboxes)
         {
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+
             List<SisEquiposBertoncini.Aplicativo.planilla_calculos.categoria_paraPlanillaGastosenFuncionHorasHombre> categorias = Session["planilla_gastos_en_funcion_horas_hombre_categorias"] as List<SisEquiposBertoncini.Aplicativo.planilla_calculos.categoria_paraPlanillaGastosenFuncionHorasHombre>;
             int mes = Convert.ToInt32(Session["planilla_gastos_en_funcion_horas_hombre_mes"]);
             int anio = Convert.ToInt32(Session["planilla_gastos_en_funcion_horas_hombre_anio"]);
@@ -94,15 +101,26 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 if (actualiza_textboxes)
                 {
-                    tb_insumos_taller.Text = aux.insumos_taller.ToString();
-                    tb_herramientas.Text = aux.herramientas.ToString();
-                    tb_viaticos.Text = aux.viaticos.ToString();
-                    tb_viaticos_presupuestados.Text = aux.viaticos_presupuestados.ToString();
-                    tb_indumentaria.Text = aux.indumentaria.ToString();
-                    tb_repuestos.Text = aux.repuestos.ToString();
-                    tb_repuestos_pp.Text = aux.repuestos_presupuestados.ToString();
-                    tb_gastos_varios.Text = aux.gastos_varios.ToString();
-                    tb_otros.Text = aux.otros.ToString();
+                    tb_insumos_taller.Text = lbl_insumos_taller.Text = aux.insumos_taller.ToString();
+                    tb_herramientas.Text = lbl_herramientas.Text = aux.herramientas.ToString();
+                    tb_viaticos.Text = lbl_viaticos.Text = aux.viaticos.ToString();
+                    tb_viaticos_presupuestados.Text = lbl_viaticos_pp.Text = aux.viaticos_presupuestados.ToString();
+                    tb_indumentaria.Text = lbl_indumentaria.Text = aux.indumentaria.ToString();
+                    tb_repuestos.Text = lbl_repuestos.Text = aux.repuestos.ToString();
+                    tb_repuestos_pp.Text = lbl_repuestos_pp.Text = aux.repuestos_presupuestados.ToString();
+                    tb_gastos_varios.Text = lbl_gastos_varios.Text = aux.gastos_varios.ToString();
+                    tb_otros.Text = lbl_otros.Text = aux.otros.ToString();
+                }
+
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    fila_edicion.Visible = false;
+                    fila_view.Visible = true;
+                }
+                else
+                {
+                    fila_edicion.Visible = true;
+                    fila_view.Visible = false;
                 }
 
                 decimal total_horas_categorias = categorias.Sum(x => x.total_horas_categoria);

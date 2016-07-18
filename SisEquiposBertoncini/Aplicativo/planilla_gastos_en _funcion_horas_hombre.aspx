@@ -20,7 +20,7 @@
         </div>
     </div>
     <br />
-    <div class="row">
+    <div class="row" id="fila_edicion" runat="server">
         <div class="col-md-12">
             <table class="table table-condensed" style="width: 100%">
                 <tr>
@@ -75,22 +75,76 @@
                 <button runat="server" id="btn_guardar_modificaciones" class="btn btn-default" onserverclick="btn_guardar_modificaciones_ServerClick"><span class="glyphicon glyphicon-save"></span>&nbsp;Aplicar</button>
             </div>
         </div>
-        <div class="row">
-            <div runat="server" id="divTabla">
-            </div>
+    </div>
+    
+    <div class="row" id="fila_view" runat="server">
+        <div class="col-md-12">
+            <table class="table table-condensed" style="width: 100%">
+                <tr>
+                    <td>
+                        <label>Insumos taller</label></td>
+                    <td>
+                        <asp:Label Font-Bold="true" ID="lbl_insumos_taller" runat="server" /></td>
+                    <td>
+                        <label>Herramientas</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_herramientas" runat="server" /></td>
+                    <td>
+                        <label>Viaticos</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_viaticos" runat="server" /></td>
+                    <td>
+                        <label>Viaticos PP</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_viaticos_pp" runat="server" /></td>
+
+                </tr>
+            </table>
         </div>
-        <br />
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
-                    <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla Principal
-                </button>
-                <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
-                    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla de cálculos
-                </button>
-            </div>
+        <div class="col-md-12">
+            <table class="table table-condensed" style="width: 100%">
+                <tr>
+                    <td>
+                        <label>Indumentaria</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_indumentaria" runat="server" /></td>
+                    <td>
+                        <label>Repuestos</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_repuestos" runat="server" /></td>
+                    <td>
+                        <label>Repuestos PP</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_repuestos_pp" runat="server" /></td>
+                    <td>
+                        <label>Gastos varios</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_gastos_varios" runat="server" /></td>
+                    <td>
+                        <label>Otros</label></td>
+                    <td>
+                         <asp:Label Font-Bold="true" ID="lbl_otros" runat="server" /></td>
+                </tr>
+            </table>
         </div>
-        <br />
+    </div>
+
+    <div class="row">
+        <div runat="server" id="divTabla">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
+                <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla Principal
+            </button>
+            <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
+                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla de cálculos
+            </button>
+        </div>
+    </div>
+    <br />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
 </asp:Content>

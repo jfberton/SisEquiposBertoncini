@@ -22,6 +22,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
 
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    btn_agregar_categoria.Visible = false;
+                }
+
                 CargarCategorias();
             }
         }
@@ -47,9 +52,22 @@ namespace SisEquiposBertoncini.Aplicativo
                                             categoria_cantidad_equipos = cxt.Equipos.Count(ee => ee.id_categoria == cc.categoria_id && ee.fecha_baja == null)
                                         }
                                         ).ToList();
-
-                gv_categorias.DataSource = items_categoria;
-                gv_categorias.DataBind();
+                Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_categorias_view.DataSource = items_categoria;
+                    gv_categorias_view.DataBind();
+                    div_buscar.Visible = false;
+                    gv_categorias.Visible = false;
+                }
+                else
+                {
+                    gv_categorias.DataSource = items_categoria;
+                    gv_categorias.DataBind();
+                    div_buscar_view.Visible = false;
+                    gv_categorias_view.Visible = false;
+                }
+                
             }
         }
 

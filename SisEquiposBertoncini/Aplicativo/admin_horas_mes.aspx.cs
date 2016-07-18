@@ -57,6 +57,8 @@ namespace SisEquiposBertoncini.Aplicativo
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
+                        menu_admin.Visible = true;
+                        menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:
                         break;
@@ -517,6 +519,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
         protected void btn_ver_ServerClick(object sender, EventArgs e)
         {
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
             string str_id_dia = ((System.Web.UI.HtmlControls.HtmlButton)sender).Attributes["data-id"];
             Dia dia;
             List<fila_detalle_dia> detalle = new List<fila_detalle_dia>();
@@ -574,21 +577,41 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 QuitarColumnaOUT();
             }
-            gv_detalle_dia.DataSource = detalle;
-            gv_detalle_dia.DataBind();
 
-            lbl_fecha.Text = dia.fecha.ToString("dddd', ' dd 'de' MMMM 'del' yyyy");
+            if (usuariologueado.perfil == perfil_usuario.Jefe)
+            {
+                gv_detalle_dia_view.DataSource = detalle;
+                gv_detalle_dia_view.DataBind();
+            }
+            else
+            {
+                gv_detalle_dia.DataSource = detalle;
+                gv_detalle_dia.DataBind();
+            }
+
+
+            lbl_fecha.Text = lbl_fecha_view.Text = dia.fecha.ToString("dddd', ' dd 'de' MMMM 'del' yyyy");
             ddl_estado_turno_m.SelectedValue = dia.estado_tm.ToString();
             ddl_estado_turno_t.SelectedValue = dia.estado_tt.ToString();
 
-            lbl_horas_normales.Text = dia.horas_normales;
-            lbl_horas_extra_cincuenta.Text = dia.horas_extra_50;
-            lbl_horas_extra_cien.Text = dia.horas_extra_100;
+            lbl_horas_normales.Text = lbl_horas_normales_view.Text = dia.horas_normales;
+            lbl_horas_extra_cincuenta.Text = lbl_horas_extra_cincuenta_view.Text = dia.horas_extra_50;
+            lbl_horas_extra_cien.Text = lbl_horas_extra_cien_view.Text = dia.horas_extra_100;
 
             Session["DiaSeleccionado"] = dia;
             Session["Detalle"] = detalle;
 
-            MostrarPopUpValoresDia();
+
+            if (usuariologueado.perfil == perfil_usuario.Jefe)
+            {
+                MostrarPopUpValoresDia_view();
+            }
+            else
+            {
+                MostrarPopUpValoresDia();
+            }
+
+
         }
 
         protected void ddl_tipo_empleado_SelectedIndexChanged(object sender, EventArgs e)
@@ -631,6 +654,12 @@ namespace SisEquiposBertoncini.Aplicativo
         private void MostrarPopUpValoresDia()
         {
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#div_valores_dia').modal('show')});</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+        }
+
+        private void MostrarPopUpValoresDia_view()
+        {
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#div_valores_dia_view').modal('show')});</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
         }
 

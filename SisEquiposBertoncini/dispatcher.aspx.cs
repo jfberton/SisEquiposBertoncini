@@ -26,6 +26,7 @@ namespace SisEquiposBertoncini
                     Response.Redirect("~/Aplicativo/main_admin.aspx");
                     break;
                 case perfil_usuario.Jefe:
+                    Response.Redirect("~/Aplicativo/main_admin.aspx");
                     break;
                 case perfil_usuario.Supervisor:
                     break;

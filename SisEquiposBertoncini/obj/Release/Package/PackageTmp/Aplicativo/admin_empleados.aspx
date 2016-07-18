@@ -16,9 +16,13 @@
                     <h4 class="panel-title">Empleados</h4>
                 </div>
                 <div class="col-md-7">
-                    <div class="input-group">
+                    <div class="input-group" id="div_buscar" runat="server">
                         <span class="input-group-addon">Buscar</span>
                         <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_empleados.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
+                    </div>
+                    <div class="input-group" id="div_buscar_view" runat="server">
+                        <span class="input-group-addon">Buscar</span>
+                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_empleados_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
                     </div>
                 </div>
             </div>
@@ -44,6 +48,35 @@
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Editar
                             </button>
 
+                            <button
+                                type="button" class="btn btn-sm btn-default"
+                                data-toggle="modal"
+                                data-target="#ver_empleado"
+                                data-id='<%#Eval("empleado_id")%>'
+                                data-area='<%#Eval("empleado_area")%>'
+                                data-categoria='<%#Eval("empleado_categoria")%>'
+                                data-dni='<%#Eval("empleado_dni")%>'
+                                data-nacimiento='<%#Eval("empleado_fecha_nacimiento")%>'
+                                data-nombre='<%#Eval("empleado_nombre")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                            </button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+
+            <asp:GridView ID="gv_empleados_view" runat="server" EmptyDataText="No existen empleados para mostrar." OnRowDataBound="gv_empleados_RowDataBound"
+                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                <Columns>
+                    <asp:BoundField DataField="empleado_area" HeaderText="Area" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_categoria" HeaderText="Categoría" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_nombre" HeaderText="Nombre y apellido" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_dni" HeaderText="D.N.I." ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_nacimiento" HeaderText="Fecha de nacimiento" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_alta" HeaderText="Fecha de alta" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_baja" HeaderText="Fecha de baja" ItemStyle-Font-Italic="true" ItemStyle-ForeColor="DeepPink" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button
                                 type="button" class="btn btn-sm btn-default"
                                 data-toggle="modal"

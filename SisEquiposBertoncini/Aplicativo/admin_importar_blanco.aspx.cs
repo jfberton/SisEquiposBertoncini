@@ -185,7 +185,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                     catch (Exception ex)
                     {
-                        Aplicativo.Controles.MessageBox.Show(this, "Ocurrio un error al procesar el archivo verifique que el mismo no este protegido", Controles.MessageBox.Tipo_MessageBox.Danger);
+                        Aplicativo.Controles.MessageBox.Show(this, "Ocurrio un error al procesar el archivo verifique que el mismo no este protegido " + ex.Message, Controles.MessageBox.Tipo_MessageBox.Danger);
                     }
                 }
                 else

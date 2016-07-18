@@ -21,7 +21,7 @@ namespace SisEquiposBertoncini.Aplicativo
             }
             else
             {
-                if (usuariologueado.perfil != perfil_usuario.Admin)
+                if (usuariologueado.perfil != perfil_usuario.Admin && usuariologueado.perfil != perfil_usuario.Jefe)
                 {
                     Response.Redirect("~/Default.aspx?mode=trucho");
                 }
@@ -73,27 +73,32 @@ namespace SisEquiposBertoncini.Aplicativo
             row.Controls.Add(column);
             tree.Controls.Add(row);
 
-            HtmlGenericControl column_agregar_eliminar = new HtmlGenericControl("td");
 
-            HtmlButton boton_agregar = new HtmlButton();
-            boton_agregar.Attributes.Add("runat", "server");
-            boton_agregar.CausesValidation = false;
-            boton_agregar.ID = "btn_agregar_nivel_" + item.id_item;
-            boton_agregar.Attributes.Add("class", "btn btn-xs btn-success");
-            boton_agregar.InnerText = "Agregar nivel";
-            boton_agregar.ServerClick += boton_agregar_ServerClick;
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+            if (usuariologueado.perfil == perfil_usuario.Admin)
+            {
+                HtmlGenericControl column_agregar_eliminar = new HtmlGenericControl("td");
 
-            HtmlButton boton_eliminar = new HtmlButton();
-            boton_eliminar.Attributes.Add("runat", "server");
-            boton_eliminar.CausesValidation = false;
-            boton_eliminar.ID = "btn_quitar_nivel_" + item.id_item;
-            boton_eliminar.Attributes.Add("class", "btn btn-xs btn-danger");
-            boton_eliminar.InnerText = "Eliminar nivel";
-            boton_eliminar.ServerClick += boton_eliminar_ServerClick;
-            column_agregar_eliminar.Controls.Add(boton_eliminar);
-            column_agregar_eliminar.Controls.Add(boton_agregar);
+                HtmlButton boton_agregar = new HtmlButton();
+                boton_agregar.Attributes.Add("runat", "server");
+                boton_agregar.CausesValidation = false;
+                boton_agregar.ID = "btn_agregar_nivel_" + item.id_item;
+                boton_agregar.Attributes.Add("class", "btn btn-xs btn-success");
+                boton_agregar.InnerText = "Agregar nivel";
+                boton_agregar.ServerClick += boton_agregar_ServerClick;
 
-            row.Controls.Add(column_agregar_eliminar);
+                HtmlButton boton_eliminar = new HtmlButton();
+                boton_eliminar.Attributes.Add("runat", "server");
+                boton_eliminar.CausesValidation = false;
+                boton_eliminar.ID = "btn_quitar_nivel_" + item.id_item;
+                boton_eliminar.Attributes.Add("class", "btn btn-xs btn-danger");
+                boton_eliminar.InnerText = "Eliminar nivel";
+                boton_eliminar.ServerClick += boton_eliminar_ServerClick;
+                column_agregar_eliminar.Controls.Add(boton_eliminar);
+                column_agregar_eliminar.Controls.Add(boton_agregar);
+
+                row.Controls.Add(column_agregar_eliminar);
+            }
 
             foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x => x.id_item))
             {

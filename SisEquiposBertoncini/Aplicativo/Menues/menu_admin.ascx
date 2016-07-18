@@ -36,12 +36,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresos - Egresos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">I/E por equipo</li>
-                        <li><a href="../Aplicativo/admin_conceptos_mensuales.aspx">Editar conceptos</a></li>
-                        <li><a href="../Aplicativo/admin_valores_mes_equipo_v2.aspx">Editar valores mensuales</a></li>
+                        <li><a href="../Aplicativo/admin_conceptos_mensuales.aspx">Conceptos I/E</a></li>
+                        <li><a href="../Aplicativo/admin_valores_mes_equipo_v2.aspx">Valores mensuales</a></li>
                         <li><a href="../Aplicativo/ver_valores_cargados_equipo.aspx">Resumen año equipo</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">I/E por categoria</li>
-                        <li><a href="../Aplicativo/admin_valores_mes_categoria.aspx">Editar valores mensuales</a></li>
+                        <li><a href="../Aplicativo/admin_valores_mes_categoria.aspx">Valores mensuales</a></li>
                         <li><a href="../Aplicativo/ver_valores_cargados_categoria.aspx">Resumen año categoria</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Administrar valores dolar</li>
@@ -52,8 +52,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Horas trabajadas<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../Aplicativo/admin_feriados.aspx">Editar feriados</a></li>
-                        <li><a href="../Aplicativo/admin_horas_mes.aspx">Cargar horas mes</a></li>
+                        <li><a href="../Aplicativo/admin_feriados.aspx">Feriados</a></li>
+                        <li><a href="../Aplicativo/admin_horas_mes.aspx">Horas mes</a></li>
                     </ul>
                 </li>
 

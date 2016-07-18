@@ -22,6 +22,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
+                else
+                {
+                    if (usuariologueado.perfil == perfil_usuario.Jefe)
+                    {
+                        btn_agregar_area.Visible = false;
+                    }
+                }
 
                 CargarAreas();
             }
@@ -45,9 +52,23 @@ namespace SisEquiposBertoncini.Aplicativo
                                        area_nombre = aa.area_nombre,
                                        area_empleados = cxt.Empleados.Count(ee => ee.id_area == aa.area_id && ee.fecha_baja == null)
                                    });
+                Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
 
-                gv_areas.DataSource = items_areas;
-                gv_areas.DataBind();
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_areas_view.DataSource = items_areas;
+                    gv_areas_view.DataBind();
+                    gv_areas.Visible = false;
+                    div_buscar.Visible = false;
+                }
+                else
+                {
+                    gv_areas.DataSource = items_areas;
+                    gv_areas.DataBind();
+                    gv_areas_view.Visible = false;
+                    div_buscar_view.Visible = false;
+                }
+                
             }
         }
 

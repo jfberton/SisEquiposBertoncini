@@ -16,11 +16,21 @@
 	<Equipos valor_database="GRUA 14" valor_excel="Grúa 14" />
 	<Equipos valor_database="GRUA 16" valor_excel="Grúa 16 - TM35100" />
 	<Equipos valor_database="GRUA 3" valor_excel="Grúa 3" />
+  <Equipos valor_database="GRUA 4" valor_excel="Grúa 4" />
 	<Equipos valor_database="GRUA 5" valor_excel="Grúa 5" />
 	<Equipos valor_database="GRUA 6" valor_excel="Grúa 6" />
 	<Equipos valor_database="GRUA 7" valor_excel="Grúa 7" />
 	<Equipos valor_database="GRUA 8" valor_excel="Grúa 8" />
 	<Equipos valor_database="GRUA 9" valor_excel="Grúa 9" />
+  
+  <Equipos valor_database="GRUA 3" valor_excel="Grúa 03" />
+  <Equipos valor_database="GRUA 4" valor_excel="Grúa 04" />
+  <Equipos valor_database="GRUA 5" valor_excel="Grúa 05" />
+	<Equipos valor_database="GRUA 6" valor_excel="Grúa 06" />
+	<Equipos valor_database="GRUA 7" valor_excel="Grúa 07" />
+	<Equipos valor_database="GRUA 8" valor_excel="Grúa 08" />
+	<Equipos valor_database="GRUA 9" valor_excel="Grúa 09" />
+  
 	<Equipos valor_database="HIDRO 2 - SCANIA" valor_excel="Hidro2 PM/Scania" />
 	<Equipos valor_database="HIDRO 1 - VOLVO" valor_excel="Hidrogrúa/Volvito" />
 	<Equipos valor_database="IVECO 420" valor_excel="IVECO" />

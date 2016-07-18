@@ -29,6 +29,8 @@ namespace SisEquiposBertoncini.Aplicativo
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
+                         menu_admin.Visible = true;
+                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:
                         break;
@@ -42,12 +44,18 @@ namespace SisEquiposBertoncini.Aplicativo
                         break;
                 }
 
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    btn_agregar_feriado.Visible = false;
+                }
+
                 CargarFeriados();
             }
         }
 
         private void CargarFeriados()
         {
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
             using (var cxt = new Model1Container())
             {
                 var feriados = (from ff in cxt.Feriados
@@ -58,8 +66,21 @@ namespace SisEquiposBertoncini.Aplicativo
                                     feriado_descripcion = ff.descripcion
                                 }).ToList();
 
-                gv_feriados.DataSource = feriados;
-                gv_feriados.DataBind();
+
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_feriados_view.DataSource = feriados;
+                    gv_feriados_view.DataBind();
+                    div_buscar.Visible = false;
+                    gv_feriados.Visible = false;
+                }
+                else
+                {
+                    gv_feriados.DataSource = feriados;
+                    gv_feriados.DataBind();
+                    div_buscar_view.Visible = false;
+                    gv_feriados_view.Visible = false;
+                }
             }
         }
 

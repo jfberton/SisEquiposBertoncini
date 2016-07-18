@@ -31,6 +31,24 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::SisEquiposBertoncini.Aplicativo.Menues.menu_usuario menu_usuario;
         
         /// <summary>
+        /// Control div_buscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_buscar;
+        
+        /// <summary>
+        /// Control div_buscar_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_buscar_view;
+        
+        /// <summary>
         /// Control gv_feriados.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gv_feriados;
+        
+        /// <summary>
+        /// Control gv_feriados_view.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_feriados_view;
         
         /// <summary>
         /// Control id_item_por_eliminar.
@@ -56,6 +83,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_aceptar_eliminacion;
+        
+        /// <summary>
+        /// Control btn_agregar_feriado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_agregar_feriado;
         
         /// <summary>
         /// Control validation_summary.

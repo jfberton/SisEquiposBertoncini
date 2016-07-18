@@ -86,7 +86,6 @@
     <Content Include="Aplicativo\admin_tipo_empleado.aspx" />
     <Content Include="Aplicativo\admin_tipo_equipo.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_categoria.aspx" />
-    <Content Include="Aplicativo\admin_valores_mes_equipo.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_equipo_v2.aspx" />
     <Content Include="Aplicativo\admin_valor_dolar.aspx" />
     <Content Include="Aplicativo\Controles\cross.xml" />
@@ -282,13 +281,6 @@
     </Compile>
     <Compile Include="Aplicativo\admin_valores_mes_categoria.aspx.designer.cs">
       <DependentUpon>admin_valores_mes_categoria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Aplicativo\admin_valores_mes_equipo.aspx.cs">
-      <DependentUpon>admin_valores_mes_equipo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aplicativo\admin_valores_mes_equipo.aspx.designer.cs">
-      <DependentUpon>admin_valores_mes_equipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\admin_valores_mes_equipo_v2.aspx.cs">
       <DependentUpon>admin_valores_mes_equipo_v2.aspx</DependentUpon>

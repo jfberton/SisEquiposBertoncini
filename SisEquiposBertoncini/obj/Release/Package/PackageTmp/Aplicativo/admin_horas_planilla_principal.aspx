@@ -87,6 +87,28 @@
                                 </Columns>
                             </asp:GridView>
 
+                             <asp:GridView ID="gv_planilla_empleados_view" runat="server" EmptyDataText="No existen empleados por mostrar en esta categoría." OnRowDataBound="gv_planilla_empleados_RowDataBound"
+                                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                                <Columns>
+                                    <asp:BoundField DataField="empleado" HeaderText="Nombre" ReadOnly="true" />
+                                    <asp:TemplateField HeaderText="Sueldo" ItemStyle-HorizontalAlign="Right">
+                                        <ItemTemplate>
+                                            <asp:Label Text='<%#String.Format("{0:$ #,###.00}",Eval("sueldo"))%>' runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Días mes" ItemStyle-HorizontalAlign="Right">
+                                        <ItemTemplate>
+                                            <asp:Label Text='<%#Eval("dias_mes")%>' runat="server" />
+                                            <button runat="server" class="btn btn-sm btn-default right" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("empleado_id")%>'>
+                                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver mes
+                                            </button>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="dias_out" HeaderText="Días OUT" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                                    <asp:BoundField DataField="costo_mensual_ponderado" HeaderText="Costo mensual ponderado" DataFormatString="{0:$ #,###.00}" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                                </Columns>
+                            </asp:GridView>
+
                             <div class="modal fade" id="editar_sueldo" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content panel-default">

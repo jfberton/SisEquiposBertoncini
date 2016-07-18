@@ -15,9 +15,13 @@
                     <h4 class="panel-title">Categorías de empleados</h4>
                 </div>
                 <div class="col-md-7">
-                    <div class="input-group">
+                    <div class="input-group" id="div_buscar" runat="server">
                         <span class="input-group-addon">Buscar</span>
                         <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_categorias.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
+                    </div>
+                    <div class="input-group" id="div_buscar_view" runat="server">
+                        <span class="input-group-addon">Buscar</span>
+                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_categorias_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
                     </div>
                 </div>
             </div>
@@ -40,6 +44,21 @@
                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
                             </button>
 
+                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
+                            </button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+
+            <asp:GridView ID="gv_categorias_view" runat="server" EmptyDataText="No existen categorías por mostrar." OnRowDataBound="gv_categorias_RowDataBound"
+                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                <Columns>
+                    <asp:BoundField DataField="categoria_nombre" HeaderText="Nombre" ReadOnly="true" />
+                    <asp:BoundField DataField="categoria_cantidad_empleados" HeaderText="Empleados" ReadOnly="true" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
                             </button>
@@ -75,7 +94,7 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_categoria" data-toggle="modal" data-target="#agregar_categoria">
+                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_categoria" runat="server" data-toggle="modal" data-target="#agregar_categoria">
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar nuevo
                     </button>
                     <div class="modal fade" id="agregar_categoria" role="dialog" aria-hidden="true">

@@ -34,7 +34,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    if (usuariologueado.perfil != perfil_usuario.Admin)
+                    if (usuariologueado.perfil != perfil_usuario.Admin && usuariologueado.perfil != perfil_usuario.Jefe)
                     {
                         Response.Redirect("~/Default.aspx?mode=trucho");
                     }
@@ -47,6 +47,8 @@ namespace SisEquiposBertoncini.Aplicativo
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
+                         menu_admin.Visible = true;
+                        menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:
                         break;
@@ -208,6 +210,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void Ver_editar_valores_mes(int id_item)
         {
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+
             int mes = 0; int anio = 0;
             using (var cxt = new Model1Container())
             {
@@ -232,45 +236,45 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 //Valor_mes item_valor_mes = cxt.Valores_meses.First(x => x.id == id_valor_item_mes);
                 hidden_id_item_01.Value = id_item.ToString();
-                lbl_item.Text = item.nombre;
-                lbl_categoria.Text = item.tipo;
+                lbl_item.Text = lbl_item_view.Text = item.nombre;
+                lbl_categoria.Text = lbl_categoria_view.Text = item.tipo;
                 switch (mes)
                 {
                     case 1:
-                        lbl_mes.Text = "Enero " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Enero " + anio.ToString();
                         break;
                     case 2:
-                        lbl_mes.Text = "Febrero " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Febrero " + anio.ToString();
                         break;
                     case 3:
-                        lbl_mes.Text = "Marzo " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Marzo " + anio.ToString();
                         break;
                     case 4:
-                        lbl_mes.Text = "Abril " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Abril " + anio.ToString();
                         break;
                     case 5:
-                        lbl_mes.Text = "Mayo " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Mayo " + anio.ToString();
                         break;
                     case 6:
-                        lbl_mes.Text = "Junio " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Junio " + anio.ToString();
                         break;
                     case 7:
-                        lbl_mes.Text = "Julio " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Julio " + anio.ToString();
                         break;
                     case 8:
-                        lbl_mes.Text = "Agosto " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Agosto " + anio.ToString();
                         break;
                     case 9:
-                        lbl_mes.Text = "Septiembre " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Septiembre " + anio.ToString();
                         break;
                     case 10:
-                        lbl_mes.Text = "Octubre " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Octubre " + anio.ToString();
                         break;
                     case 11:
-                        lbl_mes.Text = "Noviembre " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Noviembre " + anio.ToString();
                         break;
                     case 12:
-                        lbl_mes.Text = "Diciembre " + anio.ToString();
+                        lbl_mes.Text = lbl_mes_view.Text = "Diciembre " + anio.ToString();
                         break;
                     default:
                         break;
@@ -314,14 +318,30 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
 
-                gv_detalle.DataSource = detalle;
-                gv_detalle.DataBind();
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_detalle_view.DataSource = detalle;
+                    gv_detalle_view.DataBind();
+                }
+                else
+                {
+                    gv_detalle.DataSource = detalle;
+                    gv_detalle.DataBind();
+                }
+                
 
-                lbl_total_item_mes.Text = detalle.Sum(x => x.monto).ToString("$ #,##0.00");
+                lbl_total_item_mes.Text = lbl_total_item_mes_view.Text = detalle.Sum(x => x.monto).ToString("$ #,##0.00");
             }
 
-
-            MostrarPopUpDetalle(mes, anio);
+            if (usuariologueado.perfil == perfil_usuario.Jefe)
+            {
+                MostrarPopUpDetalle_view();
+            }
+            else
+            {
+                MostrarPopUpDetalle(mes, anio);
+            }
+            
         }
 
         private void MostrarPopUpDetalle(int mes, int anio)
@@ -332,6 +352,12 @@ namespace SisEquiposBertoncini.Aplicativo
               $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '01/01/2015', maxDate: '01/31/2015' }); });
              */
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes').modal('show')}); $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '" + minDate.ToString("MM/dd/yyyy") + "', maxDate: '" + maxDate.ToString("MM/dd/yyyy") + "' }); });</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+        }
+
+        private void MostrarPopUpDetalle_view()
+        {
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes_view').modal('show')});</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
         }
 

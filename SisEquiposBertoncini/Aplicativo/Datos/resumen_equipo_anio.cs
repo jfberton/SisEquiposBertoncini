@@ -79,6 +79,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                                 Valor_mes vm = valor_equipo_mes.Valores_meses.FirstOrDefault(ii => ii.id_item == concepto.id_item && ii.id_ingreso_egreso_mensual == valor_equipo_mes.id_ingreso_egreso_mensual);
                                 if (vm != null)
                                 {
+                                    
                                     Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = vm.valor });
                                     total_concepto_anio += vm.valor;
                                 }

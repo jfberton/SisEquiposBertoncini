@@ -25,7 +25,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    if (usuariologueado.perfil != perfil_usuario.Admin)
+                    if (usuariologueado.perfil != perfil_usuario.Admin && usuariologueado.perfil != perfil_usuario.Jefe)
                     {
                         Response.Redirect("~/Default.aspx?mode=trucho");
                     }

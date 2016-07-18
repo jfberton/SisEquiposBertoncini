@@ -22,6 +22,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
 
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    btn_agregar.Visible = false;
+                }
+
                 CargarEquipos();
             }
         }
@@ -39,8 +44,22 @@ namespace SisEquiposBertoncini.Aplicativo
                                    equipo_nombre = ee.nombre
                                }).ToList();
 
-                gv_equipos.DataSource = equipos;
-                gv_equipos.DataBind();
+                Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+                
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_equipos_view.DataSource = equipos;
+                    gv_equipos_view.DataBind();
+                    gv_equipos.Visible = false;
+                    div_buscar.Visible = false;
+                }
+                else
+                {
+                    gv_equipos.DataSource = equipos;
+                    gv_equipos.DataBind();
+                    gv_equipos_view.Visible = false;
+                    div_buscar_view.Visible = false;
+                }
             }
         }
 

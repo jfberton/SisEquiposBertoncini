@@ -97,6 +97,7 @@ namespace SisEquiposBertoncini.Aplicativo
             btn_buscar.Visible = false;
             btn_nueva_busqueda.Visible = true;
             div_resultados_busqueda.Visible = true;
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
 
             using (var cxt = new Model1Container())
             {
@@ -221,8 +222,18 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 costo_hora_teorico_ajustado = (costo_mensual_ponderado_total / dias_mes / cantidad_empleados / horas_dia);
 
-                gv_planilla_empleados.DataSource = items_grilla;
-                gv_planilla_empleados.DataBind();
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_planilla_empleados_view.DataSource = items_grilla;
+                    gv_planilla_empleados_view.DataBind();
+                    gv_planilla_empleados.Visible = false;
+                }
+                else
+                {
+                    gv_planilla_empleados.DataSource = items_grilla;
+                    gv_planilla_empleados.DataBind();
+                    gv_planilla_empleados_view.Visible = false;
+                }
 
                 lbl_costo_mensual_ponderado_total.Text = costo_mensual_ponderado_total.ToString("$ #,##0.00");
                 lbl_costo_mensual_ponderado_total_1.Text = lbl_costo_mensual_ponderado_total.Text;

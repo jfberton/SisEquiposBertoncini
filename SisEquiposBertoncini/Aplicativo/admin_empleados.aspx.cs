@@ -17,9 +17,15 @@ namespace SisEquiposBertoncini.Aplicativo
             if (!IsPostBack)
             {
                 Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+
                 if (usuariologueado == null)
                 {
                     Response.Redirect("~/Default.aspx?mode=session_end");
+                }
+
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    btn_agregar_empleado.Visible = false;
                 }
 
                 CargarDDLs();
@@ -30,6 +36,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void CargarEmpleados()
         {
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+
             using (var cxt = new Model1Container())
             {
                 var empleados = (from ee in cxt.Empleados
@@ -44,8 +52,22 @@ namespace SisEquiposBertoncini.Aplicativo
                                      empleado_fecha_alta = ee.fecha_alta,
                                      empleado_fecha_baja = ee.fecha_baja
                                  }).ToList();
-                gv_empleados.DataSource = empleados;
-                gv_empleados.DataBind();
+
+                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                {
+                    gv_empleados_view.DataSource = empleados;
+                    gv_empleados_view.DataBind();
+                    div_buscar.Visible = false;
+                    gv_empleados.Visible = false;
+                }
+                else
+                {
+                    gv_empleados.DataSource = empleados;
+                    gv_empleados.DataBind();
+                    div_buscar_view.Visible = false;
+                    gv_empleados_view.Visible = false;
+                }
+
             }
         }
 
