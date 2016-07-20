@@ -106,6 +106,9 @@ namespace SisEquiposBertoncini.Aplicativo
                 int mesAnterior = new DateTime(anio, mes, 1).AddMonths(-1).Month;
                 int anioAnterior = new DateTime(anio, mes, 1).AddMonths(-1).Year;
 
+                DateTime primer_dia_mes = new DateTime(anio, mes, 1);
+                DateTime ultimo_dia_mes = new DateTime(anio, mes, DateTime.DaysInMonth(anio, mes));
+                
                 Categoria_empleado mecanicos = cxt.Categorias_empleados.First(cc => cc.nombre == "Mecánico");
                 Categoria_empleado soldadores = cxt.Categorias_empleados.First(cc => cc.nombre == "Soldador");
                 Categoria_empleado pintores = cxt.Categorias_empleados.First(cc => cc.nombre == "Pintor");
@@ -119,13 +122,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 switch (tipo_empleado)
                 {
                     case "Mecánicos - Pintores":
-                        empleados = cxt.Empleados.Where(ee => (ee.id_categoria == mecanicos.id_categoria || ee.id_categoria == pintores.id_categoria) && ee.fecha_baja == null).ToList();
+                        empleados = cxt.Empleados.Where(ee => (ee.id_categoria == mecanicos.id_categoria || ee.id_categoria == pintores.id_categoria) && (ee.fecha_alta == null || ee.fecha_alta.Value <= ultimo_dia_mes) && (ee.fecha_baja == null || (ee.fecha_baja.Value >= primer_dia_mes))).ToList();
                         break;
                     case "Soldadores":
-                        empleados = cxt.Empleados.Where(ee => ee.id_categoria == soldadores.id_categoria && ee.fecha_baja == null).ToList();
+                        empleados = cxt.Empleados.Where(ee => ee.id_categoria == soldadores.id_categoria && (ee.fecha_alta == null || ee.fecha_alta.Value <= ultimo_dia_mes) && (ee.fecha_baja == null || ee.fecha_baja.Value >= primer_dia_mes)).ToList();
                         break;
                     case "Grueros":
-                        empleados = cxt.Empleados.Where(ee => ee.id_categoria == grueros.id_categoria && ee.fecha_baja == null).ToList();
+                        empleados = cxt.Empleados.Where(ee => ee.id_categoria == grueros.id_categoria && (ee.fecha_alta == null || ee.fecha_alta.Value <= ultimo_dia_mes) && (ee.fecha_baja == null || ee.fecha_baja.Value >= primer_dia_mes)).ToList();
                         break;
                     default:
                         break;

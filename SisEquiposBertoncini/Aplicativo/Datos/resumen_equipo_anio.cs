@@ -82,12 +82,12 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                                     
                                     Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = vm.valor });
                                     total_concepto_anio += vm.valor;
+                                    meses_cargados_anio++;
                                 }
                                 else
                                 {
                                     Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = 0 });
                                 }
-                                meses_cargados_anio++;
                             }
                             else
                             {

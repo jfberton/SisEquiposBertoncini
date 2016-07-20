@@ -98,6 +98,75 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="editar_concepto" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Insertar nuevo concepto</h4> 
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                               <input type="hidden" runat="server" id="hidden_id_concepto" value="0" />
+                                <div class="col-md-12 text-center">
+                                    <h2>
+                                        <small>Pertenece a <label><asp:Label Text="" ID="lbl_padre_concepto" runat="server" /></label> del tipo <label><asp:Label Text="" ID="lbl_tipo_padre_concepto" runat="server" /></label>
+                                        </small>
+                                    </h2>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="BulletList"
+                                        CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <table class="table-condensed" style="width: 100%">
+                                        <tr>
+                                            <td>Nombre del concepto</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-8">
+                                    <table class="table-condensed" style="width: 100%">
+                                        <tr>
+                                            <td style="width: auto">
+                                                <input type="text" id="txt_editar_nombre" class="form-control" runat="server" placeholder="Nombre del concepto" /></td>
+                                            <td>
+                                                <asp:RequiredFieldValidator ControlToValidate="txt_editar_nombre" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre del concepto' />"
+                                                    ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar el nombre del concepto">
+                                                </asp:RequiredFieldValidator></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table-condensed">
+                                        <tr><td>Descripción:</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5" class="form-control" runat="server" id="txt_editar_descripcion" placeholder="Descripción del concepto (no obligatorio)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_editar_concepto" runat="server" onserverclick="btn_editar_concepto_ServerClick" class="btn btn-success" validationgroup="equipo">
+                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar!
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

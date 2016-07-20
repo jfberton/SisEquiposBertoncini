@@ -111,6 +111,7 @@
     <Content Include="Aplicativo\main_usuario.aspx" />
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\Menues\menu_usuario.ascx" />
+    <Content Include="Aplicativo\planilla_resumen_valores_equipo_categoria.aspx" />
     <Content Include="Aplicativo\planilla_calculos.aspx" />
     <Content Include="Aplicativo\planilla_gastos_administrativos.aspx" />
     <Content Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx" />
@@ -448,6 +449,13 @@
     </Compile>
     <Compile Include="Aplicativo\Menues\menu_usuario.ascx.designer.cs">
       <DependentUpon>menu_usuario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_resumen_valores_equipo_categoria.aspx.cs">
+      <DependentUpon>planilla_resumen_valores_equipo_categoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_resumen_valores_equipo_categoria.aspx.designer.cs">
+      <DependentUpon>planilla_resumen_valores_equipo_categoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\planilla_calculos.aspx.cs">
       <DependentUpon>planilla_calculos.aspx</DependentUpon>

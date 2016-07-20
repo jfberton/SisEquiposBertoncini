@@ -94,15 +94,6 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.TextBox tb_honorarios_sistema;
         
         /// <summary>
-        /// Control tb_honorarios_contables.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_honorarios_contables;
-        
-        /// <summary>
         /// Control tb_papeleria_libreria.
         /// </summary>
         /// <remarks>
@@ -164,15 +155,6 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_honorarios_varios;
-        
-        /// <summary>
-        /// Control lbl_honorarios_contables.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_honorarios_contables;
         
         /// <summary>
         /// Control lbl_papeleria.

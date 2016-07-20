@@ -57,10 +57,10 @@
             <td>
                 <asp:TextBox runat="server" id="tb_honorarios_sistema" CssClass="form-control"/>
             </td>
-            <td>Honorarios contable</td>
+           <%-- <td>Honorarios contable</td>
             <td>
                 <asp:TextBox runat="server" id="tb_honorarios_contables" CssClass="form-control"/>
-            </td>
+            </td>--%>
         </tr>
         <tr>
             <td>Papelería - Librería</td>
@@ -97,10 +97,10 @@
             <td>
                <asp:Label id="lbl_honorarios_varios" runat="server" />
             </td>
-            <td>Honorarios contable</td>
+          <%--  <td>Honorarios contable</td>
             <td>
                 <asp:Label id="lbl_honorarios_contables" runat="server" />
-            </td>
+            </td>--%>
         </tr>
         <tr>
             <td>Papelería - Librería</td>

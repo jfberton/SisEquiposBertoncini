@@ -77,7 +77,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     tb_telefonia_celular.Text = lbl_telefonia_celular.Text = Cadena.Formato_moneda(datos_planilla.monto_telefonia_celular, Cadena.Moneda.pesos);
                     tb_sueldos_administracion.Text = lbl_sueldos_administracion.Text = Cadena.Formato_moneda(datos_planilla.monto_sueldos, Cadena.Moneda.pesos);
-                    tb_honorarios_contables.Text = lbl_honorarios_contables.Text = Cadena.Formato_moneda(datos_planilla.monto_honorarios_contables, Cadena.Moneda.pesos);
+                    //tb_honorarios_contables.Text = lbl_honorarios_contables.Text = Cadena.Formato_moneda(datos_planilla.monto_honorarios_contables, Cadena.Moneda.pesos);
                     tb_honorarios_sistema.Text = lbl_honorarios_varios.Text = Cadena.Formato_moneda(datos_planilla.monto_honorarios_sistema, Cadena.Moneda.pesos);
                     tb_papeleria_libreria.Text = lbl_papeleria.Text = Cadena.Formato_moneda(datos_planilla.monto_papeleria, Cadena.Moneda.pesos);
                     tb_otros.Text = lbl_otros.Text = Cadena.Formato_moneda(datos_planilla.monto_otros, Cadena.Moneda.pesos);
@@ -112,7 +112,7 @@ namespace SisEquiposBertoncini.Aplicativo
             div_detalle.Controls.Clear();
             tb_telefonia_celular.Text = "";
             tb_sueldos_administracion.Text = "";
-            tb_honorarios_contables.Text = "";
+            //tb_honorarios_contables.Text = "";
             tb_honorarios_sistema.Text = "";
             tb_papeleria_libreria.Text = "";
             tb_otros.Text = "";
@@ -374,7 +374,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 datos_planilla.monto_telefonia_celular = ObtenerValor(tb_telefonia_celular.Text);
                 datos_planilla.monto_sueldos = ObtenerValor(tb_sueldos_administracion.Text);
                 datos_planilla.monto_honorarios_sistema = ObtenerValor(tb_honorarios_sistema.Text);
-                datos_planilla.monto_honorarios_contables = ObtenerValor(tb_honorarios_contables.Text);
+                datos_planilla.monto_honorarios_contables = 0;//ObtenerValor(tb_honorarios_contables.Text);
                 datos_planilla.monto_papeleria = ObtenerValor(tb_papeleria_libreria.Text);
                 datos_planilla.monto_otros = ObtenerValor(tb_otros.Text);
 
@@ -382,7 +382,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 tb_telefonia_celular.Text = Cadena.Formato_moneda(datos_planilla.monto_telefonia_celular, Cadena.Moneda.pesos);
                 tb_sueldos_administracion.Text = Cadena.Formato_moneda(datos_planilla.monto_sueldos, Cadena.Moneda.pesos);
-                tb_honorarios_contables.Text = Cadena.Formato_moneda(datos_planilla.monto_honorarios_contables, Cadena.Moneda.pesos);
+                //tb_honorarios_contables.Text = Cadena.Formato_moneda(datos_planilla.monto_honorarios_contables, Cadena.Moneda.pesos);
                 tb_honorarios_sistema.Text = Cadena.Formato_moneda(datos_planilla.monto_honorarios_sistema, Cadena.Moneda.pesos);
                 tb_papeleria_libreria.Text = Cadena.Formato_moneda(datos_planilla.monto_papeleria, Cadena.Moneda.pesos);
                 tb_otros.Text = Cadena.Formato_moneda(datos_planilla.monto_otros, Cadena.Moneda.pesos);

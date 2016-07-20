@@ -43,6 +43,7 @@
                         <li class="dropdown-header">I/E por categoria</li>
                         <li><a href="../Aplicativo/admin_valores_mes_categoria.aspx">Valores mensuales</a></li>
                         <li><a href="../Aplicativo/ver_valores_cargados_categoria.aspx">Resumen año categoria</a></li>
+                        <li><a href="planilla_resumen_valores_equipo_categoria.aspx">Resumen año equipos categoria </a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Administrar valores dolar</li>
                         <li><a href="../Aplicativo/admin_valor_dolar.aspx">Editar valores dolar</a></li>
@@ -63,6 +64,7 @@
                         <li><a href="admin_horas_planilla_principal.aspx">En función de horas empleado</a></li>
                         <li><a href="planilla_gastos_administrativos.aspx">Gastos administración</a></li>
                         <li><a href="planilla_resumen_horas_trabajadas.aspx">Resumen horas trabajadas equipo</a></li>
+                        
                     </ul>
                 </li>
                 <li class="dropdown">

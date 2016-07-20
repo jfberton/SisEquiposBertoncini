@@ -79,6 +79,14 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 HtmlGenericControl column_agregar_eliminar = new HtmlGenericControl("td");
 
+                HtmlButton boton_editar = new HtmlButton();
+                boton_editar.Attributes.Add("runat", "server");
+                boton_editar.CausesValidation = false;
+                boton_editar.ID = "btn_editar_nivel_" + item.id_item;
+                boton_editar.Attributes.Add("class", "btn btn-xs btn-warning");
+                boton_editar.InnerText = "Editar nivel";
+                boton_editar.ServerClick += boton_editar_ServerClick;
+
                 HtmlButton boton_agregar = new HtmlButton();
                 boton_agregar.Attributes.Add("runat", "server");
                 boton_agregar.CausesValidation = false;
@@ -94,6 +102,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 boton_eliminar.Attributes.Add("class", "btn btn-xs btn-danger");
                 boton_eliminar.InnerText = "Eliminar nivel";
                 boton_eliminar.ServerClick += boton_eliminar_ServerClick;
+
+                column_agregar_eliminar.Controls.Add(boton_editar);
                 column_agregar_eliminar.Controls.Add(boton_eliminar);
                 column_agregar_eliminar.Controls.Add(boton_agregar);
 
@@ -103,6 +113,35 @@ namespace SisEquiposBertoncini.Aplicativo
             foreach (Item_ingreso_egreso hijo in item.Hijos.OrderBy(x => x.id_item))
             {
                 AgregarNodo(hijo, tree);
+            }
+        }
+
+        void boton_editar_ServerClick(object sender, EventArgs e)
+        {
+            int id_nivel = Convert.ToInt32(((System.Web.UI.HtmlControls.HtmlButton)sender).ID.Replace("btn_editar_nivel_", ""));
+
+            using (var cxt = new Model1Container())
+            {
+                Item_ingreso_egreso concepto = cxt.Items_ingresos_egresos.FirstOrDefault(ii => ii.id_item == id_nivel);
+                Item_ingreso_egreso padre_concepto = cxt.Items_ingresos_egresos.FirstOrDefault(ii => ii.id_item == concepto.id_item_padre);
+
+                if (concepto != null)
+                {
+                    hidden_id_concepto.Value = id_nivel.ToString();
+
+                    txt_editar_nombre.Value = concepto.nombre;
+                    txt_editar_descripcion.Value = concepto.descripcion;
+
+
+                    if (padre_concepto != null)
+                    {
+                        lbl_padre_concepto.Text = padre_concepto.nombre;
+                        lbl_tipo_padre_concepto.Text = padre_concepto.tipo;
+                    }
+
+                    string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#editar_concepto').modal('show')});</script>";
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+                }
             }
         }
 
@@ -220,6 +259,38 @@ namespace SisEquiposBertoncini.Aplicativo
             }
 
             CargarConceptos();
+        }
+
+        protected void btn_editar_concepto_ServerClick(object sender, EventArgs e)
+        {
+            using (var cxt = new Model1Container())
+            {
+                try
+                {
+                    int id_item = 0;
+
+                    if (int.TryParse(hidden_id_concepto.Value, out id_item))
+                    {
+                        Item_ingreso_egreso concepto = cxt.Items_ingresos_egresos.FirstOrDefault(ii => ii.id_item == id_item);
+                        if (concepto != null)
+                        {
+                            concepto.nombre = txt_editar_nombre.Value;
+                            concepto.descripcion = txt_editar_descripcion.Value;
+                            cxt.SaveChanges();
+
+                            txt_editar_nombre.Value = string.Empty;
+                            txt_editar_descripcion.Value = string.Empty;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Error", MessageBox.Tipo_MessageBox.Danger);
+                }
+            }
+
+            CargarConceptos();
+
         }
     }
 }

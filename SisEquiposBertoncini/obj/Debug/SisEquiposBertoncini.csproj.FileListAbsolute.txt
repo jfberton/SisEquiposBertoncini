@@ -49,7 +49,6 @@ C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBerton
 C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.DLL
 C:\Users\berton\Desktop\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.SqlServer.Types.dll
-d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
@@ -107,3 +106,4 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\26-05-2016\26-05-2016
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.xml
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csproj.ResolveComReference.cache
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
