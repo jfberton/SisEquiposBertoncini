@@ -40,8 +40,7 @@
                         <tr>
                             <td>
                                 <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                                <%--<asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
-                                <asp:Button Text="Imprimir Resumen" ID="btn_imprimir_resumen" CssClass="btn btn-default" OnClick="btn_imprimir_resumen_Click" runat="server" />--%>
+                                <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
                                 <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
                             </td>
                         </tr>
@@ -49,28 +48,29 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <asp:GridView ID="gv_detalle_equipos" runat="server" OnRowDataBound="gv_detalle_equipos_RowDataBound" EmptyDataText="No existen resultados"
-        AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered" ShowHeader="true">
+        AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered" ShowHeader="true" Width="1800px">
         <Columns>
-            <asp:BoundField DataField="nombre_equipo" HeaderText="Equipo" ReadOnly="true" />
+            <asp:BoundField DataField="nombre_equipo" HeaderText="Equipo" ReadOnly="true"/>
             <asp:BoundField DataField="tipo_resultado" HeaderText="Tipo resultado" ReadOnly="true" />
-            <asp:BoundField DataField="enero" HeaderText="Enero" ReadOnly="true" />
-            <asp:BoundField DataField="febrero" HeaderText="Febrero" ReadOnly="true" />
-            <asp:BoundField DataField="marzo" HeaderText="Marzo" ReadOnly="true" />
-            <asp:BoundField DataField="abril" HeaderText="Abril" ReadOnly="true" />
-            <asp:BoundField DataField="mayo" HeaderText="Mayo" ReadOnly="true" />
-            <asp:BoundField DataField="junio" HeaderText="Junio" ReadOnly="true" />
-            <asp:BoundField DataField="julio" HeaderText="Julio" ReadOnly="true" />
-            <asp:BoundField DataField="agosto" HeaderText="Agosto" ReadOnly="true" />
-            <asp:BoundField DataField="septiembre" HeaderText="Septiembre" ReadOnly="true" />
-            <asp:BoundField DataField="octubre" HeaderText="Octubre" ReadOnly="true" />
-            <asp:BoundField DataField="noviembre" HeaderText="Noviembre" ReadOnly="true" />
-            <asp:BoundField DataField="diciembre" HeaderText="Diciembre" ReadOnly="true" />
-            <asp:BoundField DataField="total" HeaderText="Total Anual" ReadOnly="true" />
-            <asp:BoundField DataField="promedio" HeaderText="Promedio mensual" ReadOnly="true" />
+            <asp:BoundField DataField="enero" HeaderText="Enero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="febrero" HeaderText="Febrero" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="marzo" HeaderText="Marzo" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="abril" HeaderText="Abril" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="mayo" HeaderText="Mayo" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="junio" HeaderText="Junio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="julio" HeaderText="Julio" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="agosto" HeaderText="Agosto" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="septiembre" HeaderText="Septiembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="octubre" HeaderText="Octubre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="noviembre" HeaderText="Noviembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="diciembre" HeaderText="Diciembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="total" HeaderText="Total Anual" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="promedio" HeaderText="Promedio mensual" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
         </Columns>
     </asp:GridView>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+   
 </asp:Content>

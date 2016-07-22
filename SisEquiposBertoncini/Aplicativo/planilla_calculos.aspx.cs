@@ -102,6 +102,12 @@ namespace SisEquiposBertoncini.Aplicativo
             public decimal monto { get; set; }
         }
 
+        private struct item_combinado
+        {
+            public Categoria_equipo categoria { get; set; }
+            public List<equipo_tabla> filas_categoria { get; set; }
+        }
+
         private void CrearCargarTabla()
         {
             int mes = Convert.ToInt32(Session["planilla_calculos_mes"]);
@@ -154,34 +160,45 @@ namespace SisEquiposBertoncini.Aplicativo
                     break;
             }
 
+
             using (var cxt = new Model1Container())
             {
-                Categoria_equipo camiones_y_carretones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Camiones y carretones");
-                Categoria_equipo gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Gruas");
-                Categoria_equipo vehiculos_menores = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Vehículos menores");
-                Categoria_equipo ventas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Ventas");
-                Categoria_equipo trabajos_particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos particulares");
-                Categoria_equipo trabajos_especiales = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos especiales");
-                Categoria_equipo otros = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Otros");
-                Categoria_equipo particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "PARTICULAR");
-                Categoria_equipo mantenimiento_instalaciones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "MANTENIMIENTO DE INSTALACIONES");
-                Categoria_equipo elementos_izaje = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "ELEMENTOS DE IZAJE");
-                Categoria_equipo accesorios_gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "ACCESORIOS DE GRUAS");
-                Categoria_equipo camionetas_gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "CAMIONETAS PARA GRUAS");
+                List<item_combinado> categorias = new List<item_combinado>();
+                
+                foreach (Categoria_equipo categoria in cxt.Categorias_equipos)
+                {
+                    if (categoria.toma_en_cuenta_planilla_costos_horas_hombre.HasValue && categoria.toma_en_cuenta_planilla_costos_horas_hombre.Value)
+                    {
+                        categorias.Add(new item_combinado() { categoria = categoria, filas_categoria = new List<equipo_tabla>() });
+                    }
+                }
 
 
-                List<equipo_tabla> filas_camiones_y_carretones = new List<equipo_tabla>();
-                List<equipo_tabla> filas_gruas = new List<equipo_tabla>();
-                List<equipo_tabla> filas_vehiculos_menores = new List<equipo_tabla>();
-                List<equipo_tabla> filas_ventas = new List<equipo_tabla>();
-                List<equipo_tabla> filas_trabajos_particulares = new List<equipo_tabla>();
-                List<equipo_tabla> filas_otros = new List<equipo_tabla>();
-                List<equipo_tabla> filas_trabajos_especiales = new List<equipo_tabla>();
-                List<equipo_tabla> filas_particulares = new List<equipo_tabla>();
-                List<equipo_tabla> filas_mantenimiento_instalaciones = new List<equipo_tabla>();
-                List<equipo_tabla> filas_elementos_de_izaje = new List<equipo_tabla>();
-                List<equipo_tabla> filas_accesorios_gruas = new List<equipo_tabla>();
-                List<equipo_tabla> filas_camionetas_gruas = new List<equipo_tabla>();
+                //Categoria_equipo camiones_y_carretones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Camiones y carretones");
+                //Categoria_equipo gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Gruas");
+                //Categoria_equipo vehiculos_menores = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Vehículos menores");
+                //Categoria_equipo ventas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Ventas");
+                //Categoria_equipo trabajos_particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos particulares");
+                //Categoria_equipo trabajos_especiales = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos especiales");
+                //Categoria_equipo otros = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Otros");
+                //Categoria_equipo particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "PARTICULAR");
+                //Categoria_equipo mantenimiento_instalaciones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "MANTENIMIENTO DE INSTALACIONES");
+                //Categoria_equipo elementos_izaje = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "ELEMENTOS DE IZAJE");
+                //Categoria_equipo accesorios_gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "ACCESORIOS DE GRUAS");
+                //Categoria_equipo camionetas_gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "CAMIONETAS PARA GRUAS");
+
+                //List<equipo_tabla> filas_camiones_y_carretones = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_gruas = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_vehiculos_menores = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_ventas = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_trabajos_particulares = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_otros = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_trabajos_especiales = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_particulares = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_mantenimiento_instalaciones = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_elementos_de_izaje = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_accesorios_gruas = new List<equipo_tabla>();
+                //List<equipo_tabla> filas_camionetas_gruas = new List<equipo_tabla>();
                 List<equipo_tabla> filas_out_soldadores = new List<equipo_tabla>();
 
                 List<total_categoria_tabla> filas_tabla_total_categoria = new List<total_categoria_tabla>();
@@ -200,18 +217,23 @@ namespace SisEquiposBertoncini.Aplicativo
                 Session["totales_horas_guardia_decimal"] = horas_guardia_decimal;
                 Session["totales_horas_varios_taller_decimal"] = horas_varios_taller_decimal;
 
-                CargarFilasCategoria(camiones_y_carretones, filas_camiones_y_carretones, mes, anio, costo_hora);
-                CargarFilasCategoria(gruas, filas_gruas, mes, anio, costo_hora);
-                CargarFilasCategoria(vehiculos_menores, filas_vehiculos_menores, mes, anio, costo_hora);
-                CargarFilasCategoria(ventas, filas_ventas, mes, anio, costo_hora);
-                CargarFilasCategoria(trabajos_particulares, filas_trabajos_particulares, mes, anio, costo_hora);
-                CargarFilasCategoria(trabajos_especiales, filas_trabajos_especiales, mes, anio, costo_hora);
-                CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
-                CargarFilasCategoria(particulares, filas_particulares, mes, anio, costo_hora);
-                CargarFilasCategoria(mantenimiento_instalaciones, filas_mantenimiento_instalaciones, mes, anio, costo_hora);
-                CargarFilasCategoria(elementos_izaje, filas_elementos_de_izaje, mes, anio, costo_hora);
-                CargarFilasCategoria(accesorios_gruas, filas_accesorios_gruas, mes, anio, costo_hora);
-                CargarFilasCategoria(camionetas_gruas, filas_camionetas_gruas, mes, anio, costo_hora);
+                foreach (item_combinado item in categorias)
+                {
+                    CargarFilasCategoria(item.categoria, item.filas_categoria, mes, anio, costo_hora);
+                }
+
+                //CargarFilasCategoria(camiones_y_carretones, filas_camiones_y_carretones, mes, anio, costo_hora);
+                //CargarFilasCategoria(gruas, filas_gruas, mes, anio, costo_hora);
+                //CargarFilasCategoria(vehiculos_menores, filas_vehiculos_menores, mes, anio, costo_hora);
+                //CargarFilasCategoria(ventas, filas_ventas, mes, anio, costo_hora);
+                //CargarFilasCategoria(trabajos_particulares, filas_trabajos_particulares, mes, anio, costo_hora);
+                //CargarFilasCategoria(trabajos_especiales, filas_trabajos_especiales, mes, anio, costo_hora);
+                //CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
+                //CargarFilasCategoria(particulares, filas_particulares, mes, anio, costo_hora);
+                //CargarFilasCategoria(mantenimiento_instalaciones, filas_mantenimiento_instalaciones, mes, anio, costo_hora);
+                //CargarFilasCategoria(elementos_izaje, filas_elementos_de_izaje, mes, anio, costo_hora);
+                //CargarFilasCategoria(accesorios_gruas, filas_accesorios_gruas, mes, anio, costo_hora);
+                //CargarFilasCategoria(camionetas_gruas, filas_camionetas_gruas, mes, anio, costo_hora);
 
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
@@ -226,18 +248,24 @@ namespace SisEquiposBertoncini.Aplicativo
                 horas_varios_taller_decimal = Convert.ToDecimal(Session["totales_horas_varios_taller_decimal"]);
 
                 //Ahora que tengo los totales del mes, elimino las filas cuyos equipos no tienen valor y las ordeno de mayor a menor por categoria
-                CorregirFilas(filas_camiones_y_carretones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_vehiculos_menores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_ventas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_trabajos_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_trabajos_especiales, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_otros, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_mantenimiento_instalaciones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_elementos_de_izaje, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_accesorios_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                CorregirFilas(filas_camionetas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+
+                foreach (item_combinado item in categorias)
+                {
+                    CorregirFilas(item.filas_categoria, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                }
+
+                //CorregirFilas(filas_camiones_y_carretones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_vehiculos_menores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_ventas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_trabajos_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_trabajos_especiales, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_otros, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_mantenimiento_instalaciones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_elementos_de_izaje, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_accesorios_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
+                //CorregirFilas(filas_camionetas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
 
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
@@ -262,18 +290,23 @@ namespace SisEquiposBertoncini.Aplicativo
                 Session["planilla_gastos_en_funcion_horas_hombre_anio"] = anio;
                 Session["planilla_gastos_en_funcion_horas_hombre_tipo_empleado"] = categoria_empleado;
 
-                Agregar_a_tabla(tabla, filas_camiones_y_carretones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_vehiculos_menores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_ventas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_trabajos_especiales, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_mantenimiento_instalaciones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_elementos_de_izaje, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_accesorios_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                Agregar_a_tabla(tabla, filas_camionetas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                foreach (item_combinado item in categorias)
+                {
+                    Agregar_a_tabla(tabla, item.filas_categoria, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                }
+
+                //Agregar_a_tabla(tabla, filas_camiones_y_carretones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_vehiculos_menores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_ventas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_trabajos_especiales, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_mantenimiento_instalaciones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_elementos_de_izaje, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_accesorios_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
+                //Agregar_a_tabla(tabla, filas_camionetas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {

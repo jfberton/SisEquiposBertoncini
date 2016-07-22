@@ -22,6 +22,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public int id_categoria { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
+        public Nullable<bool> toma_en_cuenta_planilla_costos_horas_hombre { get; set; }
     
         public virtual ICollection<Equipo> Equipos { get; set; }
     }

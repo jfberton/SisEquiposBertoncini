@@ -568,6 +568,8 @@
     <Folder Include="Temp\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Aplicativo\Reportes\resumen_equipo.rdlc" />
+    <EmbeddedResource Include="Aplicativo\Reportes\Valores_anio_equipo_categoria.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\Valores_anio_equipo_r.rdlc" />
   </ItemGroup>
   <ItemGroup>

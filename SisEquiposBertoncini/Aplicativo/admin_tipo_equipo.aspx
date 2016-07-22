@@ -32,8 +32,15 @@
                 <Columns>
                     <asp:BoundField DataField="categoria_nombre" HeaderText="Nombre" ReadOnly="true" />
                     <asp:BoundField DataField="categoria_cantidad_equipos" HeaderText="Equipos" ReadOnly="true" />
+                    <asp:CheckBoxField DataField="categoria_muestra" HeaderText="Equipos" ReadOnly="true" />
                     <asp:TemplateField>
                         <ItemTemplate>
+                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                            </button>
+                            <button runat="server" class="btn btn-sm btn-warning" id="btn_editar" causesvalidation="false" onserverclick="btn_editar_ServerClick" data-id='<%#Eval("categoria_id")%>'>
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Editar
+                            </button>
                             <button
                                 type="button" class="btn btn-sm btn-danger"
                                 data-toggle="modal"
@@ -41,11 +48,7 @@
                                 data-id='<%#Eval("categoria_id")%>'
                                 data-introduccion="la categoría"
                                 data-nombre='<%#Eval("categoria_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
-                            </button>
-                        
-                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
+                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                             </button>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -59,8 +62,8 @@
                     <asp:BoundField DataField="categoria_cantidad_equipos" HeaderText="Equipos" ReadOnly="true" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver
+                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -95,7 +98,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="button" class="btn btn-default pull-right" id="btn_agregar_categoria" runat="server" data-toggle="modal" data-target="#agregar_categoria">
-                       <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar nuevo
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
                     </button>
                     <div class="modal fade" id="agregar_categoria" role="dialog" aria-hidden="true">
                         <div class="modal-dialog">
@@ -107,7 +110,7 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList"
+                                            <asp:ValidationSummary ID="validation_summary" ValidationGroup="agregar" runat="server" DisplayMode="BulletList"
                                                 CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
                                         </div>
                                     </div>
@@ -125,7 +128,7 @@
                                                     <td style="width: auto">
                                                         <input type="text" id="tb_nombre_categoria" class="form-control" runat="server" placeholder="Nombre de la categoría" /></td>
                                                     <td>
-                                                        <asp:RequiredFieldValidator ControlToValidate="tb_nombre_categoria" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre de la categoría' />"
+                                                        <asp:RequiredFieldValidator ControlToValidate="tb_nombre_categoria" ValidationGroup="agregar" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre de la categoría' />"
                                                             ID="rv_nombre_categoria" runat="server" ErrorMessage="Debe ingresar el nombre de la categoría">
                                                         </asp:RequiredFieldValidator></td>
                                                 </tr>
@@ -143,9 +146,19 @@
                                             <textarea rows="5" class="form-control" runat="server" id="tb_descripcion_categoria" placeholder="Descripción de la categoría (no obligatorio)"></textarea>
                                         </div>
                                     </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p><b>Se muestra en la planilla de costos en funcion de horas empleado</b></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="checkbox" id="chk_muestra" runat="server" />
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="modal-footer">
-                                    <asp:Button Text="Aceptar" ID="btn_aceptar_categoria" OnClick="btn_aceptar_categoria_Click" CssClass="btn btn-success" runat="server" />
+                                    <asp:Button Text="Aceptar" ID="btn_aceptar_categoria" OnClick="btn_aceptar_categoria_Click" ValidationGroup="agregar" CssClass="btn btn-success" runat="server" />
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div>
@@ -180,6 +193,15 @@
                         </div>
                         <br />
                         <div class="row">
+                            <div class="col-md-10">
+                                <p><b>Se muestra en la planilla de costos en funcion de horas empleado</b></p>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="checkbox" id="chk_ver_muestra" runat="server" disabled="disabled" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
                             <div class="col-md-12">
                                 <label>Equipos</label>
                                 <br />
@@ -191,6 +213,71 @@
                                 </asp:GridView>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editar_categoria" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <asp:HiddenField ID="hidden_id_editar_categoria" runat="server" />
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Editar categoría</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="editar" runat="server" DisplayMode="BulletList"
+                                    CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <table class="table-condensed" style="width: 100%">
+                                    <tr>
+                                        <td>Nombre categoría</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-8">
+                                <table class="table-condensed" style="width: 100%">
+                                    <tr>
+                                        <td style="width: auto">
+                                            <input type="text" id="tb_editar_nombre_categoria" class="form-control" runat="server" placeholder="Nombre de la categoría" /></td>
+                                        <td>
+                                            <asp:RequiredFieldValidator ControlToValidate="tb_editar_nombre_categoria" ValidationGroup="editar" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre de la categoría' />"
+                                                ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar el nombre de la categoría">
+                                            </asp:RequiredFieldValidator></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                Descripción:
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea rows="5" class="form-control" runat="server" id="tb_editar_descripcion_categoria" placeholder="Descripción de la categoría (no obligatorio)"></textarea>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p><b>Se muestra en la planilla de costos en funcion de horas empleado</b></p>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="checkbox" id="chk_editar_muestra" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button Text="Aceptar" ID="btn_aceptar_edicion" OnClick="btn_aceptar_edicion_Click" ValidationGroup="editar" CssClass="btn btn-success" runat="server" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>

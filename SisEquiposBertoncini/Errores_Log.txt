@@ -1141,3 +1141,36 @@ STACKTRACE:    en System.Web.UI.Control.FillNamedControlsTable(Control namingCon
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636046890299757759
+
+DATE: 21/07/2016 09:10:29 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El tipo 'System.Web.UI.WebControls.BoundField' no tiene ninguna propiedad pública cuyo nombre sea '7ReadOnly'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/planilla_resumen_valores_equipo_categoria.aspx
+
+TARGETSITE: Void AddProperty(System.String, System.String, System.String, Boolean)
+
+STACKTRACE:    en System.Web.UI.ControlBuilder.AddProperty(String filter, String name, String value, Boolean mainDirectiveMode)
+   en System.Web.UI.ControlBuilder.PreprocessAttribute(String filter, String attribname, String attribvalue, Boolean mainDirectiveMode, Int32 line, Int32 column)
+   en System.Web.UI.ControlBuilder.PreprocessAttributes(ParsedAttributeCollection attribs)
+   en System.Web.UI.ControlBuilder.Init(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs)
+   en System.Web.UI.ControlBuilder.CreateBuilderFromType(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs, Int32 line, String sourceFileName)
+   en System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   en System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+
+
+******************************************************************

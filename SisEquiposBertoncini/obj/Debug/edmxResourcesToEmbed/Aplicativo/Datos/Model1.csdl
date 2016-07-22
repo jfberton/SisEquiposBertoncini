@@ -133,6 +133,7 @@
     <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Equipos" Relationship="Model1.CategoriaEquipo" FromRole="Categoria" ToRole="Equipo" />
     <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="toma_en_cuenta_planilla_costos_horas_hombre" Type="Boolean" Nullable="true" />
   </EntityType>
   <Association Name="CategoriaEquipo">
     <End Type="Model1.Categoria_equipo" Role="Categoria" Multiplicity="1" />

@@ -220,10 +220,15 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     for (int i = 0; i < 14; i++)
                     {
                         agrupaciones agrupacion = ((agrupaciones)i + 1);
-                        decimal valor = Valores_anio.First(x => x.id_concepto == ingreso.id_item && x.agrupacion == agrupacion).valor -
-                                    (Valores_anio.First(x => x.id_concepto == trabajado_ingresos.id_item && x.agrupacion == agrupacion).valor * (Convert.ToDecimal(5) / Convert.ToDecimal(100))) -
-                                    Valores_anio.First(x => x.id_concepto == costos_fijos_erogables.id_item && x.agrupacion == agrupacion).valor -
-                                    Valores_anio.First(x => x.id_concepto == costos_variables.id_item && x.agrupacion == agrupacion).valor;
+                        decimal valor = 0;
+
+                        if (Valores_anio.Count > 0)
+                        {
+                            valor = Valores_anio.First(x => x.id_concepto == ingreso.id_item && x.agrupacion == agrupacion).valor -
+                                   (Valores_anio.First(x => x.id_concepto == trabajado_ingresos.id_item && x.agrupacion == agrupacion).valor * (Convert.ToDecimal(5) / Convert.ToDecimal(100))) -
+                                   Valores_anio.First(x => x.id_concepto == costos_fijos_erogables.id_item && x.agrupacion == agrupacion).valor -
+                                   Valores_anio.First(x => x.id_concepto == costos_variables.id_item && x.agrupacion == agrupacion).valor;
+                        }
 
                         resultado_financiero.Add(new resultados_economicos_financieros()
                         {
@@ -248,7 +253,12 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     {
                         agrupaciones agrupacion = ((agrupaciones)i + 1);
                         decimal resultado_financiero_agrupacion = resultado_financiero.First(x => x.tipo == conceptos_analisis_economico_financiero.finan_resultado && x.agrupacion == agrupacion).valor;
-                        decimal ingreso_agrupacion = Valores_anio.First(x => x.id_concepto == ingreso.id_item && x.agrupacion == agrupacion).valor;
+                        decimal ingreso_agrupacion = 0;
+                        if (Valores_anio.Count > 0)
+                        {
+                            ingreso_agrupacion = Valores_anio.First(x => x.id_concepto == ingreso.id_item && x.agrupacion == agrupacion).valor;
+                        }
+
 
                         decimal porcentaje_de_ganancias = (ingreso_agrupacion <= 0) ? Convert.ToDecimal(0) : resultado_financiero_agrupacion / ingreso_agrupacion;
 
@@ -277,7 +287,12 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     {
                         agrupaciones agrupacion = ((agrupaciones)i + 1);
                         decimal resultado_financiero_agrupacion = resultado_financiero.First(x => x.tipo == conceptos_analisis_economico_financiero.finan_resultado && x.agrupacion == agrupacion).valor;
-                        decimal amortizacion_agrupacion = Valores_anio.First(x => x.id_concepto == amortizacion.id_item && x.agrupacion == agrupacion).valor;
+                        decimal amortizacion_agrupacion = 0;
+                        if (Valores_anio.Count > 0)
+                        {
+                            amortizacion_agrupacion = Valores_anio.First(x => x.id_concepto == amortizacion.id_item && x.agrupacion == agrupacion).valor;
+                        }
+                        
 
                         decimal velocidad_de_recupero = (resultado_financiero_agrupacion <= 0) ? Convert.ToDecimal(0) : amortizacion_agrupacion / resultado_financiero_agrupacion;
 

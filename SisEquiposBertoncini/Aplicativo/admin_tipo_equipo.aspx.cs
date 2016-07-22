@@ -40,7 +40,8 @@ namespace SisEquiposBertoncini.Aplicativo
                                   select new
                                   {
                                       categoria_id = aa.id_categoria,
-                                      categoria_nombre = aa.nombre
+                                      categoria_nombre = aa.nombre,
+                                      categoria_muestra = aa.toma_en_cuenta_planilla_costos_horas_hombre
                                   }).ToList();
 
                 var items_categoria = (
@@ -49,6 +50,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                         {
                                             categoria_id = cc.categoria_id,
                                             categoria_nombre = cc.categoria_nombre,
+                                            categoria_muestra = cc.categoria_muestra,
                                             categoria_cantidad_equipos = cxt.Equipos.Count(ee => ee.id_categoria == cc.categoria_id && ee.fecha_baja == null)
                                         }
                                         ).ToList();
@@ -73,12 +75,12 @@ namespace SisEquiposBertoncini.Aplicativo
 
         protected void btn_aceptar_categoria_Click(object sender, EventArgs e)
         {
-            Validate();
+            Validate("agregar");
             if (IsValid)
             {
                 using (var cxt = new Model1Container())
                 {
-                    Categoria_equipo categoria = new Categoria_equipo() { nombre = tb_nombre_categoria.Value, descripcion = tb_descripcion_categoria.Value };
+                    Categoria_equipo categoria = new Categoria_equipo() { nombre = tb_nombre_categoria.Value, descripcion = tb_descripcion_categoria.Value, toma_en_cuenta_planilla_costos_horas_hombre = chk_ver_muestra.Checked };
 
                     cxt.Categorias_equipos.Add(categoria);
 
@@ -103,12 +105,17 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 e.Row.ControlStyle.BackColor = Color.LightGray;
             }
-
         }
 
         private void MostrarPopUpCategoria()
         {
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_categoria').modal('show')});</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+        }
+
+        private void MostrarPopUpEditarCategoria()
+        {
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#editar_categoria').modal('show')});</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
         }
 
@@ -144,6 +151,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 lbl_nombre_categoria.Text = categoria.nombre;
                 lbl_descripcion.Text = categoria.descripcion;
+                chk_ver_muestra.Checked = categoria.toma_en_cuenta_planilla_costos_horas_hombre.HasValue ? categoria.toma_en_cuenta_planilla_costos_horas_hombre.Value : false; 
 
                 var equipos = (from ee in cxt.Equipos
                                where
@@ -161,5 +169,65 @@ namespace SisEquiposBertoncini.Aplicativo
 
             MostrarPopUpCategoria();
         }
+
+        protected void btn_editar_ServerClick(object sender, EventArgs e)
+        {
+            int id_categoria = Convert.ToInt32(((System.Web.UI.HtmlControls.HtmlButton)sender).Attributes["data-id"]);
+
+            using (var cxt = new Model1Container())
+            {
+                Categoria_equipo categoria = cxt.Categorias_equipos.First(aa => aa.id_categoria == id_categoria);
+
+                tb_editar_nombre_categoria.Value = categoria.nombre;
+                tb_editar_descripcion_categoria.Value = categoria.descripcion;
+                chk_editar_muestra.Checked = categoria.toma_en_cuenta_planilla_costos_horas_hombre.HasValue ? categoria.toma_en_cuenta_planilla_costos_horas_hombre.Value : false;
+                hidden_id_editar_categoria.Value = id_categoria.ToString();
+                var equipos = (from ee in cxt.Equipos
+                               where
+                                   ee.fecha_baja == null &&
+                                   ee.id_categoria == categoria.id_categoria
+                               select new
+                               {
+                                   nombre_equipo = ee.nombre
+                               }).ToList();
+
+                gv_equipos.DataSource = equipos;
+                gv_equipos.DataBind();
+
+            }
+
+            MostrarPopUpEditarCategoria();
+        }
+
+        protected void btn_aceptar_edicion_Click(object sender, EventArgs e)
+        {
+            Validate("editar");
+            if (IsValid)
+            {
+                using (var cxt = new Model1Container())
+                {
+                    int id_categoria = Convert.ToInt32(hidden_id_editar_categoria.Value);
+                    
+                    Categoria_equipo categoria = cxt.Categorias_equipos.First(cc => cc.id_categoria == id_categoria);
+                    
+                    categoria.nombre = tb_editar_nombre_categoria.Value;
+                    categoria.descripcion = tb_editar_descripcion_categoria.Value;
+                    categoria.toma_en_cuenta_planilla_costos_horas_hombre = chk_editar_muestra.Checked;
+
+                    cxt.SaveChanges();
+                }
+
+                CargarCategorias();
+            }
+            else
+            {
+                string script = string.Empty;
+
+                script = "<script language=\"javascript\" type=\"text/javascript\">$(document).ready(function() { $('#agregar_categoria').modal('show')});</script>";
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowPopUpError", script, false);
+            }
+        }
+      
     }
 }
