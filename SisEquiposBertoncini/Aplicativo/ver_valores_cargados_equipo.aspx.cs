@@ -47,6 +47,14 @@ namespace SisEquiposBertoncini.Aplicativo
                         int id_equipo = Convert.ToInt32(str_id_equipo);
                         int anio = Convert.ToInt32(str_anio);
 
+                        //recorro los meses y voy actualizando o creando los ingresos y egresos mensuales
+                        int mes_actual = (DateTime.Today.Year > anio) ? 12 : DateTime.Today.Month;
+                        int resultado = 0;
+                        for (int i = 0; i < mes_actual; i++)
+                        {
+                            resultado = cxt.Obtener_listado_items_ingreso_egreso_mensual(i + 1, anio, id_equipo);
+                        }
+
                         CrearMostrarTabla(id_equipo, anio);
                         Estado_busqueda(false);
                     }

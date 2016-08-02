@@ -68,6 +68,7 @@
     <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="toma_en_cuenta_planilla_costos_horas_hombre" Type="bit" />
   </EntityType>
   <EntityType Name="Detalle_valor_item_meses_categoria">
     <Key>

@@ -64,9 +64,9 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     equipo = cxt.Equipos.First(ee => ee.id_equipo == id_equipo);
                     anio_resumen = anio;
 
-                    if ((equipo.EsTrabajo.HasValue && equipo.EsTrabajo.Value == true && concepto.mostrar_en_trabajo.HasValue && concepto.mostrar_en_trabajo.Value == true) ||
-                    (equipo.EsTrabajo.HasValue && equipo.EsTrabajo.Value == false && concepto.mostrar_en_equipo.HasValue && concepto.mostrar_en_equipo.Value == true))
-                    {
+                    //if ((equipo.EsTrabajo.HasValue && equipo.EsTrabajo.Value == true && concepto.mostrar_en_trabajo.HasValue && concepto.mostrar_en_trabajo.Value == true) ||
+                    //(equipo.EsTrabajo.HasValue && equipo.EsTrabajo.Value == false && concepto.mostrar_en_equipo.HasValue && concepto.mostrar_en_equipo.Value == true))
+                    //{
                         
                         decimal total_concepto_anio = 0;
                         decimal meses_cargados_anio = 0;
@@ -98,7 +98,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                         decimal promedio = meses_cargados_anio > 0 ? total_concepto_anio / meses_cargados_anio : 0;
                         Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = agrupaciones.total_anio, valor = total_concepto_anio });
                         Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = agrupaciones.promedio_mensual, valor = promedio });
-                    }
+                    //}
                 }
             }
         }

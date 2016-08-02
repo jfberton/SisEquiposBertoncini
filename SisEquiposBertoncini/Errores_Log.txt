@@ -1174,3 +1174,244 @@ STACKTRACE:    en System.Web.UI.ControlBuilder.AddProperty(String filter, String
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057601556112611
+
+DATE: 02/08/2016 18:42:35
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene elementos
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.<>c__11`1.<GetElementFunction>b__11_0(IEnumerable`1 sequence)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 217
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057604548129916
+
+DATE: 02/08/2016 18:47:34
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene elementos
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.<>c__11`1.<GetElementFunction>b__11_0(IEnumerable`1 sequence)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 217
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057607292779043
+
+DATE: 02/08/2016 18:52:09
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene ningún elemento coincidente
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=111&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 410
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 166
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 50
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057607938073494
+
+DATE: 02/08/2016 18:53:13
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene ningún elemento coincidente
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=111&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 410
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 166
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 50
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057618264906422
+
+DATE: 02/08/2016 19:10:26
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene ningún elemento coincidente
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=111&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 410
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 166
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 50
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057621972173738
+
+DATE: 02/08/2016 19:16:37
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene ningún elemento coincidente
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=111&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 418
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 174
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 58
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636057624697807368
+
+DATE: 02/08/2016 19:21:09
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene ningún elemento coincidente
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/ver_valores_cargados_equipo.aspx?eq=111&a=2016
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 418
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 174
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 58
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

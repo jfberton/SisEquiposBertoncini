@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/28/2016 20:19:27
--- Generated from EDMX file: D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
+-- Date Created: 07/21/2016 12:13:14
+-- Generated from EDMX file: d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -167,7 +167,8 @@ GO
 CREATE TABLE [dbo].[Categorias_equipos] (
     [id_categoria] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
-    [descripcion] nvarchar(max)  NOT NULL
+    [descripcion] nvarchar(max)  NOT NULL,
+    [toma_en_cuenta_planilla_costos_horas_hombre] bit  NULL
 );
 GO
 

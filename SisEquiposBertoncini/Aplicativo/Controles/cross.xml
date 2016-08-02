@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Lista de cross ids-->
 <Valores>
-	<Equipos valor_database="BOGGUIE HAG 015" valor_excel="Bogguie HAG 015" />
-	<Equipos valor_database="BOGGUIE HMK 106" valor_excel="Bogguie HMK 106" />
-	<Equipos valor_database="BOGGUIE HMK 108" valor_excel="Bogguie HMK 108" />
+	<Equipos valor_database="BOGIE Y DOLLY" valor_excel="Bogguie HAG 015" />
+	<Equipos valor_database="BOGIE Y DOLLY" valor_excel="Bogguie HMK 106" />
+	<Equipos valor_database="BOGIE Y DOLLY" valor_excel="Bogguie HMK 108" />
 	<Equipos valor_database="CLIO" valor_excel="Clio" />
 	<Equipos valor_database="FORD F100" valor_excel="F-100" />
 	<Equipos valor_database="FIAT STRADA" valor_excel="Fiat Strada" />
@@ -14,7 +14,7 @@
 	<Equipos valor_database="GRUA 12" valor_excel="Grúa 12" />
 	<Equipos valor_database="GRUA 13" valor_excel="Grúa 13" />
 	<Equipos valor_database="GRUA 14" valor_excel="Grúa 14" />
-	<Equipos valor_database="GRUA 16" valor_excel="Grúa 16 - TM35100" />
+	<Equipos valor_database="GRUA 16 - STRALIS" valor_excel="Grúa 16 - TM35100" />
 	<Equipos valor_database="GRUA 3" valor_excel="Grúa 3" />
   <Equipos valor_database="GRUA 4" valor_excel="Grúa 4" />
 	<Equipos valor_database="GRUA 5" valor_excel="Grúa 5" />
