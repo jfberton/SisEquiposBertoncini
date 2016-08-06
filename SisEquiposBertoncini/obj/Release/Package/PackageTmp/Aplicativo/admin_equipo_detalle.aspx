@@ -8,6 +8,15 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Equipos</li>
+        <li><a href="admin_equipos.aspx">Equipos</a></li>
+        <li>
+            <asp:Label Text="" ID="lbl_breadcumb" runat="server" /></li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Datos equipo</h1>
@@ -322,7 +331,7 @@
                                                         data-id='<%#Eval("id_parte")%>'
                                                         data-introduccion="la parte"
                                                         data-nombre='<%#Eval("nombre_parte")%>'>
-                                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Eliminar
+                                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                                                     </button>
                                                 </ItemTemplate>
                                             </asp:TemplateField>

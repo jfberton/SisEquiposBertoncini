@@ -9,33 +9,30 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
+     <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Empleados</li>
+        <li>Empleados</li>
+    </ol>
+
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-5">
                     <h4 class="panel-title">Empleados</h4>
                 </div>
-                <div class="col-md-7">
-                    <div class="input-group" id="div_buscar" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_empleados.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                    <div class="input-group" id="div_buscar_view" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_empleados_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="panel-body" style="height: 300px; overflow-y: scroll;">
-            <asp:GridView ID="gv_empleados" runat="server" EmptyDataText="No existen empleados para mostrar." OnRowDataBound="gv_empleados_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+        <div class="panel-body">
+            <asp:GridView ID="gv_empleados" runat="server" EmptyDataText="No existen empleados para mostrar."  OnPreRender="gv_empleados_PreRender" OnRowDataBound="gv_empleados_RowDataBound"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="empleado_area" HeaderText="Area" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_categoria" HeaderText="Categoría" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_nombre" HeaderText="Nombre y apellido" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_dni" HeaderText="D.N.I." ReadOnly="true" />
-                    <asp:BoundField DataField="empleado_fecha_nacimiento" HeaderText="Fecha de nacimiento" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_nacimiento" HeaderText="Natalicio" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_fecha_alta" HeaderText="Fecha de alta" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_fecha_baja" HeaderText="Fecha de baja" ItemStyle-Font-Italic="true" ItemStyle-ForeColor="DeepPink" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:TemplateField>
@@ -47,7 +44,10 @@
                                 causesvalidation="false">
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Editar
                             </button>
-
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button
                                 type="button" class="btn btn-sm btn-default"
                                 data-toggle="modal"
@@ -65,14 +65,14 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:GridView ID="gv_empleados_view" runat="server" EmptyDataText="No existen empleados para mostrar." OnRowDataBound="gv_empleados_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+            <asp:GridView ID="gv_empleados_view" runat="server" EmptyDataText="No existen empleados para mostrar." OnPreRender="gv_empleados_PreRender" OnRowDataBound="gv_empleados_RowDataBound"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="empleado_area" HeaderText="Area" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_categoria" HeaderText="Categoría" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_nombre" HeaderText="Nombre y apellido" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_dni" HeaderText="D.N.I." ReadOnly="true" />
-                    <asp:BoundField DataField="empleado_fecha_nacimiento" HeaderText="Fecha de nacimiento" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField DataField="empleado_fecha_nacimiento" HeaderText="Natalicio" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_fecha_alta" HeaderText="Fecha de alta" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:BoundField DataField="empleado_fecha_baja" HeaderText="Fecha de baja" ItemStyle-Font-Italic="true" ItemStyle-ForeColor="DeepPink" DataFormatString="{0:d}" ReadOnly="true" />
                     <asp:TemplateField>
@@ -132,7 +132,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title">
                                         <asp:Label Text="Agregar empleado" ID="lbl_agregar_empleado_titulo" runat="server" /></h4>
-                                    <input type="hidden" runat="server" id="id_empleado_hidden"  value="0" />
+                                    <input type="hidden" runat="server" id="id_empleado_hidden" value="0" />
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
@@ -302,10 +302,11 @@
                                                         </tr>
                                                     </table>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
-                                    </div><div class="row">
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-4">
@@ -396,7 +397,7 @@
                                 </p>
                             </div>
                         </div>
-                         <div class="row">
+                        <div class="row">
                             <div class="col-md-6">
                                 <p>
                                     <label>Fecha alta</label>
@@ -419,7 +420,15 @@
     </div>
 </asp:Content>
 
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
+
     <script>
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
@@ -477,27 +486,42 @@
         });
 
         $(document).ready(function () {
+            $('#<%= gv_empleados.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "autoWidth": false,
+                "columnDefs": [
+                     { "width": "100px", "targets": 0 }, //Area						
+                     { "width": "100px", "targets": 1 }, //Categoría
+                     { "width": "200px", "targets": 2 }//Nombre y apellido
+                ],
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+            $('#<%= gv_empleados_view.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+        });
+
+        $(document).ready(function () {
             $('.dni').mask('00.000.000');
             $('.ddmmaaaa').mask('00/00/0000');
         });
 
-        function filtrar(phrase, _id) {
-            var words = phrase.value.toLowerCase().split(" ");
-            var table = document.getElementById(_id);
-            var ele;
-            for (var r = 1; r < table.rows.length; r++) {
-                ele = table.rows[r].innerHTML.replace(/<[^>]+>/g, "");
-                var displayStyle = 'none';
-                for (var i = 0; i < words.length; i++) {
-                    if (ele.toLowerCase().indexOf(words[i]) >= 0)
-                        displayStyle = '';
-                    else {
-                        displayStyle = 'none';
-                        break;
-                    }
-                }
-                table.rows[r].style.display = displayStyle;
-            }
-        }
     </script>
 </asp:Content>

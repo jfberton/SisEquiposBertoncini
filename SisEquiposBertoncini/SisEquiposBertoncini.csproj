@@ -134,6 +134,12 @@
     <Content Include="default.aspx" />
     <Content Include="dispatcher.aspx" />
     <Content Include="error.aspx" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
     <Content Include="img\accept.png" />
     <Content Include="img\add.png" />
     <Content Include="img\bullet_go.png" />
@@ -185,6 +191,7 @@
     <Content Include="Aplicativo\Reportes\Valores_anio_equipo.xss">
       <DependentUpon>Valores_anio_equipo.xsd</DependentUpon>
     </Content>
+    <Content Include="images\Sorting icons.psd" />
     <None Include="Properties\PublishProfiles\localhost.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

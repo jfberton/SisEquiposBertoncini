@@ -9,13 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Sistema bertoncini</title>
-    
+
+
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="css/mi_css.css" rel="stylesheet" />
     <link href="css/select2.min.css" rel="stylesheet" />
 
-    <script src="../js/jquery-1.11.3.min.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="cph_style" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <%--<script src="../js/jquery-1.11.3.min.js"></script>--%>
+    <script src="../js/jquery-1.12.3.js"></script>
+
+
+
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/moment-with-locales.min.js"></script>
     <script src="../js/bootstrap-datetimepicker.min.js"></script>
@@ -31,7 +41,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
