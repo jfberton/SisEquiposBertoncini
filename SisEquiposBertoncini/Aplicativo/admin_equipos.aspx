@@ -8,27 +8,24 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Equipos</li>
+        <li>Equipos</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-5">
                     <h4 class="panel-title">Equipos</h4>
                 </div>
-                <div class="col-md-7">
-                    <div class="input-group" id="div_buscar" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_equipos.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                    <div class="input-group" id="div_buscar_view" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_equipos_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="panel-body" style="height: 300px; overflow-y: scroll;">
-            <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos por mostrar." OnRowDataBound="gv_equipos_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+        <div class="panel-body">
+            <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_equipos_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
                     <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
@@ -43,11 +40,17 @@
                                 data-nombre='<%#Eval("equipo_nombre")%>'>
                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
                             </button>
-
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button runat="server" class="btn btn-sm btn-warning" id="btn_editar" causesvalidation="false" onserverclick="btn_editar_ServerClick" data-id='<%#Eval("equipo_id")%>'>
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Editar
                             </button>
-
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
                             </button>
@@ -56,8 +59,8 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:GridView ID="gv_equipos_view" runat="server" EmptyDataText="No existen equipos por mostrar." OnRowDataBound="gv_equipos_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+            <asp:GridView ID="gv_equipos_view" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_equipos_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
                     <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
@@ -135,13 +138,13 @@
                         </div>
                         <div class="row">
                             <div class="table-responsive">
-                                <asp:GridView ID="gv_partes" runat="server" EmptyDataText="No existen partes del equipo por mostrar." OnRowDataBound="gv_equipos_RowDataBound"
-                                    AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                                <asp:GridView ID="gv_partes" runat="server" EmptyDataText="No existen partes del equipo por mostrar." OnPreRender="gv_equipos_PreRender"
+                                    AutoGenerateColumns="False" GridLines="None" CssClass="display">
                                     <Columns>
                                         <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" ItemStyle-Width="110px" />
                                         <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" ItemStyle-Width="110px" ItemStyle-HorizontalAlign="Right" />
-                                        <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right"  />
-                                        <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right"  />
+                                        <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
                                         <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Right" />
                                         <asp:BoundField DataField="periodo_alta" HeaderText="Periodo alta" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
                                         <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" ItemStyle-Width="70px" ItemStyle-HorizontalAlign="Right" />
@@ -195,7 +198,15 @@
     </div>
 </asp:Content>
 
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
+
     <script>
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
@@ -214,23 +225,43 @@
 
     </script>
     <script>
-        function filtrar(phrase, _id) {
-            var words = phrase.value.toLowerCase().split(" ");
-            var table = document.getElementById(_id);
-            var ele;
-            for (var r = 1; r < table.rows.length; r++) {
-                ele = table.rows[r].innerHTML.replace(/<[^>]+>/g, "");
-                var displayStyle = 'none';
-                for (var i = 0; i < words.length; i++) {
-                    if (ele.toLowerCase().indexOf(words[i]) >= 0)
-                        displayStyle = '';
-                    else {
-                        displayStyle = 'none';
-                        break;
-                    }
+        $(document).ready(function () {
+            $('#<%= gv_equipos.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
                 }
-                table.rows[r].style.display = displayStyle;
-            }
-        }
+            });
+            $('#<%= gv_equipos_view.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+            $('#<%= gv_partes.ClientID %>').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+        });
     </script>
 </asp:Content>

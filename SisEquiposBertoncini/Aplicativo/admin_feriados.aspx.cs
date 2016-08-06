@@ -71,14 +71,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     gv_feriados_view.DataSource = feriados;
                     gv_feriados_view.DataBind();
-                    div_buscar.Visible = false;
                     gv_feriados.Visible = false;
                 }
                 else
                 {
                     gv_feriados.DataSource = feriados;
                     gv_feriados.DataBind();
-                    div_buscar_view.Visible = false;
                     gv_feriados_view.Visible = false;
                 }
             }
@@ -167,6 +165,18 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             DateTime fecha;
             args.IsValid = DateTime.TryParse(tb_fecha_feriado.Value, out fecha);
+        }
+
+        protected void gv_feriados_PreRender(object sender, EventArgs e)
+        {
+            if (gv_feriados.Rows.Count > 0)
+            {
+                gv_feriados.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            if (gv_feriados_view.Rows.Count > 0)
+            {
+                gv_feriados_view.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }

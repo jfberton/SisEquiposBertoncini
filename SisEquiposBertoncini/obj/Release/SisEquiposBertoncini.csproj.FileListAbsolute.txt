@@ -49,3 +49,6 @@ D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquip
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.xml
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csproj.ResolveComReference.cache
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.dll
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.xml
+D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csproj.ResolveComReference.cache

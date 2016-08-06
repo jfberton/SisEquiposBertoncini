@@ -8,6 +8,15 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Planillas</li>
+        <li>En función de horas empleado</li>
+        <li>Planilla de cálculos</li>
+        <li>Gastos función horas hombre</li>
+    </ol>
+
     <div class="row">
         <div class="col-md-12 text-center">
             <h3>
@@ -76,7 +85,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row" id="fila_view" runat="server">
         <div class="col-md-12">
             <table class="table table-condensed" style="width: 100%">
@@ -88,15 +97,15 @@
                     <td>
                         <label>Herramientas</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_herramientas" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_herramientas" runat="server" /></td>
                     <td>
                         <label>Viaticos</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_viaticos" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_viaticos" runat="server" /></td>
                     <td>
                         <label>Viaticos PP</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_viaticos_pp" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_viaticos_pp" runat="server" /></td>
 
                 </tr>
             </table>
@@ -107,23 +116,23 @@
                     <td>
                         <label>Indumentaria</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_indumentaria" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_indumentaria" runat="server" /></td>
                     <td>
                         <label>Repuestos</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_repuestos" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_repuestos" runat="server" /></td>
                     <td>
                         <label>Repuestos PP</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_repuestos_pp" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_repuestos_pp" runat="server" /></td>
                     <td>
                         <label>Gastos varios</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_gastos_varios" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_gastos_varios" runat="server" /></td>
                     <td>
                         <label>Otros</label></td>
                     <td>
-                         <asp:Label Font-Bold="true" ID="lbl_otros" runat="server" /></td>
+                        <asp:Label Font-Bold="true" ID="lbl_otros" runat="server" /></td>
                 </tr>
             </table>
         </div>

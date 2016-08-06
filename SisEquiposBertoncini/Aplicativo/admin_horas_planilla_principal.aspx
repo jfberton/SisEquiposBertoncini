@@ -8,6 +8,13 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Planillas</li>
+        <li>En función de horas empleado</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Planilla principal</h1>
@@ -87,7 +94,7 @@
                                 </Columns>
                             </asp:GridView>
 
-                             <asp:GridView ID="gv_planilla_empleados_view" runat="server" EmptyDataText="No existen empleados por mostrar en esta categoría." OnRowDataBound="gv_planilla_empleados_RowDataBound"
+                            <asp:GridView ID="gv_planilla_empleados_view" runat="server" EmptyDataText="No existen empleados por mostrar en esta categoría." OnRowDataBound="gv_planilla_empleados_RowDataBound"
                                 AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
                                 <Columns>
                                     <asp:BoundField DataField="empleado" HeaderText="Nombre" ReadOnly="true" />

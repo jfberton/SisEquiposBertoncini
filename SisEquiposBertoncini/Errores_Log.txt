@@ -1415,3 +1415,333 @@ STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Fu
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060217204742660
+
+DATE: 05/08/2016 19:22:00
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Referencia a objeto no establecida como instancia de un objeto.
+
+SOURCE: SisEquiposBertoncini
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: Void CargarEmpleados()
+
+STACKTRACE:    en SisEquiposBertoncini.Aplicativo.admin_empleados.CargarEmpleados() en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx.cs:línea 65
+   en SisEquiposBertoncini.Aplicativo.admin_empleados.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx.cs:línea 33
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060222266225462
+
+DATE: 05/08/2016 19:30:26
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx(31): error CS1061: 'ASP.aplicativo_admin_empleados_aspx' no contiene una definición de 'gv_empleados_RowDataBound' ni se encontró ningún método de extensión 'gv_empleados_RowDataBound' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_empleados_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060243854390663
+
+DATE: 05/08/2016 20:06:25
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Referencia a objeto no establecida como instancia de un objeto.
+
+SOURCE: SisEquiposBertoncini
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_areas.aspx
+
+TARGETSITE: Void btn_ver_Click(System.Object, System.EventArgs)
+
+STACKTRACE:    en SisEquiposBertoncini.Aplicativo.admin_areas.btn_ver_Click(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_areas.aspx.cs:línea 101
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060258684025621
+
+DATE: 05/08/2016 20:31:08
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: d:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_empleados.aspx(21): error CS1061: 'ASP.aplicativo_admin_empleados_aspx' no contiene una definición de 'gv_empleados_PreRender' ni se encontró ningún método de extensión 'gv_empleados_PreRender' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_empleados_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55789/Aplicativo/admin_empleados.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060298176576285
+
+DATE: 05/08/2016 21:36:57
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El contenido literal ('<asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true"  />
+                                            <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true"  ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true"  ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="periodo_alta" HeaderText="Periodo alta" ReadOnly="true"  ItemStyle-HorizontalAlign="Right" />
+                                            <asp:BoundField DataField="meses_por_amortizar...') no está permitido en 'System.Web.UI.WebControls.DataControlFieldCollection'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55760/Aplicativo/admin_equipo_detalle.aspx
+
+TARGETSITE: Void AppendLiteralString(System.String)
+
+STACKTRACE:    en System.Web.UI.CollectionBuilder.AppendLiteralString(String s)
+   en System.Web.UI.TemplateParser.ProcessLiteral()
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060325924035759
+
+DATE: 05/08/2016 22:23:12
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: 'TableRow' no puede tener elementos secundarios de tipo 'HtmlGenericControl'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55760/Aplicativo/ver_valores_cargados_equipo.aspx?eq=5&a=2015
+
+TARGETSITE: Void Add(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.WebControls.TableRow.CellControlCollection.Add(Control child)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 134
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 58
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060332134612523
+
+DATE: 05/08/2016 22:33:33
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: 'Table' no puede tener elementos secundarios de tipo 'HtmlGenericControl'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55760/Aplicativo/ver_valores_cargados_equipo.aspx?eq=5&a=2015
+
+TARGETSITE: Void Add(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.WebControls.Table.RowControlCollection.Add(Control child)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.AgregarNodo(Item_ingreso_egreso concepto, Table tree, Model1Container cxt, resumen_equipo_anio valores_anuales) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 408
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 171
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 58
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060335243738029
+
+DATE: 05/08/2016 22:38:44
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: 'Table' no puede tener elementos secundarios de tipo 'HtmlGenericControl'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55760/Aplicativo/ver_valores_cargados_equipo.aspx?eq=5&a=2015
+
+TARGETSITE: Void Add(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.WebControls.Table.RowControlCollection.Add(Control child)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 212
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 58
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060338594562766
+
+DATE: 05/08/2016 22:44:19
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: 'Table' no puede tener elementos secundarios de tipo 'HtmlGenericControl'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55760/Aplicativo/ver_valores_cargados_equipo.aspx?eq=5&a=2015
+
+TARGETSITE: Void Add(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.WebControls.Table.RowControlCollection.Add(Control child)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Agregar_fila_analisis_economico_financiero(conceptos_analisis_economico_financiero concepto, List`1 resultados, Table tree) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 345
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 216
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 58
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636060753128945241
+
+DATE: 06/08/2016 10:15:12
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: 'Table' no puede tener elementos secundarios de tipo 'HtmlGenericControl'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55760/Aplicativo/ver_valores_cargados_categoria.aspx?cat=2&a=2015
+
+TARGETSITE: Void Add(System.Web.UI.Control)
+
+STACKTRACE:    en System.Web.UI.WebControls.Table.RowControlCollection.Add(Control child)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_categoria.CrearMostrarTabla(Int32 id_categoria, Int32 anio) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_categoria.aspx.cs:línea 217
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_categoria.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_categoria.aspx.cs:línea 59
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

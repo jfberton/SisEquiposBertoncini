@@ -9,6 +9,13 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+     <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Ingresos - Egresos</li>
+        <li>Valores mensuales</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <table class="table-condensed" style="width: 100%">

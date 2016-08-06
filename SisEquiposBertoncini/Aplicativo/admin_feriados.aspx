@@ -11,27 +11,24 @@
     <uc1:menu_usuario runat="server" ID="menu_usuario" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Horas trabajadas</li>
+        <li>Feriados</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-5">
                     <h4 class="panel-title">Feriados</h4>
                 </div>
-                <div class="col-md-7">
-                    <div class="input-group" id="div_buscar" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_feriados.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                    <div class="input-group" id="div_buscar_view" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_feriados_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="panel-body" style="height: 300px; overflow-y: scroll;">
-            <asp:GridView ID="gv_feriados" runat="server" EmptyDataText="No existen feriados para mostrar." OnRowDataBound="gv_feriados_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+        <div class="panel-body">
+            <asp:GridView ID="gv_feriados" runat="server" EmptyDataText="No existen feriados para mostrar." OnPreRender="gv_feriados_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="feriado_fecha" HeaderText="Fecha" DataFormatString="{0:D}" ReadOnly="true" />
                     <asp:BoundField DataField="feriado_descripcion" HeaderText="Descripción" ReadOnly="true" />
@@ -54,8 +51,8 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:GridView ID="gv_feriados_view" runat="server" EmptyDataText="No existen feriados para mostrar." OnRowDataBound="gv_feriados_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+            <asp:GridView ID="gv_feriados_view" runat="server" EmptyDataText="No existen feriados para mostrar." OnPreRender="gv_feriados_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="feriado_fecha" HeaderText="Fecha" DataFormatString="{0:D}" ReadOnly="true" />
                     <asp:BoundField DataField="feriado_descripcion" HeaderText="Descripción" ReadOnly="true" />
@@ -130,7 +127,7 @@
                                                         <asp:RequiredFieldValidator ControlToValidate="tb_fecha_feriado" Text="<img src='../img/exclamation.gif' title='Debe ingresar la fecha del feriado - asueto' />"
                                                             ID="rv_fecha" runat="server" ErrorMessage="Debe ingresar la fecha del feriado - asueto">
                                                         </asp:RequiredFieldValidator>
-                                                        <asp:CustomValidator ErrorMessage="Debe ingresar una fecha válida"  Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha válida' />" OnServerValidate="c_fecha_ServerValidate" ID="c_fecha" runat="server" />
+                                                        <asp:CustomValidator ErrorMessage="Debe ingresar una fecha válida" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha válida' />" OnServerValidate="c_fecha_ServerValidate" ID="c_fecha" runat="server" />
                                                     </td>
                                                 </tr>
                                             </table>
@@ -199,7 +196,15 @@
     </div>
 </asp:Content>
 
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
+
     <script>
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
@@ -216,6 +221,33 @@
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
 
+        $(document).ready(function () {
+            $('#<%= gv_feriados.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+            $('#<%= gv_feriados_view.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+        });
+
         $(function () {
             $('#dtp_fecha_feriado').datetimepicker({
                 locale: 'es',
@@ -223,25 +255,5 @@
             });
         });
 
-    </script>
-    <script>
-        function filtrar(phrase, _id) {
-            var words = phrase.value.toLowerCase().split(" ");
-            var table = document.getElementById(_id);
-            var ele;
-            for (var r = 1; r < table.rows.length; r++) {
-                ele = table.rows[r].innerHTML.replace(/<[^>]+>/g, "");
-                var displayStyle = 'none';
-                for (var i = 0; i < words.length; i++) {
-                    if (ele.toLowerCase().indexOf(words[i]) >= 0)
-                        displayStyle = '';
-                    else {
-                        displayStyle = 'none';
-                        break;
-                    }
-                }
-                table.rows[r].style.display = displayStyle;
-            }
-        }
     </script>
 </asp:Content>

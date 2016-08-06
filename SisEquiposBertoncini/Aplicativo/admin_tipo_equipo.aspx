@@ -8,31 +8,28 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Equipos</li>
+        <li>Categorías</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-5">
                     <h4 class="panel-title">Categorías de equipos</h4>
                 </div>
-                <div class="col-md-7">
-                    <div class="input-group" id="div_buscar" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_categorias.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                    <div class="input-group" id="div_buscar_view" runat="server">
-                        <span class="input-group-addon">Buscar</span>
-                        <input name="txtTerm" class="form-control" onkeyup="filtrar(this, '<%=gv_categorias_view.ClientID %>')" placeholder="ingrese texto buscado" type="text" />
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="panel-body" style="height: 300px; overflow-y: scroll;">
-            <asp:GridView ID="gv_categorias" runat="server" EmptyDataText="No existen categorías por mostrar." OnRowDataBound="gv_categorias_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+        <div class="panel-body">
+            <asp:GridView ID="gv_categorias" runat="server" EmptyDataText="No existen categorías por mostrar." OnPreRender="gv_categorias_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="categoria_nombre" HeaderText="Nombre" ReadOnly="true" />
                     <asp:BoundField DataField="categoria_cantidad_equipos" HeaderText="Equipos" ReadOnly="true" />
-                    <asp:CheckBoxField DataField="categoria_muestra" HeaderText="Equipos" ReadOnly="true" />
+                    <asp:CheckBoxField DataField="categoria_muestra" HeaderText="Ver en planilla" ReadOnly="true" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("categoria_id")%>'>
@@ -55,8 +52,8 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:GridView ID="gv_categorias_view" runat="server" EmptyDataText="No existen categorías por mostrar." OnRowDataBound="gv_categorias_RowDataBound"
-                AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+            <asp:GridView ID="gv_categorias_view" runat="server" EmptyDataText="No existen categorías por mostrar." OnPreRender="gv_categorias_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
                 <Columns>
                     <asp:BoundField DataField="categoria_nombre" HeaderText="Nombre" ReadOnly="true" />
                     <asp:BoundField DataField="categoria_cantidad_equipos" HeaderText="Equipos" ReadOnly="true" />
@@ -205,8 +202,8 @@
                             <div class="col-md-12">
                                 <label>Equipos</label>
                                 <br />
-                                <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos para mostrar." OnRowDataBound="gv_categorias_RowDataBound"
-                                    AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
+                                <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos para mostrar." OnPreRender="gv_categorias_PreRender"
+                                    AutoGenerateColumns="False" GridLines="None" CssClass="display">
                                     <Columns>
                                         <asp:BoundField DataField="nombre_equipo" HeaderText="Nombre" ReadOnly="true" />
                                     </Columns>
@@ -285,7 +282,14 @@
     </div>
 </asp:Content>
 
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
     <script>
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
@@ -301,26 +305,46 @@
             modal.find('.modal-body #' + '<%= id_item_por_eliminar.ClientID %>').val(id)
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
+
+        $(document).ready(function () {
+            $('#<%= gv_categorias.ClientID %>').DataTable({
+                 "scrollY": "400px",
+                 "scrollCollapse": true,
+                 "paging": false,
+                 "language": {
+                     "search": "Buscar:",
+                     "zeroRecords": "No se encontraron registros",
+                     "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                     "infoEmpty": "No hay registros disponibles",
+                     "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                 }
+             });
+             $('#<%= gv_categorias_view.ClientID %>').DataTable({
+                 "scrollY": "400px",
+                 "scrollCollapse": true,
+                 "paging": false,
+                 "language": {
+                     "search": "Buscar:",
+                     "zeroRecords": "No se encontraron registros",
+                     "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                     "infoEmpty": "No hay registros disponibles",
+                     "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                 }
+             });
+             $('#<%= gv_equipos.ClientID %>').DataTable({
+                 "scrollY": "300px",
+                 "scrollCollapse": true,
+                 "paging": false,
+                 "language": {
+                     "search": "Buscar:",
+                     "zeroRecords": "No se encontraron registros",
+                     "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                     "infoEmpty": "No hay registros disponibles",
+                     "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                 }
+             });
+         });
     </script>
 
-    <script>
-        function filtrar(phrase, _id) {
-            var words = phrase.value.toLowerCase().split(" ");
-            var table = document.getElementById(_id);
-            var ele;
-            for (var r = 1; r < table.rows.length; r++) {
-                ele = table.rows[r].innerHTML.replace(/<[^>]+>/g, "");
-                var displayStyle = 'none';
-                for (var i = 0; i < words.length; i++) {
-                    if (ele.toLowerCase().indexOf(words[i]) >= 0)
-                        displayStyle = '';
-                    else {
-                        displayStyle = 'none';
-                        break;
-                    }
-                }
-                table.rows[r].style.display = displayStyle;
-            }
-        }
-    </script>
+
 </asp:Content>

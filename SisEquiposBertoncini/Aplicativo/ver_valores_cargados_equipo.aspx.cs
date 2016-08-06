@@ -116,46 +116,47 @@ namespace SisEquiposBertoncini.Aplicativo
                 conceptos = cxt.Items_ingresos_egresos.ToList();
                 var roots = conceptos.Where(ii => ii.id_item_padre == null);
 
-                HtmlGenericControl tree = new HtmlGenericControl("table");
+                Table tree = new Table();
                 tree.Attributes.Add("runat", "server");
                 tree.Attributes.Add("class", "tree table");
                 tree.ID = "tree";
 
                 #region título
 
-                HtmlGenericControl row = new HtmlGenericControl("tr");
+                TableRow row = new TableRow();
+                row.TableSection = TableRowSection.TableHeader;
                 row.Attributes.Add("class", "treegrid-0");
                 row.Attributes.Add("title", "Conceptos");
 
-                HtmlGenericControl column = new HtmlGenericControl("td");
+                TableCell column = new TableCell();
                 column.Style.Value = "width:350px;background-color:lightgray";
-                column.InnerHtml = "<b>Conceptos</b>";
-                row.Controls.Add(column);
+                column.Text = "<b>Conceptos</b>";
+                row.Cells.Add(column);
 
                 for (int i = 0; i < 12; i++)
                 {
                     DateTime d = new DateTime(DateTime.Today.Year, i + 1, 1);
 
-                    HtmlGenericControl column_mes = new HtmlGenericControl("td");
-                    column_mes.Style.Value = "width:200px;background-color:lightgray";
+                    TableCell column_mes = new TableCell();
+                    column_mes.Style.Value = "width:350px;background-color:lightgray";
                     column_mes.Attributes.Add("align", "center");
-                    column_mes.InnerHtml = "<b>" + d.ToString("MMMM") + "</b>";
-                    row.Controls.Add(column_mes);
+                    column_mes.Text = "<b>" + d.ToString("MMMM") + "</b>";
+                    row.Cells.Add(column_mes);
                 }
 
-                HtmlGenericControl column_totales = new HtmlGenericControl("td");
-                column_totales.Style.Value = "width:250px;background-color:lightgray";
+                TableCell column_totales = new TableCell();
+                column_totales.Style.Value = "width:350px;background-color:lightgray";
                 column_totales.Attributes.Add("align", "center");
-                column_totales.InnerHtml = "<b>TOTAL " + ddl_anio.Text + "</b>";
-                row.Controls.Add(column_totales);
+                column_totales.Text = "<b>TOTAL " + ddl_anio.Text + "</b>";
+                row.Cells.Add(column_totales);
 
-                HtmlGenericControl column_prom = new HtmlGenericControl("td");
-                column_prom.Style.Value = "width:200px;background-color:lightgray";
+                TableCell column_prom = new TableCell();
+                column_prom.Style.Value = "width:350px;background-color:lightgray";
                 column_prom.Attributes.Add("align", "center");
-                column_prom.InnerHtml = "<b>Promedio mensual</b>";
-                row.Controls.Add(column_prom);
+                column_prom.Text = "<b>Promedio mensual</b>";
+                row.Cells.Add(column_prom);
 
-                tree.Controls.Add(row);
+                tree.Rows.Add(row);
 
                 #endregion
 
@@ -168,7 +169,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 Session["ds_equipo_anio"] = ds;
 
-               
+
                 foreach (Item_ingreso_egreso item in roots)
                 {
                     AgregarNodo(item, tree, cxt, resumen_equipo_anio);
@@ -180,122 +181,48 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 //agregar analisis financiero
                 #region Titulo analisis financiero
-                HtmlGenericControl row_af = new HtmlGenericControl("tr");
+                TableRow row_af = new TableRow();
                 row_af.Attributes.Add("class", "treegrid-0");
                 row_af.Attributes.Add("title", "Análisis Financiero");
 
-                HtmlGenericControl column_af = new HtmlGenericControl("td");
+                TableCell column_af = new TableCell();
                 column_af.Style.Value = "width:350px;background-color:lightgray";
-                column_af.InnerHtml = "<b>Análisis Financiero</b>";
-                row_af.Controls.Add(column_af);
+                column_af.Text = "<b>Análisis Financiero</b>";
+                row_af.Cells.Add(column_af);
 
                 for (int i = 0; i < 12; i++)
                 {
-                    DateTime d = new DateTime(DateTime.Today.Year, i + 1, 1);
+                    //DateTime d = new DateTime(DateTime.Today.Year, i + 1, 1);
 
-                    HtmlGenericControl column_mes = new HtmlGenericControl("td");
+                    TableCell column_mes = new TableCell();
                     column_mes.Style.Value = "width:200px;background-color:lightgray";
-                    column_mes.Attributes.Add("align", "center");
-                    column_mes.InnerHtml = "<b>" + d.ToString("MMMM") + "</b>";
-                    row_af.Controls.Add(column_mes);
+                    //column_mes.Attributes.Add("align", "center");
+                    //column_mes.Text = "<b>" + d.ToString("MMMM") + "</b>";
+                    row_af.Cells.Add(column_mes);
                 }
 
-                HtmlGenericControl column_totales_af = new HtmlGenericControl("td");
+                TableCell column_totales_af = new TableCell();
                 column_totales_af.Style.Value = "width:250px;background-color:lightgray";
-                column_totales_af.Attributes.Add("align", "center");
-                column_totales_af.InnerHtml = "<b>TOTAL " + ddl_anio.Text + "</b>";
-                row_af.Controls.Add(column_totales_af);
+                //column_totales_af.Attributes.Add("align", "center");
+                //column_totales_af.Text = "<b>TOTAL " + ddl_anio.Text + "</b>";
+                row_af.Cells.Add(column_totales_af);
 
-                HtmlGenericControl column_prom_af = new HtmlGenericControl("td");
+                TableCell column_prom_af = new TableCell();
                 column_prom_af.Style.Value = "width:200px;background-color:lightgray";
-                column_prom_af.Attributes.Add("align", "center");
-                column_prom_af.InnerHtml = "<b>Promedio mensual</b>";
-                row_af.Controls.Add(column_prom_af);
+                //column_prom_af.Attributes.Add("align", "center");
+                //column_prom_af.Text = "<b>Promedio mensual</b>";
+                row_af.Cells.Add(column_prom_af);
 
-                tree.Controls.Add(row_af);
+                tree.Rows.Add(row_af);
 
                 #endregion
 
                 Agregar_fila_analisis_economico_financiero(resumen_equipo_anio.conceptos_analisis_economico_financiero.finan_resultado, resultados, tree);
 
                 //agregar porcentaje de ganancias
-                #region Titulo porcentaje de ganancias
-                HtmlGenericControl row_pg = new HtmlGenericControl("tr");
-                row_pg.Attributes.Add("class", "treegrid-0");
-                row_pg.Attributes.Add("title", "Análisis Financiero");
-
-                HtmlGenericControl column_pg = new HtmlGenericControl("td");
-                column_pg.Style.Value = "width:350px;background-color:lightgray";
-                column_pg.InnerHtml = "<b>Análisis Financiero</b>";
-                row_pg.Controls.Add(column_pg);
-
-                for (int i = 0; i < 12; i++)
-                {
-                    DateTime d = new DateTime(DateTime.Today.Year, i + 1, 1);
-
-                    HtmlGenericControl column_mes = new HtmlGenericControl("td");
-                    column_mes.Style.Value = "width:200px;background-color:lightgray";
-                    column_mes.Attributes.Add("align", "center");
-                    column_mes.InnerHtml = "<b>" + d.ToString("MMMM") + "</b>";
-                    row_pg.Controls.Add(column_mes);
-                }
-
-                HtmlGenericControl column_totales_pg = new HtmlGenericControl("td");
-                column_totales_pg.Style.Value = "width:250px;background-color:lightgray";
-                column_totales_pg.Attributes.Add("align", "center");
-                column_totales_pg.InnerHtml = "<b>TOTAL " + ddl_anio.Text + "</b>";
-                row_pg.Controls.Add(column_totales_pg);
-
-                HtmlGenericControl column_prom_pg = new HtmlGenericControl("td");
-                column_prom_pg.Style.Value = "width:200px;background-color:lightgray";
-                column_prom_pg.Attributes.Add("align", "center");
-                column_prom_pg.InnerHtml = "<b>Promedio mensual</b>";
-                row_pg.Controls.Add(column_prom_pg);
-
-                tree.Controls.Add(row_pg);
-
-                #endregion
-
                 Agregar_fila_analisis_economico_financiero(resumen_equipo_anio.conceptos_analisis_economico_financiero.porcentaje_de_ganancias, resultados, tree);
 
                 //agregar velocidad de recupero
-                #region Titulo analisis financiero
-                HtmlGenericControl row_vr = new HtmlGenericControl("tr");
-                row_vr.Attributes.Add("class", "treegrid-0");
-                row_vr.Attributes.Add("title", "Análisis Financiero");
-
-                HtmlGenericControl column_vr = new HtmlGenericControl("td");
-                column_vr.Style.Value = "width:350px;background-color:lightgray";
-                column_vr.InnerHtml = "<b>Análisis Financiero</b>";
-                row_vr.Controls.Add(column_vr);
-
-                for (int i = 0; i < 12; i++)
-                {
-                    DateTime d = new DateTime(DateTime.Today.Year, i + 1, 1);
-
-                    HtmlGenericControl column_mes = new HtmlGenericControl("td");
-                    column_mes.Style.Value = "width:200px;background-color:lightgray";
-                    column_mes.Attributes.Add("align", "center");
-                    column_mes.InnerHtml = "<b>" + d.ToString("MMMM") + "</b>";
-                    row_vr.Controls.Add(column_mes);
-                }
-
-                HtmlGenericControl column_totales_vr = new HtmlGenericControl("td");
-                column_totales_vr.Style.Value = "width:250px;background-color:lightgray";
-                column_totales_vr.Attributes.Add("align", "center");
-                column_totales_vr.InnerHtml = "<b>TOTAL " + ddl_anio.Text + "</b>";
-                row_vr.Controls.Add(column_totales_vr);
-
-                HtmlGenericControl column_prom_vr = new HtmlGenericControl("td");
-                column_prom_vr.Style.Value = "width:200px;background-color:lightgray";
-                column_prom_vr.Attributes.Add("align", "center");
-                column_prom_vr.InnerHtml = "<b>Promedio mensual</b>";
-                row_vr.Controls.Add(column_prom_vr);
-
-                tree.Controls.Add(row_vr);
-
-                #endregion
-
                 Agregar_fila_analisis_economico_financiero(resumen_equipo_anio.conceptos_analisis_economico_financiero.velocidad_de_recupero, resultados, tree);
 
                 #endregion
@@ -306,16 +233,16 @@ namespace SisEquiposBertoncini.Aplicativo
             }
         }
 
-        private void Agregar_fila_analisis_economico_financiero(resumen_equipo_anio.conceptos_analisis_economico_financiero concepto, List<resumen_equipo_anio.resultados_economicos_financieros> resultados, HtmlGenericControl tree)
+        private void Agregar_fila_analisis_economico_financiero(resumen_equipo_anio.conceptos_analisis_economico_financiero concepto, List<resumen_equipo_anio.resultados_economicos_financieros> resultados, Table tree)
         {
-            HtmlGenericControl row = new HtmlGenericControl("tr");
+            TableRow row = new TableRow();
             row.Attributes.Add("class", "treegrid-" + concepto.ToString());
 
             //concepto
             Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
             Reportes.Valores_anio_equipo.Detalle_itemRow dir = ds.Detalle_item.NewDetalle_itemRow();
 
-            HtmlGenericControl column_resultado = new HtmlGenericControl("td");
+            TableCell column_resultado = new TableCell();
             string tooltip = "";
             switch (concepto)
             {
@@ -323,36 +250,36 @@ namespace SisEquiposBertoncini.Aplicativo
                     dir.Nombre_item = "Resultado Financiero";
                     dir.Bold = "SI";
 
-                    column_resultado.InnerHtml = "Resultado Financiero";
+                    column_resultado.Text = "Resultado Financiero";
                     tooltip = "Ingresos totales - Costos Fijos Erogables - Impuestos (5% del ingreso facturado)";
                     break;
                 case resumen_equipo_anio.conceptos_analisis_economico_financiero.porcentaje_de_ganancias:
                     dir.Nombre_item = "Porcentaje de ganancias";
                     dir.Bold = "SI";
 
-                    column_resultado.InnerHtml = "Porcentaje de ganancias";
+                    column_resultado.Text = "Porcentaje de ganancias";
                     tooltip = "Resultado financiero / Ingresos";
                     break;
                 case resumen_equipo_anio.conceptos_analisis_economico_financiero.velocidad_de_recupero:
                     dir.Nombre_item = "Velocidad de recupero";
                     dir.Bold = "SI";
 
-                    column_resultado.InnerHtml = "Velocidad de recupero";
+                    column_resultado.Text = "Velocidad de recupero";
                     tooltip = "Amortización / Resultado financiero";
                     break;
                 default:
                     break;
             }
 
-            row.Controls.Add(column_resultado);
-            tree.Controls.Add(row);
+            row.Cells.Add(column_resultado);
+            tree.Rows.Add(row);
 
             //valores mensuales, mes 13 = total, mes 14 = promedio
             for (int i = 0; i < 14; i++)
             {
                 resumen_equipo_anio.resultados_economicos_financieros vm = resultados.First(x => x.agrupacion == ((resumen_equipo_anio.agrupaciones)i + 1) && x.tipo == concepto);
 
-                HtmlGenericControl column_valor = new HtmlGenericControl("td");
+                TableCell column_valor = new TableCell();
                 column_valor.Attributes.Add("align", "right");
 
                 Label valor = new Label();
@@ -377,23 +304,23 @@ namespace SisEquiposBertoncini.Aplicativo
                     default:
                         break;
                 }
-                
+
                 if (vm.valor < 0)
                 {
                     valor.ForeColor = Color.Red;
                 }
                 column_valor.Controls.Add(valor);
 
-                row.Controls.Add(column_valor);
+                row.Cells.Add(column_valor);
             }
 
             ds.Detalle_item.Rows.Add(dir);
             Session["ds_equipo_anio"] = ds;
         }
 
-        private void AgregarNodo(Item_ingreso_egreso concepto, HtmlGenericControl tree, Model1Container cxt, resumen_equipo_anio valores_anuales)
+        private void AgregarNodo(Item_ingreso_egreso concepto, Table tree, Model1Container cxt, resumen_equipo_anio valores_anuales)
         {
-            HtmlGenericControl row = new HtmlGenericControl("tr");
+            TableRow row = new TableRow();
             row.Attributes.Add("class", "treegrid-" + concepto.id_item + (concepto.id_item_padre != null ? " treegrid-parent-" + concepto.id_item_padre : "") + (concepto.id_item_padre == null ? " h4" : "") + (concepto.tipo == "Ingreso" ? " alert-success" : " alert-danger"));
             row.Attributes.Add("title", concepto.descripcion);
 
@@ -401,14 +328,14 @@ namespace SisEquiposBertoncini.Aplicativo
             Reportes.Valores_anio_equipo.Detalle_itemRow dir = ds.Detalle_item.NewDetalle_itemRow();
 
             //concepto
-            HtmlGenericControl column = new HtmlGenericControl("td");
-            
+            TableCell column = new TableCell();
+
             dir.Nombre_item = concepto.nombre;
             dir.Bold = concepto.Hijos.Count > 0 ? "SI" : "NO";
 
-            column.InnerHtml = (concepto.Hijos.Count > 0 ? "<strong>" : "") + concepto.nombre + (concepto.Hijos.Count > 0 ? "</strong>" : "");
-            row.Controls.Add(column);
-            tree.Controls.Add(row);
+            column.Text = (concepto.Hijos.Count > 0 ? "<strong>" : "") + concepto.nombre + (concepto.Hijos.Count > 0 ? "</strong>" : "");
+            row.Cells.Add(column);
+
 
             List<resumen_equipo_anio.valor_item_mes> valores_concepto = valores_anuales.Obtener_agrupacion_por_concepto(concepto.id_item);
 
@@ -417,9 +344,9 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 resumen_equipo_anio.valor_item_mes vm = valores_concepto.First(x => x.agrupacion == ((resumen_equipo_anio.agrupaciones)i + 1));
 
-                dir[i + 1] = Cadena.Formato_moneda(vm.valor, Cadena.Moneda.pesos); 
+                dir[i + 1] = Cadena.Formato_moneda(vm.valor, Cadena.Moneda.pesos);
 
-                HtmlGenericControl column_valor = new HtmlGenericControl("td");
+                TableCell column_valor = new TableCell();
                 column_valor.Attributes.Add("align", "right");
 
                 Label valor = new Label();
@@ -429,7 +356,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 valor.Text = Cadena.Formato_moneda(vm.valor, Cadena.Moneda.pesos);
                 column_valor.Controls.Add(valor);
 
-                row.Controls.Add(column_valor);
+                row.Cells.Add(column_valor);
+            }
+
+            if (((Label)row.Cells[14].Controls[0]).Text != "$ 0,00")
+            {
+                tree.Rows.Add(row);
             }
 
             ds.Detalle_item.Rows.Add(dir);
@@ -482,7 +414,7 @@ namespace SisEquiposBertoncini.Aplicativo
             deviceInfo = "<DeviceInfo><SimplePageHeaders>True</SimplePageHeaders></DeviceInfo>";
 
             //Render the report
-            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out  mimeType, out encoding, out extension, out streamids, out warnings);
+            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
             Session["Reporte"] = bytes;
 
             string script = "<script type='text/javascript'>window.open('Reportes/Report.aspx');</script>";
@@ -508,10 +440,10 @@ namespace SisEquiposBertoncini.Aplicativo
 
             foreach (System.Data.DataRow dr in ds.Detalle_item.Rows)
             {
-                if (dr["Nombre_item"].ToString() == "INGRESOS" || 
-                    dr["Nombre_item"].ToString() == "EGRESOS" || 
-                    dr["Nombre_item"].ToString() == "Resultado Financiero" || 
-                    dr["Nombre_item"].ToString() == "Porcentaje de ganancias" || 
+                if (dr["Nombre_item"].ToString() == "INGRESOS" ||
+                    dr["Nombre_item"].ToString() == "EGRESOS" ||
+                    dr["Nombre_item"].ToString() == "Resultado Financiero" ||
+                    dr["Nombre_item"].ToString() == "Porcentaje de ganancias" ||
                     dr["Nombre_item"].ToString() == "Velocidad de recupero")
                 {
                     Reportes.Valores_anio_equipo.Detalle_itemRow dir = dsresumen.Detalle_item.NewDetalle_itemRow();

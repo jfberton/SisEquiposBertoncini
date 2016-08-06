@@ -11,6 +11,13 @@
     <uc1:menu_usuario runat="server" ID="menu_usuario" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Horas trabajadas</li>
+        <li>Feriados</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Valores mensuales empleado</h1>
@@ -163,7 +170,7 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                <table class="table-condensed" style="width:100%">
+                                                <table class="table-condensed" style="width: 100%">
                                                     <tr>
                                                         <td>
                                                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_m" Width="100%">
@@ -181,7 +188,7 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                <table class="table-condensed" style="width:100%">
+                                                <table class="table-condensed" style="width: 100%">
                                                     <tr>
                                                         <td>
                                                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddl_estado_turno_t" Width="100%">
@@ -204,10 +211,10 @@
 
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <table class="table-condensed" style="width:100%">
+                                                        <table class="table-condensed" style="width: 100%">
                                                             <tr>
                                                                 <td>
-                                                                    <asp:DropDownList runat="server" CssClass="form-control" Width="100%" ID="ddl_equipo" >
+                                                                    <asp:DropDownList runat="server" CssClass="form-control" Width="100%" ID="ddl_equipo">
                                                                     </asp:DropDownList></td>
                                                             </tr>
                                                         </table>

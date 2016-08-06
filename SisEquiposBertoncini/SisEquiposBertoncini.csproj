@@ -122,6 +122,10 @@
     <Content Include="Aplicativo\ver_valores_cargados_equipo.aspx" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\bootstrap.min-original.css" />
+    <Content Include="css\dataTables.bootstrap.min.css" />
+    <Content Include="css\fixedColumns.dataTables.min.css" />
+    <Content Include="css\fixedHeader.dataTables.min.css" />
+    <Content Include="css\jquery.dataTables.min.css" />
     <Content Include="css\jquery.treegrid.css" />
     <Content Include="css\jumbotron-narrow.css" />
     <Content Include="css\mi_css.css" />
@@ -147,8 +151,13 @@
     <Content Include="img\Warning.gif" />
     <Content Include="js\app.js" />
     <Content Include="js\bootstrap-datetimepicker.min.js" />
+    <Content Include="js\dataTables.bootstrap.min.js" />
+    <Content Include="js\dataTables.fixedColumns.min.js" />
+    <Content Include="js\dataTables.fixedHeader.min.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
+    <Content Include="js\jquery-1.12.3.js" />
     <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="js\jquery.mask.min.js" />
     <Content Include="js\jquery.treegrid.bootstrap2.js" />
     <Content Include="js\jquery.treegrid.bootstrap3.js" />
@@ -619,7 +628,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56181</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55789/</IISUrl>
+          <IISUrl>http://localhost:55760/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

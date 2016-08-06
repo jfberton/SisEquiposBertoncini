@@ -8,6 +8,13 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Planillas</li>
+        <li>Resumen horas trabajadas equipo</li>
+    </ol>
+
     <h3>Planilla resumen de horas trabajadas mes</h3>
     <table class="table table-condensed" style="width: 100%">
         <tr>
@@ -54,8 +61,46 @@
             Horas totales 
         <asp:Label Text="000:00" ID="lbl_horas_totales" runat="server" /></label>
     </div>
-    <div runat="server" id="div_tabla">
+
+    <div class="row">
+        <div class="col-md-12">
+            <asp:GridView ID="gv_horas_equipo" runat="server" OnPreRender="gv_horas_equipo_PreRender"
+                AutoGenerateColumns="False" GridLines="None" CssClass="display">
+                <Columns>
+                    <asp:BoundField DataField="equipo" HeaderText="Equipo" ReadOnly="true" />
+                    <asp:BoundField DataField="horas" HeaderText="Horas totales" ReadOnly="true" />
+                </Columns>
+            </asp:GridView>
+
+        </div>
     </div>
+
 </asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#<%= gv_horas_equipo.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+        });
+    </script>
+
 </asp:Content>

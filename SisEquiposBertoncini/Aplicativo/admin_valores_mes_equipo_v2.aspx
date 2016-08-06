@@ -11,6 +11,14 @@
     <uc1:menu_usuario runat="server" ID="menu_usuario" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Ingresos - Egresos</li>
+        <li>I/E por equipo</li>
+        <li>Valores mensuales</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Cargar - editar valores mensuales del equipo
@@ -169,7 +177,7 @@
                                 <tr>
                                     <td style="vertical-align: text-top">Monto&nbsp;</td>
                                     <td style="width: 100%">
-                                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_detalle_monto" />
+                                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_detalle_monto" />
                                     </td>
                                     <td>
                                         <asp:CustomValidator ID="cv_monto" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un monto válido' />"
@@ -185,13 +193,13 @@
                                 <tr>
                                     <td style="vertical-align: text-top">Descripción&nbsp;
                                     </td>
-                                    <td style="width:100%">
+                                    <td style="width: 100%">
                                         <asp:TextBox runat="server" CssClass="form-control" ID="tb_detalle_descripcion" /></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="col-md-2">
-                            <input type="hidden" value ="0" runat="server" id="hidden_id_detalle_01" />
+                            <input type="hidden" value="0" runat="server" id="hidden_id_detalle_01" />
                             <button runat="server" id="btn_agregar_detalle" class="btn btn-success " onserverclick="btn_agregar_detalle_ServerClick">
                                 <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;<asp:Label Text="Agregar" ID="lbl_texto_boton_agregar_editar" runat="server" />
                             </button>
@@ -222,7 +230,7 @@
                                                 data-nombre='<%#String.Concat(Eval("detalle_fecha"), " por un monto de $ ", Eval("detalle_monto"))%>'>
                                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;Eliminar
                                             </button>
-                                             <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("detalle_id")%>'>
+                                            <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("detalle_id")%>'>
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Editar
                                             </button>
                                         </ItemTemplate>
@@ -350,7 +358,7 @@
     </script>
 
     <script type="text/javascript">
-       
+
 
         $(document).ready(function () {
             $('.tree_valores').treegrid({

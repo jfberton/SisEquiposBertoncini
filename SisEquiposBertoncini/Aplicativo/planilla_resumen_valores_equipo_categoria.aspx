@@ -8,6 +8,14 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+        
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Ingresos - Egresos</li>
+        <li>I/E por categoria</li>
+        <li>Resumen año equipos categoría</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Visualiza los valores anuales cargados al equipo
@@ -49,28 +57,81 @@
             </div>
         </div>
     </div>
-    <asp:GridView ID="gv_detalle_equipos" runat="server" OnRowDataBound="gv_detalle_equipos_RowDataBound" EmptyDataText="No existen resultados"
-        AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered" ShowHeader="true" Width="1800px">
+    <asp:GridView ID="gv_detalle_equipos" runat="server" OnPreRender="gv_detalle_equipos_PreRender" EmptyDataText="No existen resultados"
+        AutoGenerateColumns="False" GridLines="None" CssClass="display" ShowHeader="true" >
         <Columns>
-            <asp:BoundField DataField="nombre_equipo" HeaderText="Equipo" ReadOnly="true"/>
+            <asp:BoundField DataField="nombre_equipo" HeaderText="Equipo" ReadOnly="true" />
             <asp:BoundField DataField="tipo_resultado" HeaderText="Tipo resultado" ReadOnly="true" />
             <asp:BoundField DataField="enero" HeaderText="Enero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="febrero" HeaderText="Febrero" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="marzo" HeaderText="Marzo" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="abril" HeaderText="Abril" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="mayo" HeaderText="Mayo" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="febrero" HeaderText="Febrero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="marzo" HeaderText="Marzo" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="abril" HeaderText="Abril" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="mayo" HeaderText="Mayo" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
             <asp:BoundField DataField="junio" HeaderText="Junio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="julio" HeaderText="Julio" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="agosto" HeaderText="Agosto" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="septiembre" HeaderText="Septiembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="octubre" HeaderText="Octubre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="noviembre" HeaderText="Noviembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="diciembre" HeaderText="Diciembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="total" HeaderText="Total Anual" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
-            <asp:BoundField DataField="promedio" HeaderText="Promedio mensual" ReadOnly="true" ItemStyle-HorizontalAlign="Right"/>
+            <asp:BoundField DataField="julio" HeaderText="Julio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="agosto" HeaderText="Agosto" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="septiembre" HeaderText="Septiembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="octubre" HeaderText="Octubre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="noviembre" HeaderText="Noviembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="diciembre" HeaderText="Diciembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="total" HeaderText="Total Anual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            <asp:BoundField DataField="promedio" HeaderText="Promedio mensual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
         </Columns>
     </asp:GridView>
 </asp:Content>
+
+
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+    <link href="../css/fixedHeader.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
-   
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.fixedColumns.min.js"></script>
+    <script src="../../js/dataTables.fixedHeader.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#<%= gv_detalle_equipos.ClientID %>').DataTable({
+                "scrollY": 350,
+                "scrollX": true,
+                "scrollCollapse": true,
+                "fixedHeader": true,
+                "fixedColumns": {
+                    "leftColumns": 2
+                },
+                "paging": false,
+                "ordering": false,
+                "autoWidth": false,
+                "columnDefs": [
+                     { "width": "150px", "targets": 0 }, //equipo
+                     { "width": "200px", "targets": 1 }, //Concepto
+                     { "width": "130px", "targets": 2 }, //enero
+                     { "width": "130px", "targets": 3 }, //febrero
+                     { "width": "130px", "targets": 4 }, //marzo
+                     { "width": "130px", "targets": 5 }, //abril
+                     { "width": "130px", "targets": 6 }, //mayo
+                     { "width": "130px", "targets": 7 }, //junio
+                     { "width": "130px", "targets": 8 }, //julio
+                     { "width": "130px", "targets": 9 }, //agosto
+                     { "width": "130px", "targets": 10 }, //septiembre
+                     { "width": "130px", "targets": 11 }, //octubre
+                     { "width": "130px", "targets": 12 }, //noviembre
+                     { "width": "130px", "targets": 13 }, //diciembre
+                     { "width": "150px", "targets": 14 }, //acumulado
+                     { "width": "130px", "targets": 15 } //promedio
+                ],
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                },
+            });
+        });
+    </script>
 </asp:Content>

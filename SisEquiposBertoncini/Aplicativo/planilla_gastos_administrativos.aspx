@@ -9,6 +9,13 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Planillas</li>
+        <li>Gastos administración</li>
+    </ol>
+
     <h3>Planilla de gastos administrativos</h3>
     <br />
     <table class="table table-bordered">
@@ -45,19 +52,19 @@
         <tr>
             <td>Telefonía celular</td>
             <td>
-                <asp:TextBox runat="server" id="tb_telefonia_celular" CssClass="form-control"/>
+                <asp:TextBox runat="server" ID="tb_telefonia_celular" CssClass="form-control" />
             </td>
             <td>Sueldos administración</td>
             <td>
-                <asp:TextBox runat="server" id="tb_sueldos_administracion" CssClass="form-control"/>
+                <asp:TextBox runat="server" ID="tb_sueldos_administracion" CssClass="form-control" />
             </td>
         </tr>
         <tr>
             <td>Honorarios varios</td>
             <td>
-                <asp:TextBox runat="server" id="tb_honorarios_sistema" CssClass="form-control"/>
+                <asp:TextBox runat="server" ID="tb_honorarios_sistema" CssClass="form-control" />
             </td>
-           <%-- <td>Honorarios contable</td>
+            <%-- <td>Honorarios contable</td>
             <td>
                 <asp:TextBox runat="server" id="tb_honorarios_contables" CssClass="form-control"/>
             </td>--%>
@@ -65,11 +72,11 @@
         <tr>
             <td>Papelería - Librería</td>
             <td>
-                <asp:TextBox runat="server" id="tb_papeleria_libreria" CssClass="form-control"/>
+                <asp:TextBox runat="server" ID="tb_papeleria_libreria" CssClass="form-control" />
             </td>
             <td>Otros</td>
             <td>
-                <asp:TextBox runat="server" id="tb_otros" CssClass="form-control"/>
+                <asp:TextBox runat="server" ID="tb_otros" CssClass="form-control" />
             </td>
         </tr>
         <tr>
@@ -85,19 +92,19 @@
         <tr>
             <td>Telefonía celular</td>
             <td>
-                <asp:Label id="lbl_telefonia_celular" runat="server" />
+                <asp:Label ID="lbl_telefonia_celular" runat="server" />
             </td>
             <td>Sueldos administración</td>
             <td>
-               <asp:Label id="lbl_sueldos_administracion" runat="server" />
+                <asp:Label ID="lbl_sueldos_administracion" runat="server" />
             </td>
         </tr>
         <tr>
             <td>Honorarios varios</td>
             <td>
-               <asp:Label id="lbl_honorarios_varios" runat="server" />
+                <asp:Label ID="lbl_honorarios_varios" runat="server" />
             </td>
-          <%--  <td>Honorarios contable</td>
+            <%--  <td>Honorarios contable</td>
             <td>
                 <asp:Label id="lbl_honorarios_contables" runat="server" />
             </td>--%>
@@ -105,11 +112,11 @@
         <tr>
             <td>Papelería - Librería</td>
             <td>
-                <asp:Label id="lbl_papeleria" runat="server" />
+                <asp:Label ID="lbl_papeleria" runat="server" />
             </td>
             <td>Otros</td>
             <td>
-               <asp:Label id="lbl_otros" runat="server" />
+                <asp:Label ID="lbl_otros" runat="server" />
             </td>
         </tr>
     </table>
@@ -123,7 +130,9 @@
                         <asp:DropDownList runat="server" ID="ddl_equipos" CssClass="form-control" Width="100%">
                         </asp:DropDownList>
                     </td>
-                    <td>Porcentaje de participación (max <asp:Label Text="" ID="lbl_maximo_nivel_porcentaje_participacion" runat="server"></asp:Label> )</td>
+                    <td>Porcentaje de participación (max
+                        <asp:Label Text="" ID="lbl_maximo_nivel_porcentaje_participacion" runat="server"></asp:Label>
+                        )</td>
                     <td>
                         <asp:TextBox runat="server" CssClass="form-control" ID="tb_porcentaje" />
                     </td>

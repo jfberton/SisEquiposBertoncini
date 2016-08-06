@@ -22,7 +22,6 @@
 	<Equipos valor_database="GRUA 7" valor_excel="Grúa 7" />
 	<Equipos valor_database="GRUA 8" valor_excel="Grúa 8" />
 	<Equipos valor_database="GRUA 9" valor_excel="Grúa 9" />
-  
   <Equipos valor_database="GRUA 3" valor_excel="Grúa 03" />
   <Equipos valor_database="GRUA 4" valor_excel="Grúa 04" />
   <Equipos valor_database="GRUA 5" valor_excel="Grúa 05" />
@@ -30,7 +29,6 @@
 	<Equipos valor_database="GRUA 7" valor_excel="Grúa 07" />
 	<Equipos valor_database="GRUA 8" valor_excel="Grúa 08" />
 	<Equipos valor_database="GRUA 9" valor_excel="Grúa 09" />
-  
 	<Equipos valor_database="HIDRO 2 - SCANIA" valor_excel="Hidro2 PM/Scania" />
 	<Equipos valor_database="HIDRO 1 - VOLVO" valor_excel="Hidrogrúa/Volvito" />
 	<Equipos valor_database="IVECO 420" valor_excel="IVECO" />
@@ -43,7 +41,8 @@
 	<Equipos valor_database="Toyota Hilux" valor_excel="Toyota" />
 	<Equipos valor_database="VOLVO 460" valor_excel="Volvo" />
 	<Equipos valor_database="CARRETON VULCANO ATI 758" valor_excel="Vulcano ATI 758" />
-	<Items valor_database="Combustible" valor_excel="Combustibles" />
+	
+  <Items valor_database="Combustible" valor_excel="Combustibles" />
 	<Items valor_database="Fletes" valor_excel="Fletes de Envío" />
 	<Items valor_database="Fletes" valor_excel="Fletes" />
 	<Items valor_database="Varios " valor_excel="Gastos Varios" />
@@ -57,7 +56,7 @@
 	<Items valor_database="PEAJE" valor_excel="Peaje" />
 	<Items valor_database="Pintura" valor_excel="Pintura" />
 	<Items valor_database="Repuestos y Reparac. Facturados" valor_excel="Repuestos y Reparaciones" />
-	<Items valor_database="Seguro Compartido" valor_excel="Seguros" />
+	<Items valor_database="Seguro Terceros" valor_excel="Seguros" />
 	<Items valor_database="Teléfono celular (abono)" valor_excel="Teléfono Celular" />
 	<Items valor_database="Viaticos FC" valor_excel="Viaticos, Movilidad y Traslados" />
 </Valores>

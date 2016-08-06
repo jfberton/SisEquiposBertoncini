@@ -14,6 +14,14 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+        <li>Inicio</li>
+        <li>Planillas</li>
+        <li>En función de horas empleado</li>
+        <li>Planilla de cálculos</li>
+    </ol>
+
     <div class="row">
         <div class="col-md-12 text-center">
             <h3>

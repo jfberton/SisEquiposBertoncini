@@ -59,14 +59,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     gv_categorias_view.DataSource = items_categoria;
                     gv_categorias_view.DataBind();
-                    div_buscar.Visible = false;
                     gv_categorias.Visible = false;
                 }
                 else
                 {
                     gv_categorias.DataSource = items_categoria;
                     gv_categorias.DataBind();
-                    div_buscar_view.Visible = false;
                     gv_categorias_view.Visible = false;
                 }
                 
@@ -228,6 +226,25 @@ namespace SisEquiposBertoncini.Aplicativo
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowPopUpError", script, false);
             }
         }
-      
+
+        protected void gv_categorias_PreRender(object sender, EventArgs e)
+        {
+            if (gv_categorias.Rows.Count > 0)
+            {
+                gv_categorias.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_categorias_view.Rows.Count > 0)
+            {
+                gv_categorias_view.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_equipos.Rows.Count > 0)
+            {
+                gv_equipos.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+
+        }
     }
 }

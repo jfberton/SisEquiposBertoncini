@@ -59,16 +59,14 @@ namespace SisEquiposBertoncini.Aplicativo
                     gv_areas_view.DataSource = items_areas;
                     gv_areas_view.DataBind();
                     gv_areas.Visible = false;
-                    div_buscar.Visible = false;
                 }
                 else
                 {
                     gv_areas.DataSource = items_areas;
                     gv_areas.DataBind();
                     gv_areas_view.Visible = false;
-                    div_buscar_view.Visible = false;
                 }
-                
+
             }
         }
 
@@ -76,14 +74,6 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_area').modal('show')});</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
-        }
-
-        protected void gv_areas_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                e.Row.ControlStyle.BackColor = Color.LightGray;
-            }
         }
 
         protected void btn_ver_Click(object sender, EventArgs e)
@@ -111,14 +101,6 @@ namespace SisEquiposBertoncini.Aplicativo
             MostrarPopUpArea();
         }
 
-        protected void gv_empleado_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                e.Row.ControlStyle.BackColor = Color.LightGray;
-            }
-        }
-
         protected void btn_aceptar_eliminacion_Click(object sender, EventArgs e)
         {
             int id_area = Convert.ToInt32(id_item_por_eliminar.Value);
@@ -127,7 +109,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 Area area = cxt.Areas.First(aa => aa.id_area == id_area);
 
-                if (area.Empleados.Where(ee=>ee.fecha_baja== null).Count() > 0)
+                if (area.Empleados.Where(ee => ee.fecha_baja == null).Count() > 0)
                 {
                     MessageBox.Show(this, "No se puede eliminar el área ya que la misma aún tiene empleados", MessageBox.Tipo_MessageBox.Danger, "Imposible eliminar!");
                 }
@@ -166,6 +148,24 @@ namespace SisEquiposBertoncini.Aplicativo
                 script = "<script language=\"javascript\" type=\"text/javascript\">$(document).ready(function() { $('#agregar_area').modal('show')});</script>";
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowPopUpError", script, false);
+            }
+        }
+
+        protected void gv_areas_PreRender(object sender, EventArgs e)
+        {
+            if (gv_areas.Rows.Count > 0)
+            {
+                gv_areas.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_areas_view.Rows.Count > 0)
+            {
+                gv_areas_view.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_empleado.Rows.Count > 0)
+            {
+                gv_empleado.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
     }

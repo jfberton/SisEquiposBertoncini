@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SisEquiposBertoncini.Aplicativo.Datos;
 using System.Web.UI.HtmlControls;
 using SisEquiposBertoncini.Aplicativo.Controles;
+using System.Drawing;
 
 namespace SisEquiposBertoncini.Aplicativo
 {
@@ -85,6 +86,11 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
             }
         }
+        private struct item_tabla
+        {
+            public string equipo { get; set; }
+            public string horas { get; set; }
+        }
 
         protected void btn_buscar_Click(object sender, EventArgs e)
         {
@@ -149,31 +155,24 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
 
                 #endregion
-
-                HtmlTable tabla = new HtmlTable();
-                tabla.Attributes.Add("class", "table table-bordered");
-                HtmlTableRow encabezado = new HtmlTableRow();
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Equipos", BgColor = "lightgray" });
-                encabezado.Cells.Add(new HtmlTableCell("th") { InnerHtml = "Horas equipo", BgColor = "lightgray" });
-                tabla.Rows.Add(encabezado);
+                List<item_tabla> items_tabla = new List<item_tabla>();
 
                 List<Equipo> equipos = cxt.Equipos.Where(ee => !ee.Generico && ee.fecha_baja == null).ToList();
                 string horasTotales = "00:00";
                 foreach (Equipo item in equipos)
                 {
                     string horas_equipo = item.Horas_mes(mes, anio, empleados);
-                    HtmlTableRow fila_equipo = new HtmlTableRow();
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { InnerHtml = item.nombre });
-                    fila_equipo.Cells.Add(new HtmlTableCell("td") { Align = "right", InnerHtml = horas_equipo != "00:00" ? horas_equipo : "-" });
-                    tabla.Rows.Add(fila_equipo);
-                    horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, horas_equipo });
+                    if(horas_equipo!="00:00")
+                    {
+                        items_tabla.Add(new item_tabla() { equipo = item.nombre, horas = horas_equipo });
+                        horasTotales = Horas_string.SumarHoras(new string[] { horasTotales, horas_equipo });
+                    }
                 }
 
                 lbl_horas_totales.Text = horasTotales;
 
-                div_tabla.Controls.Clear();
-
-                div_tabla.Controls.Add(tabla);
+                gv_horas_equipo.DataSource = items_tabla;
+                gv_horas_equipo.DataBind();
             }
 
         }
@@ -188,5 +187,12 @@ namespace SisEquiposBertoncini.Aplicativo
             ddl_empleado.Enabled = true;
         }
 
+        protected void gv_horas_equipo_PreRender(object sender, EventArgs e)
+        {
+            if (gv_horas_equipo.Rows.Count > 0)
+            {
+                gv_horas_equipo.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
     }
 }

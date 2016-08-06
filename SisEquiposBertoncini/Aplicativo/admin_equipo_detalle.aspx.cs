@@ -35,6 +35,11 @@ namespace SisEquiposBertoncini.Aplicativo
                         Session["equipo"] = equipo;
                         Session["id_equipo"] = null;
                     }
+                    lbl_breadcumb.Text = "Editar";
+                }
+                else
+                {
+                    lbl_breadcumb.Text = "Agregar nuevo";
                 }
 
                 CargarValoresEquipo();

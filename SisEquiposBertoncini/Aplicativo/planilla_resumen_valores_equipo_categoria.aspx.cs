@@ -140,28 +140,28 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Equipo_categoria item in equipos_categoria)
                 {
-                    item_grilla_detalle item_equipo = new item_grilla_detalle();
-                    item_equipo.nombre_equipo = item.Equipo.nombre;
-                    //item_equipo.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + " h4";
-                    item_equipo.tipo_resultado = "";
-                    item_equipo.enero = "";
-                    item_equipo.febrero = "";
-                    item_equipo.marzo = "";
-                    item_equipo.abril = "";
-                    item_equipo.mayo = "";
-                    item_equipo.junio = "";
-                    item_equipo.julio = "";
-                    item_equipo.agosto = "";
-                    item_equipo.septiembre = "";
-                    item_equipo.octubre = "";
-                    item_equipo.noviembre = "";
-                    item_equipo.diciembre = "";
-                    item_equipo.total = "";
-                    item_equipo.promedio = "";
+                    //item_grilla_detalle item_equipo = new item_grilla_detalle();
+                    //item_equipo.nombre_equipo = item.Equipo.nombre;
+                    ////item_equipo.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + " h4";
+                    //item_equipo.tipo_resultado = "";
+                    //item_equipo.enero = "";
+                    //item_equipo.febrero = "";
+                    //item_equipo.marzo = "";
+                    //item_equipo.abril = "";
+                    //item_equipo.mayo = "";
+                    //item_equipo.junio = "";
+                    //item_equipo.julio = "";
+                    //item_equipo.agosto = "";
+                    //item_equipo.septiembre = "";
+                    //item_equipo.octubre = "";
+                    //item_equipo.noviembre = "";
+                    //item_equipo.diciembre = "";
+                    //item_equipo.total = "";
+                    //item_equipo.promedio = "";
 
 
                     item_grilla_detalle item_equipo_resultadoFinanciero = new item_grilla_detalle();
-                    item_equipo_resultadoFinanciero.nombre_equipo = "";
+                    item_equipo_resultadoFinanciero.nombre_equipo = item.Equipo.nombre;
                     //item_equipo_resultadoFinanciero.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + "1 treegrid-parent-" + item.Equipo.id_equipo.ToString();
                     item_equipo_resultadoFinanciero.tipo_resultado = "Resultado Financiero";
                     item_equipo_resultadoFinanciero.enero = Cadena.Formato_moneda(item.resultados.First(rr => rr.tipo == resumen_equipo_anio.conceptos_analisis_economico_financiero.finan_resultado && rr.agrupacion == resumen_equipo_anio.agrupaciones.enero).valor, Cadena.Moneda.pesos);
@@ -200,7 +200,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     ds.Detalle_item.Rows.Add(dr);
 
                     item_grilla_detalle item_equipo_Porcentaje= new item_grilla_detalle();
-                    item_equipo_Porcentaje.nombre_equipo = "";
+                    item_equipo_Porcentaje.nombre_equipo = item.Equipo.nombre;
                     //item_equipo_Porcentaje.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + "2 treegrid-parent-" + item.Equipo.id_equipo.ToString();
                     item_equipo_Porcentaje.tipo_resultado = "Porcentaje de ganancias";
                     item_equipo_Porcentaje.enero = Cadena.Formato_porcentaje(item.resultados.First(rr => rr.tipo == resumen_equipo_anio.conceptos_analisis_economico_financiero.porcentaje_de_ganancias && rr.agrupacion == resumen_equipo_anio.agrupaciones.enero).valor);
@@ -239,7 +239,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     ds.Detalle_item.Rows.Add(dr_promedio);
 
                     item_grilla_detalle item_equipo_Velocidad= new item_grilla_detalle();
-                    item_equipo_Velocidad.nombre_equipo = "";
+                    item_equipo_Velocidad.nombre_equipo = item.Equipo.nombre;
                     //item_equipo_Velocidad.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + "3 treegrid-parent-" + item.Equipo.id_equipo.ToString();
                     item_equipo_Velocidad.tipo_resultado = "Velocidad de recupero";
                     item_equipo_Velocidad.enero = item.resultados.First(rr => rr.tipo == resumen_equipo_anio.conceptos_analisis_economico_financiero.velocidad_de_recupero && rr.agrupacion == resumen_equipo_anio.agrupaciones.enero).valor.ToString();
@@ -277,7 +277,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     dr_velocidad.Bold = "";
                     ds.Detalle_item.Rows.Add(dr_velocidad);
 
-                    items_tabla.Add(item_equipo);
+                    //items_tabla.Add(item_equipo);
                     items_tabla.Add(item_equipo_resultadoFinanciero);
                     items_tabla.Add(item_equipo_Porcentaje);
                     items_tabla.Add(item_equipo_Velocidad);
@@ -353,5 +353,13 @@ namespace SisEquiposBertoncini.Aplicativo
             }
         }
 
+        protected void gv_detalle_equipos_PreRender(object sender, EventArgs e)
+        {
+            if (gv_detalle_equipos.Rows.Count > 0)
+            {
+                gv_detalle_equipos.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+        }
     }
 }

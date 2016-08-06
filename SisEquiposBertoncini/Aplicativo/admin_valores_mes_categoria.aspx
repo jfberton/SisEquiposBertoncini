@@ -13,6 +13,13 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Ingresos - Egresos</li>
+        <li>I/E por categoria</li>
+        <li>Valores mensuales</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Cargar - editar valores mensuales del equipo
@@ -243,13 +250,13 @@
                                                 data-toggle="modal"
                                                 data-target="#advertencia_eliminacion"
                                                 data-id='<%#Eval("id_item_detalle")%>'
-                                                data-iditemio ='<%#Eval("id_item_io")%>'
-                                                data-equipo ="<%#Eval("equipo")%>"
+                                                data-iditemio='<%#Eval("id_item_io")%>'
+                                                data-equipo="<%#Eval("equipo")%>"
                                                 data-introduccion='<%#String.Concat("El detalle del equipo ", Eval("equipo"), " de la fecha ")%>'
                                                 data-nombre='<%#String.Concat(Eval("fecha"), " por un monto de $ ", Eval("monto"))%>'>
                                                 <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;Eliminar
                                             </button>
-                                            <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("id_item_detalle")%>' data-equipo ='<%#Eval("equipo")%>'>
+                                            <button runat="server" class="btn btn-sm btn-warning" id="btn_editar_detalle" causesvalidation="false" onserverclick="btn_editar_detalle_ServerClick" data-id='<%#Eval("id_item_detalle")%>' data-equipo='<%#Eval("equipo")%>'>
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Editar
                                             </button>
                                         </ItemTemplate>
@@ -318,7 +325,7 @@
 
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <label>Detalle mes</label>

@@ -57,14 +57,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     gv_empleados_view.DataSource = empleados;
                     gv_empleados_view.DataBind();
-                    div_buscar.Visible = false;
                     gv_empleados.Visible = false;
                 }
                 else
                 {
+
                     gv_empleados.DataSource = empleados;
                     gv_empleados.DataBind();
-                    div_buscar_view.Visible = false;
                     gv_empleados_view.Visible = false;
                 }
 
@@ -91,16 +90,11 @@ namespace SisEquiposBertoncini.Aplicativo
 
         protected void gv_empleados_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                e.Row.ControlStyle.BackColor = Color.LightGray;
-            }
-            else
+            if (e.Row.RowType != DataControlRowType.Header)
             {
                 var emp = e.Row.Cells[6].Text;
                 if (emp != "&nbsp;")
                 {
-                    e.Row.ControlStyle.ForeColor = Color.Gray;
                     e.Row.ControlStyle.Font.Strikeout = true;
                     e.Row.ControlStyle.Font.Italic = true;
                 }
@@ -296,6 +290,19 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             DateTime fecha;
             args.IsValid = tb_fecha_baja_empleado.Value == "" || DateTime.TryParse(tb_fecha_alta_empleado.Value, out fecha);
+        }
+
+        protected void gv_empleados_PreRender(object sender, EventArgs e)
+        {
+            if (gv_empleados.Rows.Count > 0)
+            {
+                gv_empleados.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if(gv_empleados_view.Rows.Count > 0)
+            {
+                gv_empleados_view.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }

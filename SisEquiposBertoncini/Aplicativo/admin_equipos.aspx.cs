@@ -51,14 +51,12 @@ namespace SisEquiposBertoncini.Aplicativo
                     gv_equipos_view.DataSource = equipos;
                     gv_equipos_view.DataBind();
                     gv_equipos.Visible = false;
-                    div_buscar.Visible = false;
                 }
                 else
                 {
                     gv_equipos.DataSource = equipos;
                     gv_equipos.DataBind();
                     gv_equipos_view.Visible = false;
-                    div_buscar_view.Visible = false;
                 }
             }
         }
@@ -161,6 +159,24 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void btn_agregar_ServerClick(object sender, EventArgs e)
         {
             Response.Redirect("~/Aplicativo/admin_equipo_detalle.aspx");
+        }
+
+        protected void gv_equipos_PreRender(object sender, EventArgs e)
+        {
+            if (gv_equipos.Rows.Count > 0)
+            {
+                gv_equipos.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_equipos_view.Rows.Count > 0)
+            {
+                gv_equipos_view.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_partes.Rows.Count > 0)
+            {
+                gv_partes.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }

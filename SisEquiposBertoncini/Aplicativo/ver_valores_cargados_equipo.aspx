@@ -9,6 +9,14 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+    <ol class="breadcrumb">
+       <li>Inicio</li>
+        <li>Ingresos - Egresos</li>
+        <li>I/E por equipo</li>
+        <li>Resumen año equipo</li>
+    </ol>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">Visualiza los valores anuales cargados al equipo
@@ -16,7 +24,7 @@
         </div>
         <div class="panel-body">
             <div class="row" runat="server" id="row_busqueda">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <table class="table-condensed" style="width: 100%">
                         <tr>
                             <td>Equipo</td>
@@ -36,7 +44,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <table class="table-condensed" style="width: 100%">
                         <tr>
                             <td>
@@ -55,7 +63,7 @@
                 <div class="col-md-12" runat="server" id="div_buscar_primero">
                     <div class="alert alert-warning alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <small>Seleccione los campos <strong>Equipo, mes y año</strong> y luego presione obtener.</small>
+                        <small>Seleccione los campos <strong>Equipo y año</strong> y luego presione obtener.</small>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -63,16 +71,63 @@
             </div>
         </div>
     </div>
-
-    <div runat="server" id="div_tree" style="width: 2800px; overflow-x: scroll">
-        
+    <div class="row">
+        <div class="col-md-12">
+            <div runat="server" id="div_tree">
+            </div>
+        </div>
     </div>
 </asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+    <link href="../css/fixedHeader.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
-    <script src="../js/jquery.treegrid.js"></script>
+
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.fixedColumns.min.js"></script>
+    <script src="../../js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../js/jquery.treegrid.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('.tree').treegrid();
+            $('.table').DataTable({
+                "scrollY": 350,
+                "scrollX": true,
+                "scrollCollapse": true,
+                "fixedHeader": true,
+                "fixedColumns": true,
+                "paging": false,
+                "ordering": false,
+                "autoWidth": false,
+                "columnDefs": [
+                     { "width": "300px", "targets": 0 }, //conceptos
+                     { "width": "100px", "targets": 1 }, //enero
+                     { "width": "100px", "targets": 2 }, //febrero
+                     { "width": "100px", "targets": 3 }, //marzo
+                     { "width": "100px", "targets": 4 }, //abril
+                     { "width": "100px", "targets": 5 }, //mayo
+                     { "width": "100px", "targets": 6 }, //junio
+                     { "width": "100px", "targets": 7 }, //julio
+                     { "width": "100px", "targets": 8 }, //agosto
+                     { "width": "100px", "targets": 9 }, //septiembre
+                     { "width": "100px", "targets": 10 }, //octubre
+                     { "width": "100px", "targets": 11 }, //noviembre
+                     { "width": "100px", "targets": 12 }, //diciembre
+                     { "width": "120px", "targets": 13 }, //acumulado
+                     { "width": "100px", "targets": 14 } //promedio
+                ],
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
         });
     </script>
 
