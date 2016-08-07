@@ -89,9 +89,9 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
 
-    <script src="../../js/jquery.dataTables.min.js"></script>
-    <script src="../../js/dataTables.fixedColumns.min.js"></script>
-    <script src="../../js/dataTables.fixedHeader.min.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.fixedColumns.min.js"></script>
+    <script src="../js/dataTables.fixedHeader.min.js"></script>
 
     <script>
         $(document).ready(function () {

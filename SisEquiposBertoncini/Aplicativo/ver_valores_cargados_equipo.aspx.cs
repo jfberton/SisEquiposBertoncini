@@ -241,6 +241,7 @@ namespace SisEquiposBertoncini.Aplicativo
             //concepto
             Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
             Reportes.Valores_anio_equipo.Detalle_itemRow dir = ds.Detalle_item.NewDetalle_itemRow();
+            dir.Nombre_equipo = " ";
 
             TableCell column_resultado = new TableCell();
             string tooltip = "";
@@ -326,6 +327,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
             Reportes.Valores_anio_equipo.Detalle_itemRow dir = ds.Detalle_item.NewDetalle_itemRow();
+            dir.Nombre_equipo = " ";
 
             //concepto
             TableCell column = new TableCell();

@@ -83,8 +83,8 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
 
-    <script src="../../js/jquery.dataTables.min.js"></script>
-    <script src="../../js/dataTables.bootstrap.min.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.bootstrap.min.js"></script>
 
     <script>
         $(document).ready(function () {
