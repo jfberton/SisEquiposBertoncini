@@ -16,130 +16,131 @@
         <li>Planilla de cálculos</li>
         <li>Gastos función horas hombre</li>
     </ol>
-
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h3>
-                <label>Gastos en función de horas hombre de </label>
-                &nbsp;<asp:Label Text="" ID="lbl_tipo_empleado" runat="server" />&nbsp;-
+    <div id="div_print">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>
+                    <label>Gastos en función de horas hombre de </label>
+                    &nbsp;<asp:Label Text="" ID="lbl_tipo_empleado" runat="server" />&nbsp;-
                     <label>Mes </label>
-                &nbsp;<asp:Label Text="" ID="lbl_mes" runat="server" />&nbsp;
+                    &nbsp;<asp:Label Text="" ID="lbl_mes" runat="server" />&nbsp;
                     <label>Año </label>
-                &nbsp;<asp:Label Text="" ID="lbl_anio" runat="server" /></h3>
+                    &nbsp;<asp:Label Text="" ID="lbl_anio" runat="server" /></h3>
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="row" id="fila_edicion" runat="server">
-        <div class="col-md-12">
-            <table class="table table-condensed" style="width: 100%">
-                <tr>
-                    <td>
-                        <label>Insumos taller</label></td>
-                    <td>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_insumos_taller" /></td>
-                    <td>
-                        <label>Herramientas</label></td>
-                    <td>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_herramientas" /></td>
-                    <td>
-                        <label>Viaticos</label></td>
-                    <td>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_viaticos" /></td>
-                    <td>
-                        <label>Viaticos PP</label></td>
-                    <td>
-                        <asp:TextBox runat="server" CssClass="form-control" ID="tb_viaticos_presupuestados" /></td>
+        <br />
+        <div class="row" id="fila_edicion" runat="server">
+            <div class="col-md-12">
+                <table class="table table-condensed" style="width: 100%">
+                    <tr>
+                        <td>
+                            <label>Insumos taller</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_insumos_taller" /></td>
+                        <td>
+                            <label>Herramientas</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_herramientas" /></td>
+                        <td>
+                            <label>Viaticos</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_viaticos" /></td>
+                        <td>
+                            <label>Viaticos PP</label></td>
+                        <td>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_viaticos_presupuestados" /></td>
 
-                </tr>
-            </table>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <table class="table table-condensed" style="width: 100%">
+                        <tr>
+                            <td>
+                                <label>Indumentaria</label></td>
+                            <td>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="tb_indumentaria" /></td>
+                            <td>
+                                <label>Repuestos</label></td>
+                            <td>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="tb_repuestos" /></td>
+                            <td>
+                                <label>Repuestos PP</label></td>
+                            <td>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="tb_repuestos_pp" /></td>
+                            <td>
+                                <label>Gastos varios</label></td>
+                            <td>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="tb_gastos_varios" /></td>
+                            <td>
+                                <label>Otros</label></td>
+                            <td>
+                                <asp:TextBox runat="server" CssClass="form-control" ID="tb_otros" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <button runat="server" id="btn_guardar_modificaciones" class="btn btn-default" onserverclick="btn_guardar_modificaciones_ServerClick"><span class="glyphicon glyphicon-save"></span>&nbsp;Aplicar</button>
+                </div>
+            </div>
         </div>
-        <div class="col-md-12">
+
+        <div class="row" id="fila_view" runat="server">
+            <div class="col-md-12">
+                <table class="table table-condensed" style="width: 100%">
+                    <tr>
+                        <td>
+                            <label>Insumos taller</label></td>
+                        <td>
+                            <asp:Label Font-Bold="true" ID="lbl_insumos_taller" runat="server" /></td>
+                        <td>
+                            <label>Herramientas</label></td>
+                        <td>
+                            <asp:Label Font-Bold="true" ID="lbl_herramientas" runat="server" /></td>
+                        <td>
+                            <label>Viaticos</label></td>
+                        <td>
+                            <asp:Label Font-Bold="true" ID="lbl_viaticos" runat="server" /></td>
+                        <td>
+                            <label>Viaticos PP</label></td>
+                        <td>
+                            <asp:Label Font-Bold="true" ID="lbl_viaticos_pp" runat="server" /></td>
+
+                    </tr>
+                </table>
+            </div>
             <div class="col-md-12">
                 <table class="table table-condensed" style="width: 100%">
                     <tr>
                         <td>
                             <label>Indumentaria</label></td>
                         <td>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_indumentaria" /></td>
+                            <asp:Label Font-Bold="true" ID="lbl_indumentaria" runat="server" /></td>
                         <td>
                             <label>Repuestos</label></td>
                         <td>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_repuestos" /></td>
+                            <asp:Label Font-Bold="true" ID="lbl_repuestos" runat="server" /></td>
                         <td>
                             <label>Repuestos PP</label></td>
                         <td>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_repuestos_pp" /></td>
+                            <asp:Label Font-Bold="true" ID="lbl_repuestos_pp" runat="server" /></td>
                         <td>
                             <label>Gastos varios</label></td>
                         <td>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_gastos_varios" /></td>
+                            <asp:Label Font-Bold="true" ID="lbl_gastos_varios" runat="server" /></td>
                         <td>
                             <label>Otros</label></td>
                         <td>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="tb_otros" /></td>
+                            <asp:Label Font-Bold="true" ID="lbl_otros" runat="server" /></td>
                     </tr>
                 </table>
             </div>
-            <div class="col-md-12">
-                <button runat="server" id="btn_guardar_modificaciones" class="btn btn-default" onserverclick="btn_guardar_modificaciones_ServerClick"><span class="glyphicon glyphicon-save"></span>&nbsp;Aplicar</button>
+        </div>
+
+        <div class="row">
+            <div runat="server" id="divTabla">
             </div>
-        </div>
-    </div>
-
-    <div class="row" id="fila_view" runat="server">
-        <div class="col-md-12">
-            <table class="table table-condensed" style="width: 100%">
-                <tr>
-                    <td>
-                        <label>Insumos taller</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_insumos_taller" runat="server" /></td>
-                    <td>
-                        <label>Herramientas</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_herramientas" runat="server" /></td>
-                    <td>
-                        <label>Viaticos</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_viaticos" runat="server" /></td>
-                    <td>
-                        <label>Viaticos PP</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_viaticos_pp" runat="server" /></td>
-
-                </tr>
-            </table>
-        </div>
-        <div class="col-md-12">
-            <table class="table table-condensed" style="width: 100%">
-                <tr>
-                    <td>
-                        <label>Indumentaria</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_indumentaria" runat="server" /></td>
-                    <td>
-                        <label>Repuestos</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_repuestos" runat="server" /></td>
-                    <td>
-                        <label>Repuestos PP</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_repuestos_pp" runat="server" /></td>
-                    <td>
-                        <label>Gastos varios</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_gastos_varios" runat="server" /></td>
-                    <td>
-                        <label>Otros</label></td>
-                    <td>
-                        <asp:Label Font-Bold="true" ID="lbl_otros" runat="server" /></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="row">
-        <div runat="server" id="divTabla">
         </div>
     </div>
     <br />
@@ -148,12 +149,44 @@
             <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
                 <span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla Principal
             </button>
+
             <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_calculos" onserverclick="btn_ver_planilla_calculos_ServerClick">
                 <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla de cálculos
+            </button>
+
+            <button class="btn btn-default btn-lg" onclick="Imprimir(); return false;">
+                <span class="glyphicon glyphicon-print"></span>
             </button>
         </div>
     </div>
     <br />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+
+    <script type="text/javascript">
+        function Imprimir() {
+            //var printContents = document.getElementById('div_print').innerHTML;
+
+            //var originalContents = document.body.innerHTML;
+
+            //document.body.innerHTML = printContents;
+
+            //window.print();
+
+            //document.body.innerHTML = originalContents;
+
+            var content = "<html>";
+            content += document.getElementById("div_print").innerHTML;
+            content += "</body>";
+            content += "</html>";
+
+            var printWin = window.open('', '', 'left=0,top=0,width=800,height=600,toolbar=0,scrollbars=0,status =0');
+            printWin.document.write(content);
+            printWin.document.close();
+            printWin.focus();
+            printWin.print();
+            printWin.close();
+        }
+    </script>
+
 </asp:Content>

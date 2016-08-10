@@ -201,12 +201,16 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal prueba_ausente = 0;
                 decimal prueba_50 = 0;
                 decimal prueba_100 = 0;
-                decimal prueba_dolar = 0;
+                decimal prueba_dolar = 1;
 
                 decimal.TryParse(txt_horas_ausentes_totales_prueba.Text.Replace('.', ','), out prueba_ausente);
                 decimal.TryParse(txt_horas_extra_totales_50_prueba.Text.Replace('.', ','), out prueba_50);
                 decimal.TryParse(txt_horas_extra_totales_100_prueba.Text.Replace('.', ','), out prueba_100);
                 decimal.TryParse(txt_valor_dolar_mes_prueba.Text.Replace('.', ','), out prueba_dolar);
+                if (prueba_dolar == 0)
+                {
+                    prueba_dolar = 1;
+                }
 
                 foreach (var item in items_grilla)
                 {
@@ -314,8 +318,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_costo_horas_hombre_real.Text = horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
                 lbl_costo_horas_hombre_real_prueba.Text = horas_trabajadas_segun_datos_prueba > 0 ? (nueva_masa_salarial_prueba / horas_trabajadas_segun_datos_prueba).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
 
-                lbl_costo_horas_hombre_real_dolar.Text = ((horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas) : 0) * valor_dolar_mes).ToString("$ #,##0.00");
-                lbl_costo_horas_hombre_real_prueba_dolar.Text = ((horas_trabajadas_segun_datos_prueba > 0 ? (nueva_masa_salarial_prueba / horas_trabajadas_segun_datos_prueba) : 0) * prueba_dolar).ToString("$ #,##0.00");
+                lbl_costo_horas_hombre_real_dolar.Text = ((horas_realmente_trabajadas > 0 ? (nueva_masa_salarial / horas_realmente_trabajadas) : 0) / valor_dolar_mes).ToString("$ #,##0.00");
+                lbl_costo_horas_hombre_real_prueba_dolar.Text = ((horas_trabajadas_segun_datos_prueba > 0 ? (nueva_masa_salarial_prueba / horas_trabajadas_segun_datos_prueba) : 0) / prueba_dolar).ToString("$ #,##0.00");
 
                 ddl_anio.Enabled = false;
                 ddl_mes.Enabled = false;

@@ -2,7 +2,9 @@
 using SisEquiposBertoncini.Aplicativo.Datos;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -831,5 +833,6 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             Response.Redirect("~/Aplicativo/planilla_gastos_en _funcion_horas_hombre.aspx");
         }
+       
     }
 }

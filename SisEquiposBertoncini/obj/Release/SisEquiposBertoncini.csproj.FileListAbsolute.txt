@@ -52,3 +52,4 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.dll
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.xml
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csproj.ResolveComReference.cache
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Select.HtmlToPdf.dll
