@@ -294,6 +294,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Planilla_combustibles">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Planilla_combustible)">
+        <MappingFragment StoreEntitySet="Planilla_combustibles">
+          <ScalarProperty Name="id_planilla_combustible" ColumnName="id_planilla_combustible" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="chofer" ColumnName="chofer" />
+          <ScalarProperty Name="tanque_lleno" ColumnName="tanque_lleno" />
+          <ScalarProperty Name="litros" ColumnName="litros" />
+          <ScalarProperty Name="km" ColumnName="km" />
+          <ScalarProperty Name="promedio" ColumnName="promedio" />
+          <ScalarProperty Name="costo_total_facturado" ColumnName="costo_total_facturado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual" />
     <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_categoria" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_categoria" />
   </EntityContainerMapping>

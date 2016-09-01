@@ -64,6 +64,7 @@
                         <li><a href="admin_horas_planilla_principal.aspx">En función de horas empleado</a></li>
                         <li><a href="planilla_gastos_administrativos.aspx">Gastos administración</a></li>
                         <li><a href="planilla_resumen_horas_trabajadas.aspx">Resumen horas trabajadas equipo</a></li>
+                        <%--<li><a href="planilla_combustibles.aspx">Planilla combustibles</a></li>--%>
                         
                     </ul>
                 </li>

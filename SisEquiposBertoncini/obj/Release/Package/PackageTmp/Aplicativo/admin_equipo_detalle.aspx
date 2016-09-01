@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_equipo_detalle.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_equipo_detalle" %>
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
+<%@ Register Src="~/Aplicativo/Controles/imagen_equipo.ascx" TagPrefix="uc1" TagName="imagen_equipo" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,7 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
     <ol class="breadcrumb">
-       <li>Inicio</li>
+        <li>Inicio</li>
         <li>Equipos</li>
         <li><a href="admin_equipos.aspx">Equipos</a></li>
         <li>
@@ -29,75 +31,143 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
-                    <table class="table-condensed">
-                        <tr>
-                            <td>Nombre</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-6">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>
-                                <input type="text" runat="server" id="tb_nombre" class="form-control" /></td>
-                            <td>
-                                <asp:RequiredFieldValidator ControlToValidate="tb_nombre" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre del equipo' />"
-                                    ID="rv_nombre" runat="server" ErrorMessage="Debe ingresar el nombre del equipo" ValidationGroup="equipo">
-                                </asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>Nombre</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table-condensed" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <input type="text" runat="server" id="tb_nombre" class="form-control" /></td>
+                                    <td>
+                                        <asp:RequiredFieldValidator ControlToValidate="tb_nombre" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre del equipo' />"
+                                            ID="rv_nombre" runat="server" ErrorMessage="Debe ingresar el nombre del equipo" ValidationGroup="equipo">
+                                        </asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>
+                                        <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>Categoría</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-10">
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>
+                                        <asp:DropDownList runat="server" ID="ddl_categorias" CssClass="form-control">
+                                        </asp:DropDownList></td>
+                                    <td>
+                                        <asp:CustomValidator ID="cv_categoria" runat="server" Text="<img src='../img/exclamation.gif' title='Debe seleccionar una categoría' />"
+                                            ErrorMessage="Debe seleccionar una categoría" OnServerValidate="cv_categoria_ServerValidate" ValidationGroup="equipo">
+                                        </asp:CustomValidator>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>Notas:</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-10">
+                            <table class="table-condensed" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <textarea rows="5" class="form-control" runat="server" id="tb_notas_equipo" placeholder="Notas del equipo (no obligatorio)"></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <table class="table-condensed">
-                        <tr>
-                            <td>
-                                <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h1 class="panel-title">Imagen equipo</h1>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="thumbnail">
+                                                <a href="#" data-toggle="modal" data-target="#editar_Imagen">
+                                                    <asp:Image ID="img_cuenta" Width="200" Height="200" runat="server" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <small>CLICK SOBRE LA IMAGEN PARA CAMBIAR </small>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="editar_Imagen" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Editar imagen equipo</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="thumbnail">
+                                                                <img src="..." alt="..." id="imagen_equipo">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="input-group">
+                                                                <span class="input-group-btn">
+                                                                    <span class="btn btn-primary btn-file">Seleccionar&hellip;
+                                                          <input type="file" id="archivo_imagen" runat="server" accept=".jpg,.png,.gif" onchange="Previsualizar();" />
+                                                                    </span>
+                                                                </span>
+                                                                <input type="text" class="form-control" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <asp:Button Text="Aceptar" ID="btnUpload" OnClick="btnUpload_Click" CssClass="btn btn-success" runat="server" />
+                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <table class="table-condensed">
-                        <tr>
-                            <td>Categoría</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-10">
-                    <table class="table-condensed">
-                        <tr>
-                            <td>
-                                <asp:DropDownList runat="server" ID="ddl_categorias" CssClass="form-control">
-                                </asp:DropDownList></td>
-                            <td>
-                                <asp:CustomValidator ID="cv_categoria" runat="server" Text="<img src='../img/exclamation.gif' title='Debe seleccionar una categoría' />"
-                                    ErrorMessage="Debe seleccionar una categoría" OnServerValidate="cv_categoria_ServerValidate" ValidationGroup="equipo">
-                                </asp:CustomValidator>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <table class="table-condensed">
-                        <tr>
-                            <td>Notas:</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-10">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>
-                                <textarea rows="5" class="form-control" runat="server" id="tb_notas_equipo" placeholder="Notas del equipo (no obligatorio)"></textarea></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+
             <br />
             <div class="row">
                 <div class="col-md-12">
@@ -417,6 +487,67 @@
             modal.find('.modal-body #' + '<%= id_item_por_eliminar.ClientID %>').val(id + '-' + nombre)
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
+
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+
+            var div = input.parent(0).parent(0).parent(0).parent(0);
+            if (div.children().length == 2) {
+                div.children()[1].remove();
+            }
+
+            if (input.get(0).files[0].size > 3145728) {
+                var alerta = document.createElement("div");
+                alerta.nodeName = "alerta";
+                alerta.className = "label label-danger";
+                alerta.innerHTML = "El archivo es demasiado grande (supera los 3mb), no será procesado!";
+                div.append(alerta);
+            }
+            else {
+                var correcto = document.createElement("div");
+                correcto.nodeName = "alerta";
+                correcto.className = "label label-success";
+                correcto.innerHTML = "Tamaño de archivo válido.";
+                div.append(correcto);
+            }
+
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+        });
+
+        function Previsualizar() {
+            var preview = document.getElementById("imagen_equipo");
+            var file = document.getElementById("<%= archivo_imagen.ClientID %>").files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+
+
     </script>
 
     <script>

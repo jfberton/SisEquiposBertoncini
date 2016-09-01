@@ -185,6 +185,20 @@
     <Property Name="periodo_alta_mes" Type="int" Nullable="false" />
     <Property Name="periodo_alta_anio" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Planilla_combustibles">
+    <Key>
+      <PropertyRef Name="id_planilla_combustible" />
+    </Key>
+    <Property Name="id_planilla_combustible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="chofer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="tanque_lleno" Type="bit" Nullable="false" />
+    <Property Name="litros" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="km" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="promedio" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="costo_total_facturado" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="Planilla_gastos_administrativo">
     <Key>
       <PropertyRef Name="id_planilla_gastos_administartivos" />
@@ -389,6 +403,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_EquipoPlanilla_combustible">
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+    <End Role="Planilla_combustibles" Type="Self.Planilla_combustibles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipos">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Planilla_combustibles">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Ingreso_egreso_mensual_equipoValor_mes">
     <End Role="Ingresos_egresos_mensuales_equipos" Type="Self.Ingresos_egresos_mensuales_equipos" Multiplicity="1" />
     <End Role="Valores_meses" Type="Self.Valores_meses" Multiplicity="*" />
@@ -501,6 +527,7 @@
     <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Self.Ingresos_egresos_mensuales_equipos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Items_ingresos_egresos" EntityType="Self.Items_ingresos_egresos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Items_por_amortizar" EntityType="Self.Items_por_amortizar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Planilla_combustibles" EntityType="Self.Planilla_combustibles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Planilla_gastos_administrativo" EntityType="Self.Planilla_gastos_administrativo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Resumenes_meses_empleados" EntityType="Self.Resumenes_meses_empleados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Self.temp_table_filas_items_mes_equipo" Schema="dbo" store:Type="Tables" />
@@ -547,6 +574,10 @@
     <AssociationSet Name="FK_EquipoItem_por_amortizar" Association="Self.FK_EquipoItem_por_amortizar">
       <End Role="Equipos" EntitySet="Equipos" />
       <End Role="Items_por_amortizar" EntitySet="Items_por_amortizar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipoPlanilla_combustible" Association="Self.FK_EquipoPlanilla_combustible">
+      <End Role="Equipos" EntitySet="Equipos" />
+      <End Role="Planilla_combustibles" EntitySet="Planilla_combustibles" />
     </AssociationSet>
     <AssociationSet Name="FK_Ingreso_egreso_mensual_equipoValor_mes" Association="Self.FK_Ingreso_egreso_mensual_equipoValor_mes">
       <End Role="Ingresos_egresos_mensuales_equipos" EntitySet="Ingresos_egresos_mensuales_equipos" />

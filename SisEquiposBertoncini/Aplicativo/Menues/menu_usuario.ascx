@@ -24,13 +24,13 @@
                     </ul>
                 </li>
 
-                <li class="dropdown">
+               <%-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="../Aplicativo/admin_equipos.aspx">Equipos</a></li>
                         <li><a href="../Aplicativo/admin_tipo_equipo.aspx">Categorias</a></li>
                     </ul>
-                </li>
+                </li>--%>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Horas trabajadas<span class="caret"></span></a>

@@ -120,6 +120,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 gv_partes.Font.Size = new FontUnit("9");
 
+                imagen_equipo.Equipo = equipo;
+
                 lbl_costo_total_0km.Text = Cadena.Formato_moneda(items.Sum(ii => ii.costo_cero), Cadena.Moneda.dolares);
                 lbl_costo_mensual.Text = Cadena.Formato_moneda(items.Where(x=>x.restan_amortizar > 0).Sum(ii => ii.costo_mensual), Cadena.Moneda.dolares);
                 lbl_valor_por_amortizar.Text = Cadena.Formato_moneda(items.Where(x=>x.restan_amortizar > 0).Sum(ii => ii.valor_por_amortizar), Cadena.Moneda.dolares);

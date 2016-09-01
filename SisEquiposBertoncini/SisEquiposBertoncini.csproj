@@ -90,6 +90,7 @@
     <Content Include="Aplicativo\admin_valor_dolar.aspx" />
     <Content Include="Aplicativo\Controles\cross.xml" />
     <Content Include="Aplicativo\Controles\imagen_empleado.ascx" />
+    <Content Include="Aplicativo\Controles\imagen_equipo.ascx" />
     <Content Include="Aplicativo\Controles\imagen_usuario.ascx" />
     <Content Include="Aplicativo\Controles\valor_decimal.ascx" />
     <Content Include="Aplicativo\Datos\Model1.edmx.diagram">
@@ -111,6 +112,7 @@
     <Content Include="Aplicativo\main_usuario.aspx" />
     <Content Include="Aplicativo\Menues\menu_admin.ascx" />
     <Content Include="Aplicativo\Menues\menu_usuario.ascx" />
+    <Content Include="Aplicativo\planilla_combustibles.aspx" />
     <Content Include="Aplicativo\planilla_resumen_valores_equipo_categoria.aspx" />
     <Content Include="Aplicativo\planilla_calculos.aspx" />
     <Content Include="Aplicativo\planilla_gastos_administrativos.aspx" />
@@ -146,6 +148,7 @@
     <Content Include="img\cancel.png" />
     <Content Include="img\collapse.png" />
     <Content Include="img\cross.png" />
+    <Content Include="img\Equipos\add.png" />
     <Content Include="img\Error.jpg" />
     <Content Include="img\error403.png" />
     <Content Include="img\Exclamation.gif" />
@@ -325,6 +328,13 @@
     <Compile Include="Aplicativo\Controles\imagen_empleado.ascx.designer.cs">
       <DependentUpon>imagen_empleado.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Controles\imagen_equipo.ascx.cs">
+      <DependentUpon>imagen_equipo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\imagen_equipo.ascx.designer.cs">
+      <DependentUpon>imagen_equipo.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Controles\imagen_usuario.ascx.cs">
       <DependentUpon>imagen_usuario.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -417,6 +427,9 @@
     <Compile Include="Aplicativo\Datos\perfil_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Datos\Planilla_combustible.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Datos\Planilla_gasto_administrativo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -467,6 +480,13 @@
     </Compile>
     <Compile Include="Aplicativo\Menues\menu_usuario.ascx.designer.cs">
       <DependentUpon>menu_usuario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_combustibles.aspx.cs">
+      <DependentUpon>planilla_combustibles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\planilla_combustibles.aspx.designer.cs">
+      <DependentUpon>planilla_combustibles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\planilla_resumen_valores_equipo_categoria.aspx.cs">
       <DependentUpon>planilla_resumen_valores_equipo_categoria.aspx</DependentUpon>

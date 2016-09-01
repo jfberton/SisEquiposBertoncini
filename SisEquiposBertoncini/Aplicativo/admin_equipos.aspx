@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="admin_equipos.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.admin_equipos" %>
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
+<%@ Register Src="~/Aplicativo/Controles/imagen_equipo.ascx" TagPrefix="uc1" TagName="imagen_equipo" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,7 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
     <ol class="breadcrumb">
-       <li>Inicio</li>
+        <li>Inicio</li>
         <li>Equipos</li>
         <li>Equipos</li>
     </ol>
@@ -111,23 +113,30 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h2>
-                                    <asp:Label Text="" ID="lbl_nombre" runat="server" />
-                                    <small>
-                                        <label>Categoría</label>
-                                        <asp:Label Text="" ID="lbl_categoria" runat="server" /></small></h2>
-                                <asp:Label Text="" ID="lbl_out" runat="server" />
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2>
+                                            <asp:Label Text="" ID="lbl_nombre" runat="server" />
+                                            <small>
+                                                <label>Categoría</label>
+                                                <asp:Label Text="" ID="lbl_categoria" runat="server" /></small></h2>
+                                        <asp:Label Text="" ID="lbl_out" runat="server" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Notas:</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <asp:Label Text="" ID="lbl_notas_equipo" runat="server" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Notas:</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <asp:Label Text="" ID="lbl_notas_equipo" runat="server" />
+                            <div class="col-md-4">
+                                <uc1:imagen_equipo runat="server" ID="imagen_equipo" />
                             </div>
                         </div>
                         <br />

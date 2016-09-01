@@ -190,6 +190,20 @@
           <Property Name="periodo_alta_mes" Type="int" Nullable="false" />
           <Property Name="periodo_alta_anio" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Planilla_combustibles">
+          <Key>
+            <PropertyRef Name="id_planilla_combustible" />
+          </Key>
+          <Property Name="id_planilla_combustible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_equipo" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="chofer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tanque_lleno" Type="bit" Nullable="false" />
+          <Property Name="litros" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="km" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="promedio" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="costo_total_facturado" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Planilla_gastos_administrativo">
           <Key>
             <PropertyRef Name="id_planilla_gastos_administartivos" />
@@ -394,6 +408,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EquipoPlanilla_combustible">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="Planilla_combustibles" Type="Self.Planilla_combustibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id_equipo" />
+            </Principal>
+            <Dependent Role="Planilla_combustibles">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ingreso_egreso_mensual_equipoValor_mes">
           <End Role="Ingresos_egresos_mensuales_equipos" Type="Self.Ingresos_egresos_mensuales_equipos" Multiplicity="1" />
           <End Role="Valores_meses" Type="Self.Valores_meses" Multiplicity="*" />
@@ -506,6 +532,7 @@
           <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Self.Ingresos_egresos_mensuales_equipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items_ingresos_egresos" EntityType="Self.Items_ingresos_egresos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items_por_amortizar" EntityType="Self.Items_por_amortizar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planilla_combustibles" EntityType="Self.Planilla_combustibles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Planilla_gastos_administrativo" EntityType="Self.Planilla_gastos_administrativo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resumenes_meses_empleados" EntityType="Self.Resumenes_meses_empleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Self.temp_table_filas_items_mes_equipo" Schema="dbo" store:Type="Tables" />
@@ -552,6 +579,10 @@
           <AssociationSet Name="FK_EquipoItem_por_amortizar" Association="Self.FK_EquipoItem_por_amortizar">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="Items_por_amortizar" EntitySet="Items_por_amortizar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoPlanilla_combustible" Association="Self.FK_EquipoPlanilla_combustible">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Planilla_combustibles" EntitySet="Planilla_combustibles" />
           </AssociationSet>
           <AssociationSet Name="FK_Ingreso_egreso_mensual_equipoValor_mes" Association="Self.FK_Ingreso_egreso_mensual_equipoValor_mes">
             <End Role="Ingresos_egresos_mensuales_equipos" EntitySet="Ingresos_egresos_mensuales_equipos" />
@@ -679,6 +710,11 @@
             <End Role="Detalle_valor_item_mes_categoria" EntitySet="Detalle_valor_item_meses_categoria" />
           </AssociationSet>
           <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Model1.temp_table_filas_items_mes_equipo" />
+          <EntitySet Name="Planilla_combustibles" EntityType="Model1.Planilla_combustible" />
+          <AssociationSet Name="EquipoPlanilla_combustible" Association="Model1.EquipoPlanilla_combustible">
+            <End Role="Equipo" EntitySet="Equipos" />
+            <End Role="Planilla_combustible" EntitySet="Planilla_combustibles" />
+          </AssociationSet>
           <FunctionImport Name="Obtener_listado_items_ingreso_egreso_mensual">
             <Parameter Name="mes" Mode="In" Type="Int32" />
             <Parameter Name="anio" Mode="In" Type="Int32" />
@@ -706,6 +742,7 @@
           <Property Name="OUT" Type="Boolean" Nullable="false" />
           <Property Name="Generico" Type="Boolean" Nullable="false" />
           <Property Name="EsTrabajo" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Planilla_combustible" Relationship="Model1.EquipoPlanilla_combustible" FromRole="Equipo" ToRole="Planilla_combustible" />
         </EntityType>
         <EntityType Name="Categoria_equipo">
           <Documentation>
@@ -1215,6 +1252,33 @@
           <Property Name="row_class" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="visible" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="Planilla_combustible">
+          <Key>
+            <PropertyRef Name="id_planilla_combustible" />
+          </Key>
+          <Property Name="id_planilla_combustible" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Equipo" Relationship="Model1.EquipoPlanilla_combustible" FromRole="Planilla_combustible" ToRole="Equipo" />
+          <Property Name="id_equipo" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="chofer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="tanque_lleno" Type="Boolean" Nullable="false" />
+          <Property Name="litros" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="km" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="promedio" Type="Decimal" Nullable="false" Scale="2" Precision="9" />
+          <Property Name="costo_total_facturado" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+        </EntityType>
+        <Association Name="EquipoPlanilla_combustible">
+          <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
+          <End Type="Model1.Planilla_combustible" Role="Planilla_combustible" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipo">
+              <PropertyRef Name="id_equipo" />
+            </Principal>
+            <Dependent Role="Planilla_combustible">
+              <PropertyRef Name="id_equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1511,6 +1575,21 @@
           <ScalarProperty Name="valor" ColumnName="valor" />
           <ScalarProperty Name="row_class" ColumnName="row_class" />
           <ScalarProperty Name="visible" ColumnName="visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planilla_combustibles">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Planilla_combustible)">
+        <MappingFragment StoreEntitySet="Planilla_combustibles">
+          <ScalarProperty Name="id_planilla_combustible" ColumnName="id_planilla_combustible" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="chofer" ColumnName="chofer" />
+          <ScalarProperty Name="tanque_lleno" ColumnName="tanque_lleno" />
+          <ScalarProperty Name="litros" ColumnName="litros" />
+          <ScalarProperty Name="km" ColumnName="km" />
+          <ScalarProperty Name="promedio" ColumnName="promedio" />
+          <ScalarProperty Name="costo_total_facturado" ColumnName="costo_total_facturado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

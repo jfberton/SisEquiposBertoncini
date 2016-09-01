@@ -3,6 +3,7 @@ using SisEquiposBertoncini.Aplicativo.Datos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -77,6 +78,23 @@ namespace SisEquiposBertoncini.Aplicativo
                     ddl_categorias.SelectedValue = equipo.id_categoria.ToString();
                     tb_notas_equipo.Value = equipo.notas;
                     chk_out.Checked = equipo.OUT;
+
+                    if (Directory.Exists(pathImagenesDisco + equipo.id_equipo.ToString()))
+                    {
+                        if (File.Exists(pathImagenesDisco + equipo.id_equipo + "\\Original.jpg"))
+                        {//Si no existe la imagen temporal pero si la original, la cargo
+                            img_cuenta.ImageUrl = "~/img/Equipos/" + equipo.id_equipo + "/Original.jpg";
+                        }
+                        else
+                        {//Si no existe la imagen temporal y tampoco la original, cargo la default
+                            img_cuenta.ImageUrl = "~/img/Equipos/add.png";
+                        }
+                    }
+                    else
+                    {//Si no existe la carpeta del usuario directamente cargo la imagen de default
+                        img_cuenta.ImageUrl = "~/img/Equipos/add.png";
+                    }
+
 
                     int mes = DateTime.Today.Month;
                     int anio = DateTime.Today.Year;
@@ -308,6 +326,33 @@ namespace SisEquiposBertoncini.Aplicativo
             else
             {
                 args.IsValid = false;
+            }
+        }
+
+        private string pathImagenesDisco = System.Web.HttpRuntime.AppDomainAppPath + "img\\Equipos\\";
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            Model1Container cxt = Session["CXT"] as Model1Container;
+            Equipo eq = Session["equipo"] as Equipo;
+            HttpPostedFile file = archivo_imagen.PostedFile;
+            if (file != null && file.ContentLength > 0)
+            {
+                string path = pathImagenesDisco + eq.id_equipo;
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                if (File.Exists(path + "\\Original.jpg"))
+                {
+                    File.Delete(path + "\\Original.jpg");
+                }
+
+                file.SaveAs(path + "\\Original.jpg");
+
+                img_cuenta.ImageUrl = "~/img/Equipos/" + eq.id_equipo + "/Original.jpg";
+
             }
         }
     }

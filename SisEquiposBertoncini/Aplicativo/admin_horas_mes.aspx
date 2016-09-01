@@ -200,6 +200,9 @@
                                         </div>
                                         <h4><small>Detalle de horas trabajadas</small></h4>
                                         <div class="row">
+                                            <input type="hidden" id="hidden_id_detalle" runat="server" value="0" />
+                                            <input type="hidden" id="hidden_editar" runat="server" value="no" />
+                                            <input type="hidden" id="hidden_editar_equipo" runat="server" value="no" />
                                             <div class="col-md-4">
                                                 <div class="row">
                                                     <div class="col-md-3">
@@ -214,7 +217,7 @@
                                                         <table class="table-condensed" style="width: 100%">
                                                             <tr>
                                                                 <td>
-                                                                    <asp:DropDownList runat="server" CssClass="form-control" Width="100%" ID="ddl_equipo">
+                                                                    <asp:DropDownList runat="server" CssClass="form-control elegir_equipo" Width="100%" ID="ddl_equipo">
                                                                     </asp:DropDownList></td>
                                                             </tr>
                                                         </table>
@@ -282,6 +285,15 @@
                                                                 <asp:CheckBox ID="cbSelect" Checked='<%#Eval("_out")%>' runat="server" Enabled="false"></asp:CheckBox>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
+
+                                                        <asp:TemplateField>
+                                                            <ItemTemplate> 
+                                                                <button onclick="Editar('<%#Eval("id_detalle_dia")%>', '<%#Eval("id_equipo")%>', '<%#Eval("desde")%>', '<%#Eval("hasta")%>')" type="button" class="btn btn-sm btn-warning">
+                                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;Editar
+                                                                </button>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
                                                         <asp:TemplateField>
                                                             <ItemTemplate>
                                                                 <button
@@ -294,7 +306,7 @@
                                                                     data-id_equipo='<%#Eval("id_equipo")%>'
                                                                     data-desde='<%#Eval("desde")%>'
                                                                     data-hasta='<%#Eval("hasta")%>'>
-                                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
+                                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;Eliminar
                                                                 </button>
 
                                                             </ItemTemplate>
@@ -358,7 +370,7 @@
                                         <button id="btn_guardar_detalle_dia" runat="server" onserverclick="btn_guardar_detalle_dia_ServerClick" class="btn btn-success">
                                             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
                                         </button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-default" onclick="LimpiarValores()" data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
@@ -524,6 +536,45 @@
             modal.find('.modal-body #' + '<%= hidden_hasta.ClientID %>').val(hasta)
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
+
+        function Editar(id_movimiento, equipo, hora_desde, hora_hasta) {
+
+            var id_detalle = document.getElementById('<%=hidden_id_detalle.ClientID%>');
+            var id_equipo = document.getElementById('<%=hidden_editar_equipo.ClientID%>');
+            var editar = document.getElementById('<%=hidden_editar.ClientID%>');
+            var $select_equipo = $(".elegir_equipo").select2();
+            var tb_desde = document.getElementById('<%=tb_hora_desde.ClientID%>');
+            var tb_hasta = document.getElementById('<%=tb_hora_hasta.ClientID%>');
+            var btn_agregar = document.getElementById('<%=btn_agregar_detalle_dia.ClientID%>');
+
+            editar.value = "si";
+            id_detalle.value = id_movimiento;
+            $select_equipo.val(equipo).trigger("change");
+            id_equipo.value = equipo;
+            tb_desde.value = hora_desde;
+            tb_hasta.value = hora_hasta;
+            btn_agregar.value = "Actualizar";
+        }
+
+        function LimpiarValores() {
+
+            var id_detalle = document.getElementById('<%=hidden_editar_equipo.ClientID%>');
+            var id_equipo = document.getElementById('<%=hidden_id_detalle.ClientID%>');
+            var editar = document.getElementById('<%=hidden_editar.ClientID%>');
+            var $select_equipo = $(".elegir_equipo").select2();
+            var tb_desde = document.getElementById('<%=tb_hora_desde.ClientID%>');
+            var tb_hasta = document.getElementById('<%=tb_hora_hasta.ClientID%>');
+            var btn_agregar = document.getElementById('<%=btn_agregar_detalle_dia.ClientID%>');
+
+            id_detalle.value = 0;
+            editar.value = "no";
+            $select_equipo.val(1).trigger("change");
+            tb_desde.value = "";
+            tb_hasta.value = "";
+            btn_agregar.value = "Agregar";
+            id_equipo.value = 0;
+
+        }
 
     </script>
 </asp:Content>

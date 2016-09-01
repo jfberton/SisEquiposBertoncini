@@ -46,6 +46,8 @@
         <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes_categoria" Width="3.875" PointX="18.75" PointY="18.5" />
         <AssociationConnector Association="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" />
         <EntityTypeShape EntityType="Model1.temp_table_filas_items_mes_equipo" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Model1.Planilla_combustible" Width="2.25" PointX="2.125" PointY="18" />
+        <AssociationConnector Association="Model1.EquipoPlanilla_combustible" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -668,6 +668,9 @@ namespace SisEquiposBertoncini.Aplicativo
             string errores = string.Empty;
             bool tiene_error = false;
 
+            int id_movimiento = 0;
+            int.TryParse(hidden_id_detalle.Value, out id_movimiento);
+
             errores = ddl_equipo.SelectedItem.Text != string.Empty ? errores : "• Debe seleccionar un equipo.";
             tiene_error = ddl_equipo.SelectedItem.Text != string.Empty ? false : true;
 
@@ -705,15 +708,57 @@ namespace SisEquiposBertoncini.Aplicativo
                 div_error_detalle.Visible = false;
 
                 List<fila_detalle_dia> filas = Session["Detalle"] as List<fila_detalle_dia>;
-                fila_detalle_dia detalle = new fila_detalle_dia();
-                detalle._out = equipo != null ? equipo.OUT : false;
-                detalle.id_equipo = equipo != null ? equipo.id_equipo : 0;
-                detalle.fecha = dia.fecha;
-                detalle.equipo = equipo != null ? equipo.nombre : ddl_equipo.SelectedItem.Text;
-                detalle.desde = tb_hora_desde.Value;
-                detalle.hasta = tb_hora_hasta.Value;
-                detalle.total_movimiento = Horas_string.RestarHoras(tb_hora_hasta.Value, tb_hora_desde.Value);
-                filas.Add(detalle);
+
+                if (id_movimiento != 0)
+                {
+                    fila_detalle_dia fila = filas.FirstOrDefault(ff => ff.id_detalle_dia == id_movimiento);
+                    filas.Remove(fila);
+
+                    fila._out = equipo != null ? equipo.OUT : false;
+                    fila.id_equipo = equipo != null ? equipo.id_equipo : 0;
+                    fila.fecha = dia.fecha;
+                    fila.equipo = equipo != null ? equipo.nombre : ddl_equipo.SelectedItem.Text;
+                    fila.desde = tb_hora_desde.Value;
+                    fila.hasta = tb_hora_hasta.Value;
+                    fila.total_movimiento = Horas_string.RestarHoras(tb_hora_hasta.Value, tb_hora_desde.Value);
+
+                    filas.Add(fila);
+
+                }
+                else
+                {
+                    if (hidden_editar.Value == "si")
+                    {
+                        int index = -1;
+                        foreach (fila_detalle_dia item in filas)
+                        {
+                            if (item.id_equipo.ToString() == hidden_editar_equipo.Value && item.desde == tb_hora_desde.Value && item.hasta == tb_hora_hasta.Value && item.id_detalle_dia == 0)
+                            {
+                                index = filas.IndexOf(item);
+                                break;
+                            }
+                        }
+
+                        filas.RemoveAt(index);
+                    }
+
+                    fila_detalle_dia detalle = new fila_detalle_dia();
+                    detalle._out = equipo != null ? equipo.OUT : false;
+                    detalle.id_equipo = equipo != null ? equipo.id_equipo : 0;
+                    detalle.fecha = dia.fecha;
+                    detalle.equipo = equipo != null ? equipo.nombre : ddl_equipo.SelectedItem.Text;
+                    detalle.desde = tb_hora_desde.Value;
+                    detalle.hasta = tb_hora_hasta.Value;
+                    detalle.total_movimiento = Horas_string.RestarHoras(tb_hora_hasta.Value, tb_hora_desde.Value);
+                    filas.Add(detalle);
+                }
+
+                hidden_id_detalle.Value = "0";
+                hidden_editar.Value = "no";
+                tb_hora_desde.Value = "";
+                tb_hora_hasta.Value = "";
+                btn_agregar_detalle_dia.Text = "Agregar";
+                ddl_equipo.SelectedIndex = 0;
 
                 string horasTotales = "00:00";
                 string horasAusente = "00:00";
@@ -954,7 +999,6 @@ namespace SisEquiposBertoncini.Aplicativo
                             dia_cxt.estado_tt = estadott;
                         }
 
-
                         dia_cxt.horas_normales = dia.horas_normales;
                         dia_cxt.horas_extra_50 = dia.horas_extra_50;
                         dia_cxt.horas_extra_100 = dia.horas_extra_100;
@@ -967,6 +1011,13 @@ namespace SisEquiposBertoncini.Aplicativo
                             if (item_detalle.id_detalle_dia == 0)
                             {
                                 dia_cxt.Detalles.Add(new Detalle_dia() { id_equipo = item_detalle.id_equipo, hora_desde = item_detalle.desde, hora_hasta = item_detalle.hasta });
+                            }
+                            else
+                            {
+                                Detalle_dia detalle = cxt.Detalles_dias.FirstOrDefault(dd => dd.id_detalle_dia == item_detalle.id_detalle_dia);
+                                detalle.id_equipo = item_detalle.id_equipo;
+                                detalle.hora_desde = item_detalle.desde;
+                                detalle.hora_hasta = item_detalle.hasta;
                             }
 
                             if (item_detalle.equipo == "Ausencia")

@@ -44,6 +44,8 @@ namespace SisEquiposBertoncini.Aplicativo
             DataTable dtret = new DataTable();
             List<RegistroPorInsertar> aInsertar = new List<RegistroPorInsertar>();
             List<RegistroSinMachear> sinMatchear = new List<RegistroSinMachear>();
+            List<Planilla_combustible> items_combustible = new List<Planilla_combustible>();
+            Model1Container cxt = new Model1Container();
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -70,6 +72,31 @@ namespace SisEquiposBertoncini.Aplicativo
                         ri.Monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
                         aInsertar.Add(ri);
 
+
+                        //if (nombreItem == "Combustible")
+                        //{
+                        //    string chofer= (dr[18].ToString().Split(';'))[0];
+                        //    bool tanque_lleno = (dr[18].ToString().Split(';'))[1]== "S";
+                        //    decimal km = 0;
+                        //    decimal litros = 0;
+                        //    decimal.TryParse((dr[18].ToString().Split(';'))[2].Replace('.', ','), out km);
+                        //    decimal.TryParse((dr[18].ToString().Split(';'))[3].Replace('.', ','), out litros);
+                        //    Equipo eq = cxt.Equipos.FirstOrDefault(ee=>ee.nombre == nombreEquipo);
+
+
+                        //    items_combustible.Add(new Planilla_combustible()
+                        //    {
+                        //        id_equipo = eq != null ? eq.id_equipo : 0,
+                        //        fecha = Convert.ToDateTime(dr[7].ToString()),
+                        //        chofer = chofer,
+                        //        tanque_lleno = tanque_lleno,
+                        //        km = km,
+                        //        litros = litros,
+                        //        costo_total_facturado = Convert.ToDecimal(dr[24].ToString()) + Convert.ToDecimal(dr[36].ToString()),
+                        //        promedio = 0
+                        //    });
+                        //}
+
                     }
                     else
                     {
@@ -86,16 +113,14 @@ namespace SisEquiposBertoncini.Aplicativo
                             rsm.Monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
                             sinMatchear.Add(rsm);
                         }
-
-
                     }
-
                 }
             }
 
             lbl_cantidad_correctos.Text = aInsertar.Count().ToString();
 
             Session["items_correctos"] = aInsertar;
+            Session["items_combustible"] = items_combustible;
 
             GridView2.DataSource = aInsertar;
             GridView2.DataBind();
@@ -142,9 +167,9 @@ namespace SisEquiposBertoncini.Aplicativo
 
             if (file != null && file.ContentLength > 0)
             {
-            
+
                 string fname = Path.GetFileName(file.FileName);
-                
+
                 if (Path.GetExtension(fname) == ".xlsx" || Path.GetExtension(fname) == ".xls")
                 {
                     Guid file_temp = Guid.NewGuid();
@@ -192,7 +217,6 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     Aplicativo.Controles.MessageBox.Show(this, "El archivo debe ser excel verifique la extencion deberá ser .xls o .xlsx", Controles.MessageBox.Tipo_MessageBox.Warning);
                 }
-
             }
             else
             {
@@ -206,6 +230,7 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void btn_impactar_ServerClick(object sender, EventArgs e)
         {
             List<RegistroPorInsertar> items = Session["items_correctos"] as List<RegistroPorInsertar>;
+            List<Planilla_combustible> items_combustible = Session["items_combustible"] as List<Planilla_combustible>;
 
             using (var cxt = new Model1Container())
             {
@@ -221,6 +246,34 @@ namespace SisEquiposBertoncini.Aplicativo
                         eq.Agregar_detalle(item.Dia, item.Monto, item.Nombre_item, item.Comentario);
                     }
                 }
+
+                foreach (Planilla_combustible item in items_combustible)
+                {
+                    Planilla_combustible item_planilla = cxt.Planilla_combustibles.FirstOrDefault(pc => 
+                                                                                pc.id_equipo == item.id_equipo &&
+                                                                                pc.fecha == item.fecha &&
+                                                                                pc.chofer == item.chofer &&
+                                                                                pc.litros == item.litros &&
+                                                                                pc.tanque_lleno == item.tanque_lleno &&
+                                                                                pc.km == item.km &&
+                                                                                pc.costo_total_facturado == item.costo_total_facturado);
+                    if (item_planilla == null)
+                    {
+                        cxt.Planilla_combustibles.Add(new Planilla_combustible()
+                        {
+                            fecha = item.fecha,
+                            chofer = item.chofer,
+                            id_equipo = item.id_equipo,
+                            tanque_lleno = item.tanque_lleno,
+                            litros = item.litros,
+                            km = item.km,
+                            costo_total_facturado = item.costo_total_facturado,
+                            promedio = item.promedio
+                        });
+                    }
+                }
+
+                cxt.SaveChanges();
             }
 
             MessageBox.Show(this, "Registros importados correctamente", MessageBox.Tipo_MessageBox.Success, "Perfecto!");
