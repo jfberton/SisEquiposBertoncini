@@ -13,48 +13,84 @@ namespace SisEquiposBertoncini.Aplicativo.Menues {
     public partial class menu_usuario {
         
         /// <summary>
-        /// lbl_fecha_hora control.
+        /// li_areas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_fecha_hora;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_areas;
         
         /// <summary>
-        /// lbl_ApyNom control.
+        /// li_empleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ApyNom;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_empleados;
         
         /// <summary>
-        /// imagen_usuario control.
+        /// ul_empleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SisEquiposBertoncini.Aplicativo.Controles.imagen_usuario imagen_usuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_empleados;
         
         /// <summary>
-        /// lbl_CambiarClave control.
+        /// li_empleados0ul_empleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbl_CambiarClave;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_empleados0ul_empleados;
         
         /// <summary>
-        /// lbl_logout control.
+        /// li_empleados0ul_categorias control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbl_logout;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_empleados0ul_categorias;
+        
+        /// <summary>
+        /// li_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_horas;
+        
+        /// <summary>
+        /// ul_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_horas;
+        
+        /// <summary>
+        /// li_horas0ul_feriados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_horas0ul_feriados;
+        
+        /// <summary>
+        /// li_horas0ul_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_horas0ul_horas;
     }
 }

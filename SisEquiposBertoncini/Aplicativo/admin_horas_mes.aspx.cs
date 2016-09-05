@@ -56,17 +56,21 @@ namespace SisEquiposBertoncini.Aplicativo
                         menu_admin.Visible = true;
                         menu_admin.Activar_Li("li_horas0ul_horas");
                         menu_usuario.Visible = false;
+                        menu_usuario.Activar_Li("li_horas0ul_horas");
                         break;
                     case perfil_usuario.Jefe:
                         menu_admin.Visible = true;
                         menu_admin.Activar_Li("li_horas0ul_horas");
                         menu_usuario.Visible = false;
+                        menu_usuario.Activar_Li("li_horas0ul_horas");
                         break;
                     case perfil_usuario.Supervisor:
                         break;
                     case perfil_usuario.Usuario:
                         menu_admin.Visible = false;
+                        menu_admin.Activar_Li("li_horas0ul_horas");
                         menu_usuario.Visible = true;
+                        menu_usuario.Activar_Li("li_horas0ul_horas");
                         break;
                     case perfil_usuario.Seleccionar:
                         break;

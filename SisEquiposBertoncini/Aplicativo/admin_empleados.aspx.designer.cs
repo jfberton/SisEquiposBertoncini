@@ -22,6 +22,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::SisEquiposBertoncini.Aplicativo.Menues.menu_admin menu_admin;
         
         /// <summary>
+        /// menu_usuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SisEquiposBertoncini.Aplicativo.Menues.menu_usuario menu_usuario;
+        
+        /// <summary>
         /// gv_empleados control.
         /// </summary>
         /// <remarks>

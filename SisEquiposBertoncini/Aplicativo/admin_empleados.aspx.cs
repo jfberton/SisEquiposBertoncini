@@ -23,6 +23,31 @@ namespace SisEquiposBertoncini.Aplicativo
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
 
+                switch (usuariologueado.perfil)
+                {
+                    case perfil_usuario.Admin:
+                        menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_empleados0ul_empleados");
+                        menu_usuario.Visible = false;
+                        menu_usuario.Activar_Li("li_empleados0ul_empleados");
+                        break;
+                    case perfil_usuario.Jefe:
+                        menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_empleados0ul_empleados");
+                        menu_usuario.Visible = false;
+                        menu_usuario.Activar_Li("li_empleados0ul_empleados");
+                        break;
+                    case perfil_usuario.Supervisor:
+                        break;
+                    case perfil_usuario.Usuario:
+                        menu_admin.Activar_Li("li_empleados0ul_empleados");
+                        break;
+                    case perfil_usuario.Seleccionar:
+                        break;
+                    default:
+                        break;
+                }
+
                 if (usuariologueado.perfil == perfil_usuario.Jefe)
                 {
                     btn_agregar_empleado.Visible = false;
@@ -32,7 +57,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 CargarEmpleados();
 
-                menu_admin.Activar_Li("li_empleados0ul_empleados");
+               
             }
         }
 

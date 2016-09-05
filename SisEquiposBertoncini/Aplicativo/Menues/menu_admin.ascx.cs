@@ -17,21 +17,9 @@ namespace SisEquiposBertoncini.Aplicativo.Menues
             if (!IsPostBack)
             {
                 Session["ultimo_activo"] = "";
-                //Usuario usu = (Usuario)Session["UsuarioLogueado"];
-                //CargarDatos(usu);
             }
         }
 
-        private void CargarDatos(Usuario usu)
-        {
-            if (usu != null)
-            {
-                var cxt = new Model1Container();
-
-                //lbl_ApyNom.Text = usu.nombre;
-                //imagen_usuario.Usuario = usu;
-            }
-        }
 
         public void Activar_Li(string nombreLI)
         {
@@ -49,7 +37,6 @@ namespace SisEquiposBertoncini.Aplicativo.Menues
                 ((HtmlGenericControl)contenedor).Attributes.Add("class", "treeview-menu menu-open");
                 ((HtmlGenericControl)contenedor).Attributes.Add("style", "display: block;");
 
-                //nombreLI = controles_anidados[1];
             }
             else
             {
@@ -73,18 +60,5 @@ namespace SisEquiposBertoncini.Aplicativo.Menues
                 }
             }
         }
-
-        protected void lbl_CambiarClave_Click(object sender, EventArgs e)
-        {
-            Usuario emp = (Usuario )Session["UsuarioLogueado"];
-            Response.Redirect("~/Aplicativo/usr_modifica_datos.aspx");
-        }
-
-        protected void lbl_logout_Click(object sender, EventArgs e)
-        {
-            FormsAuthentication.SignOut();
-            Response.Redirect("~/default.aspx");
-        }
-
     }
 }

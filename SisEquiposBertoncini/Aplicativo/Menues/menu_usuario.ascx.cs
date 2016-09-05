@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace SisEquiposBertoncini.Aplicativo.Menues
@@ -16,32 +17,51 @@ namespace SisEquiposBertoncini.Aplicativo.Menues
         {
             if (!IsPostBack)
             {
-                Usuario usu = (Usuario)Session["UsuarioLogueado"];
-                CargarDatos(usu);
+                Session["ultimo_activo"] = "";
             }
         }
 
-        private void CargarDatos(Usuario usu)
+
+        public void Activar_Li(string nombreLI)
         {
-            if (usu != null)
+
+            string[] controles_anidados = nombreLI.Split('0');
+
+            if (controles_anidados.Count() > 1)
             {
-                var cxt = new Model1Container();
+                Control menu = FindControl(controles_anidados[0]);
+                ((HtmlGenericControl)menu).Attributes.Clear();
+                ((HtmlGenericControl)menu).Attributes.Add("class", "treeview active");
 
-                lbl_ApyNom.Text = usu.nombre;
-                imagen_usuario.Usuario = usu;
+                Control contenedor = FindControl(controles_anidados[0].Replace("li", "ul"));
+                ((HtmlGenericControl)contenedor).Attributes.Clear();
+                ((HtmlGenericControl)contenedor).Attributes.Add("class", "treeview-menu menu-open");
+                ((HtmlGenericControl)contenedor).Attributes.Add("style", "display: block;");
+
+            }
+            else
+            {
+                Control li = FindControl(nombreLI);
+                if (li != null)
+                {
+
+                    if (Session["ultimo_activo"] != null)
+                    {
+                        string ultimo_activo = Session["ultimo_activo"].ToString();
+                        Control ultimo_control_activo = FindControl(ultimo_activo);
+                        if (ultimo_control_activo != null)
+                        {
+                            ((HtmlGenericControl)ultimo_control_activo).Attributes.Clear();
+                        }
+                    }
+
+                    ((HtmlGenericControl)li).Attributes.Clear();
+                    ((HtmlGenericControl)li).Attributes.Add("class", "active");
+                    Session["ultimo_activo"] = nombreLI;
+                }
             }
         }
 
-        protected void lbl_CambiarClave_Click(object sender, EventArgs e)
-        {
-            Usuario emp = (Usuario)Session["UsuarioLogueado"];
-            Response.Redirect("~/Aplicativo/usr_modifica_datos.aspx");
-        }
 
-        protected void lbl_logout_Click(object sender, EventArgs e)
-        {
-            FormsAuthentication.SignOut();
-            Response.Redirect("~/default.aspx");
-        }
     }
 }
