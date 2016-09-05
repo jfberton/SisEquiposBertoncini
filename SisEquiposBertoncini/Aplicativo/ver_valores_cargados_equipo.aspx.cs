@@ -31,6 +31,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
 
+                menu_admin.Activar_Li("li_io0ul_anio_equipo");
+
                 Cargar_ddls();
 
                 string str_id_equipo = Request.QueryString["eq"];

@@ -27,6 +27,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
             }
 
+            menu_admin.Activar_Li("li_io0ul_conceptos");
+
             CargarConceptos();
         }
 

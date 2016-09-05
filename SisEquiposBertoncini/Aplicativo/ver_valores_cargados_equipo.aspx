@@ -10,73 +10,81 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
-    <ol class="breadcrumb">
-       <li>Inicio</li>
-        <li>Ingresos - Egresos</li>
-        <li>I/E por equipo</li>
-        <li>Resumen año equipo</li>
-    </ol>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Valores anuales equipo
+       
+                        <small>visualiza los valores anuales cargados al equipo</small>
+        </h1>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h1 class="panel-title">Visualiza los valores anuales cargados al equipo
-            </h1>
-        </div>
-        <div class="panel-body">
-            <div class="row" runat="server" id="row_busqueda">
-                <div class="col-md-4">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>Equipo</td>
-                            <td>
-                                <asp:DropDownList runat="server" ID="ddl_equipo" CssClass="form-control">
-                                </asp:DropDownList></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>Año</td>
-                            <td>
-                                <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control">
-                                </asp:DropDownList></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-5">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>
-                                <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                                <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
-                                <asp:Button Text="Imprimir Resumen" ID="btn_imprimir_resumen" CssClass="btn btn-default" OnClick="btn_imprimir_resumen_Click" runat="server" />
-                                <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <br />
-            <div class="row">
+        <ol class="breadcrumb">
+            <li>Inicio</li>
+            <li>Ingresos - Egresos</li>
+            <li>I/E por equipo</li>
+            <li class="active">Resumen año equipo</li>
+        </ol>
+    </section>
 
-                <div class="col-md-12" runat="server" id="div_buscar_primero">
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <small>Seleccione los campos <strong>Equipo y año</strong> y luego presione obtener.</small>
-                    </div>
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        <div class="row" runat="server" id="row_busqueda">
+            <div class="col-md-4">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td>Equipo</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="ddl_equipo" CssClass="form-control">
+                            </asp:DropDownList></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td>Año</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control">
+                            </asp:DropDownList></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-5">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td>
+                            <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
+                            <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
+                            <asp:Button Text="Imprimir Resumen" ID="btn_imprimir_resumen" CssClass="btn btn-default" OnClick="btn_imprimir_resumen_Click" runat="server" />
+                            <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-md-12" runat="server" id="div_buscar_primero">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <small>Seleccione los campos <strong>Equipo y año</strong> y luego presione obtener.</small>
                 </div>
-                <div class="col-md-12">
+            </div>
+            <div class="col-md-12">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div runat="server" id="div_tree" style="height: 100px;">
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div runat="server" id="div_tree">
-            </div>
-        </div>
-    </div>
+    </section>
+    <!-- /.content -->
+
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
     <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -85,16 +93,17 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
-        
+
     <script src="../js/jquery.treegrid.js"></script>
     <script src="../js/jquery.dataTables.min.js"></script>
     <script src="../js/dataTables.fixedColumns.min.js"></script>
     <script src="../js/dataTables.fixedHeader.min.js"></script>
-
+    <script src="../js/jquery.fixedheadertable.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $('.tree').treegrid();
+            //$('.table').fixedHeaderTable({ altClass: 'odd'});
             $('.table').DataTable({
                 "scrollY": 350,
                 "scrollX": true,

@@ -10,101 +10,99 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Equipos
+       
+                        <small>listado de equipos</small>
+        </h1>
 
-    <ol class="breadcrumb">
-        <li>Inicio</li>
-        <li>Equipos</li>
-        <li>Equipos</li>
-    </ol>
+        <ol class="breadcrumb">
+            <li><a href="#"><i></i>Inicio</a></li>
+            <li><a href="#"><i></i>Equipos</a></li>
+            <li class="active">Equipos</li>
+        </ol>
+    </section>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-5">
-                    <h4 class="panel-title">Equipos</h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_equipos_PreRender"
-                AutoGenerateColumns="False" GridLines="None" CssClass="display">
-                <Columns>
-                    <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
-                    <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <button
-                                type="button" class="btn btn-sm btn-danger"
-                                data-toggle="modal"
-                                data-target="#advertencia_eliminacion"
-                                data-id='<%#Eval("equipo_id")%>'
-                                data-introduccion="el equipo"
-                                data-nombre='<%#Eval("equipo_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
-                            </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <button runat="server" class="btn btn-sm btn-warning" id="btn_editar" causesvalidation="false" onserverclick="btn_editar_ServerClick" data-id='<%#Eval("equipo_id")%>'>
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Editar
-                            </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
-                            </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+    <!-- Main content -->
+    <section class="content">
 
-            <asp:GridView ID="gv_equipos_view" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_equipos_PreRender"
-                AutoGenerateColumns="False" GridLines="None" CssClass="display">
-                <Columns>
-                    <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
-                    <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
-                            </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+        <!-- Your Page Content Here -->
+        <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_equipos_PreRender"
+            AutoGenerateColumns="False" GridLines="None" CssClass="display">
+            <Columns>
+                <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
+                <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <button
+                            type="button" class="btn btn-sm btn-danger"
+                            data-toggle="modal"
+                            data-target="#advertencia_eliminacion"
+                            data-id='<%#Eval("equipo_id")%>'
+                            data-introduccion="el equipo"
+                            data-nombre='<%#Eval("equipo_nombre")%>'>
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
+                        </button>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <button runat="server" class="btn btn-sm btn-warning" id="btn_editar" causesvalidation="false" onserverclick="btn_editar_ServerClick" data-id='<%#Eval("equipo_id")%>'>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Editar
+                        </button>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                        </button>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
 
-            <div class="modal fade" id="advertencia_eliminacion" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content panel-danger">
-                        <div class="modal-header panel-heading">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="hidden" runat="server" id="id_item_por_eliminar" />
-                                    <p id="texto_a_mostrar"></p>
-                                </div>
+        <asp:GridView ID="gv_equipos_view" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_equipos_PreRender"
+            AutoGenerateColumns="False" GridLines="None" CssClass="display">
+            <Columns>
+                <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
+                <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_ServerClick" data-id='<%#Eval("equipo_id")%>'>
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                        </button>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+
+        <div class="modal fade" id="advertencia_eliminacion" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content panel-danger">
+                    <div class="modal-header panel-heading">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="hidden" runat="server" id="id_item_por_eliminar" />
+                                <p id="texto_a_mostrar"></p>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="panel-footer">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                    <button runat="server" id="btn_agregar" onserverclick="btn_agregar_ServerClick" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo</button>
-                </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button runat="server" id="btn_agregar" onserverclick="btn_agregar_ServerClick" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo</button>
             </div>
         </div>
 
@@ -204,7 +202,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- /.content -->
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">

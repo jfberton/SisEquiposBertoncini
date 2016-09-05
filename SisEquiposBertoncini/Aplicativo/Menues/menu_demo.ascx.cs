@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SisEquiposBertoncini.Aplicativo
+namespace SisEquiposBertoncini.Aplicativo.Menues
 {
-    public partial class main_admin : System.Web.UI.Page
+    public partial class menu_demo : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

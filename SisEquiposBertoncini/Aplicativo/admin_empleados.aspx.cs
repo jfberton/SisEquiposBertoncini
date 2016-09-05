@@ -31,6 +31,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 CargarDDLs();
 
                 CargarEmpleados();
+
+                menu_admin.Activar_Li("li_empleados0ul_empleados");
             }
         }
 

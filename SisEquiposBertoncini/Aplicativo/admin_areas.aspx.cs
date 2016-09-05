@@ -31,6 +31,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
 
                 CargarAreas();
+
+                menu_admin.Activar_Li("li_areas");
             }
         }
 

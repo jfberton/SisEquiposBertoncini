@@ -28,6 +28,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
 
+                menu_admin.Activar_Li("li_io0ul_dolar");
+
                 CargarDDL();
 
                 string aa = Request.QueryString["aa"];

@@ -16,7 +16,10 @@ namespace SisEquiposBertoncini.Aplicativo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                menu_admin.Activar_Li("li_importar0ulfacturacion");
+            }
         }
 
         private struct RegistroPorInsertar
@@ -206,6 +209,7 @@ namespace SisEquiposBertoncini.Aplicativo
                             GridView1.DataBind();
 
                             ProcesarDataTable(dt);
+                            RefrescarTablas();
                         }
                     }
                     catch (Exception ex)
@@ -277,6 +281,30 @@ namespace SisEquiposBertoncini.Aplicativo
             }
 
             MessageBox.Show(this, "Registros importados correctamente", MessageBox.Tipo_MessageBox.Success, "Perfecto!");
+        }
+
+        protected void Gridvew_PreRender(object sender, EventArgs e)
+        {
+            if (GridView1.Rows.Count > 0)
+            {
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (GridView2.Rows.Count > 0)
+            {
+                GridView2.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (GridView3.Rows.Count > 0)
+            {
+                GridView3.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
+
+        private void RefrescarTablas()
+        {
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$('#<%= GridView1.ClientID %>').DataTable.ajax.draw(); $('#<%= GridView2.ClientID %>').DataTable.ajax.draw(); $('#<%= GridView3.ClientID %>').DataTable.ajax.draw();</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "RefrescarTablas", script, false);
         }
     }
 }

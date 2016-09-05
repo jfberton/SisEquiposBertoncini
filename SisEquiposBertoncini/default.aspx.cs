@@ -62,6 +62,11 @@ namespace SisEquiposBertoncini
             }
         }
 
+        protected void btn_ver_demo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AdminLTE/index.html");
+        }
+
         private void InicializarDB()
         {
             using (var cxt = new Model1Container())

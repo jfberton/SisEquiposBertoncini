@@ -12,132 +12,133 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
-    <ol class="breadcrumb">
-       <li>Inicio</li>
-        <li>Areas</li>
-    </ol>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Áreas
+       
+                        <small>listado de áreas</small>
+        </h1>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-5">
-                    <h4 class="panel-title">Áreas</h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <asp:GridView ID="gv_areas" runat="server" OnPreRender="gv_areas_PreRender"
-                AutoGenerateColumns="False" GridLines="None" CssClass="display">
-                <Columns>
-                    <asp:BoundField DataField="area_nombre" HeaderText="Nombre" ReadOnly="true" />
-                    <asp:BoundField DataField="area_empleados" HeaderText="Cantidad de empleados" ReadOnly="true" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <button
-                                type="button" class="btn btn-sm btn-danger"
-                                data-toggle="modal"
-                                data-target="#advertencia_eliminacion"
-                                data-id='<%#Eval("area_id")%>'
-                                data-introduccion="el área"
-                                data-nombre='<%#Eval("area_nombre")%>'>
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
-                            </button>
-                            <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("area_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
-                            </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+        <ol class="breadcrumb">
+            <li><a href="#"><i></i>Inicio</a></li>
+            <li class="active">Areas</li>
+        </ol>
+    </section>
 
-            <asp:GridView ID="gv_areas_view" runat="server" OnPreRender="gv_areas_PreRender"
-                AutoGenerateColumns="False" GridLines="None" CssClass="display">
-                <Columns>
-                    <asp:BoundField DataField="area_nombre" HeaderText="Nombre" ReadOnly="true" />
-                    <asp:BoundField DataField="area_empleados" HeaderText="Cantidad de empleados" ReadOnly="true" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <button runat="server" class="btn btn-sm btn-default" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("area_id")%>'>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
-                            </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+    <!-- Main content -->
+    <section class="content">
 
-            <div class="modal fade" id="advertencia_eliminacion" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content panel-danger">
-                        <div class="modal-header panel-heading">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="hidden" runat="server" id="id_item_por_eliminar" />
-                                    <p id="texto_a_mostrar"></p>
-                                </div>
+        <!-- Your Page Content Here -->
+        <asp:GridView ID="gv_areas" runat="server" OnPreRender="gv_areas_PreRender"
+            AutoGenerateColumns="False" GridLines="None" CssClass="display">
+            <Columns>
+                <asp:BoundField DataField="area_nombre" HeaderText="Nombre" ReadOnly="true" />
+                <asp:BoundField DataField="area_empleados" HeaderText="Cantidad de empleados" ReadOnly="true" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <button
+                            type="button" class="btn btn-sm btn-danger"
+                            data-toggle="modal"
+                            data-target="#advertencia_eliminacion"
+                            data-id='<%#Eval("area_id")%>'
+                            data-introduccion="el área"
+                            data-nombre='<%#Eval("area_nombre")%>'>
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
+                        </button>
+                        <button runat="server" class="btn btn-sm btn-default" id="btn_ver" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("area_id")%>'>
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                        </button>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+
+        <asp:GridView ID="gv_areas_view" runat="server" OnPreRender="gv_areas_PreRender"
+            AutoGenerateColumns="False" GridLines="None" CssClass="display">
+            <Columns>
+                <asp:BoundField DataField="area_nombre" HeaderText="Nombre" ReadOnly="true" />
+                <asp:BoundField DataField="area_empleados" HeaderText="Cantidad de empleados" ReadOnly="true" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <button runat="server" class="btn btn-sm btn-default" causesvalidation="false" onserverclick="btn_ver_Click" data-id='<%#Eval("area_id")%>'>
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Ver
+                        </button>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+
+        <div class="modal fade" id="advertencia_eliminacion" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content panel-danger">
+                    <div class="modal-header panel-heading">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="hidden" runat="server" id="id_item_por_eliminar" />
+                                <p id="texto_a_mostrar"></p>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="panel-footer">
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-default pull-right" id="btn_agregar_area" runat="server" data-toggle="modal" data-target="#agregar_area">
-                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
-                    </button>
-                    <div class="modal fade" id="agregar_area" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Agregar area</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList"
-                                                CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <table class="table-condensed" style="width: 100%">
-                                                <tr>
-                                                    <td>Nombre área</td>
-                                                    <td style="width: auto">
-                                                        <input type="text" id="tb_nombre_area" class="form-control" runat="server" placeholder="Nombre del área por agregar" /></td>
-                                                    <td>
-                                                        <asp:RequiredFieldValidator ControlToValidate="tb_nombre_area" Text="<img src='../img/exclamation.gif' title='Debe ingresar su mail' />"
-                                                            ID="rv_nombre_area" runat="server" ErrorMessage="Debe ingresar el nombre del área">
-                                                        </asp:RequiredFieldValidator></td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button id="btn_guardar" runat="server" onserverclick="btn_guardar_ServerClick" class="btn btn-success" validationgroup="equipo">
-                                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
-                                    </button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-default pull-right" id="btn_agregar_area" runat="server" data-toggle="modal" data-target="#agregar_area">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
+                </button>
+                <div class="modal fade" id="agregar_area" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Agregar area</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList"
+                                            CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table-condensed" style="width: 100%">
+                                            <tr>
+                                                <td>Nombre área</td>
+                                                <td style="width: auto">
+                                                    <input type="text" id="tb_nombre_area" class="form-control" runat="server" placeholder="Nombre del área por agregar" /></td>
+                                                <td>
+                                                    <asp:RequiredFieldValidator ControlToValidate="tb_nombre_area" Text="<img src='../img/exclamation.gif' title='Debe ingresar su mail' />"
+                                                        ID="rv_nombre_area" runat="server" ErrorMessage="Debe ingresar el nombre del área">
+                                                    </asp:RequiredFieldValidator></td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btn_guardar" runat="server" onserverclick="btn_guardar_ServerClick" class="btn btn-success" validationgroup="equipo">
+                                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
+                                </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="modal fade" id="ver_area" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -177,7 +178,9 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    </section>
+    <!-- /.content -->
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">

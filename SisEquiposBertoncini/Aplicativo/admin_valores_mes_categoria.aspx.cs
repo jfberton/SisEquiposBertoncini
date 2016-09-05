@@ -44,10 +44,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     case perfil_usuario.Admin:
                         menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_io0ul_mes_categoria");
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
-                         menu_admin.Visible = true;
+                        menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_io0ul_mes_categoria");
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:
@@ -328,7 +330,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     gv_detalle.DataSource = detalle;
                     gv_detalle.DataBind();
                 }
-                
+
 
                 lbl_total_item_mes.Text = lbl_total_item_mes_view.Text = detalle.Sum(x => x.monto).ToString("$ #,##0.00");
             }
@@ -341,7 +343,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 MostrarPopUpDetalle(mes, anio);
             }
-            
+
         }
 
         private void MostrarPopUpDetalle(int mes, int anio)
@@ -448,7 +450,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
 
-                
+
             }
             else
             {

@@ -31,6 +31,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
 
+                menu_admin.Activar_Li("li_io0ul_anio_categoria");
+
                 Cargar_ddls();
 
                 string str_id_categoria = Request.QueryString["cat"];

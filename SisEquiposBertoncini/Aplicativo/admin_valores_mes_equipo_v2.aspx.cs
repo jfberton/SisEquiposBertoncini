@@ -44,10 +44,12 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     case perfil_usuario.Admin:
                         menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_io0ul_mes_equipo");
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
                         menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_io0ul_mes_equipo");
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:

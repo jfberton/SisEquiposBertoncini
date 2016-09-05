@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -25,7 +26,16 @@ namespace SisEquiposBertoncini.Aplicativo
                     Response.Redirect("~/Default.aspx?mode=session_end");
                 }
 
-                CargarDatosUsuario(usuariologueado);
+                string exit = Request.QueryString["s"];
+                if (exit == "s")
+                {
+                    FormsAuthentication.SignOut();
+                    Response.Redirect("~/default.aspx");
+                }
+                else
+                {
+                    CargarDatosUsuario(usuariologueado);
+                }
             }
         }
 

@@ -10,12 +10,25 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h1 class="panel-title">Editar datos de usuario</h1>
-        </div>
-        <div class="panel-body">
-            <div class="row">
+
+     <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Editar datos de usuario
+       
+                        <small>permite editar valores asignados</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i></i>Inicio</a></li>
+            <li class="active">Editar</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        <div class="row">
                 <div class="col-md-3">
                     <div class="row">
                         <div class="col-md-12">
@@ -182,8 +195,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </section>
+    <!-- /.content -->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
     <script>

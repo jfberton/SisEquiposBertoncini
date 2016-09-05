@@ -8,76 +8,83 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
-        
-    <ol class="breadcrumb">
-       <li>Inicio</li>
-        <li>Ingresos - Egresos</li>
-        <li>I/E por categoria</li>
-        <li>Resumen año equipos categoría</li>
-    </ol>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h1 class="panel-title">Visualiza los valores anuales cargados al equipo
-            </h1>
-        </div>
-        <div class="panel-body">
-            <div class="row" runat="server" id="row_busqueda">
-                <div class="col-md-5">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>Equipo</td>
-                            <td>
-                                <asp:DropDownList runat="server" ID="ddl_categoria" CssClass="form-control">
-                                </asp:DropDownList></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>Año</td>
-                            <td>
-                                <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control">
-                                </asp:DropDownList></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-4">
-                    <table class="table-condensed" style="width: 100%">
-                        <tr>
-                            <td>
-                                <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                                <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
-                                <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Resumen año equipos categoría
+       
+                        <small>visualiza los valores anuales ($) cargados al equipo</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li>Inicio</li>
+            <li>Ingresos - Egresos</li>
+            <li>I/E por categoria</li>
+            <li class="active">Resumen año equipos categoría</li>
+        </ol>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        <div class="row" runat="server" id="row_busqueda">
+            <div class="col-md-5">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td>Equipo</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="ddl_categoria" CssClass="form-control">
+                            </asp:DropDownList></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td>Año</td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="ddl_anio" CssClass="form-control">
+                            </asp:DropDownList></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td>
+                            <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
+                            <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
+                            <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-    </div>
-    <asp:GridView ID="gv_detalle_equipos" runat="server" OnPreRender="gv_detalle_equipos_PreRender" EmptyDataText="No existen resultados"
-        AutoGenerateColumns="False" GridLines="None" CssClass="display" ShowHeader="true" >
-        <Columns>
-            <asp:BoundField DataField="nombre_equipo" HeaderText="Equipo" ReadOnly="true" />
-            <asp:BoundField DataField="tipo_resultado" HeaderText="Tipo resultado" ReadOnly="true" />
-            <asp:BoundField DataField="enero" HeaderText="Enero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="febrero" HeaderText="Febrero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="marzo" HeaderText="Marzo" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="abril" HeaderText="Abril" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="mayo" HeaderText="Mayo" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="junio" HeaderText="Junio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="julio" HeaderText="Julio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="agosto" HeaderText="Agosto" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="septiembre" HeaderText="Septiembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="octubre" HeaderText="Octubre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="noviembre" HeaderText="Noviembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="diciembre" HeaderText="Diciembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="total" HeaderText="Total Anual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-            <asp:BoundField DataField="promedio" HeaderText="Promedio mensual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
-        </Columns>
-    </asp:GridView>
+        <asp:GridView ID="gv_detalle_equipos" runat="server" OnPreRender="gv_detalle_equipos_PreRender" EmptyDataText="No existen resultados"
+            AutoGenerateColumns="False" GridLines="None" CssClass="display" ShowHeader="true">
+            <Columns>
+                <asp:BoundField DataField="nombre_equipo" HeaderText="Equipo" ReadOnly="true" />
+                <asp:BoundField DataField="tipo_resultado" HeaderText="Tipo resultado" ReadOnly="true" />
+                <asp:BoundField DataField="enero" HeaderText="Enero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="febrero" HeaderText="Febrero" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="marzo" HeaderText="Marzo" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="abril" HeaderText="Abril" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="mayo" HeaderText="Mayo" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="junio" HeaderText="Junio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="julio" HeaderText="Julio" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="agosto" HeaderText="Agosto" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="septiembre" HeaderText="Septiembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="octubre" HeaderText="Octubre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="noviembre" HeaderText="Noviembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="diciembre" HeaderText="Diciembre" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="total" HeaderText="Total Anual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+                <asp:BoundField DataField="promedio" HeaderText="Promedio mensual" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
+            </Columns>
+        </asp:GridView>
+    </section>
+    <!-- /.content -->
 </asp:Content>
 
 

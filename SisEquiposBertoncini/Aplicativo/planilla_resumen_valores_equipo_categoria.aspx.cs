@@ -33,6 +33,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 Cargar_ddls();
                 Estado_busqueda(true);
+
+                menu_admin.Activar_Li("li_io0ul_equipos_categoria");
             }
         }
 
@@ -57,11 +59,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             ddl_categoria.Enabled = habilitado;
             ddl_anio.Enabled = habilitado;
-            if (habilitado)
-            {
-                gv_detalle_equipos.DataSource = null;
-                gv_detalle_equipos.DataBind();
-            }
+            gv_detalle_equipos.Visible = !habilitado;
             btn_nueva_busqueda.Visible = !habilitado;
             btn_buscar.Visible = habilitado;
             btn_imprimir.Visible = !habilitado;
@@ -72,7 +70,7 @@ namespace SisEquiposBertoncini.Aplicativo
             int id_equipo = Convert.ToInt32(ddl_categoria.SelectedItem.Value);
             int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
 
-           // Response.Redirect("~/Aplicativo/planilla_resumen_valores_equipo_categoria.aspx?cat=" + id_equipo.ToString() + "&a=" + anio.ToString());
+            // Response.Redirect("~/Aplicativo/planilla_resumen_valores_equipo_categoria.aspx?cat=" + id_equipo.ToString() + "&a=" + anio.ToString());
             CrearMostrarTabla(id_equipo, anio);
         }
 
@@ -199,7 +197,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     dr.Bold = "";
                     ds.Detalle_item.Rows.Add(dr);
 
-                    item_grilla_detalle item_equipo_Porcentaje= new item_grilla_detalle();
+                    item_grilla_detalle item_equipo_Porcentaje = new item_grilla_detalle();
                     item_equipo_Porcentaje.nombre_equipo = item.Equipo.nombre;
                     //item_equipo_Porcentaje.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + "2 treegrid-parent-" + item.Equipo.id_equipo.ToString();
                     item_equipo_Porcentaje.tipo_resultado = "Porcentaje de ganancias";
@@ -238,7 +236,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     dr_promedio.Bold = "";
                     ds.Detalle_item.Rows.Add(dr_promedio);
 
-                    item_grilla_detalle item_equipo_Velocidad= new item_grilla_detalle();
+                    item_grilla_detalle item_equipo_Velocidad = new item_grilla_detalle();
                     item_equipo_Velocidad.nombre_equipo = item.Equipo.nombre;
                     //item_equipo_Velocidad.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + "3 treegrid-parent-" + item.Equipo.id_equipo.ToString();
                     item_equipo_Velocidad.tipo_resultado = "Velocidad de recupero";
@@ -338,7 +336,7 @@ namespace SisEquiposBertoncini.Aplicativo
             deviceInfo = "<DeviceInfo><SimplePageHeaders>True</SimplePageHeaders></DeviceInfo>";
 
             //Render the report
-            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out  mimeType, out encoding, out extension, out streamids, out warnings);
+            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
             Session["Reporte"] = bytes;
 
             string script = "<script type='text/javascript'>window.open('Reportes/Report.aspx');</script>";

@@ -9,112 +9,130 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <table class="table-condensed">
-                <tr>
-                    <td>
-                        <h1 class="panel-title">Valores históricos dolar</h1>
-                    </td>
-                    <td>Año</td>
-                    <td>
-                        <asp:DropDownList runat="server" ID="ddl_anio" class="form-control" onchange="Selecciono_anio(this);">
-                            <asp:ListItem Text="Seleccione año:" />
-                        </asp:DropDownList></td>
-                </tr>
-            </table>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table-condensed" runat="server" id="tabla_valores_dolar_anio">
-                        <tr>
-                            <td>
-                                <label>Enero</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_1" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Febrero</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_2" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Marzo</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_3" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Abril</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_4" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Mayo</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_5" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Junio</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_6" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Julio</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_7" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Agosto</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_8" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Septiembre</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_9" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Octubre</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_10" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Noviembre</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_11" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Diciembre</label></td>
-                            <td>
-                                <asp:TextBox runat="server" ID="valor_mes_12" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
-                        </tr>
-                    </table>
-                </div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Dolar
+       
+                        <small>valores históricos del dolar</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i></i>Inicio</a></li>
+            <li><a href="#"><i></i>Ingresos - Egresos</a></li>
+            <li class="active">Editar valores dolar</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        <table class="table-condensed">
+            <tr>
+                <td>
+                    <h1 class="panel-title">Valores históricos dolar</h1>
+                </td>
+                <td>Año</td>
+                <td>
+                    <asp:DropDownList runat="server" ID="ddl_anio" class="form-control" onchange="Selecciono_anio(this);">
+                        <asp:ListItem Text="Seleccione año:" />
+                    </asp:DropDownList></td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table-condensed" runat="server" id="tabla_valores_dolar_anio">
+                    <tr>
+                        <td>
+                            <label>Enero</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_1" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Febrero</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_2" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Marzo</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_3" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Abril</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_4" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Mayo</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_5" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Junio</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_6" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Julio</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_7" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Agosto</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_8" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Septiembre</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_9" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Octubre</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_10" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Noviembre</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_11" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Diciembre</label></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="valor_mes_12" onkeypress="Modifica_valor(this, event)" CssClass="form-control money" /></td>
+                    </tr>
+                </table>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- /.content -->
+
+
+
+
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
     <script type="text/javascript">
         function Selecciono_anio(ddl) {
-            if (ddl.selectedIndex > 0)
-            {
+            if (ddl.selectedIndex > 0) {
                 var url
                 if (window.location.href.indexOf("?") > -1) {
                     url = window.location.href.split("=")[0] + "=" + ddl.value;
-                    
+
                 }
                 else {
                     url = window.location.href + "?aa=" + ddl.value;

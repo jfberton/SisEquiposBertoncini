@@ -47,6 +47,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     CargarDatos();
                 }
             }
+
+            menu_admin.Activar_Li("li_planillas0ul_administrativo");
         }
 
         private decimal ObtenerValor(string valor)

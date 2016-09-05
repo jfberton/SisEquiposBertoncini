@@ -26,11 +26,13 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     case perfil_usuario.Admin:
                         menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_horas0ul_feriados");
                         menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Jefe:
-                         menu_admin.Visible = true;
-                         menu_usuario.Visible = false;
+                        menu_admin.Visible = true;
+                        menu_admin.Activar_Li("li_horas0ul_feriados");
+                        menu_usuario.Visible = false;
                         break;
                     case perfil_usuario.Supervisor:
                         break;
@@ -138,7 +140,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     DateTime fecha;
                     if (DateTime.TryParse(tb_fecha_feriado.Value, out fecha))
                     {
-                        Feriado feriado = new Feriado() { fecha = fecha, descripcion = tb_descripcion.Value};
+                        Feriado feriado = new Feriado() { fecha = fecha, descripcion = tb_descripcion.Value };
 
                         cxt.Feriados.Add(feriado);
 

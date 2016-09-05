@@ -19,6 +19,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 CargarDDL_anio();
                 btn_nueva_busqueda.Visible = false;
+                menu_admin.Activar_Li("li_planillas0ul_resumen_horas");
             }
         }
 

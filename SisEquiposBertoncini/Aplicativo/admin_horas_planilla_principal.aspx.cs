@@ -24,6 +24,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 Cargar_ddls();
 
+                menu_admin.Activar_Li("li_planillas0ul_principal");
+
                 if (Session["planilla_principal_tipo_empleado"] != null)
                 {
                     int mes = 0;

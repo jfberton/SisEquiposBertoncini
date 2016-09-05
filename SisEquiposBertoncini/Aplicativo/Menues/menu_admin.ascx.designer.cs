@@ -13,48 +13,273 @@ namespace SisEquiposBertoncini.Aplicativo.Menues {
     public partial class menu_admin {
         
         /// <summary>
-        /// lbl_fecha_hora control.
+        /// li_areas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_fecha_hora;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_areas;
         
         /// <summary>
-        /// lbl_ApyNom control.
+        /// li_empleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ApyNom;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_empleados;
         
         /// <summary>
-        /// imagen_usuario control.
+        /// ul_empleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SisEquiposBertoncini.Aplicativo.Controles.imagen_usuario imagen_usuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_empleados;
         
         /// <summary>
-        /// lbl_CambiarClave control.
+        /// li_empleados0ul_empleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbl_CambiarClave;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_empleados0ul_empleados;
         
         /// <summary>
-        /// lbl_logout control.
+        /// li_empleados0ul_categorias control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbl_logout;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_empleados0ul_categorias;
+        
+        /// <summary>
+        /// li_equipos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_equipos;
+        
+        /// <summary>
+        /// ul_equipos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_equipos;
+        
+        /// <summary>
+        /// li_equipos0ul_equipos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_equipos0ul_equipos;
+        
+        /// <summary>
+        /// li_equipos0ul_categoias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_equipos0ul_categoias;
+        
+        /// <summary>
+        /// li_io control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io;
+        
+        /// <summary>
+        /// ul_io control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_io;
+        
+        /// <summary>
+        /// li_io0ul_conceptos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_conceptos;
+        
+        /// <summary>
+        /// li_io0ul_mes_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_mes_equipo;
+        
+        /// <summary>
+        /// li_io0ul_anio_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_anio_equipo;
+        
+        /// <summary>
+        /// li_io0ul_mes_categoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_mes_categoria;
+        
+        /// <summary>
+        /// li_io0ul_anio_categoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_anio_categoria;
+        
+        /// <summary>
+        /// li_io0ul_equipos_categoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_equipos_categoria;
+        
+        /// <summary>
+        /// li_io0ul_dolar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_io0ul_dolar;
+        
+        /// <summary>
+        /// li_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_horas;
+        
+        /// <summary>
+        /// ul_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_horas;
+        
+        /// <summary>
+        /// li_horas0ul_feriados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_horas0ul_feriados;
+        
+        /// <summary>
+        /// li_horas0ul_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_horas0ul_horas;
+        
+        /// <summary>
+        /// li_planillas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_planillas;
+        
+        /// <summary>
+        /// ul_planillas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_planillas;
+        
+        /// <summary>
+        /// li_planillas0ul_principal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_planillas0ul_principal;
+        
+        /// <summary>
+        /// li_planillas0ul_administrativo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_planillas0ul_administrativo;
+        
+        /// <summary>
+        /// li_planillas0ul_resumen_horas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_planillas0ul_resumen_horas;
+        
+        /// <summary>
+        /// li_importar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_importar;
+        
+        /// <summary>
+        /// ul_importar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ul_importar;
+        
+        /// <summary>
+        /// li_importar0ulfacturacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_importar0ulfacturacion;
     }
 }

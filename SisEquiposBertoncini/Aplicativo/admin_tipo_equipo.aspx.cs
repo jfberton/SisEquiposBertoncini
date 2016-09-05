@@ -27,6 +27,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     btn_agregar_categoria.Visible = false;
                 }
 
+                menu_admin.Activar_Li("li_equipos0ul_categoias");
+
                 CargarCategorias();
             }
         }

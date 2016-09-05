@@ -27,6 +27,8 @@ namespace SisEquiposBertoncini.Aplicativo
                     btn_agregar.Visible = false;
                 }
 
+                menu_admin.Activar_Li("li_equipos0ul_equipos");
+
                 CargarEquipos();
             }
         }
