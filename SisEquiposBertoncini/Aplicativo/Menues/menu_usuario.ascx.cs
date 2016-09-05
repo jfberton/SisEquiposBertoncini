@@ -39,26 +39,23 @@ namespace SisEquiposBertoncini.Aplicativo.Menues
                 ((HtmlGenericControl)contenedor).Attributes.Add("style", "display: block;");
 
             }
-            else
+            Control li = FindControl(nombreLI);
+            if (li != null)
             {
-                Control li = FindControl(nombreLI);
-                if (li != null)
+
+                if (Session["ultimo_activo"] != null)
                 {
-
-                    if (Session["ultimo_activo"] != null)
+                    string ultimo_activo = Session["ultimo_activo"].ToString();
+                    Control ultimo_control_activo = FindControl(ultimo_activo);
+                    if (ultimo_control_activo != null)
                     {
-                        string ultimo_activo = Session["ultimo_activo"].ToString();
-                        Control ultimo_control_activo = FindControl(ultimo_activo);
-                        if (ultimo_control_activo != null)
-                        {
-                            ((HtmlGenericControl)ultimo_control_activo).Attributes.Clear();
-                        }
+                        ((HtmlGenericControl)ultimo_control_activo).Attributes.Clear();
                     }
-
-                    ((HtmlGenericControl)li).Attributes.Clear();
-                    ((HtmlGenericControl)li).Attributes.Add("class", "active");
-                    Session["ultimo_activo"] = nombreLI;
                 }
+
+                ((HtmlGenericControl)li).Attributes.Clear();
+                ((HtmlGenericControl)li).Attributes.Add("class", "active");
+                Session["ultimo_activo"] = nombreLI;
             }
         }
 

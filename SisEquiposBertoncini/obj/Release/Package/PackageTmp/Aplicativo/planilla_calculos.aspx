@@ -15,120 +15,137 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
-    <ol class="breadcrumb">
-        <li>Inicio</li>
-        <li>Planillas</li>
-        <li>En función de horas empleado</li>
-        <li>Planilla de cálculos</li>
-    </ol>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Planilla cálculos
+        </h1>
 
-    <div id="div_print">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3>
-                    <label>Planilla de cálculos de </label>
-                    &nbsp;<asp:Label Text="" ID="lbl_tipo_empleado" runat="server" />&nbsp;-
+        <ol class="breadcrumb">
+            <li>Inicio</li>
+            <li>Planillas</li>
+            <li>En función de horas empleado</li>
+            <li class="active">Planilla de cálculos</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        <div id="div_print">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>
+                        <label>Planilla de cálculos de </label>
+                        &nbsp;<asp:Label Text="" ID="lbl_tipo_empleado" runat="server" />&nbsp;-
                     <label>Mes </label>
-                    &nbsp;<asp:Label Text="" ID="lbl_mes" runat="server" />&nbsp;
+                        &nbsp;<asp:Label Text="" ID="lbl_mes" runat="server" />&nbsp;
                     <label>Año </label>
-                    &nbsp;<asp:Label Text="" ID="lbl_anio" runat="server" /></h3>
+                        &nbsp;<asp:Label Text="" ID="lbl_anio" runat="server" /></h3>
+                </div>
             </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-3">
-                <table class="table">
-                    <tr>
-                        <td style="background-color: lightgray">
-                            <label>Horas Totales</label></td>
-                        <td style="background-color: whitesmoke">
-                            <label>
-                                <asp:Label Text="" ID="lbl_horas_totales" runat="server" /></label></td>
-                    </tr>
-                </table>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <table class="table">
+                        <tr>
+                            <td style="background-color: lightgray">
+                                <label>Horas Totales</label></td>
+                            <td style="background-color: whitesmoke">
+                                <label>
+                                    <asp:Label Text="" ID="lbl_horas_totales" runat="server" /></label></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <table class="table">
+                        <tr>
+                            <td style="background-color: lightgray">
+                                <label>Horas Normales</label></td>
+                            <td style="background-color: whitesmoke">
+                                <asp:Label Text="" ID="lbl_horas_normales" runat="server" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <table class="table">
+                        <tr>
+                            <td style="background-color: lightgray">
+                                <label>Horas Extra 50%</label></td>
+                            <td style="background-color: whitesmoke">
+                                <asp:Label Text="" ID="lbl_horas_extra_50" runat="server" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <table class="table">
+                        <tr>
+                            <td style="background-color: lightgray">
+                                <label>Horas Extra 100%</label></td>
+                            <td style="background-color: whitesmoke">
+                                <asp:Label Text="" ID="lbl_horas_extra_100" runat="server" /></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="col-md-3">
-                <table class="table">
-                    <tr>
-                        <td style="background-color: lightgray">
-                            <label>Horas Normales</label></td>
-                        <td style="background-color: whitesmoke">
-                            <asp:Label Text="" ID="lbl_horas_normales" runat="server" /></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-3">
-                <table class="table">
-                    <tr>
-                        <td style="background-color: lightgray">
-                            <label>Horas Extra 50%</label></td>
-                        <td style="background-color: whitesmoke">
-                            <asp:Label Text="" ID="lbl_horas_extra_50" runat="server" /></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-3">
-                <table class="table">
-                    <tr>
-                        <td style="background-color: lightgray">
-                            <label>Horas Extra 100%</label></td>
-                        <td style="background-color: whitesmoke">
-                            <asp:Label Text="" ID="lbl_horas_extra_100" runat="server" /></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table>
-                    <tr>
-                        <td>Calcular en base al&nbsp;
+            <div class="row">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td>Calcular en base al&nbsp;
                                 <asp:DropDownList runat="server" ID="ddl_costo_hora" AutoPostBack="true" CausesValidation="false" OnSelectedIndexChanged="ddl_costo_hora_SelectedIndexChanged">
                                     <asp:ListItem Text="Costo hora teórico" />
                                     <asp:ListItem Text="Costo hora teórico ajustado" />
                                     <asp:ListItem Text="Costo hora real" />
                                 </asp:DropDownList></td>
-                        <td>&nbsp;<label><asp:Label Text="" ID="lbl_costo_hora_seleccionado" runat="server" /></label></td>
-                    </tr>
-                </table>
+                            <td>&nbsp;<label><asp:Label Text="" ID="lbl_costo_hora_seleccionado" runat="server" /></label></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="div_tabla" runat="server"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="div_tabla_OUT" runat="server"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="div_tabla_resumen" runat="server"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="div_tabla_resumen_ausentismo" runat="server"></div>
+                </div>
+            </div>
+            <br />
         </div>
-        <br />
         <div class="row">
-            <div class="col-md-12">
-                <div id="div_tabla" runat="server"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div id="div_tabla_OUT" runat="server"></div>
-            </div>
-            <div class="col-md-6">
-                <div id="div_tabla_resumen" runat="server"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="div_tabla_resumen_ausentismo" runat="server"></div>
-            </div>
-        </div>
-        <br />
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
-                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla principal
-            </button>
+            <div class="col-md-12 text-center">
+                <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_principal" onserverclick="btn_ver_planilla_principal_ServerClick">
+                    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla principal
+                </button>
 
-             <button class="btn btn-default btn-lg" onclick="Imprimir(); return false;">
-                <span class="glyphicon glyphicon-print"></span>
-            </button>
+                <button class="btn btn-default btn-lg" onclick="Imprimir(); return false;">
+                    <span class="glyphicon glyphicon-print"></span>
+                </button>
 
-            <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_gastos_horas_hombre" onserverclick="btn_ver_planilla_gastos_horas_hombre_ServerClick">
-                Gastos funcion horas hombre&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
+                <button class="btn btn-default btn-lg" runat="server" id="btn_ver_planilla_gastos_horas_hombre" onserverclick="btn_ver_planilla_gastos_horas_hombre_ServerClick">
+                    Gastos funcion horas hombre&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </div>
         </div>
-    </div>
+    </section>
+    <!-- /.content -->
+
+
+
+
+
     <br />
 </asp:Content>
 

@@ -11,20 +11,25 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
 
-    <ol class="breadcrumb">
-        <li>Inicio</li>
-        <li>Equipos</li>
-        <li><a href="admin_equipos.aspx">Equipos</a></li>
-        <li>
-            <asp:Label Text="" ID="lbl_breadcumb" runat="server" /></li>
-    </ol>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Datos equipo
+       
+                        <small>datos requeridos del equipo</small>
+        </h1>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h1 class="panel-title">Datos equipo</h1>
-        </div>
-        <div class="panel-body">
-            <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><i></i>Inicio</a></li>
+            <li><a href="#"><i></i>Equipos</a></li>
+            <li class="active"><asp:Label Text="" ID="lbl_breadcumb" runat="server" /></li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+                   <div class="row">
                 <div class="col-md-12">
                     <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList" ValidationGroup="equipo"
                         CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
@@ -462,14 +467,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel-footer text-right">
-            <button id="btn_guardar_equipo" runat="server" onserverclick="btn_guardar_equipo_ServerClick" class="btn btn-success" validationgroup="equipo">
+
+           <button id="btn_guardar_equipo" runat="server" onserverclick="btn_guardar_equipo_ServerClick" class="btn btn-success" validationgroup="equipo">
                 <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
             </button>
             <asp:Button Text="Cancelar" CssClass="btn btn-default" ID="btn_cancelar" OnClick="btn_cancelar_Click" runat="server" />
-        </div>
-    </div>
+    </section>
+    <!-- /.content -->
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
     <script>
