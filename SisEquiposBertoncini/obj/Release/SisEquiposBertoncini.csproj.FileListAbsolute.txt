@@ -52,3 +52,5 @@ D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.xml
 D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\SisEquiposBertoncini.csproj.ResolveComReference.cache
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.dll
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\RdlCompile.cache
+d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Release\RdlCompile.compiled

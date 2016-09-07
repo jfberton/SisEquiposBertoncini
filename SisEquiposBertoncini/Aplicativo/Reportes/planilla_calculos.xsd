@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="planilla_calculos" targetNamespace="http://tempuri.org/planilla_calculos.xsd" xmlns:mstns="http://tempuri.org/planilla_calculos.xsd" xmlns="http://tempuri.org/planilla_calculos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="planilla_calculos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="planilla_calculos" msprop:Generator_UserDSName="planilla_calculos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Equipos_horas" msprop:Generator_TableClassName="Equipos_horasDataTable" msprop:Generator_TableVarName="tableEquipos_horas" msprop:Generator_RowChangedName="Equipos_horasRowChanged" msprop:Generator_TablePropName="Equipos_horas" msprop:Generator_RowDeletingName="Equipos_horasRowDeleting" msprop:Generator_RowChangingName="Equipos_horasRowChanging" msprop:Generator_RowEvHandlerName="Equipos_horasRowChangeEventHandler" msprop:Generator_RowDeletedName="Equipos_horasRowDeleted" msprop:Generator_RowClassName="Equipos_horasRow" msprop:Generator_UserTableName="Equipos_horas" msprop:Generator_RowEvArgName="Equipos_horasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Categoria" msprop:Generator_ColumnVarNameInTable="columnCategoria" msprop:Generator_ColumnPropNameInRow="Categoria" msprop:Generator_ColumnPropNameInTable="CategoriaColumn" msprop:Generator_UserColumnName="Categoria" type="xs:string" minOccurs="0" />
+              <xs:element name="Equipo" msprop:Generator_ColumnVarNameInTable="columnEquipo" msprop:Generator_ColumnPropNameInRow="Equipo" msprop:Generator_ColumnPropNameInTable="EquipoColumn" msprop:Generator_UserColumnName="Equipo" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_directas" msprop:Generator_ColumnVarNameInTable="columnHs_directas" msprop:Generator_ColumnPropNameInRow="Hs_directas" msprop:Generator_ColumnPropNameInTable="Hs_directasColumn" msprop:Generator_UserColumnName="Hs_directas" type="xs:string" minOccurs="0" />
+              <xs:element name="Porcentaje" msprop:Generator_ColumnVarNameInTable="columnPorcentaje" msprop:Generator_ColumnPropNameInRow="Porcentaje" msprop:Generator_ColumnPropNameInTable="PorcentajeColumn" msprop:Generator_UserColumnName="Porcentaje" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_taller" msprop:Generator_ColumnVarNameInTable="columnHs_taller" msprop:Generator_ColumnPropNameInRow="Hs_taller" msprop:Generator_ColumnPropNameInTable="Hs_tallerColumn" msprop:Generator_UserColumnName="Hs_taller" type="xs:string" minOccurs="0" />
+              <xs:element name="Agrega_guardia" msprop:Generator_ColumnVarNameInTable="columnAgrega_guardia" msprop:Generator_ColumnPropNameInRow="Agrega_guardia" msprop:Generator_ColumnPropNameInTable="Agrega_guardiaColumn" msprop:Generator_UserColumnName="Agrega_guardia" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas_guardia" msprop:Generator_ColumnVarNameInTable="columnHoras_guardia" msprop:Generator_ColumnPropNameInRow="Horas_guardia" msprop:Generator_ColumnPropNameInTable="Horas_guardiaColumn" msprop:Generator_UserColumnName="Horas_guardia" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_horas" msprop:Generator_ColumnVarNameInTable="columnTotal_horas" msprop:Generator_ColumnPropNameInRow="Total_horas" msprop:Generator_ColumnPropNameInTable="Total_horasColumn" msprop:Generator_UserColumnName="Total_horas" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_pesos" msprop:Generator_ColumnVarNameInTable="columnTotal_pesos" msprop:Generator_ColumnPropNameInRow="Total_pesos" msprop:Generator_ColumnPropNameInTable="Total_pesosColumn" msprop:Generator_UserColumnName="Total_pesos" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Asistencia" msprop:Generator_TableClassName="AsistenciaDataTable" msprop:Generator_TableVarName="tableAsistencia" msprop:Generator_RowChangedName="AsistenciaRowChanged" msprop:Generator_TablePropName="Asistencia" msprop:Generator_RowDeletingName="AsistenciaRowDeleting" msprop:Generator_RowChangingName="AsistenciaRowChanging" msprop:Generator_RowEvHandlerName="AsistenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="AsistenciaRowDeleted" msprop:Generator_RowClassName="AsistenciaRow" msprop:Generator_UserTableName="Asistencia" msprop:Generator_RowEvArgName="AsistenciaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Empleado" msprop:Generator_ColumnVarNameInTable="columnEmpleado" msprop:Generator_ColumnPropNameInRow="Empleado" msprop:Generator_ColumnPropNameInTable="EmpleadoColumn" msprop:Generator_UserColumnName="Empleado" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_normales" msprop:Generator_ColumnVarNameInTable="columnHs_normales" msprop:Generator_ColumnPropNameInRow="Hs_normales" msprop:Generator_ColumnPropNameInTable="Hs_normalesColumn" msprop:Generator_UserColumnName="Hs_normales" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_50" msprop:Generator_ColumnVarNameInTable="columnHs_50" msprop:Generator_ColumnPropNameInRow="Hs_50" msprop:Generator_ColumnPropNameInTable="Hs_50Column" msprop:Generator_UserColumnName="Hs_50" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_100" msprop:Generator_ColumnVarNameInTable="columnHs_100" msprop:Generator_ColumnPropNameInRow="Hs_100" msprop:Generator_ColumnPropNameInTable="Hs_100Column" msprop:Generator_UserColumnName="Hs_100" type="xs:string" minOccurs="0" />
+              <xs:element name="Dias_laborables" msprop:Generator_ColumnVarNameInTable="columnDias_laborables" msprop:Generator_ColumnPropNameInRow="Dias_laborables" msprop:Generator_ColumnPropNameInTable="Dias_laborablesColumn" msprop:Generator_UserColumnName="Dias_laborables" type="xs:string" minOccurs="0" />
+              <xs:element name="Dias_presentes" msprop:Generator_ColumnVarNameInTable="columnDias_presentes" msprop:Generator_ColumnPropNameInRow="Dias_presentes" msprop:Generator_ColumnPropNameInTable="Dias_presentesColumn" msprop:Generator_UserColumnName="Dias_presentes" type="xs:string" minOccurs="0" />
+              <xs:element name="Dias_ausentes" msprop:Generator_ColumnVarNameInTable="columnDias_ausentes" msprop:Generator_ColumnPropNameInRow="Dias_ausentes" msprop:Generator_ColumnPropNameInTable="Dias_ausentesColumn" msprop:Generator_UserColumnName="Dias_ausentes" type="xs:string" minOccurs="0" />
+              <xs:element name="Dias_diferencia" msprop:Generator_ColumnVarNameInTable="columnDias_diferencia" msprop:Generator_ColumnPropNameInRow="Dias_diferencia" msprop:Generator_ColumnPropNameInTable="Dias_diferenciaColumn" msprop:Generator_UserColumnName="Dias_diferencia" type="xs:string" minOccurs="0" />
+              <xs:element name="Res_porc_aus" msprop:Generator_ColumnVarNameInTable="columnRes_porc_aus" msprop:Generator_ColumnPropNameInRow="Res_porc_aus" msprop:Generator_ColumnPropNameInTable="Res_porc_ausColumn" msprop:Generator_UserColumnName="Res_porc_aus" type="xs:string" minOccurs="0" />
+              <xs:element name="Res_aus" msprop:Generator_ColumnVarNameInTable="columnRes_aus" msprop:Generator_ColumnPropNameInRow="Res_aus" msprop:Generator_ColumnPropNameInTable="Res_ausColumn" msprop:Generator_UserColumnName="Res_aus" type="xs:string" minOccurs="0" />
+              <xs:element name="Res_pesos_aus" msprop:Generator_ColumnVarNameInTable="columnRes_pesos_aus" msprop:Generator_ColumnPropNameInRow="Res_pesos_aus" msprop:Generator_ColumnPropNameInTable="Res_pesos_ausColumn" msprop:Generator_UserColumnName="Res_pesos_aus" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_totales" msprop:Generator_ColumnVarNameInTable="columnHs_totales" msprop:Generator_ColumnPropNameInRow="Hs_totales" msprop:Generator_ColumnPropNameInTable="Hs_totalesColumn" msprop:Generator_UserColumnName="Hs_totales" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Trabajos_out" msprop:Generator_TableClassName="Trabajos_outDataTable" msprop:Generator_TableVarName="tableTrabajos_out" msprop:Generator_RowChangedName="Trabajos_outRowChanged" msprop:Generator_TablePropName="Trabajos_out" msprop:Generator_RowDeletingName="Trabajos_outRowDeleting" msprop:Generator_RowChangingName="Trabajos_outRowChanging" msprop:Generator_RowEvHandlerName="Trabajos_outRowChangeEventHandler" msprop:Generator_RowDeletedName="Trabajos_outRowDeleted" msprop:Generator_RowClassName="Trabajos_outRow" msprop:Generator_UserTableName="Trabajos_out" msprop:Generator_RowEvArgName="Trabajos_outRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Trabajo" msprop:Generator_ColumnVarNameInTable="columnTrabajo" msprop:Generator_ColumnPropNameInRow="Trabajo" msprop:Generator_ColumnPropNameInTable="TrabajoColumn" msprop:Generator_UserColumnName="Trabajo" type="xs:string" minOccurs="0" />
+              <xs:element name="Dias" msprop:Generator_ColumnVarNameInTable="columnDias" msprop:Generator_ColumnPropNameInRow="Dias" msprop:Generator_ColumnPropNameInTable="DiasColumn" msprop:Generator_UserColumnName="Dias" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Totales_categoria" msprop:Generator_TableClassName="Totales_categoriaDataTable" msprop:Generator_TableVarName="tableTotales_categoria" msprop:Generator_RowChangedName="Totales_categoriaRowChanged" msprop:Generator_TablePropName="Totales_categoria" msprop:Generator_RowDeletingName="Totales_categoriaRowDeleting" msprop:Generator_RowChangingName="Totales_categoriaRowChanging" msprop:Generator_RowEvHandlerName="Totales_categoriaRowChangeEventHandler" msprop:Generator_RowDeletedName="Totales_categoriaRowDeleted" msprop:Generator_RowClassName="Totales_categoriaRow" msprop:Generator_UserTableName="Totales_categoria" msprop:Generator_RowEvArgName="Totales_categoriaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Categoria" msprop:Generator_ColumnVarNameInTable="columnCategoria" msprop:Generator_ColumnPropNameInRow="Categoria" msprop:Generator_ColumnPropNameInTable="CategoriaColumn" msprop:Generator_UserColumnName="Categoria" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas" msprop:Generator_ColumnVarNameInTable="columnHoras" msprop:Generator_ColumnPropNameInRow="Horas" msprop:Generator_ColumnPropNameInTable="HorasColumn" msprop:Generator_UserColumnName="Horas" type="xs:string" minOccurs="0" />
+              <xs:element name="Porcentaje" msprop:Generator_ColumnVarNameInTable="columnPorcentaje" msprop:Generator_ColumnPropNameInRow="Porcentaje" msprop:Generator_ColumnPropNameInTable="PorcentajeColumn" msprop:Generator_UserColumnName="Porcentaje" type="xs:string" minOccurs="0" />
+              <xs:element name="Monto" msprop:Generator_ColumnVarNameInTable="columnMonto" msprop:Generator_ColumnPropNameInRow="Monto" msprop:Generator_ColumnPropNameInTable="MontoColumn" msprop:Generator_UserColumnName="Monto" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Equipos_horas_total" msprop:Generator_TableClassName="Equipos_horas_totalDataTable" msprop:Generator_TableVarName="tableEquipos_horas_total" msprop:Generator_RowChangedName="Equipos_horas_totalRowChanged" msprop:Generator_TablePropName="Equipos_horas_total" msprop:Generator_RowDeletingName="Equipos_horas_totalRowDeleting" msprop:Generator_RowChangingName="Equipos_horas_totalRowChanging" msprop:Generator_RowEvHandlerName="Equipos_horas_totalRowChangeEventHandler" msprop:Generator_RowDeletedName="Equipos_horas_totalRowDeleted" msprop:Generator_RowClassName="Equipos_horas_totalRow" msprop:Generator_UserTableName="Equipos_horas_total" msprop:Generator_RowEvArgName="Equipos_horas_totalRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Hs_directas" msprop:Generator_ColumnVarNameInTable="columnHs_directas" msprop:Generator_ColumnPropNameInRow="Hs_directas" msprop:Generator_ColumnPropNameInTable="Hs_directasColumn" msprop:Generator_UserColumnName="Hs_directas" type="xs:string" minOccurs="0" />
+              <xs:element name="Porcentaje" msprop:Generator_ColumnVarNameInTable="columnPorcentaje" msprop:Generator_ColumnPropNameInRow="Porcentaje" msprop:Generator_ColumnPropNameInTable="PorcentajeColumn" msprop:Generator_UserColumnName="Porcentaje" type="xs:string" minOccurs="0" />
+              <xs:element name="Hs_taller" msprop:Generator_ColumnVarNameInTable="columnHs_taller" msprop:Generator_ColumnPropNameInRow="Hs_taller" msprop:Generator_ColumnPropNameInTable="Hs_tallerColumn" msprop:Generator_UserColumnName="Hs_taller" type="xs:string" minOccurs="0" />
+              <xs:element name="Agrega_guardia" msprop:Generator_ColumnVarNameInTable="columnAgrega_guardia" msprop:Generator_ColumnPropNameInRow="Agrega_guardia" msprop:Generator_ColumnPropNameInTable="Agrega_guardiaColumn" msprop:Generator_UserColumnName="Agrega_guardia" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas_guardia" msprop:Generator_ColumnVarNameInTable="columnHoras_guardia" msprop:Generator_ColumnPropNameInRow="Horas_guardia" msprop:Generator_ColumnPropNameInTable="Horas_guardiaColumn" msprop:Generator_UserColumnName="Horas_guardia" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_horas" msprop:Generator_ColumnVarNameInTable="columnTotal_horas" msprop:Generator_ColumnPropNameInRow="Total_horas" msprop:Generator_ColumnPropNameInTable="Total_horasColumn" msprop:Generator_UserColumnName="Total_horas" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Datos_generales" msprop:Generator_TableClassName="Datos_generalesDataTable" msprop:Generator_TableVarName="tableDatos_generales" msprop:Generator_RowChangedName="Datos_generalesRowChanged" msprop:Generator_TablePropName="Datos_generales" msprop:Generator_RowDeletingName="Datos_generalesRowDeleting" msprop:Generator_RowChangingName="Datos_generalesRowChanging" msprop:Generator_RowEvHandlerName="Datos_generalesRowChangeEventHandler" msprop:Generator_RowDeletedName="Datos_generalesRowDeleted" msprop:Generator_RowClassName="Datos_generalesRow" msprop:Generator_UserTableName="Datos_generales" msprop:Generator_RowEvArgName="Datos_generalesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tipo_empleado" msprop:Generator_ColumnVarNameInTable="columnTipo_empleado" msprop:Generator_ColumnPropNameInRow="Tipo_empleado" msprop:Generator_ColumnPropNameInTable="Tipo_empleadoColumn" msprop:Generator_UserColumnName="Tipo_empleado" type="xs:string" minOccurs="0" />
+              <xs:element name="Mes" msprop:Generator_ColumnVarNameInTable="columnMes" msprop:Generator_ColumnPropNameInRow="Mes" msprop:Generator_ColumnPropNameInTable="MesColumn" msprop:Generator_UserColumnName="Mes" type="xs:string" minOccurs="0" />
+              <xs:element name="Anio" msprop:Generator_ColumnVarNameInTable="columnAnio" msprop:Generator_ColumnPropNameInRow="Anio" msprop:Generator_ColumnPropNameInTable="AnioColumn" msprop:Generator_UserColumnName="Anio" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas_totales" msprop:Generator_ColumnVarNameInTable="columnHoras_totales" msprop:Generator_ColumnPropNameInRow="Horas_totales" msprop:Generator_ColumnPropNameInTable="Horas_totalesColumn" msprop:Generator_UserColumnName="Horas_totales" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas_normales" msprop:Generator_ColumnVarNameInTable="columnHoras_normales" msprop:Generator_ColumnPropNameInRow="Horas_normales" msprop:Generator_ColumnPropNameInTable="Horas_normalesColumn" msprop:Generator_UserColumnName="Horas_normales" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas_extra_50" msprop:Generator_ColumnVarNameInTable="columnHoras_extra_50" msprop:Generator_ColumnPropNameInRow="Horas_extra_50" msprop:Generator_ColumnPropNameInTable="Horas_extra_50Column" msprop:Generator_UserColumnName="Horas_extra_50" type="xs:string" minOccurs="0" />
+              <xs:element name="Horas_extra_100" msprop:Generator_ColumnVarNameInTable="columnHoras_extra_100" msprop:Generator_ColumnPropNameInRow="Horas_extra_100" msprop:Generator_ColumnPropNameInTable="Horas_extra_100Column" msprop:Generator_UserColumnName="Horas_extra_100" type="xs:string" minOccurs="0" />
+              <xs:element name="Calculado_en_base_a" msprop:Generator_ColumnVarNameInTable="columnCalculado_en_base_a" msprop:Generator_ColumnPropNameInRow="Calculado_en_base_a" msprop:Generator_ColumnPropNameInTable="Calculado_en_base_aColumn" msprop:Generator_UserColumnName="Calculado_en_base_a" type="xs:string" minOccurs="0" />
+              <xs:element name="Costo_hora" msprop:Generator_ColumnVarNameInTable="columnCosto_hora" msprop:Generator_ColumnPropNameInRow="Costo_hora" msprop:Generator_ColumnPropNameInTable="Costo_horaColumn" msprop:Generator_UserColumnName="Costo_hora" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

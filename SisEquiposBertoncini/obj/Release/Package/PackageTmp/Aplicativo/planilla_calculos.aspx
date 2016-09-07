@@ -139,6 +139,8 @@
                 </button>
             </div>
         </div>
+
+        <asp:Button Text="imprimir" ID="btn_imprimir" OnClick="btn_imprimir_Click" runat="server" />
     </section>
     <!-- /.content -->
 

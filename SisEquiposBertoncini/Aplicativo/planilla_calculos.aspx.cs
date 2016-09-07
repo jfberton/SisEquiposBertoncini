@@ -1,4 +1,5 @@
-﻿using SisEquiposBertoncini.Aplicativo.Controles;
+﻿using Microsoft.Reporting.WebForms;
+using SisEquiposBertoncini.Aplicativo.Controles;
 using SisEquiposBertoncini.Aplicativo.Datos;
 using System;
 using System.Collections.Generic;
@@ -38,8 +39,6 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 CrearCargarTabla();
             }
-
-            
         }
 
         private string ObtenerMes(string p)
@@ -116,6 +115,7 @@ namespace SisEquiposBertoncini.Aplicativo
             int anio = Convert.ToInt32(Session["planilla_calculos_anio"]);
             string categoria_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
 
+
             HtmlTable tabla = new HtmlTable();
             tabla.Attributes.Clear();
             tabla.Attributes.Add("class", "table table-bordered");
@@ -166,7 +166,7 @@ namespace SisEquiposBertoncini.Aplicativo
             using (var cxt = new Model1Container())
             {
                 List<item_combinado> categorias = new List<item_combinado>();
-                
+
                 foreach (Categoria_equipo categoria in cxt.Categorias_equipos)
                 {
                     if (categoria.toma_en_cuenta_planilla_costos_horas_hombre.HasValue && categoria.toma_en_cuenta_planilla_costos_horas_hombre.Value)
@@ -175,32 +175,6 @@ namespace SisEquiposBertoncini.Aplicativo
                     }
                 }
 
-
-                //Categoria_equipo camiones_y_carretones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Camiones y carretones");
-                //Categoria_equipo gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Gruas");
-                //Categoria_equipo vehiculos_menores = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Vehículos menores");
-                //Categoria_equipo ventas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Ventas");
-                //Categoria_equipo trabajos_particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos particulares");
-                //Categoria_equipo trabajos_especiales = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Trabajos especiales");
-                //Categoria_equipo otros = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "Otros");
-                //Categoria_equipo particulares = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "PARTICULAR");
-                //Categoria_equipo mantenimiento_instalaciones = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "MANTENIMIENTO DE INSTALACIONES");
-                //Categoria_equipo elementos_izaje = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "ELEMENTOS DE IZAJE");
-                //Categoria_equipo accesorios_gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "ACCESORIOS DE GRUAS");
-                //Categoria_equipo camionetas_gruas = cxt.Categorias_equipos.FirstOrDefault(x => x.nombre == "CAMIONETAS PARA GRUAS");
-
-                //List<equipo_tabla> filas_camiones_y_carretones = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_gruas = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_vehiculos_menores = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_ventas = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_trabajos_particulares = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_otros = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_trabajos_especiales = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_particulares = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_mantenimiento_instalaciones = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_elementos_de_izaje = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_accesorios_gruas = new List<equipo_tabla>();
-                //List<equipo_tabla> filas_camionetas_gruas = new List<equipo_tabla>();
                 List<equipo_tabla> filas_out_soldadores = new List<equipo_tabla>();
 
                 List<total_categoria_tabla> filas_tabla_total_categoria = new List<total_categoria_tabla>();
@@ -224,19 +198,6 @@ namespace SisEquiposBertoncini.Aplicativo
                     CargarFilasCategoria(item.categoria, item.filas_categoria, mes, anio, costo_hora);
                 }
 
-                //CargarFilasCategoria(camiones_y_carretones, filas_camiones_y_carretones, mes, anio, costo_hora);
-                //CargarFilasCategoria(gruas, filas_gruas, mes, anio, costo_hora);
-                //CargarFilasCategoria(vehiculos_menores, filas_vehiculos_menores, mes, anio, costo_hora);
-                //CargarFilasCategoria(ventas, filas_ventas, mes, anio, costo_hora);
-                //CargarFilasCategoria(trabajos_particulares, filas_trabajos_particulares, mes, anio, costo_hora);
-                //CargarFilasCategoria(trabajos_especiales, filas_trabajos_especiales, mes, anio, costo_hora);
-                //CargarFilasCategoria(otros, filas_otros, mes, anio, costo_hora);
-                //CargarFilasCategoria(particulares, filas_particulares, mes, anio, costo_hora);
-                //CargarFilasCategoria(mantenimiento_instalaciones, filas_mantenimiento_instalaciones, mes, anio, costo_hora);
-                //CargarFilasCategoria(elementos_izaje, filas_elementos_de_izaje, mes, anio, costo_hora);
-                //CargarFilasCategoria(accesorios_gruas, filas_accesorios_gruas, mes, anio, costo_hora);
-                //CargarFilasCategoria(camionetas_gruas, filas_camionetas_gruas, mes, anio, costo_hora);
-
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     List<Equipo> equipos = cxt.Equipos.Where(x => x.OUT).ToList();
@@ -256,19 +217,6 @@ namespace SisEquiposBertoncini.Aplicativo
                     CorregirFilas(item.filas_categoria, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
                 }
 
-                //CorregirFilas(filas_camiones_y_carretones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_vehiculos_menores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_ventas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_trabajos_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_trabajos_especiales, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_otros, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_particulares, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_mantenimiento_instalaciones, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_elementos_de_izaje, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_accesorios_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-                //CorregirFilas(filas_camionetas_gruas, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
-
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     CorregirFilas(filas_out_soldadores, horas_totales_equipos, horas_guardia_decimal, horas_varios_taller_decimal, equipos_guardia);
@@ -286,34 +234,53 @@ namespace SisEquiposBertoncini.Aplicativo
                 fila_totales.Controls.Add(new HtmlTableCell("th") { InnerHtml = (horas_totales_equipos + horas_varios_taller_decimal + horas_guardia_decimal).ToString("#,##0.00") });
                 tabla.Controls.Add(fila_totales);
 
-
                 Session["planilla_gastos_en_funcion_horas_hombre_categorias"] = new List<categoria_paraPlanillaGastosenFuncionHorasHombre>();
                 Session["planilla_gastos_en_funcion_horas_hombre_mes"] = mes;
                 Session["planilla_gastos_en_funcion_horas_hombre_anio"] = anio;
                 Session["planilla_gastos_en_funcion_horas_hombre_tipo_empleado"] = categoria_empleado;
 
+                ///REPORTE - Creo y agrego las primeras filas del dataset para el reporte
+                Reportes.planilla_calculos ds = new Reportes.planilla_calculos();
+                //(ds reporte) Agrego la primer fila de totales despues de los titulos de la tabla equipo horas
+                Reportes.planilla_calculos.Equipos_horas_totalRow eht = ds.Equipos_horas_total.NewEquipos_horas_totalRow();
+                eht.Hs_directas = horas_totales_equipos.ToString("#,##0.00");
+                eht.Porcentaje = "100 %";
+                eht.Hs_taller = horas_varios_taller_decimal.ToString("#,##0.00");
+                if (categoria_empleado != "Soldadores")
+                {
+                    eht.Agrega_guardia = equipos_guardia.ToString();
+                    eht.Horas_guardia = horas_guardia_decimal.ToString("#,##0.00");
+                }
+                else
+                {
+                    eht.Agrega_guardia = 0.ToString();
+                    eht.Horas_guardia = 0.ToString("#,##0.00");
+                }
+                eht.Total_horas = (horas_totales_equipos + horas_varios_taller_decimal + horas_guardia_decimal).ToString("#,##0.00");
+                ds.Equipos_horas_total.Rows.Add(eht);
+
+                //(ds reporte) Agrego la fila de datos generales 
+                Reportes.planilla_calculos.Datos_generalesRow dg = ds.Datos_generales.NewDatos_generalesRow();
+                dg.Mes = mes.ToString();
+                dg.Anio = anio.ToString();
+                dg.Tipo_empleado = categoria_empleado;
+                dg.Horas_normales = lbl_horas_normales.Text;
+                dg.Horas_extra_50 = lbl_horas_extra_50.Text;
+                dg.Horas_extra_100 = lbl_horas_extra_100.Text;
+                dg.Horas_totales = lbl_horas_totales.Text;
+                dg.Calculado_en_base_a = ddl_costo_hora.SelectedItem.Text;
+                dg.Costo_hora = costo_hora.ToString("$ #,##0.00");
+                ds.Datos_generales.Rows.Add(dg);
+                //(ds reporte) guardo el adtaset en una variable de session para poder seguir cargandolo desde las demas funciones
+                Session["ds_planilla_calculos"] = ds;
                 foreach (item_combinado item in categorias)
                 {
                     Agregar_a_tabla(tabla, item.filas_categoria, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 }
 
-                //Agregar_a_tabla(tabla, filas_camiones_y_carretones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_vehiculos_menores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_ventas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_trabajos_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_trabajos_especiales, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_particulares, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_mantenimiento_instalaciones, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_elementos_de_izaje, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_accesorios_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-                //Agregar_a_tabla(tabla, filas_camionetas_gruas, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
-
                 if (categoria_empleado == "Soldadores" || categoria_empleado == "Grueros")
                 {
                     //tengo que agregar los trabajos outs como trabajos dentro de la misma tabla
-                    //Agregar_a_tabla(tabla, filas_otros, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
 
                     Agregar_a_tabla(tabla, filas_out_soldadores, horas_totales_equipos, horas_varios_taller_decimal, horas_guardia_decimal, equipos_guardia, costo_hora);
                 }
@@ -331,6 +298,8 @@ namespace SisEquiposBertoncini.Aplicativo
             }
 
             Cargar_tabla_final_planilla_calculos();
+
+
         }
 
         private void CorregirFilas(List<equipo_tabla> filas_otros, decimal horas_totales_equipos, decimal horas_guardia, decimal horas_varios_taller, int equipos_guardia)
@@ -385,6 +354,7 @@ namespace SisEquiposBertoncini.Aplicativo
             int mes = Convert.ToInt32(Session["planilla_calculos_mes"]);
             int anio = Convert.ToInt32(Session["planilla_calculos_anio"]);
             string categoria_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
+            Reportes.planilla_calculos ds = Session["ds_planilla_calculos"] as Reportes.planilla_calculos;
 
             using (var cxt = new Model1Container())
             {
@@ -402,8 +372,6 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Equipo equipo in equipos)
                 {
-
-
                     string horas_mes_equipo = equipo.Horas_mes(mes, anio, categoria_empleado);
                     if (Horas_string.HoraNoNula(horas_mes_equipo))
                     {
@@ -424,6 +392,11 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (equipo_tabla_out item in outs.OrderByDescending(x => x.dias_out))
                 {
+                    Reportes.planilla_calculos.Trabajos_outRow tor = ds.Trabajos_out.NewTrabajos_outRow();
+                    tor.Trabajo = item.nombre;
+                    tor.Dias = item.dias_out.ToString("#,##0.00 'días.'");
+                    ds.Trabajos_out.Rows.Add(tor);
+
                     HtmlTableRow fila_trabajo_out = new HtmlTableRow();
                     fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = item.nombre, BgColor = "lightgray" });
                     fila_trabajo_out.Controls.Add(new HtmlTableCell("th") { InnerText = item.dias_out.ToString("#,##0.00 'días.'") });
@@ -434,8 +407,14 @@ namespace SisEquiposBertoncini.Aplicativo
                 fila_pie.Controls.Add(new HtmlTableCell("th") { InnerText = "TOTAL", BgColor = "lightgray" });
                 fila_pie.Controls.Add(new HtmlTableCell("th") { InnerText = dias_totales_out.ToString("#,##0.00 'días.'"), BgColor = "lightgray" });
 
+                Reportes.planilla_calculos.Trabajos_outRow totor = ds.Trabajos_out.NewTrabajos_outRow();
+                totor.Trabajo = "TOTAL";
+                totor.Dias = dias_totales_out.ToString("#,##0.00 'días.'");
+                ds.Trabajos_out.Rows.Add(totor);
+
                 table.Controls.Add(fila_pie);
 
+                Session["ds_planilla_calculos"] = ds;
                 div_tabla_OUT.Controls.Clear();
                 div_tabla_OUT.Controls.Add(table);
             }
@@ -443,6 +422,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void Cargar_tabla_resumen(decimal horas_totales_equipos)
         {
+            Reportes.planilla_calculos ds = Session["ds_planilla_calculos"] as Reportes.planilla_calculos;
+
             if (horas_totales_equipos == 0) { horas_totales_equipos = 1; }
             HtmlTable tabla = new HtmlTable();
             tabla.Attributes.Add("class", "table table-bordered");
@@ -458,6 +439,13 @@ namespace SisEquiposBertoncini.Aplicativo
 
             foreach (total_categoria_tabla item in filas_tabla_total_categoria.Where(x => x.categoria != "").OrderByDescending(x => x.horas))
             {
+                Reportes.planilla_calculos.Totales_categoriaRow tcdr = ds.Totales_categoria.NewTotales_categoriaRow();
+                tcdr.Categoria = item.categoria;
+                tcdr.Horas = item.horas.ToString("#,##0.00");
+                tcdr.Porcentaje = (item.horas / horas_totales_equipos).ToString("P2");
+                tcdr.Monto = item.monto.ToString("$ #,##0.00");
+                ds.Totales_categoria.Rows.Add(tcdr);
+
                 HtmlTableRow fila_categoria = new HtmlTableRow();
                 fila_categoria.Controls.Add(new HtmlTableCell("th") { InnerHtml = item.categoria, BgColor = "lightgray" });
                 fila_categoria.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.horas.ToString("#,##0.00") });
@@ -466,12 +454,21 @@ namespace SisEquiposBertoncini.Aplicativo
                 tabla.Controls.Add(fila_categoria);
             }
 
+            Reportes.planilla_calculos.Totales_categoriaRow totcdr = ds.Totales_categoria.NewTotales_categoriaRow();
+            totcdr.Categoria = "TOTALES";
+            totcdr.Horas = filas_tabla_total_categoria.Sum(x => x.horas).ToString("#,##0.00");
+            totcdr.Porcentaje = "100 %"; ;
+            totcdr.Monto = filas_tabla_total_categoria.Sum(x => x.monto).ToString("$ #,##0.00");
+            ds.Totales_categoria.Rows.Add(totcdr);
+
             HtmlTableRow fila_total = new HtmlTableRow();
             fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = "TOTALES", BgColor = "lightgray" });
             fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = filas_tabla_total_categoria.Sum(x => x.horas).ToString("#,##0.00") });
             fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = "100 %" });
             fila_total.Controls.Add(new HtmlTableCell("th") { InnerHtml = filas_tabla_total_categoria.Sum(x => x.monto).ToString("$ #,##0.00") });
             tabla.Controls.Add(fila_total);
+
+            Session["ds_planilla_calculos"] = ds;
 
             div_tabla_resumen.Controls.Clear();
             div_tabla_resumen.Controls.Add(tabla);
@@ -482,7 +479,7 @@ namespace SisEquiposBertoncini.Aplicativo
             int mes = Convert.ToInt32(Session["planilla_calculos_mes"]);
             int anio = Convert.ToInt32(Session["planilla_calculos_anio"]);
             string categoria_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
-
+            Reportes.planilla_calculos ds = Session["ds_planilla_calculos"] as Reportes.planilla_calculos;
             decimal costo_hora = 0;
             switch (ddl_costo_hora.SelectedItem.Text)
             {
@@ -540,6 +537,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Empleado item in empleados)
                 {
+                    
+
                     Resumen_mes_empleado rme = item.Resumenes_meses_empleado.FirstOrDefault(x => x.anio == anio && x.mes == mes);
 
                     HtmlTableRow tr = new HtmlTableRow();
@@ -559,7 +558,24 @@ namespace SisEquiposBertoncini.Aplicativo
                     tr.Controls.Add(new HtmlTableCell() { InnerHtml = rme != null ? (rme.dias_ausente * Convert.ToDecimal(8) * costo_hora).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00") });
 
                     tabla.Controls.Add(tr);
+
+                    Reportes.planilla_calculos.AsistenciaRow adr = ds.Asistencia.NewAsistenciaRow();
+                    adr.Empleado = item.nombre;
+                    adr.Hs_normales = rme != null ? (Convert.ToDecimal(rme.total_horas_normales.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_normales.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Hs_50 = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Hs_100 = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Hs_totales = rme != null ? (Convert.ToDecimal(Horas_string.SumarHoras(new string[] { rme.total_horas_normales, rme.total_horas_extra_50, rme.total_horas_extra_100 }).Split(':')[0]) + (Convert.ToDecimal(Horas_string.SumarHoras(new string[] { rme.total_horas_normales, rme.total_horas_extra_50, rme.total_horas_extra_100 }).Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Dias_laborables = rme != null ? rme.dias_laborables.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Dias_presentes = rme != null ? rme.dias_presente.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Dias_ausentes = rme != null ? rme.dias_ausente.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Dias_diferencia = rme != null ? (rme.dias_laborables - rme.dias_ausente - rme.dias_presente).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Res_porc_aus = rme != null ? (rme.dias_ausente / rme.dias_laborables).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Res_aus = rme != null ? rme.dias_ausente.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr.Res_pesos_aus = rme != null ? (rme.dias_ausente * Convert.ToDecimal(8) * costo_hora).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
+                    ds.Asistencia.Rows.Add(adr);
                 }
+
+                Session["ds_planilla_calculos"] = ds;
 
                 div_tabla_resumen_ausentismo.Controls.Clear();
                 div_tabla_resumen_ausentismo.Controls.Add(tabla);
@@ -659,9 +675,12 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void Agregar_a_tabla(HtmlTable tabla, List<equipo_tabla> listado, decimal horas_totales_equipos, decimal horas_varios_taller, decimal horas_guardia, int equipos_guardia, decimal costo_hora)
         {
+
+
             bool primerfila = true;
             string categoria_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
             List<total_categoria_tabla> filas_tabla_total_categoria = Session["filas_tabla_total_categoria"] as List<total_categoria_tabla>;
+            Reportes.planilla_calculos ds = Session["ds_planilla_calculos"] as Reportes.planilla_calculos;
 
             List<categoria_paraPlanillaGastosenFuncionHorasHombre> categorias_para_grilla_gastos_en_funcion_de_horas_hombre = Session["planilla_gastos_en_funcion_horas_hombre_categorias"] as List<categoria_paraPlanillaGastosenFuncionHorasHombre>;
             categoria_paraPlanillaGastosenFuncionHorasHombre categoria_gastos_horas_hombre = new categoria_paraPlanillaGastosenFuncionHorasHombre();
@@ -672,7 +691,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             foreach (equipo_tabla item in listado)
             {
-
+                Reportes.planilla_calculos.Equipos_horasRow ehr = ds.Equipos_horas.NewEquipos_horasRow();
                 decimal porcentaje_equipo_sobre_total = horas_totales_equipos > 0 ? (item.horas_mes / horas_totales_equipos) : 0;
                 decimal horas_guardia_equipo = item.reparte_guardia ? horas_guardia / Convert.ToDecimal(equipos_guardia) : 0;
 
@@ -698,7 +717,6 @@ namespace SisEquiposBertoncini.Aplicativo
                     fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = item.horas_mes.ToString("#,##0.00") });
                     fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = porcentaje_equipo_sobre_total.ToString("P2") });
                     fila_equipo.Controls.Add(new HtmlTableCell("td") { InnerHtml = (horas_varios_taller * porcentaje_equipo_sobre_total).ToString("#,##0.00") });
-
 
                     if (categoria_empleado != "Soldadores")
                     {
@@ -735,6 +753,18 @@ namespace SisEquiposBertoncini.Aplicativo
                         monto = monto + ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora);
                     }
 
+                    //(ds reporte) Agrego el equipo a la tabla del reporte
+                    ehr.Categoria = item.categoria;
+                    ehr.Equipo = item.nombre;
+                    ehr.Hs_directas = item.horas_mes.ToString("#,##0.00");
+                    ehr.Porcentaje = porcentaje_equipo_sobre_total.ToString("P2");
+                    ehr.Hs_taller = (horas_varios_taller * porcentaje_equipo_sobre_total).ToString("#,##0.00");
+                    ehr.Agrega_guardia = item.reparte_guardia ? "SI" : " - ";
+                    ehr.Horas_guardia = horas_guardia_equipo.ToString("#,##0.00");
+                    ehr.Total_horas = (item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo).ToString("#,##0.00");
+                    ehr.Total_pesos = ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora).ToString("$ #,##0.00");
+                    ds.Equipos_horas.Rows.Add(ehr);
+
                     //Guardar este monto como mano de obra en items mensuales
                     using (var cxt = new Model1Container())
                     {
@@ -768,6 +798,7 @@ namespace SisEquiposBertoncini.Aplicativo
             categorias_para_grilla_gastos_en_funcion_de_horas_hombre.Add(categoria_gastos_horas_hombre);
             Session["planilla_gastos_en_funcion_horas_hombre_categorias"] = categorias_para_grilla_gastos_en_funcion_de_horas_hombre;
             Session["filas_tabla_total_categoria"] = filas_tabla_total_categoria;
+            Session["ds_planilla_calculos"] = ds;
         }
 
         void chk_equipo_guardia_CheckedChanged(object sender, EventArgs e)
@@ -833,6 +864,51 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             Response.Redirect("~/Aplicativo/planilla_gastos_en _funcion_horas_hombre.aspx");
         }
-       
+
+        protected void btn_imprimir_Click(object sender, EventArgs e)
+        {
+            Reportes.planilla_calculos ds = Session["ds_planilla_calculos"] as Reportes.planilla_calculos;
+            RenderReport(ds);
+        }
+
+        private void RenderReport(Reportes.planilla_calculos ds)
+        {
+            ReportViewer viewer = new ReportViewer();
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.LocalReport.EnableExternalImages = true;
+
+            viewer.LocalReport.ReportPath = Server.MapPath("~/Aplicativo/Reportes/planilla_calculos_r.rdlc");
+
+            ReportDataSource datos_generales = new ReportDataSource("Datos_generales", ds.Datos_generales.Rows);
+            ReportDataSource trabajos_out = new ReportDataSource("Trabajos_out", ds.Trabajos_out.Rows);
+            ReportDataSource totales_categoria = new ReportDataSource("Totales_categoria", ds.Totales_categoria.Rows);
+            ReportDataSource equipos_horas = new ReportDataSource("Equipos_horas", ds.Equipos_horas.Rows);
+            ReportDataSource asistencia = new ReportDataSource("Asistencia", ds.Asistencia.Rows);
+            ReportDataSource equipos_horas_total = new ReportDataSource("Equipos_horas_total", ds.Equipos_horas_total.Rows);
+
+            viewer.LocalReport.DataSources.Add(datos_generales);
+            viewer.LocalReport.DataSources.Add(trabajos_out);
+            viewer.LocalReport.DataSources.Add(totales_categoria);
+            viewer.LocalReport.DataSources.Add(equipos_horas);
+            viewer.LocalReport.DataSources.Add(asistencia);
+            viewer.LocalReport.DataSources.Add(equipos_horas_total);
+
+            Microsoft.Reporting.WebForms.Warning[] warnings = null;
+            string[] streamids = null;
+            string mimeType = null;
+            string encoding = null;
+            string extension = null;
+            string deviceInfo = null;
+            byte[] bytes = null;
+
+            deviceInfo = "<DeviceInfo><SimplePageHeaders>True</SimplePageHeaders></DeviceInfo>";
+
+            //Render the report
+            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
+            Session["Reporte"] = bytes;
+
+            string script = "<script type='text/javascript'>window.open('Reportes/Report.aspx');</script>";
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "VentanaPadre", script);
+        }
     }
 }

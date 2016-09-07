@@ -1402,6 +1402,17 @@
     <Content Include="AdminLTE\assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="AdminLTE\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="AdminLTE\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Aplicativo\Reportes\planilla_calculos.xsc">
+      <DependentUpon>planilla_calculos.xsd</DependentUpon>
+    </Content>
+    <None Include="Aplicativo\Reportes\planilla_calculos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>planilla_calculos.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Aplicativo\Reportes\planilla_calculos.xss">
+      <DependentUpon>planilla_calculos.xsd</DependentUpon>
+    </Content>
     <None Include="Aplicativo\Reportes\Valores_anio_equipo.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1755,6 +1766,11 @@
     <Compile Include="Aplicativo\prueba_borrar.aspx.designer.cs">
       <DependentUpon>prueba_borrar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Reportes\planilla_calculos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>planilla_calculos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Reportes\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1838,6 +1854,7 @@
     <Folder Include="Temp\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Aplicativo\Reportes\planilla_calculos_r.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\resumen_equipo.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\Valores_anio_equipo_categoria.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\Valores_anio_equipo_r.rdlc" />
