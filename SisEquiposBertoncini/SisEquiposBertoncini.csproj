@@ -230,6 +230,7 @@
     <Content Include="AdminLTE\bootstrap\js\bootstrap.js" />
     <Content Include="AdminLTE\bootstrap\js\bootstrap.min.js" />
     <Content Include="AdminLTE\bootstrap\js\npm.js" />
+    <Content Include="AdminLTE\dist\css\AdminLTE - Copy.css" />
     <Content Include="AdminLTE\dist\css\AdminLTE.css" />
     <Content Include="AdminLTE\dist\css\AdminLTE.min.css" />
     <Content Include="AdminLTE\dist\css\skins\skin-black-light.css" />
