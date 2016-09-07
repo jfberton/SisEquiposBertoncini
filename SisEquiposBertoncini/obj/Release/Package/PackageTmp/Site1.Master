@@ -20,12 +20,12 @@
     <!-- Ionicons -->
     <link href="css/ionicons.min.css" rel="stylesheet" />
     <!-- Theme style -->
-    <link href="AdminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="AdminLTE/dist/css/AdminLTE.css" rel="stylesheet" />
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
             page. However, you can choose any other skin. Make sure you
             apply the skin class to the body tag so the changes take effect.
       -->
-    <link href="AdminLTE/dist/css/skins/skin-blue.min.css" rel="stylesheet" />
+    <link href="AdminLTE/dist/css/skins/_all-skins.css" rel="stylesheet" />
 
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="css/mi_css.css" rel="stylesheet" />
@@ -62,7 +62,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow-light sidebar-mini">
 
     <div class="wrapper">
         <form id="form1" runat="server">
@@ -101,7 +101,7 @@
                             <p>
                                 <asp:Label Text="" ID="lbl_usuario" runat="server" /></p>
                             <a href="../Aplicativo/usr_modifica_datos.aspx"><i class="fa fa-user text-blue"></i> Perfil</a>
-                            <a href="../Aplicativo/usr_modifica_datos.aspx?s=s"><i class="fa fa-close text-danger"></i> Salir</a>
+                            <a href="../Aplicativo/usr_modifica_datos.aspx?s=s"><i class="fa fa-sign-out text-danger"></i> Salir</a>
                         </div>
                     </div>
                     <!-- Sidebar Menu -->

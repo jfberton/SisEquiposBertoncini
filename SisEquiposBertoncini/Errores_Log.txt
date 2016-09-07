@@ -2042,3 +2042,55 @@ STACKTRACE:    en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualP
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636088313569482628
+
+DATE: 07/09/2016 07:49:16 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La propiedad 'src' tiene una dirección URL incorrecta: No se puede utilizar .. inicial para salir por encima del directorio superior..
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/main_admin.aspx
+
+TARGETSITE: Void PreProcessRelativeReferenceAttribute(System.Web.UI.HtmlTextWriter, System.String)
+
+STACKTRACE:    en System.Web.UI.HtmlControls.HtmlControl.PreProcessRelativeReferenceAttribute(HtmlTextWriter writer, String attribName)
+   en System.Web.UI.HtmlControls.HtmlImage.RenderAttributes(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlControl.RenderBeginTag(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.HtmlControls.HtmlForm.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   en System.Web.UI.HtmlControls.HtmlForm.Render(HtmlTextWriter output)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.HtmlControls.HtmlForm.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Control.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   en System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   en System.Web.UI.Page.Render(HtmlTextWriter writer)
+   en System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   en System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

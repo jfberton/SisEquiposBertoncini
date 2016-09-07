@@ -1415,10 +1415,10 @@
   border-left: 3px solid transparent;
   font-weight: 600;
 }
-.skin-yellow-light .sidebar-menu > li:hover > a,
-.skin-yellow-light .sidebar-menu > li.active > a {
-  color: #000000;
-  background: #f4f4f5;
+.skin-yellow-light .sidebar-menu>li:hover>a, .skin-yellow-light .sidebar-menu>li.active>a {
+    color: #000;
+    background: #ececd7;
+    border-left-color: #F39C12;
 }
 .skin-yellow-light .sidebar-menu > li.active {
   border-left-color: #f39c12;
@@ -1427,7 +1427,7 @@
   font-weight: 600;
 }
 .skin-yellow-light .sidebar-menu > li > .treeview-menu {
-  background: #f4f4f5;
+  background: #e7e7e9;
 }
 .skin-yellow-light .sidebar a {
   color: #444444;

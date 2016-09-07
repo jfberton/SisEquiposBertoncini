@@ -1,10 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="menu_admin.ascx.cs" Inherits="SisEquiposBertoncini.Aplicativo.Menues.menu_admin" %>
-<%--<%@ Register Src="~/Aplicativo/Controles/imagen_usuario.ascx" TagPrefix="uc1" TagName="imagen_usuario" %>--%>
 
-<li runat="server" id="li_areas"><a href="../Aplicativo/admin_areas.aspx"><i class="fa fa-link"></i><span>Areas</span></a></li>
+<li runat="server" id="li_areas"><a href="../Aplicativo/admin_areas.aspx"><i class="fa fa-sitemap"></i><span>Areas</span></a></li>
 
 <li runat="server" id="li_empleados" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Empleados</span>
+    <a href="#"><i class="fa fa-group"></i><span>Empleados</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -16,7 +15,7 @@
 </li>
 
 <li runat="server" id="li_equipos" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Equipos</span>
+    <a href="#"><i class="fa fa-car"></i><span>Equipos</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -28,7 +27,7 @@
 </li>
 
 <li runat="server" id="li_io" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Ingresos - Egresos</span>
+    <a href="#"><i class="fa fa-book"></i><span>Ingresos - Egresos</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -48,7 +47,7 @@
 </li>
 
 <li runat="server" id="li_horas" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Horas trabajadas</span>
+    <a href="#"><i class="fa fa-clock-o"></i><span>Horas trabajadas</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -60,7 +59,7 @@
 </li>
 
 <li runat="server" id="li_planillas" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Planillas</span>
+    <a href="#"><i class="fa fa-files-o"></i><span>Planillas</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -74,7 +73,7 @@
 </li>
 
 <li runat="server" id="li_importar" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Importar</span>
+    <a href="#"><i class="fa fa-download"></i><span>Importar</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>

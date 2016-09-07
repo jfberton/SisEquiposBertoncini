@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="menu_usuario.ascx.cs" Inherits="SisEquiposBertoncini.Aplicativo.Menues.menu_usuario" %>
 <%@ Register Src="~/Aplicativo/Controles/imagen_usuario.ascx" TagPrefix="uc1" TagName="imagen_usuario" %>
 
-<li runat="server" id="li_areas"><a href="../Aplicativo/admin_areas.aspx"><i class="fa fa-link"></i><span>Areas</span></a></li>
+<li runat="server" id="li_areas"><a href="../Aplicativo/admin_areas.aspx"><i class="fa fa-sitemap"></i><span>Areas</span></a></li>
 
 <li runat="server" id="li_empleados" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Empleados</span>
+    <a href="#"><i class="fa fa-group"></i><span>Empleados</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -17,7 +17,7 @@
 
 
 <li runat="server" id="li_horas" class="treeview">
-    <a href="#"><i class="fa fa-link"></i><span>Horas trabajadas</span>
+    <a href="#"><i class="fa fa-clock-o"></i><span>Horas trabajadas</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
