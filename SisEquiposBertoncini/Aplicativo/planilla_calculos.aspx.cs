@@ -253,7 +253,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    eht.Agrega_guardia = 0.ToString();
+                    eht.Agrega_guardia = equipos_guardia.ToString();
                     eht.Horas_guardia = 0.ToString("#,##0.00");
                 }
                 eht.Total_horas = (horas_totales_equipos + horas_varios_taller_decimal + horas_guardia_decimal).ToString("#,##0.00");

@@ -2094,3 +2094,37 @@ STACKTRACE:    en System.Web.UI.HtmlControls.HtmlControl.PreProcessRelativeRefer
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636089188170242792
+
+DATE: 08/09/2016 08:06:57 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Intento de dividir por cero.
+
+SOURCE: mscorlib
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_calculos.aspx
+
+TARGETSITE: Void FCallDivide(System.Decimal ByRef, System.Decimal ByRef)
+
+STACKTRACE:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   en System.Decimal.op_Division(Decimal d1, Decimal d2)
+   en SisEquiposBertoncini.Aplicativo.planilla_calculos.Cargar_tabla_final_planilla_calculos() en D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_calculos.aspx.cs:línea 556
+   en SisEquiposBertoncini.Aplicativo.planilla_calculos.CrearCargarTabla() en D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_calculos.aspx.cs:línea 300
+   en SisEquiposBertoncini.Aplicativo.planilla_calculos.Page_Load(Object sender, EventArgs e) en D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_calculos.aspx.cs:línea 40
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

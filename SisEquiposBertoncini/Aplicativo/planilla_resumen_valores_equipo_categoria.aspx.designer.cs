@@ -64,7 +64,7 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_imprimir;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_imprimir;
         
         /// <summary>
         /// btn_nueva_busqueda control.

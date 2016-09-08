@@ -130,7 +130,7 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla principal
                 </button>
 
-                <button class="btn btn-default btn-lg" onclick="Imprimir(); return false;">
+                <button class="btn btn-default btn-lg" runat="server" id="btn_imprimir" onserverclick="btn_imprimir_Click" >
                     <span class="glyphicon glyphicon-print"></span>
                 </button>
 
@@ -140,7 +140,7 @@
             </div>
         </div>
 
-        <asp:Button Text="imprimir" ID="btn_imprimir" OnClick="btn_imprimir_Click" runat="server" />
+       
     </section>
     <!-- /.content -->
 

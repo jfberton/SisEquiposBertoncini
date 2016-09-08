@@ -138,26 +138,6 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Equipo_categoria item in equipos_categoria)
                 {
-                    //item_grilla_detalle item_equipo = new item_grilla_detalle();
-                    //item_equipo.nombre_equipo = item.Equipo.nombre;
-                    ////item_equipo.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + " h4";
-                    //item_equipo.tipo_resultado = "";
-                    //item_equipo.enero = "";
-                    //item_equipo.febrero = "";
-                    //item_equipo.marzo = "";
-                    //item_equipo.abril = "";
-                    //item_equipo.mayo = "";
-                    //item_equipo.junio = "";
-                    //item_equipo.julio = "";
-                    //item_equipo.agosto = "";
-                    //item_equipo.septiembre = "";
-                    //item_equipo.octubre = "";
-                    //item_equipo.noviembre = "";
-                    //item_equipo.diciembre = "";
-                    //item_equipo.total = "";
-                    //item_equipo.promedio = "";
-
-
                     item_grilla_detalle item_equipo_resultadoFinanciero = new item_grilla_detalle();
                     item_equipo_resultadoFinanciero.nombre_equipo = item.Equipo.nombre;
                     //item_equipo_resultadoFinanciero.row_class = "treegrid-" + item.Equipo.id_equipo.ToString() + "1 treegrid-parent-" + item.Equipo.id_equipo.ToString();
@@ -295,54 +275,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             Estado_busqueda(true);
         }
-
-        protected void btn_imprimir_Click(object sender, EventArgs e)
-        {
-            Reportes.Valores_anio_equipo ds = Session["ds_equipo_categoria_anio"] as Reportes.Valores_anio_equipo;
-            RenderReport(ds);
-        }
-
-        public void SetSubDataSource(object sender, SubreportProcessingEventArgs e)
-        {
-            Reportes.Valores_anio_equipo ds = Session["ds_equipo_categoria_anio"] as Reportes.Valores_anio_equipo;
-            ReportDataSource detalle = new ReportDataSource("detalle_item", ds.Detalle_item.Rows);
-            e.DataSources.Add(detalle);
-        }
-
-        private void RenderReport(Reportes.Valores_anio_equipo ds)
-        {
-
-            ReportViewer viewer = new ReportViewer();
-            viewer.ProcessingMode = ProcessingMode.Local;
-            viewer.LocalReport.EnableExternalImages = true;
-            viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
-
-            viewer.LocalReport.ReportPath = Server.MapPath("~/Aplicativo/Reportes/Valores_anio_equipo_categoria.rdlc");
-
-            ReportDataSource equipo = new ReportDataSource("Equipo", ds.Datos_equipo.Rows);
-            ReportDataSource detalle = new ReportDataSource("Equipos", ds.Equipos.Rows);
-
-            viewer.LocalReport.DataSources.Add(equipo);
-            viewer.LocalReport.DataSources.Add(detalle);
-
-            Microsoft.Reporting.WebForms.Warning[] warnings = null;
-            string[] streamids = null;
-            string mimeType = null;
-            string encoding = null;
-            string extension = null;
-            string deviceInfo = null;
-            byte[] bytes = null;
-
-            deviceInfo = "<DeviceInfo><SimplePageHeaders>True</SimplePageHeaders></DeviceInfo>";
-
-            //Render the report
-            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
-            Session["Reporte"] = bytes;
-
-            string script = "<script type='text/javascript'>window.open('Reportes/Report.aspx');</script>";
-            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "VentanaPadre", script);
-        }
-
+        
         protected void gv_detalle_equipos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)

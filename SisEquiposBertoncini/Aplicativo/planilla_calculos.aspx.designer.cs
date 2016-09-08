@@ -155,14 +155,5 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_ver_planilla_gastos_horas_hombre;
-        
-        /// <summary>
-        /// btn_imprimir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_imprimir;
     }
 }

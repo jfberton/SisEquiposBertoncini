@@ -1192,6 +1192,7 @@
     <Content Include="Aplicativo\planilla_gastos_en _funcion_horas_hombre.aspx" />
     <Content Include="Aplicativo\planilla_resumen_horas_trabajadas.aspx" />
     <Content Include="Aplicativo\prueba_borrar.aspx" />
+    <Content Include="Aplicativo\Reportes\dispatcher_report.aspx" />
     <Content Include="Aplicativo\Reportes\Report.aspx" />
     <Content Include="Aplicativo\usr_modifica_datos.aspx" />
     <Content Include="Aplicativo\ver_valores_cargados_categoria.aspx" />
@@ -1765,6 +1766,13 @@
     </Compile>
     <Compile Include="Aplicativo\prueba_borrar.aspx.designer.cs">
       <DependentUpon>prueba_borrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Reportes\dispatcher_report.aspx.cs">
+      <DependentUpon>dispatcher_report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Reportes\dispatcher_report.aspx.designer.cs">
+      <DependentUpon>dispatcher_report.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Reportes\planilla_calculos.Designer.cs">
       <AutoGen>True</AutoGen>
