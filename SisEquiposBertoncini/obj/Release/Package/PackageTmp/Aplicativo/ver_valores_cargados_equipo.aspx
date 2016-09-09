@@ -55,8 +55,8 @@
                     <tr>
                         <td>
                             <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                            <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
-                            <asp:Button Text="Imprimir Resumen" ID="btn_imprimir_resumen" CssClass="btn btn-default" OnClick="btn_imprimir_resumen_Click" runat="server" />
+                            <button class="btn btn-default" runat="server" id="btn_imprimir" onclick="Imprimir(); return false;">Imprimir</button>
+                            <button class="btn btn-default" runat="server" id="btn_imprimir_resumen" onclick="Imprimir_resumen(); return false;">Imprimir resumen</button>
                             <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
                         </td>
                     </tr>
@@ -139,6 +139,14 @@
                 }
             });
         });
+
+        function Imprimir() {
+            window.open('Reportes/dispatcher_report.aspx?reporte=valores_anuales_equipo', 'Valores anuales equipo', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
+        }
+
+        function Imprimir_resumen() {
+            window.open('Reportes/dispatcher_report.aspx?reporte=valores_anuales_equipo_resumen', 'Valores anuales equipo resumen', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
+        }
     </script>
 
 </asp:Content>

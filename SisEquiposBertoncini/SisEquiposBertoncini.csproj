@@ -1414,6 +1414,17 @@
     <Content Include="Aplicativo\Reportes\planilla_calculos.xss">
       <DependentUpon>planilla_calculos.xsd</DependentUpon>
     </Content>
+    <Content Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.xsc">
+      <DependentUpon>planilla_gastos_en_funcion_horas_hombre.xsd</DependentUpon>
+    </Content>
+    <None Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>planilla_gastos_en_funcion_horas_hombre.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.xss">
+      <DependentUpon>planilla_gastos_en_funcion_horas_hombre.xsd</DependentUpon>
+    </Content>
     <None Include="Aplicativo\Reportes\Valores_anio_equipo.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1779,6 +1790,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>planilla_calculos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>planilla_gastos_en_funcion_horas_hombre.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Reportes\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1863,6 +1879,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Aplicativo\Reportes\planilla_calculos_r.rdlc" />
+    <EmbeddedResource Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre_r.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\resumen_equipo.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\Valores_anio_equipo_categoria.rdlc" />
     <EmbeddedResource Include="Aplicativo\Reportes\Valores_anio_equipo_r.rdlc" />

@@ -1790,7 +1790,7 @@
         <Top>2.10398cm</Top>
         <Left>0.03528cm</Left>
         <Height>2.44458cm</Height>
-        <Width>18.85336cm</Width>
+        <Width>18.85335cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -4416,7 +4416,7 @@
         <DataSetName>Asistencia</DataSetName>
         <Top>6.80475cm</Top>
         <Height>1.8cm</Height>
-        <Width>18.85336cm</Width>
+        <Width>18.85335cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -4601,6 +4601,38 @@
           <Left>0.03527cm</Left>
           <Height>0.6cm</Height>
           <Width>18.81808cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox1">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.10508cm</Top>
+          <Left>13.70752cm</Left>
+          <Height>0.6cm</Height>
+          <Width>5.14583cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

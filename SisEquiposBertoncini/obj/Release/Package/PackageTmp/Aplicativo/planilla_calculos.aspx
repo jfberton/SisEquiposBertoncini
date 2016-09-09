@@ -130,7 +130,7 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Planilla principal
                 </button>
 
-                <button class="btn btn-default btn-lg" runat="server" id="btn_imprimir" onserverclick="btn_imprimir_Click" >
+                <button class="btn btn-default btn-lg"  onclick="Imprimir(); return false;">
                     <span class="glyphicon glyphicon-print"></span>
                 </button>
 
@@ -156,26 +156,7 @@
 
     <script type="text/javascript">
         function Imprimir() {
-            //var printContents = document.getElementById('div_print').innerHTML;
-            //var originalContents = document.body.innerHTML;
-
-            //document.body.innerHTML = printContents;
-
-            //window.print();
-
-            //document.body.innerHTML = originalContents;
-
-            var content = "<html>";
-            content += document.getElementById("div_print").innerHTML;
-            content += "</body>";
-            content += "</html>";
-
-            var printWin = window.open('', '', 'left=0,top=0,width=800,height=600,toolbar=0,scrollbars=0,status =0');
-            printWin.document.write(content);
-            printWin.document.close();
-            printWin.focus();
-            printWin.print();
-            printWin.close();
+            window.open('Reportes/dispatcher_report.aspx?reporte=planilla_calculos', 'Planilla cálculos', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
         }
     </script>
 

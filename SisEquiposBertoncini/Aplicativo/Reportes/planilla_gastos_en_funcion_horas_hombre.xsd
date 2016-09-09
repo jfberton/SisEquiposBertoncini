@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="planilla_gastos_en_funcion_horas_hombre" targetNamespace="http://tempuri.org/planilla_gastos_en_funcion_horas_hombre.xsd" xmlns:mstns="http://tempuri.org/planilla_gastos_en_funcion_horas_hombre.xsd" xmlns="http://tempuri.org/planilla_gastos_en_funcion_horas_hombre.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="planilla_gastos_en_funcion_horas_hombre" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="planilla_gastos_en_funcion_horas_hombre" msprop:Generator_UserDSName="planilla_gastos_en_funcion_horas_hombre">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Datos_generales" msprop:Generator_TableClassName="Datos_generalesDataTable" msprop:Generator_TableVarName="tableDatos_generales" msprop:Generator_TablePropName="Datos_generales" msprop:Generator_RowDeletingName="Datos_generalesRowDeleting" msprop:Generator_RowChangingName="Datos_generalesRowChanging" msprop:Generator_RowEvHandlerName="Datos_generalesRowChangeEventHandler" msprop:Generator_RowDeletedName="Datos_generalesRowDeleted" msprop:Generator_UserTableName="Datos_generales" msprop:Generator_RowChangedName="Datos_generalesRowChanged" msprop:Generator_RowEvArgName="Datos_generalesRowChangeEvent" msprop:Generator_RowClassName="Datos_generalesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tipo_empleado" msprop:Generator_ColumnVarNameInTable="columnTipo_empleado" msprop:Generator_ColumnPropNameInRow="Tipo_empleado" msprop:Generator_ColumnPropNameInTable="Tipo_empleadoColumn" msprop:Generator_UserColumnName="Tipo_empleado" type="xs:string" minOccurs="0" />
+              <xs:element name="Mes" msprop:Generator_ColumnVarNameInTable="columnMes" msprop:Generator_ColumnPropNameInRow="Mes" msprop:Generator_ColumnPropNameInTable="MesColumn" msprop:Generator_UserColumnName="Mes" type="xs:string" minOccurs="0" />
+              <xs:element name="Anio" msprop:Generator_ColumnVarNameInTable="columnAnio" msprop:Generator_ColumnPropNameInRow="Anio" msprop:Generator_ColumnPropNameInTable="AnioColumn" msprop:Generator_UserColumnName="Anio" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Detalle" msprop:Generator_TableClassName="DetalleDataTable" msprop:Generator_TableVarName="tableDetalle" msprop:Generator_TablePropName="Detalle" msprop:Generator_RowDeletingName="DetalleRowDeleting" msprop:Generator_RowChangingName="DetalleRowChanging" msprop:Generator_RowEvHandlerName="DetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="DetalleRowDeleted" msprop:Generator_UserTableName="Detalle" msprop:Generator_RowChangedName="DetalleRowChanged" msprop:Generator_RowEvArgName="DetalleRowChangeEvent" msprop:Generator_RowClassName="DetalleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Categoria" msprop:Generator_ColumnVarNameInTable="columnCategoria" msprop:Generator_ColumnPropNameInRow="Categoria" msprop:Generator_ColumnPropNameInTable="CategoriaColumn" msprop:Generator_UserColumnName="Categoria" type="xs:string" minOccurs="0" />
+              <xs:element name="Equipo" msprop:Generator_ColumnVarNameInTable="columnEquipo" msprop:Generator_ColumnPropNameInRow="Equipo" msprop:Generator_ColumnPropNameInTable="EquipoColumn" msprop:Generator_UserColumnName="Equipo" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_horas" msprop:Generator_ColumnVarNameInTable="columnTotal_horas" msprop:Generator_ColumnPropNameInRow="Total_horas" msprop:Generator_ColumnPropNameInTable="Total_horasColumn" msprop:Generator_UserColumnName="Total_horas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Acumulado" msprop:Generator_ColumnVarNameInTable="columnAcumulado" msprop:Generator_ColumnPropNameInRow="Acumulado" msprop:Generator_ColumnPropNameInTable="AcumuladoColumn" msprop:Generator_UserColumnName="Acumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Insumos_Taller" msprop:Generator_ColumnVarNameInTable="columnInsumos_Taller" msprop:Generator_ColumnPropNameInRow="Insumos_Taller" msprop:Generator_ColumnPropNameInTable="Insumos_TallerColumn" msprop:Generator_UserColumnName="Insumos_Taller" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Herramientas" msprop:Generator_ColumnVarNameInTable="columnHerramientas" msprop:Generator_ColumnPropNameInRow="Herramientas" msprop:Generator_ColumnPropNameInTable="HerramientasColumn" msprop:Generator_UserColumnName="Herramientas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Viaticos" msprop:Generator_ColumnVarNameInTable="columnViaticos" msprop:Generator_ColumnPropNameInRow="Viaticos" msprop:Generator_ColumnPropNameInTable="ViaticosColumn" msprop:Generator_UserColumnName="Viaticos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ViaticosPP" msprop:Generator_ColumnVarNameInTable="columnViaticosPP" msprop:Generator_ColumnPropNameInRow="ViaticosPP" msprop:Generator_ColumnPropNameInTable="ViaticosPPColumn" msprop:Generator_UserColumnName="ViaticosPP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Indumentaria" msprop:Generator_ColumnVarNameInTable="columnIndumentaria" msprop:Generator_ColumnPropNameInRow="Indumentaria" msprop:Generator_ColumnPropNameInTable="IndumentariaColumn" msprop:Generator_UserColumnName="Indumentaria" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Repuestos" msprop:Generator_ColumnVarNameInTable="columnRepuestos" msprop:Generator_ColumnPropNameInRow="Repuestos" msprop:Generator_ColumnPropNameInTable="RepuestosColumn" msprop:Generator_UserColumnName="Repuestos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ReouestosPP" msprop:Generator_ColumnVarNameInTable="columnReouestosPP" msprop:Generator_ColumnPropNameInRow="ReouestosPP" msprop:Generator_ColumnPropNameInTable="ReouestosPPColumn" msprop:Generator_UserColumnName="ReouestosPP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Gastos_varios" msprop:Generator_ColumnVarNameInTable="columnGastos_varios" msprop:Generator_ColumnPropNameInRow="Gastos_varios" msprop:Generator_ColumnPropNameInTable="Gastos_variosColumn" msprop:Generator_UserColumnName="Gastos_varios" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Otros" msprop:Generator_ColumnVarNameInTable="columnOtros" msprop:Generator_ColumnPropNameInRow="Otros" msprop:Generator_ColumnPropNameInTable="OtrosColumn" msprop:Generator_UserColumnName="Otros" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Total_gastos" msprop:Generator_ColumnVarNameInTable="columnTotal_gastos" msprop:Generator_ColumnPropNameInRow="Total_gastos" msprop:Generator_ColumnPropNameInTable="Total_gastosColumn" msprop:Generator_UserColumnName="Total_gastos" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Totales_detalle" msprop:Generator_TableClassName="Totales_detalleDataTable" msprop:Generator_TableVarName="tableTotales_detalle" msprop:Generator_TablePropName="Totales_detalle" msprop:Generator_RowDeletingName="Totales_detalleRowDeleting" msprop:Generator_RowChangingName="Totales_detalleRowChanging" msprop:Generator_RowEvHandlerName="Totales_detalleRowChangeEventHandler" msprop:Generator_RowDeletedName="Totales_detalleRowDeleted" msprop:Generator_UserTableName="Totales_detalle" msprop:Generator_RowChangedName="Totales_detalleRowChanged" msprop:Generator_RowEvArgName="Totales_detalleRowChangeEvent" msprop:Generator_RowClassName="Totales_detalleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Total_horas" msprop:Generator_ColumnVarNameInTable="columnTotal_horas" msprop:Generator_ColumnPropNameInRow="Total_horas" msprop:Generator_ColumnPropNameInTable="Total_horasColumn" msprop:Generator_UserColumnName="Total_horas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Acumulado" msprop:Generator_ColumnVarNameInTable="columnAcumulado" msprop:Generator_ColumnPropNameInRow="Acumulado" msprop:Generator_ColumnPropNameInTable="AcumuladoColumn" msprop:Generator_UserColumnName="Acumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Insumos_Taller" msprop:Generator_ColumnVarNameInTable="columnInsumos_Taller" msprop:Generator_ColumnPropNameInRow="Insumos_Taller" msprop:Generator_ColumnPropNameInTable="Insumos_TallerColumn" msprop:Generator_UserColumnName="Insumos_Taller" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Herramientas" msprop:Generator_ColumnVarNameInTable="columnHerramientas" msprop:Generator_ColumnPropNameInRow="Herramientas" msprop:Generator_ColumnPropNameInTable="HerramientasColumn" msprop:Generator_UserColumnName="Herramientas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Viaticos" msprop:Generator_ColumnVarNameInTable="columnViaticos" msprop:Generator_ColumnPropNameInRow="Viaticos" msprop:Generator_ColumnPropNameInTable="ViaticosColumn" msprop:Generator_UserColumnName="Viaticos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ViaticosPP" msprop:Generator_ColumnVarNameInTable="columnViaticosPP" msprop:Generator_ColumnPropNameInRow="ViaticosPP" msprop:Generator_ColumnPropNameInTable="ViaticosPPColumn" msprop:Generator_UserColumnName="ViaticosPP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Indumentaria" msprop:Generator_ColumnVarNameInTable="columnIndumentaria" msprop:Generator_ColumnPropNameInRow="Indumentaria" msprop:Generator_ColumnPropNameInTable="IndumentariaColumn" msprop:Generator_UserColumnName="Indumentaria" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Repuestos" msprop:Generator_ColumnVarNameInTable="columnRepuestos" msprop:Generator_ColumnPropNameInRow="Repuestos" msprop:Generator_ColumnPropNameInTable="RepuestosColumn" msprop:Generator_UserColumnName="Repuestos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ReouestosPP" msprop:Generator_ColumnVarNameInTable="columnReouestosPP" msprop:Generator_ColumnPropNameInRow="ReouestosPP" msprop:Generator_ColumnPropNameInTable="ReouestosPPColumn" msprop:Generator_UserColumnName="ReouestosPP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Gastos_varios" msprop:Generator_ColumnVarNameInTable="columnGastos_varios" msprop:Generator_ColumnPropNameInRow="Gastos_varios" msprop:Generator_ColumnPropNameInTable="Gastos_variosColumn" msprop:Generator_UserColumnName="Gastos_varios" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Otros" msprop:Generator_ColumnVarNameInTable="columnOtros" msprop:Generator_ColumnPropNameInRow="Otros" msprop:Generator_ColumnPropNameInTable="OtrosColumn" msprop:Generator_UserColumnName="Otros" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Total_gastos" msprop:Generator_ColumnVarNameInTable="columnTotal_gastos" msprop:Generator_ColumnPropNameInRow="Total_gastos" msprop:Generator_ColumnPropNameInTable="Total_gastosColumn" msprop:Generator_UserColumnName="Total_gastos" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

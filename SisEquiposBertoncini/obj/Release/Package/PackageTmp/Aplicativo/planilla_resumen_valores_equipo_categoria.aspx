@@ -55,7 +55,7 @@
                     <tr>
                         <td>
                             <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                            <asp:Button Text="Imprimir" ID="btn_imprimir" CssClass="btn btn-default" OnClick="btn_imprimir_Click" runat="server" />
+                           <button class="btn btn-default" runat="server" id="btn_imprimir" onclick="Imprimir(); return false;">Imprimir</button>
                             <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
                         </td>
                     </tr>
@@ -140,5 +140,10 @@
                 },
             });
         });
+
+        function Imprimir() {
+            window.open('Reportes/dispatcher_report.aspx?reporte=planilla_resumen_valores_equipo_categoria', 'Resumen valores equipo categoría', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
+        }
+
     </script>
 </asp:Content>

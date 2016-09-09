@@ -179,27 +179,8 @@
 
     <script type="text/javascript">
         function Imprimir() {
-            //var printContents = document.getElementById('div_print').innerHTML;
-
-            //var originalContents = document.body.innerHTML;
-
-            //document.body.innerHTML = printContents;
-
-            //window.print();
-
-            //document.body.innerHTML = originalContents;
-
-            var content = "<html>";
-            content += document.getElementById("div_print").innerHTML;
-            content += "</body>";
-            content += "</html>";
-
-            var printWin = window.open('', '', 'left=0,top=0,width=800,height=600,toolbar=0,scrollbars=0,status =0');
-            printWin.document.write(content);
-            printWin.document.close();
-            printWin.focus();
-            printWin.print();
-            printWin.close();
+            
+            window.open('Reportes/dispatcher_report.aspx?reporte=planilla_gastos_en_funcion_horas_hombre', 'Valores anuales categoría', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
         }
     </script>
 

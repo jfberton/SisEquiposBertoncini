@@ -2128,3 +2128,59 @@ STACKTRACE:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636089288974360917
+
+DATE: 08/09/2016 10:54:57 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Equipos
+
+SOURCE: Microsoft.ReportViewer.Common
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/Reportes/dispatcher_report.aspx?reporte=planilla_gastos_en_funcion_horas_hombre
+
+TARGETSITE: Boolean RunDataSetQuery()
+
+STACKTRACE:    en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.RunDataSetQuery()
+   en Microsoft.ReportingServices.OnDemandProcessing.TablixProcessing.RuntimeOnDemandDataSet.Process()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.ProcessConcurrent(Object threadSet)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636089301402363042
+
+DATE: 08/09/2016 11:15:40 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Equipos
+
+SOURCE: Microsoft.ReportViewer.Common
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/Reportes/dispatcher_report.aspx?reporte=planilla_gastos_en_funcion_horas_hombre
+
+TARGETSITE: Boolean RunDataSetQuery()
+
+STACKTRACE:    en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.RunDataSetQuery()
+   en Microsoft.ReportingServices.OnDemandProcessing.TablixProcessing.RuntimeOnDemandDataSet.Process()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.ProcessConcurrent(Object threadSet)
+
+
+******************************************************************

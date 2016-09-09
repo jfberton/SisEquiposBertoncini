@@ -32,7 +32,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 CargarTodosLosDatos(false);
             }
-            
+
         }
 
         private string ObtenerMes(string p)
@@ -69,7 +69,7 @@ namespace SisEquiposBertoncini.Aplicativo
             }
         }
 
-        private void CargarTodosLosDatos( bool actualiza_textboxes)
+        private void CargarTodosLosDatos(bool actualiza_textboxes)
         {
             Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
 
@@ -81,9 +81,17 @@ namespace SisEquiposBertoncini.Aplicativo
             lbl_mes.Text = ObtenerMes(Session["planilla_calculos_mes"].ToString());
             lbl_anio.Text = Session["planilla_calculos_anio"].ToString();
             lbl_tipo_empleado.Text = Session["planilla_calculos_categoria_empleado"].ToString();
-            
+
+            Reportes.planilla_gastos_en_funcion_horas_hombre ds = new Reportes.planilla_gastos_en_funcion_horas_hombre();
+
             using (var cxt = new Model1Container())
             {
+                Reportes.planilla_gastos_en_funcion_horas_hombre.Datos_generalesRow dgr = ds.Datos_generales.NewDatos_generalesRow();
+                dgr.Tipo_empleado = categoria_empleado;
+                dgr.Mes = new DateTime(anio, mes, 1).ToString("MMMM");
+                dgr.Anio = anio.ToString();
+                ds.Datos_generales.Rows.Add(dgr);
+
                 Aux_planilla_gastos_horas_hombre aux = cxt.Aux_planilla_gastos_horas_hombres.FirstOrDefault(x => x.anio == anio && x.mes == mes && x.tipo_empleado == categoria_empleado);
                 if (aux == null)
                 {
@@ -129,6 +137,8 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 List<Itemtabla> items = new List<Itemtabla>();
 
+
+
                 foreach (SisEquiposBertoncini.Aplicativo.planilla_calculos.categoria_paraPlanillaGastosenFuncionHorasHombre categoria in categorias.Where(x => x.categoria != null))
                 {
                     foreach (SisEquiposBertoncini.Aplicativo.planilla_calculos.equipo_paraPlanillaGastosenFuncionHorasHombre equipo in categoria.equipos)
@@ -151,6 +161,32 @@ namespace SisEquiposBertoncini.Aplicativo
                         };
 
                         items.Add(item_equipo);
+
+                        Reportes.planilla_gastos_en_funcion_horas_hombre.DetalleRow dr = ds.Detalle.NewDetalleRow();
+                        dr.Categoria = item_equipo.categoria;
+                        dr.Equipo = item_equipo.equipo;
+                        dr.Total_horas = item_equipo.horas;
+                        dr.Acumulado = item_equipo.porcentaje;
+                        dr.Insumos_Taller = item_equipo.monto_insumos_taller;
+                        dr.Herramientas = item_equipo.monto_herramientas;
+                        dr.Viaticos = item_equipo.monto_viaticos;
+                        dr.ViaticosPP = item_equipo.monto_viaticos_presupuestados;
+                        dr.Indumentaria = item_equipo.monto_indumentaria;
+                        dr.Repuestos = item_equipo.monto_repuestos;
+                        dr.ReouestosPP = item_equipo.monto_repuestos_pp;
+                        dr.Gastos_varios = item_equipo.monto_gastos_varios;
+                        dr.Otros = item_equipo.monto_otros;
+                        dr.Total_gastos = item_equipo.monto_insumos_taller +
+                                            item_equipo.monto_herramientas +
+                                            item_equipo.monto_viaticos +
+                                            item_equipo.monto_viaticos_presupuestados +
+                                            item_equipo.monto_indumentaria +
+                                            item_equipo.monto_repuestos +
+                                            item_equipo.monto_repuestos_pp +
+                                            item_equipo.monto_gastos_varios +
+                                            item_equipo.monto_otros;
+
+                        ds.Detalle.Rows.Add(dr);
 
                         Equipo equipo_cxt = cxt.Equipos.First(x => x.id_equipo == equipo.id_equipo);
 
@@ -203,9 +239,31 @@ namespace SisEquiposBertoncini.Aplicativo
                         monto_insumos_taller = aux.insumos_taller * (categoria.total_horas_categoria / total_horas_categorias),
                         monto_herramientas = aux.herramientas * (categoria.total_horas_categoria / total_horas_categorias),
                         monto_viaticos = aux.viaticos * (categoria.total_horas_categoria / total_horas_categorias),
-                        monto_viaticos_presupuestados = aux.viaticos_presupuestados * (categoria.total_horas_categoria / total_horas_categorias)
+                        monto_viaticos_presupuestados = aux.viaticos_presupuestados * (categoria.total_horas_categoria / total_horas_categorias),
+                        monto_indumentaria = aux.indumentaria * (categoria.total_horas_categoria / total_horas_categorias),
+                        monto_repuestos = aux.repuestos * (categoria.total_horas_categoria / total_horas_categorias),
+                        monto_repuestos_pp = aux.repuestos_presupuestados * (categoria.total_horas_categoria / total_horas_categorias),
+                        monto_gastos_varios = aux.gastos_varios * (categoria.total_horas_categoria / total_horas_categorias),
+                        monto_otros = aux.otros * (categoria.total_horas_categoria / total_horas_categorias)
                     });
                 }
+
+                Reportes.planilla_gastos_en_funcion_horas_hombre.Totales_detalleRow tdr = ds.Totales_detalle.NewTotales_detalleRow();
+                tdr.Acumulado = 1;
+                tdr.Total_horas = total_horas_categorias;
+                tdr.Insumos_Taller = ds.Detalle.Sum(dd => dd.Insumos_Taller);
+                tdr.Herramientas = ds.Detalle.Sum(dd => dd.Herramientas);
+                tdr.Viaticos = ds.Detalle.Sum(dd => dd.Viaticos);
+                tdr.ViaticosPP = ds.Detalle.Sum(dd => dd.ViaticosPP);
+                tdr.Indumentaria = ds.Detalle.Sum(dd => dd.Indumentaria);
+                tdr.Repuestos = ds.Detalle.Sum(dd => dd.Repuestos);
+                tdr.ReouestosPP = ds.Detalle.Sum(dd => dd.ReouestosPP);
+                tdr.Gastos_varios = ds.Detalle.Sum(dd => dd.Gastos_varios);
+                tdr.Otros = ds.Detalle.Sum(dd => dd.Otros);
+                tdr.Total_gastos = ds.Detalle.Sum(dd => dd.Total_gastos);
+                ds.Totales_detalle.Rows.Add(tdr);
+
+                Session["planilla_gastos_en_funcion_horas_hombre"] = ds;
 
                 CargarTabla(items, total_horas_categorias, aux);
             }
@@ -244,7 +302,18 @@ namespace SisEquiposBertoncini.Aplicativo
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.repuestos_presupuestados.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.gastos_varios.ToString("$ #,##0.00") });
             fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = aux.otros.ToString("$ #,##0.00") });
-            fila_encabezado1.Controls.Add(new HtmlTableCell("th") { InnerHtml = (aux.insumos_taller + aux.herramientas + aux.viaticos + aux.viaticos_presupuestados).ToString("$ #,##0.00") });
+            fila_encabezado1.Controls.Add(new HtmlTableCell("th")
+            {
+                InnerHtml = (aux.insumos_taller +
+                                                                                    aux.herramientas +
+                                                                                    aux.viaticos +
+                                                                                    aux.viaticos_presupuestados +
+                                                                                    aux.indumentaria +
+                                                                                    aux.repuestos +
+                                                                                    aux.repuestos_presupuestados +
+                                                                                    aux.gastos_varios +
+                                                                                    aux.otros).ToString("$ #,##0.00")
+            });
 
             tabla.Controls.Add(fila_encabezado);
             tabla.Controls.Add(fila_encabezado1);
@@ -286,7 +355,19 @@ namespace SisEquiposBertoncini.Aplicativo
                     primera_fila_categoria = true;
                     HtmlTableRow fila = new HtmlTableRow();
                     fila.Controls.Add(new HtmlTableCell("td") { ColSpan = 13 });
-                    fila.Controls.Add(new HtmlTableCell("th") { InnerHtml = (item.monto_herramientas + item.monto_insumos_taller + item.monto_viaticos + item.monto_viaticos_presupuestados).ToString("$ #,##0.00"), BgColor = "lightgray" });
+                    fila.Controls.Add(new HtmlTableCell("th")
+                    {
+                        InnerHtml = (item.monto_herramientas +
+                                                                                item.monto_insumos_taller +
+                                                                                item.monto_viaticos +
+                                                                                item.monto_viaticos_presupuestados +
+                                                                                item.monto_indumentaria +
+                                                                                item.monto_repuestos +
+                                                                                item.monto_repuestos_pp +
+                                                                                item.monto_gastos_varios +
+                                                                                item.monto_otros).ToString("$ #,##0.00"),
+                        BgColor = "lightgray"
+                    });
 
                     tabla.Controls.Add(fila);
                 }
@@ -352,7 +433,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 decimal otros = 0;
 
 
-                decimal.TryParse(tb_insumos_taller.Text.Replace(".",","), out insumos_taller);
+                decimal.TryParse(tb_insumos_taller.Text.Replace(".", ","), out insumos_taller);
                 decimal.TryParse(tb_herramientas.Text.Replace(".", ","), out herramientas);
                 decimal.TryParse(tb_viaticos.Text.Replace(".", ","), out viaticos);
                 decimal.TryParse(tb_viaticos_presupuestados.Text.Replace(".", ","), out viaticos_presupuestados);

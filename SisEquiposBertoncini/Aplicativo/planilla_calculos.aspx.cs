@@ -261,7 +261,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 //(ds reporte) Agrego la fila de datos generales 
                 Reportes.planilla_calculos.Datos_generalesRow dg = ds.Datos_generales.NewDatos_generalesRow();
-                dg.Mes = mes.ToString();
+                dg.Mes = new DateTime(anio, mes, 1).ToString("MMMM");
                 dg.Anio = anio.ToString();
                 dg.Tipo_empleado = categoria_empleado;
                 dg.Horas_normales = lbl_horas_normales.Text;
