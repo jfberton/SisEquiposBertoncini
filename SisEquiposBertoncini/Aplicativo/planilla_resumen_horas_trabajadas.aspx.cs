@@ -43,7 +43,7 @@ namespace SisEquiposBertoncini.Aplicativo
             }
             else
             {
-                if (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores")
+                if (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos")
                 {
                     using (var cxt = new Model1Container())
                     {
@@ -122,7 +122,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 }
                 else
                 {
-                    if (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores")
+                    if (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos")
                     {
                         if (ddl_empleado.SelectedItem.Text == "Todos")
                         {

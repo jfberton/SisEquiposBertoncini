@@ -389,7 +389,7 @@ namespace SisEquiposBertoncini.Aplicativo
             }
 
 
-            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes').modal('show')}); $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '" + minDate.ToString("MM/dd/yyyy") + "', maxDate: '" + maxDate.ToString("MM/dd/yyyy") + "' }); });</script>";
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#ver_detalle_item_mes').modal('show')}); $(function () { $('#dtp_fecha').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY', minDate: '" + minDate.ToString("MM/dd/yyyy") + "', maxDate: '" + maxDate.ToString("MM/dd/yyyy") + "' }); $('#dtp_fecha').data('DateTimePicker').date('" + tb_detalle_fecha.Value + "'); });</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
 
         }

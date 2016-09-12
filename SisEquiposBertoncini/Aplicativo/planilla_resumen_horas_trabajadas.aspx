@@ -33,7 +33,7 @@
                 <td>
                     <asp:DropDownList runat="server" ID="ddl_tipo_empleado" AutoPostBack="true" OnSelectedIndexChanged="ddl_tipo_empleado_SelectedIndexChanged" CssClass="form-control">
                         <asp:ListItem Text="Todos" />
-                        <asp:ListItem Text="Mecánicos - Pintores" />
+                        <asp:ListItem Text="Mecánicos" />
                         <asp:ListItem Text="Soldadores" />
                     </asp:DropDownList></td>
                 <td>Empleado</td>

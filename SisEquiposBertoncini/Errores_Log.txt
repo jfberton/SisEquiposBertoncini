@@ -2184,3 +2184,360 @@ STACKTRACE:    en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636090548505321641
+
+DATE: 09/09/2016 21:54:10
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Etiqueta de servidor incorrecta.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx
+
+TARGETSITE: Void ProcessError(System.String)
+
+STACKTRACE:    en System.Web.UI.TemplateParser.ProcessError(String message)
+   en System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
+   en System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   en System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636090947332483827
+
+DATE: 10/09/2016 8:58:53
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Intento de dividir por cero.
+
+SOURCE: mscorlib
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_horas_planilla_principal.aspx
+
+TARGETSITE: Void FCallDivide(System.Decimal ByRef, System.Decimal ByRef)
+
+STACKTRACE:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   en System.Decimal.op_Division(Decimal d1, Decimal d2)
+   en SisEquiposBertoncini.Aplicativo.admin_horas_planilla_principal.Cargar_busqueda(Int32 pmes, Int32 panio, String ptipo_empleado) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_horas_planilla_principal.aspx.cs:línea 323
+   en SisEquiposBertoncini.Aplicativo.admin_horas_planilla_principal.btn_buscar_Click(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_horas_planilla_principal.aspx.cs:línea 66
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636092960193942727
+
+DATE: 12/09/2016 04:53:39 p.m.
+
+MESSAGE: Login failed for user 'SA'.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/default.aspx
+
+TARGETSITE: Boolean TryGetConnection(System.Data.Common.DbConnection, UInt32, Boolean, Boolean, System.Data.Common.DbConnectionOptions, System.Data.ProviderBase.DbConnectionInternal ByRef)
+
+STACKTRACE:    en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   en System.Data.Objects.ObjectContext.CreateDatabase()
+   en System.Data.Entity.Internal.DatabaseOperations.Create(ObjectContext objectContext)
+   en System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   en System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext)
+   en System.Data.Entity.Database.CreateIfNotExists()
+   en SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) en D:\Desarrollo\Tio\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636092970421550202
+
+DATE: 12/09/2016 05:10:42 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se puede reconocer la cadena como un tipo booleano válido.
+
+SOURCE: mscorlib
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx?eq=5&ed=1&m=8&a=2016
+
+TARGETSITE: Boolean Parse(System.String)
+
+STACKTRACE:    en System.Boolean.Parse(String value)
+   en System.Web.UI.WebControls.CheckBoxField.OnDataBindField(Object sender, EventArgs e)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636092975730026642
+
+DATE: 12/09/2016 05:19:33 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx?eq=5&ed=1&m=8&a=2016
+
+TARGETSITE: System.Web.UI.Control get_Item(Int32)
+
+STACKTRACE:    en System.Web.UI.ControlCollection.get_Item(Int32 index)
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.gv_combustible_RowDataBound(Object sender, GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.CrearMostrarTabla(Int32 id_equipo, Int32 mes, Int32 anio)
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.Page_Load(Object sender, EventArgs e)
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636092976091350541
+
+DATE: 12/09/2016 05:20:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El argumento especificado está fuera del intervalo de valores válidos.
+Nombre del parámetro: index
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx?eq=5&ed=1&m=8&a=2016
+
+TARGETSITE: System.Web.UI.Control get_Item(Int32)
+
+STACKTRACE:    en System.Web.UI.ControlCollection.get_Item(Int32 index)
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.gv_combustible_RowDataBound(Object sender, GridViewRowEventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 190
+   en System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.CrearMostrarTabla(Int32 id_equipo, Int32 mes, Int32 anio) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 130
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.Page_Load(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 51
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636093014267936861
+
+DATE: 12/09/2016 06:23:46 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Instrucción INSERT en conflicto con la restricción FOREIGN KEY "FK_EquipoPlanilla_combustible". El conflicto ha aparecido en la base de datos "equipos_berton", tabla "dbo.Equipos", column 'id_equipo'.
+Se terminó la instrucción.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx
+
+TARGETSITE: Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+
+STACKTRACE:    en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   en System.Data.SqlClient.SqlDataReader.get_MetaData()
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   en System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   en System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   en System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Mapping.Update.Internal.DynamicUpdateCommand.Execute(UpdateTranslator translator, EntityConnection connection, Dictionary`2 identifierValues, List`1 generatedValues)
+   en System.Data.Mapping.Update.Internal.UpdateTranslator.Update(IEntityStateManager stateManager, IEntityAdapter adapter)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636093017327771962
+
+DATE: 12/09/2016 06:28:52 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Intento de dividir por cero.
+
+SOURCE: mscorlib
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx
+
+TARGETSITE: Void FCallDivide(System.Decimal ByRef, System.Decimal ByRef)
+
+STACKTRACE:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   en System.Decimal.op_Division(Decimal d1, Decimal d2)
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.CrearMostrarTabla(Int32 id_equipo, Int32 mes, Int32 anio) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 82
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.btn_buscar_Click(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636093028650384110
+
+DATE: 12/09/2016 06:47:45 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: DataBinding: '<>f__AnonymousType17`10[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]' no contiene una propiedad con el nombre 'area_id'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/planilla_combustibles.aspx
+
+TARGETSITE: System.Object GetPropertyValue(System.Object, System.String)
+
+STACKTRACE:    en System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   en System.Web.UI.DataBinder.Eval(Object container, String[] expressionParts)
+   en System.Web.UI.DataBinder.Eval(Object container, String expression)
+   en System.Web.UI.TemplateControl.Eval(String expression)
+   en ASP.aplicativo_planilla_combustibles_aspx.__DataBinding__control41(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx:línea 119
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.CrearMostrarTabla(Int32 id_equipo, Int32 mes, Int32 anio) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 117
+   en SisEquiposBertoncini.Aplicativo.planilla_combustibles.btn_buscar_Click(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\planilla_combustibles.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

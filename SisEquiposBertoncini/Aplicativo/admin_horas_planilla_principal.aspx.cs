@@ -110,7 +110,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 DateTime primer_dia_mes = new DateTime(anio, mes, 1);
                 DateTime ultimo_dia_mes = new DateTime(anio, mes, DateTime.DaysInMonth(anio, mes));
-                
+
                 Categoria_empleado mecanicos = cxt.Categorias_empleados.First(cc => cc.nombre == "Mecánico");
                 Categoria_empleado soldadores = cxt.Categorias_empleados.First(cc => cc.nombre == "Soldador");
                 Categoria_empleado pintores = cxt.Categorias_empleados.First(cc => cc.nombre == "Pintor");
@@ -123,7 +123,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 switch (tipo_empleado)
                 {
-                    case "Mecánicos - Pintores":
+                    case "Mecánicos":
                         empleados = cxt.Empleados.Where(ee => (ee.id_categoria == mecanicos.id_categoria || ee.id_categoria == pintores.id_categoria) && (ee.fecha_alta == null || ee.fecha_alta.Value <= ultimo_dia_mes) && (ee.fecha_baja == null || (ee.fecha_baja.Value >= primer_dia_mes))).ToList();
                         break;
                     case "Soldadores":
@@ -146,17 +146,17 @@ namespace SisEquiposBertoncini.Aplicativo
                     itemTablaEmpleado item = new itemTablaEmpleado();
                     item.id_empleado = e.id_empleado;
                     item.empleado = e.nombre;
-                    item.horas_normales = rme_mes_actual!= null ? rme_mes_actual.total_horas_normales : "00:00";
-                    item.horas_ausente = rme_mes_actual!= null ? rme_mes_actual.total_horas_ausente : "00:00";
+                    item.horas_normales = rme_mes_actual != null ? rme_mes_actual.total_horas_normales : "00:00";
+                    item.horas_ausente = rme_mes_actual != null ? rme_mes_actual.total_horas_ausente : "00:00";
                     item.horas_extra_50 = rme_mes_actual != null ? rme_mes_actual.total_horas_extra_50 : "00:00";
                     item.horas_extra_100 = rme_mes_actual != null ? rme_mes_actual.total_horas_extra_100 : "00:00";
 
-                    item.sueldo = rme_mes_actual != null ? 
-                        ((rme_mes_actual.Sueldo == 0 && rme_mes_anterior != null) ? rme_mes_anterior.Sueldo : rme_mes_actual.Sueldo) : 
+                    item.sueldo = rme_mes_actual != null ?
+                        ((rme_mes_actual.Sueldo == 0 && rme_mes_anterior != null) ? rme_mes_anterior.Sueldo : rme_mes_actual.Sueldo) :
                         rme_mes_anterior != null ? rme_mes_anterior.Sueldo : 0;
                     item.dias_mes = rme_mes_actual != null ? rme_mes_actual.dias_laborables : 0;
                     item.dias_out = rme_mes_actual != null ? rme_mes_actual.dias_out : 0;
-                    
+
                     filas.Add(item);
                 }
 
@@ -173,11 +173,11 @@ namespace SisEquiposBertoncini.Aplicativo
                                         horas_extra_100 = Convert.ToDecimal(ie.horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(ie.horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60)),
                                         sueldo = ie.sueldo,
                                         dias_mes = ie.dias_mes,
-                                        dias_out = (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? ie.dias_out : Convert.ToDecimal(0)),
-                                        costo_mensual_ponderado = ddl_tipo_empleado.SelectedItem.Text == "Mecánicos - Pintores" ? (ie.dias_mes > 0 ? ie.sueldo - (ie.sueldo / ie.dias_mes) * ie.dias_out : 0) : (ie.sueldo)
+                                        dias_out = (ddl_tipo_empleado.SelectedItem.Text == "Mecánicos" ? ie.dias_out : Convert.ToDecimal(0)),
+                                        costo_mensual_ponderado = ddl_tipo_empleado.SelectedItem.Text == "Mecánicos" ? (ie.dias_mes > 0 ? ie.sueldo - (ie.sueldo / ie.dias_mes) * ie.dias_out : 0) : (ie.sueldo)
                                     }).ToList();
 
-                if (ddl_tipo_empleado.SelectedItem.Text != "Mecánicos - Pintores")
+                if (ddl_tipo_empleado.SelectedItem.Text != "Mecánicos")
                 {
                     //gv_planilla_empleados.Columns[ObtenerColumna("Días mes")].Visible = false;
                     gv_planilla_empleados.Columns[ObtenerColumna("Días OUT")].Visible = false;
@@ -314,6 +314,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_horas_trabajadas_segun_datos_prueba.ToolTip = tooltip;
 
                 decimal valor_dolar_mes = cxt.Valores_dolar.FirstOrDefault(x => x.mes == mes && x.anio == anio) != null ? cxt.Valores_dolar.First(x => x.mes == mes && x.anio == anio).valor : 0;
+                valor_dolar_mes = valor_dolar_mes == 0 ? 1 : valor_dolar_mes;
                 lbl_valor_dolar_mes.Text = valor_dolar_mes.ToString("#,##0.00");
 
 

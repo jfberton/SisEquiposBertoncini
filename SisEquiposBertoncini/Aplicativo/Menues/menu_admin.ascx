@@ -68,7 +68,7 @@
         <li runat="server" id="li_planillas0ul_principal"><a href="admin_horas_planilla_principal.aspx">En función de horas empleado</a></li>
         <li runat="server" id="li_planillas0ul_administrativo"><a href="planilla_gastos_administrativos.aspx">Gastos administración</a></li>
         <li runat="server" id="li_planillas0ul_resumen_horas"><a href="planilla_resumen_horas_trabajadas.aspx">Resumen horas trabajadas equipo</a></li>
-        <%--<li><a href="planilla_combustibles.aspx">Planilla combustibles</a></li>--%>
+        <li><a href="planilla_combustibles.aspx">Planilla combustibles</a></li>
     </ul>
 </li>
 

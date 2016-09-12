@@ -192,7 +192,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                         switch (categoria_empleado)
                         {
-                            case "Mecánicos - Pintores":
+                            case "Mecánicos":
                                 equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Insumos, mes, anio, item_equipo.monto_insumos_taller);
                                 equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Herramientas, mes, anio, item_equipo.monto_herramientas);
                                 equipo_cxt.Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Viaticos, mes, anio, item_equipo.monto_viaticos);

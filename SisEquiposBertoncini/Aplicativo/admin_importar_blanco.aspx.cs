@@ -40,6 +40,7 @@ namespace SisEquiposBertoncini.Aplicativo
             public DateTime Dia { get; set; }
             public decimal Monto { get; set; }
             public string Comentario { get; set; }
+            public string Motivo { get; set; }
         }
 
         private void ProcesarDataTable(DataTable dt)
@@ -52,71 +53,105 @@ namespace SisEquiposBertoncini.Aplicativo
 
             foreach (DataRow dr in dt.Rows)
             {
-                if (dr[0].ToString().Contains("F") && (
-                                dr[33].ToString() == "Camiones y Carretones" ||
-                                dr[33].ToString() == "Grúas" ||
-                                dr[33].ToString() == "Trabajos Especiales" ||
-                                dr[33].ToString() == "Taller de Mantenimiento" ||
-                                dr[33].ToString() == "Taller de Soldadura" ||
-                                dr[33].ToString() == "Ventas"
-                            ))
+                try
                 {
-                    string nombreEquipo = CrossClass.ObtenerEquipoDB(dr[31].ToString());
-                    string nombreItem = CrossClass.ObtenerItemDB(dr[27].ToString());
-
-                    if (nombreEquipo != "Sin clasificar" && nombreItem != "Sin clasificar")
+                    if ((dr[0].ToString().Contains("F") || dr[0].ToString() == "RE") && (
+                                    dr[33].ToString() == "Camiones y Carretones" ||
+                                    dr[33].ToString() == "Grúas" ||
+                                    dr[33].ToString() == "Trabajos Especiales" ||
+                                    dr[33].ToString() == "Taller de Mantenimiento" ||
+                                    dr[33].ToString() == "Taller de Soldadura" ||
+                                    dr[33].ToString() == "Ventas"
+                                ))
                     {
-                        //correcto
-                        RegistroPorInsertar ri = new RegistroPorInsertar();
-                        ri.Nombre_Equipo = nombreEquipo;
-                        ri.Nombre_item = nombreItem;
-                        ri.Comentario = dr[18].ToString();
-                        ri.Dia = Convert.ToDateTime(dr[34].ToString());
-                        ri.Monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
-                        aInsertar.Add(ri);
+                        string nombreEquipo = CrossClass.ObtenerEquipoDB(dr[31].ToString());
+                        string nombreItem = CrossClass.ObtenerItemDB(dr[27].ToString());
 
-
-                        //if (nombreItem == "Combustible")
-                        //{
-                        //    string chofer= (dr[18].ToString().Split(';'))[0];
-                        //    bool tanque_lleno = (dr[18].ToString().Split(';'))[1]== "S";
-                        //    decimal km = 0;
-                        //    decimal litros = 0;
-                        //    decimal.TryParse((dr[18].ToString().Split(';'))[2].Replace('.', ','), out km);
-                        //    decimal.TryParse((dr[18].ToString().Split(';'))[3].Replace('.', ','), out litros);
-                        //    Equipo eq = cxt.Equipos.FirstOrDefault(ee=>ee.nombre == nombreEquipo);
-
-
-                        //    items_combustible.Add(new Planilla_combustible()
-                        //    {
-                        //        id_equipo = eq != null ? eq.id_equipo : 0,
-                        //        fecha = Convert.ToDateTime(dr[7].ToString()),
-                        //        chofer = chofer,
-                        //        tanque_lleno = tanque_lleno,
-                        //        km = km,
-                        //        litros = litros,
-                        //        costo_total_facturado = Convert.ToDecimal(dr[24].ToString()) + Convert.ToDecimal(dr[36].ToString()),
-                        //        promedio = 0
-                        //    });
-                        //}
-
-                    }
-                    else
-                    {
-                        //correcto pero sin matchear
-                        if (dr[31].ToString() != "NO ES VEHÍCULO")
+                        if (nombreEquipo != "Sin clasificar" && nombreItem != "Sin clasificar")
                         {
-                            RegistroSinMachear rsm = new RegistroSinMachear();
-                            rsm.Nombre_equipo_DB = nombreEquipo;
-                            rsm.Nombre_item_DB = nombreItem;
-                            rsm.Nombre_Equipo_informado = dr[31].ToString();
-                            rsm.Nombre_item_informado = dr[27].ToString();
-                            rsm.Comentario = dr[18].ToString();
-                            rsm.Dia = Convert.ToDateTime(dr[8].ToString());
-                            rsm.Monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
-                            sinMatchear.Add(rsm);
+                            bool correcto = true; //hasta aca el item es correcto, verifico si es combustible y se estan bien cargados los datos, si es asi se agrega a correctos, sino naranja
+                            decimal monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
+                            if (dr[12].ToString() == "A")
+                            {
+                                monto = monto + Convert.ToDecimal(dr[36].ToString());
+                            }
+
+                            if (nombreItem == "Combustible")
+                            {
+                                string[] campos_combustible = dr[18].ToString().Split(';');
+                                if (campos_combustible.Length == 4)
+                                {
+                                    string chofer = campos_combustible[0];
+                                    bool tanque_lleno = campos_combustible[1] == "S";
+                                    decimal km = 0;
+                                    decimal litros = 0;
+                                    decimal.TryParse(campos_combustible[2].Replace('.', ','), out km);
+                                    decimal.TryParse(campos_combustible[3].Replace('.', ','), out litros);
+                                    Equipo eq = cxt.Equipos.FirstOrDefault(ee => ee.nombre == nombreEquipo);
+
+                                    items_combustible.Add(new Planilla_combustible()
+                                    {
+                                        id_equipo = eq != null ? eq.id_equipo : 0,
+                                        fecha = Convert.ToDateTime(dr[7].ToString()),
+                                        chofer = chofer,
+                                        tanque_lleno = tanque_lleno,
+                                        km = km,
+                                        litros = litros,
+                                        costo_total_facturado = monto,
+                                        promedio = 0
+                                    });
+                                }
+                                else
+                                {
+                                    correcto = false;
+                                    RegistroSinMachear rsm = new RegistroSinMachear();
+                                    rsm.Nombre_equipo_DB = nombreEquipo;
+                                    rsm.Nombre_item_DB = nombreItem;
+                                    rsm.Nombre_Equipo_informado = dr[31].ToString();
+                                    rsm.Nombre_item_informado = dr[27].ToString();
+                                    rsm.Comentario = dr[18].ToString();
+                                    rsm.Dia = Convert.ToDateTime(dr[8].ToString());
+                                    rsm.Monto = monto;
+                                    rsm.Motivo = "Observaciones sin formato preestablecido";
+                                    sinMatchear.Add(rsm);
+                                }
+                            }
+
+                            if(correcto)
+                            {
+                                //correcto
+                                RegistroPorInsertar ri = new RegistroPorInsertar();
+                                ri.Nombre_Equipo = nombreEquipo;
+                                ri.Nombre_item = nombreItem;
+                                ri.Comentario = dr[18].ToString();
+                                ri.Dia = Convert.ToDateTime(dr[34].ToString());
+                                ri.Monto = monto;
+                                aInsertar.Add(ri);
+                            }
                         }
+                        else
+                        {
+                            //correcto pero sin matchear
+                            if (dr[31].ToString() != "NO ES VEHÍCULO")
+                            {
+                                RegistroSinMachear rsm = new RegistroSinMachear();
+                                rsm.Nombre_equipo_DB = nombreEquipo;
+                                rsm.Nombre_item_DB = nombreItem;
+                                rsm.Nombre_Equipo_informado = dr[31].ToString();
+                                rsm.Nombre_item_informado = dr[27].ToString();
+                                rsm.Comentario = dr[18].ToString();
+                                rsm.Dia = Convert.ToDateTime(dr[8].ToString());
+                                rsm.Monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
+                                rsm.Motivo = "Equipo o item informado en excel sin machear con valores en base de datos";
+                                sinMatchear.Add(rsm);
+                            }
+                        }
+
                     }
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
                 }
             }
 

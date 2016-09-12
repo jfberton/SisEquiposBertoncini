@@ -3,7 +3,7 @@
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_style" runat="server">
-     <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -73,6 +73,12 @@
         </div>
     </div>
     <br />
+    <div class="row" runat="server" id="div_ingreso_manual">
+        <button type="button" class="btn btn-default pull-right" causesvalidation="false" id="btn_agregar_linea" runat="server" onserverclick="btn_agregar_linea_ServerClick">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
+        </button>
+    </div>
+    <br />
     <div class="row">
         <div class="col-md-12">
             <asp:GridView ID="gv_combustible" runat="server" OnPreRender="gv_combustible_PreRender"
@@ -80,7 +86,7 @@
                 <Columns>
                     <asp:BoundField DataField="fecha" HeaderText="Fecha" ReadOnly="true" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="chofer" HeaderText="Chofer" ReadOnly="true" />
-                    <asp:CheckBoxField  DataField="tanque_lleno" HeaderText="Tanque lleno" ReadOnly="true" />
+                    <asp:CheckBoxField DataField="tanque_lleno" HeaderText="Tanque lleno" ReadOnly="true" />
                     <asp:BoundField DataField="litros" HeaderText="Litros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
                     <asp:BoundField DataField="km" HeaderText="Kilometros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:#,#}" />
                     <asp:BoundField DataField="promedio" HeaderText="Promedio" ReadOnly="true" DataFormatString="{0:#,#}" ItemStyle-HorizontalAlign="Right" />
@@ -89,6 +95,101 @@
             </asp:GridView>
         </div>
     </div>
+
+    <div class="modal fade" id="agregar_linea_combustible" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">
+                        <asp:Label Text="Agregar empleado" ID="lbl_agregar_empleado_titulo" runat="server" /></h4>
+                    <input type="hidden" runat="server" id="id_empleado_hidden" value="0" />
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList"
+                                CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <table>
+                                        <tr>
+                                            <td>Fecha</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-8">
+                                    <table class="table-condensed" style="width: 100%">
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <div id="dtp_fecha_factura" class="input-group date">
+                                                        <input type="text" runat="server" id="tb_fecha_factura" class="form-control ddmmaaaa" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <asp:CustomValidator ID="cv_fecha_factura" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha de nacimiento válida' />"
+                                                    ErrorMessage="Debe ingresar una fecha de factura válida" OnServerValidate="cv_fecha_factura_ServerValidate">
+                                                </asp:CustomValidator></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <table>
+                                        <tr>
+                                            <td>Chofer</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList runat="server" Width="100%" ID="ddl_chofer">
+                                        <asp:ListItem Text="text1" />
+                                        <asp:ListItem Text="text2" />
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <td>Litros</td>
+                                    <td>
+                                        <input type="text" id="tb_litros" class="form-control" runat="server" value="1" /></td>
+                                    <td>KM</td>
+                                    <td>
+                                    <input type="text" id="tb_km" runat="server" class="form-control" value="1" /></td>
+                                    <td>Costo</td>
+                                    <td>
+                                        <input type="text" id="tb_costo" class="form-control" runat="server" value="1" /></td>
+                                    <td>Tanque lleno</td>
+                                    <td>
+                                        <asp:CheckBox Text="" ID="chk_tanque_lleno" CssClass="form-control" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 
 </asp:Content>
@@ -111,6 +212,13 @@
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)"
                 }
+            });
+        });
+
+        $(function () {
+            $('#dtp_fecha_factura').datetimepicker({
+                locale: 'es',
+                format: 'DD/MM/YYYY'
             });
         });
     </script>

@@ -15,31 +15,28 @@ namespace SisEquiposBertoncini.Aplicativo
 {
     public partial class planilla_calculos : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+            if (usuariologueado == null)
             {
-                Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
-                if (usuariologueado == null)
-                {
-                    Response.Redirect("~/Default.aspx?mode=session_end");
-                }
-
-                lbl_horas_normales.Text = Convert.ToDecimal(Session["planilla_calculos_horas_normales"]).ToString("#,##0.00");
-                lbl_horas_extra_50.Text = Convert.ToDecimal(Session["planilla_calculos_horas_extra_50"]).ToString("#,##0.00");
-                lbl_horas_extra_100.Text = Convert.ToDecimal(Session["planilla_calculos_horas_extra_100"]).ToString("#,##0.00");
-                lbl_horas_totales.Text = (Convert.ToDecimal(Session["planilla_calculos_horas_normales"]) + Convert.ToDecimal(Session["planilla_calculos_horas_extra_50"]) + Convert.ToDecimal(Session["planilla_calculos_horas_extra_100"])).ToString("#,##0.00");
-
-                lbl_mes.Text = ObtenerMes(Session["planilla_calculos_mes"].ToString());
-                lbl_anio.Text = Session["planilla_calculos_anio"].ToString();
-                lbl_tipo_empleado.Text = Session["planilla_calculos_categoria_empleado"].ToString();
-
-                lbl_costo_hora_seleccionado.Text = Convert.ToDecimal(Session["planilla_calculos_costo_hora_teorico"]).ToString("$ #,##0.00");
-
-                CrearCargarTabla();
+                Response.Redirect("~/Default.aspx?mode=session_end");
             }
+
+            lbl_horas_normales.Text = Convert.ToDecimal(Session["planilla_calculos_horas_normales"]).ToString("#,##0.00");
+            lbl_horas_extra_50.Text = Convert.ToDecimal(Session["planilla_calculos_horas_extra_50"]).ToString("#,##0.00");
+            lbl_horas_extra_100.Text = Convert.ToDecimal(Session["planilla_calculos_horas_extra_100"]).ToString("#,##0.00");
+            lbl_horas_totales.Text = (Convert.ToDecimal(Session["planilla_calculos_horas_normales"]) + Convert.ToDecimal(Session["planilla_calculos_horas_extra_50"]) + Convert.ToDecimal(Session["planilla_calculos_horas_extra_100"])).ToString("#,##0.00");
+
+            lbl_mes.Text = ObtenerMes(Session["planilla_calculos_mes"].ToString());
+            lbl_anio.Text = Session["planilla_calculos_anio"].ToString();
+            lbl_tipo_empleado.Text = Session["planilla_calculos_categoria_empleado"].ToString();
+
+            lbl_costo_hora_seleccionado.Text = Convert.ToDecimal(Session["planilla_calculos_costo_hora_teorico"]).ToString("$ #,##0.00");
+
+            CrearCargarTabla();
         }
+
 
         private string ObtenerMes(string p)
         {
@@ -292,7 +289,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
             div_tabla.Controls.Add(tabla);
 
-            if (categoria_empleado == "Mecánicos - Pintores")
+            if (categoria_empleado == "Mecánicos")
             {
                 Cargar_tabla_trabajos_out();
             }
@@ -503,7 +500,7 @@ namespace SisEquiposBertoncini.Aplicativo
             {
                 List<Empleado> empleados = new List<Empleado>();
 
-                if (categoria_empleado == "Mecánicos - Pintores")
+                if (categoria_empleado == "Mecánicos")
                 {
                     empleados = cxt.Empleados.Where(ee => (ee.Categoria.nombre == "Mecánico" || ee.Categoria.nombre == "Pintor") && ee.fecha_baja == null).ToList();
                 }
@@ -537,7 +534,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Empleado item in empleados)
                 {
-                    
+
 
                     Resumen_mes_empleado rme = item.Resumenes_meses_empleado.FirstOrDefault(x => x.anio == anio && x.mes == mes);
 
@@ -675,8 +672,6 @@ namespace SisEquiposBertoncini.Aplicativo
 
         private void Agregar_a_tabla(HtmlTable tabla, List<equipo_tabla> listado, decimal horas_totales_equipos, decimal horas_varios_taller, decimal horas_guardia, int equipos_guardia, decimal costo_hora)
         {
-
-
             bool primerfila = true;
             string categoria_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
             List<total_categoria_tabla> filas_tabla_total_categoria = Session["filas_tabla_total_categoria"] as List<total_categoria_tabla>;
@@ -773,7 +768,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         string tipo_empleado = Session["planilla_calculos_categoria_empleado"].ToString();
                         switch (tipo_empleado)
                         {
-                            case "Mecánicos - Pintores":
+                            case "Mecánicos":
                                 cxt.Equipos.First(x => x.id_equipo == item.id_equipo).Agregar_detalle_en_valor_mensual_segun_empleado(Equipo.Tipo_empleado.Mecanicos_pintores, Equipo.Valor_mensual.Mano_obra, mes, anio, ((item.horas_mes + (horas_varios_taller * porcentaje_equipo_sobre_total) + horas_guardia_equipo) * costo_hora));
                                 break;
                             case "Soldadores":

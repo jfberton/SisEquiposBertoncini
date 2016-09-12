@@ -34,7 +34,7 @@
                         <td>Categoría de empleado</td>
                         <td>
                             <asp:DropDownList runat="server" ID="ddl_tipo_empleado" CssClass="form-control">
-                                <asp:ListItem Text="Mecánicos - Pintores" Value="Mecánicos - Pintores" />
+                                <asp:ListItem Text="Mecánicos" Value="Mecánicos" />
                                 <asp:ListItem Text="Soldadores" Value="Soldadores" />
                                 <asp:ListItem Text="Grueros" Value="Grueros" />
                             </asp:DropDownList></td>
