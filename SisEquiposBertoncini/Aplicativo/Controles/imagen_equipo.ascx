@@ -7,8 +7,6 @@
         <asp:Image ID="img_acceso" ImageUrl="" Width="200" Height="200"
             runat="server" />
     </div>
-    <div style="position: absolute; top: 0; left: 0;">
-        <asp:Image ID="img_cumple" ImageUrl="" Width="200" Height="200"
-            runat="server" />
-    </div>
 </div>
+
+

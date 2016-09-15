@@ -23,6 +23,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public decimal km { get; set; }
         public decimal promedio { get; set; }
         public decimal costo_total_facturado { get; set; }
+        public string lugar { get; set; }
     
         public virtual Equipo Equipo { get; set; }
     }

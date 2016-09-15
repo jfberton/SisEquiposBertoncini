@@ -79,22 +79,11 @@ namespace SisEquiposBertoncini.Aplicativo
                     tb_notas_equipo.Value = equipo.notas;
                     chk_out.Checked = equipo.OUT;
 
-                    if (Directory.Exists(pathImagenesDisco + equipo.id_equipo.ToString()))
-                    {
-                        if (File.Exists(pathImagenesDisco + equipo.id_equipo + "\\Original.jpg"))
-                        {//Si no existe la imagen temporal pero si la original, la cargo
-                            img_cuenta.ImageUrl = "~/img/Equipos/" + equipo.id_equipo + "/Original.jpg";
-                        }
-                        else
-                        {//Si no existe la imagen temporal y tampoco la original, cargo la default
-                            img_cuenta.ImageUrl = "~/img/Equipos/add.png";
-                        }
-                    }
-                    else
-                    {//Si no existe la carpeta del usuario directamente cargo la imagen de default
-                        img_cuenta.ImageUrl = "~/img/Equipos/add.png";
-                    }
+                    imagenes_equipo.Equipo = equipo;
 
+                    ActualizarImagen();
+
+                    CargarTablaImagenes();
 
                     int mes = DateTime.Today.Month;
                     int anio = DateTime.Today.Year;
@@ -142,6 +131,28 @@ namespace SisEquiposBertoncini.Aplicativo
                     lbl_valor_por_amortizar.Text = Cadena.Formato_moneda(items.Where(x => x.restan_amortizar > 0).Sum(ii => ii.valor_por_amortizar), Cadena.Moneda.dolares);
                 }
             }
+        }
+
+        private void ActualizarImagen()
+        {
+            Equipo equipo = Session["equipo"] as Equipo;
+            //if (Directory.Exists(pathImagenesDisco + equipo.id_equipo.ToString()))
+            //{
+            //    if (File.Exists(pathImagenesDisco + equipo.id_equipo + "\\Original.jpg"))
+            //    {//Si no existe la imagen temporal pero si la original, la cargo
+            //        img_cuenta.ImageUrl = "~/img/Equipos/" + equipo.id_equipo + "/Original.jpg";
+            //    }
+            //    else
+            //    {//Si no existe la imagen temporal y tampoco la original, cargo la default
+            //        img_cuenta.ImageUrl = "~/img/Equipos/add.png";
+            //    }
+            //}
+            //else
+            //{//Si no existe la carpeta del usuario directamente cargo la imagen de default
+            //    img_cuenta.ImageUrl = "~/img/Equipos/add.png";
+            //}
+
+            imagenes_equipo.Equipo = equipo;
         }
 
         protected void cv_categoria_ServerValidate(object source, ServerValidateEventArgs args)
@@ -330,6 +341,7 @@ namespace SisEquiposBertoncini.Aplicativo
         }
 
         private string pathImagenesDisco = System.Web.HttpRuntime.AppDomainAppPath + "img\\Equipos\\";
+
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             Model1Container cxt = Session["CXT"] as Model1Container;
@@ -349,11 +361,137 @@ namespace SisEquiposBertoncini.Aplicativo
                     File.Delete(path + "\\Original.jpg");
                 }
 
+
+                string nombre = Guid.NewGuid().ToString() + ".jpg";
+
+                file.SaveAs(path + "\\" + nombre);
                 file.SaveAs(path + "\\Original.jpg");
 
-                img_cuenta.ImageUrl = "~/img/Equipos/" + eq.id_equipo + "/Original.jpg";
+                //img_cuenta.ImageUrl = "~/img/Equipos/" + eq.id_equipo + "/Original.jpg";
+
+                CargarTablaImagenes();
+
+                MostrarPopUpImagenes();
 
             }
+        }
+
+        private void CargarTablaImagenes()
+        {
+            div_imagen_seleccionada.Visible = false;
+            Equipo eq = Session["equipo"] as Equipo;
+            if (Directory.Exists(pathImagenesDisco + eq.id_equipo.ToString()))
+            {
+                string[] imagenes = Directory.GetFiles(pathImagenesDisco + eq.id_equipo.ToString());
+                int i = 0;
+                var nombres_imagenes = (from ss in imagenes
+                                        where !ss.Contains("Original.jpg")
+                                        select new
+                                        {
+                                            nombre_imagen = Path.GetFileName(ss),
+                                            nombre_a_mostrar = "imagen " + i++.ToString()
+                                        }).ToList();
+
+                gv_imagenes.DataSource = nombres_imagenes;
+                gv_imagenes.DataBind();
+            }
+            }
+
+        protected void btn_ver_imagen_ServerClick(object sender, EventArgs e)
+        {
+            string nombre_imagen = ((System.Web.UI.HtmlControls.HtmlButton)sender).Attributes["data-id"];
+            Equipo eq = Session["equipo"] as Equipo;
+            string path = pathImagenesDisco + eq.id_equipo;
+            imagen_seleccionada.ImageUrl = "~/img/Equipos/" + eq.id_equipo + "/" + nombre_imagen;
+            hidden_nombre_imagen.Value = nombre_imagen;
+            div_imagen_seleccionada.Visible = true;
+            MostrarPopUpImagenes();
+        }
+
+        protected void btn_eliminar_imagen_seleccionada_Click(object sender, EventArgs e)
+        {
+            string nombre_imagen = hidden_nombre_imagen.Value;
+            Equipo eq = Session["equipo"] as Equipo;
+            string path = pathImagenesDisco + eq.id_equipo;
+            File.Delete(path + "\\" + nombre_imagen);
+            div_imagen_seleccionada.Visible = false;
+            hidden_nombre_imagen.Value = "0";
+
+            if (Directory.GetFiles(path).Count() == 1)
+            {//no queda ninguna imagen, elimino la original
+                File.Delete(path + "\\Original.jpg");
+            }
+            else
+            {//se elimino una, reseteo la original
+                if (File.Exists(path + "\\Original.jpg"))
+                {
+                    File.Delete(path + "\\Original.jpg");
+                }
+
+                string nombre_primera_imagen = Path.GetFileName(Directory.GetFiles(path)[0]);
+
+                File.Copy(path + "\\" + nombre_primera_imagen, path + "\\Original.jpg");
+            }
+
+            ActualizarImagen();
+
+            CargarTablaImagenes();
+
+            MostrarPopUpImagenes();
+        }
+
+        protected void btn_aceptar_imagen_seleccionada_Click(object sender, EventArgs e)
+        {
+            div_imagen_seleccionada.Visible = false;
+            hidden_nombre_imagen.Value = "0";
+            MostrarPopUpImagenes();
+        }
+
+        private void MostrarPopUpImagenes()
+        {
+            string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#editar_imagenes').modal('show')});</script>";
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
+        }
+
+        protected void btn_marcar_como_principal_Click(object sender, EventArgs e)
+        {
+            string nombre_imagen = hidden_nombre_imagen.Value;
+            Equipo eq = Session["equipo"] as Equipo;
+            string path = pathImagenesDisco + eq.id_equipo;
+
+            if (File.Exists(path + "\\Original.jpg"))
+            {
+                File.Delete(path + "\\Original.jpg");
+            }
+
+            string nombre_primera_imagen = Path.GetFileName(Directory.GetFiles(path)[0]);
+
+            File.Copy(path + "\\" + nombre_imagen, path + "\\Original.jpg");
+
+            CargarValoresEquipo();
+
+            div_imagen_seleccionada.Visible = false;
+            hidden_nombre_imagen.Value = "0";
+
+            MostrarPopUpImagenes();
+        }
+
+        protected void gv_PreRender(object sender, EventArgs e)
+        {
+            if (gv_imagenes.Rows.Count > 0)
+            {
+                gv_imagenes.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+
+            if (gv_partes.Rows.Count > 0)
+            {
+                gv_partes.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
+
+        protected void btn_aceptar_edicion_imagenes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Aplicativo/admin_equipo_detalle.aspx");
         }
     }
 }

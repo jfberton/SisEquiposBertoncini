@@ -105,6 +105,7 @@
                         <asp:BoundField DataField="km" HeaderText="Kilometros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:#,#}" />
                         <asp:BoundField DataField="promedio" HeaderText="Promedio" ReadOnly="true" DataFormatString="{0:#,#}" ItemStyle-HorizontalAlign="Right" />
                         <asp:BoundField DataField="costo_total_facturado" HeaderText="Costo" ReadOnly="true" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" />
+                        <asp:BoundField DataField="lugar" HeaderText="Lugar" ReadOnly="true" />
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <button
@@ -248,6 +249,18 @@
                                         </td>
                                     </tr>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <table>
+                                    <tr>
+                                        <td>Lugar</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="tb_lugar" class="form-control" runat="server" value="" />
                             </div>
                         </div>
                     </div>

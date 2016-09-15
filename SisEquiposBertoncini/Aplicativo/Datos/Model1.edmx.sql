@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/25/2016 10:12:02
--- Generated from EDMX file: d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
+-- Date Created: 09/15/2016 10:04:02
+-- Generated from EDMX file: D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [equipos_berton];
+USE [equipos_berton1];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -435,7 +435,8 @@ CREATE TABLE [dbo].[Planilla_combustibles] (
     [litros] decimal(9,2)  NOT NULL,
     [km] decimal(9,2)  NOT NULL,
     [promedio] decimal(9,2)  NOT NULL,
-    [costo_total_facturado] decimal(11,2)  NOT NULL
+    [costo_total_facturado] decimal(11,2)  NOT NULL,
+    [lugar] nvarchar(max)  NULL
 );
 GO
 

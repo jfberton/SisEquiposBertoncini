@@ -306,10 +306,9 @@
           <ScalarProperty Name="km" ColumnName="km" />
           <ScalarProperty Name="promedio" ColumnName="promedio" />
           <ScalarProperty Name="costo_total_facturado" ColumnName="costo_total_facturado" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual" />
-    <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_categoria" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_categoria" />
   </EntityContainerMapping>
 </Mapping>

@@ -94,13 +94,13 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea tb_notas_equipo;
         
         /// <summary>
-        /// img_cuenta control.
+        /// imagenes_equipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_cuenta;
+        protected global::SisEquiposBertoncini.Aplicativo.Controles.imagenes_equipo imagenes_equipo;
         
         /// <summary>
         /// archivo_imagen control.
@@ -335,6 +335,69 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_costo_mensual;
+        
+        /// <summary>
+        /// gv_imagenes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_imagenes;
+        
+        /// <summary>
+        /// div_imagen_seleccionada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_imagen_seleccionada;
+        
+        /// <summary>
+        /// hidden_nombre_imagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_nombre_imagen;
+        
+        /// <summary>
+        /// imagen_seleccionada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imagen_seleccionada;
+        
+        /// <summary>
+        /// btn_aceptar_imagen_seleccionada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_aceptar_imagen_seleccionada;
+        
+        /// <summary>
+        /// btn_marcar_como_principal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_marcar_como_principal;
+        
+        /// <summary>
+        /// btn_aceptar_edicion_imagenes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_aceptar_edicion_imagenes;
         
         /// <summary>
         /// btn_guardar_equipo control.

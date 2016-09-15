@@ -1161,6 +1161,7 @@
     <Content Include="Aplicativo\admin_valores_mes_equipo_v2.aspx" />
     <Content Include="Aplicativo\admin_valor_dolar.aspx" />
     <Content Include="Aplicativo\Controles\cross.xml" />
+    <Content Include="Aplicativo\Controles\imagenes_equipo.ascx" />
     <Content Include="Aplicativo\Controles\imagen_empleado.ascx" />
     <Content Include="Aplicativo\Controles\imagen_equipo.ascx" />
     <Content Include="Aplicativo\Controles\imagen_usuario.ascx" />
@@ -1204,6 +1205,7 @@
     <Content Include="css\fixedHeader.dataTables.min.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\ionicons.min.css" />
+    <Content Include="css\jquery.bxslider.min.css" />
     <Content Include="css\jquery.dataTables.min.css" />
     <Content Include="css\jquery.treegrid.css" />
     <Content Include="css\jumbotron-narrow.css" />
@@ -1240,8 +1242,10 @@
     <Content Include="js\dataTables.bootstrap.min.js" />
     <Content Include="js\dataTables.fixedColumns.min.js" />
     <Content Include="js\dataTables.fixedHeader.min.js" />
+    <Content Include="js\imagesloaded.pkgd.min.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery-1.12.3.js" />
+    <Content Include="js\jquery.bxslider.min.js" />
     <Content Include="js\jquery.cookie.js" />
     <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="js\jquery.fixedheadertable.js" />
@@ -1456,6 +1460,8 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\npm.js" />
+    <Content Include="tooltipster\jquery.qtip.min.css" />
+    <Content Include="tooltipster\jquery.qtip.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1562,6 +1568,13 @@
     <Compile Include="Aplicativo\Controles\Cadena.cs" />
     <Compile Include="Aplicativo\Controles\CrossClass.cs" />
     <Compile Include="Aplicativo\Controles\Horas_string.cs" />
+    <Compile Include="Aplicativo\Controles\imagenes_equipo.ascx.cs">
+      <DependentUpon>imagenes_equipo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\Controles\imagenes_equipo.ascx.designer.cs">
+      <DependentUpon>imagenes_equipo.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Controles\imagen_empleado.ascx.cs">
       <DependentUpon>imagen_empleado.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

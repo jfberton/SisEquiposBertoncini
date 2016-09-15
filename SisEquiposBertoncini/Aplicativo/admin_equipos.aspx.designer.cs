@@ -94,6 +94,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Label lbl_out;
         
         /// <summary>
+        /// div_imagenes_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_imagenes_equipo;
+        
+        /// <summary>
         /// lbl_notas_equipo control.
         /// </summary>
         /// <remarks>
@@ -101,15 +110,6 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_notas_equipo;
-        
-        /// <summary>
-        /// imagen_equipo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SisEquiposBertoncini.Aplicativo.Controles.imagen_equipo imagen_equipo;
         
         /// <summary>
         /// gv_partes control.

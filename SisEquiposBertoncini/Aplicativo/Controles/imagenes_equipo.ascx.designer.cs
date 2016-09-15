@@ -10,24 +10,15 @@
 namespace SisEquiposBertoncini.Aplicativo.Controles {
     
     
-    public partial class imagen_equipo {
+    public partial class imagenes_equipo {
         
         /// <summary>
-        /// img_cuenta control.
+        /// imgs_equipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_cuenta;
-        
-        /// <summary>
-        /// img_acceso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_acceso;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl imgs_equipo;
     }
 }

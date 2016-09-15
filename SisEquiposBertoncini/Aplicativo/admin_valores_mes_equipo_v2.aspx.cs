@@ -187,6 +187,7 @@ namespace SisEquiposBertoncini.Aplicativo
         private void Ver_editar_valores_mes(int id_valor_item_mes)
         {
             Usuario usuariologueado = Session["UsuarioLogueado"] as Usuario;
+            bool escombustible = false;
 
             int mes = 0; int anio = 0;
             using (var cxt = new Model1Container())
@@ -196,7 +197,9 @@ namespace SisEquiposBertoncini.Aplicativo
                 mes = ioequipo.mes; anio = ioequipo.anio;
                 hidden_id_valor_mes.Value = id_valor_item_mes.ToString();
                 lbl_item.Text = lbl_item_view.Text = item_valor_mes.Item.nombre;
-                
+                escombustible = item_valor_mes.Item.nombre == "Combustible";
+
+
                 lbl_categoria.Text = lbl_categoria_view.Text = item_valor_mes.Item.tipo;
                 switch (ioequipo.mes)
                 {
@@ -253,7 +256,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                    detalle_descripcion = x.descripcion
                                }).ToList();
 
-                if (usuariologueado.perfil == perfil_usuario.Jefe)
+                if (usuariologueado.perfil == perfil_usuario.Jefe || escombustible)
                 {
                     gv_detalle_view.DataSource = detalle;
                     gv_detalle_view.DataBind();
@@ -267,7 +270,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 lbl_total_item_mes.Text = lbl_total_item_mes_view.Text = item_valor_mes.Detalle.Sum(x => x.monto).ToString("$ #,##0.00");
             }
 
-            if (usuariologueado.perfil == perfil_usuario.Jefe)
+            if (usuariologueado.perfil == perfil_usuario.Jefe || escombustible)
             {
                 MostrarPopUpDetalle_view();
             }

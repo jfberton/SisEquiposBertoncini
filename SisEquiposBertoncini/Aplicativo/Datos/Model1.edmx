@@ -4,616 +4,607 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Areas">
-          <Key>
-            <PropertyRef Name="id_area" />
-          </Key>
-          <Property Name="id_area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Aux_planilla_calculos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="considera_guardia" Type="bit" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Aux_planilla_gastos_administracion">
-          <Key>
-            <PropertyRef Name="id_detalle_gastos_administrativos" />
-          </Key>
-          <Property Name="id_detalle_gastos_administrativos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="porcentaje" Type="decimal" Precision="11" Scale="4" Nullable="false" />
-          <Property Name="id_planilla_gastos_administartivos" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Aux_planilla_gastos_horas_hombres">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="insumos_taller" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="herramientas" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="viaticos" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="viaticos_presupuestados" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-          <Property Name="tipo_empleado" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="indumentaria" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="repuestos" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="gastos_varios" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="otros" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="repuestos_presupuestados" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Aux_total_categoria_meses">
-          <Key>
-            <PropertyRef Name="id_aux_total_categoria_mes" />
-          </Key>
-          <Property Name="id_aux_total_categoria_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_categoria_equipo" Type="int" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Categorias_empleados">
-          <Key>
-            <PropertyRef Name="id_categoria" />
-          </Key>
-          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Categorias_equipos">
-          <Key>
-            <PropertyRef Name="id_categoria" />
-          </Key>
-          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="toma_en_cuenta_planilla_costos_horas_hombre" Type="bit" />
-        </EntityType>
-        <EntityType Name="Detalle_valor_item_meses_categoria">
-          <Key>
-            <PropertyRef Name="id_detalle_valor_item_mes_categoria" />
-          </Key>
-          <Property Name="id_detalle_valor_item_mes_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="monto" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="id_valor_mes_categoria_item" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Detalle_valores_items_mes">
-          <Key>
-            <PropertyRef Name="id_detalle_valor_item_mes" />
-          </Key>
-          <Property Name="id_detalle_valor_item_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_valor_mes" Type="int" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="monto" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Detalles_dias">
-          <Key>
-            <PropertyRef Name="id_detalle_dia" />
-          </Key>
-          <Property Name="id_detalle_dia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="hora_desde" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="hora_hasta" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="id_dia" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Dias">
-          <Key>
-            <PropertyRef Name="id_dia" />
-          </Key>
-          <Property Name="id_dia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="id_empleado" Type="int" Nullable="false" />
-          <Property Name="horas_normales" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="horas_extra_50" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="horas_extra_100" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="estado_tm" Type="int" Nullable="false" />
-          <Property Name="estado_tt" Type="int" Nullable="false" />
-          <Property Name="ausente" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="guardia" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="varios_taller" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Empleados">
-          <Key>
-            <PropertyRef Name="id_empleado" />
-          </Key>
-          <Property Name="id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="id_categoria" Type="int" Nullable="false" />
-          <Property Name="id_area" Type="int" Nullable="false" />
-          <Property Name="dni" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="fecha_nacimiento" Type="datetime" Nullable="false" />
-          <Property Name="fecha_baja" Type="datetime" />
-          <Property Name="fecha_alta" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Equipos">
-          <Key>
-            <PropertyRef Name="id_equipo" />
-          </Key>
-          <Property Name="id_equipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="id_categoria" Type="int" Nullable="false" />
-          <Property Name="notas" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="fecha_baja" Type="datetime" />
-          <Property Name="OUT" Type="bit" Nullable="false" />
-          <Property Name="Generico" Type="bit" Nullable="false" />
-          <Property Name="EsTrabajo" Type="bit" />
-        </EntityType>
-        <EntityType Name="Feriados">
-          <Key>
-            <PropertyRef Name="id_feriado" />
-          </Key>
-          <Property Name="id_feriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Ingresos_egresos_mensuales_equipos">
-          <Key>
-            <PropertyRef Name="id_ingreso_egreso_mensual" />
-          </Key>
-          <Property Name="id_ingreso_egreso_mensual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Items_ingresos_egresos">
-          <Key>
-            <PropertyRef Name="id_item" />
-          </Key>
-          <Property Name="id_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="id_item_padre" Type="int" />
-          <Property Name="mostrar_en_equipo" Type="bit" />
-          <Property Name="mostrar_en_trabajo" Type="bit" />
-        </EntityType>
-        <EntityType Name="Items_por_amortizar">
-          <Key>
-            <PropertyRef Name="id_item" />
-          </Key>
-          <Property Name="id_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="costo_cero_km_uss" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="porcentaje_usado" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="porcentaje_valor_recidual" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="meses_por_amortizar" Type="int" Nullable="false" />
-          <Property Name="periodo_alta_mes" Type="int" Nullable="false" />
-          <Property Name="periodo_alta_anio" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Planilla_combustibles">
-          <Key>
-            <PropertyRef Name="id_planilla_combustible" />
-          </Key>
-          <Property Name="id_planilla_combustible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_equipo" Type="int" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="chofer" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="tanque_lleno" Type="bit" Nullable="false" />
-          <Property Name="litros" Type="decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="km" Type="decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="promedio" Type="decimal" Precision="9" Scale="2" Nullable="false" />
-          <Property Name="costo_total_facturado" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Planilla_gastos_administrativo">
-          <Key>
-            <PropertyRef Name="id_planilla_gastos_administartivos" />
-          </Key>
-          <Property Name="id_planilla_gastos_administartivos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-          <Property Name="monto_telefonia_celular" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="monto_sueldos" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="monto_honorarios_sistema" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="monto_honorarios_contables" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="monto_papeleria" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="monto_otros" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Resumenes_meses_empleados">
-          <Key>
-            <PropertyRef Name="id_resumen_mes" />
-          </Key>
-          <Property Name="id_resumen_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_empleado" Type="int" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-          <Property Name="dias_laborables" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="dias_ausente" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="dias_presente" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="dias_por_cargar" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="dias_out" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="dias_presentes_en_dias_no_laborables" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="total_horas_normales" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Sueldo" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="total_horas_ausente" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="total_horas_guardia" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="total_horas_varios_taller" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="temp_table_filas_items_mes_equipo">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_valor_mes" Type="int" Nullable="false" />
-          <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="valor" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-          <Property Name="row_class" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="visible" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Usuarios">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="user" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="pass" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="perfil" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Valor_mes_categorias">
-          <Key>
-            <PropertyRef Name="id_valor_mes_categoria_item" />
-          </Key>
-          <Property Name="id_valor_mes_categoria_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_aux_total_categoria_mes" Type="int" Nullable="false" />
-          <Property Name="id_item" Type="int" Nullable="false" />
-          <Property Name="valor" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Valores_dolar">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="mes" Type="int" Nullable="false" />
-          <Property Name="anio" Type="int" Nullable="false" />
-          <Property Name="valor" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Valores_meses">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_ingreso_egreso_mensual" Type="int" Nullable="false" />
-          <Property Name="id_item" Type="int" Nullable="false" />
-          <Property Name="valor" Type="decimal" Precision="11" Scale="2" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_AreaEmpleado">
-          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Areas">
-              <PropertyRef Name="id_area" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="id_area" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Aux_total_categoria_mesValor_mes_categoria">
-          <End Role="Aux_total_categoria_meses" Type="Self.Aux_total_categoria_meses" Multiplicity="1" />
-          <End Role="Valor_mes_categorias" Type="Self.Valor_mes_categorias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Aux_total_categoria_meses">
-              <PropertyRef Name="id_aux_total_categoria_mes" />
-            </Principal>
-            <Dependent Role="Valor_mes_categorias">
-              <PropertyRef Name="id_aux_total_categoria_mes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Categoria_empleadoEmpleado">
-          <End Role="Categorias_empleados" Type="Self.Categorias_empleados" Multiplicity="1" />
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categorias_empleados">
-              <PropertyRef Name="id_categoria" />
-            </Principal>
-            <Dependent Role="Empleados">
-              <PropertyRef Name="id_categoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CategoriaEquipo">
-          <End Role="Categorias_equipos" Type="Self.Categorias_equipos" Multiplicity="1" />
-          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categorias_equipos">
-              <PropertyRef Name="id_categoria" />
-            </Principal>
-            <Dependent Role="Equipos">
-              <PropertyRef Name="id_categoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DiaDetalle_dia">
-          <End Role="Dias" Type="Self.Dias" Multiplicity="1" />
-          <End Role="Detalles_dias" Type="Self.Detalles_dias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dias">
-              <PropertyRef Name="id_dia" />
-            </Principal>
-            <Dependent Role="Detalles_dias">
-              <PropertyRef Name="id_dia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmpleadoDia">
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
-          <End Role="Dias" Type="Self.Dias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleados">
-              <PropertyRef Name="id_empleado" />
-            </Principal>
-            <Dependent Role="Dias">
-              <PropertyRef Name="id_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmpleadoResumen_mes_empleado">
-          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
-          <End Role="Resumenes_meses_empleados" Type="Self.Resumenes_meses_empleados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleados">
-              <PropertyRef Name="id_empleado" />
-            </Principal>
-            <Dependent Role="Resumenes_meses_empleados">
-              <PropertyRef Name="id_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipoDetalle_dia">
-          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
-          <End Role="Detalles_dias" Type="Self.Detalles_dias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Equipos">
-              <PropertyRef Name="id_equipo" />
-            </Principal>
-            <Dependent Role="Detalles_dias">
-              <PropertyRef Name="id_equipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipoIngreso_egreso_mensual_equipo">
-          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
-          <End Role="Ingresos_egresos_mensuales_equipos" Type="Self.Ingresos_egresos_mensuales_equipos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Equipos">
-              <PropertyRef Name="id_equipo" />
-            </Principal>
-            <Dependent Role="Ingresos_egresos_mensuales_equipos">
-              <PropertyRef Name="id_equipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipoItem_por_amortizar">
-          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
-          <End Role="Items_por_amortizar" Type="Self.Items_por_amortizar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Equipos">
-              <PropertyRef Name="id_equipo" />
-            </Principal>
-            <Dependent Role="Items_por_amortizar">
-              <PropertyRef Name="id_equipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipoPlanilla_combustible">
-          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
-          <End Role="Planilla_combustibles" Type="Self.Planilla_combustibles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Equipos">
-              <PropertyRef Name="id_equipo" />
-            </Principal>
-            <Dependent Role="Planilla_combustibles">
-              <PropertyRef Name="id_equipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ingreso_egreso_mensual_equipoValor_mes">
-          <End Role="Ingresos_egresos_mensuales_equipos" Type="Self.Ingresos_egresos_mensuales_equipos" Multiplicity="1" />
-          <End Role="Valores_meses" Type="Self.Valores_meses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ingresos_egresos_mensuales_equipos">
-              <PropertyRef Name="id_ingreso_egreso_mensual" />
-            </Principal>
-            <Dependent Role="Valores_meses">
-              <PropertyRef Name="id_ingreso_egreso_mensual" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_ingreso_egresoItem_ingreso_egreso">
-          <End Role="Items_ingresos_egresos" Type="Self.Items_ingresos_egresos" Multiplicity="0..1" />
-          <End Role="Items_ingresos_egresos1" Type="Self.Items_ingresos_egresos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items_ingresos_egresos">
-              <PropertyRef Name="id_item" />
-            </Principal>
-            <Dependent Role="Items_ingresos_egresos1">
-              <PropertyRef Name="id_item_padre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_ingreso_egresoValor_mes">
-          <End Role="Items_ingresos_egresos" Type="Self.Items_ingresos_egresos" Multiplicity="1" />
-          <End Role="Valores_meses" Type="Self.Valores_meses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items_ingresos_egresos">
-              <PropertyRef Name="id_item" />
-            </Principal>
-            <Dependent Role="Valores_meses">
-              <PropertyRef Name="id_item" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Item_ingreso_egresoValor_mes_categoria">
-          <End Role="Items_ingresos_egresos" Type="Self.Items_ingresos_egresos" Multiplicity="1" />
-          <End Role="Valor_mes_categorias" Type="Self.Valor_mes_categorias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items_ingresos_egresos">
-              <PropertyRef Name="id_item" />
-            </Principal>
-            <Dependent Role="Valor_mes_categorias">
-              <PropertyRef Name="id_item" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion">
-          <End Role="Planilla_gastos_administrativo" Type="Self.Planilla_gastos_administrativo" Multiplicity="1" />
-          <End Role="Aux_planilla_gastos_administracion" Type="Self.Aux_planilla_gastos_administracion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Planilla_gastos_administrativo">
-              <PropertyRef Name="id_planilla_gastos_administartivos" />
-            </Principal>
-            <Dependent Role="Aux_planilla_gastos_administracion">
-              <PropertyRef Name="id_planilla_gastos_administartivos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria">
-          <End Role="Valor_mes_categorias" Type="Self.Valor_mes_categorias" Multiplicity="1" />
-          <End Role="Detalle_valor_item_meses_categoria" Type="Self.Detalle_valor_item_meses_categoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Valor_mes_categorias">
-              <PropertyRef Name="id_valor_mes_categoria_item" />
-            </Principal>
-            <Dependent Role="Detalle_valor_item_meses_categoria">
-              <PropertyRef Name="id_valor_mes_categoria_item" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Valor_mesDetalle_valor_item_mes">
-          <End Role="Valores_meses" Type="Self.Valores_meses" Multiplicity="1" />
-          <End Role="Detalle_valores_items_mes" Type="Self.Detalle_valores_items_mes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Valores_meses">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Detalle_valores_items_mes">
-              <PropertyRef Name="id_valor_mes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="Obtener_listado_items_ingreso_egreso_mensual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="mes" Type="int" Mode="In" />
-          <Parameter Name="anio" Type="int" Mode="In" />
-          <Parameter Name="id_equipo" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Obtener_listado_items_ingreso_egreso_mensual_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID_CATEGORIA" Type="int" Mode="In" />
-          <Parameter Name="MES" Type="int" Mode="In" />
-          <Parameter Name="ANIO" Type="int" Mode="In" />
-        </Function>
-        <EntityContainer Name="Model1StoreContainer">
-          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Aux_planilla_calculos" EntityType="Self.Aux_planilla_calculos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Aux_planilla_gastos_administracion" EntityType="Self.Aux_planilla_gastos_administracion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Self.Aux_planilla_gastos_horas_hombres" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Aux_total_categoria_meses" EntityType="Self.Aux_total_categoria_meses" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Categorias_empleados" EntityType="Self.Categorias_empleados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Categorias_equipos" EntityType="Self.Categorias_equipos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Detalle_valor_item_meses_categoria" EntityType="Self.Detalle_valor_item_meses_categoria" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Detalle_valores_items_mes" EntityType="Self.Detalle_valores_items_mes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Detalles_dias" EntityType="Self.Detalles_dias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Dias" EntityType="Self.Dias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Feriados" EntityType="Self.Feriados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Self.Ingresos_egresos_mensuales_equipos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Items_ingresos_egresos" EntityType="Self.Items_ingresos_egresos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Items_por_amortizar" EntityType="Self.Items_por_amortizar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Planilla_combustibles" EntityType="Self.Planilla_combustibles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Planilla_gastos_administrativo" EntityType="Self.Planilla_gastos_administrativo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Resumenes_meses_empleados" EntityType="Self.Resumenes_meses_empleados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Self.temp_table_filas_items_mes_equipo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Valor_mes_categorias" EntityType="Self.Valor_mes_categorias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Valores_dolar" EntityType="Self.Valores_dolar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Valores_meses" EntityType="Self.Valores_meses" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_AreaEmpleado" Association="Self.FK_AreaEmpleado">
-            <End Role="Areas" EntitySet="Areas" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Aux_total_categoria_mesValor_mes_categoria" Association="Self.FK_Aux_total_categoria_mesValor_mes_categoria">
-            <End Role="Aux_total_categoria_meses" EntitySet="Aux_total_categoria_meses" />
-            <End Role="Valor_mes_categorias" EntitySet="Valor_mes_categorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Categoria_empleadoEmpleado" Association="Self.FK_Categoria_empleadoEmpleado">
-            <End Role="Categorias_empleados" EntitySet="Categorias_empleados" />
-            <End Role="Empleados" EntitySet="Empleados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CategoriaEquipo" Association="Self.FK_CategoriaEquipo">
-            <End Role="Categorias_equipos" EntitySet="Categorias_equipos" />
-            <End Role="Equipos" EntitySet="Equipos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DiaDetalle_dia" Association="Self.FK_DiaDetalle_dia">
-            <End Role="Dias" EntitySet="Dias" />
-            <End Role="Detalles_dias" EntitySet="Detalles_dias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmpleadoDia" Association="Self.FK_EmpleadoDia">
-            <End Role="Empleados" EntitySet="Empleados" />
-            <End Role="Dias" EntitySet="Dias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmpleadoResumen_mes_empleado" Association="Self.FK_EmpleadoResumen_mes_empleado">
-            <End Role="Empleados" EntitySet="Empleados" />
-            <End Role="Resumenes_meses_empleados" EntitySet="Resumenes_meses_empleados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EquipoDetalle_dia" Association="Self.FK_EquipoDetalle_dia">
-            <End Role="Equipos" EntitySet="Equipos" />
-            <End Role="Detalles_dias" EntitySet="Detalles_dias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EquipoIngreso_egreso_mensual_equipo" Association="Self.FK_EquipoIngreso_egreso_mensual_equipo">
-            <End Role="Equipos" EntitySet="Equipos" />
-            <End Role="Ingresos_egresos_mensuales_equipos" EntitySet="Ingresos_egresos_mensuales_equipos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EquipoItem_por_amortizar" Association="Self.FK_EquipoItem_por_amortizar">
-            <End Role="Equipos" EntitySet="Equipos" />
-            <End Role="Items_por_amortizar" EntitySet="Items_por_amortizar" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EquipoPlanilla_combustible" Association="Self.FK_EquipoPlanilla_combustible">
-            <End Role="Equipos" EntitySet="Equipos" />
-            <End Role="Planilla_combustibles" EntitySet="Planilla_combustibles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingreso_egreso_mensual_equipoValor_mes" Association="Self.FK_Ingreso_egreso_mensual_equipoValor_mes">
-            <End Role="Ingresos_egresos_mensuales_equipos" EntitySet="Ingresos_egresos_mensuales_equipos" />
-            <End Role="Valores_meses" EntitySet="Valores_meses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_ingreso_egresoItem_ingreso_egreso" Association="Self.FK_Item_ingreso_egresoItem_ingreso_egreso">
-            <End Role="Items_ingresos_egresos" EntitySet="Items_ingresos_egresos" />
-            <End Role="Items_ingresos_egresos1" EntitySet="Items_ingresos_egresos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_ingreso_egresoValor_mes" Association="Self.FK_Item_ingreso_egresoValor_mes">
-            <End Role="Items_ingresos_egresos" EntitySet="Items_ingresos_egresos" />
-            <End Role="Valores_meses" EntitySet="Valores_meses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_ingreso_egresoValor_mes_categoria" Association="Self.FK_Item_ingreso_egresoValor_mes_categoria">
-            <End Role="Items_ingresos_egresos" EntitySet="Items_ingresos_egresos" />
-            <End Role="Valor_mes_categorias" EntitySet="Valor_mes_categorias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion" Association="Self.FK_Planilla_gasto_administrativoAux_planilla_gasto_administracion">
-            <End Role="Planilla_gastos_administrativo" EntitySet="Planilla_gastos_administrativo" />
-            <End Role="Aux_planilla_gastos_administracion" EntitySet="Aux_planilla_gastos_administracion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria" Association="Self.FK_Valor_mes_categoriaDetalle_valor_item_mes_categoria">
-            <End Role="Valor_mes_categorias" EntitySet="Valor_mes_categorias" />
-            <End Role="Detalle_valor_item_meses_categoria" EntitySet="Detalle_valor_item_meses_categoria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Valor_mesDetalle_valor_item_mes" Association="Self.FK_Valor_mesDetalle_valor_item_mes">
-            <End Role="Valores_meses" EntitySet="Valores_meses" />
-            <End Role="Detalle_valores_items_mes" EntitySet="Detalle_valores_items_mes" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Equipos" EntityType="Model1.Store.Equipos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categorias_equipos" EntityType="Model1.Store.Categorias_equipos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empleados" EntityType="Model1.Store.Empleados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categorias_empleados" EntityType="Model1.Store.Categorias_empleados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="Model1.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Dias" EntityType="Model1.Store.Dias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detalles_dias" EntityType="Model1.Store.Detalles_dias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Areas" EntityType="Model1.Store.Areas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Items_por_amortizar" EntityType="Model1.Store.Items_por_amortizar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Valores_dolar" EntityType="Model1.Store.Valores_dolar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ingresos_egresos_mensuales_equipos" EntityType="Model1.Store.Ingresos_egresos_mensuales_equipos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Items_ingresos_egresos" EntityType="Model1.Store.Items_ingresos_egresos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Valores_meses" EntityType="Model1.Store.Valores_meses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feriados" EntityType="Model1.Store.Feriados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Resumenes_meses_empleados" EntityType="Model1.Store.Resumenes_meses_empleados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detalle_valores_items_mes" EntityType="Model1.Store.Detalle_valores_items_mes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_calculos" EntityType="Model1.Store.Aux_planilla_calculos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_gastos_horas_hombres" EntityType="Model1.Store.Aux_planilla_gastos_horas_hombres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_planilla_gastos_administracion" EntityType="Model1.Store.Aux_planilla_gastos_administracion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Planilla_gastos_administrativo" EntityType="Model1.Store.Planilla_gastos_administrativo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aux_total_categoria_meses" EntityType="Model1.Store.Aux_total_categoria_meses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Valor_mes_categorias" EntityType="Model1.Store.Valor_mes_categorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detalle_valor_item_meses_categoria" EntityType="Model1.Store.Detalle_valor_item_meses_categoria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Model1.Store.temp_table_filas_items_mes_equipo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Planilla_combustibles" EntityType="Model1.Store.Planilla_combustibles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoriaEquipo" Association="Model1.Store.CategoriaEquipo">
+      <End Role="Categoria" EntitySet="Categorias_equipos" />
+      <End Role="Equipo" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="Categoria_empleadoEmpleado" Association="Model1.Store.Categoria_empleadoEmpleado">
+      <End Role="Categoria_empleado" EntitySet="Categorias_empleados" />
+      <End Role="Empleado" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoDia" Association="Model1.Store.EmpleadoDia">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="Dia" EntitySet="Dias" />
+    </AssociationSet>
+    <AssociationSet Name="EquipoDetalle_dia" Association="Model1.Store.EquipoDetalle_dia">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Detalle_dia" EntitySet="Detalles_dias" />
+    </AssociationSet>
+    <AssociationSet Name="DiaDetalle_dia" Association="Model1.Store.DiaDetalle_dia">
+      <End Role="Dia" EntitySet="Dias" />
+      <End Role="Detalle_dia" EntitySet="Detalles_dias" />
+    </AssociationSet>
+    <AssociationSet Name="AreaEmpleado" Association="Model1.Store.AreaEmpleado">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="Empleado" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="EquipoItem_por_amortizar" Association="Model1.Store.EquipoItem_por_amortizar">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Item_por_amortizar" EntitySet="Items_por_amortizar" />
+    </AssociationSet>
+    <AssociationSet Name="EquipoIngreso_egreso_mensual_equipo" Association="Model1.Store.EquipoIngreso_egreso_mensual_equipo">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Ingreso_egreso_mensual_equipo" EntitySet="Ingresos_egresos_mensuales_equipos" />
+    </AssociationSet>
+    <AssociationSet Name="Ingreso_egreso_mensual_equipoValor_mes" Association="Model1.Store.Ingreso_egreso_mensual_equipoValor_mes">
+      <End Role="Ingreso_egreso_mensual_equipo" EntitySet="Ingresos_egresos_mensuales_equipos" />
+      <End Role="Valor_mes" EntitySet="Valores_meses" />
+    </AssociationSet>
+    <AssociationSet Name="Item_ingreso_egresoValor_mes" Association="Model1.Store.Item_ingreso_egresoValor_mes">
+      <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
+      <End Role="Valor_mes" EntitySet="Valores_meses" />
+    </AssociationSet>
+    <AssociationSet Name="Item_ingreso_egresoItem_ingreso_egreso" Association="Model1.Store.Item_ingreso_egresoItem_ingreso_egreso">
+      <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
+      <End Role="Item_ingreso_egreso1" EntitySet="Items_ingresos_egresos" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoResumen_mes_empleado" Association="Model1.Store.EmpleadoResumen_mes_empleado">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="Resumen_mes_empleado" EntitySet="Resumenes_meses_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="Valor_mesDetalle_valor_item_mes" Association="Model1.Store.Valor_mesDetalle_valor_item_mes">
+      <End Role="Valor_mes" EntitySet="Valores_meses" />
+      <End Role="Detalle_valor_item_mes" EntitySet="Detalle_valores_items_mes" />
+    </AssociationSet>
+    <AssociationSet Name="Planilla_gasto_administrativoAux_planilla_gasto_administracion" Association="Model1.Store.Planilla_gasto_administrativoAux_planilla_gasto_administracion">
+      <End Role="Planilla_gasto_administrativo" EntitySet="Planilla_gastos_administrativo" />
+      <End Role="Aux_planilla_gasto_administracion" EntitySet="Aux_planilla_gastos_administracion" />
+    </AssociationSet>
+    <AssociationSet Name="Aux_total_categoria_mesValor_mes_categoria" Association="Model1.Store.Aux_total_categoria_mesValor_mes_categoria">
+      <End Role="Aux_total_categoria_mes" EntitySet="Aux_total_categoria_meses" />
+      <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
+    </AssociationSet>
+    <AssociationSet Name="Item_ingreso_egresoValor_mes_categoria" Association="Model1.Store.Item_ingreso_egresoValor_mes_categoria">
+      <End Role="Item_ingreso_egreso" EntitySet="Items_ingresos_egresos" />
+      <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
+    </AssociationSet>
+    <AssociationSet Name="Valor_mes_categoriaDetalle_valor_item_mes_categoria" Association="Model1.Store.Valor_mes_categoriaDetalle_valor_item_mes_categoria">
+      <End Role="Valor_mes_categoria" EntitySet="Valor_mes_categorias" />
+      <End Role="Detalle_valor_item_mes_categoria" EntitySet="Detalle_valor_item_meses_categoria" />
+    </AssociationSet>
+    <AssociationSet Name="EquipoPlanilla_combustible" Association="Model1.Store.EquipoPlanilla_combustible">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Planilla_combustible" EntitySet="Planilla_combustibles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="id_equipo" />
+    </Key>
+    <Property Name="id_equipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id_categoria" Type="int" Nullable="false" />
+    <Property Name="notas" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha_baja" Type="datetime" Nullable="true" />
+    <Property Name="OUT" Type="bit" Nullable="false" />
+    <Property Name="Generico" Type="bit" Nullable="false" />
+    <Property Name="EsTrabajo" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Categorias_equipos">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="toma_en_cuenta_planilla_costos_horas_hombre" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id_categoria" Type="int" Nullable="false" />
+    <Property Name="id_area" Type="int" Nullable="false" />
+    <Property Name="dni" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="fecha_baja" Type="datetime" Nullable="true" />
+    <Property Name="fecha_alta" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Categorias_empleados">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pass" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="perfil" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dias">
+    <Key>
+      <PropertyRef Name="id_dia" />
+    </Key>
+    <Property Name="id_dia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="horas_normales" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="horas_extra_50" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="estado_tm" Type="int" Nullable="false" />
+    <Property Name="estado_tt" Type="int" Nullable="false" />
+    <Property Name="ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="varios_taller" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalles_dias">
+    <Key>
+      <PropertyRef Name="id_detalle_dia" />
+    </Key>
+    <Property Name="id_detalle_dia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="hora_desde" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="hora_hasta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id_dia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Areas">
+    <Key>
+      <PropertyRef Name="id_area" />
+    </Key>
+    <Property Name="id_area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items_por_amortizar">
+    <Key>
+      <PropertyRef Name="id_item" />
+    </Key>
+    <Property Name="id_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="costo_cero_km_uss" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="porcentaje_usado" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="porcentaje_valor_recidual" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="meses_por_amortizar" Type="int" Nullable="false" />
+    <Property Name="periodo_alta_mes" Type="int" Nullable="false" />
+    <Property Name="periodo_alta_anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Valores_dolar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Ingresos_egresos_mensuales_equipos">
+    <Key>
+      <PropertyRef Name="id_ingreso_egreso_mensual" />
+    </Key>
+    <Property Name="id_ingreso_egreso_mensual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items_ingresos_egresos">
+    <Key>
+      <PropertyRef Name="id_item" />
+    </Key>
+    <Property Name="id_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id_item_padre" Type="int" Nullable="true" />
+    <Property Name="mostrar_en_equipo" Type="bit" Nullable="true" />
+    <Property Name="mostrar_en_trabajo" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Valores_meses">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_ingreso_egreso_mensual" Type="int" Nullable="false" />
+    <Property Name="id_item" Type="int" Nullable="false" />
+    <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Feriados">
+    <Key>
+      <PropertyRef Name="id_feriado" />
+    </Key>
+    <Property Name="id_feriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Resumenes_meses_empleados">
+    <Key>
+      <PropertyRef Name="id_resumen_mes" />
+    </Key>
+    <Property Name="id_resumen_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="dias_laborables" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_ausente" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_presente" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_por_cargar" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_out" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="dias_presentes_en_dias_no_laborables" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="total_horas_normales" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_extra_50" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_extra_100" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sueldo" Type="decimal" Nullable="false" DefaultValue="0" Precision="11" Scale="2" />
+    <Property Name="total_horas_ausente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_guardia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total_horas_varios_taller" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle_valores_items_mes">
+    <Key>
+      <PropertyRef Name="id_detalle_valor_item_mes" />
+    </Key>
+    <Property Name="id_detalle_valor_item_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_valor_mes" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="monto" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aux_planilla_calculos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="considera_guardia" Type="bit" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aux_planilla_gastos_horas_hombres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="insumos_taller" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="herramientas" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="viaticos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="viaticos_presupuestados" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="tipo_empleado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="indumentaria" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="repuestos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="gastos_varios" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="otros" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="repuestos_presupuestados" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Aux_planilla_gastos_administracion">
+    <Key>
+      <PropertyRef Name="id_detalle_gastos_administrativos" />
+    </Key>
+    <Property Name="id_detalle_gastos_administrativos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="porcentaje" Type="decimal" Nullable="false" Precision="11" Scale="4" />
+    <Property Name="id_planilla_gastos_administartivos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Planilla_gastos_administrativo">
+    <Key>
+      <PropertyRef Name="id_planilla_gastos_administartivos" />
+    </Key>
+    <Property Name="id_planilla_gastos_administartivos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+    <Property Name="monto_telefonia_celular" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_sueldos" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_honorarios_sistema" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_honorarios_contables" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_papeleria" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="monto_otros" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Aux_total_categoria_meses">
+    <Key>
+      <PropertyRef Name="id_aux_total_categoria_mes" />
+    </Key>
+    <Property Name="id_aux_total_categoria_mes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_categoria_equipo" Type="int" Nullable="false" />
+    <Property Name="mes" Type="int" Nullable="false" />
+    <Property Name="anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Valor_mes_categorias">
+    <Key>
+      <PropertyRef Name="id_valor_mes_categoria_item" />
+    </Key>
+    <Property Name="id_valor_mes_categoria_item" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_aux_total_categoria_mes" Type="int" Nullable="false" />
+    <Property Name="id_item" Type="int" Nullable="false" />
+    <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+  </EntityType>
+  <EntityType Name="Detalle_valor_item_meses_categoria">
+    <Key>
+      <PropertyRef Name="id_detalle_valor_item_mes_categoria" />
+    </Key>
+    <Property Name="id_detalle_valor_item_mes_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="monto" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id_valor_mes_categoria_item" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="temp_table_filas_items_mes_equipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_valor_mes" Type="int" Nullable="false" />
+    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="valor" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="row_class" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="visible" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Planilla_combustibles">
+    <Key>
+      <PropertyRef Name="id_planilla_combustible" />
+    </Key>
+    <Property Name="id_planilla_combustible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="chofer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="tanque_lleno" Type="bit" Nullable="false" />
+    <Property Name="litros" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="km" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="promedio" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="costo_total_facturado" Type="decimal" Nullable="false" Precision="11" Scale="2" />
+    <Property Name="lugar" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="CategoriaEquipo">
+    <End Role="Categoria" Type="Model1.Store.Categorias_equipos" Multiplicity="1" />
+    <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="Equipo">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Categoria_empleadoEmpleado">
+    <End Role="Categoria_empleado" Type="Model1.Store.Categorias_empleados" Multiplicity="1" />
+    <End Role="Empleado" Type="Model1.Store.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria_empleado">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="id_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoDia">
+    <End Role="Empleado" Type="Model1.Store.Empleados" Multiplicity="1" />
+    <End Role="Dia" Type="Model1.Store.Dias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Dia">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EquipoDetalle_dia">
+    <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="1" />
+    <End Role="Detalle_dia" Type="Model1.Store.Detalles_dias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Detalle_dia">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiaDetalle_dia">
+    <End Role="Dia" Type="Model1.Store.Dias" Multiplicity="1" />
+    <End Role="Detalle_dia" Type="Model1.Store.Detalles_dias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dia">
+        <PropertyRef Name="id_dia" />
+      </Principal>
+      <Dependent Role="Detalle_dia">
+        <PropertyRef Name="id_dia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AreaEmpleado">
+    <End Role="Area" Type="Model1.Store.Areas" Multiplicity="1" />
+    <End Role="Empleado" Type="Model1.Store.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="id_area" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="id_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EquipoItem_por_amortizar">
+    <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="1" />
+    <End Role="Item_por_amortizar" Type="Model1.Store.Items_por_amortizar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Item_por_amortizar">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EquipoIngreso_egreso_mensual_equipo">
+    <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="1" />
+    <End Role="Ingreso_egreso_mensual_equipo" Type="Model1.Store.Ingresos_egresos_mensuales_equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Ingreso_egreso_mensual_equipo">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ingreso_egreso_mensual_equipoValor_mes">
+    <End Role="Ingreso_egreso_mensual_equipo" Type="Model1.Store.Ingresos_egresos_mensuales_equipos" Multiplicity="1" />
+    <End Role="Valor_mes" Type="Model1.Store.Valores_meses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingreso_egreso_mensual_equipo">
+        <PropertyRef Name="id_ingreso_egreso_mensual" />
+      </Principal>
+      <Dependent Role="Valor_mes">
+        <PropertyRef Name="id_ingreso_egreso_mensual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Item_ingreso_egresoValor_mes">
+    <End Role="Item_ingreso_egreso" Type="Model1.Store.Items_ingresos_egresos" Multiplicity="1" />
+    <End Role="Valor_mes" Type="Model1.Store.Valores_meses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item_ingreso_egreso">
+        <PropertyRef Name="id_item" />
+      </Principal>
+      <Dependent Role="Valor_mes">
+        <PropertyRef Name="id_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Item_ingreso_egresoItem_ingreso_egreso">
+    <End Role="Item_ingreso_egreso" Type="Model1.Store.Items_ingresos_egresos" Multiplicity="0..1" />
+    <End Role="Item_ingreso_egreso1" Type="Model1.Store.Items_ingresos_egresos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item_ingreso_egreso">
+        <PropertyRef Name="id_item" />
+      </Principal>
+      <Dependent Role="Item_ingreso_egreso1">
+        <PropertyRef Name="id_item_padre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoResumen_mes_empleado">
+    <End Role="Empleado" Type="Model1.Store.Empleados" Multiplicity="1" />
+    <End Role="Resumen_mes_empleado" Type="Model1.Store.Resumenes_meses_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Resumen_mes_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Valor_mesDetalle_valor_item_mes">
+    <End Role="Valor_mes" Type="Model1.Store.Valores_meses" Multiplicity="1" />
+    <End Role="Detalle_valor_item_mes" Type="Model1.Store.Detalle_valores_items_mes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valor_mes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Detalle_valor_item_mes">
+        <PropertyRef Name="id_valor_mes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Planilla_gasto_administrativoAux_planilla_gasto_administracion">
+    <End Role="Planilla_gasto_administrativo" Type="Model1.Store.Planilla_gastos_administrativo" Multiplicity="1" />
+    <End Role="Aux_planilla_gasto_administracion" Type="Model1.Store.Aux_planilla_gastos_administracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planilla_gasto_administrativo">
+        <PropertyRef Name="id_planilla_gastos_administartivos" />
+      </Principal>
+      <Dependent Role="Aux_planilla_gasto_administracion">
+        <PropertyRef Name="id_planilla_gastos_administartivos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Aux_total_categoria_mesValor_mes_categoria">
+    <End Role="Aux_total_categoria_mes" Type="Model1.Store.Aux_total_categoria_meses" Multiplicity="1" />
+    <End Role="Valor_mes_categoria" Type="Model1.Store.Valor_mes_categorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aux_total_categoria_mes">
+        <PropertyRef Name="id_aux_total_categoria_mes" />
+      </Principal>
+      <Dependent Role="Valor_mes_categoria">
+        <PropertyRef Name="id_aux_total_categoria_mes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Item_ingreso_egresoValor_mes_categoria">
+    <End Role="Item_ingreso_egreso" Type="Model1.Store.Items_ingresos_egresos" Multiplicity="1" />
+    <End Role="Valor_mes_categoria" Type="Model1.Store.Valor_mes_categorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item_ingreso_egreso">
+        <PropertyRef Name="id_item" />
+      </Principal>
+      <Dependent Role="Valor_mes_categoria">
+        <PropertyRef Name="id_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Valor_mes_categoriaDetalle_valor_item_mes_categoria">
+    <End Role="Valor_mes_categoria" Type="Model1.Store.Valor_mes_categorias" Multiplicity="1" />
+    <End Role="Detalle_valor_item_mes_categoria" Type="Model1.Store.Detalle_valor_item_meses_categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valor_mes_categoria">
+        <PropertyRef Name="id_valor_mes_categoria_item" />
+      </Principal>
+      <Dependent Role="Detalle_valor_item_mes_categoria">
+        <PropertyRef Name="id_valor_mes_categoria_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EquipoPlanilla_combustible">
+    <End Role="Equipo" Type="Model1.Store.Equipos" Multiplicity="1" />
+    <End Role="Planilla_combustible" Type="Model1.Store.Planilla_combustibles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Planilla_combustible">
+        <PropertyRef Name="id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -1266,6 +1257,7 @@
           <Property Name="km" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="promedio" Type="Decimal" Nullable="false" Scale="2" Precision="9" />
           <Property Name="costo_total_facturado" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
+          <Property Name="lugar" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="EquipoPlanilla_combustible">
           <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
@@ -1590,11 +1582,10 @@
           <ScalarProperty Name="km" ColumnName="km" />
           <ScalarProperty Name="promedio" ColumnName="promedio" />
           <ScalarProperty Name="costo_total_facturado" ColumnName="costo_total_facturado" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual" />
-          <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_categoria" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_categoria" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

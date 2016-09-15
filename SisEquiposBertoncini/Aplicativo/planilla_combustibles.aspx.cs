@@ -107,7 +107,8 @@ namespace SisEquiposBertoncini.Aplicativo
                                         litros = ip.litros,
                                         km = ip.km,
                                         promedio = ip.promedio,
-                                        costo_total_facturado = ip.costo_total_facturado
+                                        costo_total_facturado = ip.costo_total_facturado,
+                                        lugar = ip.lugar
                                     }).ToList();
 
                 gv_combustible.DataSource = items_grilla;
@@ -191,19 +192,19 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void cv_litros_ServerValidate(object source, ServerValidateEventArgs args)
         {
             decimal litros;
-            args.IsValid = decimal.TryParse(tb_litros.Value, out litros);
+            args.IsValid = decimal.TryParse(tb_litros.Value.Replace(".",","), out litros);
         }
 
         protected void cv_km_ServerValidate(object source, ServerValidateEventArgs args)
         {
             decimal km;
-            args.IsValid = decimal.TryParse(tb_litros.Value, out km);
+            args.IsValid = decimal.TryParse(tb_km.Value.Replace(".", ","), out km);
         }
 
         protected void cv_costo_ServerValidate(object source, ServerValidateEventArgs args)
         {
             decimal costo;
-            args.IsValid = decimal.TryParse(tb_litros.Value, out costo);
+            args.IsValid = decimal.TryParse(tb_costo.Value.Replace(".", ","), out costo);
         }
 
         protected void btn_guardar_ServerClick(object sender, EventArgs e)
@@ -212,11 +213,12 @@ namespace SisEquiposBertoncini.Aplicativo
 
             if (IsValid)
             {
+                int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
+                int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
                 int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
                 using (var cxt = new Model1Container())
                 {
                     Planilla_combustible pc = null;
-                   
 
                     if (id_factura_combust_hidden.Value != "0")
                     {
@@ -231,6 +233,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         pc.litros = Convert.ToDecimal(tb_litros.Value.Replace(".", ","));
                         pc.promedio = 0;
                         pc.costo_total_facturado = Convert.ToDecimal(tb_costo.Value.Replace(".", ","));
+                        pc.lugar = tb_lugar.Value;
                     }
                     else
                     {
@@ -244,6 +247,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         pc.litros = Convert.ToDecimal(tb_litros.Value.Replace(".", ","));
                         pc.promedio = 0;
                         pc.costo_total_facturado = Convert.ToDecimal(tb_costo.Value.Replace(".", ","));
+                        pc.lugar = tb_lugar.Value;
                         cxt.Planilla_combustibles.Add(pc);
                     }
 
@@ -253,16 +257,15 @@ namespace SisEquiposBertoncini.Aplicativo
                     tb_km.Value = string.Empty;
                     tb_litros.Value = string.Empty;
                     tb_costo.Value = string.Empty;
+                    tb_lugar.Value = string.Empty;
                     id_factura_combust_hidden.Value = "0";
 
                     cxt.SaveChanges();
+
+                    Insertar_editar_detalle_valor_mes_combustible(pc.id_equipo, mes, anio, pc.costo_total_facturado, pc.fecha, "Chofer: " + pc.chofer + " Km: " + pc.km + " litros: " + pc.litros);
                 }
 
-                int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
-                int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
-
                 CrearMostrarTabla(id_equipo, mes, anio);
-
             }
             else
             {
@@ -277,15 +280,18 @@ namespace SisEquiposBertoncini.Aplicativo
         protected void btn_aceptar_eliminacion_Click(object sender, EventArgs e)
         {
             int id_planilla_combustible = Convert.ToInt32(id_item_por_eliminar.Value);
+            int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
+            int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
+            int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
+
             using (var cxt = new Model1Container())
             {
                 Planilla_combustible pc = cxt.Planilla_combustibles.First(ppcc => ppcc.id_planilla_combustible == id_planilla_combustible);
+
+                Eliminar_detalle_valor_mes_combustible(pc.id_equipo, mes, anio, pc.costo_total_facturado, pc.fecha);
+
                 cxt.Planilla_combustibles.Remove(pc);
                 cxt.SaveChanges();
-
-                int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
-                int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
-                int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
 
                 CrearMostrarTabla(id_equipo, mes, anio);
             }
@@ -312,5 +318,94 @@ namespace SisEquiposBertoncini.Aplicativo
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowPopUp", script, false);
         }
+
+        public void Insertar_editar_detalle_valor_mes_combustible(int id_equipo, int mes, int anio, decimal monto,DateTime fecha, string observaciones)
+        {
+            using (var cxt = new Model1Container())
+            {
+                Valor_mes valores_mes = null;
+                Item_ingreso_egreso item = cxt.Items_ingresos_egresos.First(i => i.nombre == "Combustible");
+                Ingreso_egreso_mensual_equipo io_equipo = cxt.Ingresos_egresos_mensuales_equipos.FirstOrDefault(io => io.anio == anio && io.mes == mes && io.id_equipo == id_equipo);
+
+                if (io_equipo != null)
+                {
+                    valores_mes = cxt.Valores_meses.FirstOrDefault(vm => vm.id_item == item.id_item && vm.id_ingreso_egreso_mensual == io_equipo.id_ingreso_egreso_mensual);
+                    if (valores_mes != null)
+                    {
+                        Detalle_valor_item_mes detalle = cxt.Detalle_valores_items_mes.FirstOrDefault(dim => dim.fecha == fecha && dim.monto == monto && dim.id_valor_mes == valores_mes.id);
+                        if (detalle == null)
+                        {
+                            detalle = new Detalle_valor_item_mes();
+                            valores_mes.Detalle.Add(detalle);
+                        }
+
+                        detalle.fecha = fecha;
+                        detalle.monto = monto;
+                        detalle.descripcion = observaciones;
+                    }
+                    else
+                    {
+                        valores_mes = new Valor_mes();
+                        valores_mes.id_ingreso_egreso_mensual = io_equipo.id_ingreso_egreso_mensual;
+                        valores_mes.id_item = item.id_item;
+                        valores_mes.valor = 0;
+                        io_equipo.Valores_meses.Add(valores_mes);
+
+                        Detalle_valor_item_mes detalle = new Datos.Detalle_valor_item_mes();
+                        detalle.fecha = fecha;
+                        detalle.monto = monto;
+                        detalle.descripcion = observaciones;
+                        valores_mes.Detalle.Add(detalle);
+                    }
+                }
+                else
+                {
+                    io_equipo = new Ingreso_egreso_mensual_equipo();
+                    io_equipo.id_equipo = id_equipo;
+                    io_equipo.mes = mes;
+                    io_equipo.anio = anio;
+
+                    valores_mes = new Valor_mes();
+                    valores_mes.id_item = item.id_item;
+                    valores_mes.valor = 0;
+                    io_equipo.Valores_meses.Add(valores_mes);
+
+                    Detalle_valor_item_mes detalle = new Datos.Detalle_valor_item_mes();
+                    detalle.fecha = fecha;
+                    detalle.monto = monto;
+                    detalle.descripcion = observaciones;
+                    valores_mes.Detalle.Add(detalle);
+
+                    cxt.Ingresos_egresos_mensuales_equipos.Add(io_equipo);
+                }
+
+                cxt.SaveChanges();
+            }
+        }
+
+        protected void Eliminar_detalle_valor_mes_combustible(int id_equipo, int mes, int anio, decimal monto, DateTime fecha)
+        {
+            using (var cxt = new Model1Container())
+            {
+                Valor_mes valores_mes = null;
+                Item_ingreso_egreso item = cxt.Items_ingresos_egresos.First(i => i.nombre == "Combustible");
+                Ingreso_egreso_mensual_equipo io_equipo = cxt.Ingresos_egresos_mensuales_equipos.FirstOrDefault(io => io.anio == anio && io.mes == mes && io.id_equipo == id_equipo);
+
+                if (io_equipo != null)
+                {
+                    valores_mes = cxt.Valores_meses.FirstOrDefault(vm => vm.id_item == item.id_item && vm.id_ingreso_egreso_mensual == io_equipo.id_ingreso_egreso_mensual);
+                    if (valores_mes != null)
+                    {
+                        Detalle_valor_item_mes detalle = cxt.Detalle_valores_items_mes.FirstOrDefault(dim => dim.fecha == fecha && dim.monto == monto && dim.id_valor_mes == valores_mes.id);
+                        if (detalle != null)
+                        {
+                            valores_mes.Detalle.Remove(detalle);
+                            cxt.SaveChanges();
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

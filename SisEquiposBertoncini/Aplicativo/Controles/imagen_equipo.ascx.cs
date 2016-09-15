@@ -26,7 +26,6 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
             {
                 img_acceso.Height = value;
                 img_cuenta.Height = value;
-                img_cumple.Height = value;
             }
         }
 
@@ -36,7 +35,6 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
             {
                 img_acceso.Width = value;
                 img_cuenta.Width = value;
-                img_cumple.Width = value;
             }
         }
 
@@ -69,7 +67,6 @@ namespace SisEquiposBertoncini.Aplicativo.Controles
                 {
                     img_cuenta.ImageUrl = "~/img/Equipos/add.png";
                 }
-
             }
         }
 
