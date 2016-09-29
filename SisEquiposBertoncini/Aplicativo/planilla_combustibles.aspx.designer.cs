@@ -247,13 +247,22 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.CheckBox chk_tanque_lleno;
         
         /// <summary>
-        /// tb_lugar control.
+        /// ddl_equipo_IO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_lugar;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_equipo_IO;
+        
+        /// <summary>
+        /// chk_playa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chk_playa;
         
         /// <summary>
         /// btn_guardar control.

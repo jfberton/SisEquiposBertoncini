@@ -80,5 +80,6 @@
     </a>
     <ul runat="server" id="ul_importar" class="treeview-menu">
          <li runat="server" id="li_importar0ulfacturacion" ><a href="admin_importar_blanco.aspx">Importar facturado</a></li>
+            <li runat="server" id="li_importar0ulpresupuestado" ><a href="admin_importar_ventas_presupuestadas.aspx">Importar presupuestado</a></li>
     </ul>
 </li>

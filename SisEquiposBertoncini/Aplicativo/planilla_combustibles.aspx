@@ -90,6 +90,9 @@
         <br />
         <div class="row" runat="server" id="div_resultados">
             <div class="col-md-12">
+                 <button class="btn btn-default" onclick="Imprimir(); return false;">
+                    <span class="glyphicon glyphicon-print"></span>
+                </button>
                 <button type="button" class="btn btn-default pull-right" causesvalidation="false" id="btn_agregar_linea" runat="server" onserverclick="btn_agregar_linea_ServerClick">
                     <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar nuevo
                 </button>
@@ -100,6 +103,7 @@
                     <Columns>
                         <asp:BoundField DataField="fecha" HeaderText="Fecha" ReadOnly="true" DataFormatString="{0:d}" />
                         <asp:BoundField DataField="chofer" HeaderText="Chofer" ReadOnly="true" />
+                        <asp:CheckBoxField DataField="tanque_lleno" HeaderText="Playa" ReadOnly="true" />
                         <asp:CheckBoxField DataField="tanque_lleno" HeaderText="Tanque lleno" ReadOnly="true" />
                         <asp:BoundField DataField="litros" HeaderText="Litros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
                         <asp:BoundField DataField="km" HeaderText="Kilometros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:#,#}" />
@@ -252,15 +256,27 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <table>
                                     <tr>
                                         <td>Lugar</td>
                                     </tr>
                                 </table>
                             </div>
-                            <div class="col-md-10">
-                                <input type="text" id="tb_lugar" class="form-control" runat="server" value="" />
+                            <div class="col-md-9">
+                                <%--<input type="text" id="tb_lugar" class="form-control" runat="server" value="" />--%>
+                                <asp:DropDownList runat="server" ID="ddl_equipo_IO" Width="100%">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-2">
+                                <table>
+                                    <tr>
+                                        <td>Playa</td>
+                                        <td>
+                                            <asp:CheckBox Text="" ID="chk_playa" CssClass="form-control" runat="server" />
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -280,6 +296,12 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="cph_scripts" runat="server">
     <script src="../js/jquery.dataTables.min.js"></script>
     <script src="../js/dataTables.bootstrap.min.js"></script>
+     <script type="text/javascript">
+        function Imprimir() {
+
+            window.open('Reportes/dispatcher_report.aspx?reporte=planilla_combustible', 'Plantilla combustible', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
+        }
+    </script>
 
     <script>
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {

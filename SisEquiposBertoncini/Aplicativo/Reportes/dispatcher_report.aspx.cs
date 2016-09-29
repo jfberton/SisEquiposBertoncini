@@ -14,13 +14,16 @@ namespace SisEquiposBertoncini.Aplicativo.Reportes
         {
             if (!IsPostBack)
             {
-                
+
 
                 string reporte = Request.QueryString["reporte"];
                 switch (reporte)
                 {
                     case "planilla_calculos":
                         Crear_reporte_planilla_calculos();
+                        break;
+                    case "planilla_combustible":
+                        Crear_reporte_planilla_combustible();
                         break;
 
                     case "planilla_gastos_en_funcion_horas_hombre":
@@ -45,6 +48,40 @@ namespace SisEquiposBertoncini.Aplicativo.Reportes
                         break;
                 }
             }
+        }
+
+        private void Crear_reporte_planilla_combustible()
+        {
+            planilla_combustible_ds ds = Session["planilla_combustible"] as planilla_combustible_ds;
+
+            ReportViewer viewer = new ReportViewer();
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.LocalReport.EnableExternalImages = true;
+
+            viewer.LocalReport.ReportPath = Server.MapPath("~/Aplicativo/Reportes/planilla_combustible_r.rdlc");
+
+            ReportDataSource datos_generales = new ReportDataSource("General", ds.General.Rows);
+            ReportDataSource totales_detalle = new ReportDataSource("Detalle", ds.Detalle.Rows);
+
+            viewer.LocalReport.DataSources.Add(datos_generales);
+            viewer.LocalReport.DataSources.Add(totales_detalle);
+
+            Microsoft.Reporting.WebForms.Warning[] warnings = null;
+            string[] streamids = null;
+            string mimeType = null;
+            string encoding = null;
+            string extension = null;
+            string deviceInfo = null;
+            byte[] bytes = null;
+
+            deviceInfo = "<DeviceInfo><SimplePageHeaders>True</SimplePageHeaders></DeviceInfo>";
+
+            //Render the report
+            bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
+            Session["Reporte"] = bytes;
+
+            string script = "<script type='text/javascript'>document.location.href='Report.aspx';</script>";
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "VentanaPadre", script);
         }
 
         private void Cargar_planilla_gastos_en_funcion_horas_hombre()
@@ -222,7 +259,7 @@ namespace SisEquiposBertoncini.Aplicativo.Reportes
             string script = "<script type='text/javascript'>document.location.href='Report.aspx';</script>";
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "VentanaPadre", script);
         }
-        
+
         private void Crear_reporte_valores_anuales_categoria()
         {
             Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;

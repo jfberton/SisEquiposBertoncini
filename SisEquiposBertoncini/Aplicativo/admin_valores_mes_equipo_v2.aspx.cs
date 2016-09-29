@@ -197,7 +197,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 mes = ioequipo.mes; anio = ioequipo.anio;
                 hidden_id_valor_mes.Value = id_valor_item_mes.ToString();
                 lbl_item.Text = lbl_item_view.Text = item_valor_mes.Item.nombre;
-                escombustible = item_valor_mes.Item.nombre == "Combustible";
+                escombustible = item_valor_mes.Item.nombre == "Combustible" || item_valor_mes.Item.nombre == "Combustible Playa";
 
 
                 lbl_categoria.Text = lbl_categoria_view.Text = item_valor_mes.Item.tipo;

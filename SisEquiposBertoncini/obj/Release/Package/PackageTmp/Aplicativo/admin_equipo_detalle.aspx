@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 <%@ Register Src="~/Aplicativo/Controles/imagen_equipo.ascx" TagPrefix="uc1" TagName="imagen_equipo" %>
+<%@ Register Src="~/Aplicativo/Controles/imagenes_equipo.ascx" TagPrefix="uc1" TagName="imagenes_equipo" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -21,7 +23,8 @@
         <ol class="breadcrumb">
             <li><a href="#"><i></i>Inicio</a></li>
             <li><a href="#"><i></i>Equipos</a></li>
-            <li class="active"><asp:Label Text="" ID="lbl_breadcumb" runat="server" /></li>
+            <li class="active">
+                <asp:Label Text="" ID="lbl_breadcumb" runat="server" /></li>
         </ol>
     </section>
 
@@ -29,139 +32,138 @@
     <section class="content">
 
         <!-- Your Page Content Here -->
-                   <div class="row">
-                <div class="col-md-12">
-                    <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList" ValidationGroup="equipo"
-                        CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+        <div class="row">
+            <div class="col-md-12">
+                <asp:ValidationSummary ID="validation_summary" runat="server" DisplayMode="BulletList" ValidationGroup="equipo"
+                    CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-2">
+                        <table class="table-condensed">
+                            <tr>
+                                <td>Nombre</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table-condensed" style="width: 100%">
+                            <tr>
+                                <td>
+                                    <input type="text" runat="server" id="tb_nombre" class="form-control" /></td>
+                                <td>
+                                    <asp:RequiredFieldValidator ControlToValidate="tb_nombre" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre del equipo' />"
+                                        ID="rv_nombre" runat="server" ErrorMessage="Debe ingresar el nombre del equipo" ValidationGroup="equipo">
+                                    </asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table-condensed">
+                            <tr>
+                                <td>
+                                    <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <table class="table-condensed">
+                            <tr>
+                                <td>Categoría</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-10">
+                        <table class="table-condensed">
+                            <tr>
+                                <td>
+                                    <asp:DropDownList runat="server" ID="ddl_categorias" CssClass="form-control">
+                                    </asp:DropDownList></td>
+                                <td>
+                                    <asp:CustomValidator ID="cv_categoria" runat="server" Text="<img src='../img/exclamation.gif' title='Debe seleccionar una categoría' />"
+                                        ErrorMessage="Debe seleccionar una categoría" OnServerValidate="cv_categoria_ServerValidate" ValidationGroup="equipo">
+                                    </asp:CustomValidator>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <table class="table-condensed">
+                            <tr>
+                                <td>Notas:</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-10">
+                        <table class="table-condensed" style="width: 100%">
+                            <tr>
+                                <td>
+                                    <textarea rows="5" class="form-control" runat="server" id="tb_notas_equipo" placeholder="Notas del equipo (no obligatorio)"></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <table class="table-condensed">
-                                <tr>
-                                    <td>Nombre</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <table class="table-condensed" style="width: 100%">
-                                <tr>
-                                    <td>
-                                        <input type="text" runat="server" id="tb_nombre" class="form-control" /></td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ControlToValidate="tb_nombre" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre del equipo' />"
-                                            ID="rv_nombre" runat="server" ErrorMessage="Debe ingresar el nombre del equipo" ValidationGroup="equipo">
-                                        </asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-4">
-                            <table class="table-condensed">
-                                <tr>
-                                    <td>
-                                        <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <table class="table-condensed">
-                                <tr>
-                                    <td>Categoría</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-10">
-                            <table class="table-condensed">
-                                <tr>
-                                    <td>
-                                        <asp:DropDownList runat="server" ID="ddl_categorias" CssClass="form-control">
-                                        </asp:DropDownList></td>
-                                    <td>
-                                        <asp:CustomValidator ID="cv_categoria" runat="server" Text="<img src='../img/exclamation.gif' title='Debe seleccionar una categoría' />"
-                                            ErrorMessage="Debe seleccionar una categoría" OnServerValidate="cv_categoria_ServerValidate" ValidationGroup="equipo">
-                                        </asp:CustomValidator>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <table class="table-condensed">
-                                <tr>
-                                    <td>Notas:</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-10">
-                            <table class="table-condensed" style="width: 100%">
-                                <tr>
-                                    <td>
-                                        <textarea rows="5" class="form-control" runat="server" id="tb_notas_equipo" placeholder="Notas del equipo (no obligatorio)"></textarea></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h1 class="panel-title">Imagen equipo</h1>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Imagen equipo</h1>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="thumbnail">
+                                            <uc1:imagenes_equipo runat="server" ID="imagenes_equipo" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="thumbnail">
-                                                <a href="#" data-toggle="modal" data-target="#editar_Imagen">
-                                                    <asp:Image ID="img_cuenta" Width="200" Height="200" runat="server" />
-                                                </a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-default pull-right" id="btn_editar_partes" data-toggle="modal" data-target="#editar_imagenes">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Editar imagenes
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="editar_Imagen" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">Editar imagen equipo</h4>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <small>CLICK SOBRE LA IMAGEN PARA CAMBIAR </small>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="editar_Imagen" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title">Editar imagen equipo</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="thumbnail">
-                                                                <img src="..." alt="..." id="imagen_equipo">
-                                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="thumbnail">
+                                                            <img src="..." alt="..." id="imagen_equipo">
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="input-group">
-                                                                <span class="input-group-btn">
-                                                                    <span class="btn btn-primary btn-file">Seleccionar&hellip;
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <span class="btn btn-primary btn-file">Seleccionar&hellip;
                                                           <input type="file" id="archivo_imagen" runat="server" accept=".jpg,.png,.gif" onchange="Previsualizar();" />
-                                                                    </span>
                                                                 </span>
-                                                                <input type="text" class="form-control" readonly>
-                                                            </div>
+                                                            </span>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <asp:Button Text="Aceptar" ID="btnUpload" OnClick="btnUpload_Click" CssClass="btn btn-success" runat="server" />
-                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <asp:Button Text="Aceptar" ID="btnUpload" OnClick="btnUpload_Click" CssClass="btn btn-success" runat="server" />
+                                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -169,315 +171,407 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
 
-            <br />
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <table class="table-condensed">
-                                        <tr>
-                                            <td>
-                                                <h1 class="panel-title">Partes</h1>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-md-10">
-                                    <table class="table-condensed">
-                                        <tr>
-                                            <td>
-                                                <button type="button" class="btn btn-default btn-xs pull-right" id="btn_agregar_parte" data-toggle="modal" data-target="#agregar_parte">
-                                                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar parte
-                                                </button>
-                                                <div class="modal fade" id="agregar_parte" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                <h4 class="modal-title">Agregar parte componente del equipo</h4>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <table class="table-condensed">
+                                    <tr>
+                                        <td>
+                                            <h1 class="panel-title">Partes</h1>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-10">
+                                <table class="table-condensed">
+                                    <tr>
+                                        <td>
+                                            <button type="button" class="btn btn-default btn-xs pull-right" id="btn_agregar_parte" data-toggle="modal" data-target="#agregar_parte">
+                                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar parte
+                                            </button>
+                                            <div class="modal fade" id="agregar_parte" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title">Agregar parte componente del equipo</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="BulletList" ValidationGroup="parte"
+                                                                        CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="BulletList" ValidationGroup="parte"
-                                                                            CssClass="validationsummary panel panel-danger" HeaderText="<div class='panel-heading'>&nbsp;Corrija los siguientes errores antes de continuar:</div>" />
-                                                                    </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Nombre</td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>Nombre</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="col-md-8">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td style="width: auto">
-                                                                                    <input type="text" id="tb_nombre_parte" class="form-control" runat="server" placeholder="Nombre de la parte" /></td>
-                                                                                <td>
-                                                                                    <asp:RequiredFieldValidator ControlToValidate="tb_nombre_parte" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre de la parte' />"
-                                                                                        ID="rv_nombre_parte" runat="server" ErrorMessage="Debe ingresar el nombre de la parte" ValidationGroup="parte">
-                                                                                    </asp:RequiredFieldValidator></td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
+                                                                <div class="col-md-8">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td style="width: auto">
+                                                                                <input type="text" id="tb_nombre_parte" class="form-control" runat="server" placeholder="Nombre de la parte" /></td>
+                                                                            <td>
+                                                                                <asp:RequiredFieldValidator ControlToValidate="tb_nombre_parte" Text="<img src='../img/exclamation.gif' title='Debe ingresar el nombre de la parte' />"
+                                                                                    ID="rv_nombre_parte" runat="server" ErrorMessage="Debe ingresar el nombre de la parte" ValidationGroup="parte">
+                                                                                </asp:RequiredFieldValidator></td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
-                                                                <br />
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>Costo 0Km. (USS)</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td style="width: auto">
-                                                                                    <input type="text" id="tb_costo_cero_km" class="form-control moneda" runat="server" placeholder="Costo 0Km" /></td>
-                                                                                <td>
-                                                                                    <asp:RequiredFieldValidator ControlToValidate="tb_costo_cero_km" Text="<img src='../img/exclamation.gif' title='Debe ingresar el costo de la parte' />"
-                                                                                        ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar el costo de la parte" ValidationGroup="parte">
-                                                                                    </asp:RequiredFieldValidator>
-                                                                                    <asp:CustomValidator ID="cv_costo_cero_km" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un monto válido' />"
-                                                                                        ErrorMessage="Debe ingresar un monto válido" OnServerValidate="cv_costo_cero_km_ServerValidate" ValidationGroup="parte">
-                                                                                    </asp:CustomValidator>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Costo 0Km. (USS)</td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
-                                                                <br />
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>Usado (%) 100% = nuevo</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td style="width: auto">
-                                                                                    <input type="text" id="tb_porcentaje_usado" class="form-control porcentaje" runat="server" placeholder="Porcentaje usado" /></td>
-                                                                                <td>
-                                                                                    <asp:RequiredFieldValidator ControlToValidate="tb_porcentaje_usado" Text="<img src='../img/exclamation.gif' title='Debe ingresar el porcentaje de usado' />"
-                                                                                        ID="RequiredFieldValidator2" runat="server" ErrorMessage="Debe ingresar el porcentaje de usado" ValidationGroup="parte">
-                                                                                    </asp:RequiredFieldValidator>
-                                                                                    <asp:CustomValidator ID="cv_porcentaje_usado" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un porcentaje válido' />"
-                                                                                        ErrorMessage="Debe ingresar un porcentaje válido" OnServerValidate="cv_porcentaje_usado_ServerValidate" ValidationGroup="parte">
-                                                                                    </asp:CustomValidator>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td style="width: auto">
+                                                                                <input type="text" id="tb_costo_cero_km" class="form-control moneda" runat="server" placeholder="Costo 0Km" /></td>
+                                                                            <td>
+                                                                                <asp:RequiredFieldValidator ControlToValidate="tb_costo_cero_km" Text="<img src='../img/exclamation.gif' title='Debe ingresar el costo de la parte' />"
+                                                                                    ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar el costo de la parte" ValidationGroup="parte">
+                                                                                </asp:RequiredFieldValidator>
+                                                                                <asp:CustomValidator ID="cv_costo_cero_km" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un monto válido' />"
+                                                                                    ErrorMessage="Debe ingresar un monto válido" OnServerValidate="cv_costo_cero_km_ServerValidate" ValidationGroup="parte">
+                                                                                </asp:CustomValidator>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
-                                                                <br />
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>Valor residual (%)</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td style="width: auto">
-                                                                                    <input type="text" id="tb_porcentaje_valor_residual" class="form-control porcentaje" runat="server" placeholder="Valor recidual " /></td>
-                                                                                <td>
-                                                                                    <asp:RequiredFieldValidator ControlToValidate="tb_porcentaje_valor_residual" Text="<img src='../img/exclamation.gif' title='Debe ingresar el porcentaje de valor residual' />"
-                                                                                        ID="RequiredFieldValidator3" runat="server" ErrorMessage="Debe ingresar el porcentaje de valor residual" ValidationGroup="parte">
-                                                                                    </asp:RequiredFieldValidator>
-                                                                                    <asp:CustomValidator ID="cv_valor_residual" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un porcentaje válido' />"
-                                                                                        ErrorMessage="Debe ingresar un porcentaje válido" OnServerValidate="cv_valor_residual_ServerValidate" ValidationGroup="parte">
-                                                                                    </asp:CustomValidator>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Usado (%) 100% = nuevo</td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
-                                                                <br />
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>Periodo alta</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <div class="form-group">
-                                                                                        <div id="dtp_periodo_alta" class="input-group date">
-                                                                                            <input type="text" runat="server" id="tb_periodo_alta" class="form-control mmaaaa" />
-                                                                                            <span class="input-group-addon">
-                                                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                                                            </span>
-                                                                                        </div>
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td style="width: auto">
+                                                                                <input type="text" id="tb_porcentaje_usado" class="form-control porcentaje" runat="server" placeholder="Porcentaje usado" /></td>
+                                                                            <td>
+                                                                                <asp:RequiredFieldValidator ControlToValidate="tb_porcentaje_usado" Text="<img src='../img/exclamation.gif' title='Debe ingresar el porcentaje de usado' />"
+                                                                                    ID="RequiredFieldValidator2" runat="server" ErrorMessage="Debe ingresar el porcentaje de usado" ValidationGroup="parte">
+                                                                                </asp:RequiredFieldValidator>
+                                                                                <asp:CustomValidator ID="cv_porcentaje_usado" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un porcentaje válido' />"
+                                                                                    ErrorMessage="Debe ingresar un porcentaje válido" OnServerValidate="cv_porcentaje_usado_ServerValidate" ValidationGroup="parte">
+                                                                                </asp:CustomValidator>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Valor residual (%)</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td style="width: auto">
+                                                                                <input type="text" id="tb_porcentaje_valor_residual" class="form-control porcentaje" runat="server" placeholder="Valor recidual " /></td>
+                                                                            <td>
+                                                                                <asp:RequiredFieldValidator ControlToValidate="tb_porcentaje_valor_residual" Text="<img src='../img/exclamation.gif' title='Debe ingresar el porcentaje de valor residual' />"
+                                                                                    ID="RequiredFieldValidator3" runat="server" ErrorMessage="Debe ingresar el porcentaje de valor residual" ValidationGroup="parte">
+                                                                                </asp:RequiredFieldValidator>
+                                                                                <asp:CustomValidator ID="cv_valor_residual" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un porcentaje válido' />"
+                                                                                    ErrorMessage="Debe ingresar un porcentaje válido" OnServerValidate="cv_valor_residual_ServerValidate" ValidationGroup="parte">
+                                                                                </asp:CustomValidator>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Periodo alta</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div id="dtp_periodo_alta" class="input-group date">
+                                                                                        <input type="text" runat="server" id="tb_periodo_alta" class="form-control mmaaaa" />
+                                                                                        <span class="input-group-addon">
+                                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                                        </span>
                                                                                     </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <asp:CustomValidator ID="cv_periodo_alta" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha de nacimiento válida' />"
-                                                                                        ErrorMessage="Debe ingresar una fecha de nacimiento válida" OnServerValidate="cv_periodo_alta_ServerValidate">
-                                                                                    </asp:CustomValidator></td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <asp:CustomValidator ID="cv_periodo_alta" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar una fecha de nacimiento válida' />"
+                                                                                    ErrorMessage="Debe ingresar una fecha de nacimiento válida" OnServerValidate="cv_periodo_alta_ServerValidate">
+                                                                                </asp:CustomValidator></td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
+                                                            </div>
 
-                                                                <br />
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td>Meses por amortizar</td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <table class="table-condensed" style="width: 100%">
-                                                                            <tr>
-                                                                                <td style="width: auto">
-                                                                                    <input type="text" id="tb_meses_por_amortizar" class="form-control entero" runat="server" placeholder="Meses por amortizar" /></td>
-                                                                                <td>
-                                                                                    <asp:RequiredFieldValidator ControlToValidate="tb_meses_por_amortizar" Text="<img src='../img/exclamation.gif' title='Debe ingresar los meses por amortizar' />"
-                                                                                        ID="RequiredFieldValidator4" runat="server" ErrorMessage="Debe ingresar los meses por amortizar" ValidationGroup="parte">
-                                                                                    </asp:RequiredFieldValidator>
-                                                                                    <asp:CustomValidator ID="cv_meses_por_amortizar" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un número de meses válido' />"
-                                                                                        ErrorMessage="Debe ingresar un número de meses válido" OnServerValidate="cv_meses_por_amortizar_ServerValidate" ValidationGroup="parte">
-                                                                                    </asp:CustomValidator>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Meses por amortizar</td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </div>
-                                                                <br />
+                                                                <div class="col-md-6">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td style="width: auto">
+                                                                                <input type="text" id="tb_meses_por_amortizar" class="form-control entero" runat="server" placeholder="Meses por amortizar" /></td>
+                                                                            <td>
+                                                                                <asp:RequiredFieldValidator ControlToValidate="tb_meses_por_amortizar" Text="<img src='../img/exclamation.gif' title='Debe ingresar los meses por amortizar' />"
+                                                                                    ID="RequiredFieldValidator4" runat="server" ErrorMessage="Debe ingresar los meses por amortizar" ValidationGroup="parte">
+                                                                                </asp:RequiredFieldValidator>
+                                                                                <asp:CustomValidator ID="cv_meses_por_amortizar" runat="server" Text="<img src='../img/exclamation.gif' title='Debe ingresar un número de meses válido' />"
+                                                                                    ErrorMessage="Debe ingresar un número de meses válido" OnServerValidate="cv_meses_por_amortizar_ServerValidate" ValidationGroup="parte">
+                                                                                </asp:CustomValidator>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <br />
 
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <asp:Button Text="Aceptar" ID="btn_aceptar_parte" OnClick="btn_aceptar_parte_Click" ValidationGroup="parte" CssClass="btn btn-success" runat="server" />
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <asp:Button Text="Aceptar" ID="btn_aceptar_parte" OnClick="btn_aceptar_parte_Click" ValidationGroup="parte" CssClass="btn btn-success" runat="server" />
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <asp:GridView ID="gv_partes" runat="server" EmptyDataText="No existen partes del equipo por mostrar." OnRowDataBound="gv_partes_RowDataBound"
-                                        AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered">
-                                        <Columns>
-                                            <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" ItemStyle-Width="100px" />
-                                            <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" ItemStyle-Width="130px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" ItemStyle-Width="130px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="periodo_alta" HeaderText="Periodo alta" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="meses_amortizados" HeaderText="Meses amortizados" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="restan_amortizar" HeaderText="Restan amortizar" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:BoundField DataField="costo_mensual" HeaderText="Costo mensual" ReadOnly="true" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Right" />
-                                            <asp:TemplateField>
-                                                <ItemTemplate>
-                                                    <button
-                                                        type="button" class="btn btn-sm btn-danger"
-                                                        data-toggle="modal"
-                                                        data-target="#advertencia_eliminacion"
-                                                        data-id='<%#Eval("id_parte")%>'
-                                                        data-introduccion="la parte"
-                                                        data-nombre='<%#Eval("nombre_parte")%>'>
-                                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
-                                                    </button>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                    </asp:GridView>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:GridView ID="gv_partes" runat="server" EmptyDataText="No existen partes del equipo por mostrar." OnRowDataBound="gv_partes_RowDataBound"
+                                    AutoGenerateColumns="False" GridLines="None" CssClass="table table-condensed table-bordered" OnPreRender="gv_PreRender">
+                                    <Columns>
+                                        <asp:BoundField DataField="nombre_parte" HeaderText="Nombre" ReadOnly="true" ItemStyle-Width="100px" />
+                                        <asp:BoundField DataField="costo_cero" HeaderText="Costo 0km" ReadOnly="true" ItemStyle-Width="130px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="porcentaje_usado" HeaderText="Usado" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="porcentaje_valor_residual" HeaderText="Valor recidual" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="valor_por_amortizar" HeaderText="Valor por amortizar" ReadOnly="true" ItemStyle-Width="130px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="periodo_alta" HeaderText="Periodo alta" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="meses_por_amortizar" HeaderText="Meses por amortizar" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="meses_amortizados" HeaderText="Meses amortizados" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="restan_amortizar" HeaderText="Restan amortizar" ReadOnly="true" ItemStyle-Width="80px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:BoundField DataField="costo_mensual" HeaderText="Costo mensual" ReadOnly="true" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Right" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <button
+                                                    type="button" class="btn btn-sm btn-danger"
+                                                    data-toggle="modal"
+                                                    data-target="#advertencia_eliminacion"
+                                                    data-id='<%#Eval("id_parte")%>'
+                                                    data-introduccion="la parte"
+                                                    data-nombre='<%#Eval("nombre_parte")%>'>
+                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
+                                                </button>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
 
-                                    <div class="modal fade" id="advertencia_eliminacion" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content panel-danger">
-                                                <div class="modal-header panel-heading">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <input type="hidden" runat="server" id="id_item_por_eliminar" />
-                                                            <p id="texto_a_mostrar"></p>
-                                                        </div>
+                                <div class="modal fade" id="advertencia_eliminacion" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content panel-danger">
+                                            <div class="modal-header panel-heading">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="hidden" runat="server" id="id_item_por_eliminar" />
+                                                        <p id="texto_a_mostrar"></p>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Total por amortizar de las partes del equipo</label>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Total por amortizar de las partes del equipo</label>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table class="table">
-                                        <tr>
-                                            <td>
-                                                <label>Costo total 0Km</label></td>
-                                            <td>
-                                                <asp:Label Text="" ID="lbl_costo_total_0km" runat="server" /></td>
-                                            <td>
-                                                <label>Total por amortizar</label></td>
-                                            <td>
-                                                <asp:Label Text="" ID="lbl_valor_por_amortizar" runat="server" /></td>
-                                            <td>
-                                                <label>Costo mensual</label></td>
-                                            <td>
-                                                <asp:Label Text="" ID="lbl_costo_mensual" runat="server" /></td>
-                                        </tr>
-                                    </table>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <label>Costo total 0Km</label></td>
+                                        <td>
+                                            <asp:Label Text="" ID="lbl_costo_total_0km" runat="server" /></td>
+                                        <td>
+                                            <label>Total por amortizar</label></td>
+                                        <td>
+                                            <asp:Label Text="" ID="lbl_valor_por_amortizar" runat="server" /></td>
+                                        <td>
+                                            <label>Costo mensual</label></td>
+                                        <td>
+                                            <asp:Label Text="" ID="lbl_costo_mensual" runat="server" /></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
 
-           <button id="btn_guardar_equipo" runat="server" onserverclick="btn_guardar_equipo_ServerClick" class="btn btn-success" validationgroup="equipo">
-                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
-            </button>
-            <asp:Button Text="Cancelar" CssClass="btn btn-default" ID="btn_cancelar" OnClick="btn_cancelar_Click" runat="server" />
+                <div class="modal fade" id="editar_imagenes" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Agregar - eliminar imagenes asociadas al equipo</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <asp:GridView ID="gv_imagenes" runat="server" EmptyDataText="No existen partes del equipo por mostrar."
+                                            AutoGenerateColumns="False" GridLines="None" CssClass="display" OnPreRender="gv_PreRender">
+                                            <Columns>
+                                                <asp:BoundField DataField="nombre_a_mostrar" HeaderText="Imágenes" ReadOnly="true" ItemStyle-Width="100px" />
+                                                <asp:TemplateField>
+                                                    <ItemTemplate>
+                                                        <button
+                                                            type="button" class="btn btn-sm btn-warning" id="btn_ver_imagen"
+                                                            runat="server" onserverclick="btn_ver_imagen_ServerClick"
+                                                            data-id='<%#Eval("nombre_imagen")%>'
+                                                            causesvalidation="false">
+                                                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Editar
+                                                        </button>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                        <button class="btn btn-default" data-toggle="modal" data-target="#editar_Imagen" data-dismiss="modal" onclick="return false;">Agregar imagen</button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row" runat="server" id="div_imagen_seleccionada">
+                                            <div class="col-md-12">
+                                                <div class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h1 class="panel-title">Imagen seleccionada</h1>
+                                                        <input type="hidden" runat="server" id="hidden_nombre_imagen" value="0" />
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <asp:Image ImageUrl="imageurl" ID="imagen_seleccionada" Height="300px" Width="300px" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-right">
+                                                                    <asp:Button Text="Aceptar" ID="btn_aceptar_imagen_seleccionada" CssClass="btn btn-default" OnClick="btn_aceptar_imagen_seleccionada_Click" runat="server" />
+
+                                                                    <asp:Button Text="Principal" title="Muestra esta imagen como principal para el equipo" ID="btn_marcar_como_principal" CssClass="btn btn-warning mytooltip" OnClick="btn_marcar_como_principal_Click" runat="server" />
+                                                                    <button class="btn btn-danger mytooltip" title="Elimina la imagen" runat="server" onserverclick="btn_eliminar_imagen_seleccionada_Click">Eliminar!</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button Text="Aceptar" ID="btn_aceptar_edicion_imagenes" OnClick="btn_aceptar_edicion_imagenes_Click" CssClass="btn btn-default" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-right">
+                    <button id="btn_guardar_equipo" runat="server" onserverclick="btn_guardar_equipo_ServerClick" class="btn btn-success" validationgroup="equipo">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
+                    </button>
+                    <asp:Button Text="Cancelar" CssClass="btn btn-default" ID="btn_cancelar" OnClick="btn_cancelar_Click" runat="server" />
+                </div>
+            </div>
+        </div>
+
+
     </section>
     <!-- /.content -->
 
 </asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="cph_style" runat="server">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_scripts" runat="server">
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.bootstrap.min.js"></script>
+
     <script>
+
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
             var button = $(event.relatedTarget)
@@ -567,6 +661,19 @@
             $('#dtp_periodo_alta').datetimepicker({
                 locale: 'es',
                 format: 'MM/YYYY'
+            });
+        });
+
+        $(document).ready(function () {
+            $('#<%= gv_imagenes.ClientID %>').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ entradas",
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
             });
         });
     </script>

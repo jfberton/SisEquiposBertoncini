@@ -24,6 +24,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public decimal promedio { get; set; }
         public decimal costo_total_facturado { get; set; }
         public string lugar { get; set; }
+        public Nullable<bool> playa { get; set; }
     
         public virtual Equipo Equipo { get; set; }
     }

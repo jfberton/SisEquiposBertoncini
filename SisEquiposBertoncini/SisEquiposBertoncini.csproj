@@ -1155,6 +1155,7 @@
     <Content Include="Aplicativo\admin_horas_mes.aspx" />
     <Content Include="Aplicativo\admin_horas_planilla_principal.aspx" />
     <Content Include="Aplicativo\admin_importar_blanco.aspx" />
+    <Content Include="Aplicativo\admin_importar_ventas_presupuestadas.aspx" />
     <Content Include="Aplicativo\admin_tipo_empleado.aspx" />
     <Content Include="Aplicativo\admin_tipo_equipo.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_categoria.aspx" />
@@ -1421,6 +1422,18 @@
     <Content Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.xsc">
       <DependentUpon>planilla_gastos_en_funcion_horas_hombre.xsd</DependentUpon>
     </Content>
+    <Content Include="Aplicativo\Reportes\planilla_combustible_ds.xsc">
+      <DependentUpon>planilla_combustible_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Aplicativo\Reportes\planilla_combustible_ds.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>planilla_combustible_ds1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Aplicativo\Reportes\planilla_combustible_ds.xss">
+      <DependentUpon>planilla_combustible_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Aplicativo\Reportes\planilla_combustible_r.rdlc" />
     <None Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1529,6 +1542,13 @@
     </Compile>
     <Compile Include="Aplicativo\admin_importar_blanco.aspx.designer.cs">
       <DependentUpon>admin_importar_blanco.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\admin_importar_ventas_presupuestadas.aspx.cs">
+      <DependentUpon>admin_importar_ventas_presupuestadas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_importar_ventas_presupuestadas.aspx.designer.cs">
+      <DependentUpon>admin_importar_ventas_presupuestadas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\admin_tipo_empleado.aspx.cs">
       <DependentUpon>admin_tipo_empleado.aspx</DependentUpon>
@@ -1728,6 +1748,10 @@
     <Compile Include="Aplicativo\main_usuario.aspx.designer.cs">
       <DependentUpon>main_usuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Menues\menu_admin.ascx.cs">
+      <DependentUpon>menu_admin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Aplicativo\Menues\menu_demo.ascx.cs">
       <DependentUpon>menu_demo.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1803,6 +1827,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>planilla_calculos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\Reportes\planilla_combustible_ds1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>planilla_combustible_ds.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\Reportes\planilla_gastos_en_funcion_horas_hombre.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1821,13 +1850,6 @@
       <DependentUpon>Valores_anio_equipo.xsd</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Seguridad\Cripto.cs" />
-    <Compile Include="Aplicativo\Menues\menu_admin.ascx.cs">
-      <DependentUpon>menu_admin.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aplicativo\Menues\menu_admin.ascx.designer.cs">
-      <DependentUpon>menu_admin.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Aplicativo\string.cs" />
     <Compile Include="Aplicativo\usr_modifica_datos.aspx.cs">
       <DependentUpon>usr_modifica_datos.aspx</DependentUpon>

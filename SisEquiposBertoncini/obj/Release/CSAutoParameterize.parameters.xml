@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="Model1Container-Web.config Connection String" description="Model1Container Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Aplicativo.Datos.Model1.csdl|res://*/Aplicativo.Datos.Model1.ssdl|res://*/Aplicativo.Datos.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=localhost\SQLEXPRESS;Initial Catalog=equipos_berton;User ID=SA;Password=berton123;MultipleActiveResultSets=True&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\Desarrollo\\Tio\\SisEquiposBertoncini\\SisEquiposBertoncini\\SisEquiposBertoncini\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Model1Container']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="D:\\Desarrollo\\Tio\\SisEquiposBertoncini\\SisEquiposBertoncini\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Model1Container']/@connectionString" />
   </parameter>
 </parameters>

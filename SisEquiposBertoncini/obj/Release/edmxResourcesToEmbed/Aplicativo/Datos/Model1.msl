@@ -306,6 +306,8 @@
           <ScalarProperty Name="km" ColumnName="km" />
           <ScalarProperty Name="promedio" ColumnName="promedio" />
           <ScalarProperty Name="costo_total_facturado" ColumnName="costo_total_facturado" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="playa" ColumnName="playa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

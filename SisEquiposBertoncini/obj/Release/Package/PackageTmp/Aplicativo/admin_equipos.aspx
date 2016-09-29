@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 <%@ Register Src="~/Aplicativo/Controles/imagen_equipo.ascx" TagPrefix="uc1" TagName="imagen_equipo" %>
+<%@ Register Src="~/Aplicativo/Controles/imagenes_equipo.ascx" TagPrefix="uc1" TagName="imagenes_equipo" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -10,6 +12,9 @@
     <uc1:menu_admin runat="server" ID="menu_admin" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_body" runat="server">
+
+
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Equipos
@@ -109,32 +114,22 @@
         <div class="modal fade" id="ver_equipo" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>
+                            <asp:Label Text="" ID="lbl_nombre" runat="server" />
+                            <small>
+                                <label>Categoría</label>
+                                <asp:Label Text="" ID="lbl_categoria" runat="server" /></small></h2>
+                        <asp:Label Text="" ID="lbl_out" runat="server" />
+                    </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h2>
-                                            <asp:Label Text="" ID="lbl_nombre" runat="server" />
-                                            <small>
-                                                <label>Categoría</label>
-                                                <asp:Label Text="" ID="lbl_categoria" runat="server" /></small></h2>
-                                        <asp:Label Text="" ID="lbl_out" runat="server" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Notas:</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <asp:Label Text="" ID="lbl_notas_equipo" runat="server" />
-                                    </div>
-                                </div>
+                            <div class="col-md-6" runat="server" id="div_imagenes_equipo">
+                                <%--<uc1:imagenes_equipo runat="server" ID="imagen_equipo" />--%>
                             </div>
-                            <div class="col-md-4">
-                                <uc1:imagen_equipo runat="server" ID="imagen_equipo" />
+                            <div class="col-md-6">
+                                <label>Notas:</label><br />
+                                <asp:Label Text="" ID="lbl_notas_equipo" runat="server" />
                             </div>
                         </div>
                         <br />
@@ -216,6 +211,7 @@
     <script src="../js/dataTables.bootstrap.min.js"></script>
 
     <script>
+
         $('#advertencia_eliminacion').on('show.bs.modal', function (event) {
             // Button that triggered the modal
             var button = $(event.relatedTarget)
@@ -258,7 +254,7 @@
                     "infoFiltered": "(filtrado de _MAX_ registros totales)"
                 }
             });
-            $('#<%= gv_partes.ClientID %>').DataTable({
+            <%--$('#<%= gv_partes.ClientID %>').DataTable({
                 "scrollY": "200px",
                 "scrollCollapse": true,
                 "paging": false,
@@ -269,7 +265,7 @@
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)"
                 }
-            });
+            });--%>
         });
     </script>
 </asp:Content>

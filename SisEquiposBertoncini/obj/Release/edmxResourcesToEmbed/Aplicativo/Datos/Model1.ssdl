@@ -198,6 +198,8 @@
     <Property Name="km" Type="decimal" Precision="9" Scale="2" Nullable="false" />
     <Property Name="promedio" Type="decimal" Precision="9" Scale="2" Nullable="false" />
     <Property Name="costo_total_facturado" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="lugar" Type="nvarchar(max)" />
+    <Property Name="playa" Type="bit" />
   </EntityType>
   <EntityType Name="Planilla_gastos_administrativo">
     <Key>

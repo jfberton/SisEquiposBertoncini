@@ -649,7 +649,8 @@
     <Property Name="km" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
     <Property Name="promedio" Type="Decimal" Nullable="false" Scale="2" Precision="9" />
     <Property Name="costo_total_facturado" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
-    <Property Name="lugar" Type="String" Nullable="true" />
+    <Property Name="lugar" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="playa" Type="Boolean" Nullable="true" />
   </EntityType>
   <Association Name="EquipoPlanilla_combustible">
     <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />

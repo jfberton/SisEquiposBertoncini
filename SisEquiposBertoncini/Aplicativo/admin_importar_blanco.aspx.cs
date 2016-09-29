@@ -66,6 +66,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     {
                         string nombreEquipo = CrossClass.ObtenerEquipoDB(dr[31].ToString());
                         string nombreItem = CrossClass.ObtenerItemDB(dr[27].ToString());
+                        string nombre_equipo_combustible = nombreEquipo;//el equipo que figura en la linea es al que se le asigna la linea de combustible, si la misma tiene un "lugar" (trabajo) es a este al cual se le tiene que asignar el movimiento de entrada salida, por eso si es combuistible cambio el nombre del equipo al que a futuro asignare el gasto de entrada salida
 
                         if (nombreEquipo != "Sin clasificar" && nombreItem != "Sin clasificar")
                         {
@@ -79,7 +80,7 @@ namespace SisEquiposBertoncini.Aplicativo
                             if (nombreItem == "Combustible")
                             {
                                 string[] campos_combustible = dr[18].ToString().Split(';');
-                                if (campos_combustible.Length == 4)
+                                if (campos_combustible.Length == 4 || campos_combustible.Length == 5)
                                 {
                                     string chofer = campos_combustible[0];
                                     bool tanque_lleno = campos_combustible[1] == "S";
@@ -87,19 +88,54 @@ namespace SisEquiposBertoncini.Aplicativo
                                     decimal litros = 0;
                                     decimal.TryParse(campos_combustible[2].Replace('.', ','), out km);
                                     decimal.TryParse(campos_combustible[3].Replace('.', ','), out litros);
-                                    Equipo eq = cxt.Equipos.FirstOrDefault(ee => ee.nombre == nombreEquipo);
 
-                                    items_combustible.Add(new Planilla_combustible()
+                                    Equipo eq;
+
+                                    if (campos_combustible.Length == 5)
                                     {
-                                        id_equipo = eq != null ? eq.id_equipo : 0,
-                                        fecha = Convert.ToDateTime(dr[7].ToString()),
-                                        chofer = chofer,
-                                        tanque_lleno = tanque_lleno,
-                                        km = km,
-                                        litros = litros,
-                                        costo_total_facturado = monto,
-                                        promedio = 0
-                                    });
+                                        nombreEquipo = campos_combustible[4];
+                                    }
+
+                                    eq = cxt.Equipos.FirstOrDefault(ee => ee.nombre == nombreEquipo);
+                                    Equipo eq_combustible = cxt.Equipos.FirstOrDefault(ee => ee.nombre == nombre_equipo_combustible);
+
+                                    if (eq != null)
+                                    {
+                                        if (eq.nombre == eq_combustible.nombre && campos_combustible.Length == 5)
+                                        {
+                                            //vino nombre de equipo y el mismo es igual el equipo asignado es decir va en el item "Gastos Camioneta Individ."
+                                            nombreItem = "Gastos Camioneta Individ.";
+                                        }
+
+                                        items_combustible.Add(new Planilla_combustible()
+                                        {
+                                            id_equipo = eq_combustible.id_equipo,
+                                            fecha = Convert.ToDateTime(dr[7].ToString()),
+                                            chofer = chofer,
+                                            tanque_lleno = tanque_lleno,
+                                            km = km,
+                                            litros = litros,
+                                            costo_total_facturado = monto,
+                                            promedio = 0,
+                                            playa = false,
+                                            lugar = eq.nombre == eq_combustible.nombre ? (campos_combustible.Length == 5 ? eq_combustible.nombre : " - " ): eq.nombre
+                                        });
+                                    }
+                                    else
+                                    {
+                                        correcto = false;
+                                        RegistroSinMachear rsm = new RegistroSinMachear();
+                                        rsm.Nombre_equipo_DB = nombreEquipo;
+                                        rsm.Nombre_item_DB = nombreItem;
+                                        rsm.Nombre_Equipo_informado = dr[31].ToString();
+                                        rsm.Nombre_item_informado = dr[27].ToString();
+                                        rsm.Comentario = dr[18].ToString();
+                                        rsm.Dia = Convert.ToDateTime(dr[8].ToString());
+                                        rsm.Monto = monto;
+                                        rsm.Motivo = "No se encontro el equipo/trabajo informado para agendar el egreso.-";
+                                        sinMatchear.Add(rsm);
+                                    }
+
                                 }
                                 else
                                 {
@@ -117,7 +153,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                 }
                             }
 
-                            if(correcto)
+                            if (correcto)
                             {
                                 //correcto
                                 RegistroPorInsertar ri = new RegistroPorInsertar();
@@ -149,7 +185,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw ex;
                 }
@@ -273,22 +309,74 @@ namespace SisEquiposBertoncini.Aplicativo
 
             using (var cxt = new Model1Container())
             {
-                var equipos = items.GroupBy(test => test.Nombre_Equipo).Select(grp => grp.First()).ToList();
+                int cantidad_registros_ingreso_egreso = 0;
+                int cantidad_registros_tabla_combustible = 0;
 
-                foreach (var equipo in equipos)
+                foreach (RegistroPorInsertar item in items)
                 {
-                    var registros = (from x in items where x.Nombre_Equipo == equipo.Nombre_Equipo select x).ToList();
-                    Equipo eq = cxt.Equipos.First(ee => ee.nombre == equipo.Nombre_Equipo);
+                    Equipo eq = cxt.Equipos.First(ee => ee.nombre == item.Nombre_Equipo);
 
-                    foreach (RegistroPorInsertar item in registros)
+                    if (eq != null)
                     {
-                        eq.Agregar_detalle(item.Dia, item.Monto, item.Nombre_item, item.Comentario);
+                        #region Copio y pego el metodo "Equipo.Agregar_detalle" porque no encuentro el motivo por el cual si hay mas de dos items para un mismo equipo agrega unicamente el primero
+
+                        int mes = item.Dia.Month;
+                        int anio = item.Dia.Year;
+
+                        Ingreso_egreso_mensual_equipo iemensual = eq.Ingresos_egresos_mensuales.FirstOrDefault(x => x.anio == anio && x.mes == mes);
+
+                        if (iemensual == null)
+                        {
+                            iemensual = new Ingreso_egreso_mensual_equipo();
+                            iemensual.id_equipo = eq.id_equipo;
+                            iemensual.mes = mes;
+                            iemensual.anio = anio;
+                            cxt.Ingresos_egresos_mensuales_equipos.Add(iemensual);
+                            cxt.SaveChanges();
+                        }
+
+
+                        Item_ingreso_egreso item_io = cxt.Items_ingresos_egresos.FirstOrDefault(x => x.nombre == item.Nombre_item);
+
+                        if (item_io != null)
+                        {
+                            Valor_mes valor_mes = iemensual.Valores_meses.FirstOrDefault(x => x.id_item == item_io.id_item);
+                            if (valor_mes == null)
+                            {
+                                valor_mes = new Valor_mes();
+                                valor_mes.id_ingreso_egreso_mensual = iemensual.id_ingreso_egreso_mensual;
+                                valor_mes.id_item = item_io.id_item;
+                                valor_mes.valor = 0;
+                                cxt.Valores_meses.Add(valor_mes);
+                                cxt.SaveChanges();
+                            }
+
+                            //aca tengo el item valor mes del 
+                            string descripcion_detalle = "[Importado] " + item.Comentario;
+
+                            Detalle_valor_item_mes detalle = valor_mes.Detalle.FirstOrDefault(x => x.descripcion == descripcion_detalle && x.fecha == item.Dia && x.monto == item.Monto);
+
+                            if (detalle == null)
+                            {
+                                detalle = new Detalle_valor_item_mes();
+                                detalle.id_valor_mes = valor_mes.id;
+                                detalle.fecha = item.Dia;
+                                detalle.descripcion = descripcion_detalle;
+                                detalle.monto = item.Monto;
+                                cxt.Detalle_valores_items_mes.Add(detalle);
+                                cxt.SaveChanges();
+                            }
+                        }
+
+                        #endregion
+
+                        cantidad_registros_ingreso_egreso++;
                     }
                 }
 
                 foreach (Planilla_combustible item in items_combustible)
                 {
-                    Planilla_combustible item_planilla = cxt.Planilla_combustibles.FirstOrDefault(pc => 
+                    Planilla_combustible item_planilla = cxt.Planilla_combustibles.FirstOrDefault(pc =>
                                                                                 pc.id_equipo == item.id_equipo &&
                                                                                 pc.fecha == item.fecha &&
                                                                                 pc.chofer == item.chofer &&
@@ -307,9 +395,26 @@ namespace SisEquiposBertoncini.Aplicativo
                             litros = item.litros,
                             km = item.km,
                             costo_total_facturado = item.costo_total_facturado,
-                            promedio = item.promedio
+                            promedio = item.promedio,
+                            playa = item.playa,
+                            lugar = item.lugar
                         });
                     }
+                    else
+                    {
+                        item_planilla.fecha = item.fecha;
+                        item_planilla.chofer = item.chofer;
+                        item_planilla.id_equipo = item.id_equipo;
+                        item_planilla.tanque_lleno = item.tanque_lleno;
+                        item_planilla.litros = item.litros;
+                        item_planilla.km = item.km;
+                        item_planilla.costo_total_facturado = item.costo_total_facturado;
+                        item_planilla.promedio = item.promedio;
+                        item_planilla.playa = item.playa;
+                        item_planilla.lugar = item.lugar;
+                    }
+
+                    cantidad_registros_tabla_combustible++;
                 }
 
                 cxt.SaveChanges();

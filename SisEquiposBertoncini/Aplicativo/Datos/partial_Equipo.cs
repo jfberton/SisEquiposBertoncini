@@ -494,8 +494,14 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             return ret;
         }
 
-        public void Agregar_detalle(DateTime dia, decimal monto, string item_informado, string descripcion)
+        public enum Accion_agregar_detalle
         {
+            Agrego, 
+            No_se_agrego_porque_ya_xiste
+        }
+        public Accion_agregar_detalle Agregar_detalle(DateTime dia, decimal monto, string item_informado, string descripcion)
+        {
+            Accion_agregar_detalle accion = Accion_agregar_detalle.Agrego;
             using (var cxt = new Model1Container())
             {
                 int mes = dia.Month;
@@ -530,7 +536,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     }
 
                     //aca tengo el item valor mes del 
-                    string descripcion_detalle = "[Importado automaticamente]" + descripcion;
+                    string descripcion_detalle = "[Importado] " + descripcion;
 
                     Detalle_valor_item_mes detalle = valor_mes.Detalle.FirstOrDefault(x => x.descripcion == descripcion_detalle && x.fecha == dia && x.monto == monto);
 
@@ -545,13 +551,13 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                         cxt.SaveChanges();
                     }
                     else
-                    { 
-                    //nada, ya existe;
+                    {
+                        accion = Accion_agregar_detalle.No_se_agrego_porque_ya_xiste;
                     }
-
-                    
                 }
             }
+
+            return accion;
         }
     }
 }

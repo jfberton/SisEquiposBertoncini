@@ -17,7 +17,7 @@
     <script src="AdminLTE/assets/js/jquery.easing.min.js"></script>
     <script src="AdminLTE/assets/js/grayscale.js"></script>
 
-    <title></title>
+     <title>Sistema Costos</title>
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!-- Intro Header -->
