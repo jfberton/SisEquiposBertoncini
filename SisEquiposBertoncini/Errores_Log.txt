@@ -3093,3 +3093,666 @@ STACKTRACE:    en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbC
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118592916789038
+
+DATE: 12/10/2016 08:54:51 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene elementos
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.<>c__11`1.<GetElementFunction>b__11_0(IEnumerable`1 sequence)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 317
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118593351670235
+
+DATE: 12/10/2016 08:55:35 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene elementos
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.<>c__11`1.<GetElementFunction>b__11_0(IEnumerable`1 sequence)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 317
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118597189326379
+
+DATE: 12/10/2016 09:01:58 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene elementos
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.<>c__11`1.<GetElementFunction>b__11_0(IEnumerable`1 sequence)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 317
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118599432495312
+
+DATE: 12/10/2016 09:05:43 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La secuencia no contiene elementos
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+
+STACKTRACE:    en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.<>c__11`1.<GetElementFunction>b__11_0(IEnumerable`1 sequence)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   en System.Data.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   en System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   en System.Linq.Queryable.First[TSource](IQueryable`1 source, Expression`1 predicate)
+   en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 318
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118602046440937
+
+DATE: 12/10/2016 09:10:04 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Referencia a objeto no establecida como instancia de un objeto.
+
+SOURCE: SisEquiposBertoncini
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_importar_blanco.aspx
+
+TARGETSITE: Void btn_impactar_ServerClick(System.Object, System.EventArgs)
+
+STACKTRACE:    en SisEquiposBertoncini.Aplicativo.admin_importar_blanco.btn_impactar_ServerClick(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_importar_blanco.aspx.cs:línea 384
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118610312459247
+
+DATE: 12/10/2016 09:23:51 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: La importación de funciones 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual' no se puede ejecutar porque no está asignada a una función de almacenamiento.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=6&a=2016
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    en System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118617297338467
+
+DATE: 12/10/2016 09:35:29 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Error de desbordamiento aritmético al convertir numeric al tipo de datos numeric.
+Se terminó la instrucción.
+Comprobación de información de identidad: valor de identidad actual '69'.
+Ejecución de DBCC completada. Si hay mensajes de error, consulte al administrador del sistema.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=16&ed=1&m=1&a=2016
+
+TARGETSITE: Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+
+STACKTRACE:    en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   en System.Data.SqlClient.SqlDataReader.get_MetaData()
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   en System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   en System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   en System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.EntityClient.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118683901986079
+
+DATE: 12/10/2016 11:26:30 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún controlador http para el tipo de solicitud 'GET'
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=16&a=2016
+
+TARGETSITE: System.Web.IHttpHandler MapIntegratedHttpHandler(System.Web.HttpContext, System.String, System.Web.VirtualPath, System.String, Boolean, Boolean)
+
+STACKTRACE:    en System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   en System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118685759124840
+
+DATE: 12/10/2016 11:29:35 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún controlador http para el tipo de solicitud 'GET'
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=16&a=2016
+
+TARGETSITE: System.Web.IHttpHandler MapIntegratedHttpHandler(System.Web.HttpContext, System.String, System.Web.VirtualPath, System.String, Boolean, Boolean)
+
+STACKTRACE:    en System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   en System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118704746162767
+
+DATE: 12/10/2016 12:01:14 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún controlador http para el tipo de solicitud 'GET'
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx
+
+TARGETSITE: System.Web.IHttpHandler MapIntegratedHttpHandler(System.Web.HttpContext, System.String, System.Web.VirtualPath, System.String, Boolean, Boolean)
+
+STACKTRACE:    en System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   en System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118704980227297
+
+DATE: 12/10/2016 12:01:38 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún controlador http para el tipo de solicitud 'GET'
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx
+
+TARGETSITE: System.Web.IHttpHandler MapIntegratedHttpHandler(System.Web.HttpContext, System.String, System.Web.VirtualPath, System.String, Boolean, Boolean)
+
+STACKTRACE:    en System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   en System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118705367331336
+
+DATE: 12/10/2016 12:02:16 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún controlador http para el tipo de solicitud 'GET'
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx
+
+TARGETSITE: System.Web.IHttpHandler MapIntegratedHttpHandler(System.Web.HttpContext, System.String, System.Web.VirtualPath, System.String, Boolean, Boolean)
+
+STACKTRACE:    en System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   en System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636118706525753260
+
+DATE: 12/10/2016 12:04:12 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se encontró ningún controlador http para el tipo de solicitud 'GET'
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/grafico.aspx
+
+TARGETSITE: System.Web.IHttpHandler MapIntegratedHttpHandler(System.Web.HttpContext, System.String, System.Web.VirtualPath, System.String, Boolean, Boolean)
+
+STACKTRACE:    en System.Web.HttpApplication.MapIntegratedHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig, Boolean convertNativeStaticFileModule)
+   en System.Web.HttpServerUtility.Execute(String path, TextWriter writer, Boolean preserveForm)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119391596453936
+
+DATE: 13/10/2016 07:05:59 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: El ancho de gráfico debe estar definido en píxeles.
+
+SOURCE: System.Web.DataVisualization
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx
+
+TARGETSITE: Void set_Width(System.Web.UI.WebControls.Unit)
+
+STACKTRACE:    en System.Web.UI.DataVisualization.Charting.Chart.set_Width(Unit value)
+   en ASP.aplicativo_ver_valores_cargados_equipo_aspx.__BuildControlChart1() en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx:línea 89
+   en ASP.aplicativo_ver_valores_cargados_equipo_aspx.__BuildControlContent3(Control __ctrl) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx:línea 13
+   en System.Web.UI.CompiledTemplateBuilder.InstantiateIn(Control container)
+   en System.Web.UI.MasterPage.InstantiateInContentPlaceHolder(Control contentPlaceHolder, ITemplate template)
+   en ASP.site1_master.__BuildControlcph_body() en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Site1.Master:línea 121
+   en ASP.site1_master.__BuildControlform1() en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Site1.Master:línea 69
+   en ASP.site1_master.__BuildControlTree(site1_master __ctrl) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Site1.Master:línea 1
+   en ASP.site1_master.FrameworkInitialize() en c:\Users\jfberton\AppData\Local\Temp\Temporary ASP.NET Files\root\20b04c9e\ba4d95e4\App_Web_f415btta.0.cs:línea 0
+   en System.Web.UI.UserControl.InitializeAsUserControlInternal()
+   en System.Web.UI.MasterPage.CreateMaster(TemplateControl owner, HttpContext context, VirtualPath masterPageFile, IDictionary contentTemplateCollection)
+   en System.Web.UI.Page.get_Master()
+   en System.Web.UI.Page.ApplyMasterPage()
+   en System.Web.UI.Page.PerformPreInit()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119408912837883
+
+DATE: 13/10/2016 07:34:51 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se pudo encontrar el elemento de un gráfico con el nombre 'area' en 'ChartAreaCollection'.
+
+SOURCE: System.Web.DataVisualization
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=16&a=2016
+
+TARGETSITE: Void VerifyNameReference(System.String)
+
+STACKTRACE:    en System.Web.UI.DataVisualization.Charting.ChartNamedElementCollection`1.VerifyNameReference(String name)
+   en System.Web.UI.DataVisualization.Charting.Series.set_ChartArea(String value)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Armar_grafico_recupero(Decimal[] serie_velocidad_recupero, Table tree) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 348
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Agregar_fila_analisis_economico_financiero(conceptos_analisis_economico_financiero concepto, List`1 resultados, Table tree) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 334
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 229
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 61
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119411003347860
+
+DATE: 13/10/2016 07:38:20 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: No se pudo encontrar el elemento de un gráfico con el nombre 'area' en 'ChartAreaCollection'.
+
+SOURCE: System.Web.DataVisualization
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=16&a=2016
+
+TARGETSITE: Void VerifyNameReference(System.String)
+
+STACKTRACE:    en System.Web.UI.DataVisualization.Charting.ChartNamedElementCollection`1.VerifyNameReference(String name)
+   en System.Web.UI.DataVisualization.Charting.Series.set_ChartArea(String value)
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Armar_grafico_recupero(Decimal[] serie_velocidad_recupero, Table tree) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 349
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Agregar_fila_analisis_economico_financiero(conceptos_analisis_economico_financiero concepto, List`1 resultados, Table tree) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 334
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 229
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 61
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119534830339658
+
+DATE: 13/10/2016 11:04:43 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Imagen
+
+SOURCE: Microsoft.ReportViewer.Common
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/Reportes/dispatcher_report.aspx?reporte=valores_anuales_equipo_resumen
+
+TARGETSITE: Boolean RunDataSetQuery()
+
+STACKTRACE:    en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.RunDataSetQuery()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.Process()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.ProcessConcurrent(Object threadSet)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119554922085762
+
+DATE: 13/10/2016 11:38:12 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Imagen
+
+SOURCE: Microsoft.ReportViewer.Common
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/Reportes/dispatcher_report.aspx?reporte=valores_anuales_equipo_resumen
+
+TARGETSITE: Boolean RunDataSetQuery()
+
+STACKTRACE:    en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.RunDataSetQuery()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.Process()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.ProcessConcurrent(Object threadSet)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119557482008936
+
+DATE: 13/10/2016 11:42:28 a.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: Imagen
+
+SOURCE: Microsoft.ReportViewer.Common
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/Reportes/dispatcher_report.aspx?reporte=valores_anuales_equipo_resumen
+
+TARGETSITE: Boolean RunDataSetQuery()
+
+STACKTRACE:    en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.RunDataSetQuery()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.Process()
+   en Microsoft.ReportingServices.OnDemandProcessing.RuntimeDataSet.ProcessConcurrent(Object threadSet)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636119568697899534
+
+DATE: 13/10/2016 12:01:09 p.m.
+
+AGENTE: José Federico Bertoncini
+
+MESSAGE: DataBinding: 'SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v2+fila_item_ingreso_egreso_equipo' no contiene una propiedad con el nombre 'valorstrdoalr'.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v2.aspx?eq=16&ed=1&m=1&a=2016
+
+TARGETSITE: System.Object GetPropertyValue(System.Object, System.String)
+
+STACKTRACE:    en System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   en System.Web.UI.DataBinder.Eval(Object container, String[] expressionParts)
+   en System.Web.UI.DataBinder.Eval(Object container, String expression)
+   en System.Web.UI.TemplateControl.Eval(String expression)
+   en ASP.aplicativo_admin_valores_mes_equipo_v2_aspx.__DataBinding__control44(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v2.aspx:línea 120
+   en System.Web.UI.Control.OnDataBinding(EventArgs e)
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.Control.DataBindChildren()
+   en System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   en System.Web.UI.Control.DataBind()
+   en System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   en System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   en System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   en System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   en System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   en System.Web.UI.WebControls.GridView.DataBind()
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v2.CrearMostrarTabla(Ingreso_egreso_mensual_equipo ioEquipo) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v2.aspx.cs:línea 164
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v2.Page_Load(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v2.aspx.cs:línea 89
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

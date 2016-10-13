@@ -92,7 +92,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                         pc.id_equipo == id_equipo &&
                                         pc.fecha >= primer_dia_mes &&
                                         pc.fecha <= ultimo_dia_mes
-                                      select pc).OrderBy(x => x.fecha).ToList();
+                                      select pc).OrderBy(x => x.fecha).ThenBy(x => x.km).ToList();
 
                 decimal km = 0;
                 foreach (Planilla_combustible item in items_planilla)
@@ -132,7 +132,8 @@ namespace SisEquiposBertoncini.Aplicativo
                                         playa = ip.playa.HasValue ? ip.playa : false,
                                         promedio = ip.promedio,
                                         costo_total_facturado = ip.costo_total_facturado,
-                                        lugar = ip.lugar
+                                        lugar = ip.lugar,
+                                        observaciones = ip.observaciones
                                     }).ToList();
 
                 foreach (var item in items_grilla)
@@ -148,7 +149,6 @@ namespace SisEquiposBertoncini.Aplicativo
                     dr.Promedio = item.promedio.ToString("#,##0.00");
                     dr.Costo = item.costo_total_facturado.ToString("$ #,##0.00");
                     dr.Lugar = item.lugar;
-
                     ds.Detalle.Rows.Add(dr);
                 }
 
@@ -204,6 +204,7 @@ namespace SisEquiposBertoncini.Aplicativo
             tb_km.Value = string.Empty;
             tb_litros.Value = string.Empty;
             id_factura_combust_hidden.Value = "0";
+            tb_observaciones.Value = string.Empty;
 
             string script = "<script language=\"javascript\"  type=\"text/javascript\">$(document).ready(function() { $('#agregar_linea_combustible').modal('show')});</script>";
             ScriptManager.RegisterStartupScript(Page, this.GetType(), "ShowPopUp", script, false);
@@ -314,8 +315,12 @@ namespace SisEquiposBertoncini.Aplicativo
                         pc.costo_total_facturado = Convert.ToDecimal(tb_costo.Value.Replace(".", ","));
                         pc.lugar = ddl_equipo_IO.SelectedItem.Text;
                         pc.playa = chk_playa.Checked;
+                        pc.observaciones = tb_observaciones.Value;
 
-                        Insertar_editar_detalle_valor_mes(nuevo_pc_item, nuevo_pc_id_equipo_IO, mes, anio, pc.costo_total_facturado, pc.fecha, "Chofer: " + pc.chofer + " Km: " + pc.km + " litros: " + pc.litros);
+                        string observaciones = tb_observaciones.Value != string.Empty ? tb_observaciones.Value : "Chofer: " + pc.chofer + " Km: " + pc.km + " litros: " + pc.litros;
+
+
+                        Insertar_editar_detalle_valor_mes(nuevo_pc_item, nuevo_pc_id_equipo_IO, mes, anio, pc.costo_total_facturado, pc.fecha, observaciones);
                     }
                     else
                     {
@@ -331,6 +336,7 @@ namespace SisEquiposBertoncini.Aplicativo
                         pc.costo_total_facturado = Convert.ToDecimal(tb_costo.Value.Replace(".", ","));
                         pc.lugar = ddl_equipo_IO.SelectedItem.Text;
                         pc.playa = chk_playa.Checked;
+                        pc.observaciones = tb_observaciones.Value;
                         cxt.Planilla_combustibles.Add(pc);
 
                         int pc_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
@@ -343,7 +349,10 @@ namespace SisEquiposBertoncini.Aplicativo
                         string pc_item_nombre = pc_playa ? "Combustible Playa" : (pc_equipo == pc_equipo_io ? "Gastos Camioneta Individ." : "Combustible");
                         Item_ingreso_egreso pc_item = cxt.Items_ingresos_egresos.FirstOrDefault(ii => ii.nombre == pc_item_nombre);
 
-                        Insertar_editar_detalle_valor_mes(pc_item, pc_id_equipo_IO, mes, anio, pc.costo_total_facturado, pc.fecha, "Chofer: " + pc.chofer + " Km: " + pc.km + " litros: " + pc.litros);
+                        string observaciones = tb_observaciones.Value != string.Empty ? tb_observaciones.Value : "Chofer: " + pc.chofer + " Km: " + pc.km + " litros: " + pc.litros;
+
+
+                        Insertar_editar_detalle_valor_mes(pc_item, pc_id_equipo_IO, mes, anio, pc.costo_total_facturado, pc.fecha, observaciones);
 
                     }
 
@@ -359,6 +368,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 tb_costo.Value = string.Empty;
                 ddl_equipo_IO.SelectedValue = "0";
                 id_factura_combust_hidden.Value = "0";
+                tb_observaciones.Value = string.Empty;
 
                 CrearMostrarTabla(id_equipo, mes, anio);
             }

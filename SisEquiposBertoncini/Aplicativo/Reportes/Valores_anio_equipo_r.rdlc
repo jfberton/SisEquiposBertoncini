@@ -1131,7 +1131,6 @@
         </TablixRowHierarchy>
         <DataSetName>Detalle</DataSetName>
         <Top>0.05644cm</Top>
-        <Left>0cm</Left>
         <Height>1.1cm</Height>
         <Width>34.05896cm</Width>
         <Style>
@@ -1140,8 +1139,24 @@
           </Border>
         </Style>
       </Tablix>
+      <Image Name="Image4">
+        <Source>Database</Source>
+        <Value>=First(Fields!imagen.Value, "Imagen")</Value>
+        <MIMEType>image/jpeg</MIMEType>
+        <Sizing>Fit</Sizing>
+        <Top>1.65419cm</Top>
+        <Left>0.0635cm</Left>
+        <Height>3.11396cm</Height>
+        <Width>33.99546cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
     </ReportItems>
-    <Height>0.60403in</Height>
+    <Height>1.99986in</Height>
     <Style />
   </Body>
   <Width>13.46112in</Width>
@@ -1155,7 +1170,6 @@
           <Source>Embedded</Source>
           <Value>encabezado_informe_expandir</Value>
           <Sizing>Fit</Sizing>
-          <Left>0cm</Left>
           <Height>1.12958cm</Height>
           <Width>34.05896cm</Width>
           <Style>
@@ -1450,6 +1464,26 @@
         <rd:DataSetName>Valores_anio_equipo</rd:DataSetName>
         <rd:SchemaPath>D:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Reportes\Valores_anio_equipo.xsd</rd:SchemaPath>
         <rd:TableName>Detalle_item</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Imagen">
+      <Query>
+        <DataSourceName>Valores_anio_equipo</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="imagen">
+          <DataField>imagen</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Valores_anio_equipo</rd:DataSetName>
+        <rd:SchemaPath>d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Reportes\Valores_anio_equipo.xsd</rd:SchemaPath>
+        <rd:TableName>Velocidad_recupero</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

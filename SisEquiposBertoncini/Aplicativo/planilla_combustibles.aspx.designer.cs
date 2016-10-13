@@ -265,6 +265,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.CheckBox chk_playa;
         
         /// <summary>
+        /// tb_observaciones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tb_observaciones;
+        
+        /// <summary>
         /// btn_guardar control.
         /// </summary>
         /// <remarks>

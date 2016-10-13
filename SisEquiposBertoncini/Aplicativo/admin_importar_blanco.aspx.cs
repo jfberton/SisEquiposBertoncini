@@ -9,6 +9,7 @@ using System.IO;
 using System.Data;
 using SisEquiposBertoncini.Aplicativo.Controles;
 using SisEquiposBertoncini.Aplicativo.Datos;
+using System.Runtime.InteropServices;
 
 namespace SisEquiposBertoncini.Aplicativo
 {
@@ -68,7 +69,10 @@ namespace SisEquiposBertoncini.Aplicativo
                         string nombreItem = CrossClass.ObtenerItemDB(dr[27].ToString());
                         string nombre_equipo_combustible = nombreEquipo;//el equipo que figura en la linea es al que se le asigna la linea de combustible, si la misma tiene un "lugar" (trabajo) es a este al cual se le tiene que asignar el movimiento de entrada salida, por eso si es combuistible cambio el nombre del equipo al que a futuro asignare el gasto de entrada salida
 
-                        if (nombreEquipo != "Sin clasificar" && nombreItem != "Sin clasificar")
+                        bool _existe_equipo = cxt.Equipos.FirstOrDefault(ee => ee.nombre == nombreEquipo) != null;
+                        bool _existe_item = cxt.Items_ingresos_egresos.FirstOrDefault(ii => ii.nombre == nombreItem) != null;
+
+                        if (nombreEquipo != "Sin clasificar" && nombreItem != "Sin clasificar" && _existe_equipo && _existe_item)
                         {
                             bool correcto = true; //hasta aca el item es correcto, verifico si es combustible y se estan bien cargados los datos, si es asi se agrega a correctos, sino naranja
                             decimal monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
@@ -118,7 +122,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                             costo_total_facturado = monto,
                                             promedio = 0,
                                             playa = false,
-                                            lugar = eq.nombre == eq_combustible.nombre ? (campos_combustible.Length == 5 ? eq_combustible.nombre : " - " ): eq.nombre
+                                            lugar = eq.nombre == eq_combustible.nombre ? (campos_combustible.Length == 5 ? eq_combustible.nombre : " - ") : eq.nombre
                                         });
                                     }
                                     else
@@ -318,6 +322,7 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     if (eq != null)
                     {
+
                         #region Copio y pego el metodo "Equipo.Agregar_detalle" porque no encuentro el motivo por el cual si hay mas de dos items para un mismo equipo agrega unicamente el primero
 
                         int mes = item.Dia.Month;

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ver_valores_cargados_equipo.aspx.cs" Inherits="SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <%@ Register Src="~/Aplicativo/Menues/menu_admin.ascx" TagPrefix="uc1" TagName="menu_admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -82,6 +84,31 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <asp:Chart ID="Chart1" runat="server" Width="1178px" Height="163px" BackColor="0, 192, 192" BackGradientStyle="TopBottom" BackSecondaryColor="White" BorderlineColor="Black" BorderlineDashStyle="Solid"  >
+                    <Series>
+                        <asp:Series Name="velocidad_de_recupero" YValueType="Double" ChartType="Spline" ChartArea="chart_area" IsValueShownAsLabel="true" LabelFormat="n2" XValueType="String" IsXValueIndexed="True" MarkerStep="1" BorderWidth="3" MarkerStyle="Triangle" MarkerSize="7" MarkerColor="#000099">
+                        </asp:Series>
+                    </Series>
+                    <ChartAreas>
+                        <asp:ChartArea Name="chart_area">
+                            <AxisX Interval="1" IsMarginVisible="true">
+                                <MajorGrid Interval="1" LineDashStyle="Dot" LineColor="Gray" />
+                            </AxisX>
+                            <AxisY IsMarginVisible="true">
+                                <MajorGrid LineDashStyle="Dot" LineColor="Gray" />
+                            </AxisY>
+                        </asp:ChartArea>
+                    </ChartAreas>
+                    <Titles>
+                        <asp:Title Name="Title1" Text="Velocidad de recupero" Font="Microsoft Sans Serif, 12pt">
+                        </asp:Title>
+                    </Titles>
+                </asp:Chart>
+            </div>
+        </div>
+      
     </section>
     <!-- /.content -->
 

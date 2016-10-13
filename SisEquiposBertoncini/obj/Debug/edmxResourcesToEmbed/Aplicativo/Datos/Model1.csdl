@@ -651,6 +651,7 @@
     <Property Name="costo_total_facturado" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
     <Property Name="lugar" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="playa" Type="Boolean" Nullable="true" />
+    <Property Name="observaciones" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <Association Name="EquipoPlanilla_combustible">
     <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />

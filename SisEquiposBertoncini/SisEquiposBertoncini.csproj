@@ -52,6 +52,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -1181,6 +1182,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Aplicativo\grafico.aspx" />
     <Content Include="Aplicativo\main_admin.aspx" />
     <Content Include="Aplicativo\main_sistema.aspx" />
     <Content Include="Aplicativo\main_usuario.aspx" />
@@ -1727,6 +1729,13 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\EPPlus_ToDataTable.cs" />
+    <Compile Include="Aplicativo\grafico.aspx.cs">
+      <DependentUpon>grafico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\grafico.aspx.designer.cs">
+      <DependentUpon>grafico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\main_admin.aspx.cs">
       <DependentUpon>main_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -172,9 +172,11 @@ namespace SisEquiposBertoncini.Aplicativo.Reportes
 
             ReportDataSource equipo = new ReportDataSource("Equipo", ds.Datos_equipo.Rows);
             ReportDataSource detalle = new ReportDataSource("Detalle", ds.Detalle_item.Rows);
+            ReportDataSource imagen = new ReportDataSource("Imagen", ds.Velocidad_recupero.Rows);
 
             viewer.LocalReport.DataSources.Add(equipo);
             viewer.LocalReport.DataSources.Add(detalle);
+            viewer.LocalReport.DataSources.Add(imagen);
 
             Microsoft.Reporting.WebForms.Warning[] warnings = null;
             string[] streamids = null;
@@ -238,9 +240,11 @@ namespace SisEquiposBertoncini.Aplicativo.Reportes
 
             ReportDataSource equipo = new ReportDataSource("Equipo", dsresumen.Datos_equipo.Rows);
             ReportDataSource detalle = new ReportDataSource("Detalle", dsresumen.Detalle_item.Rows);
+            ReportDataSource imagen = new ReportDataSource("Imagen", ds.Velocidad_recupero.Rows);
 
             viewer.LocalReport.DataSources.Add(equipo);
             viewer.LocalReport.DataSources.Add(detalle);
+            viewer.LocalReport.DataSources.Add(imagen);
 
             Microsoft.Reporting.WebForms.Warning[] warnings = null;
             string[] streamids = null;

@@ -19,6 +19,7 @@ namespace SisEquiposBertoncini.Aplicativo
             public string concepto { get; set; }
             public decimal valor { get; set; }
             public string valorstr { get; set; }
+            public string valorstrdolar { get; set; }
             public string row_class { get; set; }
             public bool visible { get; set; }
         }
@@ -142,6 +143,8 @@ namespace SisEquiposBertoncini.Aplicativo
                 int anio = Convert.ToInt32(ddl_anio.SelectedItem.Value);
                 int mes = Convert.ToInt32(ddl_mes.SelectedItem.Value);
                 int id_equipo = Convert.ToInt32(ddl_equipo.SelectedItem.Value);
+                Valor_dolar dolar_mes = cxt.Valores_dolar.FirstOrDefault(x => x.anio == anio && x.mes == mes);
+                decimal valor_dolar = dolar_mes != null ? dolar_mes.valor > 0 ? dolar_mes.valor : 1 : 1;
 
                 var listado = cxt.Obtener_listado_items_ingreso_egreso_mensual(mes, anio, id_equipo);
 
@@ -154,6 +157,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                                     concepto = item.concepto,
                                                     valor = item.valor,
                                                     valorstr = item.valor.ToString("C"),
+                                                    valorstrdolar = valor_dolar == 1? Cadena.Formato_moneda(0, Cadena.Moneda.dolares) : Cadena.Formato_moneda(item.valor/valor_dolar, Cadena.Moneda.dolares),
                                                     visible = item.visible,
                                                     row_class = item.row_class
                                                 }).ToList();

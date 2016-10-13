@@ -205,6 +205,7 @@
           <Property Name="costo_total_facturado" Type="decimal" Precision="11" Scale="2" Nullable="false" />
           <Property Name="lugar" Type="nvarchar(max)" />
           <Property Name="playa" Type="bit" />
+          <Property Name="observaciones" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Planilla_gastos_administrativo">
           <Key>
@@ -1270,6 +1271,7 @@
           <Property Name="costo_total_facturado" Type="Decimal" Nullable="false" Scale="2" Precision="11" />
           <Property Name="lugar" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="playa" Type="Boolean" Nullable="true" />
+          <Property Name="observaciones" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="EquipoPlanilla_combustible">
           <End Type="Model1.Equipo" Role="Equipo" Multiplicity="1" />
@@ -1596,6 +1598,7 @@
           <ScalarProperty Name="costo_total_facturado" ColumnName="costo_total_facturado" />
           <ScalarProperty Name="lugar" ColumnName="lugar" />
           <ScalarProperty Name="playa" ColumnName="playa" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

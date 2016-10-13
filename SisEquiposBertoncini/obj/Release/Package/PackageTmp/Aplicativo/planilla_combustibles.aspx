@@ -299,7 +299,7 @@
      <script type="text/javascript">
         function Imprimir() {
 
-            window.open('Reportes/dispatcher_report.aspx?reporte=planilla_combustible', 'Valores anuales categoría', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
+            window.open('Reportes/dispatcher_report.aspx?reporte=planilla_combustible', 'Plantilla combustible', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
         }
     </script>
 

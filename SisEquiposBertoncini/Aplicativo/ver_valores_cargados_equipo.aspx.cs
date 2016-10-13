@@ -7,8 +7,11 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using System.IO;
 
 namespace SisEquiposBertoncini.Aplicativo
 {
@@ -277,6 +280,8 @@ namespace SisEquiposBertoncini.Aplicativo
             row.Cells.Add(column_resultado);
             tree.Rows.Add(row);
 
+            decimal[] serie_velocidad_recupero = new decimal[12];
+
             //valores mensuales, mes 13 = total, mes 14 = promedio
             for (int i = 0; i < 14; i++)
             {
@@ -301,8 +306,13 @@ namespace SisEquiposBertoncini.Aplicativo
                         valor.Text = Cadena.Formato_porcentaje(vm.valor * Convert.ToDecimal(100));
                         break;
                     case resumen_equipo_anio.conceptos_analisis_economico_financiero.velocidad_de_recupero:
-                        dir[i + 1] = vm.valor.ToString();
-                        valor.Text = vm.valor.ToString();
+                        dir[i + 1] = vm.valor.ToString("n2");
+                        valor.Text = vm.valor.ToString("n2");
+                        if (i <= 11)
+                        {
+                            serie_velocidad_recupero[i] = vm.valor;
+                        }
+
                         break;
                     default:
                         break;
@@ -319,6 +329,84 @@ namespace SisEquiposBertoncini.Aplicativo
 
             ds.Detalle_item.Rows.Add(dir);
             Session["ds_equipo_anio"] = ds;
+
+            switch (concepto)
+            {
+                case resumen_equipo_anio.conceptos_analisis_economico_financiero.velocidad_de_recupero:
+                    Armar_grafico_recupero(serie_velocidad_recupero, tree);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Armar_grafico_recupero(decimal[] serie_velocidad_recupero, Table tree)
+        {
+            #region creo el grafico
+
+            Series serie = Chart1.Series[0];
+
+            for (int i = 0; i < 12; i++)
+            {
+                DataPoint dp = new DataPoint();
+                switch (i)
+                {
+                    case 0:
+                        dp.AxisLabel = "Ene";
+                        break;
+                    case 1:
+                        dp.AxisLabel = "Feb";
+                        break;
+                    case 2:
+                        dp.AxisLabel = "Mar";
+                        break;
+                    case 3:
+                        dp.AxisLabel = "Abr";
+                        break;
+                    case 4:
+                        dp.AxisLabel = "May";
+                        break;
+                    case 5:
+                        dp.AxisLabel = "Jun";
+                        break;
+                    case 6:
+                        dp.AxisLabel = "Jul";
+                        break;
+                    case 7:
+                        dp.AxisLabel = "Ago";
+                        break;
+                    case 8:
+                        dp.AxisLabel = "Sep";
+                        break;
+                    case 9:
+                        dp.AxisLabel = "Oct";
+                        break;
+                    case 10:
+                        dp.AxisLabel = "Nov";
+                        break;
+                    case 11:
+                        dp.AxisLabel = "Dic";
+                        break;
+
+                    default:
+                        break;
+                }
+                dp.YValues[0] = Convert.ToDouble(serie_velocidad_recupero[i]);
+                serie.Points.Add(dp);
+            }
+
+            MemoryStream stream = new MemoryStream();
+            this.Chart1.SaveImage(stream, ChartImageFormat.Jpeg);
+            Byte[] imagen = stream.GetBuffer();
+
+            Reportes.Valores_anio_equipo ds = Session["ds_equipo_anio"] as Reportes.Valores_anio_equipo;
+            Reportes.Valores_anio_equipo.Velocidad_recuperoRow vrr = ds.Velocidad_recupero.NewVelocidad_recuperoRow();
+            vrr.imagen = imagen;
+            ds.Velocidad_recupero.Rows.Add(vrr);
+
+            Session["ds_equipo_anio"] = ds;
+
+            #endregion
         }
 
         private void AgregarNodo(Item_ingreso_egreso concepto, Table tree, Model1Container cxt, resumen_equipo_anio valores_anuales)
