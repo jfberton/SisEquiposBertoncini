@@ -12,6 +12,7 @@
           <ScalarProperty Name="OUT" ColumnName="OUT" />
           <ScalarProperty Name="Generico" ColumnName="Generico" />
           <ScalarProperty Name="EsTrabajo" ColumnName="EsTrabajo" />
+          <ScalarProperty Name="Es_parte_de_id_equipo" ColumnName="Es_parte_de_id_equipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -312,7 +313,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="temp_equipos_excluidos_consulta_mensual">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.temp_equipo_excluido_consulta_mensual)">
+        <MappingFragment StoreEntitySet="temp_equipos_excluidos_consulta_mensual">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_equipo" ColumnName="Id_equipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual" />
     <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_categoria" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_categoria" />
+    <FunctionImportMapping FunctionImportName="Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo" FunctionName="Model1.Store.Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo" />
   </EntityContainerMapping>
 </Mapping>

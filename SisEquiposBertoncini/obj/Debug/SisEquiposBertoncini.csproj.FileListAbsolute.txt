@@ -137,3 +137,17 @@ d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
 d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll.config
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.dll
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\SisEquiposBertoncini.pdb
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.dll
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.dll
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\Microsoft.ReportViewer.Common.dll
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EntityFramework.xml
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\bin\EPPlus.xml
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.csproj.ResolveComReference.cache
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.cache
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\RdlCompile.compiled
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.dll
+D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\obj\Debug\SisEquiposBertoncini.pdb

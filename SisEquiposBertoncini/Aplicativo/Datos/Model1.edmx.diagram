@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f7cb0f986c74447fbd5ed7997dcff802" Name="Diagram1" ZoomLevel="75" >
-        <EntityTypeShape EntityType="Model1.Equipo" Width="2.125" PointX="5.25" PointY="10.25" />
+      <Diagram DiagramId="f7cb0f986c74447fbd5ed7997dcff802" Name="Diagram1" ZoomLevel="83" >
+        <EntityTypeShape EntityType="Model1.Equipo" Width="2.125" PointX="5.25" PointY="9.75" />
         <EntityTypeShape EntityType="Model1.Categoria_equipo" Width="1.5" PointX="3" PointY="9.875" />
         <AssociationConnector Association="Model1.CategoriaEquipo" />
-        <EntityTypeShape EntityType="Model1.Empleado" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="Model1.Empleado" Width="1.5" PointX="3" PointY="0.625" />
         <EntityTypeShape EntityType="Model1.Categoria_empleado" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="Model1.Categoria_empleadoEmpleado" />
         <EntityTypeShape EntityType="Model1.Usuario" Width="1.5" PointX="9.25" PointY="10.25" />
-        <EntityTypeShape EntityType="Model1.Dia" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.Dia" Width="1.5" PointX="5.25" PointY="0.625" />
         <AssociationConnector Association="Model1.EmpleadoDia" />
         <EntityTypeShape EntityType="Model1.Detalle_dia" Width="1.5" PointX="7.5" PointY="1.75" />
         <AssociationConnector Association="Model1.EquipoDetalle_dia" />
@@ -22,32 +22,34 @@
         <EntityTypeShape EntityType="Model1.Item_por_amortizar" Width="2.375" PointX="1.875" PointY="12" />
         <AssociationConnector Association="Model1.EquipoItem_por_amortizar" />
         <EntityTypeShape EntityType="Model1.Valor_dolar" Width="1.5" PointX="8.75" PointY="7.75" />
-        <EntityTypeShape EntityType="Model1.Ingreso_egreso_mensual_equipo" Width="3" PointX="5.125" PointY="14" />
+        <EntityTypeShape EntityType="Model1.Ingreso_egreso_mensual_equipo" Width="3" PointX="5.125" PointY="14.375" />
         <AssociationConnector Association="Model1.EquipoIngreso_egreso_mensual_equipo" />
         <EntityTypeShape EntityType="Model1.Item_ingreso_egreso" Width="2.75" PointX="12.25" PointY="14.25" />
-        <EntityTypeShape EntityType="Model1.Valor_mes" Width="2.125" PointX="9.25" PointY="14.25" />
+        <EntityTypeShape EntityType="Model1.Valor_mes" Width="2.125" PointX="9" PointY="14.625" />
         <AssociationConnector Association="Model1.Ingreso_egreso_mensual_equipoValor_mes" />
         <AssociationConnector Association="Model1.Item_ingreso_egresoValor_mes" />
         <AssociationConnector Association="Model1.Item_ingreso_egresoItem_ingreso_egreso" />
         <EntityTypeShape EntityType="Model1.Feriado" Width="1.5" PointX="10.125" PointY="0.875" />
-        <EntityTypeShape EntityType="Model1.Resumen_mes_empleado" Width="3.875" PointX="2.875" PointY="5" />
+        <EntityTypeShape EntityType="Model1.Resumen_mes_empleado" Width="3.875" PointX="2.875" PointY="4.625" />
         <AssociationConnector Association="Model1.EmpleadoResumen_mes_empleado" />
-        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes" Width="3.875" PointX="8.25" PointY="17.875" />
+        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes" Width="3.875" PointX="4.875" PointY="18.25" />
         <AssociationConnector Association="Model1.Valor_mesDetalle_valor_item_mes" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_calculo" Width="2.875" PointX="10" PointY="4.625" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_gastos_horas_hombre" Width="2.25" PointX="13.375" PointY="3.625" />
         <EntityTypeShape EntityType="Model1.Aux_planilla_gasto_administracion" Width="3.25" PointX="15.625" PointY="12.75" />
         <EntityTypeShape EntityType="Model1.Planilla_gasto_administrativo" Width="3.5" PointX="15.625" PointY="9" />
         <AssociationConnector Association="Model1.Planilla_gasto_administrativoAux_planilla_gasto_administracion" />
-        <EntityTypeShape EntityType="Model1.Aux_total_categoria_mes" Width="3.25" PointX="13.125" PointY="21.375" />
-        <EntityTypeShape EntityType="Model1.Valor_mes_categoria" Width="2.375" PointX="14" PointY="18.25" />
+        <EntityTypeShape EntityType="Model1.Aux_total_categoria_mes" Width="3.25" PointX="13.125" PointY="18.5" />
+        <EntityTypeShape EntityType="Model1.Valor_mes_categoria" Width="2.375" PointX="15.625" PointY="15.25" />
         <AssociationConnector Association="Model1.Aux_total_categoria_mesValor_mes_categoria" />
         <AssociationConnector Association="Model1.Item_ingreso_egresoValor_mes_categoria" />
-        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes_categoria" Width="3.875" PointX="18.75" PointY="18.5" />
+        <EntityTypeShape EntityType="Model1.Detalle_valor_item_mes_categoria" Width="3.875" PointX="16.75" PointY="18.5" />
         <AssociationConnector Association="Model1.Valor_mes_categoriaDetalle_valor_item_mes_categoria" />
         <EntityTypeShape EntityType="Model1.temp_table_filas_items_mes_equipo" Width="2.75" PointX="11.375" PointY="8.75" />
-        <EntityTypeShape EntityType="Model1.Planilla_combustible" Width="2.25" PointX="2.125" PointY="18" />
+        <EntityTypeShape EntityType="Model1.Planilla_combustible" Width="2.25" PointX="1.875" PointY="15.5" />
         <AssociationConnector Association="Model1.EquipoPlanilla_combustible" />
+        <AssociationConnector Association="Model1.EquipoEquipo" />
+        <EntityTypeShape EntityType="Model1.temp_equipo_excluido_consulta_mensual" Width="2.75" PointX="11.375" PointY="11.5" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

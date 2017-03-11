@@ -66,6 +66,29 @@
             </div>
         </div>
         <br />
+        <div class="row" id="row_equipos_equipo" runat="server" visible="false">
+            <div class="col-md-5">
+                <table class="table-condensed" style="width: 100%">
+                    <tr>
+                        <td style="vertical-align: top">Resultado compuesto de: </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <asp:CheckBoxList ID="chk_equipos" runat="server" RepeatDirection="Vertical">
+                                        </asp:CheckBoxList></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Button Text="Refrescar valores" CssClass="btn btn box-default" ID="btn_refrescar_valores_sobre_items_seleccionados" OnClick="btn_refrescar_valores_sobre_items_seleccionados_Click" runat="server" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
         <div class="row">
 
             <div class="col-md-12" runat="server" id="div_buscar_primero">
@@ -82,11 +105,10 @@
             <div class="col-md-12">
                 <div runat="server" id="div_tree" style="height: 100px;">
                 </div>
+
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-12">
-                <asp:Chart ID="Chart1" runat="server" Width="1178px" Height="163px" BackColor="0, 192, 192" BackGradientStyle="TopBottom" BackSecondaryColor="White" BorderlineColor="Black" BorderlineDashStyle="Solid"  >
+                <asp:Chart ID="Chart1" runat="server" Width="1178px" Height="163px" BackColor="0, 192, 192" BackGradientStyle="TopBottom" BackSecondaryColor="White" BorderlineColor="Black" BorderlineDashStyle="Solid">
                     <Series>
                         <asp:Series Name="velocidad_de_recupero" YValueType="Double" ChartType="Spline" ChartArea="chart_area" IsValueShownAsLabel="true" LabelFormat="n2" XValueType="String" IsXValueIndexed="True" MarkerStep="1" BorderWidth="3" MarkerStyle="Triangle" MarkerSize="7" MarkerColor="#000099">
                         </asp:Series>
@@ -108,7 +130,7 @@
                 </asp:Chart>
             </div>
         </div>
-      
+
     </section>
     <!-- /.content -->
 

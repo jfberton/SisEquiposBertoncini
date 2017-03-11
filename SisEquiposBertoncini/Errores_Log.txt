@@ -3756,3 +3756,812 @@ STACKTRACE:    en System.Web.UI.DataBinder.GetPropertyValue(Object container, St
 
 
 ******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636123820915431201
+
+DATE: 18/10/2016 10:08:11
+
+MESSAGE: Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: SQL Network Interfaces, error: 26 - Error al buscar el servidor o instancia especificado)
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/default.aspx
+
+TARGETSITE: Void .ctor(System.Data.ProviderBase.DbConnectionPoolIdentity, System.Data.SqlClient.SqlConnectionString, System.Data.SqlClient.SqlCredential, System.Object, System.String, System.Security.SecureString, Boolean, System.Data.SqlClient.SqlConnectionString, System.Data.SqlClient.SessionData, System.Data.ProviderBase.DbConnectionPool, System.String, Boolean)
+
+STACKTRACE:    en System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   en System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   en System.Data.Objects.ObjectContext.CreateDatabase()
+   en System.Data.Entity.Internal.DatabaseOperations.Create(ObjectContext objectContext)
+   en System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   en System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext)
+   en System.Data.Entity.Database.CreateIfNotExists()
+   en SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636124067623118045
+
+DATE: 18/10/2016 16:59:22
+
+MESSAGE: Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: SQL Network Interfaces, error: 26 - Error al buscar el servidor o instancia especificado)
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/default.aspx
+
+TARGETSITE: Void .ctor(System.Data.ProviderBase.DbConnectionPoolIdentity, System.Data.SqlClient.SqlConnectionString, System.Data.SqlClient.SqlCredential, System.Object, System.String, System.Security.SecureString, Boolean, System.Data.SqlClient.SqlConnectionString, System.Data.SqlClient.SessionData, System.Data.ProviderBase.DbConnectionPool, System.String, Boolean)
+
+STACKTRACE:    en System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   en System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   en System.Data.Objects.ObjectContext.CreateDatabase()
+   en System.Data.Entity.Internal.DatabaseOperations.Create(ObjectContext objectContext)
+   en System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   en System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext)
+   en System.Data.Entity.Database.CreateIfNotExists()
+   en SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636143591143874997
+
+DATE: 10/11/2016 07:18:34 a.m.
+
+MESSAGE: Login failed for user 'SA'.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/default.aspx
+
+TARGETSITE: Boolean TryGetConnection(System.Data.Common.DbConnection, UInt32, Boolean, Boolean, System.Data.Common.DbConnectionOptions, System.Data.ProviderBase.DbConnectionInternal ByRef)
+
+STACKTRACE:    en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   en System.Data.Objects.ObjectContext.CreateDatabase()
+   en System.Data.Entity.Internal.DatabaseOperations.Create(ObjectContext objectContext)
+   en System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   en System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext)
+   en System.Data.Entity.Database.CreateIfNotExists()
+   en SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636143591310474793
+
+DATE: 10/11/2016 07:18:51 a.m.
+
+MESSAGE: Login failed for user 'SA'.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/default.aspx
+
+TARGETSITE: Boolean TryGetConnection(System.Data.Common.DbConnection, UInt32, Boolean, Boolean, System.Data.Common.DbConnectionOptions, System.Data.ProviderBase.DbConnectionInternal ByRef)
+
+STACKTRACE:    en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)
+   en System.Data.SqlClient.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   en System.Data.Objects.ObjectContext.CreateDatabase()
+   en System.Data.Entity.Internal.DatabaseOperations.Create(ObjectContext objectContext)
+   en System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   en System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext)
+   en System.Data.Entity.Database.CreateIfNotExists()
+   en SisEquiposBertoncini._default.btn_ingresar_Click(Object sender, EventArgs e) en d:\Usuarios\jfberton\Mis Documentos\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\default.aspx.cs:línea 45
+   en System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   en System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247417044107056
+
+DATE: 10/03/2017 11:21:44
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: La importación de funciones 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual_categoria' no se puede ejecutar porque no está asignada a una función de almacenamiento.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_categoria.aspx?cat=17&ed=1&m=1&a=2015
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    en System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247470705069140
+
+DATE: 10/03/2017 12:51:10
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+No se puede insertar el valor NULL en la columna 'valor', tabla 'equipos_berton.dbo.temp_table_filas_items_mes_equipo'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+Se terminó la instrucción.
+
+SOURCE: .Net SqlClient Data Provider
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=8&a=2016
+
+TARGETSITE: Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+
+STACKTRACE:    en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   en System.Data.SqlClient.SqlDataReader.get_MetaData()
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   en System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   en System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   en System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.EntityClient.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247474271398781
+
+DATE: 10/03/2017 12:57:07
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: La importación de funciones 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo' no se puede ejecutar porque no está asignada a una función de almacenamiento.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=8&a=2016
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    en System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247489898672010
+
+DATE: 10/03/2017 13:23:09
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: La importación de funciones 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo' no se puede ejecutar porque no está asignada a una función de almacenamiento.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=8&a=2016
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    en System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247682451669210
+
+DATE: 10/03/2017 18:44:05
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: d:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_equipo_detalle.aspx(245): error CS1061: 'ASP.aplicativo_admin_equipo_detalle_aspx' no contiene una definición de 'btn_editar_ServerClick' ni se encontró ningún método de extensión 'btn_editar_ServerClick' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_equipo_detalle_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_equipo_detalle.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247683560289699
+
+DATE: 10/03/2017 18:45:56
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: d:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_equipo_detalle.aspx(245): error CS1061: 'ASP.aplicativo_admin_equipo_detalle_aspx' no contiene una definición de 'btn_editar_ServerClick' ni se encontró ningún método de extensión 'btn_editar_ServerClick' que acepte un primer argumento de tipo 'ASP.aplicativo_admin_equipo_detalle_aspx' (¿falta una directiva using o una referencia de ensamblado?)
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_equipo_detalle.aspx
+
+TARGETSITE: System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+
+STACKTRACE:    en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247711170688877
+
+DATE: 10/03/2017 19:31:57
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: La instancia de ObjectContext se ha desechado y ya no se puede usar para operaciones que requieren una conexión.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_equipo_detalle.aspx
+
+TARGETSITE: Void EnsureConnection()
+
+STACKTRACE:    en System.Data.Objects.ObjectContext.EnsureConnection()
+   en System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   en System.Data.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   en System.Data.Objects.DataClasses.EntityCollection`1.Load(List`1 collection, MergeOption mergeOption)
+   en System.Data.Objects.DataClasses.EntityCollection`1.Load(MergeOption mergeOption)
+   en System.Data.Objects.DataClasses.RelatedEnd.Load()
+   en System.Data.Objects.DataClasses.RelatedEnd.DeferredLoad()
+   en System.Data.Objects.Internal.LazyLoadBehavior.LoadProperty[TItem](TItem propertyValue, String relationshipName, String targetRoleName, Boolean mustBeNull, Object wrapperObject)
+   en System.Data.Objects.Internal.LazyLoadBehavior.<>c__DisplayClass0_0`2.<GetInterceptorDelegate>b__1(TProxy proxy, TItem item)
+   en System.Data.Entity.DynamicProxies.Equipo_85DBE2D57E31F58987311D5FEFD4EC155A589B6E5A9ACB0F901C4EE074164CA5.get_Partes()
+   en SisEquiposBertoncini.Aplicativo.admin_equipo_detalle.CargarValoresEquipo() en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_equipo_detalle.aspx.cs:línea 92
+   en SisEquiposBertoncini.Aplicativo.admin_equipo_detalle.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_equipo_detalle.aspx.cs:línea 46
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247751145840807
+
+DATE: 10/03/2017 20:38:34
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: La importación de funciones 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo' no se puede ejecutar porque no está asignada a una función de almacenamiento.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=10&a=2016
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    en System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247824783287394
+
+DATE: 10/03/2017 22:41:18
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: La importación de funciones 'Model1Container.Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo' no se puede ejecutar porque no está asignada a una función de almacenamiento.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=174&ed=1&m=9&a=2016
+
+TARGETSITE: System.Data.Mapping.FunctionImportMappingNonComposable GetTargetFunctionMapping(System.Data.Common.CommandTrees.DbFunctionCommandTree)
+
+STACKTRACE:    en System.Data.EntityClient.EntityCommandDefinition.GetTargetFunctionMapping(DbFunctionCommandTree functionCommandTree)
+   en System.Data.EntityClient.EntityCommandDefinition..ctor(DbProviderFactory storeProviderFactory, DbCommandTree commandTree)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247826258942568
+
+DATE: 10/03/2017 22:43:45
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: Referencia a objeto no establecida como instancia de un objeto.
+
+SOURCE: SisEquiposBertoncini
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=11&a=2016
+
+TARGETSITE: Void CrearMostrarTabla()
+
+STACKTRACE:    en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v3.CrearMostrarTabla() en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v3.aspx.cs:línea 149
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v3.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v3.aspx.cs:línea 81
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247840415966448
+
+DATE: 10/03/2017 23:07:21
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: LINQ to Entities no reconoce el método 'Boolean Esta_excluido(Int32)' del método, y este método no se puede traducir en una expresión de almacén.
+
+SOURCE: System.Data.Entity
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=11&a=2016
+
+TARGETSITE: System.Data.Common.CommandTrees.DbExpression Translate(System.Data.Objects.ELinq.ExpressionConverter, System.Linq.Expressions.MethodCallExpression)
+
+STACKTRACE:    en System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   en System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.NotTranslator.TypedTranslate(ExpressionConverter parent, UnaryExpression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   en System.Data.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   en System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   en System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   en System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   en System.Data.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   en System.Data.Objects.ELinq.ExpressionConverter.Convert()
+   en System.Data.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   en System.Data.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   en System.Data.Objects.ObjectQuery`1.System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+   en System.Data.Entity.Internal.Linq.InternalQuery`1.GetEnumerator()
+   en System.Data.Entity.Infrastructure.DbQuery`1.System.Collections.Generic.IEnumerable<TResult>.GetEnumerator()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v3.Ver_editar_valores_mes(Int32 id_item) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v3.aspx.cs:línea 344
+   en SisEquiposBertoncini.Aplicativo.admin_valores_mes_equipo_v3.btn_ver_editar_detalle_ServerClick(Object sender, EventArgs e) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\admin_valores_mes_equipo_v3.aspx.cs:línea 221
+   en System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   en System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636247849614227305
+
+DATE: 10/03/2017 23:22:41
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: Se encontraron varios controles con el mismo identificador 'lbl_valor'. FindControl requiere que los controles tengan identificadores únicos.
+
+SOURCE: System.Web
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/admin_valores_mes_equipo_v3.aspx?eq=81&ed=1&m=11&a=2016
+
+TARGETSITE: Void FillNamedControlsTable(System.Web.UI.Control, System.Web.UI.ControlCollection)
+
+STACKTRACE:    en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.FillNamedControlsTable(Control namingContainer, ControlCollection controls)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Control.FindControl(String id, Int32 pathOffset)
+   en System.Web.UI.Page.FindControl(String id)
+   en System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636248458364822634
+
+DATE: 11/3/2017 16:17:16
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: El valor no puede ser nulo.
+Nombre del parámetro: source
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=81&a=2016
+
+TARGETSITE: TSource FirstOrDefault[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.Datos.resumen_equipo_anio.Esta_excluido(Int32 id_equipo) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\resumen_equipo_anio.cs:línea 63
+   en SisEquiposBertoncini.Aplicativo.Datos.resumen_equipo_anio..ctor(Int32 anio, Int32 id_equipo) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\resumen_equipo_anio.cs:línea 88
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 214
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 63
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************
+ 
+
+******************************************************************
+
+ERRORID: 636248459791176862
+
+DATE: 11/3/2017 16:19:39
+
+AGENTE: María Eugenia Yagas
+
+MESSAGE: El valor no puede ser nulo.
+Nombre del parámetro: source
+
+SOURCE: System.Core
+
+INSTANCE: 
+
+DATA: System.Collections.ListDictionaryInternal
+
+URL: http://localhost:55600/Aplicativo/ver_valores_cargados_equipo.aspx?eq=81&a=2016
+
+TARGETSITE: TSource FirstOrDefault[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])
+
+STACKTRACE:    en System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   en SisEquiposBertoncini.Aplicativo.Datos.resumen_equipo_anio.Esta_excluido(Int32 id_equipo) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\resumen_equipo_anio.cs:línea 63
+   en SisEquiposBertoncini.Aplicativo.Datos.resumen_equipo_anio..ctor(Int32 anio, Int32 id_equipo) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\Datos\resumen_equipo_anio.cs:línea 89
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.CrearMostrarTabla(Int32 id_equipo, Int32 anio) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 214
+   en SisEquiposBertoncini.Aplicativo.ver_valores_cargados_equipo.Page_Load(Object sender, EventArgs e) en D:\Desarrollo\Tio\Repositorio github\SisEquiposBertoncini\SisEquiposBertoncini\Aplicativo\ver_valores_cargados_equipo.aspx.cs:línea 63
+   en System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   en System.Web.UI.Control.OnLoad(EventArgs e)
+   en System.Web.UI.Control.LoadRecursive()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+
+******************************************************************

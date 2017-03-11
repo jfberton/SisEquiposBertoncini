@@ -20,6 +20,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             this.Items_por_amortizar = new HashSet<Item_por_amortizar>();
             this.Ingresos_egresos_mensuales = new HashSet<Ingreso_egreso_mensual_equipo>();
             this.Planilla_combustible = new HashSet<Planilla_combustible>();
+            this.Partes = new HashSet<Equipo>();
         }
     
         public int id_equipo { get; set; }
@@ -30,11 +31,14 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public bool OUT { get; set; }
         public bool Generico { get; set; }
         public Nullable<bool> EsTrabajo { get; set; }
+        public Nullable<int> Es_parte_de_id_equipo { get; set; }
     
         public virtual Categoria_equipo Categoria { get; set; }
         public virtual ICollection<Detalle_dia> Detalles_dias { get; set; }
         public virtual ICollection<Item_por_amortizar> Items_por_amortizar { get; set; }
         public virtual ICollection<Ingreso_egreso_mensual_equipo> Ingresos_egresos_mensuales { get; set; }
         public virtual ICollection<Planilla_combustible> Planilla_combustible { get; set; }
+        public virtual ICollection<Equipo> Partes { get; set; }
+        public virtual Equipo Es_parte_de { get; set; }
     }
 }

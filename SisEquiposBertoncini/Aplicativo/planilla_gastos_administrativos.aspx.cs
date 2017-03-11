@@ -198,7 +198,7 @@ namespace SisEquiposBertoncini.Aplicativo
                 {
                     decimal monto = 0;
                     var detalle_equipo_planilla = datos_planilla.Detalle.FirstOrDefault(x => x.id_equipo == equipo.id_equipo);
-                    if (equipo.nombre != "ventas")
+                    if (equipo.nombre != "VENTAS COMERCIAL")
                     {
                         if (detalle_equipo_planilla != null && detalle_equipo_planilla.porcentaje > 0)
                         {

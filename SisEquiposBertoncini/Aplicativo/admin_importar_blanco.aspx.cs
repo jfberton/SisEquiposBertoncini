@@ -134,7 +134,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                         rsm.Nombre_Equipo_informado = dr[31].ToString();
                                         rsm.Nombre_item_informado = dr[27].ToString();
                                         rsm.Comentario = dr[18].ToString();
-                                        rsm.Dia = Convert.ToDateTime(dr[8].ToString());
+                                        rsm.Dia = Convert.ToDateTime(dr[7].ToString());
                                         rsm.Monto = monto;
                                         rsm.Motivo = "No se encontro el equipo/trabajo informado para agendar el egreso.-";
                                         sinMatchear.Add(rsm);
@@ -150,7 +150,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                     rsm.Nombre_Equipo_informado = dr[31].ToString();
                                     rsm.Nombre_item_informado = dr[27].ToString();
                                     rsm.Comentario = dr[18].ToString();
-                                    rsm.Dia = Convert.ToDateTime(dr[8].ToString());
+                                    rsm.Dia = Convert.ToDateTime(dr[7].ToString());
                                     rsm.Monto = monto;
                                     rsm.Motivo = "Observaciones sin formato preestablecido";
                                     sinMatchear.Add(rsm);
@@ -180,7 +180,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                 rsm.Nombre_Equipo_informado = dr[31].ToString();
                                 rsm.Nombre_item_informado = dr[27].ToString();
                                 rsm.Comentario = dr[18].ToString();
-                                rsm.Dia = Convert.ToDateTime(dr[8].ToString());
+                                rsm.Dia = Convert.ToDateTime(dr[7].ToString());
                                 rsm.Monto = Convert.ToDecimal(dr[24].ToString()) > 0 ? Convert.ToDecimal(dr[24].ToString()) : Convert.ToDecimal(dr[3].ToString());
                                 rsm.Motivo = "Equipo o item informado en excel sin machear con valores en base de datos";
                                 sinMatchear.Add(rsm);

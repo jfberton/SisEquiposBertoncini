@@ -171,8 +171,11 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 foreach (Equipo equipo in equipos_habilitados.OrderBy(x => x.nombre))
                 {
-                    ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
-                    ddl_equipo_IO.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                    if (!(equipo.EsTrabajo ?? false))
+                    {
+                        ddl_equipo.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                        ddl_equipo_IO.Items.Add(new ListItem() { Value = equipo.id_equipo.ToString(), Text = equipo.nombre });
+                    }
                 }
 
                 for (int anio = 2015; anio <= DateTime.Today.Year + 1; anio++)

@@ -79,7 +79,7 @@
                             <tr>
                                 <td>
                                     <asp:Button Text="Obtener" runat="server" ID="btn_buscar" CssClass="btn btn-default" OnClick="btn_buscar_Click" />
-                                    <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClick="btn_nueva_busqueda_Click" />
+                                    <asp:Button Text="Nueva búsqueda" runat="server" ID="btn_nueva_busqueda" CssClass="btn btn-danger" OnClientClick="javascript: window.location.href = location.href;"/>
                                 </td>
                             </tr>
                         </table>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="modal-footer">
                             <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_aceptar_eliminacion" OnClick="btn_aceptar_eliminacion_Click" runat="server" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript: location.reload(true);">Cerrar</button>
                         </div>
                     </div>
                 </div>
@@ -264,7 +264,6 @@
                                 </table>
                             </div>
                             <div class="col-md-9">
-                                <%--<input type="text" id="tb_lugar" class="form-control" runat="server" value="" />--%>
                                 <asp:DropDownList runat="server" ID="ddl_equipo_IO" Width="100%">
                                 </asp:DropDownList>
                             </div>
@@ -279,12 +278,24 @@
                                 </table>
                             </div>
                         </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table>
+                                    <tr>
+                                        <td>Observaciones</td>
+                                        <td style="width:100%">
+                                            <input type="text" id="tb_observaciones" runat="server" class="form-control" name="" value="" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button id="btn_guardar" runat="server" onserverclick="btn_guardar_ServerClick" class="btn btn-success" validationgroup="equipo">
                             <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Guardar!
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <asp:Button Text="Cancelar" CssClass="btn btn-default" runat="server" />
                     </div>
                 </div>
             </div>
@@ -298,7 +309,6 @@
     <script src="../js/dataTables.bootstrap.min.js"></script>
      <script type="text/javascript">
         function Imprimir() {
-
             window.open('Reportes/dispatcher_report.aspx?reporte=planilla_combustible', 'Plantilla combustible', 'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=screen.width,height=screen.height,top=0,left=0');
         }
     </script>

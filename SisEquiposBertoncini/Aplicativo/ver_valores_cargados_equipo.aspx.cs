@@ -92,7 +92,7 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             div_buscar_primero.Visible = habilitado;
             div_tree.Visible = !habilitado;
-
+            Chart1.Visible = !habilitado;
             ddl_equipo.Enabled = habilitado;
             ddl_anio.Enabled = habilitado;
 
@@ -100,6 +100,7 @@ namespace SisEquiposBertoncini.Aplicativo
             btn_imprimir_resumen.Visible = !habilitado;
             btn_buscar.Visible = habilitado;
             btn_imprimir.Visible = !habilitado;
+            row_equipos_equipo.Visible = !habilitado;
         }
 
         protected void btn_buscar_Click(object sender, EventArgs e)
@@ -116,6 +117,51 @@ namespace SisEquiposBertoncini.Aplicativo
 
             using (var cxt = new Model1Container())
             {
+                cxt.Database.ExecuteSqlCommand("TRUNCATE TABLE [temp_equipos_excluidos_consulta_mensual]");
+
+                Equipo equipo_buscado = cxt.Equipos.First(eq => eq.id_equipo == id_equipo);
+
+                if (equipo_buscado.Partes.Count > 0)
+                {
+                    List<ListItem> equipos_equipo = Session["equipos_equipo"] as List<ListItem>;
+
+                    chk_equipos.Items.Clear();
+
+                    row_equipos_equipo.Visible = true;
+
+                    if (equipos_equipo == null)
+                    {
+                        equipos_equipo = new List<ListItem>();
+
+                        equipos_equipo.Add(new ListItem() { Text = equipo_buscado.nombre, Value = equipo_buscado.id_equipo.ToString(), Selected = true, Enabled = false });
+
+                        foreach (Equipo eq in equipo_buscado.Partes)
+                        {
+                            equipos_equipo.Add(new ListItem() { Text = eq.nombre, Value = eq.id_equipo.ToString(), Selected = true });
+                        }
+
+                        Session["equipos_equipo"] = equipos_equipo;
+                    }
+                    else
+                    {
+                        foreach (ListItem item in equipos_equipo)
+                        {
+                            if (!item.Selected)
+                            {
+                                int id = Convert.ToInt32(item.Value);
+                                temp_equipo_excluido_consulta_mensual temp = new temp_equipo_excluido_consulta_mensual() { Id_equipo = id };
+                                cxt.temp_equipos_excluidos_consulta_mensual.Add(temp);
+                            }
+                        }
+
+                        cxt.SaveChanges();
+                    }
+
+                    foreach (ListItem item in equipos_equipo)
+                    {
+                        chk_equipos.Items.Add(item);
+                    }
+                }
 
                 List<Item_ingreso_egreso> conceptos;
                 conceptos = cxt.Items_ingresos_egresos.ToList();
@@ -236,6 +282,34 @@ namespace SisEquiposBertoncini.Aplicativo
 
                 div_tree.Controls.Add(tree);
             }
+        }
+
+        protected void btn_refrescar_valores_sobre_items_seleccionados_Click(object sender, EventArgs e)
+        {
+            using (var cxt = new Model1Container())
+            {
+                List<ListItem> equipos_equipo = new List<ListItem>();
+
+                int id_equipo = Convert.ToInt32(ddl_equipo.SelectedValue);
+                int anio = Convert.ToInt32(ddl_anio.SelectedValue);
+
+                Equipo equipo_buscado = cxt.Equipos.First(eq => eq.id_equipo == id_equipo);
+
+                equipos_equipo.Add(new ListItem() { Text = equipo_buscado.nombre, Value = equipo_buscado.id_equipo.ToString(), Selected = true, Enabled = false });
+
+                foreach (ListItem item in chk_equipos.Items)
+                {
+                    if (item.Value != equipo_buscado.id_equipo.ToString())
+                    {
+                        equipos_equipo.Add(new ListItem() { Text = item.Text, Value = item.Value, Selected = item.Selected });
+                    }
+                }
+
+                Session["equipos_equipo"] = equipos_equipo;
+
+                CrearMostrarTabla(id_equipo, anio);
+            }
+
         }
 
         private void Agregar_fila_analisis_economico_financiero(resumen_equipo_anio.conceptos_analisis_economico_financiero concepto, List<resumen_equipo_anio.resultados_economicos_financieros> resultados, Table tree)

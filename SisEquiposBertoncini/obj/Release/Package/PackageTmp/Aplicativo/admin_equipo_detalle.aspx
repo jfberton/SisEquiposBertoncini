@@ -66,6 +66,8 @@
                             <tr>
                                 <td>
                                     <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
+                                <td>
+                                    <asp:CheckBox Text=" Es trabajo" ID="chk_job" ToolTip="El consepto es un trabajo no será tenido en cuenta en planillas donde se vean unicamente equipos" CssClass="form-control" runat="server" /></td>
                             </tr>
                         </table>
                     </div>

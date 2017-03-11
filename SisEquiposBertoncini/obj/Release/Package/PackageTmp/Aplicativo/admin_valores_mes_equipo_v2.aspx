@@ -59,7 +59,7 @@
                                         <asp:ListItem Value="6" Text="Junio"></asp:ListItem>
                                         <asp:ListItem Value="7" Text="Julio"></asp:ListItem>
                                         <asp:ListItem Value="8" Text="Agosto"></asp:ListItem>
-                                        <asp:ListItem Value="9" Text="Septimbre"></asp:ListItem>
+                                        <asp:ListItem Value="9" Text="Septiembre"></asp:ListItem>
                                         <asp:ListItem Value="10" Text="Octubre"></asp:ListItem>
                                         <asp:ListItem Value="11" Text="Noviembre"></asp:ListItem>
                                         <asp:ListItem Value="12" Text="Diciembre"></asp:ListItem>
@@ -113,6 +113,11 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:Label Text='<%#Eval("valorstr")%>' ID="lbl_valor" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Label Text='<%#Eval("valorstrdolar")%>' ID="lbl_valor_dolar" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

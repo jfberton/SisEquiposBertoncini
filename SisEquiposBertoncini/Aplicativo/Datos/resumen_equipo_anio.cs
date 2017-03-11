@@ -41,7 +41,8 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         /// </summary>
         public Equipo Equipo
         {
-            get {
+            get
+            {
                 return equipo;
             }
         }
@@ -55,6 +56,14 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             }
         }
 
+        private bool Esta_excluido(int id_equipo)
+        {
+            using (var cxt = new Model1Container())
+            {
+                return cxt.temp_equipos_excluidos_consulta_mensual.FirstOrDefault(temp => temp.Id_equipo == id_equipo) != null;
+            }
+        }
+
         public resumen_equipo_anio(int anio, int id_equipo)
         {
             using (var cxt = new Model1Container())
@@ -64,41 +73,65 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                     equipo = cxt.Equipos.First(ee => ee.id_equipo == id_equipo);
                     anio_resumen = anio;
 
-                    //if ((equipo.EsTrabajo.HasValue && equipo.EsTrabajo.Value == true && concepto.mostrar_en_trabajo.HasValue && concepto.mostrar_en_trabajo.Value == true) ||
-                    //(equipo.EsTrabajo.HasValue && equipo.EsTrabajo.Value == false && concepto.mostrar_en_equipo.HasValue && concepto.mostrar_en_equipo.Value == true))
-                    //{
-                        
-                        decimal total_concepto_anio = 0;
-                        decimal meses_cargados_anio = 0;
+                    decimal total_concepto_anio = 0;
+                    decimal meses_cargados_anio = 0;
 
-                        for (int i = 0; i < 12; i++)
+                    for (int i = 0; i < 12; i++)
+                    {
+                        List<Ingreso_egreso_mensual_equipo> io_equipos = cxt.Ingresos_egresos_mensuales_equipos.Where(ieme => (ieme.Equipo.id_equipo == id_equipo || ieme.Equipo.Es_parte_de_id_equipo == id_equipo) && ieme.anio == anio && ieme.mes == i + 1).ToList();
+                        bool cargo_mes = false;
+                        decimal valor_mes = 0;
+
+                        foreach (Ingreso_egreso_mensual_equipo io_equipo in io_equipos)
                         {
-                            Ingreso_egreso_mensual_equipo valor_equipo_mes = cxt.Ingresos_egresos_mensuales_equipos.FirstOrDefault(x => x.id_equipo == id_equipo && x.mes == i + 1 && x.anio == anio);
-                            if (valor_equipo_mes != null)
+                            if (!Esta_excluido(io_equipo.id_equipo))
                             {
-                                Valor_mes vm = valor_equipo_mes.Valores_meses.FirstOrDefault(ii => ii.id_item == concepto.id_item && ii.id_ingreso_egreso_mensual == valor_equipo_mes.id_ingreso_egreso_mensual);
+                                Valor_mes vm = io_equipo.Valores_meses.FirstOrDefault(ii => ii.id_item == concepto.id_item);
                                 if (vm != null)
                                 {
-                                    
-                                    Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = vm.valor });
-                                    total_concepto_anio += vm.valor;
-                                    meses_cargados_anio++;
+                                    valor_mes = valor_mes + vm.valor;
+                                    cargo_mes = true;
                                 }
-                                else
-                                {
-                                    Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = 0 });
-                                }
-                            }
-                            else
-                            {
-                                Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = 0 });
                             }
                         }
 
-                        decimal promedio = meses_cargados_anio > 0 ? total_concepto_anio / meses_cargados_anio : 0;
-                        Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = agrupaciones.total_anio, valor = total_concepto_anio });
-                        Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = agrupaciones.promedio_mensual, valor = promedio });
-                    //}
+                        if(cargo_mes)
+                        {
+                            Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = valor_mes });
+                            total_concepto_anio += valor_mes;
+                            meses_cargados_anio++;
+                        }
+                        else
+                        {
+                            Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = 0 });
+                        }
+
+
+                        //Ingreso_egreso_mensual_equipo valor_equipo_mes = cxt.Ingresos_egresos_mensuales_equipos.FirstOrDefault(x => x.id_equipo == id_equipo && x.mes == i + 1 && x.anio == anio);
+                        //if (valor_equipo_mes != null)
+                        //{
+                        //    Valor_mes vm = valor_equipo_mes.Valores_meses.FirstOrDefault(ii => ii.id_item == concepto.id_item && ii.id_ingreso_egreso_mensual == valor_equipo_mes.id_ingreso_egreso_mensual);
+                        //    if (vm != null)
+                        //    {
+
+                        //        Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = vm.valor });
+                        //        total_concepto_anio += vm.valor;
+                        //        meses_cargados_anio++;
+                        //    }
+                        //    else
+                        //    {
+                        //        Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = 0 });
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = ((agrupaciones)i + 1), valor = 0 });
+                        //}
+                    }
+
+                    decimal promedio = meses_cargados_anio > 0 ? total_concepto_anio / meses_cargados_anio : 0;
+                    Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = agrupaciones.total_anio, valor = total_concepto_anio });
+                    Valores_anio.Add(new valor_item_mes() { id_concepto = concepto.id_item, agrupacion = agrupaciones.promedio_mensual, valor = promedio });
                 }
             }
         }
@@ -292,7 +325,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                         {
                             amortizacion_agrupacion = Valores_anio.First(x => x.id_concepto == amortizacion.id_item && x.agrupacion == agrupacion).valor;
                         }
-                        
+
 
                         decimal velocidad_de_recupero = (resultado_financiero_agrupacion <= 0) ? Convert.ToDecimal(0) : amortizacion_agrupacion / resultado_financiero_agrupacion;
 
@@ -319,7 +352,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
             return todos;
         }
 
-       
+
     }
 
     public class resumen_categoria_anio

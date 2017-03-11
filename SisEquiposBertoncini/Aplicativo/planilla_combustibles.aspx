@@ -103,8 +103,8 @@
                     <Columns>
                         <asp:BoundField DataField="fecha" HeaderText="Fecha" ReadOnly="true" DataFormatString="{0:d}" />
                         <asp:BoundField DataField="chofer" HeaderText="Chofer" ReadOnly="true" />
-                        <asp:CheckBoxField DataField="tanque_lleno" HeaderText="Playa" ReadOnly="true" />
                         <asp:CheckBoxField DataField="tanque_lleno" HeaderText="Tanque lleno" ReadOnly="true" />
+                        <asp:CheckBoxField DataField="playa" HeaderText="Playa" ReadOnly="true" />
                         <asp:BoundField DataField="litros" HeaderText="Litros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" />
                         <asp:BoundField DataField="km" HeaderText="Kilometros" ReadOnly="true" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:#,#}" />
                         <asp:BoundField DataField="promedio" HeaderText="Promedio" ReadOnly="true" DataFormatString="{0:#,#}" ItemStyle-HorizontalAlign="Right" />

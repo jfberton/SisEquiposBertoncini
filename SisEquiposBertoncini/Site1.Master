@@ -63,7 +63,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="hold-transition skin-yellow-light sidebar-mini">
+<body class="hold-transition skin-blue-light sidebar-mini">
 
     <div class="wrapper">
         <form id="form1" runat="server">

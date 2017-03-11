@@ -65,6 +65,10 @@ namespace SisEquiposBertoncini.Aplicativo
 
             using (var cxt = new Model1Container())
             {
+                int id_equipo = equipo.id_equipo;
+
+                equipo = cxt.Equipos.First(eq => eq.id_equipo == id_equipo);
+
                 if (equipo == null)
                 {
                     Session["equipo"] = new Equipo();
@@ -78,6 +82,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     ddl_categorias.SelectedValue = equipo.id_categoria.ToString();
                     tb_notas_equipo.Value = equipo.notas;
                     chk_out.Checked = equipo.OUT;
+                    chk_job.Checked = equipo.EsTrabajo ?? false;
 
                     imagenes_equipo.Equipo = equipo;
 
@@ -87,6 +92,28 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     int mes = DateTime.Today.Month;
                     int anio = DateTime.Today.Year;
+
+                    var equipos_habilitados = cxt.Equipos.Where(ee =>
+                                                                ee.fecha_baja == null &&
+                                                                !ee.Generico &&
+                                                                ee.id_equipo != equipo.id_equipo &&
+                                                                ee.Es_parte_de_id_equipo == null);
+
+                    foreach (Equipo ee in equipos_habilitados.OrderBy(x => x.nombre))
+                    {
+                        ddl_equipo.Items.Add(new ListItem() { Value = ee.id_equipo.ToString(), Text = ee.nombre });
+                    }
+
+                    var equipos_trabajos = (from ep in equipo.Partes
+                                            select new
+                                            {
+                                                equipo_categoria = ep.Categoria.nombre,
+                                                equipo_nombre = ep.nombre,
+                                                equipo_id = ep.id_equipo
+                                            }).ToList();
+
+                    gv_equipos.DataSource = equipos_trabajos;
+                    gv_equipos.DataBind();
 
                     var items = (from ii in equipo.Items_por_amortizar
                                  select new
@@ -136,21 +163,6 @@ namespace SisEquiposBertoncini.Aplicativo
         private void ActualizarImagen()
         {
             Equipo equipo = Session["equipo"] as Equipo;
-            //if (Directory.Exists(pathImagenesDisco + equipo.id_equipo.ToString()))
-            //{
-            //    if (File.Exists(pathImagenesDisco + equipo.id_equipo + "\\Original.jpg"))
-            //    {//Si no existe la imagen temporal pero si la original, la cargo
-            //        img_cuenta.ImageUrl = "~/img/Equipos/" + equipo.id_equipo + "/Original.jpg";
-            //    }
-            //    else
-            //    {//Si no existe la imagen temporal y tampoco la original, cargo la default
-            //        img_cuenta.ImageUrl = "~/img/Equipos/add.png";
-            //    }
-            //}
-            //else
-            //{//Si no existe la carpeta del usuario directamente cargo la imagen de default
-            //    img_cuenta.ImageUrl = "~/img/Equipos/add.png";
-            //}
 
             imagenes_equipo.Equipo = equipo;
         }
@@ -288,6 +300,7 @@ namespace SisEquiposBertoncini.Aplicativo
                     equipo.nombre = tb_nombre.Value;
                     equipo.id_categoria = Convert.ToInt32(ddl_categorias.SelectedItem.Value);
                     equipo.OUT = chk_out.Checked;
+                    equipo.EsTrabajo = chk_job.Checked;
 
                     foreach (Item_por_amortizar parte in session_equipo.Items_por_amortizar)
                     {
@@ -493,5 +506,40 @@ namespace SisEquiposBertoncini.Aplicativo
         {
             Response.Redirect("~/Aplicativo/admin_equipo_detalle.aspx");
         }
+
+        protected void btn_aceptar_parte_equipo_Click(object sender, EventArgs e)
+        {
+            Equipo eq = Session["equipo"] as Equipo;
+
+            using (var cxt = new Model1Container())
+            {
+                int id_equipo_editar = Convert.ToInt32(ddl_equipo.SelectedValue);
+                Equipo eq_editar = cxt.Equipos.FirstOrDefault(ee => ee.id_equipo == id_equipo_editar);
+                if (eq_editar != null)
+                {
+                    eq_editar.Es_parte_de_id_equipo = eq.id_equipo;
+
+                    cxt.SaveChanges();
+                }
+
+                CargarValoresEquipo();
+            }
+        }
+
+        protected void btn_eliminar_equipo_Click(object sender, EventArgs e)
+        {
+            using (var cxt = new Model1Container())
+            {
+                int id_equipo = Convert.ToInt32(id_item_por_eliminar_equipo.Value);
+
+                Equipo equipo = cxt.Equipos.First(ee => ee.id_equipo == id_equipo);
+                equipo.Es_parte_de_id_equipo = null;
+
+                cxt.SaveChanges();
+
+                CargarValoresEquipo();
+            }
+        }
+
     }
 }

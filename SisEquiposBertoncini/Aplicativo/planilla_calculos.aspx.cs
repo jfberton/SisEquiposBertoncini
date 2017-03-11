@@ -532,10 +532,19 @@ namespace SisEquiposBertoncini.Aplicativo
                 tabla.Controls.Add(fila_encabezado_1);
                 tabla.Controls.Add(fila_encabezado_2);
 
+                decimal tot_horas_normales = 0;
+                decimal tot_horas_50 = 0;
+                decimal tot_horas_100 = 0;
+                decimal tot_horas_totales = 0;
+                decimal tot_dias_laborables = 0;
+                decimal tot_dias_presentes = 0;
+                decimal tot_dias_ausentes = 0;
+                decimal tot_dias_dif = 0;
+                decimal tot_porc_ausentismo = 0;
+                decimal tot_costo_ausentismo = 0;
+
                 foreach (Empleado item in empleados)
                 {
-
-
                     Resumen_mes_empleado rme = item.Resumenes_meses_empleado.FirstOrDefault(x => x.anio == anio && x.mes == mes);
 
                     HtmlTableRow tr = new HtmlTableRow();
@@ -556,21 +565,71 @@ namespace SisEquiposBertoncini.Aplicativo
 
                     tabla.Controls.Add(tr);
 
-                    Reportes.planilla_calculos.AsistenciaRow adr = ds.Asistencia.NewAsistenciaRow();
-                    adr.Empleado = item.nombre;
-                    adr.Hs_normales = rme != null ? (Convert.ToDecimal(rme.total_horas_normales.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_normales.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Hs_50 = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Hs_100 = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Hs_totales = rme != null ? (Convert.ToDecimal(Horas_string.SumarHoras(new string[] { rme.total_horas_normales, rme.total_horas_extra_50, rme.total_horas_extra_100 }).Split(':')[0]) + (Convert.ToDecimal(Horas_string.SumarHoras(new string[] { rme.total_horas_normales, rme.total_horas_extra_50, rme.total_horas_extra_100 }).Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Dias_laborables = rme != null ? rme.dias_laborables.ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Dias_presentes = rme != null ? rme.dias_presente.ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Dias_ausentes = rme != null ? rme.dias_ausente.ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Dias_diferencia = rme != null ? (rme.dias_laborables - rme.dias_ausente - rme.dias_presente).ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Res_porc_aus = rme != null ? (rme.dias_ausente / rme.dias_laborables).ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Res_aus = rme != null ? rme.dias_ausente.ToString("#,##0.00") : 0.ToString("#,##0.00");
-                    adr.Res_pesos_aus = rme != null ? (rme.dias_ausente * Convert.ToDecimal(8) * costo_hora).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
-                    ds.Asistencia.Rows.Add(adr);
+                    tot_horas_normales = tot_horas_normales + (rme != null ? (Convert.ToDecimal(rme.total_horas_normales.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_normales.Split(':')[1]) / Convert.ToDecimal(60))) : 0);
+                    tot_horas_50 = tot_horas_50 + (rme != null ? (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[1]) / Convert.ToDecimal(60))) : 0);
+                    tot_horas_100 = tot_horas_100 + (rme != null ? (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60))) : 0);
+                    tot_horas_totales = tot_horas_normales + tot_horas_50 + tot_horas_100;
+                    tot_dias_laborables = tot_dias_laborables + (rme != null ? rme.dias_laborables : 0);
+                    tot_dias_presentes = tot_dias_presentes + (rme != null ? rme.dias_presente : 0);
+                    tot_dias_ausentes = tot_dias_ausentes + (rme != null ? rme.dias_ausente : 0);
+                    tot_dias_dif = tot_dias_laborables - (tot_dias_presentes + tot_dias_ausentes);
+                    tot_porc_ausentismo = tot_dias_ausentes / tot_dias_laborables;
+                    tot_costo_ausentismo = tot_dias_ausentes * Convert.ToDecimal(8) * costo_hora;
+
+
+                    Reportes.planilla_calculos.AsistenciaRow adr_tot = ds.Asistencia.NewAsistenciaRow();
+                    adr_tot.Empleado = item.nombre;
+                    adr_tot.Hs_normales = rme != null ? (Convert.ToDecimal(rme.total_horas_normales.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_normales.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Hs_50 = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_50.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Hs_100 = rme != null ? (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[0]) + (Convert.ToDecimal(rme.total_horas_extra_100.Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Hs_totales = rme != null ? (Convert.ToDecimal(Horas_string.SumarHoras(new string[] { rme.total_horas_normales, rme.total_horas_extra_50, rme.total_horas_extra_100 }).Split(':')[0]) + (Convert.ToDecimal(Horas_string.SumarHoras(new string[] { rme.total_horas_normales, rme.total_horas_extra_50, rme.total_horas_extra_100 }).Split(':')[1]) / Convert.ToDecimal(60))).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Dias_laborables = rme != null ? rme.dias_laborables.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Dias_presentes = rme != null ? rme.dias_presente.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Dias_ausentes = rme != null ? rme.dias_ausente.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Dias_diferencia = rme != null ? (rme.dias_laborables - rme.dias_ausente - rme.dias_presente).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Res_porc_aus = rme != null ? (rme.dias_ausente / rme.dias_laborables).ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Res_aus = rme != null ? rme.dias_ausente.ToString("#,##0.00") : 0.ToString("#,##0.00");
+                    adr_tot.Res_pesos_aus = rme != null ? (rme.dias_ausente * Convert.ToDecimal(8) * costo_hora).ToString("$ #,##0.00") : 0.ToString("$ #,##0.00");
+                    ds.Asistencia.Rows.Add(adr_tot);
                 }
+
+
+                //fila de totales
+
+                HtmlTableRow tr_tot = new HtmlTableRow();
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = "Totales:", BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_horas_normales.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_horas_50.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_horas_100.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_horas_totales.ToString("#,##0.00"), BgColor = "lightgray" });
+
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_dias_laborables.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_dias_presentes.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_dias_ausentes.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_dias_dif.ToString("#,##0.00"), BgColor = "lightgray" });
+
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_porc_ausentismo.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_dias_ausentes.ToString("#,##0.00"), BgColor = "lightgray" });
+                tr_tot.Controls.Add(new HtmlTableCell("th") { InnerHtml = tot_costo_ausentismo.ToString("$ #,##0.00"), BgColor = "lightgray" });
+
+                tabla.Controls.Add(tr_tot);
+
+                Reportes.planilla_calculos.AsistenciaRow adr = ds.Asistencia.NewAsistenciaRow();
+                adr.Empleado = "Totales:";
+                adr.Hs_normales = tot_horas_normales.ToString("#,##0.00");
+                adr.Hs_50 = tot_horas_50.ToString("#,##0.00");
+                adr.Hs_100 = tot_horas_100.ToString("#,##0.00");
+                adr.Hs_totales = tot_horas_totales.ToString("#,##0.00");
+                adr.Dias_laborables = tot_dias_laborables.ToString("#,##0.00");
+                adr.Dias_presentes = tot_dias_presentes.ToString("#,##0.00");
+                adr.Dias_ausentes = tot_dias_ausentes.ToString("#,##0.00");
+                adr.Dias_diferencia = tot_dias_dif.ToString("#,##0.00");
+                adr.Res_porc_aus = tot_porc_ausentismo.ToString("#,##0.00 %");
+                adr.Res_aus = tot_dias_ausentes.ToString("#,##0.00");
+                adr.Res_pesos_aus = tot_costo_ausentismo.ToString("$ #,##0.00");
+                ds.Asistencia.Rows.Add(adr);
+
+
 
                 Session["ds_planilla_calculos"] = ds;
 

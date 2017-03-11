@@ -85,6 +85,33 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.Button btn_nueva_busqueda;
         
         /// <summary>
+        /// row_equipos_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl row_equipos_equipo;
+        
+        /// <summary>
+        /// chk_equipos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chk_equipos;
+        
+        /// <summary>
+        /// btn_refrescar_valores_sobre_items_seleccionados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_refrescar_valores_sobre_items_seleccionados;
+        
+        /// <summary>
         /// div_buscar_primero control.
         /// </summary>
         /// <remarks>

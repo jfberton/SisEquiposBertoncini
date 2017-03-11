@@ -258,7 +258,7 @@ namespace SisEquiposBertoncini.Aplicativo
                                    detalle_fecha = x.fecha,
                                    detalle_monto = x.monto,
                                    detalle_descripcion = x.descripcion
-                               }).ToList();
+                               }).OrderBy(i=>i.detalle_fecha).ToList();
 
                 if (usuariologueado.perfil == perfil_usuario.Jefe || escombustible)
                 {

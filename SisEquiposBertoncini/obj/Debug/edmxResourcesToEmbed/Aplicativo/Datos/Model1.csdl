@@ -98,6 +98,11 @@
       <End Role="Equipo" EntitySet="Equipos" />
       <End Role="Planilla_combustible" EntitySet="Planilla_combustibles" />
     </AssociationSet>
+    <AssociationSet Name="EquipoEquipo" Association="Model1.EquipoEquipo">
+      <End Role="Equipo" EntitySet="Equipos" />
+      <End Role="Equipo1" EntitySet="Equipos" />
+    </AssociationSet>
+    <EntitySet Name="temp_equipos_excluidos_consulta_mensual" EntityType="Model1.temp_equipo_excluido_consulta_mensual" />
     <FunctionImport Name="Obtener_listado_items_ingreso_egreso_mensual">
       <Parameter Name="mes" Mode="In" Type="Int32" />
       <Parameter Name="anio" Mode="In" Type="Int32" />
@@ -107,6 +112,11 @@
       <Parameter Name="ID_CATEGORIA" Mode="In" Type="Int32" />
       <Parameter Name="MES" Mode="In" Type="Int32" />
       <Parameter Name="ANIO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo">
+      <Parameter Name="id_equipo" Mode="In" Type="Int32" />
+      <Parameter Name="mes" Mode="In" Type="Int32" />
+      <Parameter Name="anio" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Equipo">
@@ -126,6 +136,9 @@
     <Property Name="Generico" Type="Boolean" Nullable="false" />
     <Property Name="EsTrabajo" Type="Boolean" Nullable="true" />
     <NavigationProperty Name="Planilla_combustible" Relationship="Model1.EquipoPlanilla_combustible" FromRole="Equipo" ToRole="Planilla_combustible" />
+    <NavigationProperty Name="Partes" Relationship="Model1.EquipoEquipo" FromRole="Equipo" ToRole="Equipo1" />
+    <NavigationProperty Name="Es_parte_de" Relationship="Model1.EquipoEquipo" FromRole="Equipo1" ToRole="Equipo" />
+    <Property Name="Es_parte_de_id_equipo" Type="Int32" Nullable="true" />
   </EntityType>
   <EntityType Name="Categoria_equipo">
     <Documentation>
@@ -665,4 +678,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="EquipoEquipo">
+    <End Type="Model1.Equipo" Role="Equipo" Multiplicity="0..1" />
+    <End Type="Model1.Equipo" Role="Equipo1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipo">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Equipo1">
+        <PropertyRef Name="Es_parte_de_id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="temp_equipo_excluido_consulta_mensual">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_equipo" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

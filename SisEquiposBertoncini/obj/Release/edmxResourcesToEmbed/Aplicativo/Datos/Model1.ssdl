@@ -200,6 +200,7 @@
     <Property Name="costo_total_facturado" Type="decimal" Precision="11" Scale="2" Nullable="false" />
     <Property Name="lugar" Type="nvarchar(max)" />
     <Property Name="playa" Type="bit" />
+    <Property Name="observaciones" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Planilla_gastos_administrativo">
     <Key>

@@ -1159,6 +1159,7 @@
     <Content Include="Aplicativo\admin_importar_ventas_presupuestadas.aspx" />
     <Content Include="Aplicativo\admin_tipo_empleado.aspx" />
     <Content Include="Aplicativo\admin_tipo_equipo.aspx" />
+    <Content Include="Aplicativo\admin_valores_mes_equipo_v3.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_categoria.aspx" />
     <Content Include="Aplicativo\admin_valores_mes_equipo_v2.aspx" />
     <Content Include="Aplicativo\admin_valor_dolar.aspx" />
@@ -1566,6 +1567,13 @@
     <Compile Include="Aplicativo\admin_tipo_equipo.aspx.designer.cs">
       <DependentUpon>admin_tipo_equipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aplicativo\admin_valores_mes_equipo_v3.aspx.cs">
+      <DependentUpon>admin_valores_mes_equipo_v3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aplicativo\admin_valores_mes_equipo_v3.aspx.designer.cs">
+      <DependentUpon>admin_valores_mes_equipo_v3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aplicativo\admin_valores_mes_categoria.aspx.cs">
       <DependentUpon>admin_valores_mes_categoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1711,6 +1719,9 @@
     </Compile>
     <Compile Include="Aplicativo\Datos\resumen_equipo_anio.cs" />
     <Compile Include="Aplicativo\Datos\Resumen_mes_empleado.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicativo\Datos\temp_equipo_excluido_consulta_mensual.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Aplicativo\Datos\temp_table_filas_items_mes_equipo.cs">

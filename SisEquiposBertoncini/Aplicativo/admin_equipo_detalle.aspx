@@ -66,6 +66,8 @@
                             <tr>
                                 <td>
                                     <asp:CheckBox Text="OUT" ID="chk_out" ToolTip="Las horas realizadas sobre este equipo serán consideradas como horas OUT" CssClass="form-control" runat="server" /></td>
+                                <td>
+                                    <asp:CheckBox Text=" Es trabajo" ID="chk_job" ToolTip="El consepto es un trabajo no será tenido en cuenta en planillas donde se vean unicamente equipos" CssClass="form-control" runat="server" /></td>
                             </tr>
                         </table>
                     </div>
@@ -181,7 +183,114 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-3">
+                                <table class="table-condensed">
+                                    <tr>
+                                        <td>
+                                            <h1 class="panel-title">Equipos/Trabajos asociados</h1>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-9">
+                                <table class="table-condensed">
+                                    <tr>
+                                        <td>
+                                            <button type="button" class="btn btn-default btn-xs pull-right" id="btn_agregar_equipo" data-toggle="modal" data-target="#agregar_parte_equipo">
+                                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Agregar equipo/trabajo
+                                            </button>
+                                            <div class="modal fade" id="agregar_parte_equipo" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title">Agregar equipo/trabajo</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <table class="table-condensed" style="width: 100%">
+                                                                        <tr>
+                                                                            <td>Equipo</td>
+                                                                            <td>
+                                                                                <asp:DropDownList runat="server" ID="ddl_equipo" Width="100%" CssClass="form-control">
+                                                                                </asp:DropDownList></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <asp:Button Text="Aceptar" ID="btn_aceptar_parte_equipo" OnClick="btn_aceptar_parte_equipo_Click" CausesValidation="false" CssClass="btn btn-success" runat="server" />
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:GridView ID="gv_equipos" runat="server" EmptyDataText="No existen equipos por mostrar." OnPreRender="gv_PreRender"
+                                    AutoGenerateColumns="False" GridLines="None" CssClass="display">
+                                    <Columns>
+                                        <asp:BoundField DataField="equipo_categoria" HeaderText="Categoria" ReadOnly="true" />
+                                        <asp:BoundField DataField="equipo_nombre" HeaderText="Nombre" ReadOnly="true" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <button
+                                                    type="button" class="btn btn-sm btn-danger"
+                                                    data-toggle="modal"
+                                                    data-target="#advertencia_eliminacion_equipo"
+                                                    data-id='<%#Eval("equipo_id")%>'
+                                                    data-introduccion="el equipo"
+                                                    data-nombre='<%#Eval("equipo_nombre")%>'>
+                                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>Eliminar
+                                                </button>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                                <div class="modal fade" id="advertencia_eliminacion_equipo" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content panel-danger">
+                                            <div class="modal-header panel-heading">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title panel-title"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>ATENCIÓN!!</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="hidden" runat="server" id="id_item_por_eliminar_equipo" />
+                                                        <p id="texto_a_mostrar_equipo"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <asp:Button Text="Aceptar" CssClass="btn btn-success" CausesValidation="false" ID="btn_eliminar_equipo" OnClick="btn_eliminar_equipo_Click" runat="server" />
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-3">
                                 <table class="table-condensed">
                                     <tr>
                                         <td>
@@ -190,7 +299,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <table class="table-condensed">
                                     <tr>
                                         <td>
@@ -472,7 +581,6 @@
         <br />
         <div class="row">
             <div class="col-md-12">
-
                 <div class="modal fade" id="editar_imagenes" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -556,7 +664,6 @@
             </div>
         </div>
 
-
     </section>
     <!-- /.content -->
 
@@ -584,6 +691,21 @@
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
             var modal = $(this)
             modal.find('.modal-body #' + '<%= id_item_por_eliminar.ClientID %>').val(id + '-' + nombre)
+            modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
+        })
+
+        $('#advertencia_eliminacion_equipo').on('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            var button = $(event.relatedTarget)
+
+            // Extract info from data-* attributes
+            var id = button.data('id')
+            var introduccion = button.data('introduccion')
+            var nombre = button.data('nombre')
+
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-body #' + '<%= id_item_por_eliminar_equipo.ClientID %>').val(id)
             modal.find('.modal-body #texto_a_mostrar').text('Esta por eliminar ' + introduccion + ' ' + nombre + '. Desea continuar?')
         })
 
@@ -665,6 +787,20 @@
         });
 
         $(document).ready(function () {
+
+            $('#<%= gv_equipos.ClientID %>').DataTable({
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "language": {
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando _START_ de _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            });
+
             $('#<%= gv_imagenes.ClientID %>').DataTable({
                 "language": {
                     "lengthMenu": "Mostrando _MENU_ entradas",

@@ -53,6 +53,7 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
         public DbSet<Detalle_valor_item_mes_categoria> Detalle_valor_item_meses_categoria { get; set; }
         public DbSet<temp_table_filas_items_mes_equipo> temp_table_filas_items_mes_equipo { get; set; }
         public DbSet<Planilla_combustible> Planilla_combustibles { get; set; }
+        public DbSet<temp_equipo_excluido_consulta_mensual> temp_equipos_excluidos_consulta_mensual { get; set; }
     
         public virtual int Obtener_listado_items_ingreso_egreso_mensual(Nullable<int> mes, Nullable<int> anio, Nullable<int> id_equipo)
         {
@@ -86,6 +87,23 @@ namespace SisEquiposBertoncini.Aplicativo.Datos
                 new ObjectParameter("ANIO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Obtener_listado_items_ingreso_egreso_mensual_categoria", iD_CATEGORIAParameter, mESParameter, aNIOParameter);
+        }
+    
+        public virtual int Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo(Nullable<int> id_equipo, Nullable<int> mes, Nullable<int> anio)
+        {
+            var id_equipoParameter = id_equipo.HasValue ?
+                new ObjectParameter("id_equipo", id_equipo) :
+                new ObjectParameter("id_equipo", typeof(int));
+    
+            var mesParameter = mes.HasValue ?
+                new ObjectParameter("mes", mes) :
+                new ObjectParameter("mes", typeof(int));
+    
+            var anioParameter = anio.HasValue ?
+                new ObjectParameter("anio", anio) :
+                new ObjectParameter("anio", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo", id_equipoParameter, mesParameter, anioParameter);
         }
     }
 }

@@ -141,6 +141,7 @@
     <Property Name="OUT" Type="bit" Nullable="false" />
     <Property Name="Generico" Type="bit" Nullable="false" />
     <Property Name="EsTrabajo" Type="bit" />
+    <Property Name="Es_parte_de_id_equipo" Type="int" />
   </EntityType>
   <EntityType Name="Feriados">
     <Key>
@@ -237,6 +238,13 @@
     <Property Name="total_horas_ausente" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_guardia" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total_horas_varios_taller" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="temp_equipos_excluidos_consulta_mensual">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_equipo" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="temp_table_filas_items_mes_equipo">
     <Key>
@@ -382,6 +390,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_EquipoEquipo">
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+    <End Role="Equipos1" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipos">
+        <PropertyRef Name="id_equipo" />
+      </Principal>
+      <Dependent Role="Equipos1">
+        <PropertyRef Name="Es_parte_de_id_equipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_EquipoIngreso_egreso_mensual_equipo">
     <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
     <End Role="Ingresos_egresos_mensuales_equipos" Type="Self.Ingresos_egresos_mensuales_equipos" Multiplicity="*" />
@@ -512,6 +532,11 @@
     <Parameter Name="MES" Type="int" Mode="In" />
     <Parameter Name="ANIO" Type="int" Mode="In" />
   </Function>
+  <Function Name="Obtener_listado_items_ingreso_egreso_mensual_equipo_recursivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_equipo" Type="int" Mode="In" />
+    <Parameter Name="mes" Type="int" Mode="In" />
+    <Parameter Name="anio" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Aux_planilla_calculos" EntityType="Self.Aux_planilla_calculos" Schema="dbo" store:Type="Tables" />
@@ -533,6 +558,7 @@
     <EntitySet Name="Planilla_combustibles" EntityType="Self.Planilla_combustibles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Planilla_gastos_administrativo" EntityType="Self.Planilla_gastos_administrativo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Resumenes_meses_empleados" EntityType="Self.Resumenes_meses_empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="temp_equipos_excluidos_consulta_mensual" EntityType="Self.temp_equipos_excluidos_consulta_mensual" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="temp_table_filas_items_mes_equipo" EntityType="Self.temp_table_filas_items_mes_equipo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Valor_mes_categorias" EntityType="Self.Valor_mes_categorias" Schema="dbo" store:Type="Tables" />
@@ -569,6 +595,10 @@
     <AssociationSet Name="FK_EquipoDetalle_dia" Association="Self.FK_EquipoDetalle_dia">
       <End Role="Equipos" EntitySet="Equipos" />
       <End Role="Detalles_dias" EntitySet="Detalles_dias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipoEquipo" Association="Self.FK_EquipoEquipo">
+      <End Role="Equipos" EntitySet="Equipos" />
+      <End Role="Equipos1" EntitySet="Equipos" />
     </AssociationSet>
     <AssociationSet Name="FK_EquipoIngreso_egreso_mensual_equipo" Association="Self.FK_EquipoIngreso_egreso_mensual_equipo">
       <End Role="Equipos" EntitySet="Equipos" />

@@ -67,6 +67,15 @@ namespace SisEquiposBertoncini.Aplicativo {
         protected global::System.Web.UI.WebControls.CheckBox chk_out;
         
         /// <summary>
+        /// chk_job control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chk_job;
+        
+        /// <summary>
         /// ddl_categorias control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,51 @@ namespace SisEquiposBertoncini.Aplicativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpload;
+        
+        /// <summary>
+        /// ddl_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_equipo;
+        
+        /// <summary>
+        /// btn_aceptar_parte_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_aceptar_parte_equipo;
+        
+        /// <summary>
+        /// gv_equipos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_equipos;
+        
+        /// <summary>
+        /// id_item_por_eliminar_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden id_item_por_eliminar_equipo;
+        
+        /// <summary>
+        /// btn_eliminar_equipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_eliminar_equipo;
         
         /// <summary>
         /// ValidationSummary1 control.
